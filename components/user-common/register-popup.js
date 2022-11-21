@@ -13,7 +13,6 @@ export default function RegisterPopup() {
   const setLoginPopup = Store.setLoginPopup;
   const setRegisterPopup = Store.setRegisterPopup;
   const otpPopup = Store.otpPopup;
-  const setOtpPopup = Store.setOtpPopup;
 
   const [windowRes, setWindowRes] = useState([]);
   if (typeof window !== "undefined") {
@@ -52,12 +51,18 @@ export default function RegisterPopup() {
   return (
     <>
       <div id="RegisterPopupOuter" className={styles.RegisterPopupOuter}>
-        <div onClick={() => setRegisterPopup(false)} className={styles.RegisterPopupClose}></div>
+        <div
+          onClick={() => setRegisterPopup(false)}
+          className={styles.RegisterPopupClose}
+        ></div>
         <div className={styles.RegisterPopupInner}>
           {windowRes.innerWidth >= 767 ? (
             <div className={styles.desktop_header}>
               <div className={styles.header_inner}>
-                <div onClick={() => setRegisterPopup(false)} className={styles.left}>
+                <div
+                  onClick={() => setRegisterPopup(false)}
+                  className={styles.left}
+                >
                   <picture>
                     <img src="/img/landing/header-close.svg" alt="close" />
                   </picture>
@@ -72,7 +77,9 @@ export default function RegisterPopup() {
             </div>
           ) : (
             <div className={styles.header}>
-              <div className={`container ${styles.container} ${styles.header_container}`}>
+              <div
+                className={`container ${styles.container} ${styles.header_container}`}
+              >
                 <div className={styles.header_inner}>
                   <div className={styles.left}>
                     <picture>
@@ -94,7 +101,9 @@ export default function RegisterPopup() {
                   <div className={styles.sone}>
                     <div className={styles.text}>
                       <div className={styles.textone}>Registraion</div>
-                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                      <div className={styles.texttwo}>
+                        OTP will be sent via sms to your Mobile Number
+                      </div>
                     </div>
                   </div>
                   <RegisterPopupForm />
@@ -114,7 +123,8 @@ export default function RegisterPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Already a member? <span onClick={() => showLogin()}>Login</span>
+                      Already a member?{" "}
+                      <span onClick={() => showLogin()}>Login</span>
                     </div>
                   </div>
                 </div>
@@ -122,15 +132,22 @@ export default function RegisterPopup() {
             </>
           ) : (
             <div className={styles.content_outer}>
-              <div className={`container ${styles.container} ${styles.content}`}>
+              <div
+                className={`container ${styles.container} ${styles.content}`}
+              >
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
-                    <div onClick={() => setRegisterPopup(false)} className={styles.back}>
+                    <div
+                      onClick={() => setRegisterPopup(false)}
+                      className={styles.back}
+                    >
                       <img src="/img/project-details/back.svg" alt="back" />
                     </div>
                     <div className={styles.text}>
                       <div className={styles.textone}>Registraion</div>
-                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                      <div className={styles.texttwo}>
+                        OTP will be sent via sms to your Mobile Number
+                      </div>
                     </div>
                   </div>
                   <RegisterPopupForm />
@@ -146,7 +163,8 @@ export default function RegisterPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Already a member? <span onClick={() => showLogin()}>Login</span>
+                      Already a member?{" "}
+                      <span onClick={() => showLogin()}>Login</span>
                     </div>
                   </div>
                 </div>

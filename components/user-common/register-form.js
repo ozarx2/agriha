@@ -1,10 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import axios from "axios";
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
+import { StoreContext } from "../../components/StoreContext";
 import endpoint from "../../src/utils/endpoint";
 import styles from "./register-popup.module.css";
 
 export default function RegisterPopupForm() {
+  const [Store] = useContext(StoreContext);
+
+  const setOtpPopup = Store.setOtpPopup;
+
   const termsClick = () => {
     window.location.href = "/terms";
   };
@@ -44,13 +49,13 @@ export default function RegisterPopupForm() {
   };
 
   async function handleSubmit() {
-    var phone = `+91${phone}`;
     console.log(phone);
     axios
       .post(`${endpoint}/auth/register`, {
         name: name,
-        phone: phone,
+        phone: `+91${phone}`,
         email: email,
+        role: "user",
       })
       .then((response) => {
         console.log(response.data);
@@ -74,7 +79,14 @@ export default function RegisterPopupForm() {
   return (
     <>
       <div className={styles.stwo}>
-        <input type="text" onChange={storeValues} id="name" name="name" maxLength={24} placeholder="Enter Full name" />
+        <input
+          type="text"
+          onChange={storeValues}
+          id="name"
+          name="name"
+          maxLength={24}
+          placeholder="Enter Full name"
+        />
         <input
           type="tel"
           onChange={storeValues}
@@ -83,9 +95,17 @@ export default function RegisterPopupForm() {
           maxLength={10}
           placeholder="Enter Mobile number"
         />
-        <input type="email" onChange={storeValues} id="email" name="email" maxLength={40} placeholder="Email address" />
+        <input
+          type="email"
+          onChange={storeValues}
+          id="email"
+          name="email"
+          maxLength={40}
+          placeholder="Email address"
+        />
         <div className={styles.privacy}>
-          By continuing you agree to Arclifs <span onClick={termsClick}>Terms of Service</span> and{" "}
+          By continuing you agree to Arclifs{" "}
+          <span onClick={termsClick}>Terms of Service</span> and{" "}
           <span onClick={policyClick}>Privacy policy</span>.
         </div>
         <div onClick={() => showOtp()} className={styles.submit}>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 
@@ -13,7 +14,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
             <React.Fragment key={index}>
               <div className={styles.grid_outer}>
                 {item[0] ? (
-                  <Link href={`/project-details/${item[0]?._id}`}>
+                  <Link href={`/project-details/${item[0]?._id}`} passHref>
                     <div className={styles.one_outer}>
                       <div className={styles.img_out}>
                         <img
@@ -30,7 +31,10 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                         <div className={styles.project_hover}>
                           <div className={styles.center}>
                             <div className={styles.text}>View more</div>
-                            <img src="/img/landing/arrow-right.svg" alt="view more" />
+                            <img
+                              src="/img/landing/arrow-right.svg"
+                              alt="view more"
+                            />
                           </div>
                         </div>
                       </div>
@@ -44,7 +48,11 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                           alt="profile"
                         />
                         <div className={styles.right}>
-                          <div>{item[0]?.architect_id?.firstname + " " + item[0]?.architect_id?.lastname}</div>
+                          <div>
+                            {item[0]?.architect_id?.firstname +
+                              " " +
+                              item[0]?.architect_id?.lastname}
+                          </div>
                           <div>Rem Ipsum is simmy.Ad ...</div>
                         </div>
                       </div>
@@ -54,7 +62,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                   ""
                 )}
                 {item[1] ? (
-                  <Link href={`/project-details/${item[1]?._id}`}>
+                  <Link href={`/project-details/${item[1]?._id}`} passHref>
                     <div className={styles.two_outer}>
                       <div className={styles.img_out}>
                         <img
@@ -71,7 +79,10 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                         <div className={styles.project_hover}>
                           <div className={styles.center}>
                             <div className={styles.text}>View more</div>
-                            <img src="/img/landing/arrow-right.svg" alt="view more" />
+                            <img
+                              src="/img/landing/arrow-right.svg"
+                              alt="view more"
+                            />
                           </div>
                         </div>
                       </div>
@@ -85,7 +96,11 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                           alt="profile"
                         />
                         <div className={styles.right}>
-                          <div>{item[0]?.architect_id?.firstname + " " + item[0]?.architect_id?.lastname}</div>
+                          <div>
+                            {item[0]?.architect_id?.firstname +
+                              " " +
+                              item[0]?.architect_id?.lastname}
+                          </div>
                           <div>Rem Ipsum is simmy.Ad ...</div>
                         </div>
                       </div>
@@ -95,7 +110,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                   ""
                 )}
                 {item[2] ? (
-                  <Link href={`/project-details/${item[2]?._id}`}>
+                  <Link href={`/project-details/${item[2]?._id}`} passHref>
                     <div className={styles.three_outer}>
                       <div className={styles.img_out}>
                         <img
@@ -112,7 +127,10 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                         <div className={styles.project_hover}>
                           <div className={styles.center}>
                             <div className={styles.text}>View more</div>
-                            <img src="/img/landing/arrow-right.svg" alt="view more" />
+                            <img
+                              src="/img/landing/arrow-right.svg"
+                              alt="view more"
+                            />
                           </div>
                         </div>
                       </div>
@@ -126,7 +144,11 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                           alt="profile"
                         />
                         <div className={styles.right}>
-                          <div>{item[0]?.architect_id?.firstname + " " + item[0]?.architect_id?.lastname}</div>
+                          <div>
+                            {item[0]?.architect_id?.firstname +
+                              " " +
+                              item[0]?.architect_id?.lastname}
+                          </div>
                           <div>Rem Ipsum is simmy.Ad ...</div>
                         </div>
                       </div>
@@ -136,7 +158,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                   ""
                 )}
                 {item[3] ? (
-                  <Link href={`/project-details/${item[3]?._id}`}>
+                  <Link href={`/project-details/${item[3]?._id}`} passHref>
                     <div className={styles.four_outer}>
                       <div className={styles.img_out}>
                         <img
@@ -153,7 +175,10 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                         <div className={styles.project_hover}>
                           <div className={styles.center}>
                             <div className={styles.text}>View more</div>
-                            <img src="/img/landing/arrow-right.svg" alt="view more" />
+                            <img
+                              src="/img/landing/arrow-right.svg"
+                              alt="view more"
+                            />
                           </div>
                         </div>
                       </div>
@@ -167,7 +192,11 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                           alt="profile"
                         />
                         <div className={styles.right}>
-                          <div>{item[0]?.architect_id?.firstname + " " + item[0]?.architect_id?.lastname}</div>
+                          <div>
+                            {item[0]?.architect_id?.firstname +
+                              " " +
+                              item[0]?.architect_id?.lastname}
+                          </div>
                           <div>Rem Ipsum is simmy.Ad ...</div>
                         </div>
                       </div>

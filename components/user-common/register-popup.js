@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import styles from "./register-popup.module.css";
@@ -41,12 +44,18 @@ export default function RegisterPopup() {
   return (
     <>
       <div className={styles.RegisterPopupOuter}>
-        <div onClick={() => setRegisterPopup(false)} className={styles.RegisterPopupClose}></div>
+        <div
+          onClick={() => setRegisterPopup(false)}
+          className={styles.RegisterPopupClose}
+        ></div>
         <div className={styles.RegisterPopupInner}>
           {windowRes.innerWidth >= 767 ? (
             <div className={styles.desktop_header}>
               <div className={styles.header_inner}>
-                <div onClick={() => setRegisterPopup(false)} className={styles.left}>
+                <div
+                  onClick={() => setRegisterPopup(false)}
+                  className={styles.left}
+                >
                   <picture>
                     <img src="/img/landing/header-close.svg" alt="close" />
                   </picture>
@@ -61,7 +70,9 @@ export default function RegisterPopup() {
             </div>
           ) : (
             <div className={styles.header}>
-              <div className={`container ${styles.container} ${styles.header_container}`}>
+              <div
+                className={`container ${styles.container} ${styles.header_container}`}
+              >
                 <div className={styles.header_inner}>
                   <div className={styles.left}>
                     <picture>
@@ -83,7 +94,9 @@ export default function RegisterPopup() {
                   <div className={styles.sone}>
                     <div className={styles.text}>
                       <div className={styles.textone}>Registraion</div>
-                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                      <div className={styles.texttwo}>
+                        OTP will be sent via sms to your Mobile Number
+                      </div>
                     </div>
                   </div>
                   <div className={styles.stwo}>
@@ -91,7 +104,9 @@ export default function RegisterPopup() {
                     <input type="text" placeholder="Enter Mobile Number" />
                     <input type="text" placeholder="Email address" />
                     <div className={styles.privacy}>
-                      By continuing you agree to Arclif's <span>Terms of Service</span> and <span>Privacy policy</span>.
+                      By continuing you agree to Arclifs{" "}
+                      <span>Terms of Service</span> and{" "}
+                      <span>Privacy policy</span>.
                     </div>
                     <div onClick={() => showOtp()} className={styles.submit}>
                       Send OTP
@@ -113,7 +128,8 @@ export default function RegisterPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Already a member? <span onClick={() => showLogin()}>Login</span>
+                      Already a member?{" "}
+                      <span onClick={() => showLogin()}>Login</span>
                     </div>
                   </div>
                 </div>
@@ -121,15 +137,22 @@ export default function RegisterPopup() {
             </>
           ) : (
             <div className={styles.content_outer}>
-              <div className={`container ${styles.container} ${styles.content}`}>
+              <div
+                className={`container ${styles.container} ${styles.content}`}
+              >
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
-                    <div onClick={() => setRegisterPopup(false)} className={styles.back}>
+                    <div
+                      onClick={() => setRegisterPopup(false)}
+                      className={styles.back}
+                    >
                       <img src="/img/project-details/back.svg" alt="back" />
                     </div>
                     <div className={styles.text}>
                       <div className={styles.textone}>Registraion</div>
-                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                      <div className={styles.texttwo}>
+                        OTP will be sent via sms to your Mobile Number
+                      </div>
                     </div>
                   </div>
                   <div className={styles.stwo}>
@@ -137,7 +160,9 @@ export default function RegisterPopup() {
                     <input type="text" placeholder="Enter Mobile Number" />
                     <input type="text" placeholder="Email address" />
                     <div className={styles.privacy}>
-                      By continuing you agree to Arclif's <span>Terms of Service</span> and <span>Privacy policy</span>.
+                      By continuing you agree to Arclifs{" "}
+                      <span>Terms of Service</span> and{" "}
+                      <span>Privacy policy</span>.
                     </div>
                     <div onClick={() => showOtp()} className={styles.submit}>
                       Send OTP
@@ -155,7 +180,8 @@ export default function RegisterPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Already a member? <span onClick={() => showLogin()}>Login</span>
+                      Already a member?{" "}
+                      <span onClick={() => showLogin()}>Login</span>
                     </div>
                   </div>
                 </div>

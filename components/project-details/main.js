@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect } from "react";
 import api_url from "../../src/utils/url";
 import AgrihaImageGrid from "../user-common/image-grid";
@@ -8,6 +11,7 @@ import styles from "./main.module.css";
 
 export default function AgrihaProjectDetailsMain() {
   const [windowRes, setWindowRes] = useState([]);
+
   if (typeof window !== "undefined") {
     const [windowSize, setWindowSize] = useState(getWindowSize());
     function getWindowSize() {

@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Link from "next/link";
@@ -34,7 +37,8 @@ export default function AgrihaLandingHeader() {
               document.getElementById("search_outer").style.top = "57px";
             }
             if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop = "111px";
+              document.getElementById("menu_mobile_outer").style.marginTop =
+                "111px";
             }
           } else if (event.deltaY > 0) {
             // console.log("scrolling down");
@@ -42,7 +46,8 @@ export default function AgrihaLandingHeader() {
               document.getElementById("search_outer").style.top = "3px";
             }
             if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop = "57px";
+              document.getElementById("menu_mobile_outer").style.marginTop =
+                "57px";
             }
           }
         });
@@ -78,7 +83,8 @@ export default function AgrihaLandingHeader() {
               document.getElementById("search_outer").style.top = "57px";
             }
             if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop = "111px";
+              document.getElementById("menu_mobile_outer").style.marginTop =
+                "111px";
             }
           }
           if (newTouchPos < touchPos) {
@@ -87,7 +93,8 @@ export default function AgrihaLandingHeader() {
               document.getElementById("search_outer").style.top = "3px";
             }
             if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop = "57px";
+              document.getElementById("menu_mobile_outer").style.marginTop =
+                "57px";
             }
           }
         };
@@ -114,7 +121,10 @@ export default function AgrihaLandingHeader() {
                   </picture>
                 </div>
                 {windowRes.innerWidth >= 1100 ? (
-                  <div id="menu_desktop_outer" className={styles.menu_desktop_outer}>
+                  <div
+                    id="menu_desktop_outer"
+                    className={styles.menu_desktop_outer}
+                  >
                     <div className={styles.menu}>
                       <div
                         className={
@@ -137,15 +147,23 @@ export default function AgrihaLandingHeader() {
 
                 {windowRes.innerWidth >= 1100 ? (
                   <div className={styles.right}>
-                    <div className={styles.architect}>Are you an Architect ?</div>
-                    <div onClick={() => setLoginPopup(true)} className={styles.login}>
+                    <div className={styles.architect}>
+                      Are you an Architect ?
+                    </div>
+                    <div
+                      onClick={() => setLoginPopup(true)}
+                      className={styles.login}
+                    >
                       User Login
                     </div>
                   </div>
                 ) : (
                   <div className={styles.right}>
                     <div className={styles.architect}>Architect Login</div>
-                    <div onClick={() => setLoginPopup(true)} className={styles.login}>
+                    <div
+                      onClick={() => setLoginPopup(true)}
+                      className={styles.login}
+                    >
                       Login
                     </div>
                   </div>
@@ -156,8 +174,14 @@ export default function AgrihaLandingHeader() {
           {windowRes.innerWidth >= 1100 ? (
             ""
           ) : (
-            <div className={`container ${styles.container} ${styles.container_menu_mobile_outer}`}>
-              <div id="menu_mobile_outer" className={styles.menu_mobile_outer} style={{ marginTop: "57px" }}>
+            <div
+              className={`container ${styles.container} ${styles.container_menu_mobile_outer}`}
+            >
+              <div
+                id="menu_mobile_outer"
+                className={styles.menu_mobile_outer}
+                style={{ marginTop: "57px" }}
+              >
                 <div className={styles.menu}>
                   {router.pathname == "/project-details/[id]" ? (
                     <Link href="/landing">
@@ -188,7 +212,11 @@ export default function AgrihaLandingHeader() {
           {windowRes.innerWidth >= 1100 ? (
             ""
           ) : (
-            <div id="search_outer" className={`search_outer ${styles.search_outer}`} style={{ top: "3px" }}>
+            <div
+              id="search_outer"
+              className={`search_outer ${styles.search_outer}`}
+              style={{ top: "3px" }}
+            >
               <div className={styles.search_out}>
                 <img src="/img/landing/search.svg" alt="search" />
                 <input type="text" placeholder="Search here..." />

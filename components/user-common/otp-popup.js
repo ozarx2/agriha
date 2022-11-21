@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import styles from "./otp-popup.module.css";
@@ -67,7 +70,10 @@ export default function OtpPopup() {
   return (
     <>
       <div className={styles.OtpPopupOuter}>
-        <div onClick={() => setOtpPopup(false)} className={styles.OtpPopupClose}></div>
+        <div
+          onClick={() => setOtpPopup(false)}
+          className={styles.OtpPopupClose}
+        ></div>
         <div className={styles.OtpPopupInner}>
           {windowRes.innerWidth >= 767 ? (
             <div className={styles.desktop_header}>
@@ -87,7 +93,9 @@ export default function OtpPopup() {
             </div>
           ) : (
             <div className={styles.header}>
-              <div className={`container ${styles.container} ${styles.header_container}`}>
+              <div
+                className={`container ${styles.container} ${styles.header_container}`}
+              >
                 <div className={styles.header_inner}>
                   <div className={styles.left}>
                     <picture>
@@ -109,32 +117,84 @@ export default function OtpPopup() {
                   <div className={styles.sone}>
                     <div className={styles.text}>
                       <div className={styles.textone}>Verification</div>
-                      <div className={styles.texttwo}>OTP code we just send to your mobile number</div>
+                      <div className={styles.texttwo}>
+                        OTP code we just send to your mobile number
+                      </div>
                     </div>
                   </div>
                   <div className={styles.stwo}>
                     {otpLength == 4 ? (
                       <div className={styles.fourOtp}>
-                        <input id="w" type="text" maxLength="1" onChange={() => OtpNextActive(w, w, x)} />
-                        <input id="x" type="text" maxLength="1" onChange={() => OtpNextActive(w, x, y)} />
-                        <input id="y" type="text" maxLength="1" onChange={() => OtpNextActive(x, y, z)} />
-                        <input id="z" type="text" maxLength="1" onChange={() => OtpNextActive(y, z, z)} />
+                        <input
+                          id="w"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(w, w, x)}
+                        />
+                        <input
+                          id="x"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(w, x, y)}
+                        />
+                        <input
+                          id="y"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(x, y, z)}
+                        />
+                        <input
+                          id="z"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(y, z, z)}
+                        />
                       </div>
                     ) : otpLength == 6 ? (
                       <div className={styles.sixOtp}>
-                        <input id="a" type="text" maxLength="1" onChange={() => OtpNextActive(a, a, b)} />
-                        <input id="b" type="text" maxLength="1" onChange={() => OtpNextActive(a, b, c)} />
-                        <input id="c" type="text" maxLength="1" onChange={() => OtpNextActive(b, c, d)} />
-                        <input id="d" type="text" maxLength="1" onChange={() => OtpNextActive(c, d, e)} />
-                        <input id="e" type="text" maxLength="1" onChange={() => OtpNextActive(d, e, f)} />
-                        <input id="f" type="text" maxLength="1" onChange={() => OtpNextActive(e, f, f)} />
+                        <input
+                          id="a"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(a, a, b)}
+                        />
+                        <input
+                          id="b"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(a, b, c)}
+                        />
+                        <input
+                          id="c"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(b, c, d)}
+                        />
+                        <input
+                          id="d"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(c, d, e)}
+                        />
+                        <input
+                          id="e"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(d, e, f)}
+                        />
+                        <input
+                          id="f"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(e, f, f)}
+                        />
                       </div>
                     ) : (
                       ""
                     )}
                     <div className={styles.additional}>
                       <div className={styles.resend}>
-                        Don't receive the code ? <span>Resend</span>
+                        Dont receive the code ? <span>Resend</span>
                       </div>
                       <div className={styles.time}>{time}</div>
                     </div>
@@ -158,15 +218,24 @@ export default function OtpPopup() {
                     <div className={styles.signup}>
                       {loginPopup ? (
                         <div className={styles.signup}>
-                          Not on Agriha services yet? <span onClick={() => showLoginOrRegister()}>Sign up</span>
+                          Not on Agriha services yet?{" "}
+                          <span onClick={() => showLoginOrRegister()}>
+                            Sign up
+                          </span>
                         </div>
                       ) : registerPopup ? (
                         <div className={styles.signup}>
-                          Already a member? <span onClick={() => showLoginOrRegister()}>Login</span>
+                          Already a member?{" "}
+                          <span onClick={() => showLoginOrRegister()}>
+                            Login
+                          </span>
                         </div>
                       ) : (
                         <div className={styles.signup}>
-                          Already a member? <span onClick={() => showLoginOrRegister()}>Login</span>
+                          Already a member?{" "}
+                          <span onClick={() => showLoginOrRegister()}>
+                            Login
+                          </span>
                         </div>
                       )}
                     </div>
@@ -176,40 +245,97 @@ export default function OtpPopup() {
             </>
           ) : (
             <div className={styles.content_outer}>
-              <div className={`container ${styles.container} ${styles.content}`}>
+              <div
+                className={`container ${styles.container} ${styles.content}`}
+              >
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
-                    <div onClick={() => setOtpPopup(false)} className={styles.back}>
+                    <div
+                      onClick={() => setOtpPopup(false)}
+                      className={styles.back}
+                    >
                       <img src="/img/project-details/back.svg" alt="back" />
                     </div>
                     <div className={styles.text}>
                       <div className={styles.textone}>Verification</div>
-                      <div className={styles.texttwo}>OTP code we just send to your mobile number</div>
+                      <div className={styles.texttwo}>
+                        OTP code we just send to your mobile number
+                      </div>
                     </div>
                   </div>
                   <div className={styles.stwo}>
                     {otpLength == 4 ? (
                       <div className={styles.fourOtp}>
-                        <input id="w" type="text" maxLength="1" onChange={() => OtpNextActive(w, w, x)} />
-                        <input id="x" type="text" maxLength="1" onChange={() => OtpNextActive(w, x, y)} />
-                        <input id="y" type="text" maxLength="1" onChange={() => OtpNextActive(x, y, z)} />
-                        <input id="z" type="text" maxLength="1" onChange={() => OtpNextActive(y, z, z)} />
+                        <input
+                          id="w"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(w, w, x)}
+                        />
+                        <input
+                          id="x"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(w, x, y)}
+                        />
+                        <input
+                          id="y"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(x, y, z)}
+                        />
+                        <input
+                          id="z"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(y, z, z)}
+                        />
                       </div>
                     ) : otpLength == 6 ? (
                       <div className={styles.sixOtp}>
-                        <input id="a" type="text" maxLength="1" onChange={() => OtpNextActive(a, a, b)} />
-                        <input id="b" type="text" maxLength="1" onChange={() => OtpNextActive(a, b, c)} />
-                        <input id="c" type="text" maxLength="1" onChange={() => OtpNextActive(b, c, d)} />
-                        <input id="d" type="text" maxLength="1" onChange={() => OtpNextActive(c, d, e)} />
-                        <input id="e" type="text" maxLength="1" onChange={() => OtpNextActive(d, e, f)} />
-                        <input id="f" type="text" maxLength="1" onChange={() => OtpNextActive(e, f, f)} />
+                        <input
+                          id="a"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(a, a, b)}
+                        />
+                        <input
+                          id="b"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(a, b, c)}
+                        />
+                        <input
+                          id="c"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(b, c, d)}
+                        />
+                        <input
+                          id="d"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(c, d, e)}
+                        />
+                        <input
+                          id="e"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(d, e, f)}
+                        />
+                        <input
+                          id="f"
+                          type="text"
+                          maxLength="1"
+                          onChange={() => OtpNextActive(e, f, f)}
+                        />
                       </div>
                     ) : (
                       ""
                     )}
                     <div className={styles.additional}>
                       <div className={styles.resend}>
-                        Don't receive the code ? <span>Resend</span>
+                        Dont receive the code ? <span>Resend</span>
                       </div>
                       <div className={styles.time}>{time}</div>
                     </div>
@@ -228,15 +354,20 @@ export default function OtpPopup() {
                   <div className={styles.sfive}>
                     {loginPopup ? (
                       <div className={styles.signup}>
-                        Not on Agriha services yet? <span onClick={() => showLoginOrRegister()}>Sign up</span>
+                        Not on Agriha services yet?{" "}
+                        <span onClick={() => showLoginOrRegister()}>
+                          Sign up
+                        </span>
                       </div>
                     ) : registerPopup ? (
                       <div className={styles.signup}>
-                        Already a member? <span onClick={() => showLoginOrRegister()}>Login</span>
+                        Already a member?{" "}
+                        <span onClick={() => showLoginOrRegister()}>Login</span>
                       </div>
                     ) : (
                       <div className={styles.signup}>
-                        Already a member? <span onClick={() => showLoginOrRegister()}>Login</span>
+                        Already a member?{" "}
+                        <span onClick={() => showLoginOrRegister()}>Login</span>
                       </div>
                     )}
                   </div>

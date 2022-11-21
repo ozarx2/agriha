@@ -127,52 +127,35 @@ export default function AgrihaLandingMain() {
                 <div className={`container ${styles.container} ${styles.stwo}`}>
                   <div className={styles.stwo_inner}>
                     <div className={styles.left}>
-                      <img
-                        src="/img/landing/banner-left.png"
-                        alt="left banner"
-                      />
+                      <img src="/img/landing/banner-left.png" alt="left banner" />
                     </div>
                     <div className={styles.center}>
                       <div className={styles.title}>
-                        Leading Architects for you to{" "}
-                        <span>design your space</span>
+                        Leading Architects for you to <span>design your space</span>
                       </div>
                       <div className={styles.content}>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetti
+                        Lorem Ipsum is simply dummy text of the printing and typesetti
                       </div>
                       <div className={styles.buttons}>
-                        <div
-                          className={styles.start}
-                          onClick={() => setRegisterPopup(true)}
-                        >
+                        <div className={styles.start} onClick={() => setRegisterPopup(true)}>
                           Get Started
                         </div>
                         <div className={styles.contact}>Contact us</div>
                       </div>
                     </div>
                     <div className={styles.right}>
-                      <img
-                        src="/img/landing/banner-right.png"
-                        alt="right banner"
-                      />
+                      <img src="/img/landing/banner-right.png" alt="right banner" />
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className={styles.sthree_outer}>
-                <div
-                  className={`container ${styles.container} ${styles.sthree}`}
-                >
+                <div className={`container ${styles.container} ${styles.sthree}`}>
                   <div className={styles.sthree_inner}>
                     <div className={styles.active}>All</div>
                     {projectTypes?.map((item, index) => {
-                      return (
-                        <>
-                          <div key={index}>{item.project_type}</div>
-                        </>
-                      );
+                      return <div key={index}>{item.project_type}</div>;
                     })}
                   </div>
                 </div>
@@ -194,13 +177,10 @@ export default function AgrihaLandingMain() {
                         backgroundImage: "url(/img/landing/sone-right.svg)",
                       }}
                     >
-                      <div
-                        className={`container ${styles.container} ${styles.sone}`}
-                      >
+                      <div className={`container ${styles.container} ${styles.sone}`}>
                         <div className={styles.sone_inner}>
                           <div className={styles.heading}>
-                            Leading Architects for you to{" "}
-                            <span>Design your space</span>
+                            Leading Architects for you to <span>Design your space</span>
                           </div>
                           <div className={styles.buttons}>
                             <div className={styles.started}>Get Started</div>
@@ -213,9 +193,7 @@ export default function AgrihaLandingMain() {
                 </div>
 
                 <div className={styles.stwo_outer}>
-                  <div
-                    className={`container ${styles.container} ${styles.stwo}`}
-                  >
+                  <div className={`container ${styles.container} ${styles.stwo}`}>
                     <div className={styles.stwo_inner}>
                       <div className="landing_stwo_inner">
                         <Swiper
@@ -232,13 +210,7 @@ export default function AgrihaLandingMain() {
                           pagination={{
                             clickable: true,
                           }}
-                          modules={[
-                            Mousewheel,
-                            Keyboard,
-                            Autoplay,
-                            Pagination,
-                            Navigation,
-                          ]}
+                          modules={[Mousewheel, Keyboard, Autoplay, Pagination, Navigation]}
                           className="mySwiper"
                         >
                           <SwiperSlide>

@@ -104,7 +104,7 @@ export default function RegisterPopupForm() {
           placeholder="Email address"
         />
         <div className={styles.privacy}>
-          By continuing you agree to Arclifs{" "}
+          By continuing you agree to Arclif&apos;s{" "}
           <span onClick={termsClick}>Terms of Service</span> and{" "}
           <span onClick={policyClick}>Privacy policy</span>.
         </div>

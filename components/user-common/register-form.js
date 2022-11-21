@@ -85,7 +85,7 @@ export default function RegisterPopupForm() {
         />
         <input type="email" onChange={storeValues} id="email" name="email" maxLength={40} placeholder="Email address" />
         <div className={styles.privacy}>
-          By continuing you agree to Arclifs <span onClick={termsClick}>Terms of Service</span> and{" "}
+          By continuing you agree to Arclif&apos;s <span onClick={termsClick}>Terms of Service</span> and{" "}
           <span onClick={policyClick}>Privacy policy</span>.
         </div>
         <div onClick={() => showOtp()} className={styles.submit}>

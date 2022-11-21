@@ -3,6 +3,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import LoginPopupForm from "./login-form";
 
 import styles from "./login-popup.module.css";
 
@@ -38,10 +39,6 @@ export default function LoginPopup() {
   function showSignup() {
     setRegisterPopup(true);
     setLoginPopup(false);
-  }
-  function showOtp() {
-    setOtpPopup(true);
-    // setLoginPopup(false);
   }
 
   useEffect(() => {
@@ -100,12 +97,7 @@ export default function LoginPopup() {
                       <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
                   </div>
-                  <div className={styles.stwo}>
-                    <input type="text" placeholder="Enter Mobile Number" />
-                    <div onClick={() => showOtp()} className={styles.submit}>
-                      Send OTP
-                    </div>
-                  </div>
+                  <LoginPopupForm />
                 </div>
               </div>
               <div className={styles.sthree_full}>
@@ -141,12 +133,7 @@ export default function LoginPopup() {
                       <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
                   </div>
-                  <div className={styles.stwo}>
-                    <input type="text" placeholder="Enter Mobile Number" />
-                    <div onClick={() => showOtp()} className={styles.submit}>
-                      Send OTP
-                    </div>
-                  </div>
+                  <LoginPopupForm />
                   <div className={styles.sthree}>
                     <div className={styles.line}></div>
                     <div className={styles.or}>OR</div>

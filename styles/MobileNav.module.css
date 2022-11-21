@@ -1,0 +1,35 @@
+.mobileNav {
+  display: none;
+}
+
+.page__slidebar__icon__logout > p {
+  color: #0c6a9e;
+  font-size: 15px;
+  font-weight: bold;
+
+}
+@media only screen and (max-width: 500px) {
+  .mobileNav {
+    display: block;
+    height: 50px;
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .mobileNav > ul {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .mobileNav > ul > li {
+    list-style: none;
+    display: flex;
+  }
+  .page__slidebar__icon {
+    margin-right: 10px;
+  }
+}

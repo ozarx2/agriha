@@ -1,0 +1,357 @@
+.ourServices {
+    padding-top: 70px;
+    margin-bottom: 50px;
+    margin-top: 0px;
+    background-color: #f1fcff;
+    margin-bottom: 0px;
+    padding-bottom: 50px;
+  }
+  .title__ourServices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .top__title__ourServices {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .top__title__ourServices > h2 {
+    color: #11907c;
+    font-size: 35px;
+  }
+  .title__ourServices > p {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+    max-width: 700px;
+    line-height: 25px;
+    margin-bottom: 50px;
+    color: #818181;
+  }
+  .card__ourServices,
+  .card__ourServices__end {
+    min-width: 51%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0px;
+    border-right: 1px solid #dfdfdf;
+  }
+  .card__ourServices__end {
+    border: none;
+  }
+  .left__card__ourServices {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0px 4px 19px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    margin-right: 40px;
+  }
+  .right__card__ourServices > p {
+    font-size: 13px;
+    margin-top: 10px;
+    max-width: 300px;
+    color: #818181;
+    font-family: "Roboto", sans-serif;
+    line-height: 20px;
+    font-weight: lighter;
+  }
+  .viewServiceButton {
+    height: 40px;
+    width: 110px;
+    background-color: #11907c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .viewServiceButton:hover {
+    background-image: linear-gradient(to right, #0b75a3, #05996d);
+  }
+  .scrollIndicator__ourServices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 10px;
+  }
+  .scrollIndicator__ourServices > span {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    border: 1px solid #11907c;
+    margin: 0px 10px;
+  }
+  .scrollIndicator__ourServices__active {
+    background-color: #11907c;
+  }
+  .caroselContainer {
+    display: flex;
+    margin-top: 30px;
+    padding: 0px 8vw;
+    padding-bottom: 50px;
+    margin-left: -20px;
+    overflow: hidden;
+  }
+  .caroserContainerMain {
+    margin-bottom: 50px;
+  }
+
+  /* SERVICES PAGE */
+
+  .servicesPage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .servicesPage__container {
+    margin-top: 50px;
+  }
+  .cardServicePage,
+  .cardServicePageBg {
+    padding: 30px 8vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 650px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .cardServicePageBg {
+    background-color: #ebf8f2;
+  }
+  .bottomImg__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .image__cardServicePage {
+    width: 46%;
+    height: 100%;
+  }
+  .content__cardServicePage,
+  .content__cardServicePageBg {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .content__cardServicePage {
+    padding-left: 30px;
+  }
+  .content__cardServicePageBg {
+    padding-right: 30px;
+  }
+  .content__cardServicePage > p,
+  .content__cardServicePageBg > p {
+    font-size: 13px;
+    line-height: 25px;
+    color: #818181;
+    margin-bottom: 20px;
+  }
+  .content__cardServicePage > h2,
+  .content__cardServicePageBg > h2 {
+    font-size: 23px;
+    color: #11907c;
+  }
+  .content__cardServicePage > h4,
+  .content__cardServicePageBg > h4 {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .footerContainer__servicesPage {
+    margin-top: 30px;
+    border-top: 1px solid rgb(242, 242, 242);
+  }
+  .caroselContainer__mobile {
+    display: none;
+  }
+  @media only screen and (max-width: 500px) {
+    .title__ourServices > p {
+      margin-bottom: 30px;
+    }
+    .caroselContainer__mobile {
+      display: block;
+      padding-bottom: 20px;
+    }
+    .caroserContainerMain {
+      display: none;
+    }
+    .top__title__ourServices > span {
+      width: 30vw;
+      height: 1px;
+      background-color: #d9d9d9;
+    }
+    .title__ourServices > p {
+      font-size: 16px;
+    }
+    .card__ourServicesMobile {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0px;
+      border-right: none;
+      margin-left: 8vw;
+      margin-top: 0px;
+    }
+    .left__card__ourServices {
+      height: 110px;
+      max-width: 110px;
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      margin-right: 0px;
+      margin-bottom: 20px;
+    }
+    .right__card__ourServices {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .right__card__ourServices > h4 {
+      font-size: 14px;
+    }
+    .right__card__ourServices > p {
+      font-size: 14px;
+      margin-top: 7px;
+      text-align: center;
+    }
+    .viewServiceButton {
+      height: 40px;
+      width: 110px;
+      background-color: #11907c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #ffffff;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .viewServiceButton:hover {
+      background-image: linear-gradient(to right, #0b75a3, #05996d);
+    }
+    .servicesPage__container {
+      margin-top: 20px;
+    }
+    .cardServicePage {
+      padding: 30px 8vw;
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: space-between;
+      height: 700px;
+      padding-top: 75px;
+      padding-bottom: 0px;
+    }
+    .cardServicePageBg {
+      flex-direction: column;
+      padding-top: 75px;
+      padding-bottom: 0px;
+      height: 700px;
+      background-color: #ffffff;
+    }
+    .bottomImg__container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .image__cardServicePage {
+      width: 100%;
+      height: 100%;
+    }
+    .content__cardServicePage,
+    .content__cardServicePageBg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .content__cardServicePage {
+      padding-left: 0px;
+    }
+    .content__cardServicePageBg {
+      padding-right: 0px;
+    }
+    .content__cardServicePage > p,
+    .content__cardServicePageBg > p {
+      font-size: 13px;
+      line-height: 25px;
+      color: #818181;
+      margin: 10px 0px;
+    }
+    .content__cardServicePage > h2,
+    .content__cardServicePageBg > h2 {
+      font-size: 23px;
+      color: #11907c;
+    }
+    .content__cardServicePage > h4,
+    .content__cardServicePageBg > h4 {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .footerContainer__servicesPage {
+      margin-top: 80px;
+      border-top: 1px solid rgb(242, 242, 242);
+    }
+  }
+  @media only screen and (max-width: 414px) {
+    .top__title__ourServices > h2 {
+      font-size: 30px;
+    }
+    .title__ourServices > p {
+      padding: 0px 20px;
+      max-width: 100%;
+    }
+    .top__title__ourServices > span {
+      width: 25vw;
+    }
+  }
+  @media only screen and (max-width: 375px) {
+    .left__card__ourServices {
+      height: 110px;
+      min-width: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      margin-right: 0px;
+    }
+    .right__card__ourServices > h4 {
+      font-size: 14px;
+    }
+    .right__card__ourServices > p {
+      font-size: 14px;
+    }
+    .title__ourServices > p {
+      font-size: 15px;
+    }
+  }
+  

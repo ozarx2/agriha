@@ -1,0 +1,351 @@
+.projectView {
+  width: 80vw;
+  margin-top: 60px;
+  margin-left: 20vw;
+  height: 100%;
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-right: 5vw;
+  margin-bottom: 30px;
+}
+.projectsCard__container {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.projectCard {
+  background-color: #ffffff;
+  width: 300px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: 0px 1px 10px 0px #c5c5c5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.top__projectCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title__projectCard > h5 {
+  color: #555555;
+  font-size: 15px;
+}
+.title__projectCard > p {
+  color: #555555;
+  font-size: 13px;
+  margin-top: 5px;
+}
+.bottom__projectCard {
+  display: flex;
+  flex-direction: column;
+}
+.viewMore__button {
+  color: #02746d;
+  height: 35px;
+  width: 100px;
+  border: 1px solid #02746d;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+.bottom__projectCard__content {
+  margin-top: 20px;
+}
+.bottom__projectCard__content > p {
+  font-size: 14px;
+}
+.bottom__projectCard__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.indicator__projectCard__content {
+  display: flex;
+}
+.indicator__projectCard__content > span > div {
+  height: 15px;
+  width: 15px;
+  background-color: #ffdc26;
+  border-radius: 50%;
+}
+.indicator__projectCard__content > p {
+  font-size: 10px;
+  margin-left: 5px;
+  font-weight: bold;
+  color: #828282;
+}
+.nextButton__card {
+  height: 40px;
+  width: 120px;
+  background-color: #018c70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 13px;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.indicator__projectCard__content {
+  margin-top: 20px;
+}
+
+.profileSettings {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 20px;
+}
+
+.imageProfile__profileSettings {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.avatarContainer__profileSettings {
+  padding: 30px 0px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.profileSettings__card_right {
+  margin-top: 30px;
+}
+
+.buttonContainer__profileSettings {
+  display: flex;
+  align-content: center;
+  justify-content: flex-start;
+  margin-top: 40px;
+}
+
+.discardButton {
+  color: #c62020;
+  border: 1px solid #c62020;
+  font-size: 13px;
+  height: 40px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-right: 20px;
+}
+
+.saveChangesButton {
+  height: 40px;
+  width: 155px;
+  background-color: #018c70;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+}
+
+.projectViewContainer {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.content__inputs {
+  background-color: #fff;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.content__inputs > input {
+  font-family: inherit;
+  height: 100%;
+  width: 100%;
+  padding: 0px 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.projectViewContainer > div > h4 {
+  margin-bottom: 10px;
+}
+
+.architectDetails {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.architectDetails__card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.architectDetails__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.architectDetails__card__avatar {
+  height: 80px;
+  width: 80px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  background-color: #3e3e3e;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.architectDetails__top__left {
+  display: flex;
+  align-items: center;
+}
+
+.architectDetails__card__name {
+  margin-left: 20px;
+}
+
+.architectDetails__card__name > h3 {
+  font-size: 15px;
+  color: #3e3e3e;
+}
+
+.architectDetails__card__name > h4 {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #767676;
+}
+
+.architectDetails__card__viewMore {
+  border: 1px solid #0c6a9e;
+  color: #0c6a9e;
+  height: 30px;
+  width: 100px;
+  font-size: 13px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.architectDetails__card__bottom {
+  margin-top: 20px;
+}
+
+.architectDetails__card__bottom > p {
+  font-size: 13px;
+  color: #4e4e4e;
+}
+
+.headerProjectView {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerProjectView__date > p {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+  .projectView {
+    width: 100vw;
+    margin-top: 60px;
+    margin-left: 0vw;
+    height: 100%;
+    padding: 0px 5vw;
+    padding-top: 30px;
+  }
+  .projectsCard__container {
+    border-radius: 10px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 20px;
+  }
+  .projectViewContainer > div > h4 {
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+  .architectDetails__card {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .projectCard {
+    width: 80vw;
+  }
+  .profileSettings {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .projectViewContainer {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .profileSettings__card_right {
+    margin-top: 30px;
+    margin-right: 0px;
+    width: 100%;
+  }
+  .profileSettings {
+    margin-right: -22vw;
+  }
+}

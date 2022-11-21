@@ -1,0 +1,213 @@
+.valuesConatiner {
+  margin-top: 0px;
+  background-color: #0e263d;
+  padding: 30px 5vw;
+  color: #ffffff;
+  padding-bottom: 50px;
+}
+
+.top__valuesConatiner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.top__valuesConatiner > h5 {
+  font-size: 25px;
+  font-weight: bold;
+  border-bottom: 1px dotted #dbdbdb;
+  padding-bottom: 30px;
+  width: 40%;
+  margin-top: 30px;
+  line-height: 40px;
+}
+
+.right__top__valuesConatiner {
+  width: 55%;
+}
+
+.bgRadient__right__top__valuesConatiner {
+  height: 140px;
+  border-radius: 5px;
+  width: 100%;
+  background-image: linear-gradient(to bottom right, #117c94, #2e955d);
+  z-index: 100;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text__right__top__valuesConatiner > h4 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.text__right__top__valuesConatiner > p {
+  font-size: 12px;
+  color: #fafafa;
+  font-weight: normal;
+  margin: 7px 0px;
+}
+
+.getStart__button {
+  color: #252525;
+  height: 45px;
+  width: 120px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.getStart__button:hover {
+  background-color: #0e263d;
+  color: #ffffff;
+}
+
+.bottom__valuesConatiner {
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title__card__valuesConatiner {
+  display: flex;
+  align-items: center;
+}
+
+.logo__title__card__valuesConatiner {
+  margin-right: 20px;
+}
+
+.card__bottom__valuesConatiner > p {
+  font-size: 12px;
+  color: #e2e2e2;
+  margin-top: 10px;
+}
+
+.valuesConatiner_mobile {
+  display: none;
+}
+
+.desc__card__valuesConatiner {
+  display: flex;
+  flex-direction: column;
+}
+
+.desc__card__valuesConatiner > h2 {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.desc__card__valuesConatiner > p {
+  font-size: 14px;
+  color: #e2e2e2;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+  .valuesConatiner_main {
+    display: none;
+  }
+  .valuesConatiner_mobile {
+    display: flex;
+    flex-direction: column;
+  }
+  .top__valuesConatiner > h5 {
+    width: 100%;
+    text-align: center;
+  }
+  .card__bottom__valuesConatiner {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .title__card__valuesConatiner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+  }
+  .title__card__valuesConatiner > h2 {
+    font-size: 18px;
+    font-weight: normal;
+  }
+  .title__card__valuesConatiner > p {
+    font-size: 10px;
+    color: #e2e2e2;
+    margin-top: 5px;
+  }
+  .logo__title__card__valuesConatiner {
+    margin-right: 0px;
+  }
+  .bottom__valuesConatiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bgRadient__right__top__valuesConatiner {
+    height: 100%;
+    border-radius: 5px;
+    width: 100%;
+    background-image: linear-gradient(to bottom right, #117c94, #2e955d);
+    z-index: 100;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .right__top__valuesConatiner {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .getStart__button {
+    color: #252525;
+    height: 45px;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  .text__right__top__valuesConatiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .text__right__top__valuesConatiner > h4 {
+    font-size: 22px;
+    font-weight: normal;
+  }
+  .text__right__top__valuesConatiner > p {
+    font-size: 11px;
+    color: #fafafa;
+    font-weight: normal;
+    margin: 7px 0px;
+  }
+  .bottom__valuesConatiner {
+    margin-top: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+}
+
+@media only screen and (max-width: 375px) {
+}

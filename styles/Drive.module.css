@@ -1,0 +1,213 @@
+.bgContainer__profileDetails {
+  margin: 120px 8vw;
+  margin-bottom: 50px;
+}
+
+.foldersContainer__top {
+  display: flex;
+}
+.foldersContainer {
+  display: flex;
+  margin-top: 20px;
+}
+
+.folderCard {
+  margin-right: 30px;
+  height: 150px;
+  width: 150px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.folderCard > p {
+  margin-top: 10px;
+}
+
+.folderCardHidden {
+  margin-right: 30px;
+  height: 150px;
+  width: 150px;
+  background-color: #ececec;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  display: none;
+}
+
+.top_container_drive {
+  display: flex;
+  flex-direction: column;
+}
+
+.center_container_drive {
+  margin-left: 100px;
+}
+
+.uploadOwn__Container {
+  margin-top: 50px;
+}
+
+.uploaded__image__container {
+  width: 400px;
+  height: 300px;
+  background-color: azure;
+  border: 1px dotted #1c9c76;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploaded__image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 99%;
+  width: 99%;
+  border-radius: 10px;
+  display: none;
+}
+
+.upload__button {
+  height: 50px;
+  width: 400px;
+  background-image: linear-gradient(to right, #027888, #1c9c76);
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.select__image {
+  height: 50px;
+  width: 300px;
+  border-radius: 5px;
+  color: #027888;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.upload__button:hover {
+  background-image: linear-gradient(to left, #027888, #1c9c76);
+}
+
+.select__image > input {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+  margin-left: -30px;
+  visibility: 0;
+}
+
+.select__image > p {
+  margin-left: -250px;
+}
+
+.select__image > input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.errorFile {
+  margin-top: -40px;
+  color: #1c9c76;
+  display: none;
+  font-size: 13px;
+}
+
+.loader__container__upload {
+  display: none;
+}
+
+.stageOne__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.stageTitle__container > h4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #1c9c76;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.folderCardContainer__stages {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.imageContainer__response {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.stageTitle__container {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .bgContainer__profileDetails {
+    margin: 90px 8vw;
+  }
+  .foldersContainer__top {
+    display: flex;
+    flex-direction: column;
+  }
+  .folderCard {
+    margin-right: 20px;
+    height: 80px;
+    width: 100px;
+    padding: 8px;
+  }
+  .folderCard > p {
+    font-size: 10px;
+  }
+  .center_container_drive {
+    margin-left: 0px;
+    margin-top: 30px;
+  }
+  .uploaded__image__container {
+    height: 60vw;
+    width: 80vw;
+    margin-left: 2px;
+  }
+  .upload__button {
+    width: 80vw;
+  }
+  .imageContainer__response {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-top: 30px;
+  }
+  .folderCardContainer__stages {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

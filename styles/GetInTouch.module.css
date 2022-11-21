@@ -1,0 +1,364 @@
+.getInTouch {
+  padding: 80px 8vw;
+  background-color: #f1fcff;
+}
+
+.title__getInTouch {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title__getInTouch > h2 {
+  color: #11907c;
+  font-size: 35px;
+}
+
+.title__getInTouch > p {
+  font-size: 14px;
+  color: #818181;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 500px;
+  line-height: 25px;
+}
+
+.card__getInTouch {
+  background-color: #ffffff;
+  padding: 30px;
+  margin-top: 50px;
+  display: flex;
+}
+
+.left__card__getInTouch {
+  background-color: #0e263d;
+  width: 45%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 450px;
+  padding-left: 10px;
+}
+
+.text__left__card__getInTouch {
+  margin: 20px;
+}
+
+.text__left__card__getInTouch > h3 {
+  font-size: 26px;
+  font-weight: normal;
+  font-weight: 600;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #05996d;
+}
+
+.text__left__card__getInTouch > p {
+  font-size: 13px;
+  color: #a3a3a3;
+  margin-top: 10px;
+}
+
+.logo__left__card__getInTouch {
+  margin-top: 0px;
+  padding-bottom: 0px;
+  margin-left: -8px;
+}
+
+.text__left__card__getInTouch > h4 {
+  margin-top: 30px;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.numbers__left__card__getInTouch {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.numbers__left__card__getInTouch > h5 {
+  font-weight: normal;
+  font-size: 15px;
+  margin-right: 15px;
+}
+
+.buttonContainer__left__card__getInTouch {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.getLocation__Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #11907c;
+  height: 40px;
+  width: 140px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.getLocation__Button:hover {
+  background-image: linear-gradient(to right, #0b75a3, #05996d);
+}
+
+.call__Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  margin-left: 20px;
+  height: 40px;
+  width: 110px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.call__Button:hover {
+  background-color: rgba(201, 201, 201, 0.2);
+}
+
+.getLocation__Button > div,
+.call__Button > div {
+  margin-top: 3px;
+  margin-right: 7px;
+}
+
+.social__left__card__getInTouch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  width: 65px;
+  margin-right: 30px;
+}
+
+.social__left__card__getInTouch > a {
+  margin: 25px 0px;
+}
+
+.right__card__getInTouch {
+  width: 48%;
+  margin-left: 100px;
+  padding-left: 20px;
+  padding-right: 50px;
+  color: #0e263d;
+}
+
+.right__card__getInTouch > h3 {
+  font-size: 26px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.right__card__getInTouch > p {
+  font-size: 13px;
+  margin-top: 10px;
+  color: #a2a2a3;
+  margin-bottom: 20px;
+}
+
+.inputConatiner__getInTouch {
+  width: 90%;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.inputConatiner__getInTouch > input {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  height: 100%;
+  width: 100%;
+  color: #0e263d;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  padding: 0px 20px;
+}
+
+.inputConatiner__getInTouch > input::-webkit-autofill:active,
+.inputConatiner__getInTouch > input::-webkit-autofill:focus,
+.inputConatiner__getInTouch > input::-webkit-autofill,
+.inputConatiner__getInTouch > input::-webkit-autofill:hover {
+  background: transparent;
+}
+
+.inputConatiner__getInTouch > input::placeholder,
+.textAreaConatiner__getInTouch > textarea::placeholder {
+  color: #afafaf;
+}
+
+.textAreaConatiner__getInTouch {
+  width: 90%;
+}
+
+.textAreaConatiner__getInTouch > textarea {
+  font-family: inherit;
+  outline: none;
+  border: none;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  color: #0e263d;
+  height: 100px;
+  width: 100%;
+  padding: 20px;
+  resize: none;
+}
+
+.sendMessageButton {
+  background-color: #11907c;
+  height: 50px;
+  width: 90%;
+  margin-top: 13px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.sendMessageButton:hover {
+  background-image: linear-gradient(to right, #0b75a3, #05996d);
+}
+
+@media only screen and (max-width: 500px) {
+  .getInTouch {
+    padding: 50px 5vw;
+  }
+  .text__left__card__getInTouch > h3 {
+    font-size: 26px;
+  }
+  .text__left__card__getInTouch > p {
+    font-size: 13px;
+  }
+
+  .card__getInTouch {
+    padding: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  .left__card__getInTouch {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-top: 30px;
+  }
+  .social__left__card__getInTouch {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  .social__left__card__getInTouch > a {
+    margin: 10px 20px;
+  }
+  .right__card__getInTouch {
+    width: 100%;
+    margin-top: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 10px;
+    color: #0e263d;
+  }
+
+  .right__card__getInTouch > h3 {
+    font-size: 23px;
+  }
+
+  .right__card__getInTouch > p {
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+  }
+
+  .sendMessageButton {
+    height: 50px;
+    width: 90%;
+    margin-top: 13px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: normal;
+    cursor: pointer;
+  }
+  .text__left__card__getInTouch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .text__left__card__getInTouch > p {
+    text-align: center;
+    line-height: 20px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .title__getInTouch > h2 {
+    font-size: 30px;
+  }
+  .title__getInTouch > p {
+    font-size: 14px;
+  }
+  .text__left__card__getInTouch > h3 {
+    font-size: 23px;
+  }
+  .text__left__card__getInTouch > p {
+    font-size: 12px;
+  }
+  .buttonContainer__left__card__getInTouch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .text__left__card__getInTouch > h4 {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .getLocation__Button {
+    height: 40px;
+    width: 120px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .call__Button {
+    height: 40px;
+    width: 100px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .numbers__left__card__getInTouch > h5 {
+    font-weight: normal;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+}

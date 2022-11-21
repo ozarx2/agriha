@@ -1,0 +1,382 @@
+.fillData,
+.fillDataProject {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.bodyRegister {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.fillDataProject {
+  margin-top: 30px;
+}
+
+.content__bodyRegister {
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 25vw;
+}
+
+.chooseImg {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.textarea > textarea {
+  background: transparent;
+  margin-left: 20px;
+  height: 80px;
+  margin-top: 10px;
+  width: 90%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  color: #ffffff;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nextButtonArchitect {
+  height: 50px;
+  width: 150px;
+  background-image: linear-gradient(to right, #027888, #1c9c76);
+  color: white;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  letter-spacing: 1px;
+  font-family: inherit;
+  border-radius: 5px;
+}
+.profile__architect {
+  display: flex;
+  padding: 5vw;
+  border-bottom: 1px solid #ececec;
+}
+.avatar__architectDetail {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.avatar__architectDetailBg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 150px;
+  min-width: 150px;
+  border-radius: 5px;
+  margin-right: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.name__top__right__conatiner__profile {
+  margin-bottom: 15px;
+}
+.top__top__right__conatiner__profile > h4 {
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.top__right__conatiner__profile {
+  width: 80vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-right: 5vw;
+}
+
+.bottom__right__conatiner__profile > p {
+  font-style: 13px;
+  color: #3f3f3f;
+  max-width: 60vw;
+}
+
+.contactButton__profile,
+.viewAll {
+  height: 40px;
+  width: 120px;
+  background-image: linear-gradient(to right, #027888, #1c9c76);
+  color: white;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  letter-spacing: 1px;
+  font-family: inherit;
+  border-radius: 5px;
+  margin-left: 20px;
+  font-weight: normal;
+}
+
+.UserList {
+  height: 40px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  font-size: 13px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.viewAll {
+  height: 40px;
+  width: 160px;
+  margin-right: 5vw;
+}
+.contactIcon__architect {
+  background-color: #bdbdbd;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.contact__architect_container {
+  padding: 30px 5vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ececec;
+}
+.contact__architect {
+  display: flex;
+}
+.contactText__architect > h5 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.contactText__architect > p {
+  font-size: 13px;
+  color: #939393;
+}
+.projectContainer__architect {
+  padding: 40px 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.projectContainer__architect > h3 {
+  margin-bottom: 30px;
+}
+.projectCard__container {
+  width: 100%;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.projectCardAdmin {
+  width: 100%;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  height: 300px;
+}
+.projectCard__architect {
+  height: 50%;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  border-radius: 10px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.projectCard__architect__admin {
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 20px;
+  border: 1px solid #8c8c8c;
+  background-color: #858585;
+}
+.projectCard__architect__image {
+  width: 100%;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.inputs__container__bodyRegister > form > h4 {
+  margin-bottom: 20px;
+}
+.error__varifyOtp {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  color: red;
+  font-size: 13px;
+  display: none;
+}
+
+.projectDetailsContainer {
+  display: none;
+  padding-bottom: 5vw;
+}
+
+.imageProjectCardContainer {
+  display: grid;
+  width: 300px;
+  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.imageProject {
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+  background-color: rgb(209, 209, 209);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imageProject > h2 {
+  color: #ffffff;
+  backdrop-filter: blur(5px);
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.architectDetailsPage {
+  display: none;
+}
+
+.projectCard__architect__content {
+  width: 90%;
+  color: #ffffff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: -30px;
+  padding-left: 20px;
+  backdrop-filter: blur(20px);
+}
+
+.projectView_admin {
+  width: 100%;
+}
+
+.projectsCard__container_admin {
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.headerRightAdmin {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .contact__architect_container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 5vw;
+    padding-top: 20px;
+  }
+  .contact__architect {
+    margin-bottom: 20px;
+  }
+  .projectCard__container {
+    gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    margin-right: 5vw;
+  }
+  .projectCard__architect {
+    width: 95vw;
+  }
+  .top__right__conatiner__profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .contactButton__profile {
+    margin-left: 0px;
+    margin-bottom: 10px;
+    width: 120px;
+    height: 30px;
+  }
+  .avatar__architectDetailBg {
+    min-height: 250px;
+    height: 150px;
+    min-width: 150px;
+    margin-right: 20px;
+    background-position: center;
+  }
+  .avatar__architectDetail {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 0px;
+  }
+  .bottom__right__conatiner__profile {
+    margin-top: 10px;
+  }
+  .bottom__right__conatiner__profile > p {
+    font-size: 13px;
+    max-width: 100%;
+    margin-top: -10px;
+  }
+  .projectContainer__architect {
+    padding: 15px 5vw;
+  }
+  .projectContainer__architect > h3 {
+    margin-bottom: 15px;
+  }
+  .projectCardAdmin {
+    gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .projectCard__architect__admin {
+    min-height: 300px;
+  }
+}

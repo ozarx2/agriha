@@ -1,0 +1,177 @@
+.projectView {
+    background-color: #d8d8d8;
+    min-height: 100vh;
+    padding: 5vw 10vw;
+    
+}
+
+.projectView > h2 {
+    margin-bottom: 30px;
+}
+
+.headerProjectView__type {
+    margin-top: 10px;
+}
+
+.titleUploadDocument__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.plusButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #018c70;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.titleUploadDocument {
+    margin-bottom: 20px;
+}
+
+.bodyAddFiles {
+    flex-direction: column;
+    display: none;
+}
+
+.bodyAddFiles__top {
+    display: flex;
+    align-items: flex-start;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputContainer__filelds {
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+.inputContainer__filelds > p {
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #424242;
+}
+
+.input__title {
+    height: 30px;
+    width: 300px;
+    border: none;
+    outline: none;
+    border: 1px solid #868686;
+    padding: 0px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload_files_button {
+    background-color: #018c70;
+    height: 30px;
+    width: 130px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.fileViewContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.fileViewContainer > h5 {
+    font-size: 14px;
+}
+
+.fileCardContainer {
+    display: flex;
+    margin-top: 10px;
+}
+
+.fileView__container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0px;
+    margin-left: 50px;
+}
+
+.fileView {
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #b6b6b6;
+}
+
+.imageContainerClick {
+    margin-top: -10px;
+}
+
+.fileView > p {
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.deleteContainer {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-right: 10px;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
+.fileView > h5 {
+    margin-top: 2px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.fileViewContainer__title {
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.fileViewContainer__title > h5 {
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.unlockButton {
+    height: 25px;
+    width: 60px;
+    border-radius: 10px;
+    background-color: #018c70;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}

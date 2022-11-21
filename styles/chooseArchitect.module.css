@@ -1,0 +1,372 @@
+.mainContainer {
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../public/background1.png");
+}
+.cardMain {
+  background-color: #fff;
+  width: 80%;
+  border-radius: 10px;
+}
+.cardContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.cardContent__title {
+  margin-top: 10px;
+  padding: 0px 3.5vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardContent__search {
+  height: 40px;
+  width: 50%;
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  border-radius: 8px;
+}
+.cardContent__searchIcon {
+  margin-top: 5px;
+}
+.cardContent__search > input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #aaaaaa;
+  padding-left: 10px;
+  font-family: inherit;
+}
+.profileCard__container {
+  width: 90%;
+  margin-top: 20px;
+  display: grid;
+  height: 47vh;
+  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  overflow-x: scroll;
+}
+
+.profileCard__container::-webkit-scrollbar {
+  display: none;
+}
+.avatar__profileCard__container {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+.profileCard {
+  width: 100%;
+  height: 32vh;
+  background-color: #eeeeee;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 5px;
+}
+.profileCard:hover {
+  background-color: #d6d6d6;
+  transition: all 0.1s ease-in;
+}
+.profileCard__bg {
+  width: 100%;
+  height: 25vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar__profileCard {
+  width: 4vw;
+  height: 4vw;
+  max-height: 4vw;
+  min-height: 4vw;
+  min-width: 4vw;
+  object-fit: cover;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+.profileCard > h5 {
+  font-size: 17px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #000000;
+}
+.profileCard > p {
+  font-size: 10px;
+  margin-top: 5px;
+  color: #8e8a8a;
+}
+.viewProfile__button {
+  min-height: 25px;
+  width: 100px;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.buttonsContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+.buttonsContainer__btns {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+.buttonsContainer__leftBtn {
+  height: 40px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b8b8b8;
+  border-radius: 10px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.buttonsContainer__rightBtn {
+  height: 40px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+  background-color: #018c70;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+.profileCard__noArchitects {
+  display: none;
+  font-size: 20px;
+  margin-top: 50px;
+  color: #043c6d;
+}
+
+.loader__container {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1190px) {
+  .profileCard__container {
+    width: 90%;
+    margin-top: 20px;
+    display: grid;
+    height: 50vh;
+    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: scroll;
+  }
+  .avatar__profileCard {
+    width: 5vw;
+    min-height: 5vw;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+  }
+  .profileCard > h5 {
+    font-size: 16px;
+    margin-top: 20px;
+    font-weight: normal;
+    color: #018c70;
+  }
+  .cardContent__title > h3 {
+    font-size: 18px;
+  }
+  .buttonsContainer__btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .buttonsContainer__leftBtn {
+    height: 50px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #b8b8b8;
+    border-radius: 10px;
+  }
+  .buttonsContainer__rightBtn {
+    height: 50px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #018c70;
+    border-radius: 10px;
+    color: #fff;
+  }
+}
+
+.cardContent__search__input {
+  height: 100%;
+  width: 35%;
+  background-color: #018C70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 13px;
+  border-radius: 0px 5px 5px 0px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .avatar__profileCard {
+    width: 12vw;
+    min-height: 12vw;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+  .cardMain {
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    border-radius: 0px;
+  }
+  .profileCard__container {
+    width: 90%;
+    margin-top: 20px;
+    display: grid;
+    height: 59vh;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-x: scroll;
+  }
+  .buttonsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 30px;
+  }
+  .buttonsContainer__btns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .buttonsContainer__leftBtn {
+    height: 35px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #b8b8b8;
+    border-radius: 10px;
+  }
+  .buttonsContainer__rightBtn {
+    height: 35px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #018c70;
+    border-radius: 10px;
+    color: #fff;
+  }
+  .cardContent__title {
+    margin-top: 10px;
+    padding: 0px 3.5vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .cardContent__search {
+    margin-top: 10px;
+    height: 40px;
+    width: 100%;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+  }
+  .cardContent__search input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+    color: #aaaaaa;
+    padding-left: 10px;
+  }
+  .viewProfile__button {
+    min-height: 25px;
+    width: 80px;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .profileCard__noArchitects {
+    display: none;
+    font-size: 15px;
+    margin-top: 20px;
+    min-width: 100%;
+    color: #043c6d;
+  }
+}

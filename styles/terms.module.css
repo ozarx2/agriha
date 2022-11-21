@@ -1,0 +1,35 @@
+.termsContainer {
+    margin: 100px 8vw;
+    margin-top: 50px;
+}
+
+.termsContainer > h5 {
+    margin-top: 20px;
+}
+
+.termsContainer > p {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.termsContainer > p > a {
+    color: #0000EE;
+}
+
+.termsContainer > h2 {
+    margin-bottom: 20px;
+}
+
+.termsContainer > h3 {
+    margin-top: 20px;
+}
+
+.termsContainer > ul {
+    margin-left: 20px;
+}
+
+.termsContainer > ul > li {
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: bold;
+}

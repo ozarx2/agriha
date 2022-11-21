@@ -1,0 +1,362 @@
+.ProfileDetails {
+  width: 100%;
+}
+
+.bgContainer__profileDetails {
+  padding: 0px 8vw;
+  margin-top: 100px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+}
+
+.formContainer__settings {
+  width: 400px;
+  border: 1px solid #5b5b5b;
+  border-radius: 5px;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.profileTitleContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.profileTitleContainer > h4 {
+  color: #027888;
+}
+
+.editButton__container__card__validte {
+  display: flex;
+  cursor: pointer;
+}
+
+.editButton__container__card__validte > p {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.fieldContainer {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.fieldContainerLast {
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.fieldContainer > h5,
+.fieldContainerLast > h5 {
+  font-size: 15px;
+  color: #5b5b5b;
+}
+
+.fieldContainer > p,
+.fieldContainerLast > p {
+  font-size: 15px;
+  color: #5b5b5b;
+}
+
+.editClickContainer {
+  display: none;
+}
+
+.profileTitleContainer .inputboxContainers__update {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.input__container__form__update {
+  border: 1px solid #5b5b5b;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.input__container__form__update__textare {
+  border: 1px solid #027888;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.input__container__form__update__textare > legend {
+  padding: 0px 5px;
+  margin-left: 30px;
+  font-size: 15px;
+  color: #5b5b5b;
+  margin-bottom: -10px;
+  position: relative;
+}
+
+.input__container__form__update > legend {
+  padding: 0px 5px;
+  margin-left: 25px;
+  font-size: 15px;
+  color: #5b5b5b;
+  margin-bottom: -10px;
+  position: relative;
+}
+
+.input__box__form__update {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1000;
+}
+
+.input__box__form__update > input {
+  width: 82%;
+  height: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: #218897;
+}
+
+.input__box__form__update__textArea {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1000;
+}
+
+.input__box__form__update__textArea > textarea {
+  width: 82%;
+  height: 75%;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  resize: none;
+  color: #686868;
+}
+
+.citizenType__container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.citizenType__container > p {
+  font-size: 13px;
+  color: #5b5b5b;
+  margin-right: 20px;
+}
+
+.citizenType__container > label {
+  font-size: 13px;
+  color: #5b5b5b;
+  margin: 0px 10px 0px 5px;
+}
+
+.regular__checkbox {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 1px solid #a4a4a4;
+  padding: 5px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.regular__checkbox:active,
+.regular__checkbox:checked:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.regular__checkbox:checked {
+  background-color: #027888;
+  padding: 5px;
+  border: 1px solid #a4a4a4;
+}
+
+.next__button {
+  height: 45px;
+  width: 100%;
+  background-image: linear-gradient(to right, #027888, #1c9c76);
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.next__button:hover {
+  background-image: linear-gradient(to left, #027888, #1c9c76);
+}
+
+.loader__container__next {
+  display: none;
+}
+
+.next__button > p {
+  font-size: 15px;
+}
+
+.requirememntsFieldContainer {
+  margin-top: 10px;
+}
+.requirememntsFieldContainer > h5 {
+  font-size: 14px;
+  color: #5b5b5b;
+  margin-bottom: 10px;
+}
+
+.requirememntsFieldContainer > div > p {
+  font-size: 14px;
+  color: #5b5b5b;
+  margin-top: 5px;
+}
+
+/*  */
+
+.planContainerProfile {
+  border: 1px solid #00000047;
+  border-radius: 5px;
+  margin-top: 50px;
+  width: 60vw;
+}
+
+.title_planContainer {
+  padding: 20px;
+  border-bottom: 1px solid #afafaf;
+}
+
+.title_planContainer > h5 {
+  font-size: 17px;
+  color: #218897;
+}
+
+.title_planContainer > p {
+  font-size: 13px;
+  color: #707070;
+}
+
+.content_planContainer {
+  padding: 50px 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.left_content_planContainer > h4 {
+  margin-bottom: 10px;
+}
+
+.feature_left_content_planContainer {
+  display: flex;
+  margin: 5px 0px;
+}
+
+.feature_left_content_planContainer > p {
+  margin-left: 10px;
+  color: #707070;
+}
+
+.row_right_content_planContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d7d7d7;
+  padding: 5px 0px;
+}
+
+.row_right_content_planContainer > p {
+  font-size: 14px;
+  color: #707070;
+  margin-right: 70px;
+}
+
+.row_right_content_planContainer > h6 {
+  font-size: 14px;
+}
+
+.button_container_profile_plan {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #00000047;
+}
+
+.left_button_container_profile_plan {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 40px;
+}
+
+.left_button_container_profile_plan > p {
+  font-size: 10px;
+  margin-left: 10px;
+}
+
+.right_button_container_profile_plan {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #027888;
+  color: #ffffff;
+  font-size: 15px;
+  border-top: 1px solid #027888;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+  .bgContainer__profileDetails {
+    margin-top: 80px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .formContainer__settings {
+    width: 80vw;
+  }
+  .planContainerProfile {
+    width: 100%;
+    margin-top: 30px;
+  }
+  .content_planContainer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .feature_left_content_planContainer > p {
+    font-size: 13px;
+  }
+  .right_content_planContainer {
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+  .left_button_container_profile_plan {
+    padding-left: 20px;
+  }
+}

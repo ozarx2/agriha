@@ -1,0 +1,89 @@
+/* eslint-disable @next/next/no-img-element */
+import React from "react";
+import { useContext } from "react";
+import { StoreContext } from "../../components/StoreContext";
+
+import styles from "./main.module.css";
+
+const Request = ({ name, avatar, type, id }) => {
+  const [Store] = useContext(StoreContext);
+
+  const userProjectsDetails = Store.userProjectsDetails;
+
+  const results = userProjectsDetails?.filter((res) => res.project === id);
+
+  console.log(userProjectsDetails);
+  console.log(results);
+
+  /* ACCEPT REQUEST */
+  async function acceptRequest(id) {
+    var token = localStorage.getItem("userToken");
+
+    const res = await fetch(`${api_url}/projects/accept/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        status: "ongoing",
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+  }
+
+  return (
+    <div className={`${styles.stwo_grid_outer} ${styles.request}`}>
+      <div className={styles.stwo_username}>
+        <div className={styles.vertical_center}>
+          <img src={avatar} alt="alt" />
+          <span>{name}</span>
+        </div>
+      </div>
+      <div className={styles.stwo_description}>{type}</div>
+      <div className={styles.stwo_total_area}>
+        {results[0]?.total_area} <span>sqft</span>
+      </div>
+      <div className={styles.stwo_budget}>
+        <span>₹ {results[0]?.total_budget}</span>
+      </div>
+      {/* <div className={styles.stwo_reference_file}>
+        <div className={styles.download_btn}>
+          <img src="/img/ongoing-project/arrow-down.svg" alt="alt" />
+          <span>Download</span>
+        </div>
+      </div> */}
+      <div className={styles.stwo_action}>
+        <div className={styles.vertical_center}>
+          <div className={styles.ignore_btn}>Ignore</div>
+          <div
+            className={styles.accept_btn}
+            onClick={() => acceptRequest(item._id)}
+          >
+            Accept
+          </div>
+        </div>
+      </div>
+      {/* <div className={styles.stwo_more}>
+        <div onClick={() => moreClick(i)}>
+          <img src="/img/ongoing-project/3dots.svg" alt="alt" />
+        </div>
+        <div className={styles.popup_outer} id={`more${i}`}>
+          <div
+            className={styles.view_more}
+            onClick={() => setProjectRequestPopup(true)}
+          >
+            View more
+          </div>
+          <div onClick={() => moreClick(i)} className={styles.cancel}>
+            Cancel
+          </div>
+        </div>
+      </div> */}
+    </div>
+  );
+};
+
+export default Request;

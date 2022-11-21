@@ -1,0 +1,45 @@
+.also_viewed_outer .first {
+    border: 1px solid #E2E2E2;
+    border-radius: 3px;
+    padding: 10px;
+    margin-top: 16px;
+}
+.also_viewed_outer .first h4 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #353535;
+    margin: 5px 0;
+    float: left;
+}
+.also_viewed_outer .first button {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #098482;
+    border: none;
+    float: right;
+    background-color: transparent;
+    margin: 5px 0;
+    padding-right: 0;
+}
+.also_viewed_outer .first .heading {
+    display: inline-block;
+    width: 100%;
+    padding: 9px 7px 13px;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.suggessions__container {
+    height: 80vh;
+    overflow-x: scroll;
+}
+
+.suggessions__container::-webkit-scrollbar {
+    display: none;
+}

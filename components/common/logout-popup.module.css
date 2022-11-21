@@ -1,0 +1,120 @@
+.LogoutPopupOuter {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: inherit;
+  padding: 5vw;
+}
+.LogoutPopupClose {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+}
+.LogoutPopupInner {
+  width: 100%;
+  border-radius: 6px;
+  height: fit-content;
+  max-width: 450px;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px 40px;
+  z-index: 4;
+  position: relative;
+}
+.LogoutPopupInner .closeimg {
+  position: absolute;
+  right: 25px;
+}
+.LogoutPopupInner .img {
+  text-align: center;
+}
+.LogoutPopupInner .heading {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.LogoutPopupInner .content .text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #626262;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.LogoutPopupInner .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.LogoutPopupInner .content .logout {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+  background: #019071;
+  border: 1px solid #019071;
+  border-radius: 5px;
+  padding: 7px 15px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.LogoutPopupInner .content .logout:hover {
+  background: #de2b2b;
+  border: 1px solid #de2b2b;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.LogoutPopupInner .content .cancel {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #019071;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 7px 15px;
+  margin-right: 15px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.LogoutPopupInner .content .cancel:hover {
+  border: 1px solid #019071;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}

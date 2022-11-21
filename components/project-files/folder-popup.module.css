@@ -1,0 +1,533 @@
+.FolderPopupOuter {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: inherit;
+  padding: 5vw;
+}
+.FolderPopupInner {
+  width: 100%;
+  border-radius: 3px;
+  height: fit-content;
+  max-width: 450px;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+}
+.FolderPopupInner .heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dedede;
+  padding-bottom: 10px;
+}
+.FolderPopupInner .heading .left {
+}
+.FolderPopupInner .heading .left .main {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #353535;
+}
+.FolderPopupInner .heading .left .sub {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12.8251px;
+  line-height: 16px;
+  color: #999999;
+}
+.FolderPopupInner .heading .right {
+  display: flex;
+  align-items: center;
+}
+.FolderPopupInner .heading .right .add_folder {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  border: 1px solid #f8972e;
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+.FolderPopupInner .heading .right .add_folder img {
+  margin-right: 5px;
+  max-width: 15px;
+}
+.FolderPopupInner .heading .right .add_folder span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  color: #454444;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.FolderPopupInner .heading .right .add_folder:hover span {
+  color: #f8972e;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.FolderPopupInner .heading .right .back {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-decoration-line: underline;
+  color: #777777;
+}
+.content {
+  padding: 6px 0px 0;
+}
+.Pfile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0px;
+  border-bottom: 1px solid #ebebeb;
+}
+.Pfile:last-child {
+  border-bottom: none;
+}
+.Pfile .left {
+  display: flex;
+  align-items: center;
+}
+.Pfile .left .img {
+  width: 24px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+.Pfile .left .img img {
+  width: 24px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+.Pfile .left .name {
+}
+.Pfile .left .name .first {
+  display: flex;
+  align-items: center;
+}
+.Pfile .left .name .first .img {
+}
+.Pfile .left .name .first div {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12.8251px;
+  line-height: 16px;
+  color: #454444;
+  margin-right: 8px;
+}
+.Pfile .left .name .second {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #999999;
+}
+.Pfile .right {
+  display: flex;
+  align-items: center;
+}
+.Pfile .right .delete {
+}
+.Pfile .right .delete .delete_h {
+  display: none;
+}
+.Pfile .right .delete:hover {
+}
+.Pfile .right .delete:hover .delete_h {
+  display: block;
+}
+.Pfile .right .delete:hover .delete_nh {
+  display: none;
+}
+.Pfile .right .delete img {
+  margin-right: 8px;
+}
+.Pfile .right .download {
+}
+.Pfile .right .download .download_h {
+  display: none;
+}
+.Pfile .right .download:hover {
+}
+.Pfile .right .download:hover .download_h {
+  display: block;
+}
+.Pfile .right .download:hover .download_nh {
+  display: none;
+}
+.Pfile .right .download img {
+  margin-right: 8px;
+}
+.Pfile .right .lock {
+}
+.Pfile .right .lock .lock_h {
+  display: none;
+}
+.Pfile .right .lock:hover {
+}
+.Pfile .right .lock:hover .lock_h {
+  display: block;
+}
+.Pfile .right .lock:hover .lock_nh {
+  display: none;
+}
+.Pfile .Pfolderouter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Pfile.deleted .left .name .first div {
+  color: #c8c8c8;
+}
+.Pfile.deleted .left .name .second {
+  color: #c8c8c8;
+}
+.Pfolderouter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Pfolderouter .add_folder {
+  display: flex;
+  align-items: center;
+  border: 1px solid #f8972e;
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+.Pfolderouter .add_folder img {
+  margin-right: 5px;
+  max-width: 15px;
+}
+.Pfolderouter .add_folder span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  color: #454444;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.Pfolderouter .add_folder:hover span {
+  color: #f8972e;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.Pfolder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  width: calc(100% - 130px);
+}
+.Pfolder .left {
+  display: flex;
+  align-items: center;
+}
+.Pfolder .folderimg {
+  width: 24px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+.Pfolder .folderimg img {
+  width: 24px;
+}
+.Pfolder .foldername {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12.8251px;
+  line-height: 16px;
+  color: #454444;
+}
+.Pfolder .right {
+  display: flex;
+  align-items: center;
+}
+.Pfile_outer {
+  margin-left: 2vw;
+}
+.add_new_file {
+  margin-left: 2vw;
+}
+.create_folder .one {
+  padding: 5px 0;
+}
+.create_folder .one > input {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #d6cece;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px 20px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .one > input:hover,
+.create_folder .one > input:focus,
+.create_folder .one > input:active {
+  color: #f8972e;
+  border: 1px solid #f8972e;
+  outline: none;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .two {
+  padding: 5px 0;
+}
+.create_folder .two > input {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #d6cece;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px 20px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .two > input::-webkit-file-upload-button {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 19px;
+  color: #ffffff;
+  background: #f8972e;
+  border-radius: 5px;
+  border: none;
+  padding: 3px 8px;
+}
+.create_folder .two > input:hover,
+.create_folder .two > input:focus,
+.create_folder .two > input:active {
+  color: #f8972e;
+  border: 1px solid #f8972e;
+  outline: none;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .three {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.create_folder .three .clear {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #bbb8b8;
+  border: 1px solid #cecece;
+  border-radius: 5px;
+  padding: 7px 15px;
+  margin-right: 15px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .three .clear:hover {
+  color: #000;
+  border: 1px solid #000;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .three .upload {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+  background: #f8972e;
+  border: 1px solid #f8972e;
+  border-radius: 5px;
+  padding: 7px 15px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .three .upload:hover {
+  background: #1e1e1e;
+  border: 1px solid #1e1e1e;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+
+.foldername__lock {
+  margin-left: 5px;
+}
+
+.folderDetailsConatiner {
+  display: flex;
+  flex-direction: column;
+}
+
+.title__folderDetailsConatiner {
+  display: flex;
+  align-items: center;
+}
+
+.second__title__folder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #999999;
+}
+
+.foldername__lock {
+  margin-top: -4px;
+}
+
+.imageAddingLoading {
+  font-size: 10px;
+  color: #454444;
+  margin-bottom: 10px;
+}
+
+.lock__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lock__title .lock_h {
+  display: none;
+}
+
+.lock__title:hover .lock_h {
+  display: block;
+}
+.lock__title:hover .lock_nh {
+  display: none;
+}
+
+@media only screen and (max-width: 1100px) {
+  .Pfile_outer {
+    margin-left: 4vw;
+  }
+  .add_new_file {
+    margin-left: 4vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .Pfile .left .img img {
+    width: 20px;
+  }
+  .Pfile .left .img {
+    margin-right: 6px;
+  }
+  .Pfile .left .name .first div {
+    font-size: 10px;
+  }
+  .Pfile .left .name .second {
+    font-size: 8px;
+  }
+  .Pfile .right .download {
+    font-size: 9px;
+  }
+  .Pfile .right .lock {
+    font-size: 9px;
+  }
+  .Pfolder .foldername {
+    font-size: 10px;
+  }
+  .Pfolder .folderimg {
+    margin-right: 6px;
+  }
+  .Pfolder .folderimg img {
+    width: 20px;
+  }
+}
+@media only screen and (max-width: 340px) {
+  .Pfile_outer {
+    margin-left: 2vw;
+  }
+  .add_new_file {
+    margin-left: 2vw;
+  }
+  .Pfile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .Pfile .left {
+    padding: 6px 0;
+  }
+  .Pfile .right {
+    padding: 6px 0;
+  }
+}

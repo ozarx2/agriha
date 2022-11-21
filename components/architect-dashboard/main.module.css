@@ -1,0 +1,29 @@
+.main_outer {
+  padding: 20px;
+  padding-right: 60px;
+  margin-top: 85px;
+}
+@media only screen and (max-width: 1200px) {
+  .main_outer {
+    margin-top: 70px;
+    padding-right: 30px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .main_outer {
+    margin-top: 124px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .main_outer {
+    margin-top: 124px;
+    padding: 0px;
+    padding-top: 6px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .main_outer {
+    margin-top: 128px;
+  }
+}

@@ -1,0 +1,190 @@
+.sidebar_close {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+}
+.sidebar_outer {
+  width: 30vw;
+  z-index: 4;
+}
+.sidebar {
+  background-color: #fff;
+  /* border-radius: 5px; */
+  border: 1px solid #dedede;
+}
+.first {
+  margin-top: 40px;
+  margin-left: 60px;
+  margin-right: 5px;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #ecebeb;
+}
+.sidebar {
+  background-color: #fff;
+  height: 100vh;
+}
+.agrihaLogo {
+  max-width: 78px;
+}
+.mainLists {
+  display: flex;
+  align-items: center;
+  margin: 18px 0;
+  color: #8f8f8f;
+  cursor: pointer;
+}
+.mainLists:last-child {
+  margin-bottom: 0;
+}
+.mainLists:hover {
+  color: #000000;
+}
+.mainLists:hover h5 {
+  color: #000000;
+}
+.mainLists:hover .imgselect {
+  display: block;
+}
+.mainLists:hover .imgnoselect {
+  display: none;
+}
+.mainLists.active {
+  color: #252525;
+}
+.mainLists.active h5 {
+  border-bottom: 1px solid #019071;
+  font-weight: 600;
+  color: #000;
+}
+.mainLists img {
+  width: 19px;
+}
+.mainLists .imgselect {
+  display: none;
+}
+.mainLists.active .imgselect {
+  display: block;
+}
+.mainLists.active .imgnoselect {
+  display: none;
+}
+.mainLists h5 {
+  font-size: 14px;
+  font-weight: 400;
+  color: #8f8f8f;
+  margin: 0;
+  margin-left: -15px;
+  padding: 8px 0px 8px 30px;
+}
+.mainLists h5.logout {
+  color: #c31655;
+}
+.quarter {
+  margin-bottom: 43px;
+}
+.mainListsCompany {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ecebeb;
+  border-left: none;
+  border-right: none;
+  margin: 0 30px;
+  margin-right: 0px;
+  padding: 10px 30px;
+  padding-right: 5px;
+}
+.companyName {
+  padding-left: 14px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #303030;
+}
+.companyLogo {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+}
+.end {
+  margin-left: 60px;
+  margin-right: 5px;
+}
+.add_new {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ffffff;
+  background: #019071;
+  border-radius: 3px;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  max-width: 90%;
+  margin: 0 auto;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.add_new:hover {
+  background-color: #1e1e1e;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.add_new img {
+  margin-left: 8px;
+  margin-right: 8px;
+  width: 9px;
+}
+@media only screen and (max-width: 1200px) {
+  .first {
+    margin: 20px;
+    margin-top: 10px;
+  }
+  .mainListsCompany {
+    margin: 0;
+    margin-bottom: -10px;
+    padding: 0;
+    border: none;
+  }
+  .end {
+    margin-left: 21px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .first {
+    margin: 0px;
+    margin-top: 0px;
+    border-bottom: 1px solid #ecebeb;
+    padding: 20px;
+    padding-top: 10px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .sidebar_outer {
+    width: 50vw;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .sidebar_outer {
+    width: 75vw;
+  }
+}

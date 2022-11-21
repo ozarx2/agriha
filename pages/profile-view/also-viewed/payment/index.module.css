@@ -1,0 +1,39 @@
+.notification_items_outer {
+    margin: 5px;
+    padding: 8px 9px 8px;
+    border-bottom: 1px solid #D9D9D9;
+    display: flex;
+}
+.notification_items_outer:last-child {
+    border-bottom: none;
+    margin-bottom: -4px;
+}
+.notification_items_outer img {
+    margin: 9px 16px 9px 19px;
+}
+.notification_items_outer h3 {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #565656;
+    margin: 7px 0 4px;
+}
+.notification_items_outer h5 {
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #A5A5A5;
+    margin: 0;
+}
+.clear {
+    clear: both;
+}
+@media only screen and (max-width: 440px) {
+
+}

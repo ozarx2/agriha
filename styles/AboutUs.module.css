@@ -1,0 +1,149 @@
+.aboutUs {
+  padding: 100px 8vw;
+  display: flex;
+  align-items: center;
+  background-color: #f1fcff;
+}
+
+.left__aboutUs {
+  width: 50%;
+}
+
+.right__aboutUs {
+  width: 40%;
+}
+
+.right__aboutUs {
+  display: flex;
+  flex-direction: column;
+}
+
+.right__aboutUs > h2 {
+  color: #11907c;
+  font-size: 35px;
+}
+
+.right__aboutUs > p {
+  color: #6c6868;
+  font-size: 14px;
+  margin-top: 30px;
+  text-align: justify;
+  line-height: 25px;
+}
+
+.buttonContainer__aboutUs {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.watchVideo__button {
+  display: flex;
+  height: 45px;
+  width: 130px;
+  background-color: #11907c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #ffffff;
+  margin-right: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.watchVideo__button:hover {
+  background-image: linear-gradient(to right, #0b75a3, #05996d);
+}
+
+.watchVideo__button > div {
+  margin-right: 5px;
+}
+
+.contactUs__button {
+  height: 45px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #11907c;
+  border: 1px solid #11907c;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contactUs__button:hover {
+  background: -webkit-linear-gradient(#3fb8ec, #11907c);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.scrollIndicator__aboutUs {
+  margin-top: 70px;
+  display: flex;
+}
+
+.scrollIndicator__aboutUs > span {
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+  border: 1px solid #11907c;
+  margin-right: 20px;
+}
+
+.titleMobile__aboutUs {
+  display: none;
+}
+
+.scrollIndicator__aboutUs__active {
+  background-color: #11907c;
+}
+
+@media only screen and (max-width: 500px) {
+  .aboutUs {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .titleMobile__aboutUs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .titleMobile__aboutUs > h2 {
+    color: #11907c;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .titleMobile__aboutUs > h4 {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  .right__aboutUs > h2,
+  .right__aboutUs > h4 {
+    display: none;
+  }
+  .left__aboutUs {
+    width: 100%;
+  }
+  .right__aboutUs > p {
+    font-size: 14px;
+    text-align: center;
+  }
+  .right__aboutUs {
+    width: 100%;
+  }
+  .buttonContainer__aboutUs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .scrollIndicator__aboutUs {
+    display: none;
+  }
+}

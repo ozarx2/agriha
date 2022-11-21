@@ -1,0 +1,47 @@
+.userList {
+    padding:50px 5vw;
+}
+
+.userList_container {
+    margin-top: 30px;
+}
+
+.title_userList_container > table {
+    width: 100%;
+}
+
+.title_userList_container > table > tr > th {
+    height: 50px;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.title_userList_container > table > tr:hover {
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+.title_userList_container > table > tr > td {
+    height: 60px;
+    padding-left: 20px;
+    font-size: 13px;
+}
+
+.nameTable {
+    font-weight: normal;
+}
+
+.avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.profileTable {
+    display: flex;
+    align-items: center;
+}
+

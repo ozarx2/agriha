@@ -1,0 +1,141 @@
+.whatOurClientsSay {
+  height: 100%;
+  padding-bottom: 50px;
+  background-color: #f1fcff;
+}
+
+.title__whatOurClientsSay {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  background-color: #0e263d;
+  padding: 50px 5vw;
+}
+
+.title__whatOurClientsSay > h2 {
+  font-size: 35px;
+  color: #ffffff;
+}
+
+.title__whatOurClientsSay > p {
+  font-size: 14px;
+  color: #c7c7c7;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 700px;
+  line-height: 25px;
+}
+
+.cardContainer__whatOurClientsSay {
+  padding: 0px 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__whatOurClientsSay {
+  width: 350px;
+  height: 380px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 70px;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.05);
+  margin-top: 30px;
+  background-color: #fff;
+}
+
+.card__whatOurClientsSay:hover {
+  background-image: linear-gradient(to top, #0b75a3, #05996d);
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+.card__whatOurClientsSay > p {
+  font-size: 15px;
+  font-style: italic;
+  line-height: 25px;
+  height: 70%;
+  width: 100%;
+}
+
+.text__title__card__whatOurClientsSay {
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  height: 30%;
+  width: 100%;
+}
+
+.text__title__card__whatOurClientsSay > h5 {
+  font-size: 16px;
+}
+
+.text__title__card__whatOurClientsSay > p {
+  font-size: 13px;
+}
+
+.whatOurClientsSay_mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .whatOurClientsSay_main {
+    display: none;
+  }
+  .whatOurClientsSay_mobile {
+    display: block;
+    margin-left: 10vw;
+  }
+  .card__whatOurClientsSay {
+    width: 90%;
+    padding: 20px;
+    margin-top: 3px;
+    height: 200px;
+    height: 300px;
+    margin-left: 2px;
+  }
+  .text__title__card__whatOurClientsSay {
+    margin-top: 30px;
+    padding-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .title__whatOurClientsSay > h2 {
+    font-size: 30px;
+    color: #ffffff;
+  }
+
+  .title__whatOurClientsSay > p {
+    font-size: 14px;
+    color: #c7c7c7;
+    text-align: center;
+    margin-top: 20px;
+    max-width: 700px;
+    line-height: 25px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .title__whatOurClientsSay > h2 {
+    font-size: 30px;
+    color: #ffffff;
+  }
+
+  .title__whatOurClientsSay > p {
+    font-size: 14px;
+    color: #c7c7c7;
+    text-align: center;
+    margin-top: 20px;
+    max-width: 700px;
+    line-height: 25px;
+  }
+}

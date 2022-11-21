@@ -1,0 +1,176 @@
+.howItWorks {
+  padding: 70px 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0e263d;
+  padding-top: 100px;
+  color: #ffffff;
+}
+
+.title__howItWorks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title__howItWorks > h2 {
+  font-size: 35px;
+  color: #ffffff;
+}
+
+.title__howItWorks > p {
+  font-size: 14px;
+  line-height: 25px;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 700px;
+  color: #c7c7c7;
+  margin-bottom: 80px;
+}
+
+.flow__howItWorks {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow__count {
+  border-radius: 10px;
+  height: 35px;
+  width: 35px;
+  background-color: #11907c;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.flow__contentCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55vw;
+}
+
+.flow__contentCard__left,
+.flow__contentCard__left__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 50%;
+  border-right: 1px solid #ffffff;
+}
+
+.flow__contentCard__left__text {
+  padding-right: 10px;
+  align-items: flex-start;
+}
+
+.flow__contentCard__right,
+.flow__contentCard__right__text {
+  height: 100px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow__contentCard__right__text {
+  padding-left: 40px;
+  align-items: flex-start;
+}
+
+.flow__contentCard__right__text > h3,
+.flow__contentCard__left__text > h3 {
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.flow__contentCard__right__text > p,
+.flow__contentCard__left__text > p {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #11907c;
+  text-transform: lowercase;
+  max-width: 300px;
+  line-height: 20px;
+}
+
+.button__howItsWorksDemo {
+  display: flex;
+  height: 45px;
+  width: 130px;
+  background-color: #11907c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #ffffff;
+  cursor: pointer;
+  margin-top: 50px;
+  border-radius: 5px;
+}
+.button__howItsWorksDemo > div {
+  margin-top: 5px;
+}
+
+.button__howItsWorksDemo:hover {
+  background-image: linear-gradient(to right, #0b75a3, #05996d);
+}
+
+@media only screen and (max-width: 500px) {
+  .title__howItWorks > h2 {
+    font-size: 30px;
+  }
+  .title__howItWorks > p {
+    font-size: 14px;
+    padding: 0px 20px;
+    max-width: 100%;
+  }
+  .flow__contentCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+  }
+  .flow__contentCard__right__text > h3,
+  .flow__contentCard__left__text > h3 {
+    font-size: 22px;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .flow__contentCard__right__text > p,
+  .flow__contentCard__left__text > p {
+    font-size: 13px;
+    margin-top: 10px;
+    color: #11907c;
+    text-transform: lowercase;
+    max-width: 200px;
+    line-height: 20px;
+    text-align: center;
+  }
+  .flow__contentCard__left__text {
+    padding-right: 10px;
+    align-items: center;
+  }
+  .flow__contentCard__right,
+  .flow__contentCard__right__text {
+    height: 100px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

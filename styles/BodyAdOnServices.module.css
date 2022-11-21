@@ -1,0 +1,109 @@
+.bodyAdOnServicesContainer {
+  margin-top: 90px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.titleAdOnServices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.cardAdonServices {
+  margin-bottom: 30px;
+  background-color: #1c9c76;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 400px;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.cardAdonServices > input {
+  margin-right: 10px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 30vw;
+  margin-right: 30vw;
+}
+
+.next__button {
+  height: 35px;
+  width: 100%;
+  max-width: 350px;
+  background-image: linear-gradient(to right, #027888, #1c9c76);
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loader__container__next {
+  display: none;
+}
+
+.termsAndConditionsContainer {
+  margin-left: 8vw;
+  margin-top: 70px;
+  margin-right: 8vw;
+}
+
+.termsAndConditionsContainer > h5 {
+  font-size: 15px;
+}
+
+.termsAndConditionsContainer > ul {
+  margin-top: 20px;
+}
+
+.termsAndConditionsContainer > ul > li {
+  color: #5b5b5b;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.footer__container__mobile {
+  display: none;
+  margin-top: 20px;
+}
+@media only screen and (max-width: 500px) {
+  .bodyAdOnServicesContainer {
+    padding: 0px;
+    margin-left: 8vw;
+    margin-right: 8vw;
+  }
+  .termsAndConditionsContainer {
+    margin-bottom: 50px;
+  }
+  .footer__container {
+    display: none;
+  }
+
+  .footer__container__mobile {
+    display: flex;
+  }
+  .cardContainer {
+    margin-left: 0vw;
+    margin-right: 0vw;
+  }
+  .cardAdonServices {
+    margin-bottom: 10px;
+    width: 80vw;
+  }
+}

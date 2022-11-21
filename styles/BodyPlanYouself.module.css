@@ -1,0 +1,96 @@
+.bodyPlanYourself__container {
+  margin-top: 90px;
+  padding: 50px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.content__contanier__area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content__contanier__area > h3 {
+  font-size: 16px;
+  text-align: center;
+}
+
+.progressBar__container__area {
+  display: flex;
+  flex-direction: column;
+}
+
+.scroller__contanier {
+  height: 150px;
+  width: 300px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.scroller__contanier > p {
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.next__button {
+  height: 35px;
+  width: 100%;
+  background-image: linear-gradient(to right, #027888, #1c9c76);
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.next__button:hover {
+  background-image: linear-gradient(to left, #027888, #1c9c76);
+}
+
+.skipForNow {
+  color: #027888;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.loader__container__next {
+  display: none;
+}
+
+.footer__container__mobile {
+  display: none;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+  .bodyPlanYourself__container {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  .image__container__area {
+    width: 300px;
+  }
+  .content__contanier__area {
+    margin-top: 30px;
+  }
+  .footer__container {
+    display: none;
+  }
+
+  .footer__container__mobile {
+    display: flex;
+  }
+  /* .next__button {
+    margin-top: 30px;
+  } */
+}

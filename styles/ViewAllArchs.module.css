@@ -1,0 +1,92 @@
+.architectCard__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.architectCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 300px;
+    border: 1px solid #333333;
+    background-color: #eaeaea;
+}
+
+.architectCard:hover {
+    background-color: #b1b1b1;
+    transition: all 0.2s ease;
+}
+
+.deleteButton {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    height: 25%;
+}
+.deleteButton > img {
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+}
+.profileImage {
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    height: 80px;
+    width: 80px;
+    min-width: 80px;
+}
+.architectCard__content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 75%;
+    padding: 15px 20px;
+}
+
+.architectCard__content__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.architectCard__content__text > h5 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.architectCard__content__text > p {
+font-size: 13px;
+}
+
+@media only screen and (max-width: 1370px) {
+    .architectCard__container {
+        grid-template-columns: repeat(3, 1fr);
+       
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .architectCard__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .architectCard__container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+}

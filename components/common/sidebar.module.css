@@ -1,0 +1,109 @@
+.sidebar_outer {
+  background-color: #fff;
+  /* border-radius: 5px; */
+  border: 1px solid #dedede;
+}
+.first {
+  margin-top: 40px;
+  margin-left: 60px;
+  margin-right: 5px;
+}
+.sidebar {
+  background-color: #fff;
+  height: 100vh;
+}
+.agrihaLogo {
+  margin: 0px 5px 21px 0px;
+  max-width: 100px;
+}
+.mainLists {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #8f8f8f;
+  cursor: pointer;
+}
+.mainLists:hover {
+  color: #000000;
+}
+.mainLists:hover h5 {
+  color: #000000;
+}
+.mainLists:hover .imgselect {
+  display: block;
+}
+.mainLists:hover .imgnoselect {
+  display: none;
+}
+.mainLists.active {
+  color: #252525;
+}
+.mainLists.active h5 {
+  border-bottom: 1px solid #019071;
+  font-weight: 600;
+  color: #000;
+}
+.mainLists .imgselect {
+  display: none;
+}
+.mainLists.active .imgselect {
+  display: block;
+}
+.mainLists.active .imgnoselect {
+  display: none;
+}
+.mainLists h5 {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  margin-left: -15px;
+  color: #8f8f8f;
+  padding: 10px 0px 10px 30px;
+}
+.mainLists h5.logout {
+  color: #c31655;
+}
+.quarter {
+}
+.mainListsCompany {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ecebeb;
+  border-left: none;
+  border-right: none;
+  margin: 0 30px;
+  margin-right: 0px;
+  padding: 10px 30px;
+  padding-right: 5px;
+}
+.companyName {
+  padding-left: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #303030;
+}
+.companyLogo {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+}
+.end {
+  margin-left: 60px;
+  margin-right: 5px;
+}
+@media only screen and (max-width: 1200px) {
+  .first {
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  .mainListsCompany {
+    margin: 0 15px;
+    padding: 10px 15px;
+  }
+  .end {
+    margin-left: 30px;
+  }
+}

@@ -1,0 +1,232 @@
+.FileUploadPopupOuter {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: inherit;
+  padding: 5vw;
+}
+.FileUploadPopupClose {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+}
+.FileUploadPopupInner {
+  width: 100%;
+  border-radius: 3px;
+  height: fit-content;
+  max-width: 450px;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+  z-index: 4;
+}
+.FileUploadPopupInner .heading {
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+}
+.FileUploadPopupInner .heading img {
+  margin-right: 8px;
+}
+.FileUploadPopupInner .heading span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+.FileUploadPopupInner .content {
+}
+
+.create_folder {
+}
+.create_folder .one {
+  padding: 5px 0;
+}
+.create_folder .one > input {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #d6cece;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px 20px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .one > input:hover,
+.create_folder .one > input:focus,
+.create_folder .one > input:active {
+  color: #019071;
+  border: 1px solid #019071;
+  outline: none;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .two {
+  padding: 5px 0;
+}
+.create_folder .two > input {
+  opacity: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #d6cece;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px 20px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .two > input::-webkit-file-upload-button {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 19px;
+  color: #ffffff;
+  background: #019071;
+  border-radius: 5px;
+  border: none;
+  padding: 3px 8px;
+}
+.create_folder .two > input:hover,
+.create_folder .two > input:focus,
+.create_folder .two > input:active {
+  color: #019071;
+  border: 1px solid #019071;
+  outline: none;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .three {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.create_folder .three .clear {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #bbb8b8;
+  border: 1px solid #cecece;
+  border-radius: 5px;
+  padding: 7px 15px;
+  margin-right: 15px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .three .clear:hover {
+  color: #000;
+  border: 1px solid #000;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .three .upload {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+  background: #019071;
+  border: 1px solid #019071;
+  border-radius: 5px;
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .three .upload:hover {
+  background: #1e1e1e;
+  border: 1px solid #1e1e1e;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.create_folder .three .upload img {
+  margin-right: 8px;
+}
+.s_add_feild {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 148.19%;
+  color: #019071;
+  background: #ffffff;
+  border: 1px dashed #019071;
+  border-radius: 7px;
+  text-align: center;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -47px;
+}
+.s_uploded_pdf { 
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.s_uploded_pdf img {
+  max-width: 70px;
+}
+.s_uploded_pdf > div {
+  color: #6c6c6c;
+  font-size: 12px;
+  display: inline-block;
+}

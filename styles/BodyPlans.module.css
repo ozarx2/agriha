@@ -1,0 +1,353 @@
+.bodyPlans__container,
+.bodyPlans__container__confirm {
+  margin-top: 90px;
+  height: 100%;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0px;
+}
+
+.bodyPlans__container > h3,
+.bodyPlans__container__confirm > h3 {
+  text-align: center;
+}
+
+.bodyPlans__container > p,
+.bodyPlans__container__confirm > p {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.cardsContainer__plans {
+  margin-top: 40px;
+  display: flex;
+}
+
+.cardsContainer__plans__confirm {
+  width: 100%;
+  padding: 0px 8vw;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__plans,
+.card__plans__middle {
+  padding: 20px;
+  border: 1px solid #027888;
+  border-radius: 10px;
+  margin: 0px 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20vw;
+}
+
+.card__plans__left__confirm {
+  width: 70%;
+  padding: 20px;
+  border: 1px solid #027888;
+  border-radius: 10px;
+  margin: 0px 10px;
+  background-color: #fff;
+}
+
+.card__plans__right__confirm {
+  width: 30%;
+  padding: 20px;
+  border: 1px solid #027888;
+  border-radius: 10px;
+  margin: 0px 10px;
+  background-color: #fff;
+}
+
+.top_container > h5 {
+  color: #5b5b5b;
+  font-size: 18px;
+}
+
+.top_container_gold > h5 {
+  color: #fff;
+  font-size: 18px;
+}
+
+.top_container > h4 {
+  color: #1c9c76;
+  margin-top: 5px;
+}
+
+.top_container_gold > h4 {
+  color: #fff;
+  margin-top: 5px;
+}
+
+.feature__container__plans {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.feature__container__plans > p {
+  margin-left: 5px;
+  font-size: 13px;
+  color: #5b5b5b;
+}
+
+.top_container_gold > .feature__container__plans > p {
+  margin-left: 5px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.button__container__plans {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.choosePlan__button {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #027888;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.choosePlan__button:hover {
+  background-color: #027888;
+  color: #fff;
+}
+
+.choosePlan__button__middle {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.choosePlan__button__middle:hover {
+  background-color: #fff;
+  color: #000000;
+}
+
+.next__button {
+  height: 35px;
+  width: 300px;
+  background-image: linear-gradient(to right, #027888, #1c9c76);
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.next__button:hover {
+  background-image: linear-gradient(to left, #027888, #1c9c76);
+}
+
+/* confirm plans */
+
+.name__card__plans__left__confirm {
+  font-size: 14px;
+  color: #5b5b5b;
+}
+
+.message__card__plans__left__confirm {
+  font-size: 13px;
+  color: #5b5b5b;
+  margin-top: 10px;
+}
+
+.card__plans__left__confirm > h5 {
+  font-size: 14px;
+  color: #5b5b5b;
+  margin: 15px 0px;
+}
+
+.container__planDetails {
+  border-top: 1px solid #e3e3e3;
+  margin-top: 20px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left__planDetails__bottom > h5 {
+  font-size: 14px;
+  color: #5b5b5b;
+}
+
+.right__planDetails__bottom > h5 {
+  font-size: 15px;
+  color: #5b5b5b;
+}
+
+.card__plans__right__confirm > p {
+  font-size: 13px;
+  color: #5b5b5b;
+}
+
+.card__plans__right__confirm > h4 {
+  color: #1c9c76;
+  margin-top: 5px;
+}
+
+.card__plans__right__confirm__top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px dotted #cfcfcf;
+  margin-top: 10px;
+}
+
+.card__plans__right__confirm__top__container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.card__plans__right__confirm__top__subContainer > input {
+  accent-color: #1c9c76;
+}
+
+.chooseAmountTitle {
+  margin-bottom: 10px;
+}
+
+.card__plans__right__confirm__top__container > p {
+  font-size: 13px;
+  color: #5b5b5b;
+  margin-top: 0px;
+}
+
+.card__plans__right__confirm__middle {
+  border-bottom: 1px solid #e3e3e3;
+  margin-top: 10px;
+}
+
+.card__plans__right__confirm__bottom {
+  margin-top: 10px;
+}
+
+.card__plans__right__confirm__top__subContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__plans__right__confirm__top__subContainer > p {
+  font-size: 13px;
+  color: #5b5b5b;
+  margin-left: 5px;
+}
+
+.paymnet__button {
+  height: 35px;
+  width: 100%;
+  background-image: linear-gradient(to right, #027888, #1c9c76);
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.paymnet__button:hover {
+  background-image: linear-gradient(to left, #027888, #1c9c76);
+}
+
+.info__container__confirm {
+  display: flex;
+  margin-top: 10px;
+}
+
+.info__container__confirm > p {
+  font-size: 10px;
+  color: #5b5b5b;
+  margin-left: 10px;
+}
+
+/*  */
+
+.footer__container__mobile {
+  display: none;
+  margin-top: 20px;
+}
+
+.loader__container__next {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .bodyPlans__container,
+  .bodyPlans__container__confirm {
+    margin-top: 50px;
+  }
+  .cardsContainer__plans {
+    flex-direction: column;
+    margin-top: 0px;
+    margin: 0px 8vw;
+  }
+
+  .card__plans {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .card__plans,
+  .card__plans__middle {
+    width: 80vw;
+  }
+
+  .footer__container {
+    display: none;
+  }
+
+  .footer__container__mobile {
+    display: flex;
+  }
+  .cardsContainer__plans__confirm {
+    width: 100%;
+    padding: 0px;
+    margin-top: 30px;
+    flex-direction: column;
+  }
+  .card__plans__left__confirm {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  .card__plans__right__confirm {
+    width: 80%;
+  }
+}

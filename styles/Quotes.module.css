@@ -1,0 +1,82 @@
+.quotes {
+  width: 100%;
+  padding: 0px 8vw;
+  margin-bottom: 80px;
+  padding-top: 120px;
+  margin-top: -90px;
+}
+
+.quotes__contanier {
+  width: 100%;
+  background-color: #f0faff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0px;
+  border-radius: 10px;
+}
+
+.buttonContainer {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowContainer {
+  background-color: #ffffff;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.contents__quote__container {
+  width: 70%;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.contents__quote__container::-webkit-scrollbar {
+  display: none;
+}
+
+.card__quote__container {
+  min-width: 50%;
+  padding: 0px 30px;
+}
+
+.card__quote__container > p {
+  font-size: 12px;
+  color: #5b5b5b;
+  text-align: justify;
+  padding: 10px 0px;
+}
+
+.quoteEnd__container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.userProfile__container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.userInfo__container {
+  margin-left: 10px;
+}
+
+.userInfo__container > h5 {
+  font-size: 13px;
+}
+
+.userInfo__container > p {
+  font-size: 10px;
+  margin-top: -5px;
+}

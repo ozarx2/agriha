@@ -1,0 +1,143 @@
+.pricingPlan {
+  height: 90vh;
+  padding: 0px 8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 50px;
+  padding-top: 100px;
+}
+
+.title__pricingPlan {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title__pricingPlan > h2 {
+  color: #11907c;
+  font-size: 28px;
+}
+
+.title__pricingPlan > p {
+  color: #ffffff;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 10px;
+  max-width: 400px;
+}
+
+.pricing__card__container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+
+.pricing__card {
+  background-color: #ffffff;
+  width: 25%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 30px;
+}
+
+.pricing__card > h1 {
+  color: #0e263d;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 0px 20px;
+}
+
+.pricing__card > h2 {
+  color: #11907c;
+  font-size: 35px;
+  margin-top: 20px;
+}
+
+.pricing__card > h5 {
+  color: #4e4e4e;
+  font-size: 13px;
+}
+
+.pricing__card > p {
+  color: #807171;
+  font-size: 11px;
+}
+
+.buyNow__button {
+  height: 50px;
+  width: 90%;
+  background-color: #11907c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+  .pricingPlan {
+    height: 90vh;
+  }
+  .pricing__card__container {
+    overflow: scroll;
+  }
+  .pricing__card__container::-webkit-scrollbar {
+    display: none;
+  }
+  .pricing__card {
+    min-width: 60%;
+    margin-right: 20px;
+    height: 300px;
+  }
+  .pricing__card > h1 {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .title__pricingPlan > h2 {
+    color: #11907c;
+    font-size: 26px;
+  }
+  .title__pricingPlan > p {
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+    padding: 0px 20px;
+  }
+  .pricing__card {
+    min-width: 70%;
+    margin-right: 20px;
+  }
+  .buyNow__button {
+    margin-top: 30px;
+  }
+  .pricing__card > h1 {
+    font-size: 25px;
+    padding: 0px 10px;
+  }
+  .pricingPlan {
+    padding-top: 50px;
+    height: 70vh;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .pricingPlan {
+    padding-top: 50px;
+    height: 80vh;
+  }
+}

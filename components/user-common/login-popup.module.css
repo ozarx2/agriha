@@ -1,0 +1,371 @@
+.LoginPopupOuter {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: inherit;
+}
+.LoginPopupClose {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+}
+@media only screen and (max-width: 766px) {
+  .LoginPopupInner {
+    width: 100%;
+    background-color: #fff;
+    z-index: 4;
+  }
+  .LoginPopupInner .header {
+    background: linear-gradient(90deg, #642dda 36.27%, #b264ff 85.73%);
+  }
+  .LoginPopupInner .header_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 0;
+  }
+  .LoginPopupInner .header .left {
+  }
+  .LoginPopupInner .header .right {
+  }
+  .LoginPopupInner .header .right > div {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: #4c0ad6;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 10px 20px;
+  }
+
+  .content_inner {
+    padding-top: 47px;
+  }
+  .content_inner .sone {
+    display: flex;
+    align-items: center;
+  }
+  .content_inner .sone .back {
+    margin-right: 17px;
+  }
+  .content_inner .sone .text {
+  }
+  .content_inner .sone .text .textone {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #585858;
+    margin-bottom: 5px;
+  }
+  .content_inner .sone .text .texttwo {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #a4a4a4;
+  }
+
+  .content_inner .stwo {
+    margin-top: 39px;
+  }
+  .content_inner .stwo input {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #642dda;
+    background: #f8f5ff;
+    border: 0.5px solid #642dda;
+    border-radius: 6px;
+    padding: 14.67px 18.15px;
+    width: 100%;
+    margin-bottom: 14px;
+  }
+  .content_inner .stwo input::-webkit-input-placeholder,
+  .content_inner .stwo input:-ms-input-placeholder,
+  .content_inner .stwo input::placeholder {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #adadad;
+  }
+  .content_inner .stwo .submit {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ffffff;
+    text-align: center;
+    background: #642dda;
+    border-radius: 6px;
+    padding: 16px;
+  }
+
+  .content_inner .sthree {
+    position: relative;
+    text-align: center;
+    padding-top: 22px;
+  }
+  .content_inner .sthree .line {
+    height: 1px;
+    width: 100%;
+    background-color: #ededed;
+    position: absolute;
+    top: 33.5px;
+    z-index: -1;
+  }
+  .content_inner .sthree .or {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #cfcfcf;
+    display: inline-block;
+    padding: 0px 17px;
+    background-color: #fff;
+  }
+
+  .content_inner .sfour {
+    margin-top: 26px;
+  }
+  .content_inner .sfour .google {
+    background: #fcfaff;
+    border: 1px solid #dfdfdf;
+    border-radius: 6px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .content_inner .sfour .google img {
+    width: 14px;
+    height: 14.29px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  .content_inner .sfour .google span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #787878;
+  }
+
+  .content_inner .sfive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 21px;
+  }
+  .content_inner .sfive .signup {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #bfbfbf;
+  }
+  .content_inner .sfive .signup span {
+    font-weight: 500;
+    color: #642dda;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .LoginPopupOuter {
+    padding: 5vw;
+  }
+  .LoginPopupInner {
+    width: 100%;
+    border-radius: 2px;
+    height: fit-content;
+    max-width: 480px;
+    margin: auto;
+    background-color: #fff;
+    z-index: 4;
+    position: relative;
+  }
+
+  .desktop_header {
+    background: linear-gradient(90.37deg, #642dda 11%, #b264ff 99.68%);
+    border-radius: 2px 2px 0px 0px;
+  }
+  .header_inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 27px 25px;
+  }
+  .desktop_header .left {
+    position: absolute;
+    left: 25px;
+  }
+  .desktop_header .center {
+  }
+  .desktop_header .center span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16.2192px;
+    line-height: 20px;
+    color: #ffffff;
+    margin-right: 13.42px;
+    display: inline-block;
+  }
+  .desktop_header .center img {
+  }
+
+  .desktop_content_outer {
+    padding: 45px 70px;
+  }
+  .desktop_content_outer .sone {
+  }
+  .desktop_content_outer .sone .text {
+  }
+  .desktop_content_outer .sone .textone {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #585858;
+    margin-bottom: 8px;
+  }
+  .desktop_content_outer .sone .texttwo {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #a4a4a4;
+  }
+
+  .desktop_content_outer .stwo {
+    margin-top: 28px;
+  }
+  .desktop_content_outer .stwo input {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2218px;
+    line-height: 15px;
+    color: #642dda;
+    background: #f8f5ff;
+    border: 0.5px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 14px 16px;
+    width: 100%;
+  }
+  .desktop_content_outer .stwo input::-webkit-input-placeholder,
+  .desktop_content_outer .stwo input:-ms-input-placeholder,
+  .desktop_content_outer .stwo input::placeholder {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #adadad;
+  }
+  .desktop_content_outer .stwo .submit {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12.2218px;
+    line-height: 15px;
+    color: #ffffff;
+    background: #642dda;
+    border-radius: 6px;
+    padding: 14px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .sthree_full {
+    position: relative;
+    text-align: center;
+    margin: -26px 0;
+  }
+  .sthree_full .line {
+    height: 1px;
+    width: 100%;
+    background-color: #ededed;
+    position: absolute;
+    top: 11.5px;
+    z-index: -1;
+  }
+  .sthree_full .or {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2218px;
+    line-height: 15px;
+    color: #adadad;
+    display: inline-block;
+    padding: 0px 17px;
+    background-color: #fff;
+  }
+
+  .desktop_content_outer .sfour {
+  }
+  .desktop_content_outer .sfour .google {
+    background: #fcfaff;
+    border: 1px solid #dfdfdf;
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .desktop_content_outer .sfour .google img {
+    width: 16px;
+    height: 16.3px;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+  .desktop_content_outer .sfour .google span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2218px;
+    line-height: 15px;
+    color: #787878;
+  }
+
+  .desktop_content_outer .sfive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 28px;
+  }
+  .desktop_content_outer .sfive .signup {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2218px;
+    line-height: 15px;
+    color: #adadad;
+  }
+  .desktop_content_outer .sfive .signup span {
+    font-weight: 500;
+    color: #642dda;
+  }
+}

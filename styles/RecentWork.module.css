@@ -1,0 +1,74 @@
+.recentWork {
+  width: 100vw;
+  padding: 50px 8vw;
+  display: flex;
+  align-items: center;
+}
+
+.titleContainer__recentWork {
+  width: 30%;
+  z-index: 1;
+}
+
+.titleContainer__recentWork > h3 {
+  font-size: 20px;
+}
+
+.titleContainer__recentWork > p {
+  font-size: 13px;
+  color: #5b5b5b;
+  margin-top: 10px;
+}
+
+.buttonContainer__recentWorks {
+  display: flex;
+  margin-top: 20px;
+}
+
+.buttonContainer__recentWorks > .leftArrowRecent {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.buttonContainer__recentWorks > .rightArrowRecent {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.content__recentWorks__container {
+  width: 80%;
+  display: flex;
+  margin-left: -100px;
+  overflow-x: scroll;
+}
+
+.content__recentWorks__container::-webkit-scrollbar {
+  display: none;
+}
+
+.imgCard__recentWorks__first {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 300px;
+  height: 200px;
+  background-position: center;
+  z-index: -2;
+}
+
+.effect__img__recentWorks__first {
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0),
+    rgb(255, 255, 255)
+  );
+  height: 100%;
+  z-index: 2;
+  border-radius: 0px 10px 10px 0px;
+  border: none;
+}
+
+.imgCard__recentWorks {
+  min-width: 300px;
+  margin-left: 10px;
+  border-radius: 10px;
+}

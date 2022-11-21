@@ -1,0 +1,169 @@
+import React, { useRef, useState, useEffect, useContext } from "react";
+import { StoreContext } from "../../components/StoreContext";
+import styles from "./register-popup.module.css";
+
+export default function RegisterPopup() {
+  const [Store] = useContext(StoreContext);
+
+  const setLoginPopup = Store.setLoginPopup;
+  const setRegisterPopup = Store.setRegisterPopup;
+  const setOtpPopup = Store.setOtpPopup;
+
+  const [windowRes, setWindowRes] = useState([]);
+  if (typeof window !== "undefined") {
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+    function getWindowSize() {
+      const innerWidth = window.innerWidth;
+      const innerHeight = window.innerHeight;
+      return { innerWidth, innerHeight };
+    }
+    useEffect(() => {
+      function handleWindowResize() {
+        setWindowSize(getWindowSize());
+        setWindowRes(getWindowSize());
+      }
+      setWindowRes(getWindowSize());
+      window.addEventListener("resize", handleWindowResize);
+      return () => {
+        window.removeEventListener("resize", handleWindowResize);
+      };
+    }, []);
+  }
+
+  function showLogin() {
+    setRegisterPopup(false);
+    setLoginPopup(true);
+  }
+  function showOtp() {
+    setOtpPopup(true);
+    // setRegisterPopup(false);
+  }
+  return (
+    <>
+      <div className={styles.RegisterPopupOuter}>
+        <div onClick={() => setRegisterPopup(false)} className={styles.RegisterPopupClose}></div>
+        <div className={styles.RegisterPopupInner}>
+          {windowRes.innerWidth >= 767 ? (
+            <div className={styles.desktop_header}>
+              <div className={styles.header_inner}>
+                <div onClick={() => setRegisterPopup(false)} className={styles.left}>
+                  <picture>
+                    <img src="/img/landing/header-close.svg" alt="close" />
+                  </picture>
+                </div>
+                <div className={styles.center}>
+                  <span>Welcome to</span>
+                  <picture>
+                    <img src="/img/landing/logo.svg" alt="logo" />
+                  </picture>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.header}>
+              <div className={`container ${styles.container} ${styles.header_container}`}>
+                <div className={styles.header_inner}>
+                  <div className={styles.left}>
+                    <picture>
+                      <img src="/img/landing/logo.svg" alt="logo" />
+                    </picture>
+                  </div>
+                  <div className={styles.right}>
+                    <div>Architect Sign in/up</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {windowRes.innerWidth >= 767 ? (
+            <>
+              <div className={styles.desktop_content_outer}>
+                <div className={styles.content_inner}>
+                  <div className={styles.sone}>
+                    <div className={styles.text}>
+                      <div className={styles.textone}>Registraion</div>
+                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                    </div>
+                  </div>
+                  <div className={styles.stwo}>
+                    <input type="text" placeholder="Enter full name" />
+                    <input type="text" placeholder="Enter Mobile Number" />
+                    <input type="text" placeholder="Email address" />
+                    <div className={styles.privacy}>
+                      By continuing you agree to Arclif's <span>Terms of Service</span> and <span>Privacy policy</span>.
+                    </div>
+                    <div onClick={() => showOtp()} className={styles.submit}>
+                      Send OTP
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.sthree_full}>
+                <div className={styles.line}></div>
+                <div className={styles.or}>OR</div>
+              </div>
+              <div className={styles.desktop_content_outer}>
+                <div className={styles.content_inner}>
+                  <div className={styles.sfour}>
+                    <div className={styles.google}>
+                      <img src="/img/landing/google.svg" alt="google" />
+                      <span>Continue with Google</span>
+                    </div>
+                  </div>
+                  <div className={styles.sfive}>
+                    <div className={styles.signup}>
+                      Already a member? <span onClick={() => showLogin()}>Login</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className={styles.content_outer}>
+              <div className={`container ${styles.container} ${styles.content}`}>
+                <div className={styles.content_inner}>
+                  <div className={styles.sone}>
+                    <div onClick={() => setRegisterPopup(false)} className={styles.back}>
+                      <img src="/img/project-details/back.svg" alt="back" />
+                    </div>
+                    <div className={styles.text}>
+                      <div className={styles.textone}>Registraion</div>
+                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                    </div>
+                  </div>
+                  <div className={styles.stwo}>
+                    <input type="text" placeholder="Enter full name" />
+                    <input type="text" placeholder="Enter Mobile Number" />
+                    <input type="text" placeholder="Email address" />
+                    <div className={styles.privacy}>
+                      By continuing you agree to Arclif's <span>Terms of Service</span> and <span>Privacy policy</span>.
+                    </div>
+                    <div onClick={() => showOtp()} className={styles.submit}>
+                      Send OTP
+                    </div>
+                  </div>
+                  <div className={styles.sthree}>
+                    <div className={styles.line}></div>
+                    <div className={styles.or}>OR</div>
+                  </div>
+                  <div className={styles.sfour}>
+                    <div className={styles.google}>
+                      <img src="/img/landing/google.svg" alt="google" />
+                      <span>Continue with Google</span>
+                    </div>
+                  </div>
+                  <div className={styles.sfive}>
+                    <div className={styles.signup}>
+                      Already a member? <span onClick={() => showLogin()}>Login</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}

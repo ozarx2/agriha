@@ -1,0 +1,118 @@
+.bodyRequirements__container {
+  margin-top: 90px;
+  height: 100%;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.bodyRequirements__container > h3 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.bodyRequirements__container > p {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.options__container {
+  margin: 20px 0px;
+  padding: 0px 8vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.option__requirements {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.option__requirements > label {
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.requiremnetCardContainer {
+  margin: 30px 0px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.requirementCard {
+  background-color: #1c9c76;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 20px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.requirementCard input {
+  margin-right: 10px;
+}
+
+.next__button {
+  height: 35px;
+  width: 100%;
+  max-width: 350px;
+  background-image: linear-gradient(to right, #027888, #1c9c76);
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.next__button:hover {
+  background-image: linear-gradient(to left, #027888, #1c9c76);
+}
+
+.inputCheckbox {
+  height: 50px;
+  width: 50px;
+  /* margin-left: -50px; */
+  border-radius: 10px;
+}
+
+.footer__container__mobile {
+  display: none;
+  margin-top: 20px;
+}
+
+.loader__container__next {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .requiremnetCardContainer {
+    margin: 30px 0px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer__container {
+    display: none;
+  }
+
+  .footer__container__mobile {
+    display: flex;
+  }
+}

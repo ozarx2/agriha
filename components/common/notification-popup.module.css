@@ -1,0 +1,147 @@
+.notificationMaxPopupOuter {
+  background-color: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 4;
+}
+.notificationPopupClose {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+}
+.notificationPopupOuter {
+  position: absolute;
+  z-index: 4;
+  top: 75px;
+  right: 178px;
+  box-shadow: 0px 16px 40px rgb(179 179 179 / 20%);
+}
+.notificationPopupInner {
+  width: 100%;
+  border-radius: 6px;
+  height: fit-content;
+  max-width: 450px;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+}
+.notificationPopupInner .arrow_top {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid #fff;
+  position: absolute;
+  top: -13px;
+  right: 25px;
+}
+/* .notificationPopupInner .arrow_top {
+  position: absolute;
+  top: -13px;
+  right: 25px;
+} */
+.notificationPopupInner .close {
+  /* position: absolute;
+  top: -15px;
+  right: -15px; */
+}
+.notificationPopupInner .close img {
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+.notificationPopupInner .heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.notificationPopupInner .heading .left {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #121212;
+}
+.notificationPopupInner .heading .right {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #019071;
+}
+.notificationPopupInner .content {
+}
+.notifi_outer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-top: 6px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.notifi_outer:last-child {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  border-bottom: none;
+}
+.notifi_outer .left {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.notifi_outer .left img {
+  width: 27px;
+  height: 27px;
+  object-fit: cover;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+.notifi_outer .left .main {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #4b4b4b;
+}
+.notifi_outer .left .sub {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #989898;
+}
+.notifi_outer .right {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #989898;
+}
+@media only screen and (max-width: 1200px) {
+  .notificationPopupOuter {
+    right: 142px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .notificationPopupOuter {
+    display: none;
+  }
+  .notificationMaxPopupOuter {
+    display: none;
+  }
+}

@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import api_url from "../../src/utils/url";
 import AgrihaImageGrid from "../user-common/image-grid";
+import { StoreContext } from "../../components/StoreContext";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Keyboard, Autoplay, Pagination, Navigation } from "swiper";
@@ -37,6 +38,10 @@ export default function AgrihaLandingMain() {
     }, []);
   }
 
+  const [Store] = useContext(StoreContext);
+
+  const setRegisterPopup = Store.setRegisterPopup;
+
   /* GET PROJECT TYPES */
   const [projectTypes, setProjectTypes] = useState([]);
   async function getProjects() {
@@ -49,7 +54,6 @@ export default function AgrihaLandingMain() {
       },
     });
     const data = await res.json();
-    console.log(data.projecttype);
     setProjectTypes(data.projecttype);
   }
 
@@ -138,7 +142,12 @@ export default function AgrihaLandingMain() {
                         typesetti
                       </div>
                       <div className={styles.buttons}>
-                        <div className={styles.start}>Get Started</div>
+                        <div
+                          className={styles.start}
+                          onClick={() => setRegisterPopup(true)}
+                        >
+                          Get Started
+                        </div>
                         <div className={styles.contact}>Contact us</div>
                       </div>
                     </div>
@@ -161,7 +170,7 @@ export default function AgrihaLandingMain() {
                     {projectTypes?.map((item, index) => {
                       return (
                         <>
-                          <div>{item.project_type}</div>
+                          <div key={index}>{item.project_type}</div>
                         </>
                       );
                     })}
@@ -235,15 +244,9 @@ export default function AgrihaLandingMain() {
                           <SwiperSlide>
                             <img src="/img/landing/s1.JPEG" alt="s1" />
                           </SwiperSlide>
-                          {/* <SwiperSlide>
-                      <img src="/img/landing/s2.JPEG" alt="s2" />
-                    </SwiperSlide> */}
                           <SwiperSlide>
                             <img src="/img/landing/s3.JPEG" alt="s3" />
                           </SwiperSlide>
-                          {/* <SwiperSlide>
-                      <img src="/img/landing/s4.JPEG" alt="s4" />
-                    </SwiperSlide> */}
                         </Swiper>
                       </div>
                     </div>

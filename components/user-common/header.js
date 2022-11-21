@@ -51,23 +51,6 @@ export default function AgrihaLandingHeader() {
             }
           }
         });
-
-        // let touchStartPosX = 0;
-        // window.addEventListener("touchmove", (e) => {
-        //   // Different devices give different values with different decimal percentages.
-        //   const currentPageX = Math.round(e.changedTouches[0].screenY);
-        //   if (touchStartPosX === currentPageX) return;
-        //   if (touchStartPosX - currentPageX > 0) {
-        //     console.log("down");
-        //     document.getElementById("search_outer").style.top = "3px";
-        //     document.getElementById("menu_mobile_outer").style.marginTop = "57px";
-        //   } else {
-        //     console.log("up");
-        //     document.getElementById("search_outer").style.top = "57px";
-        //     document.getElementById("menu_mobile_outer").style.marginTop = "111px";
-        //   }
-        //   touchStartPosX = currentPageX;
-        // });
       }
 
       if (typeof document !== "undefined") {
@@ -184,7 +167,7 @@ export default function AgrihaLandingHeader() {
               >
                 <div className={styles.menu}>
                   {router.pathname == "/project-details/[id]" ? (
-                    <Link href="/landing">
+                    <Link href="/landing" passHref>
                       <div className={styles.back}>
                         <img src="/img/project-details/back.svg" alt="back" />
                       </div>

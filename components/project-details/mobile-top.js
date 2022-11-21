@@ -56,6 +56,12 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                     alt="'"
                   />
                 </SwiperSlide>
+                <SwiperSlide>
+                  <img
+                    src="https://swiperjs.com/demos/images/nature-5.jpg"
+                    alt=""
+                  />
+                </SwiperSlide>
               </Swiper>
               <Swiper
                 onSwiper={setThumbsSwiper}

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -14,7 +15,10 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <>
-      <div id="AgrihaProjectDetail_desktop_section_outer" className={styles.desktop_section_outer}>
+      <div
+        id="AgrihaProjectDetail_desktop_section_outer"
+        className={styles.desktop_section_outer}
+      >
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>
             <div className={styles.sone_inner}>
@@ -38,7 +42,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
           <div className={`container ${styles.container} ${styles.stwo}`}>
             <div className={styles.stwo_inner}>
               <div className={styles.left}>
-                <Link href="/landing">
+                <Link href="/landing" passHref>
                   <div className={styles.back}>
                     <img src="/img/project-details/back.svg" alt="back" />
                   </div>
@@ -55,42 +59,45 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   className="mySwiper2"
                 >
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-1.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-2.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-3.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-4.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-5.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                 </Swiper>
               </div>
               <div className={styles.right}>
-                <div className={styles.title}>Ahmedabad home where air, light and space play a starring role</div>
+                <div className={styles.title}>
+                  Ahmedabad home where air, light and space play a starring role
+                </div>
                 <div className={styles.content}>
-                  Abundant and bright, this apartment in Ahmedabad designed by Green Squares Design Studio is everything
-                  you'd imagine a happy home to be
+                  Abundant and bright, this apartment in Ahmedabad designed by
+                  Green Squares Design Studio is everything youd imagine a happy
+                  home to be
                 </div>
                 <div className={styles.profile}>
                   <img src="/img/landing/profile_img.svg" alt="profile" />
@@ -120,34 +127,34 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   className="mySwiper"
                 >
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-1.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-2.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-3.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-4.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                   <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+                    <img
+                      src="https://swiperjs.com/demos/images/nature-5.jpg"
+                      alt=""
+                    />
                   </SwiperSlide>
                 </Swiper>
               </div>

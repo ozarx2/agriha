@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -6,13 +7,13 @@ import styles from "./RequirementsMain.module.css";
 
 const ChoosePlanMain = () => {
   const [planDetials, setPlanDetials] = useState([]);
+  const [selectPlan, setSelectPlan] = useState(true);
+  const [planID, setPlanID] = useState("");
+  const [serviceList, setServiceList] = useState([]);
 
   const goToFileUpload = () => {
-    window.location.href = "/requirement/file-upload";
+    handleSubmit();
   };
-
-  const [planID, setPlanID] = useState("");
-  const [services, setServices] = useState([]);
 
   /* GET PLAN DETAILS */
   async function getPlanDetails() {
@@ -29,13 +30,101 @@ const ChoosePlanMain = () => {
     setPlanDetials(data.data);
   }
 
+  const [allservices, setAllServices] = useState([]);
+  /* GET ALL SERVICES */
+  async function getAllServices() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/paymentplans/allservices`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+    setAllServices(data.plan_services);
+  }
+
   useEffect(() => {
     getPlanDetails();
+    getAllServices();
   }, []);
 
-  const selectPlanClick = (id, services) => {
+  const selectPlanClick = (id) => {
     setPlanID(id);
-    setServices(services);
+  };
+
+  useEffect(() => {
+    document.getElementById("selectPlan").checked = true;
+  }, []);
+
+  const setRadio = (e) => {
+    if (e.target.value === "selectPlan") {
+      setSelectPlan(true);
+      e.target.checked = true;
+    } else {
+      setSelectPlan(false);
+      e.target.checked = true;
+    }
+  };
+
+  const getValueChecked = (e) => {
+    if (e.target.checked) {
+      setServiceList((serviceList) => [...serviceList, e.target.value]);
+    } else {
+      serviceList.splice(serviceList.indexOf(e.target.value), 1);
+    }
+  };
+
+  console.log(serviceList);
+
+  /* CREATE PROJECT */
+  const handleSubmit = () => {
+    const token = localStorage.getItem("userToken");
+    const projectID = localStorage.getItem("projectId");
+    let config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    selectPlan
+      ? axios
+          .patch(
+            `${api_url}/projects/update/${projectID}`,
+            {
+              plan_id: planID,
+            },
+            config
+          )
+          .then((response) => {
+            console.log(response.data);
+            if (response.data) {
+              window.location.href = "/requirement/file-upload";
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("Something went wrong please try again");
+          })
+      : axios
+          .patch(
+            `${api_url}/projects/update/${projectID}`,
+            {
+              plan_services: serviceList,
+            },
+            config
+          )
+          .then((response) => {
+            console.log(response.data);
+            if (response.data) {
+              window.location.href = "/requirement/file-upload";
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("Something went wrong please try again");
+          });
   };
 
   return (
@@ -74,34 +163,76 @@ const ChoosePlanMain = () => {
             </div>
             <div className={styles.right__main_inner}>
               <p>Choose Plan</p>
-              <div className={styles.plan_card_container}>
-                {planDetials?.map((item, index) => {
-                  return (
-                    <div key={index} className={styles.plan_card}>
-                      <div className={styles.top_plan_card}>
-                        <div className={styles.title_plan_card}>
-                          {item?.plan_name}
-                        </div>
-                        <div className={styles.lists_plan_card}>
-                          <ul>
-                            {item?.plan_services?.map((service, index2) => {
-                              return <li key={index2}>{service}</li>;
-                            })}
-                          </ul>
-                        </div>
-                      </div>
-                      <div
-                        className={styles.select_plan_card}
-                        onClick={() =>
-                          selectPlanClick(item?._id, item?.plan_services)
-                        }
-                      >
-                        Select Plan
-                      </div>
-                    </div>
-                  );
-                })}
+              <h5>Select plan or Select requirements*</h5>
+              <div className={styles.selectOrChoose__container}>
+                <div className={styles.renovation_radio_conatiner}>
+                  <div className={styles.complete_radio}>
+                    <input
+                      type="radio"
+                      id="selectPlan"
+                      name="selectOrChoose"
+                      value="selectPlan"
+                      onClick={setRadio}
+                    />
+                    <label htmlFor="selectPlan">Select Plan</label>
+                  </div>
+                  <div className={styles.complete_radio}>
+                    <input
+                      type="radio"
+                      id="selectRequirements"
+                      name="selectOrChoose"
+                      value="selectRequirements"
+                      onClick={setRadio}
+                    />
+                    <label htmlFor="selectRequirements">
+                      Select Requirements
+                    </label>
+                  </div>
+                </div>
               </div>
+              {selectPlan ? (
+                <div className={styles.plan_card_container}>
+                  {planDetials?.map((item, index) => {
+                    return (
+                      <div key={index} className={styles.plan_card}>
+                        <div className={styles.top_plan_card}>
+                          <div className={styles.title_plan_card}>
+                            {item?.plan_name}
+                          </div>
+                          <div className={styles.lists_plan_card}>
+                            <ul>
+                              {item?.plan_services?.map((service, index2) => {
+                                return <li key={index2}>{service}</li>;
+                              })}
+                            </ul>
+                          </div>
+                        </div>
+                        <div
+                          className={styles.select_plan_card}
+                          onClick={() => selectPlanClick(item?._id)}
+                        >
+                          Select Plan
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className={styles.serviceList_cards_container}>
+                  {allservices?.map((item, index) => {
+                    return (
+                      <div key={index} className={styles.serviceList_card}>
+                        <input
+                          type="checkbox"
+                          onClick={getValueChecked}
+                          value={item}
+                        />
+                        <p>{item}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
           <div className={styles.bottom__main_inner}>

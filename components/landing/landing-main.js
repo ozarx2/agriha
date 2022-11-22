@@ -39,8 +39,8 @@ export default function AgrihaLandingMain() {
   }
 
   const [Store] = useContext(StoreContext);
-
   const setRegisterPopup = Store.setRegisterPopup;
+  const loginDetails = Store.loginDetails;
 
   /* GET PROJECT TYPES */
   const [projectTypes, setProjectTypes] = useState([]);
@@ -137,9 +137,17 @@ export default function AgrihaLandingMain() {
                         Lorem Ipsum is simply dummy text of the printing and typesetti
                       </div>
                       <div className={styles.buttons}>
-                        <div className={styles.start} onClick={() => setRegisterPopup(true)}>
-                          Get Started
-                        </div>
+                        {loginDetails ? (
+                          <div className={styles.start}>
+                            <img src="/img/landing/plus.svg" alt="plus" />
+                            <span>Project</span>
+                          </div>
+                        ) : (
+                          <div className={styles.start} onClick={() => setRegisterPopup(true)}>
+                            Get Started
+                          </div>
+                        )}
+
                         <div className={styles.contact}>Contact us</div>
                       </div>
                     </div>
@@ -183,7 +191,16 @@ export default function AgrihaLandingMain() {
                             Leading Architects for you to <span>Design your space</span>
                           </div>
                           <div className={styles.buttons}>
-                            <div className={styles.started}>Get Started</div>
+                            {loginDetails ? (
+                              <div className={styles.started}>
+                                <img src="/img/landing/plus.svg" alt="plus" />
+                                <span>Project</span>
+                              </div>
+                            ) : (
+                              <div onClick={() => setRegisterPopup(true)} className={styles.started}>
+                                Get Started
+                              </div>
+                            )}
                             <div className={styles.contact}> Contact us</div>
                           </div>
                         </div>

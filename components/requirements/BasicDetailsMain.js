@@ -148,7 +148,7 @@ const BasicDetailsMain = () => {
         console.log(response);
         if (response.data.status == 200) {
           localStorage.setItem("projectId", response.data.data._id);
-          window.location.href = "/Filldata";
+          window.location.href = "/requirement/secondary-details";
         }
       })
       .catch((error) => {

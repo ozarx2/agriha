@@ -16,6 +16,7 @@ const BodyVerifyOtp = () => {
     setOtp(otp);
   };
 
+  /*  */
   async function handleSubmit() {
     if (otp.length != 6) {
       document.getElementById("errorVarifyOtp").innerHTML = "Invalid OTP";

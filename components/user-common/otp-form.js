@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import endpoint from "../../src/utils/endpoint";
 
 import styles from "./otp-popup.module.css";
 
@@ -14,12 +15,6 @@ export default function OtpPopupForm() {
     d = document.getElementById("d"),
     e = document.getElementById("e"),
     f = document.getElementById("f");
-
-  useEffect(() => {
-    if (a.value !== "") {
-      setOtp(a.value + b.value + c.value + d.value + e.value + f.value);
-    }
-  }, [a.value, b.value, c.value, d.value, e.value, f.value]);
 
   function OtpNextActive(bid, cid, nid) {
     if (cid.value.length === parseInt(cid.attributes["maxlength"].value)) {
@@ -38,8 +33,37 @@ export default function OtpPopupForm() {
   const utcString = dateObj.toUTCString();
   const time = utcString.slice(-11, -4);
 
+  /* VERIFY OTP REGISTER */
+  async function handleSubmit(otp) {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(`${endpoint}/auth/verify_mobile`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + `${token}`,
+      },
+      body: JSON.stringify({
+        otp: otp,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 200) {
+      if (data.role === "user") {
+        localStorage.setItem("userToken", data.token);
+        window.location.href = "/requirement/basic-details";
+      } else if (data.role === "architect") {
+        localStorage.setItem("userToken", data.token);
+        window.location.href = `/architect-dashboard/${data.id}`;
+      }
+    }
+  }
+
   const verifyClick = () => {
-    console.log(otp);
+    if (a.value !== "") {
+      handleSubmit(a.value + b.value + c.value + d.value + e.value + f.value);
+    }
   };
 
   return (

@@ -25,6 +25,9 @@ export const StoreContextProvider = (props) => {
   const [registerPopup, setRegisterPopup] = useState(false);
   const [otpPopup, setOtpPopup] = useState(false);
 
+  const [bid, setBid] = useState(false);
+  const [bidArchitectId, setBidArchitectId] = useState(null);
+
   const Store = {
     addProject,
     setAddProject,
@@ -68,6 +71,10 @@ export const StoreContextProvider = (props) => {
     setRegisterPopup,
     otpPopup,
     setOtpPopup,
+    bid,
+    setBid,
+    bidArchitectId,
+    setBidArchitectId,
   };
 
   return (

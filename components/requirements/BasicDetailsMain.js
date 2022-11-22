@@ -1,13 +1,71 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import axios from "axios";
+import moment from "moment";
 import React from "react";
+import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import api_url from "../../src/utils/url";
+import { StoreContext } from "../StoreContext";
+
 import styles from "./RequirementsMain.module.css";
+import api_url from "../../src/utils/url";
 
 const BasicDetailsMain = () => {
-  const [projectTypes, setProjectTypes] = useState([]);
-  const [selectedtype, setSelectedType] = useState("Residential");
+  const [Store] = useContext(StoreContext);
 
+  const bid = Store.bid;
+  const bidArchitectId = Store.bidArchitectId;
+  const setBid = Store.setBid;
+  const setBidArchitectId = Store.setBidArchitectId;
+
+  const [projectTypes, setProjectTypes] = useState([]);
+  const [allRequirements, setRequirements] = useState([]);
+
+  const [selectedtype, setSelectedType] = useState("Residential");
+  const [area, setArea] = useState("");
+  const [budget, setBudget] = useState("");
+  const [plot, setPlot] = useState("");
+  const [location, setLocation] = useState("");
+  const [suggessions, setSuggessions] = useState("");
+  const [projectDetails, setProjectDetails] = useState([]);
+  const [requirementList, setRequirementList] = useState([]);
+
+  const [floor, setFloor] = useState("");
+  const [bedroom, setBedroom] = useState("");
+  const [bathroom, setBathroom] = useState("");
+  const [familyMembers, setFamilyMembers] = useState("");
+
+  const storeCommonDetails = () => {
+    setArea(document.getElementById("area").value);
+    setBudget(document.getElementById("budget").value);
+    setPlot(document.getElementById("plot").value);
+    setLocation(document.getElementById("location").value);
+    setSuggessions(document.getElementById("suggessions").value);
+  };
+
+  const storeResDetails = () => {
+    setFloor(document.getElementById("floor").value);
+    setBedroom(document.getElementById("bedroom").value);
+    setBathroom(document.getElementById("bathroom").value);
+    setFamilyMembers(document.getElementById("familyMembers").value);
+  };
+
+  const residentialDetails = [
+    {
+      total_floors: floor,
+      total_bedroom: bedroom,
+      total_bathroom: bathroom,
+      total_familyMembers: familyMembers,
+    },
+  ];
+
+  useEffect(() => {
+    if (selectedtype === "Residential") {
+      setProjectDetails(residentialDetails);
+    }
+  }, [selectedtype, floor, bedroom, bathroom, familyMembers]);
+
+  /* GET PROJECT TYPES */
   async function getProjects() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/project-types`, {
@@ -22,8 +80,24 @@ const BasicDetailsMain = () => {
     setProjectTypes(data.projecttype);
   }
 
+  /* GET REQUIREMET LIST */
+  async function getRequirementList() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/requirementlist`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data.data);
+    setRequirements(data.data);
+  }
+
   useEffect(() => {
     getProjects();
+    getRequirementList();
   }, []);
 
   const chooseProjectType = (e) => {
@@ -31,8 +105,72 @@ const BasicDetailsMain = () => {
   };
 
   const goToSecondaryDetails = () => {
-    window.location.href = "/requirement/secondary-details";
+    handleSubmit();
+    /* window.location.href = "/requirement/secondary-details"; */
   };
+
+  /* CREATE PROJECT */
+  const handleSubmit = () => {
+    const data = new Date();
+    const formatDate = moment(data).format("DD/MM/YYYY");
+    const token = localStorage.getItem("userToken");
+    let config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    axios
+      .post(
+        `${api_url}/projects/Choose_project`,
+        {
+          project_type: selectedtype,
+          starting_date: formatDate,
+          ending_date: "null",
+          status: "started",
+          architect_id: bidArchitectId,
+          bid: bid,
+          projectsub_type: null,
+          project_type_details: projectDetails,
+          requiremet_list: requirementList,
+          project_requirements: [
+            {
+              area: area,
+              budget: budget,
+              plot: plot,
+              location: location,
+              suggessions: suggessions,
+            },
+          ],
+        },
+        config
+      )
+      .then((response) => {
+        console.log(response);
+        if (response.data.status == 200) {
+          localStorage.setItem("projectId", response.data.data._id);
+          window.location.href = "/Filldata";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Something went wrong please try again");
+      });
+  };
+
+  const getValueChecked = (e) => {
+    if (e.target.checked) {
+      setRequirementList((requirementList) => [
+        ...requirementList,
+        e.target.value,
+      ]);
+    } else {
+      requirementList.splice(requirementList.indexOf(e.target.value), 1);
+    }
+  };
+
+  useEffect(() => {
+    console.log(requirementList);
+  }, [requirementList]);
 
   return (
     <>
@@ -88,24 +226,43 @@ const BasicDetailsMain = () => {
                   </div>
                 </div>
                 <div className={styles.areaNbudget_input_conatiner}>
-                  <input type="tel" placeholder="Enter total area in sq.ft*" />
-                  <input type="tel" placeholder="Enter Aproximate budget*" />
+                  <input
+                    onChange={storeCommonDetails}
+                    id="area"
+                    type="tel"
+                    placeholder="Enter total area in sq.ft*"
+                  />
+                  <input
+                    onChange={storeCommonDetails}
+                    id="budget"
+                    type="tel"
+                    placeholder="Enter Aproximate budget*"
+                  />
                 </div>
               </div>
               <div className={styles.inputRow}>
                 <div className={styles.plot_input_conatiner}>
                   <input
-                    type="tel"
+                    type="text"
+                    onChange={storeCommonDetails}
+                    id="plot"
                     placeholder="Total plot in cent/acre (eg. 1200 acre)*"
                   />
                 </div>
                 <div className={styles.location_input_conatiner}>
-                  <input type="text" placeholder="Location*" />
+                  <input
+                    onChange={storeCommonDetails}
+                    id="location"
+                    type="text"
+                    placeholder="Location*"
+                  />
                 </div>
               </div>
               <div className={styles.moreDetails_container}>
                 <textarea
                   type="text"
+                  onChange={storeCommonDetails}
+                  id="suggessions"
                   placeholder="Enter your suggessions (optional)"
                 />
               </div>
@@ -114,83 +271,53 @@ const BasicDetailsMain = () => {
                   <p>Residential details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="tel" placeholder="Total floors*" />
-                      <input type="tel" placeholder="Total bedrooms*" />
+                      <input
+                        type="tel"
+                        id="floor"
+                        onChange={storeResDetails}
+                        placeholder="Total floors*"
+                      />
+                      <input
+                        type="tel"
+                        id="bedroom"
+                        onChange={storeResDetails}
+                        placeholder="Total bedrooms*"
+                      />
                     </div>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input placeholder="Total attached bathrooms*" />
-                      <input type="tel" placeholder="Total family members*" />
+                      <input
+                        type="tel"
+                        id="bathroom"
+                        onChange={storeResDetails}
+                        placeholder="Total attached bathrooms*"
+                      />
+                      <input
+                        type="tel"
+                        id="familyMembers"
+                        onChange={storeResDetails}
+                        placeholder="Total family members*"
+                      />
                     </div>
                   </div>
                   <div className={styles.requirementList_container}>
                     <p>Select your Requirements</p>
                     <div className={styles.requirementList_cards_container}>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
-                      <div className={styles.requirementList_card}>
-                        <input type="checkbox" />
-                        <p>Sitout</p>
-                      </div>
+                      {allRequirements?.map((item, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className={styles.requirementList_card}
+                          >
+                            <input
+                              type="checkbox"
+                              onClick={getValueChecked}
+                              id={item._id}
+                              value={item.item}
+                            />
+                            <p>{item.item}</p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

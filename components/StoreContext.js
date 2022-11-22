@@ -68,8 +68,6 @@ export const StoreContextProvider = (props) => {
     setRegisterPopup,
     otpPopup,
     setOtpPopup,
-    loginDetails,
-    setLoginDetails,
   };
 
   return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;

@@ -1,9 +1,66 @@
+import axios from "axios";
 import React from "react";
+import { useState } from "react";
+import api_url from "../../src/utils/url";
 import styles from "./RequirementsMain.module.css";
 
 const SecondaryDetailsMain = () => {
   const goToChoosePlan = () => {
-    window.location.href = "/requirement/choose-plan";
+    handleSubmit();
+  };
+
+  const [pincode, setPincode] = useState("");
+  const [district, setDistrict] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [workLocation, setWorkLocation] = useState("");
+  const [address, setAddress] = useState("");
+
+  const storeDetails = () => {
+    setPincode(document.getElementById("pincode").value);
+    setDistrict(document.getElementById("district").value);
+    setState(document.getElementById("state").value);
+    setCountry(document.getElementById("country").value);
+    setWorkLocation(document.getElementById("workLocation").value);
+    setAddress(document.getElementById("address").value);
+  };
+
+  /* CREATE PROJECT */
+  const handleSubmit = () => {
+    const token = localStorage.getItem("userToken");
+    const projectID = localStorage.getItem("projectId");
+    let config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    axios
+      .patch(
+        `${api_url}/projects/update/${projectID}`,
+        {
+          secondary_details: [
+            {
+              pincode: pincode,
+              district: district,
+              state: state,
+              country: country,
+              work_location: workLocation,
+              address: address,
+            },
+          ],
+        },
+        config
+      )
+      .then((response) => {
+        console.log(response.data);
+        if (response.status === 200) {
+          window.location.href = "/requirement/choose-plan";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Something went wrong please try again");
+      });
   };
 
   return (
@@ -44,28 +101,50 @@ const SecondaryDetailsMain = () => {
               <p>Secondary Details</p>
               <div className={styles.inputRow}>
                 <div className={styles.pincodeNdistrict_input_conatiner}>
-                  <input type="tel" placeholder="Pincode*" />
-                  <input type="text" placeholder="District*" />
+                  <input
+                    type="tel"
+                    id="pincode"
+                    placeholder="Pincode*"
+                    onChange={storeDetails}
+                  />
+                  <input
+                    type="text"
+                    id="district"
+                    placeholder="District*"
+                    onChange={storeDetails}
+                  />
                 </div>
                 <div className={styles.pincodeNdistrict_input_conatiner}>
-                  <input type="text" placeholder="State*" />
-                  <input type="text" placeholder="Country*" />
+                  <input
+                    type="text"
+                    id="state"
+                    placeholder="State*"
+                    onChange={storeDetails}
+                  />
+                  <input
+                    type="text"
+                    id="country"
+                    placeholder="Country*"
+                    onChange={storeDetails}
+                  />
                 </div>
               </div>
               <div className={styles.inputRow}>
                 <div className={styles.plot_input_conatiner}>
-                  <input type="text" placeholder="Work location*" />
+                  <input
+                    type="text"
+                    id="workLocation"
+                    placeholder="Work location"
+                    onChange={storeDetails}
+                  />
                 </div>
                 <div className={styles.plot_input_conatiner}>
-                  <input type="text" placeholder="Location*" />
-                </div>
-              </div>
-              <div className={styles.inputRow}>
-                <div className={styles.plot_input_conatiner}>
-                  <input type="text" placeholder="Your Address" />
-                </div>
-                <div className={styles.plot_input_conatiner}>
-                  <input type="text" placeholder="Your current Location" />
+                  <input
+                    type="text"
+                    id="address"
+                    placeholder="Your Address"
+                    onChange={storeDetails}
+                  />
                 </div>
               </div>
             </div>

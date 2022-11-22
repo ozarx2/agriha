@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
@@ -10,8 +11,49 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import styles from "./main.module.css";
+import api_url from "../../src/utils/url";
 
 export default function AgrihaProjectDetailsMainDesktopTop() {
+  const [projectId, setProjectId] = useState("");
+  const [projectDetails, setProjectDetails] = useState([]);
+
+  /* GET ARCHITECT ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setProjectId(pair[0]);
+      console.log(pair[0]);
+    }
+  }
+
+  useEffect(() => {
+    getParameters();
+  }, []);
+
+  /* GET PROJECT DETAILS */
+  async function getProjects() {
+    const res = await fetch(
+      `${api_url}/projects/arcprojectsingle/${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    console.log(data[0]);
+    setProjectDetails(data[0]);
+  }
+
+  useEffect(() => {
+    if (projectId !== "") {
+      getProjects();
+    }
+  }, [projectId]);
+
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <>
@@ -42,7 +84,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
           <div className={`container ${styles.container} ${styles.stwo}`}>
             <div className={styles.stwo_inner}>
               <div className={styles.left}>
-                <Link href="/landing" passHref>
+                <Link href="/" passHref>
                   <div className={styles.back}>
                     <img src="/img/project-details/back.svg" alt="back" />
                   </div>
@@ -58,50 +100,36 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper2"
                 >
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-1.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-2.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-3.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-4.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-5.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
+                  {projectDetails.Image?.map((item, index) => {
+                    return (
+                      <SwiperSlide key={index}>
+                        <img src={item} alt="" />
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
               </div>
               <div className={styles.right}>
                 <div className={styles.title}>
-                  Ahmedabad home where air, light and space play a starring role
+                  {projectDetails?.projectname}
                 </div>
                 <div className={styles.content}>
-                  Abundant and bright, this apartment in Ahmedabad designed by
-                  Green Squares Design Studio is everything youd imagine a happy
-                  home to be
+                  {`${projectDetails?.location} | ${projectDetails?.projectarea}q.ft`}
                 </div>
                 <div className={styles.profile}>
-                  <img src="/img/landing/profile_img.svg" alt="profile" />
-                  <span>Althaf Rahman</span>
+                  <img
+                    src={
+                      projectDetails.architect_id?.profilepic
+                        ? projectDetails.architect_id?.profilepic
+                        : "/img/landing/profile_img.svg"
+                    }
+                    alt="profile"
+                  />
+                  <span>
+                    {projectDetails?.architect_id?.firstname +
+                      " " +
+                      projectDetails?.architect_id?.lastname}
+                  </span>
                 </div>
                 <div className={styles.buttons}>
                   <div className={styles.send}>Send requirment</div>
@@ -126,36 +154,13 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper"
                 >
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-1.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-2.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-3.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-4.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://swiperjs.com/demos/images/nature-5.jpg"
-                      alt=""
-                    />
-                  </SwiperSlide>
+                  {projectDetails.Image?.map((item, index) => {
+                    return (
+                      <SwiperSlide key={index}>
+                        <img src={item} alt="" />
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
               </div>
             </div>

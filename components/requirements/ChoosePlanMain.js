@@ -1,9 +1,41 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import api_url from "../../src/utils/url";
 import styles from "./RequirementsMain.module.css";
 
 const ChoosePlanMain = () => {
+  const [planDetials, setPlanDetials] = useState([]);
+
   const goToFileUpload = () => {
     window.location.href = "/requirement/file-upload";
+  };
+
+  const [planID, setPlanID] = useState("");
+  const [services, setServices] = useState([]);
+
+  /* GET PLAN DETAILS */
+  async function getPlanDetails() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/paymentplans`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+    setPlanDetials(data.data);
+  }
+
+  useEffect(() => {
+    getPlanDetails();
+  }, []);
+
+  const selectPlanClick = (id, services) => {
+    setPlanID(id);
+    setServices(services);
   };
 
   return (
@@ -43,75 +75,32 @@ const ChoosePlanMain = () => {
             <div className={styles.right__main_inner}>
               <p>Choose Plan</p>
               <div className={styles.plan_card_container}>
-                <div className={styles.plan_card}>
-                  <div className={styles.top_plan_card}>
-                    <div className={styles.title_plan_card}>Basic Plan</div>
-                    <div className={styles.lists_plan_card}>
-                      <ul>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                      </ul>
+                {planDetials?.map((item, index) => {
+                  return (
+                    <div key={index} className={styles.plan_card}>
+                      <div className={styles.top_plan_card}>
+                        <div className={styles.title_plan_card}>
+                          {item?.plan_name}
+                        </div>
+                        <div className={styles.lists_plan_card}>
+                          <ul>
+                            {item?.plan_services?.map((service, index2) => {
+                              return <li key={index2}>{service}</li>;
+                            })}
+                          </ul>
+                        </div>
+                      </div>
+                      <div
+                        className={styles.select_plan_card}
+                        onClick={() =>
+                          selectPlanClick(item?._id, item?.plan_services)
+                        }
+                      >
+                        Select Plan
+                      </div>
                     </div>
-                  </div>
-                  <div className={styles.select_plan_card}>Select Plan</div>
-                </div>
-                <div className={styles.plan_card}>
-                  <div className={styles.top_plan_card}>
-                    <div className={styles.title_plan_card}>Basic Plan</div>
-                    <div className={styles.lists_plan_card}>
-                      <ul>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className={styles.select_plan_card}>Select Plan</div>
-                </div>
-                <div className={styles.plan_card}>
-                  <div className={styles.top_plan_card}>
-                    <div className={styles.title_plan_card}>Basic Plan</div>
-                    <div className={styles.lists_plan_card}>
-                      <ul>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                        <li>Site plan</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className={styles.select_plan_card}>Select Plan</div>
-                </div>
+                  );
+                })}
               </div>
             </div>
           </div>

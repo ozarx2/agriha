@@ -20,10 +20,10 @@ export const StoreContextProvider = (props) => {
   const [activityLog, setActivityLog] = useState([]);
   const [ongoingId, setOngoingId] = useState([]);
   const [projectId, setProjectId] = useState([]);
-
   const [loginPopup, setLoginPopup] = useState(false);
   const [registerPopup, setRegisterPopup] = useState(false);
   const [otpPopup, setOtpPopup] = useState(false);
+  const [loginDetails, setLoginDetails] = useState(false);
 
   const Store = {
     addProject,
@@ -68,11 +68,9 @@ export const StoreContextProvider = (props) => {
     setRegisterPopup,
     otpPopup,
     setOtpPopup,
+    loginDetails,
+    setLoginDetails,
   };
 
-  return (
-    <StoreContext.Provider value={[Store]}>
-      {props.children}
-    </StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;
 };

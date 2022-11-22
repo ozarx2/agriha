@@ -51,9 +51,16 @@
   color: #ffffff;
   background: #4a0fc8;
   border-radius: 18px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 11px 17.84px;
   margin-right: 9.73px;
+}
+.sone_inner .buttons .started img {
+  width: 12px;
+  height: 12px;
+  margin-right: 7px;
 }
 .sone_inner .buttons .contact {
   font-family: "Inter";
@@ -227,10 +234,17 @@
     color: #ffffff;
     background: #642dda;
     border-radius: 16px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 21px;
     cursor: pointer;
     margin-right: 12px;
+  }
+  .stwo_inner .center .buttons .start img {
+    width: 14px;
+    height: 14px;
+    margin-right: 11px;
   }
   .stwo_inner .center .buttons .contact {
     font-family: "Inter";

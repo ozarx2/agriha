@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { useRef, useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import api_url from "../../src/utils/url";
 import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,29 +11,41 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import styles from "./main.module.css";
+import api_url from "../../src/utils/url";
 
 export default function AgrihaProjectDetailsMainDesktopTop() {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [projectId, setProjectId] = useState("");
+  const [projectDetails, setProjectDetails] = useState([]);
 
-  const router = useRouter();
-  const { id } = router.query;
-  const projectId = id;
+  /* GET ARCHITECT ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setProjectId(pair[0]);
+      console.log(pair[0]);
+    }
+  }
+
+  useEffect(() => {
+    getParameters();
+  }, []);
 
   /* GET PROJECT DETAILS */
-  const [projectDetails, setProjectDetails] = useState([]);
   async function getProjects() {
-    const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `${api_url}/projects/arcprojectsingle/${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
-    console.log(data);
-    if (data !== null) {
-      console.log(data[0]);
-      setProjectDetails(data[0]);
-    }
+    console.log(data[0]);
+    setProjectDetails(data[0]);
   }
 
   useEffect(() => {
@@ -44,9 +54,13 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
     }
   }, [projectId]);
 
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <>
-      <div id="AgrihaProjectDetail_desktop_section_outer" className={styles.desktop_section_outer}>
+      <div
+        id="AgrihaProjectDetail_desktop_section_outer"
+        className={styles.desktop_section_outer}
+      >
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>
             <div className={styles.sone_inner}>
@@ -86,7 +100,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper2"
                 >
-                  {projectDetails?.Image?.map((item, index) => {
+                  {projectDetails.Image?.map((item, index) => {
                     return (
                       <SwiperSlide key={index}>
                         <img src={item} alt="" />
@@ -96,20 +110,26 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                 </Swiper>
               </div>
               <div className={styles.right}>
-                <div className={styles.title}>{projectDetails?.projectname}</div>
+                <div className={styles.title}>
+                  {projectDetails?.projectname}
+                </div>
                 <div className={styles.content}>
                   {`${projectDetails?.location} | ${projectDetails?.projectarea}q.ft`}
                 </div>
                 <div className={styles.profile}>
                   <img
                     src={
-                      projectDetails?.architect_id?.profilepic
-                        ? projectDetails?.architect_id?.profilepic
+                      projectDetails.architect_id?.profilepic
+                        ? projectDetails.architect_id?.profilepic
                         : "/img/landing/profile_img.svg"
                     }
                     alt="profile"
                   />
-                  <span>{projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}</span>
+                  <span>
+                    {projectDetails?.architect_id?.firstname +
+                      " " +
+                      projectDetails?.architect_id?.lastname}
+                  </span>
                 </div>
                 <div className={styles.buttons}>
                   <div className={styles.send}>Send requirment</div>
@@ -134,7 +154,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper"
                 >
-                  {projectDetails?.Image?.map((item, index) => {
+                  {projectDetails.Image?.map((item, index) => {
                     return (
                       <SwiperSlide key={index}>
                         <img src={item} alt="" />

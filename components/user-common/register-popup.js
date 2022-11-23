@@ -4,6 +4,7 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import RegisterPopupForm from "./register-form";
+import GoogleLogin from "react-google-login";
 
 import styles from "./register-popup.module.css";
 
@@ -13,6 +14,10 @@ export default function RegisterPopup() {
   const setLoginPopup = Store.setLoginPopup;
   const setRegisterPopup = Store.setRegisterPopup;
   const otpPopup = Store.otpPopup;
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
 
   const [windowRes, setWindowRes] = useState([]);
   if (typeof window !== "undefined") {

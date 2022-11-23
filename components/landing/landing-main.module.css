@@ -86,7 +86,7 @@
   margin-bottom: 50px;
 }
 .loading {
-  min-height: 200px;
+  min-height: calc(100vh - 450px);
   display: flex;
   align-items: center;
   justify-content: center;

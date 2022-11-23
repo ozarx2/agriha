@@ -70,7 +70,7 @@ export default function LoginPopup() {
           localStorage.setItem("token", response.data.token);
           window.location.href = "/dashboard";
         }
-        if (response.data.message === "user Register successfully") {
+        if (response.data.message === "user registeration successfully") {
           localStorage.setItem("token", response.data.token);
           window.location.href = "/requirement/basic-details";
         }

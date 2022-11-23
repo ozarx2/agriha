@@ -66,7 +66,7 @@ export default function RegisterPopup() {
       })
       .then((response) => {
         console.log(response.data);
-        if (response.data.message === "user register successfully") {
+        if (response.data.message === "user registeration successfully") {
           localStorage.setItem("token", response.data.token);
           window.location.href = "/requirement/basic-details";
         }

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import styles from "./RequirementsMain.module.css";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
+import axios from "axios";
+import api_url from "../../src/utils/url";
 
 const FileUploadMain = () => {
   const goToUserDash = () => {
@@ -14,6 +16,7 @@ const FileUploadMain = () => {
   const [sitePlan, setSitePlan] = useState("");
 
   function handleUploadSitePLan(img) {
+    console.log("uploading");
     if (!img) {
       alert("Please choose a file first!");
     }
@@ -35,6 +38,7 @@ const FileUploadMain = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log(url);
           setSitePlan(url);
         });
       }
@@ -54,6 +58,7 @@ const FileUploadMain = () => {
   const [thumbnail, setThumbnail] = useState("");
 
   function handleUploadThumb(img) {
+    console.log("uploading");
     if (!img) {
       alert("Please choose a file first!");
     }
@@ -75,6 +80,7 @@ const FileUploadMain = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log(url);
           setThumbnail(url);
         });
       }
@@ -136,7 +142,7 @@ const FileUploadMain = () => {
       setFiles(fileArray);
       console.log(fileArray);
     } else {
-      alert("Cannot add more than 6 pictures");
+      alert("Cannot add more than 3 pictures");
     }
   };
 
@@ -146,6 +152,87 @@ const FileUploadMain = () => {
     } else {
       handleUploadThumb(event.target.files[0]);
     }
+  };
+
+  /* upload siteplan */
+  const handleSubmitSiteplan = () => {
+    const token = localStorage.getItem("userToken");
+    const projectID = localStorage.getItem("projectId");
+    let config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    axios
+      .patch(
+        `${api_url}/projects/update/${projectID}`,
+        {
+          site_plan: sitePlan,
+        },
+        config
+      )
+      .then((response) => {
+        console.log(response.data);
+        console.log("site plan uploaded");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Something went wrong please try again");
+      });
+  };
+
+  /* upload referrance images */
+  const handleSubmitRefImages = () => {
+    const token = localStorage.getItem("userToken");
+    const projectID = localStorage.getItem("projectId");
+    let config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    axios
+      .patch(
+        `${api_url}/projects/update/${projectID}`,
+        {
+          reference_images: projectImages,
+        },
+        config
+      )
+      .then((response) => {
+        console.log(response.data);
+        console.log("refrerance uploaded");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Something went wrong please try again");
+      });
+  };
+
+  /* upload referrance images */
+  const handleSubmitThumbnail = () => {
+    const token = localStorage.getItem("userToken");
+    const projectID = localStorage.getItem("projectId");
+    let config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    axios
+      .patch(
+        `${api_url}/projects/update/${projectID}`,
+        {
+          thumbnail: thumbnail,
+        },
+        config
+      )
+      .then((response) => {
+        console.log(response.data);
+        console.log("thumbnail uploaded");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Something went wrong please try again");
+      });
   };
 
   return (
@@ -196,10 +283,20 @@ const FileUploadMain = () => {
                     <div className={styles.inputRef}>Choose file</div>
                     <p>Upload Site Plan</p>
                   </div>
-                  <div className={styles.uploadButton}>
-                    Upload
-                    <img src="/img/requirement/upload.svg" alt="" />
-                  </div>
+                  {sitePlan !== "" ? (
+                    <div
+                      className={styles.uploadButtonActive}
+                      onClick={handleSubmitSiteplan}
+                    >
+                      Upload
+                      <img src="/img/requirement/upload.svg" alt="" />
+                    </div>
+                  ) : (
+                    <div className={styles.uploadButton}>
+                      Upload
+                      <img src="/img/requirement/upload.svg" alt="" />
+                    </div>
+                  )}
                 </div>
                 <div className={styles.inputRow_fileUpload}>
                   <div className={styles.left_inputRow_fileUpload}>
@@ -213,10 +310,20 @@ const FileUploadMain = () => {
                     <div className={styles.inputRef}>Choose files</div>
                     <p>Upload referance images (maximum: 3)</p>
                   </div>
-                  <div className={styles.uploadButton}>
-                    Upload
-                    <img src="/img/requirement/upload.svg" alt="" />
-                  </div>
+                  {projectImages.length !== 0 ? (
+                    <div
+                      className={styles.uploadButtonActive}
+                      onClick={handleSubmitRefImages}
+                    >
+                      Upload
+                      <img src="/img/requirement/upload.svg" alt="" />
+                    </div>
+                  ) : (
+                    <div className={styles.uploadButton}>
+                      Upload
+                      <img src="/img/requirement/upload.svg" alt="" />
+                    </div>
+                  )}
                 </div>
                 <div className={styles.inputRow_fileUpload}>
                   <div className={styles.left_inputRow_fileUpload}>
@@ -229,10 +336,20 @@ const FileUploadMain = () => {
                     <div className={styles.inputRef}>Choose file</div>
                     <p>Upload thumbnail image</p>
                   </div>
-                  <div className={styles.uploadButton}>
-                    Upload
-                    <img src="/img/requirement/upload.svg" alt="" />
-                  </div>
+                  {thumbnail !== "" ? (
+                    <div
+                      className={styles.uploadButtonActive}
+                      onClick={handleSubmitThumbnail}
+                    >
+                      Upload
+                      <img src="/img/requirement/upload.svg" alt="" />
+                    </div>
+                  ) : (
+                    <div className={styles.uploadButton}>
+                      Upload
+                      <img src="/img/requirement/upload.svg" alt="" />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

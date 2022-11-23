@@ -572,7 +572,8 @@
   color: #adadad;
 }
 
-.uploadButton {
+.uploadButton,
+.uploadButtonActive {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -588,6 +589,10 @@
 
 .uploadButton > img {
   margin-left: 5px;
+}
+
+.uploadButtonActive {
+  background-color: #642dda;
 }
 
 @media only screen and (max-width: 1540px) {

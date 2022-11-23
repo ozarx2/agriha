@@ -5,6 +5,7 @@ import { StoreContextProvider } from "../components/StoreContext";
 import { Provider } from "react-redux";
 import { useEffect } from "react";
 import AOS from "aos";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 /* import ReactGA from "react-ga";
 const TRACKING_ID = "UA-XXXXX-X"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID); */
@@ -40,9 +41,11 @@ function MyApp({ Component, pageProps }) {
       </Script>
 
       <StoreContextProvider>
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
+        <GoogleOAuthProvider clientId="492229741425-prk9qga0n2come865sa3hbhf0qq26h6q.apps.googleusercontent.com">
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+        </GoogleOAuthProvider>
       </StoreContextProvider>
     </>
   );

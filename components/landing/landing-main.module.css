@@ -2,11 +2,6 @@
   display: inline-block;
   width: 100%;
 }
-.main_inner {
-}
-
-.sone_outer {
-}
 .sone_bgone {
   background-repeat: no-repeat;
   background-position: left;
@@ -14,8 +9,6 @@
 .sone_bgtwo {
   background-repeat: no-repeat;
   background-position: right;
-}
-.sone_outer .container.sone {
 }
 .sone_inner {
   padding-top: 32px;
@@ -73,9 +66,6 @@
   border-radius: 18px;
   display: inline-block;
   padding: 11px 17.84px;
-}
-
-.stwo_inner {
 }
 
 .sthree_outer {
@@ -187,12 +177,8 @@
     background: linear-gradient(250.59deg, #ebe2ff 36.97%, #fce2ec 63.56%);
     border-radius: 8px;
   }
-  .stwo_inner .left {
-  }
   .stwo_inner .left img {
     margin-left: 55px;
-  }
-  .stwo_inner .center {
   }
   .stwo_inner .center .title {
     font-family: "Inter";
@@ -258,9 +244,6 @@
     display: inline-block;
     padding: 10px 21px;
     cursor: pointer;
-  }
-
-  .stwo_inner .right {
   }
   .stwo_inner .right img {
     margin-right: 10px;
@@ -330,8 +313,6 @@
   }
   .desktop_section_outer .sthree_inner > div:last-child {
     margin-right: 0;
-  }
-  .desktop_section_outer .sthree_inner > div.active {
   }
 }
 

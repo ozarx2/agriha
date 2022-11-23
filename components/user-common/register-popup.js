@@ -4,9 +4,12 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import RegisterPopupForm from "./register-form";
-import GoogleLogin from "react-google-login";
+import jwt_decode from "jwt-decode";
 
 import styles from "./register-popup.module.css";
+import { GoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import endpoint from "../../src/utils/endpoint";
 
 export default function RegisterPopup() {
   const [Store] = useContext(StoreContext);
@@ -15,9 +18,8 @@ export default function RegisterPopup() {
   const setRegisterPopup = Store.setRegisterPopup;
   const otpPopup = Store.otpPopup;
 
-  const responseGoogle = (response) => {
-    console.log(response);
-  };
+  const setOtpPopup = Store.setOtpPopup;
+  const setLoginActive = Store.setLoginActive;
 
   const [windowRes, setWindowRes] = useState([]);
   if (typeof window !== "undefined") {
@@ -52,6 +54,31 @@ export default function RegisterPopup() {
       document.getElementById("RegisterPopupOuter").style.display = "flex";
     }
   }, [otpPopup]);
+
+  /* GOOGLE AUTH */
+  async function handleSubmit(name, email, profile) {
+    axios
+      .post(`${endpoint}/auth/google/Login`, {
+        name: name,
+        email: email,
+        profilePic: profile,
+        role: "user",
+      })
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.message === "user register successfully") {
+          localStorage.setItem("token", response.data.token);
+          window.location.href = "/requirement/basic-details";
+        }
+        if (response.data.message === "user login successfully") {
+          localStorage.setItem("token", response.data.token);
+          window.location.href = "/dashboard";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <>
@@ -121,10 +148,25 @@ export default function RegisterPopup() {
               <div className={styles.desktop_content_outer}>
                 <div className={styles.content_inner}>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
+                    {/* <div className={styles.google}>
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
-                    </div>
+                    </div> */}
+                    <GoogleLogin
+                      onSuccess={(credentialResponse) => {
+                        console.log(credentialResponse);
+                        var decoded = jwt_decode(credentialResponse.credential);
+                        console.log(decoded);
+                        handleSubmit(
+                          decoded.name,
+                          decoded.email,
+                          decoded.picture
+                        );
+                      }}
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                    />
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
@@ -161,10 +203,20 @@ export default function RegisterPopup() {
                     <div className={styles.or}>OR</div>
                   </div>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
+                    {/* <div className={styles.google}>
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
-                    </div>
+                    </div> */}
+                    <GoogleLogin
+                      onSuccess={(credentialResponse) => {
+                        console.log(credentialResponse);
+                        var decoded = jwt_decode(credentialResponse.credential);
+                        console.log(decoded);
+                      }}
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                    />
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>

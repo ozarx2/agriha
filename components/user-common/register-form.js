@@ -9,6 +9,7 @@ export default function RegisterPopupForm() {
   const [Store] = useContext(StoreContext);
 
   const setOtpPopup = Store.setOtpPopup;
+  const setLoginActive = Store.setLoginActive;
 
   const termsClick = () => {
     window.location.href = "/terms";
@@ -48,6 +49,7 @@ export default function RegisterPopupForm() {
     }
   };
 
+  /* REGISTER API */
   async function handleSubmit() {
     console.log(phone);
     axios
@@ -63,6 +65,7 @@ export default function RegisterPopupForm() {
           localStorage.setItem("token", response.data.token);
           /* window.location.href = "/verifyotp"; */
           setOtpPopup(true);
+          setLoginActive(false);
           // setRegisterPopup(false);
         }
         if (response.data.status === 409) {
@@ -76,6 +79,7 @@ export default function RegisterPopupForm() {
         console.log(error);
       });
   }
+
   return (
     <>
       <div className={styles.stwo}>

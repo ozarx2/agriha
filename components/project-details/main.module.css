@@ -37,7 +37,6 @@
     color: #393939;
     display: inline-block;
     padding-top: 10px;
-    width: 100%;
   }
   .stwo_inner .content {
     font-family: "Inter";
@@ -48,7 +47,6 @@
     color: #5b5b5b;
     display: inline-block;
     padding-top: 10px;
-    width: 100%;
   }
   .stwo_inner .profile {
     display: flex;
@@ -56,8 +54,6 @@
     justify-content: space-between;
   }
   .stwo_inner .profile .left {
-    display: flex;
-    align-items: center;
   }
   .stwo_inner .profile .left img {
     width: 19.85px;
@@ -267,7 +263,6 @@
     height: 28px;
     object-fit: cover;
     margin-right: 12px;
-    border-radius: 50%;
   }
   .stwo_inner .right .profile span {
     font-family: "Inter";

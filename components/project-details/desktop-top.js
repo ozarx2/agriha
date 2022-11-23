@@ -12,10 +12,16 @@ import "swiper/css/thumbs";
 
 import styles from "./main.module.css";
 import api_url from "../../src/utils/url";
+import { StoreContext } from "../StoreContext";
+import { useContext } from "react";
 
 export default function AgrihaProjectDetailsMainDesktopTop() {
   const [projectId, setProjectId] = useState("");
   const [projectDetails, setProjectDetails] = useState([]);
+
+  const [Store] = useContext(StoreContext);
+  const setBidArchitectId = Store.setBidArchitectId;
+  const setBid = Store.setBid;
 
   /* GET ARCHITECT ID */
   function getParameters() {
@@ -55,6 +61,19 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
   }, [projectId]);
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const sentRequirement = (id) => {
+    setBidArchitectId(id);
+    setBid(false);
+    window.location.href = "/requirement/basic-details";
+  };
+
+  const sentRequirementBid = () => {
+    setBidArchitectId(null);
+    setBid(true);
+    window.location.href = "/requirement/basic-details";
+  };
+
   return (
     <>
       <div
@@ -132,8 +151,17 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   </span>
                 </div>
                 <div className={styles.buttons}>
-                  <div className={styles.send}>Send requirment</div>
-                  <div className={styles.bid}>Bid</div>
+                  <div
+                    className={styles.send}
+                    onClick={() =>
+                      sentRequirement(projectDetails?.architect_id?._id)
+                    }
+                  >
+                    Send requirment
+                  </div>
+                  <div className={styles.bid} onClick={sentRequirementBid}>
+                    Bid
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,0 +1,122 @@
+.main_outer {
+  padding: 20px;
+  margin-right: 60px;
+  margin-top: 91px;
+  background-color: #fff;
+  margin-left: 6px;
+  height: calc(100vh - 91px);
+}
+
+.main_inner {
+  background-color: #fff;
+  width: 100%;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  color: #000000;
+}
+
+.results__container {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.resultSection > p {
+  color: #303030;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+}
+
+.resultTextContainer {
+  height: 44px;
+  width: 337px;
+  border: 0.5px solid #86d3c3;
+  background-color: #f5fffe;
+  color: #019071;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  margin-top: 13px;
+}
+
+.resultSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.buttons__container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 70px;
+  padding-right: 20px;
+}
+
+.decline_button {
+  height: 40px;
+  width: 124px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background-color: #f8f8f8;
+  color: #019071;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.accept_button {
+  height: 40px;
+  width: 124px;
+  border-radius: 4px;
+  background-color: #019071;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.94px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 11px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+  .main_outer {
+    margin-top: 70px;
+    padding: 20px;
+    padding-right: 30px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .main_outer {
+    margin-top: 124px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .main_outer {
+    margin-top: 124px;
+    padding: 0 20px;
+    padding-top: 6px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .stwo_grid_outer {
+    width: calc(100% - 20px);
+  }
+}

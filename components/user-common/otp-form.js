@@ -5,7 +5,9 @@ import endpoint from "../../src/utils/endpoint";
 import styles from "./otp-popup.module.css";
 
 export default function OtpPopupForm() {
-  // const [Store] = useContext(StoreContext);
+  const [Store] = useContext(StoreContext);
+
+  const loginActive = Store.loginActive;
 
   const [otp, setOtp] = useState("");
 
@@ -33,7 +35,34 @@ export default function OtpPopupForm() {
   const utcString = dateObj.toUTCString();
   const time = utcString.slice(-11, -4);
 
-  /* VERIFY OTP REGISTER */
+  /* VERIFY OTP Login */
+  async function handleSubmitLogin(otp) {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(`${endpoint}/auth/verify_login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + `${token}`,
+      },
+      body: JSON.stringify({
+        otp: otp,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 200) {
+      if (data.role === "user") {
+        localStorage.setItem("userToken", data.token);
+        window.location.href = "/dashboard";
+      } else if (data.role === "architect") {
+        localStorage.setItem("userToken", data.token);
+        window.location.href = `/architect-dashboard/${data.id}`;
+      }
+    }
+  }
+
+  /* VERIFY OTP Register */
   async function handleSubmit(otp) {
     const token = localStorage.getItem("token");
 
@@ -63,6 +92,14 @@ export default function OtpPopupForm() {
   const verifyClick = () => {
     if (a.value !== "") {
       handleSubmit(a.value + b.value + c.value + d.value + e.value + f.value);
+    }
+  };
+
+  const verifyClickLogin = () => {
+    if (a.value !== "") {
+      handleSubmitLogin(
+        a.value + b.value + c.value + d.value + e.value + f.value
+      );
     }
   };
 
@@ -113,9 +150,15 @@ export default function OtpPopupForm() {
           </div>
           <div className={styles.time}>{time}</div>
         </div>
-        <div className={styles.submit} onClick={verifyClick}>
-          Verify
-        </div>
+        {loginActive ? (
+          <div className={styles.submit} onClick={verifyClickLogin}>
+            Verify
+          </div>
+        ) : (
+          <div className={styles.submit} onClick={verifyClick}>
+            Verify
+          </div>
+        )}
       </div>
     </>
   );

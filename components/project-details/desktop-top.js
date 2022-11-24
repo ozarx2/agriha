@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { useRef, useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import api_url from "../../src/utils/url";
 import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,16 +11,23 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import styles from "./main.module.css";
+import api_url from "../../src/utils/url";
+import { StoreContext } from "../StoreContext";
+import { useContext } from "react";
+import { useRouter } from "next/router";
 
 export default function AgrihaProjectDetailsMainDesktopTop() {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [projectDetails, setProjectDetails] = useState([]);
+
+  const [Store] = useContext(StoreContext);
+  const setBidArchitectId = Store.setBidArchitectId;
+  const setBid = Store.setBid;
 
   const router = useRouter();
   const { id } = router.query;
   const projectId = id;
 
   /* GET PROJECT DETAILS */
-  const [projectDetails, setProjectDetails] = useState([]);
   async function getProjects() {
     const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
       method: "GET",
@@ -31,11 +36,8 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
       },
     });
     const data = await res.json();
-    console.log(data);
-    if (data !== null) {
-      console.log(data[0]);
-      setProjectDetails(data[0]);
-    }
+    console.log(data[0]);
+    setProjectDetails(data[0]);
   }
 
   useEffect(() => {
@@ -43,6 +45,20 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
       getProjects();
     }
   }, [projectId]);
+
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const sentRequirement = (id) => {
+    setBidArchitectId(id);
+    setBid(false);
+    window.location.href = "/requirement/basic-details";
+  };
+
+  const sentRequirementBid = () => {
+    setBidArchitectId(null);
+    setBid(true);
+    window.location.href = "/requirement/basic-details";
+  };
 
   return (
     <>
@@ -103,8 +119,8 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                 <div className={styles.profile}>
                   <img
                     src={
-                      projectDetails?.architect_id?.profilepic
-                        ? projectDetails?.architect_id?.profilepic
+                      projectDetails.architect_id?.profilepic
+                        ? projectDetails.architect_id?.profilepic
                         : "/img/landing/profile_img.svg"
                     }
                     alt="profile"
@@ -112,8 +128,12 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   <span>{projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}</span>
                 </div>
                 <div className={styles.buttons}>
-                  <div className={styles.send}>Send requirment</div>
-                  <div className={styles.bid}>Bid</div>
+                  <div className={styles.send} onClick={() => sentRequirement(projectDetails?.architect_id?._id)}>
+                    Send requirment
+                  </div>
+                  <div className={styles.bid} onClick={sentRequirementBid}>
+                    Bid
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,7 +154,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper"
                 >
-                  {projectDetails?.Image?.map((item, index) => {
+                  {projectDetails.Image?.map((item, index) => {
                     return (
                       <SwiperSlide key={index}>
                         <img src={item} alt="" />

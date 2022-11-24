@@ -27,6 +27,7 @@ export const StoreContextProvider = (props) => {
 
   const [bid, setBid] = useState(false);
   const [bidArchitectId, setBidArchitectId] = useState(null);
+  const [loginActive, setLoginActive] = useState(false);
 
   const Store = {
     addProject,
@@ -77,6 +78,8 @@ export const StoreContextProvider = (props) => {
     setBid,
     bidArchitectId,
     setBidArchitectId,
+    loginActive,
+    setLoginActive,
   };
 
   return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;

@@ -1,9 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
+import { GoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import endpoint from "../../src/utils/endpoint";
 import LoginPopupForm from "./login-form";
+import jwt_decode from "jwt-decode";
 
 import styles from "./login-popup.module.css";
 
@@ -14,6 +18,8 @@ export default function LoginPopup() {
   const setRegisterPopup = Store.setRegisterPopup;
   const otpPopup = Store.otpPopup;
   const setOtpPopup = Store.setOtpPopup;
+
+  const setLoginActive = Store.setLoginActive;
 
   const [windowRes, setWindowRes] = useState([]);
   if (typeof window !== "undefined") {
@@ -49,15 +55,46 @@ export default function LoginPopup() {
     }
   }, [otpPopup]);
 
+  /* GOOGLE AUTH */
+  async function handleSubmit(name, email, profile) {
+    axios
+      .post(`${endpoint}/auth/google/Login`, {
+        name: name,
+        email: email,
+        profilePic: profile,
+        role: "user",
+      })
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.message === "user login successfully") {
+          localStorage.setItem("token", response.data.token);
+          window.location.href = "/dashboard";
+        }
+        if (response.data.message === "user registeration successfully") {
+          localStorage.setItem("token", response.data.token);
+          window.location.href = "/requirement/basic-details";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <>
       <div id="LoginPopupOuter" className={styles.LoginPopupOuter}>
-        <div onClick={() => setLoginPopup(false)} className={styles.LoginPopupClose}></div>
+        <div
+          onClick={() => setLoginPopup(false)}
+          className={styles.LoginPopupClose}
+        ></div>
         <div className={styles.LoginPopupInner}>
           {windowRes.innerWidth >= 767 ? (
             <div className={styles.desktop_header}>
               <div className={styles.header_inner}>
-                <div onClick={() => setLoginPopup(false)} className={styles.left}>
+                <div
+                  onClick={() => setLoginPopup(false)}
+                  className={styles.left}
+                >
                   <picture>
                     <img src="/img/landing/header-close.svg" alt="close" />
                   </picture>
@@ -72,7 +109,9 @@ export default function LoginPopup() {
             </div>
           ) : (
             <div className={styles.header}>
-              <div className={`container ${styles.container} ${styles.header_container}`}>
+              <div
+                className={`container ${styles.container} ${styles.header_container}`}
+              >
                 <div className={styles.header_inner}>
                   <div className={styles.left}>
                     <picture>
@@ -94,7 +133,9 @@ export default function LoginPopup() {
                   <div className={styles.sone}>
                     <div className={styles.text}>
                       <div className={styles.textone}>Log in</div>
-                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                      <div className={styles.texttwo}>
+                        OTP will be sent via sms to your Mobile Number
+                      </div>
                     </div>
                   </div>
                   <LoginPopupForm />
@@ -107,14 +148,30 @@ export default function LoginPopup() {
               <div className={styles.desktop_content_outer}>
                 <div className={styles.content_inner}>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
+                    {/* <div className={styles.google}>
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
-                    </div>
+                    </div> */}
+                    <GoogleLogin
+                      onSuccess={(credentialResponse) => {
+                        console.log(credentialResponse);
+                        var decoded = jwt_decode(credentialResponse.credential);
+                        console.log(decoded);
+                        handleSubmit(
+                          decoded.name,
+                          decoded.email,
+                          decoded.picture
+                        );
+                      }}
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                    />
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Not on Agriha services yet? <span onClick={() => showSignup()}>Sign up</span>
+                      Not on Agriha services yet?{" "}
+                      <span onClick={() => showSignup()}>Sign up</span>
                     </div>
                   </div>
                 </div>
@@ -122,15 +179,22 @@ export default function LoginPopup() {
             </>
           ) : (
             <div className={styles.content_outer}>
-              <div className={`container ${styles.container} ${styles.content}`}>
+              <div
+                className={`container ${styles.container} ${styles.content}`}
+              >
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
-                    <div onClick={() => setLoginPopup(false)} className={styles.back}>
+                    <div
+                      onClick={() => setLoginPopup(false)}
+                      className={styles.back}
+                    >
                       <img src="/img/project-details/back.svg" alt="back" />
                     </div>
                     <div className={styles.text}>
                       <div className={styles.textone}>Log in</div>
-                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                      <div className={styles.texttwo}>
+                        OTP will be sent via sms to your Mobile Number
+                      </div>
                     </div>
                   </div>
                   <LoginPopupForm />
@@ -139,14 +203,30 @@ export default function LoginPopup() {
                     <div className={styles.or}>OR</div>
                   </div>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
+                    {/* <div className={styles.google}>
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
-                    </div>
+                    </div> */}
+                    <GoogleLogin
+                      onSuccess={(credentialResponse) => {
+                        console.log(credentialResponse);
+                        var decoded = jwt_decode(credentialResponse.credential);
+                        console.log(decoded);
+                        handleSubmit(
+                          decoded.name,
+                          decoded.email,
+                          decoded.picture
+                        );
+                      }}
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                    />
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Not on Agriha services yet? <span onClick={() => showSignup()}>Sign up</span>
+                      Not on Agriha services yet?{" "}
+                      <span onClick={() => showSignup()}>Sign up</span>
                     </div>
                   </div>
                 </div>

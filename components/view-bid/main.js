@@ -42,6 +42,97 @@ export default function ViewBidMain() {
                 View details
               </div>
             </div>
+
+            <div className={styles.bid__projectCard}>
+              <div className={styles.bid__projectCard__top}>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxBmzMOVh-ZPepjH8lBljYRKI7KKmII2smC8akphenxaWS9K6WWuVX61JtUFugGDxEPeY&usqp=CAU"
+                  alt=""
+                />
+                <div className={styles.bid__projectCard__title}>
+                  <h5>Enter Project name</h5>
+                  <p>project location</p>
+                </div>
+              </div>
+              <div className={styles.bid__projectCard__button}>
+                View details
+              </div>
+            </div>
+            <div className={styles.bid__projectCard}>
+              <div className={styles.bid__projectCard__top}>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxBmzMOVh-ZPepjH8lBljYRKI7KKmII2smC8akphenxaWS9K6WWuVX61JtUFugGDxEPeY&usqp=CAU"
+                  alt=""
+                />
+                <div className={styles.bid__projectCard__title}>
+                  <h5>Enter Project name</h5>
+                  <p>project location</p>
+                </div>
+              </div>
+              <div className={styles.bid__projectCard__button}>
+                View details
+              </div>
+            </div>
+            <div className={styles.bid__projectCard}>
+              <div className={styles.bid__projectCard__top}>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxBmzMOVh-ZPepjH8lBljYRKI7KKmII2smC8akphenxaWS9K6WWuVX61JtUFugGDxEPeY&usqp=CAU"
+                  alt=""
+                />
+                <div className={styles.bid__projectCard__title}>
+                  <h5>Enter Project name</h5>
+                  <p>project location</p>
+                </div>
+              </div>
+              <div className={styles.bid__projectCard__button}>
+                View details
+              </div>
+            </div>
+            <div className={styles.bid__projectCard}>
+              <div className={styles.bid__projectCard__top}>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxBmzMOVh-ZPepjH8lBljYRKI7KKmII2smC8akphenxaWS9K6WWuVX61JtUFugGDxEPeY&usqp=CAU"
+                  alt=""
+                />
+                <div className={styles.bid__projectCard__title}>
+                  <h5>Enter Project name</h5>
+                  <p>project location</p>
+                </div>
+              </div>
+              <div className={styles.bid__projectCard__button}>
+                View details
+              </div>
+            </div>
+            <div className={styles.bid__projectCard}>
+              <div className={styles.bid__projectCard__top}>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxBmzMOVh-ZPepjH8lBljYRKI7KKmII2smC8akphenxaWS9K6WWuVX61JtUFugGDxEPeY&usqp=CAU"
+                  alt=""
+                />
+                <div className={styles.bid__projectCard__title}>
+                  <h5>Enter Project name</h5>
+                  <p>project location</p>
+                </div>
+              </div>
+              <div className={styles.bid__projectCard__button}>
+                View details
+              </div>
+            </div>
+            <div className={styles.bid__projectCard}>
+              <div className={styles.bid__projectCard__top}>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxBmzMOVh-ZPepjH8lBljYRKI7KKmII2smC8akphenxaWS9K6WWuVX61JtUFugGDxEPeY&usqp=CAU"
+                  alt=""
+                />
+                <div className={styles.bid__projectCard__title}>
+                  <h5>Enter Project name</h5>
+                  <p>project location</p>
+                </div>
+              </div>
+              <div className={styles.bid__projectCard__button}>
+                View details
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -23,11 +23,13 @@
 }
 
 .bidCard__container {
-  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .bid__projectCard {
   width: 263px;
+  margin-top: 25px;
 }
 
 .bid__projectCard__top > img {

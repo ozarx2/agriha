@@ -29,15 +29,12 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
-    const res = await fetch(
-      `${api_url}/projects/arcprojectsingle/${projectId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await res.json();
     console.log(data[0]);
     setProjectDetails(data[0]);
@@ -65,10 +62,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
 
   return (
     <>
-      <div
-        id="AgrihaProjectDetail_desktop_section_outer"
-        className={styles.desktop_section_outer}
-      >
+      <div id="AgrihaProjectDetail_desktop_section_outer" className={styles.desktop_section_outer}>
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>
             <div className={styles.sone_inner}>
@@ -118,9 +112,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                 </Swiper>
               </div>
               <div className={styles.right}>
-                <div className={styles.title}>
-                  {projectDetails?.projectname}
-                </div>
+                <div className={styles.title}>{projectDetails?.projectname}</div>
                 <div className={styles.content}>
                   {`${projectDetails?.location} | ${projectDetails?.projectarea}q.ft`}
                 </div>
@@ -133,19 +125,10 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                     }
                     alt="profile"
                   />
-                  <span>
-                    {projectDetails?.architect_id?.firstname +
-                      " " +
-                      projectDetails?.architect_id?.lastname}
-                  </span>
+                  <span>{projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}</span>
                 </div>
                 <div className={styles.buttons}>
-                  <div
-                    className={styles.send}
-                    onClick={() =>
-                      sentRequirement(projectDetails?.architect_id?._id)
-                    }
-                  >
+                  <div className={styles.send} onClick={() => sentRequirement(projectDetails?.architect_id?._id)}>
                     Send requirment
                   </div>
                   <div className={styles.bid} onClick={sentRequirementBid}>

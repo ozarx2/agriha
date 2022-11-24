@@ -2,15 +2,15 @@ import React, { useState, createContext } from "react";
 
 export const StoreContext = createContext();
 export const StoreContextProvider = (props) => {
-  const [addProject, setAddProject] = useState(false);
-  const [menu, setMenu] = useState(false);
-  const [logout, setLogout] = useState(false);
+  const [addProject, setAddProject] = useState(false); // project add for architect dashboard
+  const [menu, setMenu] = useState(false); // menu for architect dashboard
+  const [logout, setLogout] = useState(false); // logout for architect dashboard
   const [notificationPopup, setNotificationPopup] = useState(false);
   const [addProjectImagePopup, setAddProjectImagePopup] = useState(false);
   const [files, setFiles] = useState([]);
   const [fileUploadPopup, setFileUploadPopup] = useState(false);
   const [ongoingPopup, setOngoingPopup] = useState(false);
-  const [searchpopup, setSearchpopup] = useState(false);
+  const [searchpopup, setSearchpopup] = useState(false); // mobile serch popup for agriha homepage
   const [architectId, setArchitectId] = useState("");
   const [architectData, setArchitectData] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -82,9 +82,5 @@ export const StoreContextProvider = (props) => {
     setLoginActive,
   };
 
-  return (
-    <StoreContext.Provider value={[Store]}>
-      {props.children}
-    </StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;
 };

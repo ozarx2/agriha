@@ -1,8 +1,18 @@
 import React from "react";
+import { useContext } from "react";
+import { StoreContext } from "../StoreContext";
 
 import styles from "./single-main.module.css";
 
 export default function SingleProjectsMain() {
+  const [Store] = useContext(StoreContext);
+
+  const setBidDataPopup = Store.setBidDataPopup;
+
+  const acceptClick = () => {
+    setBidDataPopup(true);
+  };
+
   return (
     <>
       <div className={styles.main_outer}>
@@ -42,7 +52,9 @@ export default function SingleProjectsMain() {
           </div>
           <div className={styles.buttons__container}>
             <div className={styles.decline_button}>Decline</div>
-            <div className={styles.accept_button}>Accept</div>
+            <div className={styles.accept_button} onClick={acceptClick}>
+              Accept
+            </div>
           </div>
         </div>
       </div>

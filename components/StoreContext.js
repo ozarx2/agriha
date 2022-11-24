@@ -29,6 +29,7 @@ export const StoreContextProvider = (props) => {
   const [bidArchitectId, setBidArchitectId] = useState(null);
   const [loginActive, setLoginActive] = useState(false);
   const [bidDataPopup, setBidDataPopup] = useState(false);
+  const [allBidArchitect, setAllBidArchitect] = useState([]);
 
   const Store = {
     addProject,
@@ -83,6 +84,8 @@ export const StoreContextProvider = (props) => {
     setLoginActive,
     bidDataPopup,
     setBidDataPopup,
+    allBidArchitect,
+    setAllBidArchitect,
   };
 
   return (

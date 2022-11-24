@@ -1,6 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useRouter } from "next/router";
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
+import api_url from "../../src/utils/url";
 import { StoreContext } from "../StoreContext";
 
 import styles from "./single-main.module.css";
@@ -8,9 +12,40 @@ import styles from "./single-main.module.css";
 export default function SingleProjectsMain() {
   const [Store] = useContext(StoreContext);
 
+  const router = useRouter();
+  const { bid } = router.query;
+  const projectId = bid;
+
   const setBidDataPopup = Store.setBidDataPopup;
 
-  const [projectType, setProjectTyepe] = useState("School/College building");
+  const [projectDetails, setProjectDetilas] = useState([]);
+  const [projectType, setProjectType] = useState("");
+  const [projectTypeDetails, setProjectTypeDetails] = useState([]);
+
+  /* GET PROJECT DETAILS */
+  async function getProjects() {
+    var token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/projects/single/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 200) {
+      setProjectDetilas(data?.data[0]);
+      setProjectType(data?.data[0]?.project_type);
+      setProjectTypeDetails(data?.data[0]?.project_requirements[0]);
+    }
+  }
+
+  useEffect(() => {
+    if (projectId !== undefined) {
+      getProjects();
+    }
+  }, [projectId]);
 
   const acceptClick = () => {
     setBidDataPopup(true);
@@ -20,37 +55,47 @@ export default function SingleProjectsMain() {
     <>
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
-          <div className={styles.title}>Enter Project name</div>
+          <div className={styles.title}>{projectDetails?.project_name}</div>
           <div className={styles.results__container}>
             <div className={styles.resultSection}>
               <p>Project type</p>
               <div className={styles.resultTextContainer}>{projectType}</div>
             </div>
             <div className={styles.resultSection}>
-              <p>Project name</p>
+              <p>Project Code</p>
               <div className={styles.resultTextContainer}>
-                Luxury Appartment
+                {projectDetails?.project_name}
               </div>
             </div>
             <div className={styles.resultSection}>
               <p>Expected area of project</p>
-              <div className={styles.resultTextContainer}>6000 SQFT</div>
+              <div className={styles.resultTextContainer}>
+                {projectTypeDetails?.area} SQFT
+              </div>
             </div>
             <div className={styles.resultSection}>
               <p>Expected Budget of project</p>
-              <div className={styles.resultTextContainer}>₹ 70,000,00</div>
+              <div className={styles.resultTextContainer}>
+                ₹ {projectTypeDetails?.budget}
+              </div>
             </div>
             <div className={styles.resultSection}>
-              <p>Project size</p>
-              <div className={styles.resultTextContainer}>2 BHK</div>
+              <p>Total Plot</p>
+              <div className={styles.resultTextContainer}>
+                {projectTypeDetails?.plot}
+              </div>
             </div>
             <div className={styles.resultSection}>
-              <p>03 floor</p>
-              <div className={styles.resultTextContainer}>Number of floors</div>
+              <p>Number of floors</p>
+              <div className={styles.resultTextContainer}>
+                {projectTypeDetails?.suggessions}
+              </div>
             </div>
             <div className={styles.resultSection}>
-              <p>Number of unit</p>
-              <div className={styles.resultTextContainer}>07 unit</div>
+              <p>Project Location</p>
+              <div className={styles.resultTextContainer}>
+                {projectTypeDetails?.location}
+              </div>
             </div>
           </div>
 
@@ -58,34 +103,51 @@ export default function SingleProjectsMain() {
             <div className={styles.results__container}>
               <div className={styles.resultSection}>
                 <p>Total Floors</p>
-                <div className={styles.resultTextContainer}>0</div>
+                <div className={styles.resultTextContainer}>
+                  {projectDetails?.project_type_details[0]?.total_floors}
+                </div>
               </div>
               <div className={styles.resultSection}>
                 <p>Total Bedrooms</p>
-                <div className={styles.resultTextContainer}>5</div>
+                <div className={styles.resultTextContainer}>
+                  {projectDetails?.project_type_details[0]?.total_bedroom}
+                </div>
               </div>
               <div className={styles.resultSection}>
                 <p>Total Attched Bathrooms</p>
-                <div className={styles.resultTextContainer}>5</div>
+                <div className={styles.resultTextContainer}>
+                  {projectDetails?.project_type_details[0]?.total_bathroom}
+                </div>
               </div>
               <div className={styles.resultSection}>
                 <p>Total Family members</p>
-                <div className={styles.resultTextContainer}>5</div>
-              </div>
-              <div className={styles.resultSection}>
-                <p>Requirement List</p>
-                <div className={styles.resultTextContainerList}>
-                  <ul>
-                    <li>Bedrrom</li>
-                    <li>Sitout</li>
-                    <li>Kitchen</li>
-                    <li>washroom</li>
-                    <li>gamerrom</li>
-                    <li>patio</li>
-                    <li>varanda</li>
-                  </ul>
+                <div className={styles.resultTextContainer}>
+                  {projectDetails?.project_type_details[0]?.total_familyMembers}
                 </div>
               </div>
+              {projectDetails?.requirement_list.length !==
+              (
+                <>
+                  {projectDetails?.requirement_list?.map((item, index) => {
+                    return (
+                      <div key={index} className={styles.resultSection}>
+                        <p>Requirement List</p>
+                        <div className={styles.resultTextContainerList}>
+                          <ul>
+                            <li>Bedrrom</li>
+                            <li>Sitout</li>
+                            <li>Kitchen</li>
+                            <li>washroom</li>
+                            <li>gamerrom</li>
+                            <li>patio</li>
+                            <li>varanda</li>
+                          </ul>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </>
+              )}
             </div>
           ) : (
             ""

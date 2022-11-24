@@ -24,6 +24,7 @@ export default function Navbar() {
   const setUserProjectsDetails = Store.setUserProjectsDetails;
   const setProjects = Store.setProjects;
   const setArchitect = Store.setArchitectData;
+  const setAllBidArchitect = Store.setAllBidArchitect;
 
   const [notification, setNotification] = useState(false);
   const [path, setPath] = useState("Overview");
@@ -107,11 +108,25 @@ export default function Navbar() {
     setUserProjectsDetails(data.dataresp.details);
   }
 
+  /* GET ALL BID */
+  async function getAllBid() {
+    const res = await fetch(`${api_url}/projects/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    setAllBidArchitect(data.projects);
+  }
+
   useEffect(() => {
     if (architectId !== "") {
       getArchitect();
       getProjects();
       getAssignedProjects();
+      getAllBid();
     }
   }, [architectId]);
 

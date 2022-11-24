@@ -23,7 +23,7 @@ export const StoreContextProvider = (props) => {
   const [loginPopup, setLoginPopup] = useState(false);
   const [registerPopup, setRegisterPopup] = useState(false);
   const [otpPopup, setOtpPopup] = useState(false);
-  const [loginDetails, setLoginDetails] = useState(false);
+  const [loginDetails, setLoginDetails] = useState(true);
 
   const [bid, setBid] = useState(false);
   const [bidArchitectId, setBidArchitectId] = useState(null);

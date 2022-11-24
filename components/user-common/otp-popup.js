@@ -98,10 +98,10 @@ export default function OtpPopup() {
               <div className={styles.desktop_content_outer}>
                 <div className={styles.content_inner}>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
+                    {/* <div className={styles.google}>
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
-                    </div>
+                    </div> */}
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
@@ -142,10 +142,10 @@ export default function OtpPopup() {
                     <div className={styles.or}>OR</div>
                   </div>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
+                    {/* <div className={styles.google}>
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
-                    </div>
+                    </div> */}
                   </div>
                   <div className={styles.sfive}>
                     {loginPopup ? (

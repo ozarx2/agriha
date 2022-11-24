@@ -93,7 +93,7 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper"
               >
-                {projectDetails.Image?.map((item, index) => {
+                {projectDetails?.Image?.map((item, index) => {
                   return (
                     <SwiperSlide key={index}>
                       <img src={item} alt="" />
@@ -110,7 +110,7 @@ export default function AgrihaProjectDetailsMainMobileTop() {
             <div className={styles.stwo_inner}>
               <div className="landing_stwo_inner">
                 <div className={styles.stwo_max}>
-                  <div className={styles.heading}>{projectDetails.projectname}</div>
+                  <div className={styles.heading}>{projectDetails?.projectname}</div>
                   <div className={styles.content}>
                     {`${projectDetails?.location} | ${projectDetails?.projectarea}q.ft`}
                   </div>

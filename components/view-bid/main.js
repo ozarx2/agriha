@@ -10,6 +10,10 @@ export default function ViewBidMain() {
 
   const [Store] = useContext(StoreContext);
 
+  const viewDetailsClick = (id) => {
+    window.location.href = `/view-bid/${id}`;
+  };
+
   return (
     <>
       <div className={styles.main_outer}>
@@ -38,7 +42,10 @@ export default function ViewBidMain() {
                   <p>project location</p>
                 </div>
               </div>
-              <div className={styles.bid__projectCard__button}>
+              <div
+                className={styles.bid__projectCard__button}
+                onClick={() => viewDetailsClick("123")}
+              >
                 View details
               </div>
             </div>

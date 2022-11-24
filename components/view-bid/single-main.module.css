@@ -4,7 +4,8 @@
   margin-top: 91px;
   background-color: #fff;
   margin-left: 6px;
-  height: calc(100vh - 91px);
+  min-height: calc(100vh - 91px);
+  margin-bottom: 6px;
 }
 
 .main_inner {
@@ -49,6 +50,26 @@
   border-radius: 6px;
 }
 
+.resultTextContainerList {
+  width: 337px;
+  border: 0.5px solid #86d3c3;
+  background-color: #f5fffe;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-top: 13px;
+  border-radius: 6px;
+}
+
+.resultTextContainerList > ul > li {
+  list-style: none;
+  color: #019071;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  margin-top: 5px;
+}
+
 .resultSection {
   display: flex;
   flex-direction: column;
@@ -62,6 +83,7 @@
   justify-content: flex-end;
   margin-top: 70px;
   padding-right: 20px;
+  padding-bottom: 50px;
 }
 
 .decline_button {
@@ -96,28 +118,68 @@
   cursor: pointer;
 }
 
+@media only screen and (max-width: 1820px) {
+  .results__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .resultTextContainer {
+    width: 24vw;
+  }
+  .resultTextContainerList {
+    width: 24vw;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .results__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .resultTextContainer {
+    width: 35vw;
+  }
+  .resultTextContainerList {
+    width: 35vw;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .main_outer {
-    margin-top: 70px;
+    margin-top: 88px;
     padding: 20px;
     padding-right: 30px;
   }
 }
 @media only screen and (max-width: 1100px) {
   .main_outer {
-    margin-top: 124px;
+    margin-top: 131px;
     padding-right: 20px;
+    margin-right: 6px;
+  }
+  .resultTextContainer {
+    width: 42vw;
+  }
+  .resultTextContainerList {
+    width: 42vw;
   }
 }
-@media only screen and (max-width: 768px) {
-  .main_outer {
-    margin-top: 124px;
-    padding: 0 20px;
-    padding-top: 6px;
+
+@media only screen and (max-width: 800px) {
+  .results__container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .resultTextContainer {
+    width: 82vw;
+  }
+  .resultTextContainerList {
+    width: 82vw;
   }
 }
+
 @media only screen and (max-width: 576px) {
-  .stwo_grid_outer {
-    width: calc(100% - 20px);
+  .resultTextContainer {
+    width: 99%;
+  }
+  .resultTextContainerList {
+    width: 99%;
   }
 }

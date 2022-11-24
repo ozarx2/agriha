@@ -476,7 +476,7 @@ const BasicDetailsMain = () => {
               )}
               {selectedtype === "School/College building" ? (
                 <div className={styles.residence_details_container}>
-                  <p>Religious building details</p>
+                  <p>School/College building details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.renovation_radio_conatiner}>
                       <div className={styles.complete_radio}>

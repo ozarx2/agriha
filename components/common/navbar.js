@@ -41,6 +41,8 @@ export default function Navbar() {
       setPath("Project files");
     } else if (router.pathname == "/view-bid") {
       setPath("View Bid");
+    } else if (router.pathname == "/view-bid/[id]") {
+      setPath("View Bid");
     } else if (router.pathname == "/dashboard-settings") {
       setPath("Settings");
     } else {
@@ -151,9 +153,17 @@ export default function Navbar() {
                 <span>Back</span>
               </Link>
             </div>
+          ) : router.pathname == "/view-bid/[id]" ? (
+            <div className={styles.back}>
+              <img src="/img/architect-dashboard/back.svg" alt="back.jpg" />
+              <Link href="/view-bid" passHref>
+                <span>Back</span>
+              </Link>
+            </div>
           ) : (
             ""
           )}
+
           <h5>{path}</h5>
         </div>
         <div className={styles.end}>

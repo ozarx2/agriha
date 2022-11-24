@@ -41,6 +41,7 @@ export default function AgrihaLandingMain() {
   const [Store] = useContext(StoreContext);
   const setRegisterPopup = Store.setRegisterPopup;
   const loginDetails = Store.loginDetails;
+  const setArchitectBidtPopup = Store.setArchitectBidtPopup;
 
   /* GET PROJECT TYPES */
   const [projectTypes, setProjectTypes] = useState([]);
@@ -138,7 +139,7 @@ export default function AgrihaLandingMain() {
                       </div>
                       <div className={styles.buttons}>
                         {loginDetails ? (
-                          <div className={styles.start}>
+                          <div className={styles.start} onClick={() => setArchitectBidtPopup(true)}>
                             <img src="/img/landing/plus.svg" alt="plus" />
                             <span>Project</span>
                           </div>

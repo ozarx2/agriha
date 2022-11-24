@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
-import AgrihaLandingHeader from "../../components/user-common/header";
+import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
 import AgrihaProjectDetailsMain from "../../components/project-details/main";
 import LandingFooter from "../../components/user-common/footer";
 import LoginPopup from "../../components/user-common/login-popup";
@@ -27,7 +27,7 @@ export default function AgrihaProjectDetails() {
         <div className={styles.container_outer}>
           <div className={styles.container_inner}>
             <div className={styles.header}>
-              <AgrihaLandingHeader />
+              <AgrihaLandingHeaderNoSearch />
             </div>
             <div className={styles.main}>
               <AgrihaProjectDetailsMain />

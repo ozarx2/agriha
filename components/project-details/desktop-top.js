@@ -51,19 +51,19 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
   const sentRequirement = (id) => {
     setBidArchitectId(id);
     setBid(false);
-    window.location.href = "/requirement/basic-details";
+    router.push("/requirement/basic-details");
   };
 
   const sentRequirementBid = () => {
     setBidArchitectId(null);
     setBid(true);
-    window.location.href = "/requirement/basic-details";
+    router.push("/requirement/basic-details");
   };
 
   return (
     <>
       <div id="AgrihaProjectDetail_desktop_section_outer" className={styles.desktop_section_outer}>
-        <div className={styles.sone_outer}>
+        {/* <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>
             <div className={styles.sone_inner}>
               <div className={styles.search}>
@@ -80,7 +80,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.stwo_outer}>
           <div className={`container ${styles.container} ${styles.stwo}`}>
@@ -119,8 +119,8 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                 <div className={styles.profile}>
                   <img
                     src={
-                      projectDetails.architect_id?.profilepic
-                        ? projectDetails.architect_id?.profilepic
+                      projectDetails?.architect_id?.profilepic
+                        ? projectDetails?.architect_id?.profilepic
                         : "/img/landing/profile_img.svg"
                     }
                     alt="profile"
@@ -154,7 +154,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper"
                 >
-                  {projectDetails.Image?.map((item, index) => {
+                  {projectDetails?.Image?.map((item, index) => {
                     return (
                       <SwiperSlide key={index}>
                         <img src={item} alt="" />

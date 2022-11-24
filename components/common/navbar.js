@@ -39,6 +39,8 @@ export default function Navbar() {
       setPath("Ongoing project");
     } else if (router.pathname == "/project-files") {
       setPath("Project files");
+    } else if (router.pathname == "/view-bid") {
+      setPath("View Bid");
     } else if (router.pathname == "/dashboard-settings") {
       setPath("Settings");
     } else {

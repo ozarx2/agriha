@@ -85,7 +85,7 @@ export default function FnSTwo() {
                 modules={[FreeMode, Pagination]}
                 className="architect_project"
               >
-                {projects?.map((item, index) => {
+                {/*  {projects?.map((item, index) => {
                   return (
                     <div key={index}>
                       <SwiperSlide>
@@ -114,7 +114,7 @@ export default function FnSTwo() {
                       </SwiperSlide>
                     </div>
                   );
-                })}
+                })} */}
               </Swiper>
             </div>
           ) : (

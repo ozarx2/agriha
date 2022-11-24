@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useRouter } from "next/router";
 
 import styles from "./main.module.css";
 import api_url from "../../src/utils/url";
@@ -17,27 +18,15 @@ import { StoreContext } from "../StoreContext";
 export default function AgrihaProjectDetailsMainMobileTop() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  const [projectId, setProjectId] = useState("");
   const [projectDetails, setProjectDetails] = useState([]);
 
   const [Store] = useContext(StoreContext);
   const setBidArchitectId = Store.setBidArchitectId;
   const setBid = Store.setBid;
 
-  /* GET ARCHITECT ID */
-  function getParameters() {
-    let urlString = window.location.href;
-    let paramString = urlString.split("/")[4];
-    let queryString = new URLSearchParams(paramString);
-    for (let pair of queryString.entries()) {
-      setProjectId(pair[0]);
-      console.log(pair[0]);
-    }
-  }
-
-  useEffect(() => {
-    getParameters();
-  }, []);
+  const router = useRouter();
+  const { id } = router.query;
+  const projectId = id;
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
@@ -93,7 +82,7 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper2"
               >
-                {projectDetails.Image?.map((item, index) => {
+                {projectDetails?.Image?.map((item, index) => {
                   return (
                     <SwiperSlide key={index}>
                       <img src={item} alt="" />

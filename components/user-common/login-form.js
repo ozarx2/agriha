@@ -9,6 +9,7 @@ export default function LoginPopupForm() {
 
   const setOtpPopup = Store.setOtpPopup;
   const setLoginActive = Store.setLoginActive;
+  const setLoginDetails = Store.setLoginDetails;
 
   const [phone, setphone] = useState("");
 
@@ -33,6 +34,7 @@ export default function LoginPopupForm() {
     if (data.status === 200) {
       localStorage.setItem("token", data.token);
       setLoginActive(true);
+      setLoginDetails(true);
       setOtpPopup(true);
     }
   }

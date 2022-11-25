@@ -30,6 +30,8 @@ export const StoreContextProvider = (props) => {
   const [loginActive, setLoginActive] = useState(false);
   const [architectSelectPopup, setArchitectSelectPopup] = useState(false);
   const [architectBidPopup, setArchitectBidtPopup] = useState(false);
+  const [bidDataPopup, setBidDataPopup] = useState(false);
+  const [allBidArchitect, setAllBidArchitect] = useState([]);
 
   const Store = {
     addProject,
@@ -86,6 +88,10 @@ export const StoreContextProvider = (props) => {
     setArchitectSelectPopup,
     architectBidPopup,
     setArchitectBidtPopup,
+    bidDataPopup,
+    setBidDataPopup,
+    allBidArchitect,
+    setAllBidArchitect,
   };
 
   return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;

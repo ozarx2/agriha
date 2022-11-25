@@ -11,6 +11,7 @@ import NotificationPopup from "../../components/common/notification-popup";
 import AddProjectImage from "../../components/common/add-project-image";
 
 import styles from "./index-single.module.css";
+import DataPopup from "../../components/view-bid/data-popup";
 
 export default function BidDetails() {
   const [Store] = useContext(StoreContext);
@@ -20,6 +21,7 @@ export default function BidDetails() {
   const logout = Store.logout;
   const notificationPopup = Store.notificationPopup;
   const addProjectImagePopup = Store.addProjectImagePopup;
+  const bidDataPopup = Store.bidDataPopup;
 
   return (
     <>
@@ -50,6 +52,7 @@ export default function BidDetails() {
           {logout ? <LogoutPopup /> : ""}
           {notificationPopup ? <NotificationPopup /> : ""}
           {addProjectImagePopup ? <AddProjectImage /> : ""}
+          {bidDataPopup ? <DataPopup /> : ""}
         </div>
       </div>
     </>

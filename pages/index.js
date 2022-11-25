@@ -44,7 +44,7 @@ export default function AgrihaLanding() {
         {registerPopup ? <RegisterPopup /> : ""}
         {otpPopup ? <OtpPopup /> : ""}
         {architectBidPopup ? <ArchitectBidPopupidPopup /> : ""}
-        {ProfilePopup ? <ProfilePopup /> : ""}
+        {/* {ProfilePopup ? <ProfilePopup /> : ""} */}
       </div>
     </>
   );

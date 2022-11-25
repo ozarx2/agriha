@@ -85,7 +85,9 @@ export default function Navbar() {
     });
 
     const data = await res.json();
-    setProjects(data);
+    if (data.statusCode !== 500) {
+      setProjects(data);
+    }
   }
 
   /* GET USER PROJECTS */

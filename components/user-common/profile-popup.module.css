@@ -1,0 +1,108 @@
+.ProfilePopupOuter {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: inherit;
+}
+.ProfilePopupClose {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+}
+@media only screen and (max-width: 766px) {
+  .ProfilePopupInner {
+    width: 100%;
+    background-color: #f9f6ff;
+    z-index: 4;
+  }
+  .ProfilePopupInner .header {
+  }
+}
+@media only screen and (min-width: 767px) {
+  .ProfilePopupOuter {
+    padding: 5vw;
+  }
+  .ProfilePopupInner {
+    width: 100%;
+    border-radius: 2px;
+    height: fit-content;
+    max-width: 400px;
+    margin: auto;
+    background-color: #f9f6ff;
+    z-index: 4;
+    position: absolute;
+    top: 68px;
+    right: 200px;
+  }
+  .desktop_header {
+    margin: 10px;
+  }
+  .userProfilePicDesktop {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .userProfileDpDesk {
+    border-right: 1px solid #d9d9d9;
+  }
+  .profileDpDesktop {
+    padding: 26px 20px;
+  }
+  .userProfileNameDeskSection {
+    padding: 26px 20px;
+  }
+  .profileName {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #101010;
+  }
+  .subHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.5607px;
+    line-height: 15px;
+    color: #8e8e8e;
+    padding-top: 5px;
+  }
+  .profileTabsDeskMainSection {
+    border-bottom: 1px solid #d9d9d9;
+  }
+  /* .profileTabsDeskMain {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  } */
+  .profileDeskTabs {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #3e3d3d;
+    padding-top: 20px;
+    padding-bottom: 22px;
+  }
+  .desktopProfileLogoutSection {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #383838;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .desktopProfileLogoutSection {
+    padding: 26px 17px;
+  }
+}

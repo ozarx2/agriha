@@ -85,14 +85,7 @@ export default function RegisterPopupForm() {
   return (
     <>
       <div className={styles.stwo}>
-        <input
-          type="text"
-          onChange={storeValues}
-          id="name"
-          name="name"
-          maxLength={24}
-          placeholder="Enter Full name"
-        />
+        <input type="text" onChange={storeValues} id="name" name="name" maxLength={24} placeholder="Enter Full name" />
         <input
           type="tel"
           onChange={storeValues}
@@ -101,17 +94,9 @@ export default function RegisterPopupForm() {
           maxLength={10}
           placeholder="Enter Mobile number"
         />
-        <input
-          type="email"
-          onChange={storeValues}
-          id="email"
-          name="email"
-          maxLength={40}
-          placeholder="Email address"
-        />
+        <input type="email" onChange={storeValues} id="email" name="email" maxLength={40} placeholder="Email address" />
         <div className={styles.privacy}>
-          By continuing you agree to Arclif&apos;s{" "}
-          <span onClick={termsClick}>Terms of Service</span> and{" "}
+          By continuing you agree to Arclif&apos;s <span onClick={termsClick}>Terms of Service</span> and{" "}
           <span onClick={policyClick}>Privacy policy</span>.
         </div>
         <div onClick={() => showOtp()} className={styles.submit}>

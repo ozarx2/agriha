@@ -1,6 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
+import { StoreContext } from "../StoreContext";
+import Link from "next/link";
+import api_url from "../../src/utils/url";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
@@ -8,27 +12,24 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { useRouter } from "next/router";
 
 import styles from "./main.module.css";
-import api_url from "../../src/utils/url";
-import { useContext } from "react";
-import { StoreContext } from "../StoreContext";
 
 export default function AgrihaProjectDetailsMainMobileTop() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  const [projectDetails, setProjectDetails] = useState([]);
-
   const [Store] = useContext(StoreContext);
-  const setBidArchitectId = Store.setBidArchitectId;
-  const setBid = Store.setBid;
+  const setArchitectSelectPopup = Store.setArchitectSelectPopup;
+  const setArchitectBidtPopup = Store.setArchitectBidtPopup;
+  const loginDetails = Store.loginDetails;
+  const setLoginPopup = Store.setLoginPopup;
 
   const router = useRouter();
   const { id } = router.query;
   const projectId = id;
 
   /* GET PROJECT DETAILS */
+  const [projectDetails, setProjectDetails] = useState([]);
   async function getProjects() {
     const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
       method: "GET",
@@ -46,18 +47,6 @@ export default function AgrihaProjectDetailsMainMobileTop() {
       getProjects();
     }
   }, [projectId]);
-
-  const sentRequirement = (id) => {
-    setBidArchitectId(id);
-    setBid(false);
-    window.location.href = "/requirement/basic-details";
-  };
-
-  const sentRequirementBid = () => {
-    setBidArchitectId(null);
-    setBid(true);
-    window.location.href = "/requirement/basic-details";
-  };
 
   return (
     <>
@@ -121,14 +110,25 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                         {projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}
                       </span>
                     </div>
-                    <div className={styles.right}>
-                      <div className={styles.send} onClick={() => sentRequirement(projectDetails?.architect_id?._id)}>
-                        Send requirment
+                    {loginDetails ? (
+                      <div className={styles.right}>
+                        <div className={styles.send} onClick={() => setArchitectSelectPopup(true)}>
+                          Send requirment
+                        </div>
+                        <div className={styles.bid} onClick={() => setArchitectBidtPopup(true)}>
+                          Bid
+                        </div>
                       </div>
-                      <div className={styles.bid} onClick={sentRequirementBid}>
-                        Bid
+                    ) : (
+                      <div className={styles.right}>
+                        <div className={styles.send} onClick={() => setLoginPopup(true)}>
+                          Send requirment
+                        </div>
+                        <div className={styles.bid} onClick={() => setLoginPopup(true)}>
+                          Bid
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>

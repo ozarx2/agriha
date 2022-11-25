@@ -86,7 +86,7 @@ export default function AgrihaLandingHeader() {
 
   const [Store] = useContext(StoreContext);
   const setLoginPopup = Store.setLoginPopup;
-  const loginDetails = Store.loginDetails;
+  const loginActive = Store.loginActive;
   return (
     <>
       <div className={styles.header_outer}>
@@ -119,7 +119,17 @@ export default function AgrihaLandingHeader() {
                         <div>Projects</div>
                       </Link>
                       <Link href="/my-bid" passHref>
-                        <div className={router.pathname == "/my-bid" ? styles.active : ""}>My bid</div>
+                        <div
+                          className={
+                            router.pathname == "/my-bid"
+                              ? styles.active
+                              : router.pathname == "/display-bid"
+                              ? styles.active
+                              : ""
+                          }
+                        >
+                          My bid
+                        </div>
                       </Link>
                       <Link href="/" passHref>
                         <div>Architects</div>
@@ -132,7 +142,7 @@ export default function AgrihaLandingHeader() {
 
                 {windowRes.innerWidth >= 1100 ? (
                   <div className={styles.right}>
-                    {loginDetails ? (
+                    {loginActive ? (
                       <>
                         <div className={styles.profile}>
                           <span>Althaf Rahman</span>
@@ -150,7 +160,7 @@ export default function AgrihaLandingHeader() {
                   </div>
                 ) : (
                   <div className={styles.right}>
-                    {loginDetails ? (
+                    {loginActive ? (
                       <>
                         <div className={styles.profile}>
                           <span>Althaf Rahman</span>
@@ -202,7 +212,17 @@ export default function AgrihaLandingHeader() {
                     <div>Projects</div>
                   </Link>
                   <Link href="/my-bid" passHref>
-                    <div className={router.pathname == "/my-bid" ? styles.active : ""}>My bid</div>
+                    <div
+                      className={
+                        router.pathname == "/my-bid"
+                          ? styles.active
+                          : router.pathname == "/display-bid"
+                          ? styles.active
+                          : ""
+                      }
+                    >
+                      My bid
+                    </div>
                   </Link>
                   <Link href="/" passHref>
                     <div>Architects</div>

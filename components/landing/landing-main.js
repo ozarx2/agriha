@@ -40,7 +40,7 @@ export default function AgrihaLandingMain() {
 
   const [Store] = useContext(StoreContext);
   const setRegisterPopup = Store.setRegisterPopup;
-  const loginDetails = Store.loginDetails;
+  const loginActive = Store.loginActive;
   const setArchitectBidtPopup = Store.setArchitectBidtPopup;
 
   /* GET PROJECT TYPES */
@@ -138,7 +138,7 @@ export default function AgrihaLandingMain() {
                         Lorem Ipsum is simply dummy text of the printing and typesetti
                       </div>
                       <div className={styles.buttons}>
-                        {loginDetails ? (
+                        {loginActive ? (
                           <div className={styles.start} onClick={() => setArchitectBidtPopup(true)}>
                             <img src="/img/landing/plus.svg" alt="plus" />
                             <span>Project</span>
@@ -192,7 +192,7 @@ export default function AgrihaLandingMain() {
                             Leading Architects for you to <span>Design your space</span>
                           </div>
                           <div className={styles.buttons}>
-                            {loginDetails ? (
+                            {loginActive ? (
                               <div className={styles.started}>
                                 <img src="/img/landing/plus.svg" alt="plus" />
                                 <span>Project</span>

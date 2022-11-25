@@ -1,0 +1,113 @@
+.main_outer {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 50px;
+}
+.main_inner {
+}
+
+.no_bid {
+  text-align: center;
+  margin-top: 30vh;
+  margin-bottom: 30vh;
+}
+.no_bid .main {
+  height: 114px;
+}
+.no_bid .text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #575757;
+  margin-top: 31.28px;
+}
+
+@media only screen and (max-width: 766px) {
+  .mobile {
+  }
+  .bid_max_outer {
+  }
+  .bid_outer {
+    display: flex;
+    align-items: center;
+  }
+  .bid_outer > img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .profile {
+  }
+  .name {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #575757;
+  }
+  .rating {
+  }
+  .num {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 9.8241px;
+    line-height: 12px;
+    color: #8d8d8d;
+  }
+  .star {
+  }
+  .cash {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #161616;
+  }
+  .select {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+    background: #642dda;
+    border-radius: 4px;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .bid_max_outer {
+  }
+  .bid_outer {
+  }
+  .bid_outer > img {
+  }
+  .profile {
+  }
+  .name {
+  }
+  .rating {
+  }
+  .num {
+  }
+  .star {
+  }
+  .cash {
+  }
+  .select {
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .desktop {
+  }
+}
+@media only screen and (min-width: 1500px) {
+}
+@media only screen and (max-width: 1100px) {
+}

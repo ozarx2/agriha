@@ -21,7 +21,7 @@ export default function AgrihaProjectDetailsMainMobileTop() {
   const [Store] = useContext(StoreContext);
   const setArchitectSelectPopup = Store.setArchitectSelectPopup;
   const setArchitectBidtPopup = Store.setArchitectBidtPopup;
-  const loginDetails = Store.loginDetails;
+  const loginActive = Store.loginActive;
   const setLoginPopup = Store.setLoginPopup;
 
   const router = useRouter();
@@ -110,13 +110,13 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                         {projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}
                       </span>
                     </div>
-                    {loginDetails ? (
+                    {loginActive ? (
                       <div className={styles.right}>
                         <div className={styles.send} onClick={() => setArchitectSelectPopup(true)}>
                           Send requirment
                         </div>
                         <div className={styles.bid} onClick={() => setArchitectBidtPopup(true)}>
-                          Bid
+                          Tender
                         </div>
                       </div>
                     ) : (
@@ -125,7 +125,7 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                           Send requirment
                         </div>
                         <div className={styles.bid} onClick={() => setLoginPopup(true)}>
-                          Bid
+                          Tender
                         </div>
                       </div>
                     )}

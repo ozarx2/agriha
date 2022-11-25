@@ -5,7 +5,7 @@ import React, { useRef, useState, useEffect } from "react";
 
 import styles from "./main.module.css";
 
-export default function AgrihaMyBidMain() {
+export default function AgrihaDisplayBidMain() {
   const [windowRes, setWindowRes] = useState([]);
 
   if (typeof window !== "undefined") {
@@ -58,13 +58,7 @@ export default function AgrihaMyBidMain() {
             <>
               <div className={styles.no_bid}>
                 <img className={styles.main} src="/img/my-bid/no-bid.svg" alt="no bid" />
-                <div className={styles.text}>You have no bid list</div>
-                <div className={styles.button}>
-                  <div className={styles.button_flex}>
-                    <img src="/img/my-bid/plus.svg" alt="plus" />
-                    <span>Create a bid</span>
-                  </div>
-                </div>
+                <div className={styles.text}>You have no bid received</div>
               </div>
             </>
           )}
@@ -79,24 +73,16 @@ const AgrihaMyBidMainMyBid = () => {
     <div className={styles.bid_max_outer}>
       {Array.apply(null, { length: 5 }).map((e, i) => (
         <div className={styles.bid_outer} key={i}>
-          <div className={styles.image}>
-            <img src="/img/my-bid/sample.png" alt="bid img" />
-          </div>
-          <div className={styles.time}>
-            <div className={styles.left}>0d : 7h : 15m : 10s</div>
-            <div className={styles.right}>16 Bid now</div>
-          </div>
-          <div className={styles.name}>
-            <div className={styles.left}>Project name</div>
-            <div className={styles.right}>
-              <img src="/img/my-bid/arrow_right.svg" alt="view more" />
+          <img src="/img/display-bid/profile.png" alt="architect photo" />
+          <div className={styles.profile}>
+            <div className={styles.name}>Althaf Rahman</div>
+            <div className={styles.rating}>
+              <div className={styles.num}>4.5</div>
+              <div className={styles.star}>star</div>
             </div>
           </div>
-          <div className={styles.result}>
-            <div className={styles.line}></div>
-            <div className={styles.bid}>Bid Result</div>
-            <div className={styles.line}></div>
-          </div>
+          <div className={styles.cash}>₹ 32 Lakh</div>
+          <div className={styles.select}>Select</div>
         </div>
       ))}
     </div>

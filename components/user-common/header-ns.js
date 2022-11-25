@@ -34,7 +34,7 @@ export default function AgrihaLandingHeaderNoSearch() {
 
   const [Store] = useContext(StoreContext);
   const setLoginPopup = Store.setLoginPopup;
-  const loginDetails = Store.loginDetails;
+  const loginActive = Store.loginActive;
   return (
     <>
       <div className={styles.header_outer}>
@@ -67,7 +67,17 @@ export default function AgrihaLandingHeaderNoSearch() {
                         <div>Projects</div>
                       </Link>
                       <Link href="/my-bid" passHref>
-                        <div className={router.pathname == "/my-bid" ? styles.active : ""}>My bid</div>
+                        <div
+                          className={
+                            router.pathname == "/my-bid"
+                              ? styles.active
+                              : router.pathname == "/display-bid"
+                              ? styles.active
+                              : ""
+                          }
+                        >
+                          My bid
+                        </div>
                       </Link>
                       <Link href="/" passHref>
                         <div>Architects</div>
@@ -80,7 +90,7 @@ export default function AgrihaLandingHeaderNoSearch() {
 
                 {windowRes.innerWidth >= 1100 ? (
                   <div className={styles.right}>
-                    {loginDetails ? (
+                    {loginActive ? (
                       <>
                         <div className={styles.profile}>
                           <span>Althaf Rahman</span>
@@ -98,7 +108,7 @@ export default function AgrihaLandingHeaderNoSearch() {
                   </div>
                 ) : (
                   <div className={styles.right}>
-                    {loginDetails ? (
+                    {loginActive ? (
                       <>
                         <div className={styles.profile}>
                           <span>Althaf Rahman</span>
@@ -122,7 +132,7 @@ export default function AgrihaLandingHeaderNoSearch() {
             ""
           ) : (
             <div className={`container ${styles.container} ${styles.container_menu_mobile_outer}`}>
-              <div id="menu_mobile_outer" className={styles.menu_mobile_outer} style={{ marginTop: "57px" }}>
+              <div id="menu_mobile_outer" className={`${styles.menu_mobile_outer} ${styles.menu_mobile_outer_ns}`}>
                 <div className={styles.menu}>
                   {router.pathname == "/project-details/[id]" ? (
                     <Link href="/" passHref>
@@ -150,7 +160,17 @@ export default function AgrihaLandingHeaderNoSearch() {
                     <div>Projects</div>
                   </Link>
                   <Link href="/my-bid" passHref>
-                    <div className={router.pathname == "/my-bid" ? styles.active : ""}>My bid</div>
+                    <div
+                      className={
+                        router.pathname == "/my-bid"
+                          ? styles.active
+                          : router.pathname == "/display-bid"
+                          ? styles.active
+                          : ""
+                      }
+                    >
+                      My bid
+                    </div>
                   </Link>
                   <Link href="/" passHref>
                     <div>Architects</div>

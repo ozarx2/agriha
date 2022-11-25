@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import endpoint from "../../src/utils/endpoint";
 
@@ -8,8 +8,7 @@ export default function OtpPopupForm() {
   const [Store] = useContext(StoreContext);
 
   const loginActive = Store.loginActive;
-
-  const [otp, setOtp] = useState("");
+  const setBid = Store.setBid;
 
   var a = document.getElementById("a"),
     b = document.getElementById("b"),
@@ -54,6 +53,7 @@ export default function OtpPopupForm() {
     if (data.status === 200) {
       if (data.role === "user") {
         localStorage.setItem("userToken", data.token);
+        setBid(true);
         window.location.href = "/dashboard";
       } else if (data.role === "architect") {
         localStorage.setItem("userToken", data.token);
@@ -81,6 +81,7 @@ export default function OtpPopupForm() {
     if (data.status === 200) {
       if (data.role === "user") {
         localStorage.setItem("userToken", data.token);
+        setBid(true);
         window.location.href = "/requirement/basic-details";
       } else if (data.role === "architect") {
         localStorage.setItem("userToken", data.token);

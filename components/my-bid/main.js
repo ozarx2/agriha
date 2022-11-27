@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
+import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 
 import styles from "./main.module.css";
@@ -94,7 +95,9 @@ const AgrihaMyBidMainMyBid = () => {
           </div>
           <div className={styles.result}>
             <div className={styles.line}></div>
-            <div className={styles.bid}>Bid Result</div>
+            <Link href="/display-bid" passHref>
+              <div className={styles.bid}>Bid Result</div>
+            </Link>
             <div className={styles.line}></div>
           </div>
         </div>

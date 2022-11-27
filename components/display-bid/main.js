@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
+import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
+import StarRatings from "react-star-ratings";
 
 import styles from "./main.module.css";
 
@@ -71,18 +73,38 @@ export default function AgrihaDisplayBidMain() {
 const AgrihaMyBidMainMyBid = () => {
   return (
     <div className={styles.bid_max_outer}>
+      <Link href="/my-bid" passHref>
+        <div className={styles.back}>
+          <img src="/img/my-bid/arrow_left.svg" alt="back" />
+          <span>Your bid list</span>
+        </div>
+      </Link>
       {Array.apply(null, { length: 5 }).map((e, i) => (
         <div className={styles.bid_outer} key={i}>
-          <img src="/img/display-bid/profile.png" alt="architect photo" />
-          <div className={styles.profile}>
-            <div className={styles.name}>Althaf Rahman</div>
-            <div className={styles.rating}>
-              <div className={styles.num}>4.5</div>
-              <div className={styles.star}>star</div>
+          <div className={styles.mright}>
+            <img src="/img/display-bid/profile.png" alt="architect photo" />
+            <div className={styles.profile}>
+              <div className={styles.name}>Althaf Rahman</div>
+              <div className={styles.rating}>
+                <div className={styles.num}>4.5</div>
+                <div className={styles.star}>
+                  <StarRatings
+                    rating={3.5}
+                    starRatedColor="#edbc3b"
+                    numberOfStars={5}
+                    starDimension="11px"
+                    starSpacing="0.5px"
+                    name="rating"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          <div className={styles.cash}>₹ 32 Lakh</div>
-          <div className={styles.select}>Select</div>
+
+          <div className={styles.mleft}>
+            <div className={styles.cash}>₹ 32 Lakh</div>
+            <div className={styles.select}>Select</div>
+          </div>
         </div>
       ))}
     </div>

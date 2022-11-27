@@ -7,6 +7,7 @@ import LandingFooter from "../../components/user-common/footer";
 import LoginPopup from "../../components/user-common/login-popup";
 import RegisterPopup from "../../components/user-common/register-popup";
 import OtpPopup from "../../components/user-common/otp-popup";
+import ProfilePopup from "../../components/user-common/profile-popup";
 
 import styles from "./index.module.css";
 
@@ -16,6 +17,7 @@ export default function AgrihaProjectDetailsBidUserView() {
   const loginPopup = Store.loginPopup;
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
+  const profilePopup = Store.profilePopup;
 
   return (
     <>
@@ -41,6 +43,7 @@ export default function AgrihaProjectDetailsBidUserView() {
         {loginPopup ? <LoginPopup /> : ""}
         {registerPopup ? <RegisterPopup /> : ""}
         {otpPopup ? <OtpPopup /> : ""}
+        {profilePopup ? <ProfilePopup /> : ""}
       </div>
     </>
   );

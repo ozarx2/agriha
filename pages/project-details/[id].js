@@ -9,6 +9,7 @@ import RegisterPopup from "../../components/user-common/register-popup";
 import OtpPopup from "../../components/user-common/otp-popup";
 import ArchitectSelectPopup from "../../components/user-common/architect-select-popup";
 import ArchitectBidPopup from "../../components/user-common/architect-bid-popup";
+import ProfilePopup from "../../components/user-common/profile-popup";
 
 import styles from "./index.module.css";
 
@@ -20,6 +21,7 @@ export default function AgrihaProjectDetails() {
   const otpPopup = Store.otpPopup;
   const architectSelectPopup = Store.architectSelectPopup;
   const architectBidPopup = Store.architectBidPopup;
+  const profilePopup = Store.profilePopup;
 
   return (
     <>
@@ -47,6 +49,7 @@ export default function AgrihaProjectDetails() {
         {otpPopup ? <OtpPopup /> : ""}
         {architectSelectPopup ? <ArchitectSelectPopup /> : ""}
         {architectBidPopup ? <ArchitectBidPopup /> : ""}
+        {profilePopup ? <ProfilePopup /> : ""}
       </div>
     </>
   );

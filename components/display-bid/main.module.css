@@ -29,15 +29,49 @@
   }
   .bid_max_outer {
   }
+  .back {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 18.15px;
+  }
+  .back span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #3e3e3e;
+  }
+  .back > img {
+    width: 6.21px;
+    margin-right: 15.79px;
+  }
   .bid_outer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: 9px;
+    margin-top: 9px;
+  }
+  .bid_outer:last-child {
+    border-bottom: 1px solid transparent;
+  }
+  .mright {
     display: flex;
     align-items: center;
   }
-  .bid_outer > img {
+  .mleft {
+    display: flex;
+    align-items: center;
+  }
+  .bid_outer .mright > img {
     width: 44px;
     height: 44px;
     object-fit: cover;
     border-radius: 50%;
+    margin-right: 13px;
   }
   .profile {
   }
@@ -50,6 +84,8 @@
     color: #575757;
   }
   .rating {
+    display: flex;
+    align-items: center;
   }
   .num {
     font-family: "Inter";
@@ -58,6 +94,8 @@
     font-size: 9.8241px;
     line-height: 12px;
     color: #8d8d8d;
+    margin-top: 3px;
+    margin-right: 7.1px;
   }
   .star {
   }
@@ -68,6 +106,7 @@
     font-size: 13px;
     line-height: 16px;
     color: #161616;
+    margin-right: 13px;
   }
   .select {
     font-family: "Inter";
@@ -78,28 +117,112 @@
     color: #ffffff;
     background: #642dda;
     border-radius: 4px;
+    padding: 6px 23px;
   }
 }
 @media only screen and (min-width: 767px) {
   .bid_max_outer {
+    display: inline-block;
+    width: calc(100% + 41px);
+    margin: 0 -20.5px;
+  }
+  .back {
+    margin: 20px 15px 39px 20.5px;
+    display: flex;
+    align-items: center;
+  }
+  .back span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #3e3e3e;
+  }
+  .back > img {
+    width: 6.21px;
+    margin-right: 15.69px;
   }
   .bid_outer {
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    padding: 12px;
+    position: relative;
+    margin-bottom: 40px;
+    display: inline-block;
+    float: left;
+    margin: 0 20.5px 60px 20.5px;
   }
-  .bid_outer > img {
+  .mright {
+    text-align: center;
+    padding-top: 19px;
+  }
+  .mleft {
+  }
+  .bid_outer .mright > img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 17px;
   }
   .profile {
   }
   .name {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #575757;
+    text-align: center;
   }
   .rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .num {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 9.8241px;
+    line-height: 12px;
+    color: #8d8d8d;
+    margin-top: 5px;
+    margin-right: 7.1px;
   }
   .star {
   }
   .cash {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #161616;
+    text-align: center;
+    border-top: 1px solid #d9d9d9;
+    padding-top: 12px;
+    margin-top: 12px;
+    padding-bottom: 5px;
   }
   .select {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+    background: #642dda;
+    border-radius: 3px;
+    padding: 7px;
+    text-align: center;
+    border-radius: 3px;
+    position: absolute;
+    bottom: -36px;
+    left: 0;
+    right: 0;
   }
 }
 

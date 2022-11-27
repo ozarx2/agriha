@@ -87,6 +87,7 @@ export default function AgrihaLandingHeader() {
   const [Store] = useContext(StoreContext);
   const setLoginPopup = Store.setLoginPopup;
   const loginActive = Store.loginActive;
+  const setProfilePopup = Store.setProfilePopup;
   return (
     <>
       <div className={styles.header_outer}>
@@ -144,7 +145,7 @@ export default function AgrihaLandingHeader() {
                   <div className={styles.right}>
                     {loginActive ? (
                       <>
-                        <div className={styles.profile}>
+                        <div onClick={() => setProfilePopup(true)} className={styles.profile}>
                           <span>Althaf Rahman</span>
                           <img src="/img/landing/profile_img.svg" alt="profile" />
                         </div>
@@ -162,7 +163,7 @@ export default function AgrihaLandingHeader() {
                   <div className={styles.right}>
                     {loginActive ? (
                       <>
-                        <div className={styles.profile}>
+                        <div onClick={() => setProfilePopup(true)} className={styles.profile}>
                           <span>Althaf Rahman</span>
                           <img src="/img/landing/profile_img.svg" alt="profile" />
                         </div>

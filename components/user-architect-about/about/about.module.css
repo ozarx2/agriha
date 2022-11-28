@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+@media only screen and (max-width: 1100px) {
+  .archTabDetailes {
+    max-width: 10%;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    color: #3d3d3d;
+  }
+  .archTabReadmore {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: #642dda;
+  }
+  .tabDownarrowIcon {
+    padding-left: 10px;
+  }
+  .archTabSubHeadMob {
+    padding-top: 10px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    color: #727272;
+  }
+  .archTabReadmoreMob {
+    background: #642dda;
+    border-radius: 4px;
+    padding: 12px 67px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #ffffff;
+    margin-top: 30px;
+  }
+  .archTabReadmoreMob>div{
+text-align: center;
+
+  }
+  .archTabReadmore {
+    padding-top: 10px;
+  }
+  .archAboutActiveContent {
+    display: block;
+  }
+  .backImg {
+    position: absolute;
+    left: 100px;
+    top: 235px;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  .archTabDetailes {
+    max-width: 10%;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    color: #3d3d3d;
+  }
+  .archTabReadmore {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: #642dda;
+  }
+  .tabDownarrowIcon {
+    padding-left: 10px;
+  }
+  .archTabSubHead {
+    padding-top: 10px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    color: #3d3d3d;
+  }
+  .archTabReadmore {
+    padding-top: 10px;
+  }
+  .archAboutActiveContent {
+    display: block;
+  }
+  .backImg {
+    position: absolute;
+    left: 100px;
+    top: 235px;
+  }
+}

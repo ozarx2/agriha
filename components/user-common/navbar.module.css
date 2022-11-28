@@ -1,0 +1,214 @@
+.header_outer {
+}
+.container.header {
+}
+.header_inner {
+}
+
+.header_inner .main {
+  background: linear-gradient(90deg, #642dda 36.27%, #b264ff 85.73%);
+  /* position: fixed; */
+  width: 100%;
+  top: 0;
+  z-index: 4;
+}
+.header_main_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu_mobile_outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 35px;
+
+  /* transition: all 0.2s ease-in-out; */
+  /* -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out 0s; */
+}
+.menu_mobile_outer .menu {
+  display: flex;
+  align-items: center;
+}
+.menu_mobile_outer .menu > div {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  padding-bottom: 6px;
+  margin-right: 46px;
+}
+.menu_mobile_outer .menu > div.back {
+  position: absolute;
+  left: 0;
+  margin-right: 10px;
+}
+.menu_mobile_outer .menu > div.active {
+  border-bottom: 2px solid #4b19b6;
+}
+.navRightMobileProfile {
+  display: flex;
+  align-items: center;
+}
+.navRightMobileProfile > div {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ffffff;
+}
+.navRightMobileProfile > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 15px 10px;
+}
+.navMobile {
+  display: flex;
+  align-items: center;
+}
+.navsMobile {
+  /* padding: 25px 25px; */
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+.navMobile .actives {
+  border-bottom: 3px solid #4b19b6;
+}
+.navMobile div {
+  padding-top: 10px;
+  padding-bottom: 7px;
+}
+@media only screen and (min-width: 1100px) {
+  .navLeft {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+  .navLeftTitle {
+    margin-left: 50px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+  }
+  .navLeft div {
+    padding-top: 10px;
+    padding-bottom: 7px;
+  }
+  .navLeft .active {
+    border-bottom: 3px solid #ffd686;
+    color: #ffd686;
+  }
+  .navRight {
+    display: flex;
+    align-items: center;
+  }
+  .navRightDiv {
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+  }
+  .navLivechat {
+    padding-right: 8px;
+  }
+  .navContact {
+    padding-right: 8px;
+  }
+  .navRightTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #eeeeee;
+  }
+  .addProjectBtn {
+    /* background: linear-gradient(90deg, #098482 -0.23%, #199670 99.97%); */
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #642dda;
+  }
+  .addProjectIcon {
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .container {
+    padding: 0 4vw;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .navLeft {
+    padding-left: 5px;
+  }
+}
+@media only screen and (max-width: 1355px) {
+  .navLeft {
+    padding-left: 0px;
+  }
+  .text {
+    font-size: 10px;
+  }
+  .navRightTitle {
+    font-size: 12px;
+  }
+  .navLeftTitle {
+    font-size: 13px;
+  }
+  .addProjectBtn {
+    font-size: 11px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .navRightTitle {
+    display: none;
+  }
+  .navLeft {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .navLeft div {
+    padding-top: 5px;
+    padding-bottom: 4px;
+  }
+  .navLeftTitle {
+    font-size: 12px;
+  }
+  .addProjectBtn {
+    font-size: 10px;
+  }
+}

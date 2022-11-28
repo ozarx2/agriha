@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import styles from "./project.module.css";
 
@@ -29,40 +32,20 @@ const FnProject = () => {
           <div className={styles.archProjectSection}>
             <div className={styles.archProjPicSection}>
               <div className={styles.archProjectPic}>
-                <img
-                  src="/img/architect-project/picone.svg"
-                  alt="projectpic1.svg"
-                />
-                <div className={styles.archProjectTitle}>
-                  Home Staging & Interiors
-                </div>
+                <img src="/img/architect-project/picone.svg" alt="projectpic1.svg" />
+                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
               </div>
               <div className={styles.archProjectPic}>
-                <img
-                  src="/img/architect-project/pictwo.svg"
-                  alt="projectpic1.svg"
-                />
-                <div className={styles.archProjectTitle}>
-                  Home Staging & Interiors
-                </div>
+                <img src="/img/architect-project/pictwo.svg" alt="projectpic1.svg" />
+                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
               </div>
               <div className={styles.archProjectPic}>
-                <img
-                  src="/img/architect-project/picone.svg"
-                  alt="projectpic1.svg"
-                />
-                <div className={styles.archProjectTitle}>
-                  Home Staging & Interiors
-                </div>
+                <img src="/img/architect-project/picone.svg" alt="projectpic1.svg" />
+                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
               </div>
               <div className={styles.archProjectPic}>
-                <img
-                  src="/img/architect-project/picthree.svg"
-                  alt="projectpic1.svg"
-                />
-                <div className={styles.archProjectTitle}>
-                  Home Staging & Interiors
-                </div>
+                <img src="/img/architect-project/picthree.svg" alt="projectpic1.svg" />
+                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
               </div>
             </div>
           </div>
@@ -72,22 +55,12 @@ const FnProject = () => {
           <div className={styles.archProjectSection}>
             <div className={styles.archProjPicSection}>
               <div className={styles.archProjectPic}>
-                <img
-                  src="/img/architect-project/mobile/picone.svg"
-                  alt="projectpic1.svg"
-                />
-                <div className={styles.archProjectTitle}>
-                  Home Staging & Interiors
-                </div>
+                <img src="/img/architect-project/mobile/picone.svg" alt="projectpic1.svg" />
+                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
               </div>
               <div className={styles.archProjectPic}>
-                <img
-                  src="/img/architect-project/mobile/picone.svg"
-                  alt="projectpic1.svg"
-                />
-                <div className={styles.archProjectTitle}>
-                  Home Staging & Interiors
-                </div>
+                <img src="/img/architect-project/mobile/picone.svg" alt="projectpic1.svg" />
+                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
               </div>
             </div>
           </div>

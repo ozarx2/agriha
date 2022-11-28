@@ -110,7 +110,7 @@ const NavbarUserDesktop = () => {
                     </div>
                   </Link> */}
 
-                      <Link href="/user-my-project">
+                      <Link href="/user-my-project" passHref>
                         <div
                           className={`${styles.navLeftTitle} ${
                             router.pathname == "/user-my-project" ? styles.active : ""
@@ -120,7 +120,7 @@ const NavbarUserDesktop = () => {
                         </div>
                       </Link>
 
-                      <Link href="/user-my-architect">
+                      <Link href="/user-my-architect" passHref>
                         <div
                           className={`${styles.navLeftTitle} ${
                             router.pathname == "/user-my-architect" ? styles.active : ""
@@ -187,7 +187,7 @@ const NavbarUserDesktop = () => {
               >
                 <div className={styles.navMobile}>
                   <div className={styles.navsMobile}>For you</div>
-                  <Link href="/user-my-project">
+                  <Link href="/user-my-project" passHref>
                     <div
                       className={`${styles.navsMobile} ${router.pathname == "/user-my-project" ? styles.actives : ""}`}
                     >
@@ -196,7 +196,7 @@ const NavbarUserDesktop = () => {
                   </Link>
 
                   <div className={styles.navsMobile}>My bid</div>
-                  <Link href="/user-my-architect">
+                  <Link href="/user-my-architect" passHref>
                     <div
                       className={`${styles.navsMobile} ${
                         router.pathname == "/user-my-architect" ? styles.actives : ""

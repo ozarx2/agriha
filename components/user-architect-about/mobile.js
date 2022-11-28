@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import StarRatings from "react-star-ratings";
@@ -18,12 +19,8 @@ const UserArchitectAboutMobile = () => {
         <div className={styles.coverMob}>
           <img src="/img/architect-about/mobile/covermob.svg" alt="" />
 
-          <Link href="/user-my-architect">
-            <div
-              className={`${styles.backIcon} ${
-                router.pathname == "/user-my-architect"
-              }`}
-            >
+          <Link href="/user-my-architect" passHref>
+            <div className={`${styles.backIcon} ${router.pathname == "/user-my-architect"}`}>
               <img src="/img/architect-about/mobile/backmob.svg" alt="" />
             </div>
           </Link>
@@ -34,10 +31,7 @@ const UserArchitectAboutMobile = () => {
               <div className={styles.sone_outer}>
                 <div className={`container ${styles.container} ${styles.sone}`}>
                   <div className={styles.archNameSectionMob}>
-                    <img
-                      src="/img/architect/mobile/profileMob.svg"
-                      alt="profileMob.svg"
-                    />
+                    <img src="/img/architect/mobile/profileMob.svg" alt="profileMob.svg" />
                     <div className={styles.archNameStarSectionMob}>
                       <div>National design group</div>
                       <div className={styles.archStarSectionMob}>
@@ -56,28 +50,19 @@ const UserArchitectAboutMobile = () => {
                   <div className={styles.callShareSaveSecMainMob}>
                     <div>
                       <div className={styles.callShareSaveSecMob}>
-                        <img
-                          src="/img/architect-about/mobile/contactMob.svg"
-                          alt="contactMob.svg"
-                        />
+                        <img src="/img/architect-about/mobile/contactMob.svg" alt="contactMob.svg" />
                         <div>Contact</div>
                       </div>
                     </div>
                     <div>
                       <div className={styles.callShareSaveSecMob}>
-                        <img
-                          src="/img/architect-about/mobile/shareMob.svg"
-                          alt="shareMob.svg"
-                        />
+                        <img src="/img/architect-about/mobile/shareMob.svg" alt="shareMob.svg" />
                         <div>Share</div>
                       </div>
                     </div>
                     <div>
                       <div className={styles.callShareSaveSecMob}>
-                        <img
-                          src="/img/architect-about/mobile/saveMob.svg"
-                          alt="saveMob.svg"
-                        />
+                        <img src="/img/architect-about/mobile/saveMob.svg" alt="saveMob.svg" />
                         <div>Save</div>
                       </div>
                     </div>
@@ -86,28 +71,16 @@ const UserArchitectAboutMobile = () => {
 
                   <div className={styles.archAboutTabSection}>
                     <div className={styles.archTabTitles}>
-                      <div
-                        onClick={() => setTab("aboutus")}
-                        className={tab == "aboutus" ? styles.tabActive : ""}
-                      >
+                      <div onClick={() => setTab("aboutus")} className={tab == "aboutus" ? styles.tabActive : ""}>
                         About us
                       </div>
-                      <div
-                        onClick={() => setTab("projects")}
-                        className={tab == "projects" ? styles.tabActive : ""}
-                      >
+                      <div onClick={() => setTab("projects")} className={tab == "projects" ? styles.tabActive : ""}>
                         Projects
                       </div>
-                      <div
-                        onClick={() => setTab("awards")}
-                        className={tab == "awards" ? styles.tabActive : ""}
-                      >
+                      <div onClick={() => setTab("awards")} className={tab == "awards" ? styles.tabActive : ""}>
                         Awards
                       </div>
-                      <div
-                        onClick={() => setTab("review")}
-                        className={tab == "review" ? styles.tabActive : ""}
-                      >
+                      <div onClick={() => setTab("review")} className={tab == "review" ? styles.tabActive : ""}>
                         Review
                       </div>
                     </div>

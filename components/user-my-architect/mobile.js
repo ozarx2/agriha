@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import StarRatings from "react-star-ratings";
 import { useRouter } from "next/router";
@@ -18,10 +19,7 @@ const FnUserMyArchitectMobile = () => {
                   <div className={styles.archAboutMainSectionMob}>
                     <div className={styles.archAboutSectionMob}>
                       <div className={styles.archNameSectionMob}>
-                        <img
-                          src="/img/architect/mobile/profileMob.svg"
-                          alt=""
-                        />
+                        <img src="/img/architect/mobile/profileMob.svg" alt="" />
                         <div className={styles.archNameStarSectionMob}>
                           <div>National design group</div>
                           <div className={styles.archStarSectionMob}>
@@ -37,18 +35,13 @@ const FnUserMyArchitectMobile = () => {
                           </div>
                         </div>
                       </div>
-                      <Link href="/user-architect-about">
+                      <Link href="/user-architect-about" passHref>
                         <div
                           className={`${styles.viewProfileBtn} ${
-                            router.pathname == "/user-architect-about"
-                              ? styles.active
-                              : ""
+                            router.pathname == "/user-architect-about" ? styles.active : ""
                           }`}
                         >
-                          <img
-                            src="/img/architect/mobile/rightMob.svg"
-                            alt="rightMob.svg"
-                          />
+                          <img src="/img/architect/mobile/rightMob.svg" alt="rightMob.svg" />
                         </div>
                       </Link>
                       {/* <div>
@@ -58,31 +51,18 @@ const FnUserMyArchitectMobile = () => {
                   </div>
                   <div className={styles.archDetailSecMainMob}>
                     <div className={styles.archDetailSecMob}>
-                      <img
-                        src="/img/architect/mobile/locationMob.svg"
-                        alt="locationMob"
-                      />
+                      <img src="/img/architect/mobile/locationMob.svg" alt="locationMob" />
                       <span>Pallikunnu, Kannur, Kerala, 670005</span>
                     </div>
                     <div className={styles.archReadmoreMob}>
-                      An experienced interior designer can transform your place
-                      in designer can transform your place
+                      An experienced interior designer can transform your place in designer can transform your place
                     </div>
                     <div className={styles.archReadmoreBtnMob}>
-                      <Link href="/user-architect-about">
-                        <div
-                          className={` ${
-                            router.pathname == "/user-architect-about"
-                              ? styles.active
-                              : ""
-                          }`}
-                        >
+                      <Link href="/user-architect-about" passHref>
+                        <div className={` ${router.pathname == "/user-architect-about" ? styles.active : ""}`}>
                           Read more{" "}
                           <span>
-                            <img
-                              src="/img/architect/mobile/downMob.svg"
-                              alt="downMob"
-                            />
+                            <img src="/img/architect/mobile/downMob.svg" alt="downMob" />
                           </span>
                         </div>
                       </Link>

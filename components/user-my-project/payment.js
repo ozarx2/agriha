@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import styles from "./payment.module.css";
 
 const FnPayment = () => {
@@ -16,9 +17,7 @@ const FnPayment = () => {
                   <img src="/img/my-project-user/info.svg" alt="info.svg" />
                 </span>
               </div>
-              <div className={styles.paymentDate}>
-                30/10/2021
-              </div>
+              <div className={styles.paymentDate}>30/10/2021</div>
             </div>
             <div className={styles.paymentRate}>
               ₹ 25,000.00
@@ -28,11 +27,7 @@ const FnPayment = () => {
               <div className={styles.paymentDetailesBtnOne}>View Bill</div>
               <div className={styles.paymentDetailesBtnTwo}>
                 <span>
-                  <img
-                    src="/img/my-project-user/download.svg"
-                    alt="download.svg"
-                    className={styles.download}
-                  />
+                  <img src="/img/my-project-user/download.svg" alt="download.svg" className={styles.download} />
                 </span>
                 Download Bill
               </div>
@@ -54,9 +49,7 @@ const FnPayment = () => {
             </div>
             <div className={styles.currentPaymentDetailesBtnSection}>
               <div className={styles.currentPaymentDetailesBtnOne}>Pay Now</div>
-              <div className={styles.currentPaymentDetailesBtnTwo}>
-                Pay on Direct
-              </div>
+              <div className={styles.currentPaymentDetailesBtnTwo}>Pay on Direct</div>
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import FnFileFolder from "./folders";
 import FnPayment from "./payment";
@@ -32,11 +33,7 @@ const FnOngoingProjectUserSide = () => {
           <div className={styles.showMoreBtnSection}>
             <div className={styles.suggestion}>
               <div>
-                <img
-                  src="/img/my-project-user/suggestion.svg"
-                  alt="suggestion.svg"
-                />{" "}
-                Suggestion
+                <img src="/img/my-project-user/suggestion.svg" alt="suggestion.svg" /> Suggestion
               </div>
             </div>
             {/* <div
@@ -82,9 +79,7 @@ const FnOngoingProjectUserSide = () => {
               </div>
               <div className={styles.profileStatusRight}>
                 <div className={styles.profileStatus}>In progress</div>
-                <div className={styles.profileStatus}>
-                  25 Feb 2022(20 days ago)
-                </div>
+                <div className={styles.profileStatus}>25 Feb 2022(20 days ago)</div>
                 <div className={styles.profileStatus}>3D designing</div>
                 <div className={styles.profileStatus}>Pending</div>
               </div>
@@ -106,11 +101,7 @@ const FnOngoingProjectUserSide = () => {
               <div className={styles.cancelBtn}>cancel</div>
               <div className={styles.uploadBtnMain}>
                 <div className={styles.uploadBtn}>
-                  <img
-                    src="/img/my-project-user/upload.svg"
-                    alt="upload.svg"
-                    className={styles.upload}
-                  />
+                  <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
                   Upload
                 </div>
               </div>
@@ -130,10 +121,7 @@ const FnOngoingProjectUserSide = () => {
                   <div className={styles.dataDate}>27/10/2022</div>
                   <div className={styles.dataLock}>
                     <div>
-                      <img
-                        src="/img/my-project-user/unlock.svg"
-                        alt="unlock.svg"
-                      />
+                      <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
                       Unlock file
                     </div>
                   </div>

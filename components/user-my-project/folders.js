@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import styles from "./folder.module.css";
 
 const FnFileFolder = () => {
@@ -21,29 +22,17 @@ const FnFileFolder = () => {
               <div className={styles.filefolderSearch}>
                 <img src="/img/my-project-user/search.svg" alt="" />
                 <div className={styles.searchbardiv}>
-                  <input
-                    type="search"
-                    placeholder="Search folder here..."
-                    className={styles.searchbar}
-                  />
+                  <input type="search" placeholder="Search folder here..." className={styles.searchbar} />
                 </div>
               </div>
             </div>
             <div className={styles.sortSection}>
               <div className={styles.sortList}>
-                <img
-                  src="/img/my-project-user/sort.svg"
-                  alt="sort.svg"
-                  className={styles.sortIcon}
-                />
+                <img src="/img/my-project-user/sort.svg" alt="sort.svg" className={styles.sortIcon} />
                 <div>Sort list</div>
               </div>
               <div className={styles.createFolder}>
-                <img
-                  src="/img/my-project-user/foldertrans.svg"
-                  alt="foldertrans.svg"
-                  className={styles.foldertrans}
-                />
+                <img src="/img/my-project-user/foldertrans.svg" alt="foldertrans.svg" className={styles.foldertrans} />
                 <div>Create folder</div>
               </div>
             </div>
@@ -57,11 +46,7 @@ const FnFileFolder = () => {
                   <div className={styles.fileFolderdate}>21/12/2022</div>
                 </div>
                 <div>
-                  <img
-                    src="/img/my-project-user/more.svg"
-                    alt="more.svg"
-                    className={styles.more}
-                  />
+                  <img src="/img/my-project-user/more.svg" alt="more.svg" className={styles.more} />
                 </div>
               </div>
             </div>
@@ -73,11 +58,7 @@ const FnFileFolder = () => {
                   <div className={styles.fileFolderdate}>21/12/2022</div>
                 </div>
                 <div>
-                  <img
-                    src="/img/my-project-user/more.svg"
-                    alt="more.svg"
-                    className={styles.more}
-                  />
+                  <img src="/img/my-project-user/more.svg" alt="more.svg" className={styles.more} />
                 </div>
               </div>
             </div>
@@ -89,11 +70,7 @@ const FnFileFolder = () => {
                   <div className={styles.fileFolderdate}>21/12/2022</div>
                 </div>
                 <div>
-                  <img
-                    src="/img/my-project-user/more.svg"
-                    alt="more.svg"
-                    className={styles.more}
-                  />
+                  <img src="/img/my-project-user/more.svg" alt="more.svg" className={styles.more} />
                 </div>
               </div>
             </div>
@@ -105,11 +82,7 @@ const FnFileFolder = () => {
                   <div className={styles.fileFolderdate}>21/12/2022</div>
                 </div>
                 <div>
-                  <img
-                    src="/img/my-project-user/more.svg"
-                    alt="more.svg"
-                    className={styles.more}
-                  />
+                  <img src="/img/my-project-user/more.svg" alt="more.svg" className={styles.more} />
                 </div>
               </div>
             </div>

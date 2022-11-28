@@ -41,7 +41,7 @@ const FnFileFolder = () => {
             <div className={styles.fileUploadsSection}>
               <div className={styles.fileUploadDiv}>
                 <div className={styles.fileUpload}>
-                  <img src="/img/my-project-user/folder.svg" alt="folder.svg" />
+                  <img src="/img/my-project-user/Folder.svg" alt="folder.svg" />
                   <div className={styles.fileFolderTitle}>Site plans</div>
                   <div className={styles.fileFolderdate}>21/12/2022</div>
                 </div>
@@ -53,7 +53,7 @@ const FnFileFolder = () => {
             <div className={styles.fileUploadsSection}>
               <div className={styles.fileUploadDiv}>
                 <div className={styles.fileUpload}>
-                  <img src="/img/my-project-user/folder.svg" alt="folder.svg" />
+                  <img src="/img/my-project-user/Folder.svg" alt="folder.svg" />
                   <div className={styles.fileFolderTitle}>Interior</div>
                   <div className={styles.fileFolderdate}>21/12/2022</div>
                 </div>

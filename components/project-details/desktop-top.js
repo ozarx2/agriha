@@ -121,7 +121,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                       Send requirment
                     </div>
                     <div className={styles.bid} onClick={() => setArchitectBidtPopup(true)}>
-                      Tender
+                      Invite Quote
                     </div>
                   </div>
                 ) : (
@@ -130,7 +130,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                       Send requirment
                     </div>
                     <div className={styles.bid} onClick={() => setLoginPopup(true)}>
-                      Tender
+                      Invite Quote
                     </div>
                   </div>
                 )}

@@ -5,6 +5,7 @@ import React, { useRef, useState, useEffect, useContext } from "react";
 import api_url from "../../src/utils/url";
 import AgrihaImageGrid from "../user-common/image-grid";
 import { StoreContext } from "../../components/StoreContext";
+import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Keyboard, Autoplay, Pagination, Navigation } from "swiper";
@@ -141,7 +142,7 @@ export default function AgrihaLandingMain() {
                         {loginActive ? (
                           <div className={styles.start} onClick={() => setArchitectBidtPopup(true)}>
                             <img src="/img/landing/plus.svg" alt="plus" />
-                            <span>Project</span>
+                            <span>Invite Quote</span>
                           </div>
                         ) : (
                           <div className={styles.start} onClick={() => setRegisterPopup(true)}>
@@ -193,9 +194,9 @@ export default function AgrihaLandingMain() {
                           </div>
                           <div className={styles.buttons}>
                             {loginActive ? (
-                              <div className={styles.started}>
+                              <div className={styles.started} onClick={() => setArchitectBidtPopup(true)}>
                                 <img src="/img/landing/plus.svg" alt="plus" />
-                                <span>Project</span>
+                                <span>Invite Quote</span>
                               </div>
                             ) : (
                               <div onClick={() => setRegisterPopup(true)} className={styles.started}>
@@ -232,10 +233,14 @@ export default function AgrihaLandingMain() {
                           className="mySwiper"
                         >
                           <SwiperSlide>
-                            <img src="/img/landing/s1.JPEG" alt="s1" />
+                            <Link href="https://www.arclif.com/" passHref>
+                              <img src="/img/landing/s1.JPEG" alt="s1" />
+                            </Link>
                           </SwiperSlide>
                           <SwiperSlide>
-                            <img src="/img/landing/s3.JPEG" alt="s3" />
+                            <Link href="/my-bid" passHref>
+                              <img src="/img/landing/s3.JPEG" alt="s3" />
+                            </Link>
                           </SwiperSlide>
                         </Swiper>
                       </div>

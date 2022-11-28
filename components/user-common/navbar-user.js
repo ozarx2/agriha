@@ -110,6 +110,16 @@ const NavbarUserDesktop = () => {
                     </div>
                   </Link> */}
 
+                      <Link href="/" passHref>
+                        <div
+                          className={`${styles.navLeftTitle} ${router.pathname == "/" ? styles.active : ""} ${
+                            router.pathname == "/project-details/[id]" ? styles.active : ""
+                          }`}
+                        >
+                          For You
+                        </div>
+                      </Link>
+
                       <Link href="/user-my-project" passHref>
                         <div
                           className={`${styles.navLeftTitle} ${
@@ -117,6 +127,16 @@ const NavbarUserDesktop = () => {
                           }`}
                         >
                           My Projects
+                        </div>
+                      </Link>
+
+                      <Link href="/my-bid" passHref>
+                        <div
+                          className={`${styles.navLeftTitle} ${router.pathname == "/my-bid" ? styles.active : ""} ${
+                            router.pathname == "/display-bid" ? styles.active : ""
+                          }`}
+                        >
+                          My bid
                         </div>
                       </Link>
 
@@ -186,7 +206,15 @@ const NavbarUserDesktop = () => {
                 // style={{ marginTop: "57px" }}
               >
                 <div className={styles.navMobile}>
-                  <div className={styles.navsMobile}>For you</div>
+                  <Link href="/" passHref>
+                    <div
+                      className={`${styles.navsMobile} ${router.pathname == "/" ? styles.actives : ""} ${
+                        router.pathname == "/project-details/[id]" ? styles.actives : ""
+                      }`}
+                    >
+                      For you
+                    </div>
+                  </Link>
                   <Link href="/user-my-project" passHref>
                     <div
                       className={`${styles.navsMobile} ${router.pathname == "/user-my-project" ? styles.actives : ""}`}
@@ -195,7 +223,15 @@ const NavbarUserDesktop = () => {
                     </div>
                   </Link>
 
-                  <div className={styles.navsMobile}>My bid</div>
+                  <Link href="/my-bid" passHref>
+                    <div
+                      className={`${styles.navsMobile} ${router.pathname == "/my-bid" ? styles.actives : ""} ${
+                        router.pathname == "/display-bid" ? styles.actives : ""
+                      }`}
+                    >
+                      My bid
+                    </div>
+                  </Link>
                   <Link href="/user-my-architect" passHref>
                     <div
                       className={`${styles.navsMobile} ${

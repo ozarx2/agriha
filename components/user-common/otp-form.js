@@ -10,6 +10,8 @@ export default function OtpPopupForm() {
   const loginActive = Store.loginActive;
   const setBid = Store.setBid;
   const setOtpPopup = Store.setOtpPopup;
+  const setLoginPopup = Store.setLoginPopup;
+  const setRegisterPopup = Store.setRegisterPopup;
 
   var a = document.getElementById("a"),
     b = document.getElementById("b"),
@@ -56,9 +58,14 @@ export default function OtpPopupForm() {
         localStorage.setItem("userToken", data.token);
         setBid(true);
         setOtpPopup(false);
+        setLoginPopup(false);
+        setRegisterPopup(false);
         // window.location.href = "/dashboard";
       } else if (data.role === "architect") {
         localStorage.setItem("userToken", data.token);
+        setOtpPopup(false);
+        setLoginPopup(false);
+        setRegisterPopup(false);
         window.location.href = `/architect-dashboard/${data.id}`;
       }
     }

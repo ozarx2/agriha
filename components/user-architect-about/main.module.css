@@ -1,0 +1,541 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+.main_outer {
+  display: inline-block;
+  width: 100%;
+  /* margin-bottom: 20px; */
+}
+@media only screen and (max-width: 1100px) {
+  .coverMob > img {
+    width: 100%;
+  }
+  .coverMob > div {
+    position: absolute;
+    top: 20%;
+    left: 4%;
+  }
+  .archAboutMainSectionMob {
+  }
+  .archAboutSectionMob {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .archNameSectionMob {
+    border-bottom: 1px solid #ebebeb;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .archNameSectionMob > img {
+    padding-right: 6.5px;
+  }
+  .archNameSectionMob > div {
+    padding-left: 6.5px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3d3d3d;
+  }
+  .archStarSectionMob {
+    display: flex;
+    align-items: center;
+    padding-bottom: 4.5px;
+  }
+  .archStarSectionMob > div {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #8d8d8d;
+    padding-top: 4.5px;
+    padding-right: 4.5px;
+  }
+  .archStarSectionMob > img {
+    padding-left: 4.5px;
+    padding-top: 5.5px;
+  }
+  .callShareSaveSecMainMob {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .callShareSaveSecMob {
+    display: flex;
+    align-items: center;
+  }
+  .callShareSaveSecMob > img {
+    padding-right: 5.5px;
+  }
+  .callShareSaveSecMob > div {
+    padding-left: 5.5px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #818181;
+  }
+  /*-----ARCHITECT TAB  SECTION-------*/
+
+  .archAboutTabSection {
+    padding-top: 20px;
+  }
+
+  .archTabTitles {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #efefef;
+  }
+  .archTabTitles > div {
+    /* margin-right: 35px;
+    margin-left: 5px; */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #868686;
+    padding-bottom: 10px;
+  }
+
+  .archTabTitles div.tabActive {
+    border-bottom: 3px solid #642dda;
+    color: #642dda;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  .main {
+    display: flex;
+    background: #fff;
+    border-radius: 2px;
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    padding: 22px;
+  }
+  .container_inner {
+    width: 100%;
+  }
+  .archCover {
+    position: relative;
+  }
+  .archCover > div {
+    position: absolute;
+    top: 23px;
+    left: 28px;
+  }
+  .archCoverPic {
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+  }
+  .archProfileArea {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+  .archAboutMainLeftSection {
+    padding-right: 20px;
+  }
+  .archProfileSectionMain {
+    display: flex;
+  }
+  .archProfileRating {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+  }
+  .archProfileName {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #404040;
+  }
+  .ratingNumber {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8d8d8d;
+  }
+  .ratingStar {
+    width: 110.96px;
+    height: 16.36px;
+  }
+  .ratingReviews {
+    padding-left: 10px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #454545;
+  }
+  .archProfileSection {
+    padding-left: 15px;
+  }
+  .profileSubHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    padding-top: 10px;
+  }
+  .archProfileSectionMainRight {
+    display: flex;
+  }
+  .archOptionsIcons {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #818181;
+    padding-left: 10px;
+    padding-right: 30px;
+    margin: 10px;
+  }
+  .archOptionsSelectBtn {
+    color: #fff;
+    background: #642dda;
+    border-radius: 3px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 23px;
+    padding: 6px 30px;
+  }
+  .contactIcon {
+    padding-right: 5px;
+  }
+  .shareIcon {
+    padding-right: 5px;
+  }
+  .heartIcon {
+    padding-right: 5px;
+  }
+
+  /*-----ARCHITECT TAB  SECTION-------*/
+
+  .archAboutTabSection {
+    padding-top: 20px;
+  }
+
+  .archTabTitles {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+  }
+  .archTabTitles > div {
+    margin-right: 35px;
+    margin-left: 5px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    padding-bottom: 10px;
+  }
+
+  .archTabTitles div.tabActive {
+    border-bottom: 3px solid #642dda;
+  }
+  /* .archTabTitles span {
+        padding-right: 8%;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+      } */
+  /*-----ARCHITECT ABOUT  SECTION-------*/
+
+  .archTabDetailes {
+    max-width: 10%;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    color: #3d3d3d;
+  }
+  .archTabReadmore {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: #642dda;
+  }
+  .tabDownarrowIcon {
+    padding-left: 10px;
+  }
+  .archTabSubHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    color: #3d3d3d;
+    padding-top: 10px;
+  }
+  .archTabReadmore {
+    padding-top: 10px;
+  }
+
+  /*-----ARCHITECT PROJECT  SECTION-------*/
+
+  .archProjectSection {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+  }
+  .archProjectPic {
+    padding-top: 20px;
+    padding-right: 60px;
+  }
+  .archProjectTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #595959;
+    padding-top: 15px;
+  }
+
+  /*-----ARCHITECT AWARDS  SECTION-------*/
+
+  .archAwardSection {
+    padding-top: 20px;
+    display: flex;
+  }
+  .archAwards {
+    padding-right: 30px;
+  }
+  /*-----ARCHITECT REVIEW  SECTION-------*/
+  .archReviewSectionMain {
+    padding-top: 30px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .archReviewSection {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+  }
+  .archReviewOverall {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #3d3d3d;
+  }
+  .archReviewRatingCount {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 38.1419px;
+    line-height: 46px;
+    color: #000000;
+  }
+  .archReviewStarSection {
+    text-align: center;
+    padding: 40px;
+    border-right: 1px solid #dcdcdc;
+  }
+  .archReviewProgressbarSection {
+    padding: 40px;
+  }
+  .archReviewProgressbarSection > div {
+    display: flex;
+    align-items: center;
+  }
+  .archReviewProgressbarSection > div > span {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .progressbarRating {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 28px;
+    color: #a6a6a6;
+  }
+
+  .archReviewDetailes {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+  }
+  .archReviewSummaryTitle {
+    display: flex;
+  }
+  .archReviewProTitle {
+    padding-left: 10px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    color: #3d3d3d;
+  }
+  .archReviewProVerifiedIcon {
+    padding-left: 10px;
+  }
+  .archReviewProVerifiedTitle {
+    padding-left: 10px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 28px;
+    color: #a6a6a6;
+  }
+  .archReviewRating {
+    padding-left: 10px;
+  }
+  .archReviewSummarySection {
+    padding-top: 20px;
+  }
+  .archReviewSummaryTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #969696;
+  }
+  .archReviewSummaryProjectPosition {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #383838;
+  }
+  .archReviewSummary {
+    padding-top: 10px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #717171;
+  }
+  .archReviewDp {
+    width: 46.88px;
+    height: 46.88px;
+    border-radius: 50%;
+  }
+  /*<-----------------ARCHITECTURE ABOUT RIGHT SIDE----------------->*/
+  .archAboutMainRightSection {
+    border: 1px solid #e2e2e2;
+    border-radius: 2px;
+    padding: 10px;
+    width: 40%;
+    height: max-content;
+  }
+  .archViewedSection {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .archViewed {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8a8a8a;
+  }
+  .archViewAll {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #642dda;
+  }
+  .archViewedProfileSection {
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .archViewedProfile {
+    padding: 10px;
+  }
+  .archViewedRating {
+    display: flex;
+    align-items: center;
+  }
+  .archViewedTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #4f4c4c;
+  }
+  .viewedRatingNumber {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11.3228px;
+    line-height: 14px;
+    color: #979797;
+  }
+  .viewedRatingReviews {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #454545;
+  }
+  .archViewedSubhead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+  .archViewProfileSection a {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration-line: underline;
+    color: #642dda;
+  }
+}

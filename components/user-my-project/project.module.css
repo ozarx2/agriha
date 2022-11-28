@@ -1,0 +1,285 @@
+.mainSection {
+  width: 100%;
+  background: #ffffff;
+  margin-top: 20px;
+  border: 0.909639px solid #f0f0f0;
+  border-radius: 2px;
+}
+.ongoingProjectSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.suggestion > div {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #737171;
+  padding-right: 15px;
+}
+.suggestion > div > img {
+  padding-right: 10px;
+}
+.showMore {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #098482;
+  border: 0.827914px solid #098482;
+  border-radius: 5.7954px;
+  padding: 9px;
+}
+.showMore > img {
+  margin-left: 5px;
+}
+/* .projectNameSection {
+  display: flex;
+  align-items: center;
+} */
+.projectName {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #642dda;
+}
+.projectId {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #8c8787;
+  padding-top: 5px;
+}
+
+.showMoreBtnSection {
+  display: flex;
+  align-items: center;
+}
+
+.showMore {
+  border: 0.827914px solid #642dda;
+  border-radius: 5.7954px;
+  padding: 9px 11px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #642dda;
+}
+.secOne {
+  width: 30%;
+}
+.onGoingProjSectionMain {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.profileDpNameSection {
+  display: flex;
+  align-items: center;
+}
+.profileNameSec {
+  display: flex;
+  align-items: center;
+  padding: 8px 9px;
+  background: #f9f6ff;
+  border: 1px solid #af8cf9;
+  border-radius: 7px;
+}
+.profileStatusSection {
+  display: flex;
+  padding-top: 30px;
+}
+.profileStatus {
+  padding-top: 30px;
+}
+.profileStatusLeft {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #9a9a9a;
+  padding-right: 10px;
+}
+.profileStatusRight {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #5f5f5f;
+}
+.profileStatus {
+  padding-top: 15px;
+}
+.secTwo {
+  width: 30%;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.fileUploadSectionArch {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #000000;
+}
+.uploadDescSec {
+  padding-top: 25px;
+  padding-bottom: 21px;
+}
+.uploadDesc {
+  background: #ffffff;
+  border: 1px solid #d2d2d2;
+  border-radius: 7px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 148.19%;
+  color: #9a9a9a;
+  padding: 12px 16px;
+}
+.dragDropSec {
+  padding-top: 12px;
+}
+.dragDrop {
+  padding: 15px;
+  text-align: center;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 148.19%;
+  color: #9a9a9a;
+  background: #ffffff;
+  border: 1px dashed #9b9a9a;
+  border-radius: 7px;
+}
+.fileButtonsSec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 21px;
+  /* width: 100%; */
+}
+.cancelBtn {
+  padding: 13px 51px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #7e7e7e;
+  border: 1px solid #9b9a9a;
+  border-radius: 6.3913px;
+  margin-right: 25px;
+}
+.uploadBtn {
+  display: flex;
+  align-items: center;
+  border: 1px solid #642dda;
+  border-radius: 6.3913px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #7e7e7e;
+  padding: 11px 25px;
+}
+.upload {
+  padding-right: 5px;
+}
+.secThree {
+  width: 40%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.archFilesMainSec {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #efefef;
+}
+.fileTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #000000;
+}
+.fileList > div {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #393333;
+}
+.fileList > div > img {
+  padding-right: 11px;
+}
+.dataLock >div{
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2b5797;
+  padding: 6px;
+  border: 1px solid #2b5797;
+  border-radius: 4px;
+}
+.dataLock >div>img{
+  padding-right: 7px;
+}
+/* .projDetails {
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+} */
+@media only screen and (max-width: 1400px) {
+  .cancelBtn {
+    display: none;
+  }
+  .uploadBtnMain {
+    width: 100%;
+    /* text-align: center; */
+    /* padding: auto; */
+    /* padding: 15px 21px; */
+  }
+  .uploadBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

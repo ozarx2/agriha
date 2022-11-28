@@ -96,9 +96,11 @@ export default function AgrihaLandingHeader() {
             <div className={`container ${styles.container} ${styles.header}`}>
               <div className={styles.header_main_inner}>
                 <div className={styles.left}>
-                  <picture>
-                    <img src="/img/landing/logo.svg" alt="logo" />
-                  </picture>
+                  <Link href="/" passHref>
+                    <picture>
+                      <img src="/img/landing/logo.svg" alt="logo" />
+                    </picture>
+                  </Link>
                 </div>
                 {windowRes.innerWidth >= 1100 ? (
                   <div id="menu_desktop_outer" className={styles.menu_desktop_outer}>
@@ -116,7 +118,7 @@ export default function AgrihaLandingHeader() {
                           For You
                         </div>
                       </Link>
-                      <Link href="/" passHref>
+                      <Link href="/user-my-project" passHref>
                         <div>Projects</div>
                       </Link>
                       <Link href="/my-bid" passHref>
@@ -132,7 +134,7 @@ export default function AgrihaLandingHeader() {
                           My bid
                         </div>
                       </Link>
-                      <Link href="/" passHref>
+                      <Link href="/user-my-architect" passHref>
                         <div>Architects</div>
                       </Link>
                     </div>
@@ -209,7 +211,7 @@ export default function AgrihaLandingHeader() {
                       For You
                     </div>
                   </Link>
-                  <Link href="/" passHref>
+                  <Link href="/user-my-project" passHref>
                     <div>Projects</div>
                   </Link>
                   <Link href="/my-bid" passHref>
@@ -225,7 +227,7 @@ export default function AgrihaLandingHeader() {
                       My bid
                     </div>
                   </Link>
-                  <Link href="/" passHref>
+                  <Link href="/user-my-architect" passHref>
                     <div>Architects</div>
                   </Link>
                 </div>

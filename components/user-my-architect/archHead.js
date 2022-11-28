@@ -1,0 +1,40 @@
+import Image from "next/image";
+import styles from "./archHead.module.css";
+const ArchHead = () => {
+  return (
+    <>
+      <div className={styles.container_inner}>
+        <div className={styles.architectHead}>
+          <div className={styles.arcHeadOne}>
+            Find Architects & House Decorators Near Me
+          </div>
+          <div className={styles.arcSubHeadOne}>
+            Don’t know how to begin? See our{" "}
+            <span className={styles.arcSubHeadOneDemo}>Demo instruction{" "}</span>
+            for more information
+          </div>
+        </div>
+        <div className={styles.architectHead}>
+          <div className={styles.arcHeadtwo}>
+            Find a best architect for your project
+            <span className={styles.search_outer}>
+              <span className={styles.search}>
+                <Image
+                  src="/img/architect/location.svg"
+                  alt="search"
+                  width={18}
+                  height={18}
+                />
+              </span>
+              <input
+                type="text"
+                placeholder="Enter your zip code or architect name"
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+export default ArchHead;

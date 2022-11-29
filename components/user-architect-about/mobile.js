@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import StarRatings from "react-star-ratings";

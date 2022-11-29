@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
-
 import React, { useEffect, useState } from "react";
 import UserArchitectAboutDesktop from "./desktop";
 import UserArchitectAboutMobile from "./mobile";
@@ -33,11 +32,7 @@ const UserArchitectAbout = () => {
     <>
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
-          {windowRes.innerWidth >= 1100 ? (
-            <UserArchitectAboutDesktop />
-          ) : (
-            <UserArchitectAboutMobile />
-          )}
+          {windowRes.innerWidth >= 1100 ? <UserArchitectAboutDesktop /> : <UserArchitectAboutMobile />}
         </div>
       </div>
     </>

@@ -9,7 +9,7 @@ import styles from "../styles/BodyAddArchitect.module.css";
 import editArch from "../styles/BodyEditArchitect.module.css";
 import endpoint from "../src/utils/endpoint";
 import api_url from "../src/utils/url";
-import dummy_token from "../../src/utils/dummy_token";
+import dummy_token from "../src/utils/dummy_token";
 
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../firebase";

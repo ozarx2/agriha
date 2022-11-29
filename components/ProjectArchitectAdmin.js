@@ -9,7 +9,7 @@ import Archstyles from "../styles/BodyAddArchitect.module.css";
 import registerstyles from "../styles/BodyRegister.module.css";
 import { PulseLoader } from "react-spinners";
 import api_url from "../src/utils/url";
-import dummy_token from "../../src/utils/dummy_token";
+import dummy_token from "../src/utils/dummy_token";
 
 const ProjectArchitectAdmin = () => {
   const [project, setProject] = useState([]);

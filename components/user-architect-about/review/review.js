@@ -2,10 +2,14 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import StarRatings from "react-star-ratings";
 import Progress from "../../../components/progress-bar/index";
+import api_url from "../../../src/utils/url";
+
 import styles from "./review.module.css";
-const FnReview = () => {
+
+const FnReview = ({ singleArchitect }) => {
   const [windowRes, setWindowRes] = useState([]);
   if (typeof window !== "undefined") {
     const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -26,6 +30,37 @@ const FnReview = () => {
       };
     }, []);
   }
+
+  const router = useRouter();
+  const { id } = router.query;
+
+  /* GET PROJECT of a architect */
+  const [newRating, setNewRating] = useState(5);
+  const changeRating = (newRating, name) => {
+    setNewRating(newRating);
+  };
+  async function sendRating() {
+    const token = localStorage.getItem("userToken");
+    const userId = localStorage.getItem("userId");
+    const res = await fetch(`${api_url}/star-rating`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${dummy_token}`,
+      },
+      body: JSON.stringify({
+        architect_id: id,
+        user_id: userId,
+        rating: newRating,
+        comment: "",
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    // setProjects(data);
+  }
+
   return (
     <>
       {windowRes.innerWidth >= 1100 ? (
@@ -34,15 +69,16 @@ const FnReview = () => {
             <div className={styles.archReviewDesk}>
               <div className={styles.archReviewStar}>
                 <StarRatings
-                  rating={3.5}
+                  rating={newRating}
                   starRatedColor="#edbc3b"
                   numberOfStars={5}
                   starDimension="25px"
                   starSpacing="1.8px"
+                  changeRating={changeRating}
                   name="rating"
                 />
                 <div className={styles.submitReview}>
-                  <div>Submit your rating</div>
+                  <div onClick={() => sendRating()}>Submit your rating</div>
                 </div>
               </div>
             </div>
@@ -62,7 +98,7 @@ const FnReview = () => {
               />
               <div>
                 <div className={styles.submitReview}>
-                  <div>Submit your rating</div>
+                  <div onClick={() => sendRating()}>Submit your rating</div>
                 </div>
               </div>
             </div>

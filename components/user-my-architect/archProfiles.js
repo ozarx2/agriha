@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "./archProfiles.module.css";
 import StarRatings from "react-star-ratings";
 import api_url from "../../src/utils/url";
+import dummy_token from "../../src/utils/dummy_token";
 
 const FnArchProfiles = () => {
   const router = useRouter();
@@ -18,9 +19,7 @@ const FnArchProfiles = () => {
       headers: {
         "Content-Type": "application/json",
         // Authorization: `Bearer ${token}`,
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -74,16 +73,9 @@ const FnArchProfiles = () => {
                       </div>
                     </div>
                     <div className={styles.viewProfile}>
-                      <Link href="/user-architect-about" passHref>
-                        <div
-                          className={`${styles.viewProfileBtn} ${
-                            router.pathname == "/user-architect-about" ? styles.active : ""
-                          }`}
-                        >
-                          View Proifle
-                        </div>
+                      <Link href={`/user-architect-about/${items._id}`} passHref>
+                        <div className={`${styles.viewProfileBtn}`}>View Proifle</div>
                       </Link>
-                      {/* <div className={styles.viewProfileBtn}>view profile</div> */}
                     </div>
                   </div>
                   <div>
@@ -101,11 +93,9 @@ const FnArchProfiles = () => {
                     <div className={styles.categorySubhead}>
                       <div>{items?.bio}</div>
                     </div>
-                    <Link href="/user-architect-about" passHref>
+                    <Link href={`/user-architect-about/${items._id}`} passHref>
                       <div className={styles.readMore}>
-                        <div className={` ${router.pathname == "/user-architect-about" ? styles.active : ""}`}>
-                          Read more
-                        </div>
+                        <div>Read more</div>
                         <img
                           src="/img/architect/downarrow.svg"
                           alt="downarrow.svg"

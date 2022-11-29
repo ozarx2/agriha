@@ -9,6 +9,7 @@ import Archstyles from "../styles/BodyAddArchitect.module.css";
 import registerstyles from "../styles/BodyRegister.module.css";
 import { PulseLoader } from "react-spinners";
 import api_url from "../src/utils/url";
+import dummy_token from "../../src/utils/dummy_token";
 
 const ProjectArchitectAdmin = () => {
   const [project, setProject] = useState([]);
@@ -21,18 +22,13 @@ const ProjectArchitectAdmin = () => {
   /* GET PROJECT DETAILS */
   async function getProjects() {
     var projectId = localStorage.getItem("projectIdImage");
-    const res = await fetch(
-      `${api_url}/projects/arcprojectsingle/${projectId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer " +
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
-        },
-      }
-    );
+    const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${dummy_token}`,
+      },
+    });
 
     const data = await res.json();
     console.log(data[0]);
@@ -88,9 +84,7 @@ const ProjectArchitectAdmin = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercentProject(percent);
@@ -150,9 +144,7 @@ const ProjectArchitectAdmin = () => {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
       body: JSON.stringify({
         projectname: projectTitle,
@@ -215,12 +207,7 @@ const ProjectArchitectAdmin = () => {
               <fieldset className={styles.input__container}>
                 <legend>Project Title</legend>
                 <div className={styles.input__box}>
-                  <input
-                    onChange={storeProjectValues}
-                    id="projectTitle"
-                    type="text"
-                    defaultValue={projectTitle}
-                  />
+                  <input onChange={storeProjectValues} id="projectTitle" type="text" defaultValue={projectTitle} />
                 </div>
               </fieldset>
               <fieldset className={styles.input__container}>
@@ -237,23 +224,12 @@ const ProjectArchitectAdmin = () => {
               <fieldset className={styles.input__container}>
                 <legend>Total Area(sq.ft)</legend>
                 <div className={styles.input__box}>
-                  <input
-                    onChange={storeProjectValues}
-                    id="projectArea"
-                    type="text"
-                    defaultValue={projectArea}
-                  />
+                  <input onChange={storeProjectValues} id="projectArea" type="text" defaultValue={projectArea} />
                 </div>
               </fieldset>
             </form>
-            <div
-              onClick={updateProject}
-              className={Archstyles.nextButtonArchitect}
-            >
-              <div
-                className={registerstyles.loader__container__register}
-                id="loadernextClickProject"
-              >
+            <div onClick={updateProject} className={Archstyles.nextButtonArchitect}>
+              <div className={registerstyles.loader__container__register} id="loadernextClickProject">
                 <PulseLoader color="#ffffff" />
               </div>
               <p id="nextClickArch">NEXT</p>
@@ -261,20 +237,13 @@ const ProjectArchitectAdmin = () => {
           </div>
           <div className={registerstyles.inputs__container__bodyRegister}>
             <form autoComplete="off" className={registerstyles.form} action="">
-              <p
-                id="progressProject"
-                style={{ display: "none", marginBottom: "20px" }}
-              >
+              <p id="progressProject" style={{ display: "none", marginBottom: "20px" }}>
                 Image uploading...({percentProject}%)
               </p>
               <div className={Archstyles.imageProjectCardContainer}>
                 {files.map((items, index) => {
                   return (
-                    <div
-                      className={Archstyles.imageProject}
-                      style={{ backgroundImage: `url(${items})` }}
-                      key={index}
-                    >
+                    <div className={Archstyles.imageProject} style={{ backgroundImage: `url(${items})` }} key={index}>
                       <h2>{index + 1}</h2>
                     </div>
                   );
@@ -290,16 +259,8 @@ const ProjectArchitectAdmin = () => {
             return (
               <div key={index} className={styles.each_slide_effect}>
                 <div style={{ backgroundImage: `url(${items})` }}>
-                  <div
-                    onClick={closeClick}
-                    className={styles.closeButtonContainer}
-                  >
-                    <Image
-                      src="/close.svg"
-                      alt=""
-                      width={30}
-                      height={30}
-                    ></Image>
+                  <div onClick={closeClick} className={styles.closeButtonContainer}>
+                    <Image src="/close.svg" alt="" width={30} height={30}></Image>
                   </div>
                 </div>
               </div>

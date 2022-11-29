@@ -7,13 +7,20 @@
   /* margin-bottom: 20px; */
 }
 @media only screen and (max-width: 1100px) {
+  .coverMob {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+  }
   .coverMob > img {
     width: 100%;
+    height: 205px;
+    object-fit: cover;
   }
   .coverMob > div {
     position: absolute;
-    top: 20%;
-    left: 4%;
+    top: 16px;
+    left: 16px;
   }
   .archAboutMainSectionMob {
   }
@@ -31,6 +38,10 @@
   }
   .archNameSectionMob > img {
     padding-right: 6.5px;
+    width: 51px;
+    height: 51px;
+    object-fit: cover;
+    border-radius: 50%;
   }
   .archNameSectionMob > div {
     padding-left: 6.5px;
@@ -121,7 +132,7 @@
     width: 100%;
     display: flex;
     margin-top: 20px;
-    padding: 22px;
+    padding: 22px 0;
   }
   .container_inner {
     width: 100%;
@@ -149,6 +160,12 @@
   }
   .archProfileSectionMain {
     display: flex;
+  }
+  .archProfileSectionMain > img {
+    width: 133px;
+    height: 95px;
+    object-fit: cover;
+    object-position: top;
   }
   .archProfileRating {
     display: flex;
@@ -489,6 +506,14 @@
     padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #e2e2e2;
+  }
+  .archViewedProfileSection:last-child {
+    border-bottom: 1px solid transparent;
+  }
+  .archViewedProfileSection > img {
+    width: 136px;
+    height: 97.64px;
+    object-fit: cover;
   }
   .archViewedProfile {
     padding: 10px;

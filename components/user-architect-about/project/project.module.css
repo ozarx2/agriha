@@ -15,6 +15,11 @@
   .archProjPicSection::-webkit-scrollbar {
     display: none;
   }
+  .archProjPicSection > div > img {
+    width: 271px;
+    height: 159px;
+    object-fit: cover;
+  }
   .archProjectPic {
     padding-right: 5px;
     padding-left: 5px;
@@ -38,6 +43,9 @@
   }
   .archProjPicSection > div > img {
     padding: 8px;
+    width: 294px;
+    height: 210px;
+    object-fit: cover;
   }
 
   .archProjectSection .architect-about_archProjectPic {

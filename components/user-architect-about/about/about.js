@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import styles from "./about.module.css";
-const FnAbout = () => {
+const FnAbout = ({ singleArchitect }) => {
   const [windowRes, setWindowRes] = useState([]);
   if (typeof window !== "undefined") {
     const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -28,9 +28,7 @@ const FnAbout = () => {
     <>
       {windowRes.innerWidth >= 1100 ? (
         <div className={styles.archTabSubHead}>
-          An experienced interior designer can transform your place in San Diego, CA, to make it more impressive.
-          Whether you’re struggling to find the right wall color or you want help creating an updated look, Amour Decor
-          will be ready to assist you. We’ll give your project our undivided attention, and we hope.
+          {singleArchitect?.bio}
           <div className={styles.archTabReadmore}>
             Read more
             <img src="/img/architect-about/downarrow.svg" alt="downarrow.svg" className={styles.tabDownarrowIcon} />
@@ -38,9 +36,7 @@ const FnAbout = () => {
         </div>
       ) : (
         <div className={styles.archTabSubHeadMob}>
-          An experienced interior designer can transform your place in San Diego, CA, to make it more impressive.
-          Whether you’re struggling to find the right wall color or you want help creating an updated look, Amour Decor
-          will be ready to assist you. We’ll give your project our undivided attention, and we hope.
+          {singleArchitect?.bio}
           <div className={styles.archTabReadmoreMob}>
             <div>Create project with Architect</div>{" "}
           </div>

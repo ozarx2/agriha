@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
-import StarRatings from "react-star-ratings";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import StarRatings from "react-star-ratings";
 import api_url from "../../src/utils/url";
+import dummy_token from "../../src/utils/dummy_token";
 
 import styles from "./main.module.css";
 
@@ -19,9 +20,7 @@ const FnUserMyArchitectMobile = () => {
       headers: {
         "Content-Type": "application/json",
         // Authorization: `Bearer ${token}`,
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -43,9 +42,13 @@ const FnUserMyArchitectMobile = () => {
                   <div className={styles.archAboutMainSectionMob}>
                     <div className={styles.archAboutSectionMob}>
                       <div className={styles.archNameSectionMob}>
-                        <img src="/img/architect/mobile/profileMob.svg" alt="" />
+                        <img src={items?.profilepic ? items?.profilepic : "/img/landing/profile_img.svg"} alt="" />
                         <div className={styles.archNameStarSectionMob}>
-                          <div>National design group</div>
+                          <div>
+                            {items?.registered_id?.name
+                              ? items?.registered_id?.name
+                              : items.firstname + " " + items.lastname}
+                          </div>
                           <div className={styles.archStarSectionMob}>
                             <div>4.5</div>
                             <StarRatings
@@ -59,12 +62,8 @@ const FnUserMyArchitectMobile = () => {
                           </div>
                         </div>
                       </div>
-                      <Link href="/user-architect-about" passHref>
-                        <div
-                          className={`${styles.viewProfileBtn} ${
-                            router.pathname == "/user-architect-about" ? styles.active : ""
-                          }`}
-                        >
+                      <Link href={`/user-architect-about/${items._id}`} passHref>
+                        <div className={`${styles.viewProfileBtn}`}>
                           <img src="/img/architect/mobile/rightMob.svg" alt="rightMob.svg" />
                         </div>
                       </Link>
@@ -73,18 +72,14 @@ const FnUserMyArchitectMobile = () => {
                   <div className={styles.archDetailSecMainMob}>
                     <div className={styles.archDetailSecMob}>
                       <img src="/img/architect/mobile/locationMob.svg" alt="locationMob" />
-                      <span>Pallikunnu, Kannur, Kerala, 670005</span>
+                      <span>{items?.location}</span>
                     </div>
-                    <div className={styles.archReadmoreMob}>
-                      An experienced interior designer can transform your place in designer can transform your place
-                    </div>
+                    <div className={styles.archReadmoreMob}>{items?.bio}</div>
                     <div className={styles.archReadmoreBtnMob}>
-                      <Link href="/user-architect-about" passHref>
-                        <div className={` ${router.pathname == "/user-architect-about" ? styles.active : ""}`}>
-                          Read more
-                          <span>
-                            <img src="/img/architect/mobile/downMob.svg" alt="downMob" />
-                          </span>
+                      <Link href={`/user-architect-about/${items._id}`} passHref>
+                        <div>
+                          <span>Read more</span>
+                          <img src="/img/architect/mobile/downMob.svg" alt="downMob" />
                         </div>
                       </Link>
                     </div>

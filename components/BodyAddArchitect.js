@@ -9,6 +9,7 @@ import styles from "../styles/BodyAddArchitect.module.css";
 import editArch from "../styles/BodyEditArchitect.module.css";
 import endpoint from "../src/utils/endpoint";
 import api_url from "../src/utils/url";
+import dummy_token from "../../src/utils/dummy_token";
 
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../firebase";
@@ -56,9 +57,7 @@ const BodyAddArchitect = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercent(percent);
@@ -101,9 +100,7 @@ const BodyAddArchitect = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercentCover(percent);
@@ -135,9 +132,7 @@ const BodyAddArchitect = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
       body: JSON.stringify({
         firstname: fname,
@@ -156,24 +151,14 @@ const BodyAddArchitect = () => {
     const data = await res.json();
     console.log(data);
     if (data.status === 200) {
-      document.getElementById("projectDetailsContainer").style.display =
-        "block";
-      document.getElementById("architectDetailsConatiner").style.display =
-        "none";
+      document.getElementById("projectDetailsContainer").style.display = "block";
+      document.getElementById("architectDetailsConatiner").style.display = "none";
       setArchId(data.data._id);
     }
   }
 
   const nextClick = () => {
-    if (
-      fname !== "" &&
-      lname !== "" &&
-      phone !== "" &&
-      bio !== "" &&
-      email !== "" &&
-      location !== "" &&
-      url !== ""
-    ) {
+    if (fname !== "" && lname !== "" && phone !== "" && bio !== "" && email !== "" && location !== "" && url !== "") {
       document.getElementById("errorDetailsArch").style.display = "none";
       document.getElementById("loadernextClickForm").style.display = "block";
       document.getElementById("nextButtonForm").style.display = "none";
@@ -205,9 +190,7 @@ const BodyAddArchitect = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercentProject(percent);
@@ -262,9 +245,7 @@ const BodyAddArchitect = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -278,9 +259,7 @@ const BodyAddArchitect = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -294,9 +273,7 @@ const BodyAddArchitect = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
       body: JSON.stringify({
         architect_id: archId,
@@ -320,19 +297,14 @@ const BodyAddArchitect = () => {
       if (count === 3) {
         getArchitect();
         getProjects();
-        document.getElementById("projectDetailsContainer").style.display =
-          "none";
+        document.getElementById("projectDetailsContainer").style.display = "none";
         document.getElementById("architectDetails").style.display = "block";
       }
     }
   }
 
   const projectNextClick = () => {
-    if (
-      projectTile !== "" &&
-      projectLocation !== "" &&
-      projectImages.length !== 0
-    ) {
+    if (projectTile !== "" && projectLocation !== "" && projectImages.length !== 0) {
       document.getElementById("errorProjectadd").style.display = "none";
       document.getElementById("loadernextClickProject").style.display = "block";
       document.getElementById("nextButtonProject").style.display = "none";
@@ -357,10 +329,7 @@ const BodyAddArchitect = () => {
   };
 
   return (
-    <div
-      className={Archstyles.bodyRegister}
-      style={{ backgroundImage: `url('/registerBg.jpg')` }}
-    >
+    <div className={Archstyles.bodyRegister} style={{ backgroundImage: `url('/registerBg.jpg')` }}>
       {/* <div className={registerstyles.header__bodyRegister}>
         <div className={Headerstyles.header__left}>
           <Image
@@ -381,10 +350,7 @@ const BodyAddArchitect = () => {
         </div>
       </div> */}
       <HeaderDashboard />
-      <div
-        id="architectDetailsConatiner"
-        className={Archstyles.architectDetailsConatiner}
-      >
+      <div id="architectDetailsConatiner" className={Archstyles.architectDetailsConatiner}>
         <h2 className={Archstyles.fillData} style={{ color: "#ffffff" }}>
           Architect Details
         </h2>
@@ -393,11 +359,7 @@ const BodyAddArchitect = () => {
             <form className={registerstyles.form} action="" autoComplete="off">
               <div
                 className={editArch.profilePhoto}
-                style={
-                  url !== ""
-                    ? { backgroundImage: `url(${url})`, marginBottom: "10px" }
-                    : { display: "none" }
-                }
+                style={url !== "" ? { backgroundImage: `url(${url})`, marginBottom: "10px" } : { display: "none" }}
               ></div>
               <fieldset className={registerstyles.input__container}>
                 <legend>Profile Image</legend>
@@ -477,12 +439,7 @@ const BodyAddArchitect = () => {
               <fieldset className={registerstyles.input__container}>
                 <legend>Bio</legend>
                 <div className={Archstyles.textarea}>
-                  <textarea
-                    onChange={storeValues}
-                    maxLength={250}
-                    id="bio"
-                    type="text"
-                  />
+                  <textarea onChange={storeValues} maxLength={250} id="bio" type="text" />
                 </div>
               </fieldset>
             </form>
@@ -492,25 +449,15 @@ const BodyAddArchitect = () => {
           Must fill all field
         </p>
         <div className={Archstyles.buttonContainer}>
-          <div
-            onClick={nextClick}
-            id="nextClickArch"
-            className={Archstyles.nextButtonArchitect}
-          >
-            <div
-              className={registerstyles.loader__container__register}
-              id="loadernextClickForm"
-            >
+          <div onClick={nextClick} id="nextClickArch" className={Archstyles.nextButtonArchitect}>
+            <div className={registerstyles.loader__container__register} id="loadernextClickForm">
               <PulseLoader color="#ffffff" />
             </div>
             <p id="nextButtonForm">NEXT</p>
           </div>
         </div>
       </div>
-      <div
-        id="projectDetailsContainer"
-        className={Archstyles.projectDetailsContainer}
-      >
+      <div id="projectDetailsContainer" className={Archstyles.projectDetailsContainer}>
         <h2 className={Archstyles.fillDataProject} style={{ color: "#ffffff" }}>
           Project Details
         </h2>
@@ -534,60 +481,35 @@ const BodyAddArchitect = () => {
               <fieldset className={registerstyles.input__container}>
                 <legend>Project Title</legend>
                 <div className={registerstyles.input__box}>
-                  <input
-                    onChange={storeProjectValues}
-                    id="projectTitle"
-                    type="text"
-                    value={projectTile}
-                  />
+                  <input onChange={storeProjectValues} id="projectTitle" type="text" value={projectTile} />
                 </div>
               </fieldset>
               <fieldset className={registerstyles.input__container}>
                 <legend>Project Location</legend>
                 <div className={registerstyles.input__box}>
-                  <input
-                    onChange={storeProjectValues}
-                    id="projectLocation"
-                    type="text"
-                    value={projectLocation}
-                  />
+                  <input onChange={storeProjectValues} id="projectLocation" type="text" value={projectLocation} />
                 </div>
               </fieldset>
               <fieldset className={registerstyles.input__container}>
                 <legend>Total Area(sq.ft)</legend>
                 <div className={registerstyles.input__box}>
-                  <input
-                    onChange={storeProjectValues}
-                    id="projectArea"
-                    type="text"
-                    value={projectArea}
-                  />
+                  <input onChange={storeProjectValues} id="projectArea" type="text" value={projectArea} />
                 </div>
               </fieldset>
-              <p
-                id="errorProjectadd"
-                className={registerstyles.error__varifyOtp}
-              >
+              <p id="errorProjectadd" className={registerstyles.error__varifyOtp}>
                 Must fill all field
               </p>
             </form>
           </div>
           <div className={registerstyles.inputs__container__bodyRegister}>
             <form autoComplete="off" className={registerstyles.form} action="">
-              <p
-                id="progressProject"
-                style={{ display: "none", marginBottom: "20px" }}
-              >
+              <p id="progressProject" style={{ display: "none", marginBottom: "20px" }}>
                 Image uploading...({percentProject}%)
               </p>
               <div className={Archstyles.imageProjectCardContainer}>
                 {files.map((items, index) => {
                   return (
-                    <div
-                      className={Archstyles.imageProject}
-                      style={{ backgroundImage: `url(${items})` }}
-                      key={index}
-                    >
+                    <div className={Archstyles.imageProject} style={{ backgroundImage: `url(${items})` }} key={index}>
                       <h2>{index + 1}</h2>
                     </div>
                   );
@@ -597,26 +519,15 @@ const BodyAddArchitect = () => {
           </div>
         </div>
         <div className={Archstyles.buttonContainer}>
-          <div
-            onClick={projectNextClick}
-            id="nextClickArch"
-            className={Archstyles.nextButtonArchitect}
-          >
-            <div
-              className={registerstyles.loader__container__register}
-              id="loadernextClickProject"
-            >
+          <div onClick={projectNextClick} id="nextClickArch" className={Archstyles.nextButtonArchitect}>
+            <div className={registerstyles.loader__container__register} id="loadernextClickProject">
               <PulseLoader color="#ffffff" />
             </div>
             <p id="nextButtonProject">NEXT</p>
           </div>
         </div>
       </div>
-      <div
-        className={styles.architectDetailsPage}
-        id="architectDetails"
-        style={{ backgroundColor: "#ffffff" }}
-      >
+      <div className={styles.architectDetailsPage} id="architectDetails" style={{ backgroundColor: "#ffffff" }}>
         <div className={styles.profile__architect}>
           <div
             className={styles.avatar__architectDetailBg}
@@ -639,17 +550,9 @@ const BodyAddArchitect = () => {
             <div className={styles.bottom__right__conatiner__profile}>
               <p>{architectData.bio}</p>
             </div>
-            <div
-              className={styles.contact__architect}
-              style={{ marginTop: "20px" }}
-            >
+            <div className={styles.contact__architect} style={{ marginTop: "20px" }}>
               <div className={styles.contactIcon__architect}>
-                <Image
-                  src="/location.svg"
-                  alt=""
-                  width={20}
-                  height={20}
-                ></Image>
+                <Image src="/location.svg" alt="" width={20} height={20}></Image>
               </div>
               <div className={styles.contactText__architect}>
                 <h5>Location</h5>

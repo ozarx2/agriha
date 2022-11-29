@@ -31,9 +31,7 @@ const BodyEditArchitect = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -70,9 +68,7 @@ const BodyEditArchitect = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercent(percent);
@@ -116,9 +112,7 @@ const BodyEditArchitect = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercentCover(percent);
@@ -162,9 +156,7 @@ const BodyEditArchitect = () => {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
       body: JSON.stringify({
         firstname: fname,
@@ -196,10 +188,7 @@ const BodyEditArchitect = () => {
   };
 
   return (
-    <div
-      className={Archstyles.bodyRegister}
-      style={{ backgroundImage: `url('/registerBg.jpg')` }}
-    >
+    <div className={Archstyles.bodyRegister} style={{ backgroundImage: `url('/registerBg.jpg')` }}>
       <div className={registerstyles.header__bodyRegister}>
         <div className={Headerstyles.header__left}>
           <Image
@@ -214,20 +203,14 @@ const BodyEditArchitect = () => {
           View All Architects
         </div>
       </div>
-      <div
-        id="architectDetailsConatiner"
-        className={Archstyles.architectDetailsConatiner}
-      >
+      <div id="architectDetailsConatiner" className={Archstyles.architectDetailsConatiner}>
         <h2 className={Archstyles.fillData} style={{ color: "#ffffff" }}>
           Edit Architect
         </h2>
         <div className={Archstyles.content__bodyRegister}>
           <div className={Archstyles.inputs__container__bodyRegister}>
             <form className={registerstyles.form} action="" autoComplete="off">
-              <div
-                className={editArch.profilePhoto}
-                style={{ backgroundImage: `url(${profileImg})` }}
-              ></div>
+              <div className={editArch.profilePhoto} style={{ backgroundImage: `url(${profileImg})` }}></div>
               <fieldset className={registerstyles.input__container}>
                 <legend>Profile Image</legend>
                 <div className={Archstyles.chooseImg}>
@@ -240,10 +223,7 @@ const BodyEditArchitect = () => {
                   />
                 </div>
               </fieldset>
-              <div
-                className={editArch.coverPhoto}
-                style={{ backgroundImage: `url(${coverImg})` }}
-              ></div>
+              <div className={editArch.coverPhoto} style={{ backgroundImage: `url(${coverImg})` }}></div>
               <fieldset className={registerstyles.input__container}>
                 <legend>Cover Image</legend>
                 <div className={Archstyles.chooseImg}>
@@ -259,34 +239,19 @@ const BodyEditArchitect = () => {
               <fieldset className={registerstyles.input__container}>
                 <legend>First Name</legend>
                 <div className={registerstyles.input__box}>
-                  <input
-                    onChange={storeValues}
-                    defaultValue={fname}
-                    id="fname"
-                    type="text"
-                  />
+                  <input onChange={storeValues} defaultValue={fname} id="fname" type="text" />
                 </div>
               </fieldset>
               <fieldset className={registerstyles.input__container}>
                 <legend>Last Name</legend>
                 <div className={registerstyles.input__box}>
-                  <input
-                    defaultValue={lname}
-                    onChange={storeValues}
-                    id="lname"
-                    type="text"
-                  />
+                  <input defaultValue={lname} onChange={storeValues} id="lname" type="text" />
                 </div>
               </fieldset>
               <fieldset className={registerstyles.input__container}>
                 <legend>Email</legend>
                 <div className={registerstyles.input__box}>
-                  <input
-                    defaultValue={email}
-                    onChange={storeValues}
-                    id="email"
-                    type="email"
-                  />
+                  <input defaultValue={email} onChange={storeValues} id="email" type="email" />
                 </div>
               </fieldset>
             </form>
@@ -296,46 +261,25 @@ const BodyEditArchitect = () => {
               <fieldset className={registerstyles.input__container}>
                 <legend>Mobile number</legend>
                 <div className={registerstyles.input__box}>
-                  <input
-                    defaultValue={phone}
-                    onChange={storeValues}
-                    id="phone"
-                    type="tel"
-                  />
+                  <input defaultValue={phone} onChange={storeValues} id="phone" type="tel" />
                 </div>
               </fieldset>
               <fieldset className={registerstyles.input__container}>
                 <legend>Location</legend>
                 <div className={registerstyles.input__box}>
-                  <input
-                    defaultValue={location}
-                    onChange={storeValues}
-                    id="location"
-                    type="text"
-                  />
+                  <input defaultValue={location} onChange={storeValues} id="location" type="text" />
                 </div>
               </fieldset>
               <fieldset className={registerstyles.input__container}>
                 <legend>Website</legend>
                 <div className={registerstyles.input__box}>
-                  <input
-                    defaultValue={website}
-                    onChange={storeValues}
-                    id="web"
-                    type="text"
-                  />
+                  <input defaultValue={website} onChange={storeValues} id="web" type="text" />
                 </div>
               </fieldset>
               <fieldset className={registerstyles.input__container}>
                 <legend>Bio</legend>
                 <div className={Archstyles.textarea}>
-                  <textarea
-                    onChange={storeValues}
-                    maxLength={250}
-                    id="bio"
-                    type="text"
-                    defaultValue={bio}
-                  />
+                  <textarea onChange={storeValues} maxLength={250} id="bio" type="text" defaultValue={bio} />
                 </div>
               </fieldset>
             </form>
@@ -348,10 +292,7 @@ const BodyEditArchitect = () => {
             id="nextClickArch"
             className={Archstyles.nextButtonArchitect}
           >
-            <div
-              className={registerstyles.loader__container__register}
-              id="loadernextClickForm"
-            >
+            <div className={registerstyles.loader__container__register} id="loadernextClickForm">
               <PulseLoader color="#ffffff" />
             </div>
             <p id="nextButtonForm">DONE</p>

@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./project.module.css";
 
-const FnProject = () => {
+const FnProject = ({ singleArchitect, projects }) => {
   const [windowRes, setWindowRes] = useState([]);
   if (typeof window !== "undefined") {
     const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -25,28 +25,32 @@ const FnProject = () => {
       };
     }, []);
   }
+
   return (
     <>
       {windowRes.innerWidth >= 1100 ? (
         <div className={styles.archProjectSectionMain}>
           <div className={styles.archProjectSection}>
             <div className={styles.archProjPicSection}>
-              <div className={styles.archProjectPic}>
-                <img src="/img/architect-project/picone.svg" alt="projectpic1.svg" />
-                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
-              </div>
-              <div className={styles.archProjectPic}>
-                <img src="/img/architect-project/pictwo.svg" alt="projectpic1.svg" />
-                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
-              </div>
-              <div className={styles.archProjectPic}>
-                <img src="/img/architect-project/picone.svg" alt="projectpic1.svg" />
-                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
-              </div>
-              <div className={styles.archProjectPic}>
-                <img src="/img/architect-project/picthree.svg" alt="projectpic1.svg" />
-                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
-              </div>
+              {projects?.map((item, index) => {
+                return (
+                  <>
+                    <div className={styles.archProjectPic}>
+                      <img
+                        src={
+                          item?.thumbnail
+                            ? item?.thumbnail
+                            : item?.Image[0]
+                            ? item?.Image[0]
+                            : "/img/architect-dashboard/noImg.jpeg"
+                        }
+                        alt="projectpic1.svg"
+                      />
+                      <div className={styles.archProjectTitle}>{item.projectname}</div>
+                    </div>
+                  </>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -54,14 +58,25 @@ const FnProject = () => {
         <div className={styles.archProjectSectionMain}>
           <div className={styles.archProjectSection}>
             <div className={styles.archProjPicSection}>
-              <div className={styles.archProjectPic}>
-                <img src="/img/architect-project/mobile/picone.svg" alt="projectpic1.svg" />
-                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
-              </div>
-              <div className={styles.archProjectPic}>
-                <img src="/img/architect-project/mobile/picone.svg" alt="projectpic1.svg" />
-                <div className={styles.archProjectTitle}>Home Staging & Interiors</div>
-              </div>
+              {projects?.map((item, index) => {
+                return (
+                  <>
+                    <div className={styles.archProjectPic}>
+                      <img
+                        src={
+                          item?.thumbnail
+                            ? item?.thumbnail
+                            : item?.Image[0]
+                            ? item?.Image[0]
+                            : "/img/architect-dashboard/noImg.jpeg"
+                        }
+                        alt="projectpic1.svg"
+                      />
+                      <div className={styles.archProjectTitle}>{item.projectname}</div>
+                    </div>
+                  </>
+                );
+              })}
             </div>
           </div>
         </div>

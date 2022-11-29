@@ -56,6 +56,7 @@ export default function OtpPopupForm() {
     if (data.status === 200) {
       if (data.role === "user") {
         localStorage.setItem("userToken", data.token);
+        localStorage.setItem("userId", data.id);
         setBid(true);
         setOtpPopup(false);
         setLoginPopup(false);
@@ -63,6 +64,7 @@ export default function OtpPopupForm() {
         // window.location.href = "/dashboard";
       } else if (data.role === "architect") {
         localStorage.setItem("userToken", data.token);
+        localStorage.setItem("userId", data.id);
         setOtpPopup(false);
         setLoginPopup(false);
         setRegisterPopup(false);

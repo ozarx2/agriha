@@ -2,7 +2,8 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
-import api_url from "../../src/utils/url";
+// import api_url from "../../src/utils/url";
+var api_url = "https://arclif-agriha.herokuapp.com";
 import AgrihaImageGrid from "../user-common/image-grid";
 import { StoreContext } from "../../components/StoreContext";
 import Link from "next/link";

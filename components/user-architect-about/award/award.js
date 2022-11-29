@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./award.module.css";
 
-const FnAward = () => {
+const FnAward = ({ singleArchitect }) => {
   const [windowRes, setWindowRes] = useState([]);
   if (typeof window !== "undefined") {
     const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -30,19 +30,11 @@ const FnAward = () => {
       {windowRes.innerWidth >= 1100 ? (
         <div className={styles.archAwardSection}>
           <div className={styles.archAwards}>
-            <img
-              src="/img/architect-award/silver.svg"
-              alt="silver.svg"
-              className={styles.archAwardSilver}
-            />
+            <img src="/img/architect-award/silver.svg" alt="silver.svg" className={styles.archAwardSilver} />
             <div>Silver Award</div>
           </div>
           <div className={styles.archAwards}>
-            <img
-              src="/img/architect-award/golden.svg"
-              alt="golden.svg"
-              className={styles.archAwardGolden}
-            />
+            <img src="/img/architect-award/golden.svg" alt="golden.svg" className={styles.archAwardGolden} />
             <div>Golden Award</div>
           </div>
         </div>

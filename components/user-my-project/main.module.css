@@ -319,6 +319,10 @@
   .sentFileUploadMainSecMob {
     padding: 20px;
   }
+  .sentFileUploadMainSecMob > input {
+    width: 100%;
+    /* height: 40px; */
+  }
   .sentFileUploadMainSecMobTitle {
     font-family: "Inter";
     font-style: normal;

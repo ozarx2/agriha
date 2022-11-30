@@ -25,7 +25,7 @@ const FnArchProfiles = () => {
     const data = await res.json();
     setAllArchitects(data);
   }
-  console.log(allArchitects);
+  // console.log(allArchitects);
   useEffect(() => {
     getallArchitects();
   }, []);

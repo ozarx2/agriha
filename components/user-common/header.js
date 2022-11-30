@@ -93,6 +93,7 @@ export default function AgrihaLandingHeader() {
   const loginCheck = () => {
     const token = localStorage.getItem("userToken");
     if (token) {
+      console.log(token);
       setLoginActive(true);
     }
   };

@@ -97,7 +97,7 @@ export default function MyProjectsMain({ page, setPage }) {
                           here
                         </h5>
                         <button onClick={() => setAddProject(true)}>
-                          Carete now
+                          Create now
                         </button>
                       </div>
                     </>
@@ -151,7 +151,7 @@ export default function MyProjectsMain({ page, setPage }) {
                           here
                         </h5>
                         <button onClick={() => setAddProject(true)}>
-                          Carete now
+                          Create now
                         </button>
                       </div>
                     </>

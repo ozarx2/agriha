@@ -10,6 +10,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 const TRACKING_ID = "UA-XXXXX-X"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID); */
 
+// import "antd/dist/antd.css";
 import "aos/dist/aos.css";
 import store from "../src/store";
 

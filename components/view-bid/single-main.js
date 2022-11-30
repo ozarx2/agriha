@@ -157,7 +157,9 @@ export default function SingleProjectsMain() {
             <div className={styles.results__container}>
               <div className={styles.resultSection}>
                 <p>Renovation type</p>
-                <div className={styles.resultTextContainer}>complete</div>
+                <div className={styles.resultTextContainer}>
+                  {projectDetails.project_type_details[0].renovation_type}
+                </div>
               </div>
             </div>
           ) : (
@@ -168,11 +170,15 @@ export default function SingleProjectsMain() {
             <div className={styles.results__container}>
               <div className={styles.resultSection}>
                 <p>Total Floors</p>
-                <div className={styles.resultTextContainer}>3</div>
+                <div className={styles.resultTextContainer}>
+                  {projectDetails.project_type_details[0].total_floors}
+                </div>
               </div>
               <div className={styles.resultSection}>
                 <p>Apartment Type</p>
-                <div className={styles.resultTextContainer}>1 BHK</div>
+                <div className={styles.resultTextContainer}>
+                  {projectDetails.project_type_details[0].apartment_type}
+                </div>
               </div>
             </div>
           ) : (

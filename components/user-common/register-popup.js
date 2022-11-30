@@ -148,11 +148,8 @@ export default function RegisterPopup() {
               <div className={styles.desktop_content_outer}>
                 <div className={styles.content_inner}>
                   <div className={styles.sfour}>
-                    {/* <div className={styles.google}>
-                      <img src="/img/landing/google.svg" alt="google" />
-                      <span>Continue with Google</span>
-                    </div> */}
                     <GoogleLogin
+                      width="340px"
                       onSuccess={(credentialResponse) => {
                         console.log(credentialResponse);
                         var decoded = jwt_decode(credentialResponse.credential);
@@ -166,6 +163,7 @@ export default function RegisterPopup() {
                       onError={() => {
                         console.log("Login Failed");
                       }}
+                      useOneTap
                     />
                   </div>
                   <div className={styles.sfive}>

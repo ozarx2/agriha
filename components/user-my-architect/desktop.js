@@ -9,19 +9,13 @@ import FnArchPagination from "./pagination";
 const FnUserMyArchitectDesktop = () => {
   return (
     <>
-      <div className={styles.sthree_outer}>
-        <div className={`container ${styles.container} ${styles.sthree}`}>
-          <div className={styles.sthree_inner}>
-            <div className={styles.agrihaUserProDeskMain}>
-              <div className={styles.sone_outer}>
-                <div className={`container ${styles.container} ${styles.sone}`}>
-                  <ArchHead />
-                  <FnFilter />
-                  <FnArchProfiles />
-                  <FnArchPagination />
-                </div>
-              </div>
-            </div>
+      <div className={styles.agrihaUserProDeskMain}>
+        <div className={styles.sone_outer}>
+          <div className={`container ${styles.container} ${styles.sone}`}>
+            <ArchHead />
+            <FnFilter />
+            <FnArchProfiles />
+            <FnArchPagination />
           </div>
         </div>
       </div>

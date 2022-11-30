@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import LandingFooter from "../../components/user-common/footer";
-import NavbarUserDesktop from "../../components/user-common/navbar-user";
+import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
 import Head from "next/head";
 import ProfilePopup from "../../components/user-common/profile-popup";
 import OtpPopup from "../../components/user-common/otp-popup";
@@ -29,7 +29,7 @@ const UserArchitectAboutMain = () => {
         <div className={styles.container_outer}>
           <div className={styles.container_inner}>
             <div className={styles.header}>
-              <NavbarUserDesktop />
+              <AgrihaLandingHeaderNoSearch />
             </div>
             <div className={styles.main}>
               <UserArchitectAbout />

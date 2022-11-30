@@ -27,6 +27,9 @@ const UserArchitectAboutMobile = () => {
     const res = await fetch(`${api_url}/architects/${id}`, {
       method: "GET",
       headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
         "Content-Type": "application/json",
         // Authorization: `Bearer ${token}`,
         Authorization: `Bearer ${dummy_token}`,
@@ -35,17 +38,31 @@ const UserArchitectAboutMobile = () => {
     const data = await res.json();
     setSingleArchitect(data);
   }
+  // async function getSingleArchitect() {
+  //   const token = localStorage.getItem("userToken");
+  //   const res = await fetch(`${api_url}/architects/${id}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       // Authorization: `Bearer ${token}`,
+  //       Authorization: `Bearer ${dummy_token}`,
+  //     },
+  //   });
+  //   const data = await res.json();
+  //   setSingleArchitect(data);
+  // }
 
   /* GET PROJECT of a architect */
   const [projects, setProjects] = useState([]);
+
   async function getProjectOfArchitect() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/projects/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
-        Authorization: `Bearer ${dummy_token}`,
+        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -53,18 +70,17 @@ const UserArchitectAboutMobile = () => {
   }
 
   useEffect(() => {
-    getSingleArchitect();
-    getProjectOfArchitect();
+    if (id !== "") {
+      getSingleArchitect();
+      getProjectOfArchitect();
+    }
   }, [id]);
 
   return (
     <>
       <div className={styles.sthree_outer}>
         <div className={styles.coverMob}>
-          <img
-            src={singleArchitect?.coverpic ? singleArchitect?.coverpic : "/img/architect-about/mobile/coverMob.svg"}
-            alt=""
-          />
+          <img src={singleArchitect?.coverpic ? singleArchitect?.coverpic : "/img/landing/nophoto.jpg"} alt="" />
 
           <Link href="/user-my-architect" passHref>
             <div className={`${styles.backIcon} ${router.pathname == "/user-my-architect"}`}>
@@ -77,9 +93,7 @@ const UserArchitectAboutMobile = () => {
             <div className={`container ${styles.container} ${styles.sone}`}>
               <div className={styles.archNameSectionMob}>
                 <img
-                  src={
-                    singleArchitect?.profilepic ? singleArchitect?.profilepic : "/img/architect/mobile/profileMob.svg"
-                  }
+                  src={singleArchitect?.profilepic ? singleArchitect?.profilepic : "/img/landing/profile_img.svg"}
                   alt="profileMob.svg"
                 />
                 <div className={styles.archNameStarSectionMob}>

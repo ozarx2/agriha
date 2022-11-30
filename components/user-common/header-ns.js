@@ -36,6 +36,18 @@ export default function AgrihaLandingHeaderNoSearch() {
   const setLoginPopup = Store.setLoginPopup;
   const loginActive = Store.loginActive;
   const setProfilePopup = Store.setProfilePopup;
+  const setLoginActive = Store.setLoginActive;
+
+  const loginCheck = () => {
+    const token = localStorage.getItem("userToken");
+    if (token) {
+      setLoginActive(true);
+    }
+  };
+
+  useEffect(() => {
+    loginCheck();
+  }, []);
   return (
     <>
       <div className={styles.header_outer}>
@@ -66,9 +78,23 @@ export default function AgrihaLandingHeaderNoSearch() {
                           For You
                         </div>
                       </Link>
-                      <Link href="/user-my-project" passHref>
-                        <div>Projects</div>
-                      </Link>
+                      {loginActive ? (
+                        <Link href="/user-my-project" passHref>
+                          <div
+                            className={
+                              router.pathname == "/user-my-project"
+                                ? styles.active
+                                : // : router.pathname == "/user-architect-about/[id]"
+                                  // ? styles.active
+                                  ""
+                            }
+                          >
+                            My Projects
+                          </div>
+                        </Link>
+                      ) : (
+                        ""
+                      )}
                       <Link href="/my-bid" passHref>
                         <div
                           className={
@@ -83,7 +109,17 @@ export default function AgrihaLandingHeaderNoSearch() {
                         </div>
                       </Link>
                       <Link href="/user-my-architect" passHref>
-                        <div>Architects</div>
+                        <div
+                          className={
+                            router.pathname == "/user-my-architect"
+                              ? styles.active
+                              : router.pathname == "/user-architect-about/[id]"
+                              ? styles.active
+                              : ""
+                          }
+                        >
+                          Architects
+                        </div>
                       </Link>
                     </div>
                   </div>
@@ -159,9 +195,23 @@ export default function AgrihaLandingHeaderNoSearch() {
                       For You
                     </div>
                   </Link>
-                  <Link href="/user-my-project" passHref>
-                    <div>Projects</div>
-                  </Link>
+                  {loginActive ? (
+                    <Link href="/user-my-project" passHref>
+                      <div
+                        className={
+                          router.pathname == "/user-my-project"
+                            ? styles.active
+                            : // : router.pathname == "/user-architect-about/[id]"
+                              // ? styles.active
+                              ""
+                        }
+                      >
+                        Projects
+                      </div>
+                    </Link>
+                  ) : (
+                    ""
+                  )}
                   <Link href="/my-bid" passHref>
                     <div
                       className={
@@ -176,7 +226,17 @@ export default function AgrihaLandingHeaderNoSearch() {
                     </div>
                   </Link>
                   <Link href="/user-my-architect" passHref>
-                    <div>Architects</div>
+                    <div
+                      className={
+                        router.pathname == "/user-my-architect"
+                          ? styles.active
+                          : router.pathname == "/user-architect-about/[id]"
+                          ? styles.active
+                          : ""
+                      }
+                    >
+                      Architects
+                    </div>
                   </Link>
                 </div>
               </div>

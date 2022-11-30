@@ -35,27 +35,32 @@ const FnReview = ({ singleArchitect }) => {
   const router = useRouter();
   const { id } = router.query;
 
+  const [newRating, setNewRating] = useState(0);
+
   /* GET CURRENT RATING */
-  const [currentArchitectRating, setCurrentArchitectRating] = useState([]);
   async function getCurrentArchitectRating() {
     const token = localStorage.getItem("userToken");
+    const userId = localStorage.getItem("userId");
     const res = await fetch(`${api_url}/star-rating/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
-        Authorization: `Bearer ${dummy_token}`,
+        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
-    console.log(data);
-    setCurrentArchitectRating(data);
+    const hisRating = data.data.filter((res) => res.user_id === userId);
+    setNewRating(hisRating[0]?.rating);
   }
 
-  console.log(currentArchitectRating);
+  useEffect(() => {
+    if (id !== "") {
+      getCurrentArchitectRating();
+    }
+  }, [id]);
 
   /* SENS ARCHITECT RATING */
-  const [newRating, setNewRating] = useState(5);
   const changeRating = (newRating, name) => {
     setNewRating(newRating);
   };
@@ -66,8 +71,8 @@ const FnReview = ({ singleArchitect }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
-        Authorization: `Bearer ${dummy_token}`,
+        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${dummy_token}`,
       },
       body: JSON.stringify({
         architect_id: id,
@@ -79,10 +84,6 @@ const FnReview = ({ singleArchitect }) => {
     const data = await res.json();
     console.log(data);
   }
-
-  useEffect(() => {
-    getCurrentArchitectRating();
-  }, [id]);
 
   return (
     <>
@@ -112,11 +113,12 @@ const FnReview = ({ singleArchitect }) => {
           <div className={styles.archReviewSectionMob}>
             <div>
               <StarRatings
-                rating={3.5}
+                rating={newRating}
                 starRatedColor="#edbc3b"
                 numberOfStars={5}
                 starDimension="30px"
                 starSpacing="1.8px"
+                changeRating={changeRating}
                 name="rating"
               />
               <div>

@@ -21,6 +21,15 @@ const UserArchitectAboutDesktop = () => {
   const router = useRouter();
   const { id } = router.query;
 
+  // function getIdParameters() {
+  //   let urlString = window.location.href;
+  //   let paramString = urlString.split("/")[4];
+  //   let queryString = new URLSearchParams(paramString);
+  //   for (let pair of queryString.entries()) {
+  //     console.log(pair[0]);
+  //   }
+  // }
+
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);
   async function getSingleArchitect() {
@@ -29,8 +38,8 @@ const UserArchitectAboutDesktop = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
-        Authorization: `Bearer ${dummy_token}`,
+        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -39,19 +48,27 @@ const UserArchitectAboutDesktop = () => {
 
   /* GET PROJECT of a architect */
   const [projects, setProjects] = useState([]);
+
   async function getProjectOfArchitect() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/projects/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
-        Authorization: `Bearer ${dummy_token}`,
+        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
     setProjects(data);
   }
+
+  useEffect(() => {
+    if (id !== "") {
+      getSingleArchitect();
+      getProjectOfArchitect();
+    }
+  }, [id]);
 
   /* GET ALL ARCHITECT */
   const [allArchitects, setAllArchitects] = useState([]);
@@ -70,10 +87,8 @@ const UserArchitectAboutDesktop = () => {
   }
 
   useEffect(() => {
-    getSingleArchitect();
-    getProjectOfArchitect();
     getallArchitects();
-  }, [id]);
+  }, []);
 
   return (
     <>
@@ -85,7 +100,7 @@ const UserArchitectAboutDesktop = () => {
                 <div className={styles.archAboutMainLeftSection}>
                   <div className={styles.archCover}>
                     <img
-                      src={singleArchitect?.coverpic ? singleArchitect?.coverpic : "/img/architect-about/coverpic.svg"}
+                      src={singleArchitect?.coverpic ? singleArchitect?.coverpic : "/img/landing/nophoto.jpg"}
                       alt="coverpic.svg"
                       className={styles.archCoverPic}
                     />
@@ -98,11 +113,7 @@ const UserArchitectAboutDesktop = () => {
                   <div className={styles.archProfileArea}>
                     <div className={styles.archProfileSectionMain}>
                       <img
-                        src={
-                          singleArchitect?.profilepic
-                            ? singleArchitect?.profilepic
-                            : "/img/architect/mobile/profileMob.svg"
-                        }
+                        src={singleArchitect?.profilepic ? singleArchitect?.profilepic : "/img/landing/profile_img.svg"}
                         alt="leftdp.svg"
                         className={styles.arcLeftPic}
                       />
@@ -191,9 +202,9 @@ const UserArchitectAboutDesktop = () => {
                   </div>
                 </div>
 
-                {allArchitects.slice(0, 3)?.map((items, index) => {
+                {allArchitects?.slice(0, 3)?.map((items, index) => {
                   return (
-                    <>
+                    <React.Fragment key={index}>
                       <div className={styles.archViewedProfileSection}>
                         <img src={items?.coverpic ? items?.coverpic : "/img/landing/nophoto.jpg"} alt="" />
                         <div className={styles.archViewedProfile}>
@@ -224,7 +235,7 @@ const UserArchitectAboutDesktop = () => {
                           </div>
                         </div>
                       </div>
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </div>

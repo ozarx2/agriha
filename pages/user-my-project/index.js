@@ -3,9 +3,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
-import LandingFooter from "../../components/user-common/footer";
-import NavbarUserDesktop from "../../components/user-common/navbar-user";
 import Head from "next/head";
+import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
+import LandingFooter from "../../components/user-common/footer";
 import ProfilePopup from "../../components/user-common/profile-popup";
 import OtpPopup from "../../components/user-common/otp-popup";
 import RegisterPopup from "../../components/user-common/register-popup";
@@ -32,10 +32,10 @@ const UserMyProjectMain = () => {
         <div className={styles.container_outer}>
           <div className={styles.container_inner}>
             <div className={styles.header}>
-              <NavbarUserDesktop />
+              <AgrihaLandingHeaderNoSearch />
             </div>
             <div className={styles.main}>
-              <UserMyProjects/>
+              <UserMyProjects />
             </div>
             <div className={styles.footer}>
               <LandingFooter />

@@ -88,6 +88,19 @@ export default function AgrihaLandingHeader() {
   const setLoginPopup = Store.setLoginPopup;
   const loginActive = Store.loginActive;
   const setProfilePopup = Store.setProfilePopup;
+  const setLoginActive = Store.setLoginActive;
+
+  const loginCheck = () => {
+    const token = localStorage.getItem("userToken");
+    if (token) {
+      setLoginActive(true);
+    }
+  };
+
+  useEffect(() => {
+    loginCheck();
+  }, []);
+
   return (
     <>
       <div className={styles.header_outer}>
@@ -118,21 +131,15 @@ export default function AgrihaLandingHeader() {
                           For You
                         </div>
                       </Link>
-                      <Link href="/user-my-project" passHref>
-                        <div>Projects</div>
-                      </Link>
+                      {loginActive ? (
+                        <Link href="/user-my-project" passHref>
+                          <div>My Projects</div>
+                        </Link>
+                      ) : (
+                        ""
+                      )}
                       <Link href="/my-bid" passHref>
-                        <div
-                          className={
-                            router.pathname == "/my-bid"
-                              ? styles.active
-                              : router.pathname == "/display-bid"
-                              ? styles.active
-                              : ""
-                          }
-                        >
-                          My bid
-                        </div>
+                        <div>My bid</div>
                       </Link>
                       <Link href="/user-my-architect" passHref>
                         <div>Architects</div>
@@ -142,6 +149,15 @@ export default function AgrihaLandingHeader() {
                 ) : (
                   ""
                 )}
+
+                {/* {windowRes.innerWidth >= 1100 ? (
+                  <>
+                    <div>contact</div>
+                    <div>notification</div>
+                  </>
+                ) : (
+                  ""
+                )} */}
 
                 {windowRes.innerWidth >= 1100 ? (
                   <div className={styles.right}>
@@ -183,6 +199,7 @@ export default function AgrihaLandingHeader() {
               </div>
             </div>
           </div>
+
           {windowRes.innerWidth >= 1100 ? (
             ""
           ) : (
@@ -211,21 +228,15 @@ export default function AgrihaLandingHeader() {
                       For You
                     </div>
                   </Link>
-                  <Link href="/user-my-project" passHref>
-                    <div>Projects</div>
-                  </Link>
+                  {loginActive ? (
+                    <Link href="/user-my-project" passHref>
+                      <div>Projects</div>
+                    </Link>
+                  ) : (
+                    ""
+                  )}
                   <Link href="/my-bid" passHref>
-                    <div
-                      className={
-                        router.pathname == "/my-bid"
-                          ? styles.active
-                          : router.pathname == "/display-bid"
-                          ? styles.active
-                          : ""
-                      }
-                    >
-                      My bid
-                    </div>
+                    <div>My bid</div>
                   </Link>
                   <Link href="/user-my-architect" passHref>
                     <div>Architects</div>
@@ -234,6 +245,7 @@ export default function AgrihaLandingHeader() {
               </div>
             </div>
           )}
+
           {windowRes.innerWidth >= 1100 ? (
             ""
           ) : (

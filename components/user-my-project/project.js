@@ -4,7 +4,11 @@ import FnFileFolder from "./folders";
 import FnPayment from "./payment";
 import styles from "./project.module.css";
 import FnSuggested from "./suggested";
-// import api_url from "../../src/utils/url";
+import api_url from "../../src/utils/url";
+
+import { InboxOutlined } from "@ant-design/icons";
+import { message, Upload } from "antd";
+const { Dragger } = Upload;
 
 const FnOngoingProjectUserSide = () => {
   const [showMore, setShowMore] = useState(false);
@@ -34,18 +38,29 @@ const FnOngoingProjectUserSide = () => {
   console.log(project);
   useEffect(() => {
     getSingleProject();
+    // getProject();
   }, []);
-  // if (typeof document !== "undefined") {
-  //   if (showMore) {
-  //     document.getElementById("more").style.opacity = "1";
-  //     document.getElementById("less").style.opacity = "0";
-  //     document.getElementById("projDetails").style.opacity = "1";
-  //   } else {
-  //     document.getElementById("more").style.opacity = "0";
-  //     document.getElementById("less").style.opacity = "1";
-  //     document.getElementById("projDetails").style.opacity = "0";
-  //   }
-  // }
+
+  const props = {
+    name: "file",
+    multiple: true,
+    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+    onChange(info) {
+      const { status } = info.file;
+      if (status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (status === "done") {
+        message.success(`${info.file.name} file uploaded successfully.`);
+      } else if (status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+    onDrop(e) {
+      console.log("Dropped files", e.dataTransfer.files);
+    },
+  };
+
   return (
     <>
       <div className={styles.mainSection}>
@@ -67,27 +82,13 @@ const FnOngoingProjectUserSide = () => {
                       Suggestion
                     </div>
                   </div>
-                  {/* <div
-              id="more"
-              className={styles.showMore}
-              onClick={() => setShowMore(false)}
-            >
-              Show less
-            </div> */}
+
                   <div
                     id="less"
                     className={styles.showMore}
                     onClick={toggleBtn}
                   >
                     {showMore ? "Show Less" : "Show More"}
-                    {/* <div
-              id="less"
-              className={styles.showMore}
-              onClick={() => setShowMore(true)}
-            >
-              {showMore?
-              'Show Less':'Show More'
-            } */}
 
                     {showMore ? (
                       <img src="/img/my-project-user/showup.svg" alt="up.svg" />
@@ -142,6 +143,7 @@ const FnOngoingProjectUserSide = () => {
                   </div>
                   <div className={styles.uploadDescSec}>
                     <input
+                      type="text"
                       className={styles.uploadDesc}
                       value={description}
                       onChange={handler}
@@ -149,9 +151,12 @@ const FnOngoingProjectUserSide = () => {
                     />
                   </div>
                   <div className={styles.dragDropSec}>
-                    <div className={styles.dragDrop}>
+                    <Dragger {...props}>
+                      Drag & drop <a href="">Browse</a>
+                    </Dragger>
+                    {/* <div className={styles.dragDrop}>
                       Drag & drop <a href="">Browse</a>{" "}
-                    </div>
+                    </div> */}
                   </div>
                   <div className={styles.fileButtonsSec}>
                     <div className={styles.cancelBtn}>cancel</div>

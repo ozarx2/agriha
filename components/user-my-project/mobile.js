@@ -1,5 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
+import { InboxOutlined } from "@ant-design/icons";
+import { message, Upload } from "antd";
+const { Dragger } = Upload;
+
 import styles from "./main.module.css";
 
 const FnUserMyProjectMobile = () => {
@@ -47,6 +51,26 @@ const FnUserMyProjectMobile = () => {
   useEffect(() => {
     getProjectMob();
   }, []);
+
+  const props = {
+    name: "file",
+    multiple: true,
+    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+    onChange(info) {
+      const { status } = info.file;
+      if (status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (status === "done") {
+        message.success(`${info.file.name} file uploaded successfully.`);
+      } else if (status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+    onDrop(e) {
+      console.log("Dropped files", e.dataTransfer.files);
+    },
+  };
   return (
     <>
       <div className={styles.agrihaUserProDeskMain}>
@@ -389,8 +413,10 @@ const FnUserMyProjectMobile = () => {
                                 onChange={handlerMob}
                               />
 
-                              <div className={styles.selectFileDescMob}>
-                                Select file or <a href="">browse</a>
+                              <div id="FnUserMyProjectMobileUpload">
+                                <Dragger {...props} className="dragger">
+                                  Select file or <a href="">browse</a>
+                                </Dragger>
                               </div>
                               <div className={styles.uploadFileDescMob}>
                                 <img

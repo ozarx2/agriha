@@ -1,4 +1,41 @@
 {
-  // "extends": "next/core-web-vitals"
-  "extends": ["next/babel","next/core-web-vitals"]
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "next",
+    "next/babel",
+    "next/core-web-vitals",
+    "standard",
+    "prettier",
+    "plugin:react/recommended",
+    "eslint:recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    // "ecmaVersion": 2018
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/no-unresolved": [
+      2,
+      {
+        "commonjs": true,
+        "amd": true
+      }
+    ]
+  },
+  "plugins": ["import", "react"],
+  "settings": {
+    "next": {
+      "rootDir": "packages/my-app/"
+    }
+  }
 }

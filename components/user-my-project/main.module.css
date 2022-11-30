@@ -125,7 +125,8 @@
     display: flex;
     align-items: center;
     padding-top: 24px;
-    padding-bottom: 24px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #e2e2e2;
   }
   .projStatusLeftMainMob {
@@ -344,7 +345,7 @@
     background: #f8f5ff;
     border: 0.5px solid #642dda;
     border-radius: 6px;
-    color: #adadad;
+    color: #000000;
   }
   .selectFileDescMob {
     margin-top: 5.5px;

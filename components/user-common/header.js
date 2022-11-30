@@ -95,6 +95,7 @@ export default function AgrihaLandingHeader() {
     if (token) {
       console.log(token);
       setLoginActive(true);
+      console.log(token);
     }
   };
 

@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@media only screen and (max-width: 1100px) {
+  .archAboutMainSectionMob {
+    padding: 10px;
+    padding-top: 18px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .archAboutSectionMob {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .archNameSectionMob {
+    display: flex;
+    align-items: center;
+  }
+  .archNameSectionMob > img {
+    padding-right: 6.5px;
+    width: 51px;
+    height: 51px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .archNameSectionMob > div {
+    padding-left: 6.5px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3d3d3d;
+  }
+  .archStarSectionMob {
+    display: flex;
+    align-items: center;
+    padding-bottom: 4.5px;
+  }
+  .archStarSectionMob > div {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #8d8d8d;
+    padding-top: 4.5px;
+    padding-right: 4.5px;
+  }
+  .archStarSectionMob > img {
+    padding-left: 4.5px;
+    padding-top: 5.5px;
+  }
+  .archDetailSecMainMob {
+    padding: 10px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .archDetailSecMob > img {
+    padding-right: 9.88px;
+  }
+  .archDetailSecMob > span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    color: #642dda;
+  }
+  .archReadmoreMob {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #a9a9a9;
+  }
+  .archReadmoreBtnMob {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    color: #642dda;
+    padding-right: 5px;
+  }
+  .archReadmoreBtnMob > span {
+    padding-left: 5px;
+  }
+}

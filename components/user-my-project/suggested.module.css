@@ -1,0 +1,80 @@
+.suggestedMain {
+  margin: 40px;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 40px;
+}
+.suggestedTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148.19%;
+  color: #000000;
+}
+.suggestedTitle > span {
+  color: #757575;
+  font-size: 12px;
+}
+.suggestedViewall > div {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #642dda;
+}
+.suggestedViewall > div > img {
+  padding-left: 10px;
+}
+.suggestedProductItemsSectionMain {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: none;
+}
+.suggestedProductItemsSectionMain::-webkit-scrollbar {
+  display: none;
+}
+.suggestedProductItemsSection {
+  padding-right: 30px;
+  padding-top: 20px;
+}
+.suggestedProductItems {
+  width: fit-content;
+  border: 0.87317px solid #e4e4e4;
+}
+.productDetailes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+}
+.productName {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #642dda;
+}
+.productDate {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12.2244px;
+  line-height: 148.19%;
+  color: #878787;
+}
+.productRate {
+  width: fit-content;
+  padding: 6.99px 16.59px;
+  background: #642dda;
+  border-radius: 19.2097px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12.2244px;
+  line-height: 15px;
+  color: #ffffff;
+}

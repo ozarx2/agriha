@@ -1,0 +1,193 @@
+.paymentDetailes {
+  margin: 40px;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 40px;
+}
+.paymentTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148.19%;
+  color: #000000;
+  padding-bottom: 20px;
+}
+.paymentCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.paymentCardSectionMain {
+  display: flex;
+  background: #fefefe;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  width: fit-content;
+}
+.paymentCardSection {
+  margin: 10px;
+  padding: 10px;
+  border-right: 1px dashed #989797;
+}
+.paymentStatus {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #969696;
+}
+.paymentStatus > span {
+  padding-left: 10px;
+}
+.paymentRate {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148.19%;
+  color: #000000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.paymentRate > span {
+  width: fit-content;
+  padding: 2px 7px;
+  background: #E9E0FC;
+border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 148.19%;
+  color: #642dda;
+  margin-left: 10px;
+}
+.paymentDate {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 148.19%;
+  color: #969696;
+}
+.paymentDetailesBtnSection {
+  display: flex;
+}
+.paymentDetailesBtnSection > div {
+  margin-right: 10px;
+}
+.paymentDetailesBtnOne {
+  width: fit-content;
+  padding: 5px 16px;
+  background: #642dda;
+  border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 148.19%;
+  color: #fbfbfb;
+}
+.paymentDetailesBtnTwo {
+  width: fit-content;
+  padding: 5px 15px;
+  border: 1px solid #2b5797;
+  border-radius: 4px;
+  background-color: #fff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 148.19%;
+  color: #2b5797;
+}
+
+.currentPaymentCardSection {
+  margin: 10px;
+  padding: 10px;
+}
+.currentPaymentCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.currentPaymentStatus {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #969696;
+}
+.currentPaymentStatus > span {
+  padding-left: 10px;
+}
+.currentPaymentRate {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148.19%;
+  color: #000000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.currentPaymentRate > span {
+  width: fit-content;
+  padding: 2px 7px;
+  background: #ffe7d6;
+  border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 148.19%;
+  color: #ff8a00;
+  margin-left: 10px;
+}
+.currentPaymentDate {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 148.19%;
+  color: #969696;
+}
+.currentPaymentDetailesBtnSection {
+  display: flex;
+}
+.currentPaymentDetailesBtnSection > div {
+  margin-right: 10px;
+}
+.currentPaymentDetailesBtnOne {
+  width: fit-content;
+  padding: 5px 16px;
+  background: #642dda;
+  border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 148.19%;
+  color: #fbfbfb;
+}
+.currentPaymentDetailesBtnTwo {
+  width: fit-content;
+  padding: 5px 15px;
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  background-color: #fff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 148.19%;
+  color: #2b5797;
+}
+.currentPaymentCard {
+  display: flex;
+}
+.currentPaymentDetailesBtnSection {
+  display: flex;
+}

@@ -23,8 +23,6 @@ export const StoreContextProvider = (props) => {
   const [loginPopup, setLoginPopup] = useState(false);
   const [registerPopup, setRegisterPopup] = useState(false);
   const [otpPopup, setOtpPopup] = useState(false);
-  const [loginDetails, setLoginDetails] = useState(false);
-
   const [bid, setBid] = useState(true);
   const [bidArchitectId, setBidArchitectId] = useState(null);
   const [loginActive, setLoginActive] = useState(false);
@@ -32,6 +30,16 @@ export const StoreContextProvider = (props) => {
   const [architectBidPopup, setArchitectBidtPopup] = useState(false);
   const [bidDataPopup, setBidDataPopup] = useState(false);
   const [allBidArchitect, setAllBidArchitect] = useState([]);
+
+  // Store Yaseen start
+  // Store Yaseen end
+
+  // Store 61-5a start
+  const [profilePopup, setProfilePopup] = useState(false);
+  // Store 61-5a end
+
+  // Store Hashir start
+  // Store Hashir end
 
   const Store = {
     addProject,
@@ -76,8 +84,6 @@ export const StoreContextProvider = (props) => {
     setRegisterPopup,
     otpPopup,
     setOtpPopup,
-    loginDetails,
-    setLoginDetails,
     bid,
     setBid,
     bidArchitectId,
@@ -92,11 +98,20 @@ export const StoreContextProvider = (props) => {
     setBidDataPopup,
     allBidArchitect,
     setAllBidArchitect,
+
+    // Store Yaseen start
+
+    // Store Yaseen end
+
+    // Store 61-5a start
+    profilePopup,
+    setProfilePopup,
+    // Store 61-5a end
+
+    // Store Hashir start
+
+    // Store Hashir end
   };
 
-  return (
-    <StoreContext.Provider value={[Store]}>
-      {props.children}
-    </StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;
 };

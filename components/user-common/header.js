@@ -86,7 +86,8 @@ export default function AgrihaLandingHeader() {
 
   const [Store] = useContext(StoreContext);
   const setLoginPopup = Store.setLoginPopup;
-  const loginDetails = Store.loginDetails;
+  const loginActive = Store.loginActive;
+  const setProfilePopup = Store.setProfilePopup;
   return (
     <>
       <div className={styles.header_outer}>
@@ -95,9 +96,11 @@ export default function AgrihaLandingHeader() {
             <div className={`container ${styles.container} ${styles.header}`}>
               <div className={styles.header_main_inner}>
                 <div className={styles.left}>
-                  <picture>
-                    <img src="/img/landing/logo.svg" alt="logo" />
-                  </picture>
+                  <Link href="/" passHref>
+                    <picture>
+                      <img src="/img/landing/logo.svg" alt="logo" />
+                    </picture>
+                  </Link>
                 </div>
                 {windowRes.innerWidth >= 1100 ? (
                   <div id="menu_desktop_outer" className={styles.menu_desktop_outer}>
@@ -115,13 +118,23 @@ export default function AgrihaLandingHeader() {
                           For You
                         </div>
                       </Link>
-                      <Link href="/" passHref>
+                      <Link href="/user-my-project" passHref>
                         <div>Projects</div>
                       </Link>
                       <Link href="/my-bid" passHref>
-                        <div className={router.pathname == "/my-bid" ? styles.active : ""}>My bid</div>
+                        <div
+                          className={
+                            router.pathname == "/my-bid"
+                              ? styles.active
+                              : router.pathname == "/display-bid"
+                              ? styles.active
+                              : ""
+                          }
+                        >
+                          My bid
+                        </div>
                       </Link>
-                      <Link href="/" passHref>
+                      <Link href="/user-my-architect" passHref>
                         <div>Architects</div>
                       </Link>
                     </div>
@@ -132,9 +145,9 @@ export default function AgrihaLandingHeader() {
 
                 {windowRes.innerWidth >= 1100 ? (
                   <div className={styles.right}>
-                    {loginDetails ? (
+                    {loginActive ? (
                       <>
-                        <div className={styles.profile}>
+                        <div onClick={() => setProfilePopup(true)} className={styles.profile}>
                           <span>Althaf Rahman</span>
                           <img src="/img/landing/profile_img.svg" alt="profile" />
                         </div>
@@ -150,9 +163,9 @@ export default function AgrihaLandingHeader() {
                   </div>
                 ) : (
                   <div className={styles.right}>
-                    {loginDetails ? (
+                    {loginActive ? (
                       <>
-                        <div className={styles.profile}>
+                        <div onClick={() => setProfilePopup(true)} className={styles.profile}>
                           <span>Althaf Rahman</span>
                           <img src="/img/landing/profile_img.svg" alt="profile" />
                         </div>
@@ -198,13 +211,23 @@ export default function AgrihaLandingHeader() {
                       For You
                     </div>
                   </Link>
-                  <Link href="/" passHref>
+                  <Link href="/user-my-project" passHref>
                     <div>Projects</div>
                   </Link>
                   <Link href="/my-bid" passHref>
-                    <div className={router.pathname == "/my-bid" ? styles.active : ""}>My bid</div>
+                    <div
+                      className={
+                        router.pathname == "/my-bid"
+                          ? styles.active
+                          : router.pathname == "/display-bid"
+                          ? styles.active
+                          : ""
+                      }
+                    >
+                      My bid
+                    </div>
                   </Link>
-                  <Link href="/" passHref>
+                  <Link href="/user-my-architect" passHref>
                     <div>Architects</div>
                   </Link>
                 </div>

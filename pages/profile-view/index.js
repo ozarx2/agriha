@@ -27,18 +27,13 @@ export default function Home() {
   /*GET ASSIGNED PROJECTS */
   async function getAssignedProjects(architectId) {
     console.log(architectId);
-    const res = await fetch(
-      `${api_url}/projects/singleuserproject/${architectId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer " +
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
-        },
-      }
-    );
+    const res = await fetch(`${api_url}/projects/singleuserproject/${architectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${dummy_token}`,
+      },
+    });
     const data = await res.json();
     console.log(data);
     setAssignedProjects(data.data);
@@ -104,11 +99,7 @@ export default function Home() {
           <div className={styles.profile_view_outer}>
             <div className={styles.main_left}>
               <div className={styles.profile_right}>
-                <img
-                  className={styles.profile_image}
-                  src={architectData.profilepic}
-                  alt=""
-                />
+                <img className={styles.profile_image} src={architectData.profilepic} alt="" />
                 <div className={styles.profile_head_right}>
                   {architectData.firstname} {architectData.lastname}
                   <h4>{architectData.location}</h4>
@@ -152,20 +143,13 @@ export default function Home() {
                 .reverse()
                 .map((items, index) => {
                   return (
-                    <div
-                      key={index}
-                      className={style.projectCard}
-                      style={{ border: "1px solid #333333" }}
-                    >
+                    <div key={index} className={style.projectCard} style={{ border: "1px solid #333333" }}>
                       <div className={style.top__projectCard}>
                         <div className={style.title__projectCard}>
                           <h5>{items.project_name}</h5>
                           <p>{items.starting_date}</p>
                         </div>
-                        <div
-                          onClick={() => onProjectViewClick(items._id)}
-                          className={style.viewMore__button}
-                        >
+                        <div onClick={() => onProjectViewClick(items._id)} className={style.viewMore__button}>
                           View More
                         </div>
                       </div>
@@ -174,15 +158,10 @@ export default function Home() {
                           <p>{items.project_type}</p>
                         </div>
                         <div className={style.bottom__projectCard__buttons}>
-                          <a
-                            className={style.nextButton__card}
-                            onClick={() => onProjectViewClick(items._id)}
-                          >
+                          <a className={style.nextButton__card} onClick={() => onProjectViewClick(items._id)}>
                             Upload Files
                           </a>
-                          <div
-                            className={style.indicator__projectCard__content}
-                          >
+                          <div className={style.indicator__projectCard__content}>
                             <span>
                               <div></div>
                             </span>

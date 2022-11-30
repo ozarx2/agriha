@@ -9,6 +9,9 @@ export default function OtpPopupForm() {
 
   const loginActive = Store.loginActive;
   const setBid = Store.setBid;
+  const setOtpPopup = Store.setOtpPopup;
+  const setLoginPopup = Store.setLoginPopup;
+  const setRegisterPopup = Store.setRegisterPopup;
 
   var a = document.getElementById("a"),
     b = document.getElementById("b"),
@@ -53,10 +56,18 @@ export default function OtpPopupForm() {
     if (data.status === 200) {
       if (data.role === "user") {
         localStorage.setItem("userToken", data.token);
+        localStorage.setItem("userId", data.id);
         setBid(true);
-        window.location.href = "/dashboard";
+        setOtpPopup(false);
+        setLoginPopup(false);
+        setRegisterPopup(false);
+        // window.location.href = "/dashboard";
       } else if (data.role === "architect") {
         localStorage.setItem("userToken", data.token);
+        localStorage.setItem("userId", data.id);
+        setOtpPopup(false);
+        setLoginPopup(false);
+        setRegisterPopup(false);
         window.location.href = `/architect-dashboard/${data.id}`;
       }
     }
@@ -98,9 +109,7 @@ export default function OtpPopupForm() {
 
   const verifyClickLogin = () => {
     if (a.value !== "") {
-      handleSubmitLogin(
-        a.value + b.value + c.value + d.value + e.value + f.value
-      );
+      handleSubmitLogin(a.value + b.value + c.value + d.value + e.value + f.value);
     }
   };
 
@@ -108,42 +117,12 @@ export default function OtpPopupForm() {
     <>
       <div className={styles.stwo}>
         <div className={styles.sixOtp}>
-          <input
-            id="a"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(a, a, b)}
-          />
-          <input
-            id="b"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(a, b, c)}
-          />
-          <input
-            id="c"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(b, c, d)}
-          />
-          <input
-            id="d"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(c, d, e)}
-          />
-          <input
-            id="e"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(d, e, f)}
-          />
-          <input
-            id="f"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(e, f, f)}
-          />
+          <input id="a" type="tel" maxLength="1" onChange={() => OtpNextActive(a, a, b)} />
+          <input id="b" type="tel" maxLength="1" onChange={() => OtpNextActive(a, b, c)} />
+          <input id="c" type="tel" maxLength="1" onChange={() => OtpNextActive(b, c, d)} />
+          <input id="d" type="tel" maxLength="1" onChange={() => OtpNextActive(c, d, e)} />
+          <input id="e" type="tel" maxLength="1" onChange={() => OtpNextActive(d, e, f)} />
+          <input id="f" type="tel" maxLength="1" onChange={() => OtpNextActive(e, f, f)} />
         </div>
         <div className={styles.additional}>
           <div className={styles.resend}>

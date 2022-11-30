@@ -80,6 +80,9 @@
   transition: all 0.2s ease-out;
   transition: all 0.2s ease-out 0s; */
 }
+.menu_mobile_outer_ns {
+  margin-top: 57px !important;
+}
 .menu_mobile_outer .menu {
   display: flex;
   align-items: center;

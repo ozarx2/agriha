@@ -10,7 +10,6 @@ export default function RegisterPopupForm() {
 
   const setOtpPopup = Store.setOtpPopup;
   const setLoginActive = Store.setLoginActive;
-  const setLoginDetails = Store.setLoginDetails;
 
   const termsClick = () => {
     window.location.href = "/terms";
@@ -67,7 +66,6 @@ export default function RegisterPopupForm() {
           /* window.location.href = "/verifyotp"; */
           setOtpPopup(true);
           setLoginActive(false);
-          setLoginDetails(false);
           // setRegisterPopup(false);
         }
         if (response.data.status === 409) {

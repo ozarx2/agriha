@@ -9,7 +9,6 @@ export default function LoginPopupForm() {
 
   const setOtpPopup = Store.setOtpPopup;
   const setLoginActive = Store.setLoginActive;
-  const setLoginDetails = Store.setLoginDetails;
 
   const [phone, setphone] = useState("");
 
@@ -34,7 +33,6 @@ export default function LoginPopupForm() {
     if (data.status === 200) {
       localStorage.setItem("token", data.token);
       setLoginActive(true);
-      setLoginDetails(true);
       setOtpPopup(true);
     }
   }
@@ -46,11 +44,7 @@ export default function LoginPopupForm() {
   return (
     <>
       <div className={styles.stwo}>
-        <input
-          type="tel"
-          onChange={storeValues}
-          placeholder="Enter Mobile Number"
-        />
+        <input type="tel" onChange={storeValues} placeholder="Enter Mobile Number" />
         <div onClick={() => showOtp()} className={styles.submit}>
           Send OTP
         </div>

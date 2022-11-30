@@ -15,18 +15,13 @@ const ViewProjectArch = () => {
   /* GET PROJECT DETAILS */
   async function getProjects() {
     var projectId = localStorage.getItem("projectIdImage");
-    const res = await fetch(
-      `${api_url}/projects/arcprojectsingle/${projectId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer " +
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
-        },
-      }
-    );
+    const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${dummy_token}`,
+      },
+    });
 
     const data = await res.json();
     console.log(data[0]);
@@ -74,11 +69,7 @@ const ViewProjectArch = () => {
         <div className={styles.content__viewProjectArch}>
           {projectImg?.map((items, index) => {
             return (
-              <div
-                onClick={() => imageview(items)}
-                key={index}
-                className={styles.image__project__viewProjectArch}
-              >
+              <div onClick={() => imageview(items)} key={index} className={styles.image__project__viewProjectArch}>
                 <img src={items} alt="" />
               </div>
             );
@@ -91,16 +82,8 @@ const ViewProjectArch = () => {
             return (
               <div key={index} className={styles.each_slide_effect}>
                 <div style={{ backgroundImage: `url(${items})` }}>
-                  <div
-                    onClick={closeClick}
-                    className={styles.closeButtonContainer}
-                  >
-                    <Image
-                      src="/close.svg"
-                      alt=""
-                      width={30}
-                      height={30}
-                    ></Image>
+                  <div onClick={closeClick} className={styles.closeButtonContainer}>
+                    <Image src="/close.svg" alt="" width={30} height={30}></Image>
                   </div>
                 </div>
               </div>

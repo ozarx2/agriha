@@ -19,6 +19,7 @@ export default function AgrihaLanding() {
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
   const architectBidPopup = Store.architectBidPopup;
+  const profilePopup = Store.profilePopup;
   return (
     <>
       <Head>
@@ -44,7 +45,7 @@ export default function AgrihaLanding() {
         {registerPopup ? <RegisterPopup /> : ""}
         {otpPopup ? <OtpPopup /> : ""}
         {architectBidPopup ? <ArchitectBidPopupidPopup /> : ""}
-        {/* {ProfilePopup ? <ProfilePopup /> : ""} */}
+        {profilePopup ? <ProfilePopup /> : ""}
       </div>
     </>
   );

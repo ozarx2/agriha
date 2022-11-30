@@ -42,17 +42,14 @@ export default function ProfilePopup() {
         <div onClick={() => setProfilePopup(false)} className={styles.ProfilePopupClose}></div>
         <div className={styles.ProfilePopupInner}>
           {windowRes.innerWidth >= 767 ? (
-            <div className={styles.content_outer}>
-              <div className={`container ${styles.container} ${styles.content}`}>
+            <div className={styles.desktop}>
+              <div className={styles.content_outer}>
                 <div className={styles.desktop_header}>
                   <div className={styles.userProfilePicDesktopMain}>
                     <div className={styles.userProfilePicDesktop}>
                       <div className={styles.userProfileDpDesk}>
-                        <img
-                          src="/img/user-profile/profileMob.svg"
-                          alt="profileMob.svg"
-                          className={styles.profileDpDesktop}
-                        />
+                        <img src="/img/landing/profile_img.svg" alt="profile" className={styles.profileDpDesktop} />
+                        <img src="/img/profile/edit.svg" alt="profile" className={styles.edit} />
                       </div>
                       <div className={styles.userProfileNameDeskSection}>
                         <div className={styles.profileName}>Althaf Rahman</div>
@@ -87,7 +84,60 @@ export default function ProfilePopup() {
               </div>
             </div>
           ) : (
-            <div className={styles.header}></div>
+            <div className={styles.mobile}>
+              <div className={styles.main_header}>
+                <div className={`container ${styles.container} ${styles.header}`}>
+                  <div className={styles.header_main_inner}>
+                    <div className={styles.left}>
+                      <picture>
+                        <img src="/img/landing/logo.svg" alt="logo" />
+                      </picture>
+                    </div>
+                    <div className={styles.right}>
+                      <div className={styles.profile}>
+                        <span>Althaf Rahman</span>
+                        <img src="/img/landing/profile_img.svg" alt="profile" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={`container ${styles.container} ${styles.popup_content}`}>
+                <div className={styles.popup_content_outer}>
+                  <div className={styles.popup_content_inner}>
+                    <div className={styles.first}>
+                      <div onClick={() => setProfilePopup(false)} className={styles.back}>
+                        <img src="/img/project-details/back.svg" alt="back" />
+                      </div>
+                      <div>
+                        <img className={styles.profile_pic} src="/img/landing/profile_img.svg" alt="profile" />
+                      </div>
+                      <div className={styles.name}>Althaf Rahman</div>
+                      <div className={styles.details}>
+                        <span>althaf.arclif@gmail.com</span>
+                        <span>.</span>
+                        <span>75599496254</span>
+                      </div>
+                      <div className={styles.buttons}>
+                        <div className={styles.edit}>Edit profile</div>
+                        <div className={styles.logout}>Log out</div>
+                      </div>
+                    </div>
+                    <div className={styles.second}>
+                      <div>Ongoing project</div>
+                      <div>Saved item</div>
+                      <div>Shared project</div>
+                      <div>Project history</div>
+                      <div>Product</div>
+                      <div>Cart</div>
+                    </div>
+                    <div className={styles.third}>
+                      <div>Privacy & policy</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>

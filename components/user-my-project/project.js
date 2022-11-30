@@ -114,6 +114,7 @@ const FnOngoingProjectUserSide = () => {
                       <div>{items?.architect_id?.firstname}</div>
                     </div>
                   </div>
+
                   <div className={styles.profileStatusSection}>
                     <div className={styles.profileStatusLeft}>
                       <div className={styles.profileStatus}>Status:</div>
@@ -160,45 +161,30 @@ const FnOngoingProjectUserSide = () => {
                   </div>
                   <div className={styles.fileButtonsSec}>
                     <div className={styles.cancelBtn}>cancel</div>
-                    <div className={styles.uploadBtnMain}>
-                      <div className={styles.uploadBtn}>
-                        <img
-                          src="/img/my-project-user/upload.svg"
-                          alt="upload.svg"
-                          className={styles.upload}
-                        />
-                        Upload
-                      </div>
+                    <div className={styles.uploadBtn}>
+                      <img
+                        src="/img/my-project-user/upload.svg"
+                        alt="upload.svg"
+                        className={styles.upload}
+                      />
+                      <span>Upload</span>
                     </div>
                   </div>
                 </div>
                 <div className={styles.secThree}>
-                  <div className={styles.fileFromArch}>
-                    <div className={styles.fileArchHead}>
-                      <div className={styles.fileTitle}>
-                        File from Architect
-                      </div>
-                      <div className={styles.archFilesMainSec}>
-                        <div className={styles.fileList}>
-                          <div>
-                            <img
-                              src="/img/my-project-user/data.svg"
-                              alt="data.svg"
-                            />
-                            Photograph.jpg
-                          </div>
-                        </div>
-                        <div className={styles.dataDate}>27/10/2022</div>
-                        <div className={styles.dataLock}>
-                          <div>
-                            <img
-                              src="/img/my-project-user/unlock.svg"
-                              alt="unlock.svg"
-                            />
-                            Unlock file
-                          </div>
-                        </div>
-                      </div>
+                  <div className={styles.fileTitle}>File from Architect</div>
+                  <div className={styles.archFilesMainSec}>
+                    <div className={styles.fileList}>
+                      <img src="/img/my-project-user/data.svg" alt="data.svg" />
+                      <span>Photograph.jpg</span>
+                    </div>
+                    <div className={styles.dataDate}>27/10/2022</div>
+                    <div className={styles.dataLock}>
+                      <img
+                        src="/img/my-project-user/unlock.svg"
+                        alt="unlock.svg"
+                      />
+                      <span>Unlock file</span>
                     </div>
                   </div>
                 </div>

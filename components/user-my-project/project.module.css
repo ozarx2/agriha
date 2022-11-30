@@ -119,9 +119,15 @@
   color: #575757;
 }
 .profileStatusSection {
-  display: flex;
   padding-top: 30px;
+  display: flex;
 }
+/* .profileStatusSection > div {
+  display: flex;
+}
+.profileStatusSection > div > div {
+  flex: 1;
+} */
 .profileStatus {
   padding-top: 30px;
 }
@@ -246,7 +252,7 @@
   line-height: 148.19%;
   color: #000000;
 }
-.fileList > div {
+.fileList {
   display: flex;
   align-items: center;
   font-family: "Inter";
@@ -256,10 +262,10 @@
   line-height: 16px;
   color: #393333;
 }
-.fileList > div > img {
+.fileList img {
   padding-right: 11px;
 }
-.dataLock > div {
+.dataLock {
   display: flex;
   align-items: center;
   font-family: "Inter";
@@ -272,7 +278,7 @@
   border: 1px solid #2b5797;
   border-radius: 4px;
 }
-.dataLock > div > img {
+.dataLock > img {
   padding-right: 7px;
 }
 /* .projDetails {
@@ -284,8 +290,14 @@
   transition: all 0.7s ease-out 0s;
 } */
 @media only screen and (max-width: 1400px) {
-  .cancelBtn {
+  /* .cancelBtn {
     display: none;
+  } */
+  .cancelBtn {
+    padding: 13px 21px;
+  }
+  .uploadBtn {
+    padding: 11px 15px;
   }
   .uploadBtnMain {
     width: 100%;
@@ -293,9 +305,9 @@
     /* padding: auto; */
     /* padding: 15px 21px; */
   }
-  .uploadBtn {
+  /* .uploadBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+  } */
 }

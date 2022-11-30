@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import StarRatings from "react-star-ratings";
 import Progress from "../../../components/progress-bar/index";
 import api_url from "../../../src/utils/url";
+import dummy_token from "../../../src/utils/dummy_token";
 
 import styles from "./review.module.css";
 
@@ -34,7 +35,26 @@ const FnReview = ({ singleArchitect }) => {
   const router = useRouter();
   const { id } = router.query;
 
-  /* GET PROJECT of a architect */
+  /* GET CURRENT RATING */
+  const [currentArchitectRating, setCurrentArchitectRating] = useState([]);
+  async function getCurrentArchitectRating() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/star-rating/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${dummy_token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+    setCurrentArchitectRating(data);
+  }
+
+  console.log(currentArchitectRating);
+
+  /* SENS ARCHITECT RATING */
   const [newRating, setNewRating] = useState(5);
   const changeRating = (newRating, name) => {
     setNewRating(newRating);
@@ -58,8 +78,11 @@ const FnReview = ({ singleArchitect }) => {
     });
     const data = await res.json();
     console.log(data);
-    // setProjects(data);
   }
+
+  useEffect(() => {
+    getCurrentArchitectRating();
+  }, [id]);
 
   return (
     <>

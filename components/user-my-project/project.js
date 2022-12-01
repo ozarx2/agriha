@@ -13,19 +13,19 @@ import { Upload } from "antd";
 const { Dragger } = Upload;
 
 import styles from "./project.module.css";
+import FnFileUploadDesk from "./fileuploaddesk";
+import FnFileFromArchDesk from "./filefromarch";
 
 const FnOngoingProjectUserSide = () => {
-  const [Store] = useContext(StoreContext);
-  const files = Store.files;
-  const setFiles = Store.setFiles;
-
   const router = useRouter();
 
   const [showMore, setShowMore] = useState(false);
+  const [selectprojectId, setSelectprojectId] = useState("");
   const [description, setDescription] = useState("");
   const [project, setProject] = useState([]);
-  const toggleBtn = () => {
+  const toggleBtn = (id) => {
     setShowMore((prevState) => !prevState);
+    setSelectprojectId(id);
   };
   const handler = (e) => {
     setDescription(e.target.value);
@@ -55,69 +55,6 @@ const FnOngoingProjectUserSide = () => {
     // getProject();
   }, []);
 
-  /* Upload project images */
-  const [projectImages, setProjectImages] = useState([]);
-  const [percentProject, setPercentProject] = useState(0);
-
-  const addImages = (image) => {
-    setProjectImages((projectImages) => [...projectImages, image]);
-  };
-
-  function handleUploadProject(img) {
-    if (!img) {
-      alert("Please choose a file first!");
-    }
-    const storageRef = ref(storage, `/files/projects/${img.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, img);
-
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-
-        // update progress
-        setPercentProject(percent);
-      },
-      (err) => console.log(err),
-      () => {
-        // download url
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          addImages(url);
-        });
-      }
-    );
-  }
-
-  /* Multiple Image Uploading */
-  var fileObj = [];
-  var fileArray = [];
-
-  const uploadMultipleFiles = (e) => {
-    if (e.target.files.length <= 30) {
-      fileObj.push(e.target.files);
-      for (let i = 0; i < fileObj[0].length; i++) {
-        fileArray.push(URL.createObjectURL(fileObj[0][i]));
-        setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
-      }
-    } else {
-      alert("Cannot add more than 30 pictures");
-    }
-  };
-
-  const uploadProject = () => {
-    let temp = [...files];
-    let length = files.length;
-    for (let i = 0; i < length; i++) {
-      handleUploadProject(temp[i].file);
-    }
-  };
-
-  const singleDeleteImage = (i) => {
-    let temp = [...files];
-    temp.splice(i, 1);
-    setFiles(temp);
-  };
-
   return (
     <>
       <div className={styles.mainSection}>
@@ -136,10 +73,10 @@ const FnOngoingProjectUserSide = () => {
                     </div>
                   </div>
 
-                  <div id="less" className={styles.showMore} onClick={toggleBtn}>
-                    {showMore ? "Show Less" : "Show More"}
+                  <div id="less" className={styles.showMore} onClick={() => toggleBtn(items._id)}>
+                    {showMore && selectprojectId === items._id ? "Show Less" : "Show More"}
 
-                    {showMore ? (
+                    {showMore && selectprojectId === items._id ? (
                       <img src="/img/my-project-user/showup.svg" alt="up.svg" />
                     ) : (
                       <img src="/img/my-project-user/showdown.svg" alt="down.svg" />
@@ -179,73 +116,14 @@ const FnOngoingProjectUserSide = () => {
                   </div>
                 </div>
                 <div className={styles.secTwo}>
-                  <div className={styles.fileUploadSectionArch}>
-                    <div>File upload to Architect</div>
-                  </div>
-                  <div className={styles.uploadDescSec}>
-                    <input
-                      type="text"
-                      className={styles.uploadDesc}
-                      // value={description}
-                      onChange={handler}
-                      placeholder="Enter description"
-                    />
-                  </div>
-                  <div className={styles.dragDropSec}>
-                    {/* <Dragger {...props}>
-                      Drag & drop <a href="">Browse</a>
-                    </Dragger> */}
-                    <input
-                      className={styles.custom_file_input}
-                      type="file"
-                      multiple
-                      onChange={uploadMultipleFiles}
-                      placeholder="No file selected"
-                      accept="application/pdf"
-                    />
-                    <div className={styles.dragDrop}>
-                      Drag & drop <a href="">Browse</a>
-                    </div>
-                    <div className={styles.fileOuter}>
-                      {files.map((file, key) => {
-                        console.log(file);
-                        return (
-                          <div key={key} className={styles.file}>
-                            <div>
-                              <img src="/img/my-project-user/data.svg" />
-                              <span>{file.file.name}</span>
-                            </div>
-                            <span onClick={() => singleDeleteImage(index)}>Delete</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <div className={styles.fileButtonsSec}>
-                    <div className={styles.cancelBtn}>cancel</div>
-                    <div className={styles.uploadBtn} onClick={() => uploadProject()}>
-                      <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
-                      <span onClick={() => handleSubmit(items._id)}>Upload</span>
-                    </div>
-                  </div>
+                  <FnFileUploadDesk projectId={items._id} />
                 </div>
                 <div className={styles.secThree}>
-                  <div className={styles.fileTitle}>File from Architect</div>
-                  <div className={styles.archFilesMainSec}>
-                    <div className={styles.fileList}>
-                      <img src="/img/my-project-user/data.svg" alt="data.svg" />
-                      <span>Photograph.jpg</span>
-                    </div>
-                    <div className={styles.dataDate}>27/10/2022</div>
-                    <div className={styles.dataLock}>
-                      <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
-                      <span>Unlock file</span>
-                    </div>
-                  </div>
+                  <FnFileFromArchDesk />
                 </div>
               </div>
               <div className={styles.projDetails} id="projDetails">
-                {showMore ? (
+                {showMore && selectprojectId === items._id ? (
                   <div className={styles.projDetails} id="projDetails">
                     <FnSuggested />
                     <FnPayment />

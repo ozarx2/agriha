@@ -1,0 +1,44 @@
+.archFilesMainSec {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #efefef;
+}
+.fileTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #000000;
+}
+.fileList {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #393333;
+}
+.fileList img {
+  padding-right: 11px;
+}
+.dataLock {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2b5797;
+  padding: 6px;
+  border: 1px solid #2b5797;
+  border-radius: 4px;
+}
+.dataLock > img {
+  padding-right: 7px;
+}

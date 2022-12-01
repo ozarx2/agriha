@@ -48,7 +48,11 @@ const FnArchProfiles = () => {
                   <div className={styles.archProfileSection}>
                     <div className={styles.arcProfileGroupSection}>
                       <img
-                        src={items?.profilepic ? items?.profilepic : "/img/landing/profile_img.svg"}
+                        src={
+                          items?.profilepic
+                            ? items?.profilepic
+                            : "/img/landing/profile_img.svg"
+                        }
                         alt="profilepic.svg"
                         className={styles.archProPic}
                       />
@@ -73,8 +77,13 @@ const FnArchProfiles = () => {
                       </div>
                     </div>
                     <div className={styles.viewProfile}>
-                      <Link href={`/user-architect-about/${items._id}`} passHref>
-                        <div className={`${styles.viewProfileBtn}`}>View Proifle</div>
+                      <Link
+                        href={`/user-architect-about/${items._id}`}
+                        passHref
+                      >
+                        <div className={`${styles.viewProfileBtn}`}>
+                          View Proifle
+                        </div>
                       </Link>
                     </div>
                   </div>
@@ -85,7 +94,9 @@ const FnArchProfiles = () => {
                         alt="locationblue.svg"
                         className={styles.locationIconGreen}
                       />
-                      <div className={styles.archlocation}>{items?.location}</div>
+                      <div className={styles.archlocation}>
+                        {items?.location}
+                      </div>
                     </div>
                     <div className={styles.category}>
                       <div>Architect</div>

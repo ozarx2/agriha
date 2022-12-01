@@ -164,6 +164,19 @@
   line-height: 148.19%;
   color: #000000;
 }
+.file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.file > div {
+  display: flex;
+  align-items: center;
+}
+.file > div > span {
+  padding-left: 10px;
+}
 .uploadDescSec {
   padding-top: 25px;
   padding-bottom: 21px;
@@ -183,6 +196,14 @@
 }
 .dragDropSec {
   padding-top: 12px;
+  position: relative;
+}
+.dragDropSec input {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60%;
+  opacity: 0;
 }
 .dragDrop {
   padding: 15px;

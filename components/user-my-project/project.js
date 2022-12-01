@@ -1,29 +1,44 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { StoreContext } from "../../components/StoreContext";
+import storage from "../../firebase";
 import FnFileFolder from "./folders";
 import FnPayment from "./payment";
-import styles from "./project.module.css";
 import FnSuggested from "./suggested";
-// import api_url from "../../src/utils/url";
-var api_url = "https://arclif-agriha.herokuapp.com";
-
-import { InboxOutlined } from "@ant-design/icons";
-import { message, Upload } from "antd";
+import api_url from "../../src/utils/url";
+import { Upload } from "antd";
 const { Dragger } = Upload;
 
+import styles from "./project.module.css";
+import FnFileUploadDesk from "./fileuploaddesk";
+import FnFileFromArchDesk from "./filefromarch";
+
 const FnOngoingProjectUserSide = () => {
+  const router = useRouter();
+
   const [showMore, setShowMore] = useState(false);
+  const [selectprojectId, setSelectprojectId] = useState("");
   const [description, setDescription] = useState("");
   const [project, setProject] = useState([]);
-  const toggleBtn = () => {
+  const toggleBtn = (id) => {
     setShowMore((prevState) => !prevState);
+    setSelectprojectId(id);
   };
   const handler = (e) => {
     setDescription(e.target.value);
   };
+
+  // submit user file
+  const handleSubmit = (id) => {
+    // console.log(description);
+    // console.log(id);
+  };
   async function getSingleProject() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/projects/view`, {
+    const res = await fetch("https://agriha-server-dot-agriha-services.uc.r.appspot.com/projects/view", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -31,33 +46,14 @@ const FnOngoingProjectUserSide = () => {
       },
     });
     const data = await res.json();
+    // console.log(data);
     setProject(data.projects);
   }
-  console.log(project);
+  // console.log(project);
   useEffect(() => {
     getSingleProject();
     // getProject();
   }, []);
-
-  const props = {
-    name: "file",
-    multiple: true,
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-    onChange(info) {
-      const { status } = info.file;
-      if (status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (status === "done") {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-    onDrop(e) {
-      console.log("Dropped files", e.dataTransfer.files);
-    },
-  };
 
   return (
     <>
@@ -77,10 +73,10 @@ const FnOngoingProjectUserSide = () => {
                     </div>
                   </div>
 
-                  <div id="less" className={styles.showMore} onClick={toggleBtn}>
-                    {showMore ? "Show Less" : "Show More"}
+                  <div id="less" className={styles.showMore} onClick={() => toggleBtn(items._id)}>
+                    {showMore && selectprojectId === items._id ? "Show Less" : "Show More"}
 
-                    {showMore ? (
+                    {showMore && selectprojectId === items._id ? (
                       <img src="/img/my-project-user/showup.svg" alt="up.svg" />
                     ) : (
                       <img src="/img/my-project-user/showdown.svg" alt="down.svg" />
@@ -91,15 +87,17 @@ const FnOngoingProjectUserSide = () => {
               <div className={styles.onGoingProjSectionMain}>
                 <div className={styles.secOne}>
                   <div className={styles.profileDpNameSection}>
-                    <div className={styles.profileNameSec}>
-                      <img
-                        src={items?.architect_id?.profilepic}
-                        // src="/img/my-project-user/profile.svg"
-                        alt="profile.svg"
-                        className={styles.profileNameSecImg}
-                      />
-                      <div>{items?.architect_id?.firstname}</div>
-                    </div>
+                    <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
+                      <div className={styles.profileNameSec}>
+                        <img
+                          src={items?.architect_id?.profilepic}
+                          // src="/img/my-project-user/profile.svg"
+                          alt="profile.svg"
+                          className={styles.profileNameSecImg}
+                        />
+                        <div>{items?.architect_id?.firstname}</div>
+                      </div>
+                    </Link>
                   </div>
 
                   <div className={styles.profileStatusSection}>
@@ -118,51 +116,14 @@ const FnOngoingProjectUserSide = () => {
                   </div>
                 </div>
                 <div className={styles.secTwo}>
-                  <div className={styles.fileUploadSectionArch}>
-                    <div>File upload to Architect</div>
-                  </div>
-                  <div className={styles.uploadDescSec}>
-                    <input
-                      type="text"
-                      className={styles.uploadDesc}
-                      value={description}
-                      onChange={handler}
-                      placeholder="Enter description"
-                    />
-                  </div>
-                  <div className={styles.dragDropSec}>
-                    <Dragger {...props}>
-                      Drag & drop <a href="">Browse</a>
-                    </Dragger>
-                    {/* <div className={styles.dragDrop}>
-                      Drag & drop <a href="">Browse</a>{" "}
-                    </div> */}
-                  </div>
-                  <div className={styles.fileButtonsSec}>
-                    <div className={styles.cancelBtn}>cancel</div>
-                    <div className={styles.uploadBtn}>
-                      <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
-                      <span>Upload</span>
-                    </div>
-                  </div>
+                  <FnFileUploadDesk projectId={items._id} />
                 </div>
                 <div className={styles.secThree}>
-                  <div className={styles.fileTitle}>File from Architect</div>
-                  <div className={styles.archFilesMainSec}>
-                    <div className={styles.fileList}>
-                      <img src="/img/my-project-user/data.svg" alt="data.svg" />
-                      <span>Photograph.jpg</span>
-                    </div>
-                    <div className={styles.dataDate}>27/10/2022</div>
-                    <div className={styles.dataLock}>
-                      <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
-                      <span>Unlock file</span>
-                    </div>
-                  </div>
+                  <FnFileFromArchDesk />
                 </div>
               </div>
               <div className={styles.projDetails} id="projDetails">
-                {showMore ? (
+                {showMore && selectprojectId === items._id ? (
                   <div className={styles.projDetails} id="projDetails">
                     <FnSuggested />
                     <FnPayment />

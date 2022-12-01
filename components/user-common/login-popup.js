@@ -85,18 +85,12 @@ export default function LoginPopup() {
   return (
     <>
       <div id="LoginPopupOuter" className={styles.LoginPopupOuter}>
-        <div
-          onClick={() => setLoginPopup(false)}
-          className={styles.LoginPopupClose}
-        ></div>
+        <div onClick={() => setLoginPopup(false)} className={styles.LoginPopupClose}></div>
         <div className={styles.LoginPopupInner}>
           {windowRes.innerWidth >= 767 ? (
             <div className={styles.desktop_header}>
               <div className={styles.header_inner}>
-                <div
-                  onClick={() => setLoginPopup(false)}
-                  className={styles.left}
-                >
+                <div onClick={() => setLoginPopup(false)} className={styles.left}>
                   <picture>
                     <img src="/img/landing/header-close.svg" alt="close" />
                   </picture>
@@ -111,9 +105,7 @@ export default function LoginPopup() {
             </div>
           ) : (
             <div className={styles.header}>
-              <div
-                className={`container ${styles.container} ${styles.header_container}`}
-              >
+              <div className={`container ${styles.container} ${styles.header_container}`}>
                 <div className={styles.header_inner}>
                   <div className={styles.left}>
                     <picture>
@@ -135,9 +127,7 @@ export default function LoginPopup() {
                   <div className={styles.sone}>
                     <div className={styles.text}>
                       <div className={styles.textone}>Log in</div>
-                      <div className={styles.texttwo}>
-                        OTP will be sent via sms to your Mobile Number
-                      </div>
+                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
                   </div>
                   <LoginPopupForm />
@@ -156,11 +146,7 @@ export default function LoginPopup() {
                         console.log(credentialResponse);
                         var decoded = jwt_decode(credentialResponse.credential);
                         console.log(decoded);
-                        handleSubmit(
-                          decoded.name,
-                          decoded.email,
-                          decoded.picture
-                        );
+                        handleSubmit(decoded.name, decoded.email, decoded.picture);
                       }}
                       onError={() => {
                         console.log("Login Failed");
@@ -170,8 +156,7 @@ export default function LoginPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Not on Agriha services yet?{" "}
-                      <span onClick={() => showSignup()}>Sign up</span>
+                      Not on Agriha services yet? <span onClick={() => showSignup()}>Sign up</span>
                     </div>
                   </div>
                 </div>
@@ -179,22 +164,15 @@ export default function LoginPopup() {
             </>
           ) : (
             <div className={styles.content_outer}>
-              <div
-                className={`container ${styles.container} ${styles.content}`}
-              >
+              <div className={`container ${styles.container} ${styles.content}`}>
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
-                    <div
-                      onClick={() => setLoginPopup(false)}
-                      className={styles.back}
-                    >
+                    <div onClick={() => setLoginPopup(false)} className={styles.back}>
                       <img src="/img/project-details/back.svg" alt="back" />
                     </div>
                     <div className={styles.text}>
                       <div className={styles.textone}>Log in</div>
-                      <div className={styles.texttwo}>
-                        OTP will be sent via sms to your Mobile Number
-                      </div>
+                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
                   </div>
                   <LoginPopupForm />
@@ -207,27 +185,22 @@ export default function LoginPopup() {
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
                     </div> */}
-                    {/* <GoogleLogin
+                    <GoogleLogin
                       onSuccess={(credentialResponse) => {
                         console.log(credentialResponse);
                         var decoded = jwt_decode(credentialResponse.credential);
                         console.log(decoded);
-                        handleSubmit(
-                          decoded.name,
-                          decoded.email,
-                          decoded.picture
-                        );
+                        handleSubmit(decoded.name, decoded.email, decoded.picture);
                       }}
                       onError={() => {
                         console.log("Login Failed");
                       }}
-                    /> */}
-                    <AgrihaGoogleLogin onClick={() => OurGoogleLogin()} />
+                    />
+                    {/* <AgrihaGoogleLogin onClick={() => OurGoogleLogin()} /> */}
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Not on Agriha services yet?{" "}
-                      <span onClick={() => showSignup()}>Sign up</span>
+                      Not on Agriha services yet? <span onClick={() => showSignup()}>Sign up</span>
                     </div>
                   </div>
                 </div>

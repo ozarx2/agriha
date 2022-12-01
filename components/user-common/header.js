@@ -3,8 +3,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import api_url from "../../src/utils/url";
+
 import styles from "./header.module.css";
 
 export default function AgrihaLandingHeader() {
@@ -90,11 +92,24 @@ export default function AgrihaLandingHeader() {
   const setProfilePopup = Store.setProfilePopup;
   const setLoginActive = Store.setLoginActive;
 
+  async function getHomeSeekerDetails() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/user/profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + `${token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+  }
+
   const loginCheck = () => {
     const token = localStorage.getItem("userToken");
     if (token) {
-      console.log(token);
       setLoginActive(true);
+      getHomeSeekerDetails();
     }
   };
 

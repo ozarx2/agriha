@@ -70,11 +70,11 @@ export default function ProfilePopup() {
                         </div>
                       </Link>
 
-                      <div className={styles.profileDeskTabs}>Saved items</div>
+                      {/* <div className={styles.profileDeskTabs}>Saved items</div>
                       <div className={styles.profileDeskTabs}>Shared projects</div>
                       <div className={styles.profileDeskTabs}>Project history</div>
                       <div className={styles.profileDeskTabs}>Products</div>
-                      <div className={styles.profileDeskTabs}>Cart</div>
+                      <div className={styles.profileDeskTabs}>Cart</div> */}
                       <div className={styles.profileDeskTabs}>Privacy & policy</div>
                     </div>
                   </div>
@@ -125,11 +125,11 @@ export default function ProfilePopup() {
                     </div>
                     <div className={styles.second}>
                       <div>Ongoing project</div>
-                      <div>Saved item</div>
+                      {/* <div>Saved item</div>
                       <div>Shared project</div>
                       <div>Project history</div>
                       <div>Product</div>
-                      <div>Cart</div>
+                      <div>Cart</div> */}
                     </div>
                     <div className={styles.third}>
                       <div>Privacy & policy</div>

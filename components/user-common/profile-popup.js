@@ -5,6 +5,8 @@ import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import windowSize from "../windowRes";
+import api_url from "../../src/utils/url";
 
 import styles from "./profile-popup.module.css";
 
@@ -12,29 +14,41 @@ export default function ProfilePopup() {
   const router = useRouter();
 
   const [Store] = useContext(StoreContext);
-
   const setProfilePopup = Store.setProfilePopup;
+  const setLoginActive = Store.setLoginActive;
+  const setUserId = Store.setUserId;
+  const userId = Store.userId;
 
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
+  const windowRes = windowSize();
+
+  const logoutFunction = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userToken");
+    setLoginActive(false);
+    setUserId("");
+    setProfilePopup(false);
+  };
+
+  const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
+  async function getHomeSeekerDetails() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/user/profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    setHomeSeekerDetails(data.userData);
   }
+
+  useEffect(() => {
+    if (userId !== "") {
+      getHomeSeekerDetails();
+    }
+  }, [userId]);
 
   return (
     <>
@@ -48,13 +62,21 @@ export default function ProfilePopup() {
                   <div className={styles.userProfilePicDesktopMain}>
                     <div className={styles.userProfilePicDesktop}>
                       <div className={styles.userProfileDpDesk}>
-                        <img src="/img/landing/profile_img.svg" alt="profile" className={styles.profileDpDesktop} />
+                        <img
+                          src={
+                            homeSeekerDetails?.profile_pic
+                              ? homeSeekerDetails?.profile_pic
+                              : "/img/landing/profile_img.svg"
+                          }
+                          alt="profile"
+                          className={styles.profileDpDesktop}
+                        />
                         <img src="/img/profile/edit.svg" alt="profile" className={styles.edit} />
                       </div>
                       <div className={styles.userProfileNameDeskSection}>
-                        <div className={styles.profileName}>Althaf Rahman</div>
-                        <div className={styles.subHead}> althaf.arclif@gmail.com</div>
-                        <div className={styles.subHead}>7736214585</div>
+                        <div className={styles.profileName}>{homeSeekerDetails?.name}</div>
+                        <div className={styles.subHead}>{homeSeekerDetails?.registered_id?.email}</div>
+                        <div className={styles.subHead}>{homeSeekerDetails?.registered_id?.phone}</div>
                       </div>
                     </div>
                   </div>
@@ -78,7 +100,9 @@ export default function ProfilePopup() {
                       <div className={styles.profileDeskTabs}>Privacy & policy</div>
                     </div>
                   </div>
-                  <div className={styles.desktopProfileLogoutSection}>Logout</div>
+                  <div onClick={() => logoutFunction()} className={styles.desktopProfileLogoutSection}>
+                    Logout
+                  </div>
                 </div>
                 <div className={styles.content_inner}></div>
               </div>
@@ -110,17 +134,27 @@ export default function ProfilePopup() {
                         <img src="/img/project-details/back.svg" alt="back" />
                       </div>
                       <div>
-                        <img className={styles.profile_pic} src="/img/landing/profile_img.svg" alt="profile" />
+                        <img
+                          className={styles.profile_pic}
+                          src={
+                            homeSeekerDetails?.profile_pic
+                              ? homeSeekerDetails?.profile_pic
+                              : "/img/landing/profile_img.svg"
+                          }
+                          alt="profile"
+                        />
                       </div>
-                      <div className={styles.name}>Althaf Rahman</div>
+                      <div className={styles.name}>{homeSeekerDetails?.name}</div>
                       <div className={styles.details}>
-                        <span>althaf.arclif@gmail.com</span>
+                        <span>{homeSeekerDetails?.registered_id?.email}</span>
                         <span>.</span>
-                        <span>75599496254</span>
+                        <span>{homeSeekerDetails?.registered_id?.phone}</span>
                       </div>
                       <div className={styles.buttons}>
                         <div className={styles.edit}>Edit profile</div>
-                        <div className={styles.logout}>Log out</div>
+                        <div onClick={() => logoutFunction()} className={styles.logout}>
+                          Log out
+                        </div>
                       </div>
                     </div>
                     <div className={styles.second}>

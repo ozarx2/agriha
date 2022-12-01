@@ -21,7 +21,7 @@ export default function FnSFour() {
   console.log(userProjects);
 
   useEffect(() => {
-    if (userProjects.length !== 0) {
+    if (userProjects?.length !== 0) {
       setOngoingProject(true);
     } else {
       setOngoingProject(false);
@@ -41,12 +41,7 @@ export default function FnSFour() {
             <div className={styles.left}>
               Ongoing Project
               <span className={styles.dot}>
-                <Image
-                  src="/img/architect-dashboard/dot.svg"
-                  alt="dot"
-                  width={3}
-                  height={3}
-                />
+                <Image src="/img/architect-dashboard/dot.svg" alt="dot" width={3} height={3} />
               </span>
               <span className={styles.number}>{ongoing?.length}</span>
             </div>
@@ -63,9 +58,7 @@ export default function FnSFour() {
                       <div className={styles.left}>
                         <img
                           src={
-                            item?.creator?.profile_pic
-                              ? item?.creator?.profile_pic
-                              : "/img/ongoing-project/profile.jpg"
+                            item?.creator?.profile_pic ? item?.creator?.profile_pic : "/img/ongoing-project/profile.jpg"
                           }
                           alt="alt"
                         />
@@ -81,16 +74,11 @@ export default function FnSFour() {
                     <div className={styles.content}>
                       <div className={styles.center}>
                         <div className={styles.left}>{item?.project_name}</div>
-                        <div className={styles.right}>
-                          {item?.starting_date}
-                        </div>
+                        <div className={styles.right}>{item?.starting_date}</div>
                       </div>
                       <div className={styles.bottom}>
                         <div onClick={() => uploadClick(item?._id)}>
-                          <img
-                            src="/img/ongoing-project/upload-m.svg"
-                            alt="alt"
-                          />
+                          <img src="/img/ongoing-project/upload-m.svg" alt="alt" />
                           <div>Upload now </div>
                         </div>
                         {/* <div>
@@ -102,10 +90,7 @@ export default function FnSFour() {
                         </div> */}
                         <Link href="/project-files" passHref>
                           <div>
-                            <img
-                              src="/img/ongoing-project/file-m.svg"
-                              alt="alt"
-                            />
+                            <img src="/img/ongoing-project/file-m.svg" alt="alt" />
                             <div>Files</div>
                           </div>
                         </Link>
@@ -118,12 +103,7 @@ export default function FnSFour() {
           ) : (
             <div className={styles.no_project}>
               <div className={styles.no_project_image}>
-                <Image
-                  src="/img/architect-dashboard/no.svg"
-                  alt="no_project_image"
-                  width={115}
-                  height={85}
-                />
+                <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
               </div>
               <h3>Look like there is no projects is here</h3>
               <h5>Now field is blank, so please create your project is here</h5>

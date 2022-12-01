@@ -5,6 +5,7 @@ import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import { useRouter } from "next/router";
 import api_url from "../../src/utils/url";
+import windowSize from "../windowRes";
 
 import styles from "./architect-select-popup.module.css";
 
@@ -12,26 +13,7 @@ export default function ArchitectSelectPopup() {
   // const [Store] = useContext(StoreContext);
   // const setLoginPopup = Store.setLoginPopup;
 
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   const [Store] = useContext(StoreContext);
   const setArchitectSelectPopup = Store.setArchitectSelectPopup;

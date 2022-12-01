@@ -94,20 +94,17 @@ export default function Navbar() {
   async function getAssignedProjects() {
     var token = localStorage.getItem("userToken");
 
-    const res = await fetch(
-      `${api_url}/projects/singleuserproject/${architectId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch(`${api_url}/projects/singleuserproject/${architectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     const data = await res.json();
-    setUserProjects(data.dataresp.data);
-    setUserProjectsDetails(data.dataresp.details);
+    setUserProjects(data?.dataresp?.data);
+    setUserProjectsDetails(data?.dataresp?.details);
   }
 
   /* GET ALL BID */
@@ -145,8 +142,8 @@ export default function Navbar() {
     });
 
     const data = await res.json();
-    setActivityLog(data.activitylog);
-    if (data.activitylog.length > 0) {
+    setActivityLog(data?.activitylog);
+    if (data?.activitylog?.length > 0) {
       setNotification(true);
     } else {
       setNotification(false);
@@ -200,47 +197,20 @@ export default function Navbar() {
             <div className={styles.boxes}>
               <a href="tel:8921244492">
                 <div className={styles.callBox}>
-                  <img
-                    className={styles.call_nh}
-                    src="/img/architect-dashboard/navbar/call-nh.svg"
-                    alt="call.svg"
-                  />
-                  <img
-                    className={styles.call_h}
-                    src="/img/architect-dashboard/navbar/call-h.svg"
-                    alt="call.svg"
-                  />
+                  <img className={styles.call_nh} src="/img/architect-dashboard/navbar/call-nh.svg" alt="call.svg" />
+                  <img className={styles.call_h} src="/img/architect-dashboard/navbar/call-h.svg" alt="call.svg" />
                 </div>
               </a>
-              <div
-                onClick={() => setNotificationPopup(true)}
-                className={styles.notificationBox}
-              >
+              <div onClick={() => setNotificationPopup(true)} className={styles.notificationBox}>
                 {notification ? (
                   <>
-                    <img
-                      className={styles.n_h}
-                      src="/img/architect-dashboard/navbar/n-ah.svg"
-                      alt="notification"
-                    />
-                    <img
-                      className={styles.n_nh}
-                      src="/img/architect-dashboard/navbar/n-anh.svg"
-                      alt="notification"
-                    />
+                    <img className={styles.n_h} src="/img/architect-dashboard/navbar/n-ah.svg" alt="notification" />
+                    <img className={styles.n_nh} src="/img/architect-dashboard/navbar/n-anh.svg" alt="notification" />
                   </>
                 ) : (
                   <>
-                    <img
-                      className={styles.n_h}
-                      src="/img/architect-dashboard/navbar/n-h.svg"
-                      alt="notification"
-                    />
-                    <img
-                      className={styles.n_nh}
-                      src="/img/architect-dashboard/navbar/n-nh.svg"
-                      alt="notification"
-                    />
+                    <img className={styles.n_h} src="/img/architect-dashboard/navbar/n-h.svg" alt="notification" />
+                    <img className={styles.n_nh} src="/img/architect-dashboard/navbar/n-nh.svg" alt="notification" />
                   </>
                 )}
               </div>
@@ -265,11 +235,7 @@ export default function Navbar() {
         <div className={styles.mobile_nav_second}>
           <div className={styles.searchBox}>
             <input type="text" placeholder="What would you like to do ?" />
-            <img
-              src="/img/architect-dashboard/navbar/search.svg"
-              className={styles.searchIcon}
-              alt="search.jpg"
-            />
+            <img src="/img/architect-dashboard/navbar/search.svg" className={styles.searchIcon} alt="search.jpg" />
           </div>
         </div>
       </div>

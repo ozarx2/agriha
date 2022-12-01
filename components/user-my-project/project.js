@@ -4,7 +4,8 @@ import FnFileFolder from "./folders";
 import FnPayment from "./payment";
 import styles from "./project.module.css";
 import FnSuggested from "./suggested";
-import api_url from "../../src/utils/url";
+// import api_url from "../../src/utils/url";
+var api_url = "https://arclif-agriha.herokuapp.com";
 
 import { InboxOutlined } from "@ant-design/icons";
 import { message, Upload } from "antd";
@@ -22,16 +23,13 @@ const FnOngoingProjectUserSide = () => {
   };
   async function getSingleProject() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(
-      `https://arclif-agriha.herokuapp.com/projects/view`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch(`${api_url}/projects/view`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const data = await res.json();
     setProject(data.projects);
   }
@@ -75,28 +73,17 @@ const FnOngoingProjectUserSide = () => {
                 <div className={styles.showMoreBtnSection}>
                   <div className={styles.suggestion}>
                     <div>
-                      <img
-                        src="/img/my-project-user/suggestion.svg"
-                        alt="suggestion.svg"
-                      />{" "}
-                      Suggestion
+                      <img src="/img/my-project-user/suggestion.svg" alt="suggestion.svg" /> Suggestion
                     </div>
                   </div>
 
-                  <div
-                    id="less"
-                    className={styles.showMore}
-                    onClick={toggleBtn}
-                  >
+                  <div id="less" className={styles.showMore} onClick={toggleBtn}>
                     {showMore ? "Show Less" : "Show More"}
 
                     {showMore ? (
                       <img src="/img/my-project-user/showup.svg" alt="up.svg" />
                     ) : (
-                      <img
-                        src="/img/my-project-user/showdown.svg"
-                        alt="down.svg"
-                      />
+                      <img src="/img/my-project-user/showdown.svg" alt="down.svg" />
                     )}
                   </div>
                 </div>
@@ -120,20 +107,12 @@ const FnOngoingProjectUserSide = () => {
                       <div className={styles.profileStatus}>Status:</div>
                       <div className={styles.profileStatus}>Started on:</div>
                       <div className={styles.profileStatus}>Current stage:</div>
-                      <div className={styles.profileStatus}>
-                        Payment status:
-                      </div>
+                      <div className={styles.profileStatus}>Payment status:</div>
                     </div>
                     <div className={styles.profileStatusRight}>
-                      <div className={styles.profileStatus}>
-                        {items?.status}
-                      </div>
-                      <div className={styles.profileStatus}>
-                        {items?.starting_date}
-                      </div>
-                      <div className={styles.profileStatus}>
-                        {items?.status}
-                      </div>
+                      <div className={styles.profileStatus}>{items?.status}</div>
+                      <div className={styles.profileStatus}>{items?.starting_date}</div>
+                      <div className={styles.profileStatus}>{items?.status}</div>
                       <div className={styles.profileStatus}>Pending</div>
                     </div>
                   </div>
@@ -162,11 +141,7 @@ const FnOngoingProjectUserSide = () => {
                   <div className={styles.fileButtonsSec}>
                     <div className={styles.cancelBtn}>cancel</div>
                     <div className={styles.uploadBtn}>
-                      <img
-                        src="/img/my-project-user/upload.svg"
-                        alt="upload.svg"
-                        className={styles.upload}
-                      />
+                      <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
                       <span>Upload</span>
                     </div>
                   </div>
@@ -180,10 +155,7 @@ const FnOngoingProjectUserSide = () => {
                     </div>
                     <div className={styles.dataDate}>27/10/2022</div>
                     <div className={styles.dataLock}>
-                      <img
-                        src="/img/my-project-user/unlock.svg"
-                        alt="unlock.svg"
-                      />
+                      <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
                       <span>Unlock file</span>
                     </div>
                   </div>

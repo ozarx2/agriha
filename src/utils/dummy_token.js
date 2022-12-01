@@ -1,4 +1,4 @@
 var dummy_token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzgzMzU0NDExMzhiMjdkZWYxMmNlOSIsImlhdCI6MTY2OTczNDExMH0.YDdiRNHcIfSv4wv29IQ2--aMirB_EHnmZ4MJAIe55yI";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDhkYWViNDI1MmRjNjYwMDZlYmI4MiIsImlhdCI6MTY2OTc4NjMxMX0.vNSR12npNeUQRPCpFeWyii7qcLSe-me1BgWJbmG72fo";
 
 export default dummy_token;

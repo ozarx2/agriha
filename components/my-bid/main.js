@@ -100,6 +100,7 @@ const AgrihaMyBidMainMyBid = ({ getAllBid }) => {
     <div className={styles.bid_max_outer}>
       {getAllBid?.map((item, i) => {
         console.log(item);
+        console.log(item.project_name);
         return (
           <React.Fragment key={i}>
             <div className={styles.bid_outer} key={i}>

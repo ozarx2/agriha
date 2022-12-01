@@ -35,7 +35,7 @@ const FnUserMyProjectMobile = () => {
   async function getProjectMob() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(
-      `https://arclif-agriha.herokuapp.com/projects/view`,
+      `https://agriha-server-dot-agriha-services.uc.r.appspot.com/projects/view`,
       {
         method: "GET",
         headers: {

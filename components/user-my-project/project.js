@@ -23,7 +23,7 @@ const FnOngoingProjectUserSide = () => {
   async function getSingleProject() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(
-      `https://arclif-agriha.herokuapp.com/projects/view`,
+      "https://agriha-server-dot-agriha-services.uc.r.appspot.com/projects/view",
       {
         method: "GET",
         headers: {
@@ -33,7 +33,20 @@ const FnOngoingProjectUserSide = () => {
       }
     );
     const data = await res.json();
+    console.log(data);
     setProject(data.projects);
+    // const res = await fetch(
+    //   `https://agriha-server-dot-agriha-services.uc.r.appspot.com/projects/view`,
+    //   {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       // Authorization: `Bearer ${token}`,
+    //     },
+    //   }
+    // );
+    // const data = await res.json();
+    // setProject(data.projects);
   }
   console.log(project);
   useEffect(() => {

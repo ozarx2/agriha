@@ -92,8 +92,8 @@ export default function OtpPopup() {
                 </div>
               </div>
               <div className={styles.sthree_full}>
-                <div className={styles.line}></div>
-                <div className={styles.or}>OR</div>
+                {/* <div className={styles.line}></div>
+                <div className={styles.or}>OR</div> */}
               </div>
               <div className={styles.desktop_content_outer}>
                 <div className={styles.content_inner}>
@@ -138,8 +138,8 @@ export default function OtpPopup() {
                   </div>
                   <OtpPopupForm />
                   <div className={styles.sthree}>
-                    <div className={styles.line}></div>
-                    <div className={styles.or}>OR</div>
+                    {/* <div className={styles.line}></div>
+                    <div className={styles.or}>OR</div> */}
                   </div>
                   <div className={styles.sfour}>
                     {/* <div className={styles.google}>

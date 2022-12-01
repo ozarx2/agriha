@@ -115,6 +115,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   />
                   <span>{projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}</span>
                 </div>
+                <div className={styles.content}>{projectDetails?.architect_id?.bio}</div>
                 {loginActive ? (
                   <div className={styles.buttons}>
                     <div className={styles.send} onClick={() => setArchitectSelectPopup(true)}>

@@ -77,7 +77,8 @@ export default function AgrihaLandingMain() {
     const data = await response.json();
     if (data) {
       // console.log(data.data);
-      const withArchitect = data.data.filter((res) => res?.architect_id);
+      const withArchitectNoOrder = data.data.filter((res) => res?.architect_id);
+      const withArchitect = withArchitectNoOrder.reverse();
       setAllProject(withArchitect);
     }
   }

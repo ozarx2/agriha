@@ -2,14 +2,21 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
-import endpoint from "../../src/utils/endpoint";
+// import endpoint from "../../src/utils/endpoint";
+var endpoint = "https://agriha-server-dot-agriha-services.uc.r.appspot.com";
 import styles from "./register-popup.module.css";
 
 export default function RegisterPopupForm() {
   const [Store] = useContext(StoreContext);
 
   const setOtpPopup = Store.setOtpPopup;
+  const setFromLoginOrRegister = Store.setFromLoginOrRegister;
+  const setBid = Store.setBid;
   const setLoginActive = Store.setLoginActive;
+  const setUserId = Store.setUserId;
+  const setLoginPopup = Store.setLoginPopup;
+  const setRegisterPopup = Store.setRegisterPopup;
+  const userRole = Store.userRole;
 
   const termsClick = () => {
     window.location.href = "/terms";
@@ -53,20 +60,36 @@ export default function RegisterPopupForm() {
   async function handleSubmit() {
     console.log(phone);
     axios
-      .post(`${endpoint}/auth/register`, {
+      // .post(`${endpoint}/auth/register`, {
+      .post(`${endpoint}/auth/test/register`, {
         name: name,
         phone: `+91${phone}`,
         email: email,
-        role: "user",
+        role: userRole,
       })
       .then((response) => {
         console.log(response.data);
         if (response.data.status === 200) {
-          localStorage.setItem("token", response.data.token);
-          /* window.location.href = "/verifyotp"; */
-          setOtpPopup(true);
-          setLoginActive(false);
+          // localStorage.setItem("token", response.data.token);
+          // setOtpPopup(true);
+          setFromLoginOrRegister("register");
           // setRegisterPopup(false);
+
+          // dummy login start
+          setUserId(response.data.id);
+          setLoginActive(true);
+          setOtpPopup(false);
+          setLoginPopup(false);
+          setRegisterPopup(false);
+          localStorage.setItem("userId", response.data.id);
+          localStorage.setItem("userToken", response.data.token);
+          if (response.data.role === "user") {
+            setBid(true);
+            window.location.href = "/requirement/basic-details";
+          } else if (response.data.role === "architect") {
+            window.location.href = `/architect-dashboard/${response.data.id}`;
+          }
+          // dummy login end
         }
         if (response.data.status === 409) {
           /* document.getElementById("loaderSentOtpRegister").style.display =

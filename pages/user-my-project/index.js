@@ -20,7 +20,7 @@ const UserMyProjectMain = () => {
   const loginPopup = Store.loginPopup;
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
-  const profilPopup = Store.profilPopup;
+  const profilePopup = Store.profilePopup;
   return (
     <>
       <Head>
@@ -45,7 +45,7 @@ const UserMyProjectMain = () => {
         {loginPopup ? <LoginPopup /> : ""}
         {registerPopup ? <RegisterPopup /> : ""}
         {otpPopup ? <OtpPopup /> : ""}
-        {profilPopup ? <ProfilePopup /> : ""}
+        {profilePopup ? <ProfilePopup /> : ""}
       </div>
     </>
   );

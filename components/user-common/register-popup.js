@@ -9,6 +9,7 @@ import jwt_decode from "jwt-decode";
 import styles from "./register-popup.module.css";
 import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import windowSize from "../windowRes";
 import endpoint from "../../src/utils/endpoint";
 
 export default function RegisterPopup() {
@@ -18,29 +19,7 @@ export default function RegisterPopup() {
   const setRegisterPopup = Store.setRegisterPopup;
   const otpPopup = Store.otpPopup;
 
-  const setOtpPopup = Store.setOtpPopup;
-  const setLoginActive = Store.setLoginActive;
-
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   function showLogin() {
     setRegisterPopup(false);
@@ -83,18 +62,12 @@ export default function RegisterPopup() {
   return (
     <>
       <div id="RegisterPopupOuter" className={styles.RegisterPopupOuter}>
-        <div
-          onClick={() => setRegisterPopup(false)}
-          className={styles.RegisterPopupClose}
-        ></div>
+        <div onClick={() => setRegisterPopup(false)} className={styles.RegisterPopupClose}></div>
         <div className={styles.RegisterPopupInner}>
           {windowRes.innerWidth >= 767 ? (
             <div className={styles.desktop_header}>
               <div className={styles.header_inner}>
-                <div
-                  onClick={() => setRegisterPopup(false)}
-                  className={styles.left}
-                >
+                <div onClick={() => setRegisterPopup(false)} className={styles.left}>
                   <picture>
                     <img src="/img/landing/header-close.svg" alt="close" />
                   </picture>
@@ -109,9 +82,7 @@ export default function RegisterPopup() {
             </div>
           ) : (
             <div className={styles.header}>
-              <div
-                className={`container ${styles.container} ${styles.header_container}`}
-              >
+              <div className={`container ${styles.container} ${styles.header_container}`}>
                 <div className={styles.header_inner}>
                   <div className={styles.left}>
                     <picture>
@@ -133,9 +104,7 @@ export default function RegisterPopup() {
                   <div className={styles.sone}>
                     <div className={styles.text}>
                       <div className={styles.textone}>Registraion</div>
-                      <div className={styles.texttwo}>
-                        OTP will be sent via sms to your Mobile Number
-                      </div>
+                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
                   </div>
                   <RegisterPopupForm />
@@ -154,11 +123,7 @@ export default function RegisterPopup() {
                         console.log(credentialResponse);
                         var decoded = jwt_decode(credentialResponse.credential);
                         console.log(decoded);
-                        handleSubmit(
-                          decoded.name,
-                          decoded.email,
-                          decoded.picture
-                        );
+                        handleSubmit(decoded.name, decoded.email, decoded.picture);
                       }}
                       onError={() => {
                         console.log("Login Failed");
@@ -168,8 +133,7 @@ export default function RegisterPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Already a member?{" "}
-                      <span onClick={() => showLogin()}>Login</span>
+                      Already a member? <span onClick={() => showLogin()}>Login</span>
                     </div>
                   </div>
                 </div>
@@ -177,22 +141,15 @@ export default function RegisterPopup() {
             </>
           ) : (
             <div className={styles.content_outer}>
-              <div
-                className={`container ${styles.container} ${styles.content}`}
-              >
+              <div className={`container ${styles.container} ${styles.content}`}>
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
-                    <div
-                      onClick={() => setRegisterPopup(false)}
-                      className={styles.back}
-                    >
+                    <div onClick={() => setRegisterPopup(false)} className={styles.back}>
                       <img src="/img/project-details/back.svg" alt="back" />
                     </div>
                     <div className={styles.text}>
                       <div className={styles.textone}>Registraion</div>
-                      <div className={styles.texttwo}>
-                        OTP will be sent via sms to your Mobile Number
-                      </div>
+                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
                   </div>
                   <RegisterPopupForm />
@@ -218,8 +175,7 @@ export default function RegisterPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Already a member?{" "}
-                      <span onClick={() => showLogin()}>Login</span>
+                      Already a member? <span onClick={() => showLogin()}>Login</span>
                     </div>
                   </div>
                 </div>

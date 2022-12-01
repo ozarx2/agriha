@@ -10,6 +10,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
+import windowSize from "../windowRes";
 
 import styles from "./login-popup.module.css";
 
@@ -19,30 +20,8 @@ export default function LoginPopup() {
   const setLoginPopup = Store.setLoginPopup;
   const setRegisterPopup = Store.setRegisterPopup;
   const otpPopup = Store.otpPopup;
-  const setOtpPopup = Store.setOtpPopup;
 
-  const setLoginActive = Store.setLoginActive;
-
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   function showSignup() {
     setRegisterPopup(true);

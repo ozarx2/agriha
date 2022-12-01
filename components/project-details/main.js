@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect } from "react";
+import windowSize from "../windowRes";
 // import api_url from "../../src/utils/url";
 var api_url = "https://arclif-agriha.herokuapp.com";
 import AgrihaImageGrid from "../user-common/image-grid";
@@ -11,27 +12,7 @@ import AgrihaProjectDetailsMainDesktopTop from "./desktop-top";
 import styles from "./main.module.css";
 
 export default function AgrihaProjectDetailsMain() {
-  const [windowRes, setWindowRes] = useState([]);
-
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   const [allProject, setAllProject] = useState([]);
   const [allProjectSliced, setAllProjectSliced] = useState([]);
@@ -45,8 +26,9 @@ export default function AgrihaProjectDetailsMain() {
     const data = await response.json();
     if (data) {
       // console.log(data.data);
-      const withArchitectNoOrder = data.data.filter((res) => res?.architect_id);
-      const withArchitect = withArchitectNoOrder.reverse();
+      const withArchitect = data.data.filter((res) => res?.architect_id);
+      // const withArchitectNoOrder = data.data.filter((res) => res?.architect_id);
+      // const withArchitect = withArchitectNoOrder.reverse();
       setAllProject(withArchitect);
     }
   }

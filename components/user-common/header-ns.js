@@ -6,48 +6,56 @@ import { StoreContext } from "../../components/StoreContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./header.module.css";
+import windowSize from "../windowRes";
+import api_url from "../../src/utils/url";
 
 export default function AgrihaLandingHeaderNoSearch() {
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
-
   const router = useRouter();
   const { id } = router.query;
+
+  const windowRes = windowSize();
 
   const [Store] = useContext(StoreContext);
   const setLoginPopup = Store.setLoginPopup;
   const loginActive = Store.loginActive;
   const setProfilePopup = Store.setProfilePopup;
   const setLoginActive = Store.setLoginActive;
+  const userId = Store.userId;
+  const setUserId = Store.setUserId;
+  const setUserRole = Store.setUserRole;
 
-  const loginCheck = () => {
+  const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
+  async function getHomeSeekerDetails() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/user/profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    setHomeSeekerDetails(data.userData);
+  }
+
+  useEffect(() => {
+    if (userId !== "") {
+      setLoginActive(true);
+      getHomeSeekerDetails();
+    }
+  }, [userId]);
+
+  useEffect(() => {
     const token = localStorage.getItem("userToken");
     if (token) {
       setLoginActive(true);
     }
-  };
-
-  useEffect(() => {
-    loginCheck();
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      setUserId(userId);
+    }
   }, []);
+
   return (
     <>
       <div className={styles.header_outer}>
@@ -132,14 +140,26 @@ export default function AgrihaLandingHeaderNoSearch() {
                     {loginActive ? (
                       <>
                         <div onClick={() => setProfilePopup(true)} className={styles.profile}>
-                          <span>Althaf Rahman</span>
-                          <img src="/img/landing/profile_img.svg" alt="profile" />
+                          <span>{homeSeekerDetails?.name}</span>
+                          <img
+                            src={
+                              homeSeekerDetails?.profile_pic
+                                ? homeSeekerDetails?.profile_pic
+                                : "/img/landing/profile_img.svg"
+                            }
+                            alt="profile"
+                          />
                         </div>
                       </>
                     ) : (
                       <>
-                        <div className={styles.architect}>Are you an Architect ?</div>
-                        <div onClick={() => setLoginPopup(true)} className={styles.login}>
+                        <div
+                          onClick={() => (setUserRole("architect"), setLoginPopup(true))}
+                          className={styles.architect}
+                        >
+                          Are you an Architect ?
+                        </div>
+                        <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
                           User Login
                         </div>
                       </>
@@ -150,14 +170,26 @@ export default function AgrihaLandingHeaderNoSearch() {
                     {loginActive ? (
                       <>
                         <div onClick={() => setProfilePopup(true)} className={styles.profile}>
-                          <span>Althaf Rahman</span>
-                          <img src="/img/landing/profile_img.svg" alt="profile" />
+                          <span>{homeSeekerDetails?.name}</span>
+                          <img
+                            src={
+                              homeSeekerDetails?.profile_pic
+                                ? homeSeekerDetails?.profile_pic
+                                : "/img/landing/profile_img.svg"
+                            }
+                            alt="profile"
+                          />
                         </div>
                       </>
                     ) : (
                       <>
-                        <div className={styles.architect}>Architect Login</div>
-                        <div onClick={() => setLoginPopup(true)} className={styles.login}>
+                        <div
+                          onClick={() => (setUserRole("architect"), setLoginPopup(true))}
+                          className={styles.architect}
+                        >
+                          Architect Login
+                        </div>
+                        <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
                           Login
                         </div>
                       </>

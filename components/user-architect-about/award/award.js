@@ -2,29 +2,11 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
+import windowSize from "../../windowRes";
 import styles from "./award.module.css";
 
 const FnAward = ({ singleArchitect }) => {
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
   return (
     <>
       {windowRes.innerWidth >= 1100 ? (

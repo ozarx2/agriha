@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
+import { StoreContext } from "../../../components/StoreContext";
+import windowSize from "../../windowRes";
 import StarRatings from "react-star-ratings";
 import Progress from "../../../components/progress-bar/index";
 import api_url from "../../../src/utils/url";
@@ -11,36 +13,19 @@ import dummy_token from "../../../src/utils/dummy_token";
 import styles from "./review.module.css";
 
 const FnReview = ({ singleArchitect }) => {
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   const router = useRouter();
   const { id } = router.query;
+
+  const [Store] = useContext(StoreContext);
+  const userId = Store.userId;
 
   const [newRating, setNewRating] = useState(0);
 
   /* GET CURRENT RATING */
   async function getCurrentArchitectRating() {
     const token = localStorage.getItem("userToken");
-    const userId = localStorage.getItem("userId");
     const res = await fetch(`${api_url}/star-rating/${id}`, {
       method: "GET",
       headers: {
@@ -66,7 +51,6 @@ const FnReview = ({ singleArchitect }) => {
   };
   async function sendRating() {
     const token = localStorage.getItem("userToken");
-    const userId = localStorage.getItem("userId");
     const res = await fetch(`${api_url}/star-rating`, {
       method: "POST",
       headers: {

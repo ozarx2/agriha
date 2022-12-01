@@ -4,31 +4,12 @@
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 import StarRatings from "react-star-ratings";
+import windowSize from "../windowRes";
 
 import styles from "./main.module.css";
 
 export default function AgrihaDisplayBidMain() {
-  const [windowRes, setWindowRes] = useState([]);
-
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   const [bid, setBid] = useState(true);
 

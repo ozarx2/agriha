@@ -4,6 +4,8 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import OtpPopupForm from "./otp-form";
+import windowSize from "../windowRes";
+
 import styles from "./otp-popup.module.css";
 
 export default function OtpPopup() {
@@ -15,26 +17,7 @@ export default function OtpPopup() {
   const setRegisterPopup = Store.setRegisterPopup;
   const setOtpPopup = Store.setOtpPopup;
 
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   function showLoginOrRegister() {
     setOtpPopup(false);

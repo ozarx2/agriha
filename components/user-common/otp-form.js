@@ -1,10 +1,13 @@
 import React, { useState, useContext } from "react";
+import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import endpoint from "../../src/utils/endpoint";
 
 import styles from "./otp-popup.module.css";
 
 export default function OtpPopupForm() {
+  const router = useRouter();
+
   const [Store] = useContext(StoreContext);
 
   const loginActive = Store.loginActive;
@@ -12,6 +15,9 @@ export default function OtpPopupForm() {
   const setOtpPopup = Store.setOtpPopup;
   const setLoginPopup = Store.setLoginPopup;
   const setRegisterPopup = Store.setRegisterPopup;
+  const setLoginActive = Store.setLoginActive;
+  const setUserId = Store.setUserId;
+  const setFromLoginOrRegister = Store.setFromLoginOrRegister;
 
   var a = document.getElementById("a"),
     b = document.getElementById("b"),
@@ -54,20 +60,18 @@ export default function OtpPopupForm() {
     const data = await res.json();
     console.log(data);
     if (data.status === 200) {
+      setLoginActive(true);
+      setOtpPopup(false);
+      setLoginPopup(false);
+      setRegisterPopup(false);
+      localStorage.setItem("userToken", data.token);
+      localStorage.setItem("userId", data.id);
+      setUserId(data.id);
+
       if (data.role === "user") {
-        localStorage.setItem("userToken", data.token);
-        localStorage.setItem("userId", data.id);
         setBid(true);
-        setOtpPopup(false);
-        setLoginPopup(false);
-        setRegisterPopup(false);
         // window.location.href = "/dashboard";
       } else if (data.role === "architect") {
-        localStorage.setItem("userToken", data.token);
-        localStorage.setItem("userId", data.id);
-        setOtpPopup(false);
-        setLoginPopup(false);
-        setRegisterPopup(false);
         window.location.href = `/architect-dashboard/${data.id}`;
       }
     }
@@ -130,14 +134,23 @@ export default function OtpPopupForm() {
           </div>
           <div className={styles.time}>{time}</div>
         </div>
-        {loginActive ? (
-          <div className={styles.submit} onClick={verifyClickLogin}>
-            Verify
+
+        {counter === 0 ? (
+          <div className={styles.submit} style={{ backgroundColor: "#ccc" }}>
+            Time Exceeded
           </div>
         ) : (
-          <div className={styles.submit} onClick={verifyClick}>
-            Verify
-          </div>
+          <>
+            {setFromLoginOrRegister == "login" ? (
+              <div className={styles.submit} onClick={verifyClickLogin}>
+                Verify
+              </div>
+            ) : (
+              <div className={styles.submit} onClick={verifyClick}>
+                Verify
+              </div>
+            )}
+          </>
         )}
       </div>
     </>

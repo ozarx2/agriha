@@ -4,38 +4,16 @@
 import React, { useEffect, useState } from "react";
 import FnUserMyArchitectDesktop from "./desktop";
 import FnUserMyArchitectMobile from "./mobile";
+import windowSize from "../windowRes";
 
 import styles from "./main.module.css";
 
 const UserMyArchitects = () => {
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
   return (
     <div className={styles.main_outer}>
       <div className={styles.main_inner}>
-        {windowRes.innerWidth >= 1100 ? (
-          <FnUserMyArchitectDesktop />
-        ) : (
-          <FnUserMyArchitectMobile />
-        )}
+        {windowRes.innerWidth >= 1100 ? <FnUserMyArchitectDesktop /> : <FnUserMyArchitectMobile />}
       </div>
     </div>
   );

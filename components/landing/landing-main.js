@@ -7,6 +7,7 @@ var api_url = "https://arclif-agriha.herokuapp.com";
 import AgrihaImageGrid from "../user-common/image-grid";
 import { StoreContext } from "../../components/StoreContext";
 import Link from "next/link";
+import windowSize from "../windowRes";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Keyboard, Autoplay, Pagination, Navigation } from "swiper";
@@ -17,28 +18,7 @@ import "swiper/css/navigation";
 import styles from "./landing-main.module.css";
 
 export default function AgrihaLandingMain() {
-  const [windowRes, setWindowRes] = useState([]);
-
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   const [Store] = useContext(StoreContext);
   const setRegisterPopup = Store.setRegisterPopup;
@@ -77,8 +57,9 @@ export default function AgrihaLandingMain() {
     const data = await response.json();
     if (data) {
       // console.log(data.data);
-      const withArchitectNoOrder = data.data.filter((res) => res?.architect_id);
-      const withArchitect = withArchitectNoOrder.reverse();
+      const withArchitect = data.data.filter((res) => res?.architect_id);
+      // const withArchitectNoOrder = data.data.filter((res) => res?.architect_id);
+      // const withArchitect = withArchitectNoOrder.reverse();
       setAllProject(withArchitect);
     }
   }

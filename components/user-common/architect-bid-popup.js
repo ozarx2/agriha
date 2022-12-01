@@ -4,30 +4,12 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import { useRouter } from "next/router";
+import windowSize from "../windowRes";
 
 import styles from "./architect-bid-popup.module.css";
 
 export default function ArchitectBidPopup() {
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   const [Store] = useContext(StoreContext);
   const setArchitectBidtPopup = Store.setArchitectBidtPopup;

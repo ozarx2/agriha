@@ -61,8 +61,9 @@ const FnUserMyProjectMobile = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
-    setProjectMob(data?.projects);
+    // const withArchitectNoOrder = data.projects.filter((res) => res?.architect_id);
+    const revert = data.projects.reverse();
+    setProjectMob(revert);
   }
 
   useEffect(() => {
@@ -170,19 +171,20 @@ const FnUserMyProjectMobile = () => {
                               <div className={styles.projIdMob}>{items?.project_name}</div>
                             </div>
                             <div className={styles.projProPicBtnsMob}>
-                              <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
-                                <img
-                                  src={
-                                    items?.architect_id?.profilepic
-                                      ? items?.architect_id?.profilepic
-                                      : "/img/my-project-user/mobile/projprofile.svg"
-                                  }
-                                  // src={items?.architect_id?.profilepic}
-                                  // // src="/img/my-project-user/mobile/projprofile.svg"
-                                  // alt="projprofile.svg"
-                                  // className={styles.projprofileMob}
-                                />
-                              </Link>
+                              {items.architect_id ? (
+                                <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
+                                  <img
+                                    src={
+                                      items?.architect_id?.profilepic
+                                        ? items?.architect_id?.profilepic
+                                        : "/img/my-project-user/mobile/projprofile.svg"
+                                    }
+                                  />
+                                </Link>
+                              ) : (
+                                ""
+                              )}
+
                               <div className={styles.viewMoreMob} onClick={() => toggleBtnMob(items._id)}>
                                 {viewMore && mainViewMore === items._id ? "View Less" : "View More"}
                                 <span>
@@ -235,12 +237,16 @@ const FnUserMyProjectMobile = () => {
                         <div className={styles.profileStatusMob}>Started on:</div>
                         <div className={styles.profileStatusMob}>Current stage:</div>
                         <div className={styles.profileStatusMob}>Payment status:</div>
+
+                        {items.bid ? <div className={styles.profileStatusMob}>Bid:</div> : ""}
                       </div>
                       <div className={styles.projStatusRightMainMob}>
                         <div className={styles.profileStatusMob}>{items?.status}</div>
                         <div className={styles.profileStatusMob}>{items?.starting_date}</div>
                         <div className={styles.profileStatusMob}>{items?.status}</div>
                         <div className={styles.profileStatusMob}>Pending</div>
+
+                        {items.bid ? <div className={styles.profileStatusMob}>Active</div> : ""}
                       </div>
                     </div>
                     {viewMore && mainViewMore === items._id ? (

@@ -41,7 +41,7 @@ const FnFileUploadDesk = (projectId) => {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
   };
 
   /* Upload project images */
@@ -74,7 +74,7 @@ const FnFileUploadDesk = (projectId) => {
     );
   }
 
-  console.log(projectImages);
+  // console.log(projectImages);
 
   /* Multiple Image Uploading */
   var fileObj = [];
@@ -104,8 +104,8 @@ const FnFileUploadDesk = (projectId) => {
 
   useEffect(() => {
     // console.log(uploadProject);
-    console.log(files.length);
-    console.log(projectImages.length);
+    // console.log(files.length);
+    // console.log(projectImages.length);
     if (files.length === projectImages.length && files.length !== 0 && projectImages.length !== 0) {
       handleSubmit(id);
     }

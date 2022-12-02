@@ -1,6 +1,5 @@
 .mainSection {
   width: 100%;
-  background: #ffffff;
   margin-top: 20px;
   border: 0.909639px solid #f0f0f0;
   border-radius: 2px;
@@ -14,6 +13,7 @@
   padding-top: 20px;
   padding-left: 30px;
   padding-right: 30px;
+  background: #ffffff;
 }
 .suggestion > div {
   display: flex;
@@ -28,6 +28,18 @@
 }
 .suggestion > div > img {
   padding-right: 10px;
+}
+.bid {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #098482;
+  border: 0.827914px solid #098482;
+  border-radius: 5.7954px;
+  padding: 9px;
+  margin-right: 10px;
 }
 .showMore {
   font-family: "Inter";
@@ -91,6 +103,8 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #d6d6d6;
+  background: #ffffff;
+  margin-bottom: 30px;
 }
 .profileDpNameSection {
   display: flex;
@@ -162,6 +176,13 @@
   width: 40%;
   padding-left: 20px;
   padding-right: 20px;
+}
+.projDetails {
+  background-color: #fff;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 40px;
+  margin-top: -40px;
 }
 
 /* .projDetails {

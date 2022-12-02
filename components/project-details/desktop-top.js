@@ -93,7 +93,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   {projectDetails?.Image?.map((item, index) => {
                     return (
                       <SwiperSlide key={index}>
-                        <img src={item} alt="" />
+                        <img src={item} onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")} alt="" />
                       </SwiperSlide>
                     );
                   })}
@@ -111,6 +111,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                         ? projectDetails?.architect_id?.profilepic
                         : "/img/landing/profile_img.svg"
                     }
+                    onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                     alt="profile"
                   />
                   <span>{projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}</span>
@@ -157,7 +158,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   {projectDetails?.Image?.map((item, index) => {
                     return (
                       <SwiperSlide key={index}>
-                        <img src={item} alt="" />
+                        <img src={item} onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")} alt="" />
                       </SwiperSlide>
                     );
                   })}

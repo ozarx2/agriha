@@ -90,6 +90,7 @@
   padding: 30px;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #d6d6d6;
 }
 .profileDpNameSection {
   display: flex;
@@ -106,6 +107,7 @@
 .profileNameSec > img {
   width: 35px;
   height: 35px;
+  object-fit: cover;
   border-radius: 50%;
 }
 .profileNameSec > div {

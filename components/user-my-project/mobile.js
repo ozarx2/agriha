@@ -172,10 +172,15 @@ const FnUserMyProjectMobile = () => {
                             <div className={styles.projProPicBtnsMob}>
                               <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
                                 <img
-                                  src={items?.architect_id?.profilepic}
-                                  // src="/img/my-project-user/mobile/projprofile.svg"
-                                  alt="projprofile.svg"
-                                  className={styles.projprofileMob}
+                                  src={
+                                    items?.architect_id?.profilepic
+                                      ? items?.architect_id?.profilepic
+                                      : "/img/my-project-user/mobile/projprofile.svg"
+                                  }
+                                  // src={items?.architect_id?.profilepic}
+                                  // // src="/img/my-project-user/mobile/projprofile.svg"
+                                  // alt="projprofile.svg"
+                                  // className={styles.projprofileMob}
                                 />
                               </Link>
                               <div className={styles.viewMoreMob} onClick={() => toggleBtnMob(items._id)}>
@@ -205,12 +210,17 @@ const FnUserMyProjectMobile = () => {
                                 className={styles.prodmob}
                               />
                               <img
-                                src="/img/my-project-user/mobile/prodmob.svg"
+                                src="/img/my-project-user/mobile/prodmob2.svg"
                                 alt="prodmob.svg"
                                 className={styles.prodmob}
                               />
                               <img
-                                src="/img/my-project-user/mobile/prodmob.svg"
+                                src="/img/my-project-user/mobile/prodmob3.svg"
+                                alt="prodmob.svg"
+                                className={styles.prodmob}
+                              />
+                              <img
+                                src="/img/my-project-user/mobile/prodmob4.svg"
                                 alt="prodmob.svg"
                                 className={styles.prodmob}
                               />

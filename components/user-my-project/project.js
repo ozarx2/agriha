@@ -90,7 +90,11 @@ const FnOngoingProjectUserSide = () => {
                     <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
                       <div className={styles.profileNameSec}>
                         <img
-                          src={items?.architect_id?.profilepic}
+                          src={
+                            items?.architect_id?.profilepic
+                              ? items?.architect_id?.profilepic
+                              : "/img/my-project-user/profile.svg"
+                          }
                           // src="/img/my-project-user/profile.svg"
                           alt="profile.svg"
                           className={styles.profileNameSecImg}

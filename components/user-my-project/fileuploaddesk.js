@@ -93,9 +93,11 @@ const FnFileUploadDesk = (projectId) => {
       handleUploadProject(temp[i].file);
     }
     setId(id);
+    alert("uploaded");
   };
 
   useEffect(() => {
+    // console.log(uploadProject);
     console.log(files.length);
     console.log(projectImages.length);
     if (files.length === projectImages.length && files.length !== 0 && projectImages.length !== 0) {
@@ -140,7 +142,7 @@ const FnFileUploadDesk = (projectId) => {
           </div>
           <div className={styles.fileOuter}>
             {files.map((file, key) => {
-              console.log(file);
+              console.log("file +" + files);
               return (
                 <div key={key} className={styles.file}>
                   <div>

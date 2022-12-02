@@ -9,12 +9,6 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
   const gotoProjectDetail = (id) => {
     router.push(`/project-details/${id}`);
   };
-  const ImgError = (event) => {
-    event.target.src = "/img/landing/nophoto.jpg";
-  };
-  const ProfileImgError = (event) => {
-    event.target.src = "/img/landing/profile_img.svg";
-  };
   return (
     <>
       <div className={styles.grid_max_outer}>
@@ -35,7 +29,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                             ? item[0]?.Image[0]
                             : "/img/landing/nophoto.jpg"
                         }
-                        onError={ImgError}
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                         alt="project img"
                       />
                       <div className={styles.project_hover}>
@@ -52,7 +46,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                             ? item[0]?.architect_id?.profilepic
                             : "/img/landing/profile_img.svg"
                         }
-                        onError={ProfileImgError}
+                        onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                         alt="profile"
                       />
                       <div className={styles.right}>
@@ -76,7 +70,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                             ? item[1]?.Image[0]
                             : "/img/landing/nophoto.jpg"
                         }
-                        onError={ImgError}
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                         alt="project img"
                       />
                       <div className={styles.project_hover}>
@@ -93,7 +87,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                             ? item[1]?.architect_id?.profilepic
                             : "/img/landing/profile_img.svg"
                         }
-                        onError={ProfileImgError}
+                        onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                         alt="profile"
                       />
                       <div className={styles.right}>
@@ -117,7 +111,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                             ? item[2]?.Image[0]
                             : "/img/landing/nophoto.jpg"
                         }
-                        onError={ImgError}
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                         alt="project img"
                       />
                       <div className={styles.project_hover}>
@@ -134,7 +128,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                             ? item[2]?.architect_id?.profilepic
                             : "/img/landing/profile_img.svg"
                         }
-                        onError={ProfileImgError}
+                        onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                         alt="profile"
                       />
                       <div className={styles.right}>
@@ -158,7 +152,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                             ? item[3]?.Image[0]
                             : "/img/landing/nophoto.jpg"
                         }
-                        onError={ImgError}
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                         alt="project img"
                       />
                       <div className={styles.project_hover}>
@@ -175,7 +169,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                             ? item[3]?.architect_id?.profilepic
                             : "/img/landing/profile_img.svg"
                         }
-                        onError={ProfileImgError}
+                        onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                         alt="profile"
                       />
                       <div className={styles.right}>

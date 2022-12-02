@@ -46,13 +46,12 @@ const FnOngoingProjectUserSide = () => {
       },
     });
     const data = await res.json();
-    // console.log(data);
-    setProject(data.projects);
+    // const withArchitectNoOrder = data.projects.filter((res) => res?.architect_id);
+    const revert = data.projects.reverse();
+    setProject(revert);
   }
-  // console.log(project);
   useEffect(() => {
     getSingleProject();
-    // getProject();
   }, []);
 
   return (
@@ -67,11 +66,12 @@ const FnOngoingProjectUserSide = () => {
                   <div className={styles.projectId}>{items?.project_name}</div>
                 </div>
                 <div className={styles.showMoreBtnSection}>
-                  <div className={styles.suggestion}>
+                  {/* <div className={styles.suggestion}>
                     <div>
                       <img src="/img/my-project-user/suggestion.svg" alt="suggestion.svg" /> Suggestion
                     </div>
-                  </div>
+                  </div> */}
+                  {items.bid ? <div className={styles.bid}>Bid</div> : ""}
 
                   <div id="less" className={styles.showMore} onClick={() => toggleBtn(items._id)}>
                     {showMore && selectprojectId === items._id ? "Show Less" : "Show More"}
@@ -86,23 +86,31 @@ const FnOngoingProjectUserSide = () => {
               </div>
               <div className={styles.onGoingProjSectionMain}>
                 <div className={styles.secOne}>
-                  <div className={styles.profileDpNameSection}>
-                    <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
+                  {items.architect_id ? (
+                    <div className={styles.profileDpNameSection}>
+                      <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
+                        <div className={styles.profileNameSec}>
+                          <img
+                            src={
+                              items?.architect_id?.profilepic
+                                ? items?.architect_id?.profilepic
+                                : "/img/my-project-user/profile.svg"
+                            }
+                            // src="/img/my-project-user/profile.svg"
+                            alt="profile.svg"
+                            className={styles.profileNameSecImg}
+                          />
+                          <div>{items?.architect_id?.firstname}</div>
+                        </div>
+                      </Link>
+                    </div>
+                  ) : (
+                    <div className={styles.profileDpNameSection}>
                       <div className={styles.profileNameSec}>
-                        <img
-                          src={
-                            items?.architect_id?.profilepic
-                              ? items?.architect_id?.profilepic
-                              : "/img/my-project-user/profile.svg"
-                          }
-                          // src="/img/my-project-user/profile.svg"
-                          alt="profile.svg"
-                          className={styles.profileNameSecImg}
-                        />
-                        <div>{items?.architect_id?.firstname}</div>
+                        <div>Architect not selected</div>
                       </div>
-                    </Link>
-                  </div>
+                    </div>
+                  )}
 
                   <div className={styles.profileStatusSection}>
                     <div className={styles.profileStatusLeft}>
@@ -128,11 +136,11 @@ const FnOngoingProjectUserSide = () => {
               </div>
               <div className={styles.projDetails} id="projDetails">
                 {showMore && selectprojectId === items._id ? (
-                  <div className={styles.projDetails} id="projDetails">
+                  <>
                     <FnSuggested />
                     <FnPayment />
-                    <FnFileFolder />
-                  </div>
+                    <FnFileFolder />{" "}
+                  </>
                 ) : null}
               </div>
             </>

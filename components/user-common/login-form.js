@@ -69,8 +69,10 @@ export default function LoginPopupForm() {
       <div className={styles.stwo}>
         <input type="tel" onChange={storeValues} placeholder="Enter Mobile Number" />
         <div onClick={() => showOtp()} className={styles.submit}>
-          Send OTP
+          {/* Send OTP */}
+          Login
         </div>
+        <div></div>
       </div>
     </>
   );

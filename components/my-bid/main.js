@@ -19,6 +19,16 @@ export default function AgrihaMyBidMain() {
   const loginActive = Store.loginActive;
   const setArchitectBidtPopup = Store.setArchitectBidtPopup;
 
+  // const [counter, setCounter] = React.useState(300);
+  // React.useEffect(() => {
+  //   counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+  // }, [counter]);
+  // const dateObj = new Date(counter * 1000);
+  // const utcString = dateObj.toUTCString();
+  // const time = utcString.slice(-11, -4);
+
+  const time = "7";
+
   const [getAllBid, setGetAllBid] = useState([]);
   async function getAllProjects() {
     const response = await fetch(`${api_url}/projects/getbid/${userId}`, {
@@ -49,7 +59,7 @@ export default function AgrihaMyBidMain() {
                 <>
                   <div className={styles.desktop_outer}>
                     <div className={`container ${styles.container} ${styles.desktop}`}>
-                      <div className={styles.desktop_inner}>{AgrihaMyBidMainMyBid({ getAllBid })}</div>
+                      <div className={styles.desktop_inner}>{AgrihaMyBidMainMyBid({ getAllBid, time })}</div>
                     </div>
                   </div>
                 </>
@@ -57,7 +67,7 @@ export default function AgrihaMyBidMain() {
                 <>
                   <div className={styles.mobile_outer}>
                     <div className={`container ${styles.container} ${styles.mobile}`}>
-                      <div className={styles.mobile_inner}>{AgrihaMyBidMainMyBid({ getAllBid })}</div>
+                      <div className={styles.mobile_inner}>{AgrihaMyBidMainMyBid({ getAllBid, time })}</div>
                     </div>
                   </div>
                 </>
@@ -95,20 +105,19 @@ export default function AgrihaMyBidMain() {
   );
 }
 
-const AgrihaMyBidMainMyBid = ({ getAllBid }) => {
+const AgrihaMyBidMainMyBid = ({ getAllBid, time }) => {
   return (
     <div className={styles.bid_max_outer}>
       {getAllBid?.map((item, i) => {
         console.log(item);
-        console.log(item.project_name);
         return (
           <React.Fragment key={i}>
             <div className={styles.bid_outer} key={i}>
               <div className={styles.image}>
-                <img src="/img/my-bid/sample.png" alt="bid img" />
+                <img src="/img/landing/nophoto.jpg" alt="bid img" />
               </div>
               <div className={styles.time}>
-                <div className={styles.left}>7d : 7h : 15m : 10s</div>
+                <div className={styles.left}>{time}d : 7h : 15m : 10s</div>
                 <div className={styles.right}>16 Bid now</div>
               </div>
               <div className={styles.name}>

@@ -99,3 +99,25 @@
 .upload {
   padding-right: 5px;
 }
+@media only screen and (max-width: 1400px) {
+  /* .cancelBtn {
+    display: none;
+  } */
+  .cancelBtn {
+    padding: 13px 20px;
+  }
+  .uploadBtn {
+    padding: 11px 20px;
+  }
+  .uploadBtnMain {
+    width: 100%;
+    /* text-align: center; */
+    /* padding: auto; */
+    /* padding: 15px 21px; */
+  }
+  /* .uploadBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+}

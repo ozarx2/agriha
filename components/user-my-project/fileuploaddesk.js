@@ -11,10 +11,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const FnFileUploadDesk = (projectId) => {
-  console.log(projectId);
+  // console.log(projectId);
   const [Store] = useContext(StoreContext);
   const [description, setDescription] = useState("");
   const [id, setId] = useState("");
+
+  const cancelFunction = () => {
+    // console.log(files);
+    setFiles([]);
+    // console.log(files);
+  };
 
   const handler = (e) => {
     setDescription(e.target.value);
@@ -93,7 +99,7 @@ const FnFileUploadDesk = (projectId) => {
       handleUploadProject(temp[i].file);
     }
     setId(id);
-    alert("uploaded");
+    // alert("uploaded");
   };
 
   useEffect(() => {
@@ -142,7 +148,9 @@ const FnFileUploadDesk = (projectId) => {
           </div>
           <div className={styles.fileOuter}>
             {files.map((file, key) => {
-              console.log("file +" + files);
+              {
+                /* console.log("file +" + files); */
+              }
               return (
                 <div key={key} className={styles.file}>
                   <div>
@@ -157,7 +165,9 @@ const FnFileUploadDesk = (projectId) => {
           </div>
         </div>
         <div className={styles.fileButtonsSec}>
-          <div className={styles.cancelBtn}>cancel</div>
+          <div className={styles.cancelBtn} onClick={() => cancelFunction()}>
+            cancel
+          </div>
 
           <div className={styles.uploadBtn} onClick={() => uploadProject(projectId.projectId)}>
             <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />

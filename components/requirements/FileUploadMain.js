@@ -8,7 +8,7 @@ import api_url from "../../src/utils/url";
 
 const FileUploadMain = () => {
   const goToUserDash = () => {
-    window.location.href = "/dashboard";
+    window.location.href = "/";
   };
 
   /* Upload Site plan */

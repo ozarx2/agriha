@@ -3,8 +3,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect } from "react";
 import windowSize from "../windowRes";
-// import api_url from "../../src/utils/url";
-var api_url = "https://arclif-agriha.herokuapp.com";
+import api_url from "../../src/utils/url";
+// var api_url = "https://arclif-agriha.herokuapp.com";
 import AgrihaImageGrid from "../user-common/image-grid";
 import AgrihaProjectDetailsMainMobileTop from "./mobile-top";
 import AgrihaProjectDetailsMainDesktopTop from "./desktop-top";

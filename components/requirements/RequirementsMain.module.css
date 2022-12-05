@@ -4,7 +4,7 @@
 
 .top__main_inner {
   display: flex;
-  margin-top: 70px;
+  margin-top: 50px;
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -753,5 +753,37 @@
   }
   .inputRow_fileUpload {
     width: 100%;
+  }
+  .renovation_radio_conatiner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .complete_radio,
+  .terraceNoutdoor_card {
+    margin: 5px 0px;
+  }
+  .bottom__main_inner {
+    justify-content: space-between;
+  }
+  .floorNbedroom_input_conatiner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .terraceNoutdoor_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .inputRow {
+    display: flex;
+    align-items: flex-start;
+  }
+  .residentialSchool_card {
+    margin-left: 0px;
+    margin-top: 20px;
   }
 }

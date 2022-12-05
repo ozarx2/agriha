@@ -13,7 +13,6 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
     <>
       <div className={styles.grid_max_outer}>
         {allProjectSliced.map((item, index) => {
-          console.log(item[0]);
           return (
             <React.Fragment key={index}>
               <div className={styles.grid_outer}>

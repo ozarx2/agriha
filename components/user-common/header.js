@@ -238,11 +238,9 @@ export default function AgrihaLandingHeader() {
               <div id="menu_mobile_outer" className={styles.menu_mobile_outer} style={{ marginTop: "57px" }}>
                 <div className={styles.menu}>
                   {router.pathname == "/project-details/[id]" ? (
-                    <Link href="/" passHref>
-                      <div className={styles.back}>
-                        <img src="/img/project-details/back.svg" alt="back" />
-                      </div>
-                    </Link>
+                    <div onClick={() => router.back()} className={styles.back}>
+                      <img src="/img/project-details/back.svg" alt="back" />
+                    </div>
                   ) : (
                     ""
                   )}

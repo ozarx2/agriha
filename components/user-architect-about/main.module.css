@@ -4,7 +4,6 @@
 .main_outer {
   display: inline-block;
   width: 100%;
-  /* margin-bottom: 20px; */
 }
 @media only screen and (max-width: 1100px) {
   .coverMob {
@@ -132,7 +131,8 @@
     width: 100%;
     display: flex;
     margin-top: 20px;
-    padding: 22px 0;
+    padding: 22px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
   .container_inner {
     width: 100%;

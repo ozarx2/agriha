@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+.main_outer {
+  padding-bottom: 25px;
+  margin-bottom: -30px;
+}
 @media only screen and (max-width: 1100px) {
   .archAboutMainSectionMob {
     padding: 10px;

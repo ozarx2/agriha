@@ -11,6 +11,7 @@
   width: 100%;
 }
 .footer {
+  background-color: transparent;
   display: inline-block;
   width: 100%;
   position: absolute;

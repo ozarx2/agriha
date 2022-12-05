@@ -54,27 +54,19 @@ const BodyDashboard = () => {
       <HeaderDashboard />
       <div className={styles.bottom__bodyDashboard}>
         <div className={styles.top__bottom__dashboard}>
-          <div
-            className={`${styles.card__conatiner__overview} ${styles.userCard}`}
-          >
+          <div className={`${styles.card__conatiner__overview} ${styles.userCard}`}>
             <p>Total Users</p>
             <h3>{users?.length}</h3>
           </div>
-          <div
-            className={`${styles.card__conatiner__overview} ${styles.architectCard}`}
-          >
+          <div className={`${styles.card__conatiner__overview} ${styles.architectCard}`}>
             <p>Total Architects</p>
             <h3>{architects?.length}</h3>
           </div>
-          <div
-            className={`${styles.card__conatiner__overview} ${styles.projectCard}`}
-          >
+          <div className={`${styles.card__conatiner__overview} ${styles.projectCard}`}>
             <p>Total Projects</p>
             <h3>{projects?.length}</h3>
           </div>
-          <div
-            className={`${styles.card__conatiner__overview} ${styles.websiteCard}`}
-          >
+          <div className={`${styles.card__conatiner__overview} ${styles.websiteCard}`}>
             <p>Total Website Visits</p>
             <h3>3290</h3>
           </div>
@@ -127,6 +119,7 @@ const BodyDashboard = () => {
                 <td>yaseen.arclif@gmail.com</td>
                 <td>{moment("11-07-2012").format("lll")}</td>
               </tr>
+
               {users?.map((user, index) => {
                 return (
                   <tr key={index}>

@@ -131,12 +131,12 @@ const UserArchitectAboutMobile = () => {
                     <div>Share</div>
                   </div>
                 </div>
-                <div>
+                {/* <div>
                   <div className={styles.callShareSaveSecMob}>
                     <img src="/img/architect-about/mobile/saveMob.svg" alt="saveMob.svg" />
                     <div>Save</div>
                   </div>
-                </div>
+                </div> */}
               </div>
               {/*-----ARCHITECT TAB  SECTION-------*/}
 

@@ -57,13 +57,12 @@ const ArchitectSelectPopupContent = () => {
             alt="profile"
           /> */}
           <div className={styles.content}>
-            <div className={styles.name}>Send requirements to All Architects</div>
+            <div className={styles.name}>invite for quote</div>
             <br />
             <div className={styles.msg}>
-              You will send your requirements to all Architects listed here and they will let you know more details.
-              Then you can chose any of them.
+              share your requirements to all architects and get quotes for your project.
               <br />
-              <br /> Do you want to continue ?
+              {/* <br /> Do you want to continue ? */}
             </div>
           </div>
         </div>

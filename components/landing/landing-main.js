@@ -119,7 +119,8 @@ export default function AgrihaLandingMain() {
                         Leading Architects for you to <span>design your space</span>
                       </div>
                       <div className={styles.content}>
-                        Lorem Ipsum is simply dummy text of the printing and typesetti
+                        connect and get best bedroom, kitchen, bathroom, livingroom, dining, interior, landscape,
+                        furniture, electrical designs
                       </div>
                       <div className={styles.buttons}>
                         {loginActive ? (

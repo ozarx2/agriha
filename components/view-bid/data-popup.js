@@ -4,6 +4,7 @@ import api_url from "../../src/utils/url";
 import dummy_token from "../../src/utils/dummy_token";
 import { StoreContext } from "../StoreContext";
 import styles from "./data-popup.module.css";
+import { useRouter } from "next/router";
 
 export default function DataPopup() {
   const [Store] = useContext(StoreContext);
@@ -12,7 +13,11 @@ export default function DataPopup() {
   const architectId = Store.architectId;
   const bidUserId = Store.bidUserId;
 
-  const [quote, setQuote] = useState("");
+  const router = useRouter();
+  const { bid } = router.query;
+  const projectId = bid;
+
+  const [quote, setQuote] = useState();
 
   const goBackClick = () => {
     setBidDataPopup(false);
@@ -32,9 +37,9 @@ export default function DataPopup() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${dummy_token}`,
       },
       body: JSON.stringify({
+        project_id: projectId,
         architect_id: architectId,
         quote: quote,
         user_id: bidUserId,

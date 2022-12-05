@@ -1,0 +1,323 @@
+.ProfilePopupOuter {
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: inherit;
+}
+.ProfilePopupClose {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+}
+@media only screen and (max-width: 766px) {
+  .ProfilePopupInner {
+    width: 100%;
+    background-color: #f9f6ff;
+    z-index: 4;
+    overflow-y: scroll;
+  }
+  .main_header {
+    background: linear-gradient(90deg, #642dda 36.27%, #b264ff 85.73%);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    width: 100%;
+  }
+  .header_main_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header_main_inner .left {
+  }
+  .header_main_inner .left img {
+    max-width: 119.54px;
+  }
+  .header_main_inner .right {
+  }
+  .header_main_inner .right .profile {
+    display: flex;
+    align-items: center;
+  }
+  .header_main_inner .right .profile span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+  }
+  .header_main_inner .right .profile img {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 16px;
+  }
+  .popup_content_outer {
+    overflow-y: scroll;
+  }
+
+  .popup_content_inner .first {
+    text-align: center;
+    position: relative;
+    margin-top: 96px;
+  }
+  .popup_content_inner .first .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .popup_content_inner .profile_pic {
+    height: 43px;
+    width: 43px;
+    object-fit: cover;
+    paddingborder-radius: 50%;
+  }
+  .popup_content_inner .name {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #101010;
+    margin-top: 14px;
+    margin-bottom: 11px;
+  }
+  .popup_content_inner .details {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #8e8e8e;
+  }
+  .popup_content_inner .details span:nth-child(2) {
+    color: #000;
+    display: inline-block;
+    padding: 0 6px;
+    font-size: 20px;
+  }
+  .popup_content_inner .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 11px;
+  }
+  .popup_content_inner .buttons .edit {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+    background: #642dda;
+    border-radius: 37px;
+    margin-right: 11px;
+    padding: 7px 15px;
+  }
+  .popup_content_inner .buttons .logout {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #642dda;
+    border: 1px solid #642dda;
+    border-radius: 37px;
+    padding: 7px 15px;
+  }
+
+  .popup_content_inner .second {
+    border-top: 1px solid #e7e7e7;
+    margin-top: 29px;
+    padding-top: 11px;
+  }
+  .popup_content_inner .second div {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #9f9f9f;
+    padding: 18px;
+  }
+  .popup_content_inner .third {
+    border-top: 1px solid #e7e7e7;
+    margin-top: 11px;
+    padding-top: 23px;
+    padding-bottom: 23px;
+  }
+  .popup_content_inner .third div {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #383838;
+  }
+  .ProfilePopupOuter_cnt {
+    padding: 0 !important;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .ProfilePopupOuter {
+    padding: 5vw;
+  }
+  .ProfilePopupInner {
+    width: 100%;
+    border-radius: 2px;
+    height: fit-content;
+    max-width: 400px;
+    margin: auto;
+    background-color: #f9f6ff;
+    z-index: 4;
+    position: absolute;
+    top: 68px;
+    right: 200px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  .desktop_header {
+  }
+  .userProfilePicDesktop {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #d9d9d9;
+    margin: 20px 16px 0 16px;
+    padding-bottom: 20px;
+  }
+  .userProfileDpDesk {
+    border-right: 1px solid #d9d9d9;
+    position: relative;
+  }
+  .profileDpDesktop {
+    height: 54px;
+    width: 54px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 10px 20px 10px 10px;
+  }
+  .userProfilePicDesktop .edit {
+    position: absolute;
+    bottom: 12px;
+    right: 18px;
+  }
+  .userProfileNameDeskSection {
+    padding: 0px 20px;
+  }
+  .profileName {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #101010;
+  }
+  .subHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.5607px;
+    line-height: 15px;
+    color: #8e8e8e;
+    padding-top: 5px;
+  }
+  .profileTabsDeskMainSection {
+    border-bottom: 1px solid #d9d9d9;
+  }
+  /* .profileTabsDeskMain {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  } */
+  .profileDeskTabs {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #3e3d3d;
+    padding: 14px 26px;
+  }
+  .desktopProfileLogoutSection {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #383838;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .desktopProfileLogoutSection {
+    padding: 26px 26px;
+  }
+}
+
+.ProfilePopupInner {
+  right: 10px;
+}
+@media only screen and (min-width: 576px) {
+  .ProfilePopupInner {
+    right: 20px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .ProfilePopupInner {
+    right: 20px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ProfilePopupInner {
+    right: 8vw;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .ProfilePopupInner {
+    right: 8vw;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .ProfilePopupInner {
+    right: 5vw;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .ProfilePopupInner {
+    right: 5vw;
+  }
+}
+@media only screen and (min-width: 1366px) {
+  .ProfilePopupInner {
+    right: 4vw;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .ProfilePopupInner {
+    right: 4vw;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .ProfilePopupInner {
+    right: 10px;
+  }
+  .ProfilePopupOuter {
+    max-width: 1520px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .ProfilePopupInner {
+    top: 58px;
+  }
+}

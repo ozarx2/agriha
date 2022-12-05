@@ -59,6 +59,15 @@ svg.popup-arrow {
 @media (prefers-color-scheme: dark) {
 }
 
+#FnUserMyProjectMobileUpload .ant-upload.ant-upload-drag {
+  border-color: #642dda;
+  background: #f8f5ff;
+  margin-top: 5.5px;
+  margin-bottom: 5.5px;
+
+  padding: 0px 0px;
+}
+
 .clear {
   clear: both;
 }

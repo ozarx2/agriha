@@ -31,9 +31,7 @@ const ViewArchAdmin = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -46,9 +44,7 @@ const ViewArchAdmin = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -62,9 +58,7 @@ const ViewArchAdmin = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -114,27 +108,16 @@ const ViewArchAdmin = () => {
                 </div>
                 <h4></h4>
               </div>
-              <div
-                onClick={() => editArchitect(architectData._id)}
-                className={styles.contactButton__profile}
-              >
+              <div onClick={() => editArchitect(architectData._id)} className={styles.contactButton__profile}>
                 Edit Architect
               </div>
             </div>
             <div className={styles.bottom__right__conatiner__profile}>
               <p>{architectData.bio}</p>
             </div>
-            <div
-              className={styles.contact__architect}
-              style={{ marginTop: "20px" }}
-            >
+            <div className={styles.contact__architect} style={{ marginTop: "20px" }}>
               <div className={styles.contactIcon__architect}>
-                <Image
-                  src="/location.svg"
-                  alt=""
-                  width={20}
-                  height={20}
-                ></Image>
+                <Image src="/location.svg" alt="" width={20} height={20}></Image>
               </div>
               <div className={styles.contactText__architect}>
                 <h5>Location</h5>
@@ -177,20 +160,13 @@ const ViewArchAdmin = () => {
                 .reverse()
                 .map((items, index) => {
                   return (
-                    <div
-                      key={index}
-                      className={style.projectCard}
-                      style={{ border: "1px solid #333333" }}
-                    >
+                    <div key={index} className={style.projectCard} style={{ border: "1px solid #333333" }}>
                       <div className={style.top__projectCard}>
                         <div className={style.title__projectCard}>
                           <h5>{items.project_name}</h5>
                           <p>{items.starting_date}</p>
                         </div>
-                        <div
-                          onClick={() => onProjectViewClick(items._id)}
-                          className={style.viewMore__button}
-                        >
+                        <div onClick={() => onProjectViewClick(items._id)} className={style.viewMore__button}>
                           View More
                         </div>
                       </div>
@@ -199,15 +175,10 @@ const ViewArchAdmin = () => {
                           <p>{items.project_type}</p>
                         </div>
                         <div className={style.bottom__projectCard__buttons}>
-                          <a
-                            className={style.nextButton__card}
-                            onClick={() => onProjectViewClick(items._id)}
-                          >
+                          <a className={style.nextButton__card} onClick={() => onProjectViewClick(items._id)}>
                             Upload Files
                           </a>
-                          <div
-                            className={style.indicator__projectCard__content}
-                          >
+                          <div className={style.indicator__projectCard__content}>
                             <span>
                               <div></div>
                             </span>

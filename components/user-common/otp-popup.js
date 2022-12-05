@@ -4,6 +4,8 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import OtpPopupForm from "./otp-form";
+import windowSize from "../windowRes";
+
 import styles from "./otp-popup.module.css";
 
 export default function OtpPopup() {
@@ -15,26 +17,7 @@ export default function OtpPopup() {
   const setRegisterPopup = Store.setRegisterPopup;
   const setOtpPopup = Store.setOtpPopup;
 
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   function showLoginOrRegister() {
     setOtpPopup(false);
@@ -92,16 +75,16 @@ export default function OtpPopup() {
                 </div>
               </div>
               <div className={styles.sthree_full}>
-                <div className={styles.line}></div>
-                <div className={styles.or}>OR</div>
+                {/* <div className={styles.line}></div>
+                <div className={styles.or}>OR</div> */}
               </div>
               <div className={styles.desktop_content_outer}>
                 <div className={styles.content_inner}>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
+                    {/* <div className={styles.google}>
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
-                    </div>
+                    </div> */}
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
@@ -138,14 +121,14 @@ export default function OtpPopup() {
                   </div>
                   <OtpPopupForm />
                   <div className={styles.sthree}>
-                    <div className={styles.line}></div>
-                    <div className={styles.or}>OR</div>
+                    {/* <div className={styles.line}></div>
+                    <div className={styles.or}>OR</div> */}
                   </div>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
+                    {/* <div className={styles.google}>
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
-                    </div>
+                    </div> */}
                   </div>
                   <div className={styles.sfive}>
                     {loginPopup ? (

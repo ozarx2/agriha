@@ -1,0 +1,130 @@
+.filefolderSectionMain {
+  margin: 40px;
+}
+
+.filefolderHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.filefolderTitle {
+  display: flex;
+  align-items: center;
+}
+.filefolderSearch {
+  display: flex;
+  align-items: center;
+}
+.sortSection {
+  display: flex;
+  align-items: center;
+}
+.sortList {
+  display: flex;
+  align-items: center;
+}
+.createFolder {
+  display: flex;
+  align-items: center;
+}
+
+.folderSectionHead {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148.19%;
+  color: #000000;
+}
+.folderSectionHead > span {
+  font-size: 12px;
+  color: #757575;
+}
+.viewAll > div {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #642DDA;
+}
+.viewAll > div > img {
+  padding-left: 10px;
+}
+.viewAll {
+}
+.viewAll > span {
+  padding-left: 10px;
+}
+.filefolderSearch {
+  padding-left: 50px;
+}
+.searchbar {
+  border: 0;
+  outline: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #939393;
+}
+.filefolderSearch > div {
+  padding-left: 5px;
+}
+.sortList {
+  padding-right: 40px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #7d7d7d;
+}
+.sortList > div {
+  padding-left: 10px;
+}
+.createFolder > div {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #7d7d7d;
+  padding-left: 10px;
+}
+.fileUploadDiv {
+  padding: 25px 25px;
+  background: #f7f7f7;
+  border-radius: 6.44965px;
+  text-align: center;
+  display: flex;
+}
+.fileFolderTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 21px;
+  text-align: center;
+  color: #232323;
+}
+.fileFolderdate {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 21px;
+  text-align: center;
+  color: #b7b7b7;
+}
+.fileUploadsSectionMain {
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+}
+.fileUploadsSection {
+  padding-right: 30px;
+}

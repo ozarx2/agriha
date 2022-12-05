@@ -17,9 +17,7 @@ const ViewAllArchs = () => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization:
-            "Bearer " +
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+          Authorization: `Bearer ${dummy_token}`,
         },
       });
       const data = await res.json();
@@ -35,9 +33,7 @@ const ViewAllArchs = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGM5ZDhiNWIyOWEyZjM0OGM5NzQ5NyIsImlhdCI6MTY2MTc3MTE0OCwiZXhwIjoxNjYxODU3NTQ4fQ.n9kwWACUDQzUT45XecGYGZ638bOYfTv8iUpdfD-_m3Q",
+        Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
@@ -60,10 +56,7 @@ const ViewAllArchs = () => {
   };
 
   return (
-    <div
-      className={Archstyles.bodyRegister}
-      style={{ backgroundImage: `url('/registerBg.png')` }}
-    >
+    <div className={Archstyles.bodyRegister} style={{ backgroundImage: `url('/registerBg.png')` }}>
       <div className={registerstyles.header__bodyRegister}>
         <div className={Headerstyles.header__left}>
           <Image
@@ -98,16 +91,9 @@ const ViewAllArchs = () => {
             return (
               <div key={index} className={styles.architectCard}>
                 <div className={styles.deleteButton}>
-                  <img
-                    onClick={() => deleteArchitect(items._id)}
-                    src="/deleteIcon.png"
-                    alt=""
-                  />
+                  <img onClick={() => deleteArchitect(items._id)} src="/deleteIcon.png" alt="" />
                 </div>
-                <div
-                  onClick={() => architectView(items._id)}
-                  className={styles.architectCard__content}
-                >
+                <div onClick={() => architectView(items._id)} className={styles.architectCard__content}>
                   <img
                     src={
                       items?.profilepic
@@ -118,11 +104,7 @@ const ViewAllArchs = () => {
                     className={styles.profileImage}
                   />
                   <div className={styles.architectCard__content__text}>
-                    <h5>
-                      {items?.registered_id?.name
-                        ? items?.registered_id?.name
-                        : items?.firstname}
-                    </h5>
+                    <h5>{items?.registered_id?.name ? items?.registered_id?.name : items?.firstname}</h5>
                     <p>Architect</p>
                   </div>
                 </div>

@@ -1,0 +1,51 @@
+@media only screen and (max-width: 766px) {
+  .google {
+    background: #fcfaff;
+    border: 1px solid #dfdfdf;
+    border-radius: 6px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .google img {
+    width: 14px;
+    height: 14.29px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  .google span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #787878;
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .google {
+    background: #fcfaff;
+    border: 1px solid #dfdfdf;
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .google img {
+    width: 16px;
+    height: 16.3px;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+  .google span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2218px;
+    line-height: 15px;
+    color: #787878;
+  }
+}

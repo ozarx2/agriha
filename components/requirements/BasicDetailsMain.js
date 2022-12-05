@@ -35,6 +35,28 @@ const BasicDetailsMain = () => {
   const [bathroom, setBathroom] = useState("");
   const [familyMembers, setFamilyMembers] = useState("");
 
+  const [renovationType, setRenovationtype] = useState("");
+
+  const [apartmentType, setApartmentType] = useState("");
+
+  const [occupancy, setOccupancy] = useState("");
+  const [terraceCafe, setTerraceCafe] = useState(false);
+  const [outdoorKitchen, setOutdoorKitchen] = useState(false);
+
+  const [beds, setBeds] = useState("");
+
+  const [hall, setHall] = useState("");
+
+  const [businessIndustrial, setBusinessIndustrial] = useState("");
+
+  const [screens, setScreens] = useState("");
+
+  const [religion, setReligion] = useState("");
+
+  const [schoolOrCollage, setSchoolOrCollage] = useState("");
+  const [schoolType, setSchoolType] = useState("");
+  const [isResidentialSchool, setIsResidentialSchool] = useState(false);
+
   const storeCommonDetails = () => {
     setArea(document.getElementById("area").value);
     setBudget(document.getElementById("budget").value);
@@ -50,6 +72,74 @@ const BasicDetailsMain = () => {
     setFamilyMembers(document.getElementById("familyMembers").value);
   };
 
+  const storeRenovDetails = (e) => {
+    console.log(e.target.value);
+    setRenovationtype(e.target.value);
+  };
+
+  const storeApartmentDetails = () => {
+    setFloor(document.getElementById("floorApartment").value);
+    setApartmentType(document.getElementById("dropdownApartmantType").value);
+  };
+
+  const storeHotelsDetails = () => {
+    setFloor(document.getElementById("floorHotels").value);
+    setOccupancy(document.getElementById("occupancyHotels").value);
+  };
+
+  const storeTerraceDetail = (e) => {
+    if (e.target.checked) {
+      setTerraceCafe(true);
+      console.log("true");
+    } else {
+      setTerraceCafe(false);
+    }
+  };
+
+  const storeOutdoorKitchenDetails = (e) => {
+    if (e.target.checked) {
+      setOutdoorKitchen(true);
+      console.log("true");
+    } else {
+      setOutdoorKitchen(false);
+    }
+  };
+
+  const storeHospitalDetails = () => {
+    setFloor(document.getElementById("floorHospital").value);
+    setBeds(document.getElementById("bedsHospitals").value);
+  };
+
+  const storeAuditoriumDetails = () => {
+    setFloor(document.getElementById("floorAuditorium").value);
+    setHall(document.getElementById("hallAuditorium").value);
+  };
+
+  const storebusinessTypeIndustrialDetails = () => {
+    setBusinessIndustrial(document.getElementById("businessIndustrial").value);
+  };
+
+  const storeMallDetails = () => {
+    setFloor(document.getElementById("floorMall").value);
+    setOccupancy(document.getElementById("occupancyMall").value);
+  };
+
+  const storeMultiplexDetails = () => {
+    setScreens(document.getElementById("screen").value);
+    setOccupancy(document.getElementById("occupancyMultiplex").value);
+  };
+
+  const storeReligiousDetails = () => {
+    setReligion(document.getElementById("religion").value);
+    setOccupancy(document.getElementById("occupancyRelegion").value);
+  };
+
+  const storeSchoolDetails = () => {
+    setSchoolType(document.getElementById("schoolType").value);
+    setFloor(document.getElementById("floorSchool").value);
+    setOccupancy(document.getElementById("occupancySchool").value);
+  };
+
   const residentialDetails = [
     {
       total_floors: floor,
@@ -59,11 +149,128 @@ const BasicDetailsMain = () => {
     },
   ];
 
+  const renovationDetails = [
+    {
+      renovation_type: renovationType,
+    },
+  ];
+
+  const apartmentDetails = [
+    {
+      apartment_type: apartmentType,
+      total_floors: floor,
+    },
+  ];
+
+  const hotelsDetails = [
+    {
+      total_floors: floor,
+      occupancy: occupancy,
+      terraceRestaurant_cafe: terraceCafe,
+      outdoorKitchen: outdoorKitchen,
+    },
+  ];
+
+  const hospitalDetails = [
+    {
+      total_floors: floor,
+      total_beds: beds,
+    },
+  ];
+
+  const auditoriumDetails = [
+    {
+      total_floors: floor,
+      total_halls: hall,
+    },
+  ];
+
+  const industrialDetails = [
+    {
+      type_of_business: businessIndustrial,
+    },
+  ];
+
+  const mallDetails = [
+    {
+      total_floors: floor,
+      occupancy: occupancy,
+    },
+  ];
+
+  const multiplexDetails = [
+    {
+      total_screens: screens,
+      occupancy: occupancy,
+    },
+  ];
+
+  const religiousDetails = [
+    {
+      type_of_religion: religion,
+      occupancy: occupancy,
+    },
+  ];
+
+  const schoolDetails = [
+    {
+      school_or_Collage: schoolOrCollage,
+      school_type: schoolType,
+      is_residential_school: isResidentialSchool,
+      total_floors: floor,
+      occupancy: occupancy,
+    },
+  ];
+
   useEffect(() => {
     if (selectedtype === "Residential") {
       setProjectDetails(residentialDetails);
     }
-  }, [selectedtype, floor, bedroom, bathroom, familyMembers]);
+    if (selectedtype === "Renovation") {
+      setProjectDetails(renovationDetails);
+    }
+    if (selectedtype === "Apartment") {
+      setProjectDetails(apartmentDetails);
+    }
+    if (selectedtype === "Hotels/restaurants") {
+      setProjectDetails(hotelsDetails);
+    }
+    if (selectedtype === "Hospitals/medical lab") {
+      setProjectDetails(hospitalDetails);
+    }
+    if (selectedtype === "Auditorium") {
+      setProjectDetails(auditoriumDetails);
+    }
+    if (selectedtype === "Industrial/warehouse") {
+      setProjectDetails(industrialDetails);
+    }
+    if (selectedtype === "Mall") {
+      setProjectDetails(mallDetails);
+    }
+    if (selectedtype === "Multiplex") {
+      setProjectDetails(multiplexDetails);
+    }
+    if (selectedtype === "Religious building") {
+      setProjectDetails(religiousDetails);
+    }
+    if (selectedtype === "School/College building") {
+      setProjectDetails(schoolDetails);
+    }
+  }, [
+    selectedtype,
+    floor,
+    bedroom,
+    bathroom,
+    familyMembers,
+    renovationType,
+    apartmentType,
+    occupancy,
+    terraceCafe,
+    outdoorKitchen,
+    beds,
+    hall,
+    businessIndustrial,
+  ]);
 
   /* GET PROJECT TYPES */
   async function getProjects() {
@@ -323,9 +530,17 @@ const BasicDetailsMain = () => {
                   <p>Apartment details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="tel" placeholder="Total floors*" />
+                      <input
+                        type="tel"
+                        id="floorApartment"
+                        placeholder="Total floors*"
+                        onChange={storeApartmentDetails}
+                      />
                       <div className={styles.apartment_types}>
-                        <select>
+                        <select
+                          id="dropdownApartmantType"
+                          onClick={storeApartmentDetails}
+                        >
                           <option value="1 BHK">1 BHK</option>
                           <option value="2 BHK">2 BHK</option>
                           <option value="3 BHK">3 BHK</option>
@@ -344,16 +559,34 @@ const BasicDetailsMain = () => {
                   <p>Hotels/restaurants details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="tel" placeholder="Total floors*" />
-                      <input type="tel" placeholder="Total occupancy*" />
+                      <input
+                        type="tel"
+                        id="floorHotels"
+                        placeholder="Total floors*"
+                        onChange={storeHotelsDetails}
+                      />
+                      <input
+                        type="tel"
+                        id="occupancyHotels"
+                        placeholder="Total occupancy*"
+                        onChange={storeHotelsDetails}
+                      />
                     </div>
                     <div className={styles.terraceNoutdoor_container}>
                       <div className={styles.terraceNoutdoor_card}>
-                        <input type="checkbox" />
+                        <input
+                          onClick={storeTerraceDetail}
+                          type="checkbox"
+                          id="terraceCheckbox"
+                        />
                         <p>Terrace Restaurant/Cafe</p>
                       </div>
                       <div className={styles.terraceNoutdoor_card}>
-                        <input type="checkbox" />
+                        <input
+                          onClick={storeOutdoorKitchenDetails}
+                          type="checkbox"
+                          id="outdoorKitchenCheckbox"
+                        />
                         <p>Outdoor kitchen</p>
                       </div>
                     </div>
@@ -367,8 +600,18 @@ const BasicDetailsMain = () => {
                   <p>Hospitals/medical lab details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="tel" placeholder="Total floors*" />
-                      <input type="tel" placeholder="Total no. of beds*" />
+                      <input
+                        onChange={storeHospitalDetails}
+                        type="tel"
+                        placeholder="Total floors*"
+                        id="floorHospital"
+                      />
+                      <input
+                        onChange={storeHospitalDetails}
+                        type="tel"
+                        placeholder="Total no. of beds*"
+                        id="bedsHospitals"
+                      />
                     </div>
                   </div>
                 </div>
@@ -380,8 +623,18 @@ const BasicDetailsMain = () => {
                   <p>Auditorium details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="tel" placeholder="Total floors*" />
-                      <input type="tel" placeholder="Total no. of halls*" />
+                      <input
+                        type="tel"
+                        placeholder="Total floors*"
+                        onChange={storeAuditoriumDetails}
+                        id="floorAuditorium"
+                      />
+                      <input
+                        type="tel"
+                        placeholder="Total no. of halls*"
+                        onChange={storeAuditoriumDetails}
+                        id="hallAuditorium"
+                      />
                     </div>
                   </div>
                 </div>
@@ -393,7 +646,12 @@ const BasicDetailsMain = () => {
                   <p>Industrial/warehouse details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="text" placeholder="Type of business*" />
+                      <input
+                        type="text"
+                        onChange={storebusinessTypeIndustrialDetails}
+                        placeholder="Type of business*"
+                        id="businessIndustrial"
+                      />
                     </div>
                   </div>
                 </div>
@@ -405,8 +663,18 @@ const BasicDetailsMain = () => {
                   <p>Mall details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="tel" placeholder="Total floors*" />
-                      <input type="tel" placeholder="Total occupancy*" />
+                      <input
+                        type="tel"
+                        onChange={storeMallDetails}
+                        placeholder="Total floors*"
+                        id="floorMall"
+                      />
+                      <input
+                        type="tel"
+                        onChange={storeMallDetails}
+                        placeholder="Total occupancy*"
+                        id="occupancyMall"
+                      />
                     </div>
                   </div>
                 </div>
@@ -418,8 +686,18 @@ const BasicDetailsMain = () => {
                   <p>Multiplex details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="tel" placeholder="Total no. of screens*" />
-                      <input type="tel" placeholder="Total occupancy*" />
+                      <input
+                        onChange={storeMultiplexDetails}
+                        type="tel"
+                        placeholder="Total no. of screens*"
+                        id="screen"
+                      />
+                      <input
+                        onChange={storeMultiplexDetails}
+                        type="tel"
+                        placeholder="Total occupancy*"
+                        id="occupancyMultiplex"
+                      />
                     </div>
                   </div>
                 </div>
@@ -431,8 +709,18 @@ const BasicDetailsMain = () => {
                   <p>Religious building details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="text" placeholder="Type of religion*" />
-                      <input type="tel" placeholder="Total occupancy*" />
+                      <input
+                        type="text"
+                        onChange={storeReligiousDetails}
+                        placeholder="Type of religion*"
+                        id="religion"
+                      />
+                      <input
+                        onChange={storeReligiousDetails}
+                        type="tel"
+                        placeholder="Total occupancy*"
+                        id="occupancyRelegion"
+                      />
                     </div>
                   </div>
                 </div>
@@ -441,7 +729,7 @@ const BasicDetailsMain = () => {
               )}
               {selectedtype === "School/College building" ? (
                 <div className={styles.residence_details_container}>
-                  <p>Religious building details</p>
+                  <p>School/College building details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.renovation_radio_conatiner}>
                       <div className={styles.complete_radio}>
@@ -454,7 +742,8 @@ const BasicDetailsMain = () => {
                       </div>
                     </div>
                     <div className={styles.apartment_types}>
-                      <select>
+                      <select onClick={storeSchoolDetails} id="schoolType">
+                        <option value="Lower primary">None</option>
                         <option value="Lower primary">Lower primary</option>
                         <option value="Upper primary">Upper primary</option>
                         <option value="High School">High School</option>
@@ -467,8 +756,18 @@ const BasicDetailsMain = () => {
                     </div>
                   </div>
                   <div className={styles.floorNbedroom_input_conatiner}>
-                    <input type="tel" placeholder="Total floors*" />
-                    <input type="tel" placeholder="Total occupancy*" />
+                    <input
+                      type="tel"
+                      id="floorSchool"
+                      placeholder="Total floors*"
+                      onChange={storeSchoolDetails}
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Total occupancy*"
+                      id="occupancySchool"
+                      onChange={storeSchoolDetails}
+                    />
                   </div>
                 </div>
               ) : (

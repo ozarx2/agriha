@@ -1,0 +1,73 @@
+.filterSectionMain {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 0.909639px solid #e1e1e1;
+}
+.filterSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.filterDivLeft {
+  display: flex;
+}
+.allFilter {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  margin-right: 20px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #642DDA;
+}
+.allSort {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  margin-right: 20px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #642DDA;
+}
+.allCategory {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  margin-right: 20px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #642DDA;
+}
+.pagination {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #a3a3a3;
+}
+.filterIcon {
+  padding-right: 5px;
+}
+.sortIcon {
+  padding-right: 5px;
+}
+.categoryIcon {
+  padding-left: 5px;
+}

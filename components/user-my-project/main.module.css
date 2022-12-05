@@ -1,0 +1,429 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+@media only screen and (max-width: 1100px) {
+  .projMobSecMain {
+    padding-bottom: 50px;
+  }
+  .projBtnsMob {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .projBackOne {
+    padding-right: 10px;
+  }
+  .projBtnsOne {
+    padding: 9px 13px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 115%;
+    color: #ffffff;
+    background: #642dda;
+    border-radius: 5px;
+    margin-right: 5.5px;
+  }
+  .projBtnsTwo {
+    padding: 9px 13px;
+    margin-left: 5.5px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 115%;
+    color: #642dda;
+    border: 1px solid #642dda;
+    border-radius: 5px;
+  }
+  .projImgMobMainSec {
+    padding-top: 23px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .projImgMobMian {
+    background: #f8f8f8;
+  }
+  .projmob {
+    width: 100%;
+  }
+  .projNameMob {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #642dda;
+    padding-bottom: 2px;
+  }
+  .projIdMob {
+    padding-top: 2px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    color: #4d4d4d;
+  }
+  .projImgProNamePicMobMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .projprofileMob {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+  }
+  .viewMoreMob {
+    padding: 9px 13px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ffffff;
+    background: #642dda;
+    border-radius: 4px;
+    padding-right: 2.5px;
+    margin-left: 10px;
+  }
+  .viewMoreMob > span {
+    padding-left: 2.5px;
+    padding-right: 13px;
+  }
+  .productsMobSecMain {
+    padding: 20px;
+  }
+  .productsMobSec {
+    display: flex;
+    align-items: center;
+  }
+  .productsMobSecHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    padding-right: 28px;
+  }
+  .projProPicBtnsMob {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .projProPicBtnsMob > img {
+    height: 28px;
+    width: 28px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .productsMobSec .prodmob {
+    padding-left: 13.44px;
+    padding-right: 6.5px;
+  }
+  .prodmob {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .projStatusMainSecMob {
+    display: flex;
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .projStatusLeftMainMob {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 148.19%;
+    color: #9a9a9a;
+    padding-right: 10px;
+  }
+  .projStatusRightMainMob {
+    padding-left: 10px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 148.19%;
+    color: #5f5f5f;
+  }
+  .profileStatusMob {
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+  }
+  .suggestedProductsMainSecMob {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .suggestedProductsMainMob {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .suggestedProductHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+  .suggProdListMob {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ababab;
+  }
+  .suggestedBedProductsMainSecMob {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .suggestedBedProductsMainMob {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bedProdMobMainSec {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .bedProdMobMainSec > img {
+    padding: 10px;
+  }
+  .suggestedKitchenProductsMainSecMob {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .suggestedKitechenProductsMainMob {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .suggestedHallProductsMainSecMob {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .suggestedHallProductsMainMob {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dragDropSec {
+    position: relative;
+  }
+  .dragDropSec input {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    opacity: 0;
+  }
+  .dragDrop {
+    padding: 15px;
+    text-align: center;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 148.19%;
+    color: #9a9a9a;
+    background: #ffffff;
+    border: 1px dashed #9b9a9a;
+    border-radius: 7px;
+  }
+  .file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .file > div {
+    display: flex;
+    align-items: center;
+  }
+  .file > div > span {
+    padding-left: 10px;
+  }
+  .fileUploadSecMainMobHead {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+  }
+  .fileUploadSecMainMob {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .fileUploadSecMainMobTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+  .fileUploadSecMainMobTitle > span {
+    padding-left: 17px;
+  }
+  .fileSortSecMainMob {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #7d7d7d;
+  }
+  .fileSortSecMainMob > img {
+    padding-right: 17px;
+  }
+  .createFolderSecMainMob {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #7d7d7d;
+  }
+  .createFolderSecMainMob > img {
+    padding-right: 17px;
+  }
+  .filesMobSecMain {
+    padding-top: 19px;
+    padding-bottom: 19px;
+  }
+  .filesMobSec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f7f7f7;
+    border-radius: 6.44965px;
+    padding: 23px 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .filesMobTitle {
+    padding-left: 27px;
+  }
+  .fileImgNameSec {
+    display: flex;
+    align-items: center;
+  }
+  .fileImgNameSec > div {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #232323;
+  }
+  .fileImgNameSec > small {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    text-align: center;
+    color: #b7b7b7;
+  }
+  .sentFileMainSecMob {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .sentFileMainMob {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sentFileHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5f5f5f;
+  }
+  .sentFileUploadMainSecMob {
+    padding: 20px;
+  }
+  .sentFileUploadMainSecMob > input {
+    width: 100%;
+    /* height: 40px; */
+  }
+  .sentFileUploadMainSecMobTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #a4a4a4;
+    margin-bottom: 5.5px;
+  }
+
+  .fileFromMainSecMob {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  .main_outer {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  .buttonsMainSection {
+    display: flex;
+    align-items: center;
+  }
+  .buttonsMainSection > div {
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-top: 20px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 115%;
+  }
+  .myProjBtnOne {
+    color: #ffffff;
+    background: #642dda;
+    border-radius: 5px;
+  }
+  .myProjBtnTwo {
+    color: #6b6565;
+    border: 1px solid #e3e3e3;
+  }
+  .myProjBtnTwo:hover {
+    background-color: #642dda69;
+    color: #642dda;
+  }
+  .myProjBtnThree {
+    color: #6b6565;
+    border: 1px solid #e3e3e3;
+  }
+  .myProjBtnThree:hover {
+    background-color: #642dda69;
+    color: #642dda;
+  }
+}

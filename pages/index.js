@@ -7,6 +7,8 @@ import LandingFooter from "../components/user-common/footer";
 import LoginPopup from "../components/user-common/login-popup";
 import RegisterPopup from "../components/user-common/register-popup";
 import OtpPopup from "../components/user-common/otp-popup";
+import ArchitectBidPopupidPopup from "../components/user-common/architect-bid-popup";
+import ProfilePopup from "../components/user-common/profile-popup";
 
 import styles from "./index.module.css";
 
@@ -16,6 +18,8 @@ export default function AgrihaLanding() {
   const loginPopup = Store.loginPopup;
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
+  const architectBidPopup = Store.architectBidPopup;
+  const profilePopup = Store.profilePopup;
   return (
     <>
       <Head>
@@ -40,6 +44,8 @@ export default function AgrihaLanding() {
         {loginPopup ? <LoginPopup /> : ""}
         {registerPopup ? <RegisterPopup /> : ""}
         {otpPopup ? <OtpPopup /> : ""}
+        {architectBidPopup ? <ArchitectBidPopupidPopup /> : ""}
+        {profilePopup ? <ProfilePopup /> : ""}
       </div>
     </>
   );

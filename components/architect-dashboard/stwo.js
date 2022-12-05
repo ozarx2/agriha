@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState, useContext } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper";
@@ -9,12 +8,15 @@ import "swiper/css/free-mode";
 
 import { StoreContext } from "../../components/StoreContext";
 import styles from "./stwo.module.css";
+import Link from "next/link";
 
 export default function FnSTwo() {
   const [Store] = useContext(StoreContext);
 
   const setAddProject = Store.setAddProject;
   const projects = Store.projects;
+
+  console.log(projects);
 
   const [project, setProject] = useState(true);
 

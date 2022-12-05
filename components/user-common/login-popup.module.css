@@ -146,6 +146,7 @@
   .content_inner .sfour {
     margin-top: 26px;
   }
+
   .content_inner .sfour .google {
     background: #fcfaff;
     border: 1px solid #dfdfdf;
@@ -189,6 +190,7 @@
     color: #642dda;
   }
 }
+
 @media only screen and (min-width: 767px) {
   .LoginPopupOuter {
     padding: 5vw;
@@ -324,30 +326,8 @@
     background-color: #fff;
   }
 
-  .desktop_content_outer .sfour {
-  }
-  .desktop_content_outer .sfour .google {
-    background: #fcfaff;
-    border: 1px solid #dfdfdf;
-    border-radius: 6px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .desktop_content_outer .sfour .google img {
-    width: 16px;
-    height: 16.3px;
-    object-fit: cover;
-    margin-right: 15px;
-  }
-  .desktop_content_outer .sfour .google span {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12.2218px;
-    line-height: 15px;
-    color: #787878;
+  .content_inner .sfour {
+    margin-top: 26px;
   }
 
   .desktop_content_outer .sfive {

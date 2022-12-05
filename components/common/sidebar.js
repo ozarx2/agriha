@@ -110,6 +110,25 @@ export default function Sidebar() {
                   <h5>Project Files</h5>
                 </div>
               </Link>
+              <Link href="/view-bid" passHref>
+                <div
+                  className={`${styles.mainLists} ${
+                    router.pathname == "/view-bid" ? styles.active : ""
+                  }`}
+                >
+                  <img
+                    className={styles.imgselect}
+                    src="/img/architect-dashboard/sidebar/bid-s.svg"
+                    alt="agrihaLogo.svg"
+                  />
+                  <img
+                    className={styles.imgnoselect}
+                    src="/img/architect-dashboard/sidebar/bid-ns.svg"
+                    alt="agrihaLogo.svg"
+                  />
+                  <h5>View Bid</h5>
+                </div>
+              </Link>
             </div>
           </div>
           <div className={styles.quarter}>

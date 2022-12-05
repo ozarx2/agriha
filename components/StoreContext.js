@@ -2,15 +2,15 @@ import React, { useState, createContext } from "react";
 
 export const StoreContext = createContext();
 export const StoreContextProvider = (props) => {
-  const [addProject, setAddProject] = useState(false);
-  const [menu, setMenu] = useState(false);
-  const [logout, setLogout] = useState(false);
+  const [addProject, setAddProject] = useState(false); // project add for architect dashboard
+  const [menu, setMenu] = useState(false); // menu for architect dashboard
+  const [logout, setLogout] = useState(false); // logout for architect dashboard
   const [notificationPopup, setNotificationPopup] = useState(false);
   const [addProjectImagePopup, setAddProjectImagePopup] = useState(false);
   const [files, setFiles] = useState([]);
   const [fileUploadPopup, setFileUploadPopup] = useState(false);
   const [ongoingPopup, setOngoingPopup] = useState(false);
-  const [searchpopup, setSearchpopup] = useState(false);
+  const [searchpopup, setSearchpopup] = useState(false); // mobile serch popup for agriha homepage
   const [architectId, setArchitectId] = useState("");
   const [architectData, setArchitectData] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -23,10 +23,26 @@ export const StoreContextProvider = (props) => {
   const [loginPopup, setLoginPopup] = useState(false);
   const [registerPopup, setRegisterPopup] = useState(false);
   const [otpPopup, setOtpPopup] = useState(false);
-  const [loginDetails, setLoginDetails] = useState(false);
-
-  const [bid, setBid] = useState(false);
+  const [bid, setBid] = useState(true);
   const [bidArchitectId, setBidArchitectId] = useState(null);
+  const [loginActive, setLoginActive] = useState(false);
+  const [architectSelectPopup, setArchitectSelectPopup] = useState(false);
+  const [architectBidPopup, setArchitectBidtPopup] = useState(false);
+  const [bidDataPopup, setBidDataPopup] = useState(false);
+  const [allBidArchitect, setAllBidArchitect] = useState([]);
+
+  // Store Yaseen start
+  // Store Yaseen end
+
+  // Store 61-5a start
+  const [profilePopup, setProfilePopup] = useState(false);
+  const [fromLoginOrRegister, setFromLoginOrRegister] = useState("");
+  const [userId, setUserId] = useState("");
+  const [userRole, setUserRole] = useState("user");
+  // Store 61-5a end
+
+  // Store Hashir start
+  // Store Hashir end
 
   const Store = {
     addProject,
@@ -71,17 +87,42 @@ export const StoreContextProvider = (props) => {
     setRegisterPopup,
     otpPopup,
     setOtpPopup,
-    loginDetails,
-    setLoginDetails,
     bid,
     setBid,
     bidArchitectId,
     setBidArchitectId,
+    loginActive,
+    setLoginActive,
+    architectSelectPopup,
+    setArchitectSelectPopup,
+    architectBidPopup,
+    setArchitectBidtPopup,
+    bidDataPopup,
+    setBidDataPopup,
+    allBidArchitect,
+    setAllBidArchitect,
+
+    // Store Yaseen start
+
+    // Store Yaseen end
+
+    // Store 61-5a start
+    profilePopup,
+    setProfilePopup,
+    fromLoginOrRegister,
+    setFromLoginOrRegister,
+    userId,
+    setUserId,
+    userRole,
+    setUserRole,
+    // Store 61-5a end
+    // Store 61-5a end
+    // Store 61-5a end
+
+    // Store Hashir start
+
+    // Store Hashir end
   };
 
-  return (
-    <StoreContext.Provider value={[Store]}>
-      {props.children}
-    </StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;
 };

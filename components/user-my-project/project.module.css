@@ -1,0 +1,217 @@
+.mainSection {
+  width: 100%;
+  margin-top: 20px;
+  border: 0.909639px solid #f0f0f0;
+  border-radius: 2px;
+}
+.ongoingProjectSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background: #ffffff;
+}
+.suggestion > div {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #737171;
+  padding-right: 15px;
+}
+.suggestion > div > img {
+  padding-right: 10px;
+}
+.bid {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #098482;
+  border: 0.827914px solid #098482;
+  border-radius: 5.7954px;
+  padding: 9px;
+  margin-right: 10px;
+}
+.showMore {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #098482;
+  border: 0.827914px solid #098482;
+  border-radius: 5.7954px;
+  padding: 9px;
+}
+.showMore > img {
+  margin-left: 5px;
+}
+/* .projectNameSection {
+  display: flex;
+  align-items: center;
+} */
+.projectName {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #642dda;
+}
+.projectId {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #8c8787;
+  padding-top: 5px;
+}
+
+.showMoreBtnSection {
+  display: flex;
+  align-items: center;
+}
+
+.showMore {
+  border: 0.827914px solid #642dda;
+  border-radius: 5.7954px;
+  padding: 9px 11px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #642dda;
+}
+.secOne {
+  width: 30%;
+}
+.onGoingProjSectionMain {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d6d6d6;
+  background: #ffffff;
+  margin-bottom: 30px;
+}
+.profileDpNameSection {
+  display: flex;
+  align-items: center;
+}
+.profileNameSec {
+  display: flex;
+  align-items: center;
+  padding: 8px 9px;
+  background: #f9f6ff;
+  border: 1px solid #af8cf9;
+  border-radius: 7px;
+}
+.profileNameSec > img {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profileNameSec > div {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #575757;
+}
+.profileStatusSection {
+  padding-top: 30px;
+  display: flex;
+}
+/* .profileStatusSection > div {
+  display: flex;
+}
+.profileStatusSection > div > div {
+  flex: 1;
+} */
+.profileStatus {
+  padding-top: 30px;
+}
+.profileStatusLeft {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #9a9a9a;
+  padding-right: 10px;
+}
+.profileStatusRight {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #5f5f5f;
+}
+.profileStatus {
+  padding-top: 15px;
+}
+.secTwo {
+  width: 30%;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.secThree {
+  width: 40%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.projDetails {
+  background-color: #fff;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 40px;
+  margin-top: -40px;
+}
+
+/* .projDetails {
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+} */
+@media only screen and (max-width: 1400px) {
+  /* .cancelBtn {
+    display: none;
+  } */
+  .cancelBtn {
+    padding: 13px 21px;
+  }
+  .uploadBtn {
+    padding: 11px 15px;
+  }
+  .uploadBtnMain {
+    width: 100%;
+    /* text-align: center; */
+    /* padding: auto; */
+    /* padding: 15px 21px; */
+  }
+  /* .uploadBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+}

@@ -1,8 +1,9 @@
 import React from "react";
 import Head from "next/head";
-import styles from "./index.module.css";
 import FileUploadMain from "../../../components/requirements/FileUploadMain";
-import Header from "../../../components/requirements/Header";
+import AgrihaLandingHeaderNoSearch from "../../../components/user-common/header-ns";
+
+import styles from "./index.module.css";
 
 const ChoosePlan = () => {
   return (
@@ -16,7 +17,7 @@ const ChoosePlan = () => {
         <div className={styles.container_outer}>
           <div className={styles.container_inner}>
             <div className={styles.header}>
-              <Header />
+              <AgrihaLandingHeaderNoSearch />
             </div>
             <div className={styles.main}>
               <FileUploadMain />

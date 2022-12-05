@@ -1,13 +1,23 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
+import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import endpoint from "../../src/utils/endpoint";
 
 import styles from "./otp-popup.module.css";
 
 export default function OtpPopupForm() {
-  // const [Store] = useContext(StoreContext);
+  const router = useRouter();
 
-  const [otp, setOtp] = useState("");
+  const [Store] = useContext(StoreContext);
+
+  const loginActive = Store.loginActive;
+  const setBid = Store.setBid;
+  const setOtpPopup = Store.setOtpPopup;
+  const setLoginPopup = Store.setLoginPopup;
+  const setRegisterPopup = Store.setRegisterPopup;
+  const setLoginActive = Store.setLoginActive;
+  const setUserId = Store.setUserId;
+  const setFromLoginOrRegister = Store.setFromLoginOrRegister;
 
   var a = document.getElementById("a"),
     b = document.getElementById("b"),
@@ -33,7 +43,41 @@ export default function OtpPopupForm() {
   const utcString = dateObj.toUTCString();
   const time = utcString.slice(-11, -4);
 
-  /* VERIFY OTP REGISTER */
+  /* VERIFY OTP Login */
+  async function handleSubmitLogin(otp) {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(`${endpoint}/auth/verify_login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + `${token}`,
+      },
+      body: JSON.stringify({
+        otp: otp,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 200) {
+      setLoginActive(true);
+      setOtpPopup(false);
+      setLoginPopup(false);
+      setRegisterPopup(false);
+      localStorage.setItem("userToken", data.token);
+      localStorage.setItem("userId", data.id);
+      setUserId(data.id);
+
+      if (data.role === "user") {
+        setBid(true);
+        // window.location.href = "/dashboard";
+      } else if (data.role === "architect") {
+        window.location.href = `/architect-dashboard/${data.id}`;
+      }
+    }
+  }
+
+  /* VERIFY OTP Register */
   async function handleSubmit(otp) {
     const token = localStorage.getItem("token");
 
@@ -52,6 +96,7 @@ export default function OtpPopupForm() {
     if (data.status === 200) {
       if (data.role === "user") {
         localStorage.setItem("userToken", data.token);
+        setBid(true);
         window.location.href = "/requirement/basic-details";
       } else if (data.role === "architect") {
         localStorage.setItem("userToken", data.token);
@@ -66,46 +111,22 @@ export default function OtpPopupForm() {
     }
   };
 
+  const verifyClickLogin = () => {
+    if (a.value !== "") {
+      handleSubmitLogin(a.value + b.value + c.value + d.value + e.value + f.value);
+    }
+  };
+
   return (
     <>
       <div className={styles.stwo}>
         <div className={styles.sixOtp}>
-          <input
-            id="a"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(a, a, b)}
-          />
-          <input
-            id="b"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(a, b, c)}
-          />
-          <input
-            id="c"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(b, c, d)}
-          />
-          <input
-            id="d"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(c, d, e)}
-          />
-          <input
-            id="e"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(d, e, f)}
-          />
-          <input
-            id="f"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(e, f, f)}
-          />
+          <input id="a" type="tel" maxLength="1" onChange={() => OtpNextActive(a, a, b)} />
+          <input id="b" type="tel" maxLength="1" onChange={() => OtpNextActive(a, b, c)} />
+          <input id="c" type="tel" maxLength="1" onChange={() => OtpNextActive(b, c, d)} />
+          <input id="d" type="tel" maxLength="1" onChange={() => OtpNextActive(c, d, e)} />
+          <input id="e" type="tel" maxLength="1" onChange={() => OtpNextActive(d, e, f)} />
+          <input id="f" type="tel" maxLength="1" onChange={() => OtpNextActive(e, f, f)} />
         </div>
         <div className={styles.additional}>
           <div className={styles.resend}>
@@ -113,9 +134,24 @@ export default function OtpPopupForm() {
           </div>
           <div className={styles.time}>{time}</div>
         </div>
-        <div className={styles.submit} onClick={verifyClick}>
-          Verify
-        </div>
+
+        {counter === 0 ? (
+          <div className={styles.submit} style={{ backgroundColor: "#ccc" }}>
+            Time Exceeded
+          </div>
+        ) : (
+          <>
+            {setFromLoginOrRegister == "login" ? (
+              <div className={styles.submit} onClick={verifyClickLogin}>
+                Verify
+              </div>
+            ) : (
+              <div className={styles.submit} onClick={verifyClick}>
+                Verify
+              </div>
+            )}
+          </>
+        )}
       </div>
     </>
   );

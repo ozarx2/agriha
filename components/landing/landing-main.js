@@ -3,8 +3,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import api_url from "../../src/utils/url";
+// var api_url = "https://arclif-agriha.herokuapp.com";
 import AgrihaImageGrid from "../user-common/image-grid";
 import { StoreContext } from "../../components/StoreContext";
+import Link from "next/link";
+import windowSize from "../windowRes";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Keyboard, Autoplay, Pagination, Navigation } from "swiper";
@@ -15,32 +18,12 @@ import "swiper/css/navigation";
 import styles from "./landing-main.module.css";
 
 export default function AgrihaLandingMain() {
-  const [windowRes, setWindowRes] = useState([]);
-
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   const [Store] = useContext(StoreContext);
   const setRegisterPopup = Store.setRegisterPopup;
-  const loginDetails = Store.loginDetails;
+  const loginActive = Store.loginActive;
+  const setArchitectBidtPopup = Store.setArchitectBidtPopup;
 
   /* GET PROJECT TYPES */
   const [projectTypes, setProjectTypes] = useState([]);
@@ -75,6 +58,8 @@ export default function AgrihaLandingMain() {
     if (data) {
       // console.log(data.data);
       const withArchitect = data.data.filter((res) => res?.architect_id);
+      // const withArchitectNoOrder = data.data.filter((res) => res?.architect_id);
+      // const withArchitect = withArchitectNoOrder.reverse();
       setAllProject(withArchitect);
     }
   }
@@ -137,10 +122,10 @@ export default function AgrihaLandingMain() {
                         Lorem Ipsum is simply dummy text of the printing and typesetti
                       </div>
                       <div className={styles.buttons}>
-                        {loginDetails ? (
-                          <div className={styles.start}>
+                        {loginActive ? (
+                          <div className={styles.start} onClick={() => setArchitectBidtPopup(true)}>
                             <img src="/img/landing/plus.svg" alt="plus" />
-                            <span>Project</span>
+                            <span>Invite Quote</span>
                           </div>
                         ) : (
                           <div className={styles.start} onClick={() => setRegisterPopup(true)}>
@@ -191,10 +176,10 @@ export default function AgrihaLandingMain() {
                             Leading Architects for you to <span>Design your space</span>
                           </div>
                           <div className={styles.buttons}>
-                            {loginDetails ? (
-                              <div className={styles.started}>
+                            {loginActive ? (
+                              <div className={styles.started} onClick={() => setArchitectBidtPopup(true)}>
                                 <img src="/img/landing/plus.svg" alt="plus" />
-                                <span>Project</span>
+                                <span>Invite Quote</span>
                               </div>
                             ) : (
                               <div onClick={() => setRegisterPopup(true)} className={styles.started}>
@@ -231,10 +216,14 @@ export default function AgrihaLandingMain() {
                           className="mySwiper"
                         >
                           <SwiperSlide>
-                            <img src="/img/landing/s1.JPEG" alt="s1" />
+                            <Link href="https://www.arclif.com/" passHref>
+                              <img src="/img/landing/s1.JPEG" alt="s1" />
+                            </Link>
                           </SwiperSlide>
                           <SwiperSlide>
-                            <img src="/img/landing/s3.JPEG" alt="s3" />
+                            <Link href="/my-bid" passHref>
+                              <img src="/img/landing/s3.JPEG" alt="s3" />
+                            </Link>
                           </SwiperSlide>
                         </Swiper>
                       </div>

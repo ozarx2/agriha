@@ -24,6 +24,7 @@ export default function Navbar() {
   const setUserProjectsDetails = Store.setUserProjectsDetails;
   const setProjects = Store.setProjects;
   const setArchitect = Store.setArchitectData;
+  const setAllBidArchitect = Store.setAllBidArchitect;
 
   const [notification, setNotification] = useState(false);
   const [path, setPath] = useState("Overview");
@@ -39,6 +40,10 @@ export default function Navbar() {
       setPath("Ongoing project");
     } else if (router.pathname == "/project-files") {
       setPath("Project files");
+    } else if (router.pathname == "/view-bid") {
+      setPath("View Bid");
+    } else if (router.pathname == "/view-bid/[id]") {
+      setPath("View Bid");
     } else if (router.pathname == "/dashboard-settings") {
       setPath("Settings");
     } else {
@@ -80,27 +85,39 @@ export default function Navbar() {
     });
 
     const data = await res.json();
-    setProjects(data);
+    if (data.statusCode !== 500) {
+      setProjects(data);
+    }
   }
 
   /* GET USER PROJECTS */
   async function getAssignedProjects() {
     var token = localStorage.getItem("userToken");
 
-    const res = await fetch(
-      `${api_url}/projects/singleuserproject/${architectId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch(`${api_url}/projects/singleuserproject/${architectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     const data = await res.json();
-    setUserProjects(data.dataresp.data);
-    setUserProjectsDetails(data.dataresp.details);
+    setUserProjects(data?.dataresp?.data);
+    setUserProjectsDetails(data?.dataresp?.details);
+  }
+
+  /* GET ALL BID */
+  async function getAllBid() {
+    const res = await fetch(`${api_url}/projects/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    setAllBidArchitect(data.projects);
   }
 
   useEffect(() => {
@@ -108,6 +125,7 @@ export default function Navbar() {
       getArchitect();
       getProjects();
       getAssignedProjects();
+      getAllBid();
     }
   }, [architectId]);
 
@@ -124,8 +142,8 @@ export default function Navbar() {
     });
 
     const data = await res.json();
-    setActivityLog(data.activitylog);
-    if (data.activitylog.length > 0) {
+    setActivityLog(data?.activitylog);
+    if (data?.activitylog?.length > 0) {
       setNotification(true);
     } else {
       setNotification(false);
@@ -149,9 +167,17 @@ export default function Navbar() {
                 <span>Back</span>
               </Link>
             </div>
+          ) : router.pathname == "/view-bid/[id]" ? (
+            <div className={styles.back}>
+              <img src="/img/architect-dashboard/back.svg" alt="back.jpg" />
+              <Link href="/view-bid" passHref>
+                <span>Back</span>
+              </Link>
+            </div>
           ) : (
             ""
           )}
+
           <h5>{path}</h5>
         </div>
         <div className={styles.end}>
@@ -171,47 +197,20 @@ export default function Navbar() {
             <div className={styles.boxes}>
               <a href="tel:8921244492">
                 <div className={styles.callBox}>
-                  <img
-                    className={styles.call_nh}
-                    src="/img/architect-dashboard/navbar/call-nh.svg"
-                    alt="call.svg"
-                  />
-                  <img
-                    className={styles.call_h}
-                    src="/img/architect-dashboard/navbar/call-h.svg"
-                    alt="call.svg"
-                  />
+                  <img className={styles.call_nh} src="/img/architect-dashboard/navbar/call-nh.svg" alt="call.svg" />
+                  <img className={styles.call_h} src="/img/architect-dashboard/navbar/call-h.svg" alt="call.svg" />
                 </div>
               </a>
-              <div
-                onClick={() => setNotificationPopup(true)}
-                className={styles.notificationBox}
-              >
+              <div onClick={() => setNotificationPopup(true)} className={styles.notificationBox}>
                 {notification ? (
                   <>
-                    <img
-                      className={styles.n_h}
-                      src="/img/architect-dashboard/navbar/n-ah.svg"
-                      alt="notification"
-                    />
-                    <img
-                      className={styles.n_nh}
-                      src="/img/architect-dashboard/navbar/n-anh.svg"
-                      alt="notification"
-                    />
+                    <img className={styles.n_h} src="/img/architect-dashboard/navbar/n-ah.svg" alt="notification" />
+                    <img className={styles.n_nh} src="/img/architect-dashboard/navbar/n-anh.svg" alt="notification" />
                   </>
                 ) : (
                   <>
-                    <img
-                      className={styles.n_h}
-                      src="/img/architect-dashboard/navbar/n-h.svg"
-                      alt="notification"
-                    />
-                    <img
-                      className={styles.n_nh}
-                      src="/img/architect-dashboard/navbar/n-nh.svg"
-                      alt="notification"
-                    />
+                    <img className={styles.n_h} src="/img/architect-dashboard/navbar/n-h.svg" alt="notification" />
+                    <img className={styles.n_nh} src="/img/architect-dashboard/navbar/n-nh.svg" alt="notification" />
                   </>
                 )}
               </div>
@@ -236,11 +235,7 @@ export default function Navbar() {
         <div className={styles.mobile_nav_second}>
           <div className={styles.searchBox}>
             <input type="text" placeholder="What would you like to do ?" />
-            <img
-              src="/img/architect-dashboard/navbar/search.svg"
-              className={styles.searchIcon}
-              alt="search.jpg"
-            />
+            <img src="/img/architect-dashboard/navbar/search.svg" className={styles.searchIcon} alt="search.jpg" />
           </div>
         </div>
       </div>

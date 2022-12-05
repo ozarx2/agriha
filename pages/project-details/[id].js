@@ -1,12 +1,15 @@
 import Head from "next/head";
 import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
-import AgrihaLandingHeader from "../../components/user-common/header";
+import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
 import AgrihaProjectDetailsMain from "../../components/project-details/main";
 import LandingFooter from "../../components/user-common/footer";
 import LoginPopup from "../../components/user-common/login-popup";
 import RegisterPopup from "../../components/user-common/register-popup";
 import OtpPopup from "../../components/user-common/otp-popup";
+import ArchitectSelectPopup from "../../components/user-common/architect-select-popup";
+import ArchitectBidPopup from "../../components/user-common/architect-bid-popup";
+import ProfilePopup from "../../components/user-common/profile-popup";
 
 import styles from "./index.module.css";
 
@@ -16,6 +19,10 @@ export default function AgrihaProjectDetails() {
   const loginPopup = Store.loginPopup;
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
+  const architectSelectPopup = Store.architectSelectPopup;
+  const architectBidPopup = Store.architectBidPopup;
+  const profilePopup = Store.profilePopup;
+
   return (
     <>
       <Head>
@@ -27,7 +34,7 @@ export default function AgrihaProjectDetails() {
         <div className={styles.container_outer}>
           <div className={styles.container_inner}>
             <div className={styles.header}>
-              <AgrihaLandingHeader />
+              <AgrihaLandingHeaderNoSearch />
             </div>
             <div className={styles.main}>
               <AgrihaProjectDetailsMain />
@@ -40,6 +47,9 @@ export default function AgrihaProjectDetails() {
         {loginPopup ? <LoginPopup /> : ""}
         {registerPopup ? <RegisterPopup /> : ""}
         {otpPopup ? <OtpPopup /> : ""}
+        {architectSelectPopup ? <ArchitectSelectPopup /> : ""}
+        {architectBidPopup ? <ArchitectBidPopup /> : ""}
+        {profilePopup ? <ProfilePopup /> : ""}
       </div>
     </>
   );

@@ -3,7 +3,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import endpoint from "../../src/utils/endpoint";
 import LoginPopupForm from "./login-form";
+import AgrihaGoogleLogin from "./google-login";
+import { useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
+import windowSize from "../windowRes";
 
 import styles from "./login-popup.module.css";
 
@@ -13,28 +20,8 @@ export default function LoginPopup() {
   const setLoginPopup = Store.setLoginPopup;
   const setRegisterPopup = Store.setRegisterPopup;
   const otpPopup = Store.otpPopup;
-  const setOtpPopup = Store.setOtpPopup;
 
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
-  }
+  const windowRes = windowSize();
 
   function showSignup() {
     setRegisterPopup(true);
@@ -48,6 +35,31 @@ export default function LoginPopup() {
       document.getElementById("LoginPopupOuter").style.display = "flex";
     }
   }, [otpPopup]);
+
+  /* GOOGLE AUTH */
+  async function handleSubmit(name, email, profile) {
+    axios
+      .post(`${endpoint}/auth/google/Login`, {
+        name: name,
+        email: email,
+        profilePic: profile,
+        role: "user",
+      })
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.message === "user login successfully") {
+          localStorage.setItem("token", response.data.token);
+          window.location.href = "/dashboard";
+        }
+        if (response.data.message === "user registeration successfully") {
+          localStorage.setItem("token", response.data.token);
+          window.location.href = "/requirement/basic-details";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <>
@@ -107,10 +119,19 @@ export default function LoginPopup() {
               <div className={styles.desktop_content_outer}>
                 <div className={styles.content_inner}>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
-                      <img src="/img/landing/google.svg" alt="google" />
-                      <span>Continue with Google</span>
-                    </div>
+                    <GoogleLogin
+                      width="340px"
+                      onSuccess={(credentialResponse) => {
+                        console.log(credentialResponse);
+                        var decoded = jwt_decode(credentialResponse.credential);
+                        console.log(decoded);
+                        handleSubmit(decoded.name, decoded.email, decoded.picture);
+                      }}
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                      useOneTap
+                    />
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
@@ -139,10 +160,22 @@ export default function LoginPopup() {
                     <div className={styles.or}>OR</div>
                   </div>
                   <div className={styles.sfour}>
-                    <div className={styles.google}>
+                    {/* <div className={styles.google}>
                       <img src="/img/landing/google.svg" alt="google" />
                       <span>Continue with Google</span>
-                    </div>
+                    </div> */}
+                    <GoogleLogin
+                      onSuccess={(credentialResponse) => {
+                        console.log(credentialResponse);
+                        var decoded = jwt_decode(credentialResponse.credential);
+                        console.log(decoded);
+                        handleSubmit(decoded.name, decoded.email, decoded.picture);
+                      }}
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                    />
+                    {/* <AgrihaGoogleLogin onClick={() => OurGoogleLogin()} /> */}
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>

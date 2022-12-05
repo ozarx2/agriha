@@ -3,55 +3,37 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import windowSize from "../windowRes";
+import api_url from "../../src/utils/url";
+
 import styles from "./header.module.css";
 
 export default function AgrihaLandingHeader() {
-  const [windowRes, setWindowRes] = useState([]);
-  if (typeof window !== "undefined") {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    function getWindowSize() {
-      const innerWidth = window.innerWidth;
-      const innerHeight = window.innerHeight;
-      return { innerWidth, innerHeight };
-    }
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-        setWindowRes(getWindowSize());
-      }
-      setWindowRes(getWindowSize());
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
+  const windowRes = windowSize();
 
+  if (typeof window !== "undefined") {
     if (windowRes.innerWidth <= 1100) {
-      if (typeof window !== "undefined") {
-        window.addEventListener("wheel", function (event) {
-          if (event.deltaY < 0) {
-            // console.log("scrolling up");
-            if (document.getElementById("search_outer")) {
-              document.getElementById("search_outer").style.top = "57px";
-            }
-            if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop =
-                "111px";
-            }
-          } else if (event.deltaY > 0) {
-            // console.log("scrolling down");
-            if (document.getElementById("search_outer")) {
-              document.getElementById("search_outer").style.top = "3px";
-            }
-            if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop =
-                "57px";
-            }
+      window.addEventListener("wheel", function (event) {
+        if (event.deltaY < 0) {
+          // console.log("scrolling up");
+          if (document.getElementById("search_outer")) {
+            document.getElementById("search_outer").style.top = "57px";
           }
-        });
-      }
+          if (document.getElementById("menu_mobile_outer")) {
+            document.getElementById("menu_mobile_outer").style.marginTop = "111px";
+          }
+        } else if (event.deltaY > 0) {
+          // console.log("scrolling down");
+          if (document.getElementById("search_outer")) {
+            document.getElementById("search_outer").style.top = "3px";
+          }
+          if (document.getElementById("menu_mobile_outer")) {
+            document.getElementById("menu_mobile_outer").style.marginTop = "57px";
+          }
+        }
+      });
 
       if (typeof document !== "undefined") {
         var touchPos;
@@ -66,8 +48,7 @@ export default function AgrihaLandingHeader() {
               document.getElementById("search_outer").style.top = "57px";
             }
             if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop =
-                "111px";
+              document.getElementById("menu_mobile_outer").style.marginTop = "111px";
             }
           }
           if (newTouchPos < touchPos) {
@@ -76,8 +57,7 @@ export default function AgrihaLandingHeader() {
               document.getElementById("search_outer").style.top = "3px";
             }
             if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop =
-                "57px";
+              document.getElementById("menu_mobile_outer").style.marginTop = "57px";
             }
           }
         };
@@ -90,7 +70,44 @@ export default function AgrihaLandingHeader() {
 
   const [Store] = useContext(StoreContext);
   const setLoginPopup = Store.setLoginPopup;
-  const loginDetails = Store.loginDetails;
+  const loginActive = Store.loginActive;
+  const setProfilePopup = Store.setProfilePopup;
+  const setLoginActive = Store.setLoginActive;
+  const userId = Store.userId;
+  const setUserId = Store.setUserId;
+  const setUserRole = Store.setUserRole;
+
+  const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
+  async function getHomeSeekerDetails() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/user/profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    setHomeSeekerDetails(data.userData);
+  }
+
+  useEffect(() => {
+    if (userId !== "") {
+      getHomeSeekerDetails();
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("userToken");
+    if (token) {
+      setLoginActive(true);
+    }
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      setUserId(userId);
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.header_outer}>
@@ -99,57 +116,81 @@ export default function AgrihaLandingHeader() {
             <div className={`container ${styles.container} ${styles.header}`}>
               <div className={styles.header_main_inner}>
                 <div className={styles.left}>
-                  <picture>
-                    <img src="/img/landing/logo.svg" alt="logo" />
-                  </picture>
+                  <Link href="/" passHref>
+                    <picture>
+                      <img src="/img/landing/logo.svg" alt="logo" />
+                    </picture>
+                  </Link>
                 </div>
                 {windowRes.innerWidth >= 1100 ? (
-                  <div
-                    id="menu_desktop_outer"
-                    className={styles.menu_desktop_outer}
-                  >
+                  <div id="menu_desktop_outer" className={styles.menu_desktop_outer}>
                     <div className={styles.menu}>
-                      <div
-                        className={
-                          router.pathname == "/"
-                            ? styles.active
-                            : router.pathname == "/project-details/[id]"
-                            ? styles.active
-                            : ""
-                        }
-                      >
-                        For You
-                      </div>
-                      <div>Projects</div>
-                      <div>My bid</div>
-                      <div>Architects</div>
+                      <Link href="/" passHref>
+                        <div
+                          className={
+                            router.pathname == "/"
+                              ? styles.active
+                              : router.pathname == "/project-details/[id]"
+                              ? styles.active
+                              : ""
+                          }
+                        >
+                          For You
+                        </div>
+                      </Link>
+                      {loginActive ? (
+                        <Link href="/user-my-project" passHref>
+                          <div>My Projects</div>
+                        </Link>
+                      ) : (
+                        ""
+                      )}
+                      <Link href="/my-bid" passHref>
+                        <div>My bid</div>
+                      </Link>
+                      <Link href="/user-my-architect" passHref>
+                        <div>Architects</div>
+                      </Link>
                     </div>
                   </div>
                 ) : (
                   ""
                 )}
 
+                {/* {windowRes.innerWidth >= 1100 ? (
+                  <>
+                    <div>contact</div>
+                    <div>notification</div>
+                  </>
+                ) : (
+                  ""
+                )} */}
+
                 {windowRes.innerWidth >= 1100 ? (
                   <div className={styles.right}>
-                    {loginDetails ? (
+                    {loginActive ? (
                       <>
-                        <div className={styles.profile}>
-                          <span>Althaf Rahman</span>
+                        <div onClick={() => setProfilePopup(true)} className={styles.profile}>
+                          <span>{homeSeekerDetails?.name}</span>
                           <img
-                            src="/img/landing/profile_img.svg"
+                            src={
+                              homeSeekerDetails?.profile_pic
+                                ? homeSeekerDetails?.profile_pic
+                                : "/img/landing/profile_img.svg"
+                            }
                             alt="profile"
                           />
                         </div>
                       </>
                     ) : (
                       <>
-                        <div className={styles.architect}>
+                        <div
+                          onClick={() => (setUserRole("architect"), setLoginPopup(true))}
+                          className={styles.architect}
+                        >
                           Are you an Architect ?
                         </div>
-                        <div
-                          onClick={() => setLoginPopup(true)}
-                          className={styles.login}
-                        >
+                        <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
                           User Login
                         </div>
                       </>
@@ -157,23 +198,29 @@ export default function AgrihaLandingHeader() {
                   </div>
                 ) : (
                   <div className={styles.right}>
-                    {loginDetails ? (
+                    {loginActive ? (
                       <>
-                        <div className={styles.profile}>
-                          <span>Althaf Rahman</span>
+                        <div onClick={() => setProfilePopup(true)} className={styles.profile}>
+                          <span>{homeSeekerDetails?.name}</span>
                           <img
-                            src="/img/landing/profile_img.svg"
+                            src={
+                              homeSeekerDetails?.profile_pic
+                                ? homeSeekerDetails?.profile_pic
+                                : "/img/landing/profile_img.svg"
+                            }
                             alt="profile"
                           />
                         </div>
                       </>
                     ) : (
                       <>
-                        <div className={styles.architect}>Architect Login</div>
                         <div
-                          onClick={() => setLoginPopup(true)}
-                          className={styles.login}
+                          onClick={() => (setUserRole("architect"), setLoginPopup(true))}
+                          className={styles.architect}
                         >
+                          Architect Login
+                        </div>
+                        <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
                           Login
                         </div>
                       </>
@@ -183,17 +230,12 @@ export default function AgrihaLandingHeader() {
               </div>
             </div>
           </div>
+
           {windowRes.innerWidth >= 1100 ? (
             ""
           ) : (
-            <div
-              className={`container ${styles.container} ${styles.container_menu_mobile_outer}`}
-            >
-              <div
-                id="menu_mobile_outer"
-                className={styles.menu_mobile_outer}
-                style={{ marginTop: "57px" }}
-              >
+            <div className={`container ${styles.container} ${styles.container_menu_mobile_outer}`}>
+              <div id="menu_mobile_outer" className={styles.menu_mobile_outer} style={{ marginTop: "57px" }}>
                 <div className={styles.menu}>
                   {router.pathname == "/project-details/[id]" ? (
                     <Link href="/" passHref>
@@ -204,32 +246,41 @@ export default function AgrihaLandingHeader() {
                   ) : (
                     ""
                   )}
-                  <div
-                    className={
-                      router.pathname == "/"
-                        ? styles.active
-                        : router.pathname == "/project-details/[id]"
-                        ? styles.active
-                        : ""
-                    }
-                  >
-                    For You
-                  </div>
-                  <div>Projects</div>
-                  <div>My bid</div>
-                  <div>Architects</div>
+                  <Link href="/" passHref>
+                    <div
+                      className={
+                        router.pathname == "/"
+                          ? styles.active
+                          : router.pathname == "/project-details/[id]"
+                          ? styles.active
+                          : ""
+                      }
+                    >
+                      For You
+                    </div>
+                  </Link>
+                  {loginActive ? (
+                    <Link href="/user-my-project" passHref>
+                      <div>Projects</div>
+                    </Link>
+                  ) : (
+                    ""
+                  )}
+                  <Link href="/my-bid" passHref>
+                    <div>My bid</div>
+                  </Link>
+                  <Link href="/user-my-architect" passHref>
+                    <div>Architects</div>
+                  </Link>
                 </div>
               </div>
             </div>
           )}
+
           {windowRes.innerWidth >= 1100 ? (
             ""
           ) : (
-            <div
-              id="search_outer"
-              className={`search_outer ${styles.search_outer}`}
-              style={{ top: "3px" }}
-            >
+            <div id="search_outer" className={`search_outer ${styles.search_outer}`} style={{ top: "3px" }}>
               <div className={styles.search_out}>
                 <img src="/img/landing/search.svg" alt="search" />
                 <input type="text" placeholder="Search here..." />

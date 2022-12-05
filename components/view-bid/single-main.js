@@ -12,11 +12,12 @@ import styles from "./single-main.module.css";
 export default function SingleProjectsMain() {
   const [Store] = useContext(StoreContext);
 
+  const setBidDataPopup = Store.setBidDataPopup;
+  const setBidUserId = Store.setBidUserId;
+
   const router = useRouter();
   const { bid } = router.query;
   const projectId = bid;
-
-  const setBidDataPopup = Store.setBidDataPopup;
 
   const [projectDetails, setProjectDetilas] = useState([]);
   const [projectType, setProjectType] = useState("");
@@ -37,6 +38,7 @@ export default function SingleProjectsMain() {
     if (data.status === 200) {
       setProjectDetilas(data?.data[0]);
       setProjectType(data?.data[0]?.project_type);
+      setBidUserId(data?.data[0]?.creator?._id);
       setProjectTypeDetails(data?.data[0]?.project_requirements[0]);
     }
   }
@@ -63,39 +65,27 @@ export default function SingleProjectsMain() {
             </div>
             <div className={styles.resultSection}>
               <p>Project Code</p>
-              <div className={styles.resultTextContainer}>
-                {projectDetails?.project_name}
-              </div>
+              <div className={styles.resultTextContainer}>{projectDetails?.project_name}</div>
             </div>
             <div className={styles.resultSection}>
               <p>Expected area of project</p>
-              <div className={styles.resultTextContainer}>
-                {projectTypeDetails?.area} SQFT
-              </div>
+              <div className={styles.resultTextContainer}>{projectTypeDetails?.area} SQFT</div>
             </div>
             <div className={styles.resultSection}>
               <p>Expected Budget of project</p>
-              <div className={styles.resultTextContainer}>
-                ₹ {projectTypeDetails?.budget}
-              </div>
+              <div className={styles.resultTextContainer}>₹ {projectTypeDetails?.budget}</div>
             </div>
             <div className={styles.resultSection}>
               <p>Total Plot</p>
-              <div className={styles.resultTextContainer}>
-                {projectTypeDetails?.plot}
-              </div>
+              <div className={styles.resultTextContainer}>{projectTypeDetails?.plot}</div>
             </div>
             <div className={styles.resultSection}>
               <p>Number of floors</p>
-              <div className={styles.resultTextContainer}>
-                {projectTypeDetails?.suggessions}
-              </div>
+              <div className={styles.resultTextContainer}>{projectTypeDetails?.suggessions}</div>
             </div>
             <div className={styles.resultSection}>
               <p>Project Location</p>
-              <div className={styles.resultTextContainer}>
-                {projectTypeDetails?.location}
-              </div>
+              <div className={styles.resultTextContainer}>{projectTypeDetails?.location}</div>
             </div>
           </div>
 
@@ -170,9 +160,7 @@ export default function SingleProjectsMain() {
             <div className={styles.results__container}>
               <div className={styles.resultSection}>
                 <p>Total Floors</p>
-                <div className={styles.resultTextContainer}>
-                  {projectDetails.project_type_details[0].total_floors}
-                </div>
+                <div className={styles.resultTextContainer}>{projectDetails.project_type_details[0].total_floors}</div>
               </div>
               <div className={styles.resultSection}>
                 <p>Apartment Type</p>

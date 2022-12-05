@@ -27,9 +27,7 @@ const FileUploadMain = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercent(percent);
@@ -69,9 +67,7 @@ const FileUploadMain = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercentThumb(percent);
@@ -108,9 +104,7 @@ const FileUploadMain = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercentProject(percent);
@@ -274,20 +268,12 @@ const FileUploadMain = () => {
               <div className={styles.inputRow_container_fileUpload}>
                 <div className={styles.inputRow_fileUpload}>
                   <div className={styles.left_inputRow_fileUpload}>
-                    <input
-                      type="file"
-                      onChange={uploadSitePlan}
-                      accept="application/pdf"
-                      id="siteplan"
-                    />
+                    <input type="file" onChange={uploadSitePlan} accept="application/pdf" id="siteplan" />
                     <div className={styles.inputRef}>Choose file</div>
                     <p>Upload Site Plan</p>
                   </div>
                   {sitePlan !== "" ? (
-                    <div
-                      className={styles.uploadButtonActive}
-                      onClick={handleSubmitSiteplan}
-                    >
+                    <div className={styles.uploadButtonActive} onClick={handleSubmitSiteplan}>
                       Upload
                       <img src="/img/requirement/upload.svg" alt="" />
                     </div>
@@ -308,13 +294,10 @@ const FileUploadMain = () => {
                       onChange={uploadReferanceImages}
                     />
                     <div className={styles.inputRef}>Choose files</div>
-                    <p>Upload referance images (maximum: 3)</p>
+                    <p>Upload referance images(3)</p>
                   </div>
                   {projectImages.length !== 0 ? (
-                    <div
-                      className={styles.uploadButtonActive}
-                      onClick={handleSubmitRefImages}
-                    >
+                    <div className={styles.uploadButtonActive} onClick={handleSubmitRefImages}>
                       Upload
                       <img src="/img/requirement/upload.svg" alt="" />
                     </div>
@@ -337,10 +320,7 @@ const FileUploadMain = () => {
                     <p>Upload thumbnail image</p>
                   </div>
                   {thumbnail !== "" ? (
-                    <div
-                      className={styles.uploadButtonActive}
-                      onClick={handleSubmitThumbnail}
-                    >
+                    <div className={styles.uploadButtonActive} onClick={handleSubmitThumbnail}>
                       Upload
                       <img src="/img/requirement/upload.svg" alt="" />
                     </div>

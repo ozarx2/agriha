@@ -5,10 +5,6 @@ import api_url from "../../src/utils/url";
 import styles from "./RequirementsMain.module.css";
 
 const SecondaryDetailsMain = () => {
-  const goToChoosePlan = () => {
-    handleSubmit();
-  };
-
   const [pincode, setPincode] = useState("");
   const [district, setDistrict] = useState("");
   const [state, setState] = useState("");
@@ -63,6 +59,14 @@ const SecondaryDetailsMain = () => {
       });
   };
 
+  const goToChoosePlan = () => {
+    if (pincode !== "" && district !== "" && state !== "" && country !== "") {
+      handleSubmit();
+    } else {
+      alert("Please fill required* fields");
+    }
+  };
+
   return (
     <>
       <div className={styles.main_outer}>
@@ -101,50 +105,20 @@ const SecondaryDetailsMain = () => {
               <p>Secondary Details</p>
               <div className={styles.inputRow}>
                 <div className={styles.pincodeNdistrict_input_conatiner}>
-                  <input
-                    type="tel"
-                    id="pincode"
-                    placeholder="Pincode*"
-                    onChange={storeDetails}
-                  />
-                  <input
-                    type="text"
-                    id="district"
-                    placeholder="District*"
-                    onChange={storeDetails}
-                  />
+                  <input type="tel" id="pincode" placeholder="Pincode*" onChange={storeDetails} />
+                  <input type="text" id="district" placeholder="District*" onChange={storeDetails} />
                 </div>
                 <div className={styles.pincodeNdistrict_input_conatiner}>
-                  <input
-                    type="text"
-                    id="state"
-                    placeholder="State*"
-                    onChange={storeDetails}
-                  />
-                  <input
-                    type="text"
-                    id="country"
-                    placeholder="Country*"
-                    onChange={storeDetails}
-                  />
+                  <input type="text" id="state" placeholder="State*" onChange={storeDetails} />
+                  <input type="text" id="country" placeholder="Country*" onChange={storeDetails} />
                 </div>
               </div>
               <div className={styles.inputRow}>
                 <div className={styles.plot_input_conatiner}>
-                  <input
-                    type="text"
-                    id="workLocation"
-                    placeholder="Work location"
-                    onChange={storeDetails}
-                  />
+                  <input type="text" id="workLocation" placeholder="Work location" onChange={storeDetails} />
                 </div>
                 <div className={styles.plot_input_conatiner}>
-                  <input
-                    type="text"
-                    id="address"
-                    placeholder="Your Address"
-                    onChange={storeDetails}
-                  />
+                  <input type="text" id="address" placeholder="Your Address" onChange={storeDetails} />
                 </div>
               </div>
             </div>

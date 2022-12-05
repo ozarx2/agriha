@@ -222,56 +222,6 @@ const BasicDetailsMain = () => {
     },
   ];
 
-  useEffect(() => {
-    if (selectedtype === "Residential") {
-      setProjectDetails(residentialDetails);
-    }
-    if (selectedtype === "Renovation") {
-      setProjectDetails(renovationDetails);
-    }
-    if (selectedtype === "Apartment") {
-      setProjectDetails(apartmentDetails);
-    }
-    if (selectedtype === "Hotels/restaurants") {
-      setProjectDetails(hotelsDetails);
-    }
-    if (selectedtype === "Hospitals/medical lab") {
-      setProjectDetails(hospitalDetails);
-    }
-    if (selectedtype === "Auditorium") {
-      setProjectDetails(auditoriumDetails);
-    }
-    if (selectedtype === "Industrial/warehouse") {
-      setProjectDetails(industrialDetails);
-    }
-    if (selectedtype === "Mall") {
-      setProjectDetails(mallDetails);
-    }
-    if (selectedtype === "Multiplex") {
-      setProjectDetails(multiplexDetails);
-    }
-    if (selectedtype === "Religious building") {
-      setProjectDetails(religiousDetails);
-    }
-    if (selectedtype === "School/College building") {
-      setProjectDetails(schoolDetails);
-    }
-  }, [
-    selectedtype,
-    floor,
-    bedroom,
-    bathroom,
-    familyMembers,
-    renovationType,
-    apartmentType,
-    occupancy,
-    terraceCafe,
-    outdoorKitchen,
-    beds,
-    hall,
-    businessIndustrial,
-  ]);
-
   /* GET PROJECT TYPES */
   async function getProjects() {
     const token = localStorage.getItem("userToken");
@@ -317,50 +267,94 @@ const BasicDetailsMain = () => {
 
   /* CREATE PROJECT */
   const handleSubmit = () => {
-    const data = new Date();
-    const formatDate = moment(data).format("DD/MM/YYYY");
-    const token = localStorage.getItem("userToken");
-    let config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    axios
-      .post(
-        `${api_url}/projects/Choose_project`,
-        {
-          project_type: selectedtype,
-          starting_date: formatDate,
-          ending_date: "null",
-          status: "started",
-          architect_id: bidArchitectId,
-          bid: bid,
-          projectsub_type: null,
-          project_type_details: projectDetails,
-          requiremet_list: requirementList,
-          project_requirements: [
-            {
-              area: area,
-              budget: budget,
-              plot: plot,
-              location: location,
-              suggessions: suggessions,
-            },
-          ],
+    if (selectedtype === "Residential") {
+      setProjectDetails(residentialDetails);
+    }
+    if (selectedtype === "Renovation") {
+      setProjectDetails(renovationDetails);
+    }
+    if (selectedtype === "Apartment") {
+      setProjectDetails(apartmentDetails);
+    }
+    if (selectedtype === "Hotels/restaurants") {
+      setProjectDetails(hotelsDetails);
+    }
+    if (selectedtype === "Hospitals/medical lab") {
+      setProjectDetails(hospitalDetails);
+    }
+    if (selectedtype === "Auditorium") {
+      setProjectDetails(auditoriumDetails);
+    }
+    if (selectedtype === "Industrial/warehouse") {
+      setProjectDetails(industrialDetails);
+    }
+    if (selectedtype === "Mall") {
+      setProjectDetails(mallDetails);
+    }
+    if (selectedtype === "Multiplex") {
+      setProjectDetails(multiplexDetails);
+    }
+    if (selectedtype === "Religious building") {
+      setProjectDetails(religiousDetails);
+    }
+    if (selectedtype === "School/College building") {
+      setProjectDetails(schoolDetails);
+    }
+    if (
+      projectDetails.length !== 0 &&
+      area !== "" &&
+      budget !== "" &&
+      plot !== "" &&
+      location !== "" &&
+      suggessions !== ""
+    ) {
+      const data = new Date();
+      const formatDate = moment(data).format("DD/MM/YYYY");
+      const token = localStorage.getItem("userToken");
+      let config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-        config
-      )
-      .then((response) => {
-        console.log(response);
-        if (response.data.status == 200) {
-          localStorage.setItem("projectId", response.data.data._id);
-          window.location.href = "/requirement/secondary-details";
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Something went wrong please try again");
-      });
+      };
+      axios
+        .post(
+          `${api_url}/projects/Choose_project`,
+          {
+            project_type: selectedtype,
+            starting_date: formatDate,
+            ending_date: "null",
+            status: "started",
+            architect_id: bidArchitectId,
+            bid: bid,
+            projectsub_type: null,
+            project_type_details: projectDetails,
+            requiremet_list: requirementList,
+            project_requirements: [
+              {
+                area: area,
+                budget: budget,
+                plot: plot,
+                location: location,
+                suggessions: suggessions,
+              },
+            ],
+          },
+          config
+        )
+        .then((response) => {
+          console.log(response);
+          if (response.data.status == 200) {
+            localStorage.setItem("projectId", response.data.data._id);
+            window.location.href = "/requirement/secondary-details";
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Something went wrong please try again");
+        });
+    } else {
+      alert("must fill all data");
+    }
   };
 
   const getValueChecked = (e) => {
@@ -537,10 +531,7 @@ const BasicDetailsMain = () => {
                         onChange={storeApartmentDetails}
                       />
                       <div className={styles.apartment_types}>
-                        <select
-                          id="dropdownApartmantType"
-                          onClick={storeApartmentDetails}
-                        >
+                        <select id="dropdownApartmantType" onClick={storeApartmentDetails}>
                           <option value="1 BHK">1 BHK</option>
                           <option value="2 BHK">2 BHK</option>
                           <option value="3 BHK">3 BHK</option>
@@ -559,12 +550,7 @@ const BasicDetailsMain = () => {
                   <p>Hotels/restaurants details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input
-                        type="tel"
-                        id="floorHotels"
-                        placeholder="Total floors*"
-                        onChange={storeHotelsDetails}
-                      />
+                      <input type="tel" id="floorHotels" placeholder="Total floors*" onChange={storeHotelsDetails} />
                       <input
                         type="tel"
                         id="occupancyHotels"
@@ -574,19 +560,11 @@ const BasicDetailsMain = () => {
                     </div>
                     <div className={styles.terraceNoutdoor_container}>
                       <div className={styles.terraceNoutdoor_card}>
-                        <input
-                          onClick={storeTerraceDetail}
-                          type="checkbox"
-                          id="terraceCheckbox"
-                        />
+                        <input onClick={storeTerraceDetail} type="checkbox" id="terraceCheckbox" />
                         <p>Terrace Restaurant/Cafe</p>
                       </div>
                       <div className={styles.terraceNoutdoor_card}>
-                        <input
-                          onClick={storeOutdoorKitchenDetails}
-                          type="checkbox"
-                          id="outdoorKitchenCheckbox"
-                        />
+                        <input onClick={storeOutdoorKitchenDetails} type="checkbox" id="outdoorKitchenCheckbox" />
                         <p>Outdoor kitchen</p>
                       </div>
                     </div>
@@ -663,18 +641,8 @@ const BasicDetailsMain = () => {
                   <p>Mall details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input
-                        type="tel"
-                        onChange={storeMallDetails}
-                        placeholder="Total floors*"
-                        id="floorMall"
-                      />
-                      <input
-                        type="tel"
-                        onChange={storeMallDetails}
-                        placeholder="Total occupancy*"
-                        id="occupancyMall"
-                      />
+                      <input type="tel" onChange={storeMallDetails} placeholder="Total floors*" id="floorMall" />
+                      <input type="tel" onChange={storeMallDetails} placeholder="Total occupancy*" id="occupancyMall" />
                     </div>
                   </div>
                 </div>
@@ -756,12 +724,7 @@ const BasicDetailsMain = () => {
                     </div>
                   </div>
                   <div className={styles.floorNbedroom_input_conatiner}>
-                    <input
-                      type="tel"
-                      id="floorSchool"
-                      placeholder="Total floors*"
-                      onChange={storeSchoolDetails}
-                    />
+                    <input type="tel" id="floorSchool" placeholder="Total floors*" onChange={storeSchoolDetails} />
                     <input
                       type="tel"
                       placeholder="Total occupancy*"

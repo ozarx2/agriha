@@ -8,6 +8,7 @@ import styles from "./RequirementsMain.module.css";
 const ChoosePlanMain = () => {
   const [planDetials, setPlanDetials] = useState([]);
   const [selectPlan, setSelectPlan] = useState(true);
+  const [selected, setSelected] = useState("");
   const [planID, setPlanID] = useState("");
   const [serviceList, setServiceList] = useState([]);
 
@@ -51,8 +52,9 @@ const ChoosePlanMain = () => {
     getAllServices();
   }, []);
 
-  const selectPlanClick = (id) => {
+  const selectPlanClick = (id, index) => {
     setPlanID(id);
+    setSelected(index);
   };
 
   useEffect(() => {
@@ -167,13 +169,7 @@ const ChoosePlanMain = () => {
               <div className={styles.selectOrChoose__container}>
                 <div className={styles.renovation_radio_conatiner}>
                   <div className={styles.complete_radio}>
-                    <input
-                      type="radio"
-                      id="selectPlan"
-                      name="selectOrChoose"
-                      value="selectPlan"
-                      onClick={setRadio}
-                    />
+                    <input type="radio" id="selectPlan" name="selectOrChoose" value="selectPlan" onClick={setRadio} />
                     <label htmlFor="selectPlan">Select Plan</label>
                   </div>
                   <div className={styles.complete_radio}>
@@ -184,9 +180,7 @@ const ChoosePlanMain = () => {
                       value="selectRequirements"
                       onClick={setRadio}
                     />
-                    <label htmlFor="selectRequirements">
-                      Select Requirements
-                    </label>
+                    <label htmlFor="selectRequirements">Select Requirements</label>
                   </div>
                 </div>
               </div>
@@ -196,9 +190,7 @@ const ChoosePlanMain = () => {
                     return (
                       <div key={index} className={styles.plan_card}>
                         <div className={styles.top_plan_card}>
-                          <div className={styles.title_plan_card}>
-                            {item?.plan_name}
-                          </div>
+                          <div className={styles.title_plan_card}>{item?.plan_name}</div>
                           <div className={styles.lists_plan_card}>
                             <ul>
                               {item?.plan_services?.map((service, index2) => {
@@ -207,12 +199,23 @@ const ChoosePlanMain = () => {
                             </ul>
                           </div>
                         </div>
-                        <div
-                          className={styles.select_plan_card}
-                          onClick={() => selectPlanClick(item?._id)}
-                        >
-                          Select Plan
-                        </div>
+                        {selected === index ? (
+                          <div
+                            id={`selectPlan${index}`}
+                            className={styles.select_plan_cardSelected}
+                            onClick={() => selectPlanClick(item?._id, index)}
+                          >
+                            Select Plan
+                          </div>
+                        ) : (
+                          <div
+                            id={`selectPlan${index}`}
+                            className={styles.select_plan_card}
+                            onClick={() => selectPlanClick(item?._id, index)}
+                          >
+                            Select Plan
+                          </div>
+                        )}
                       </div>
                     );
                   })}
@@ -222,11 +225,7 @@ const ChoosePlanMain = () => {
                   {allservices?.map((item, index) => {
                     return (
                       <div key={index} className={styles.serviceList_card}>
-                        <input
-                          type="checkbox"
-                          onClick={getValueChecked}
-                          value={item}
-                        />
+                        <input type="checkbox" onClick={getValueChecked} value={item} />
                         <p>{item}</p>
                       </div>
                     );

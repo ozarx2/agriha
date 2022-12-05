@@ -106,7 +106,6 @@ const BasicDetailsMain = () => {
 
   const goToSecondaryDetails = () => {
     handleSubmit();
-    /* window.location.href = "/requirement/secondary-details"; */
   };
 
   /* CREATE PROJECT */
@@ -159,10 +158,7 @@ const BasicDetailsMain = () => {
 
   const getValueChecked = (e) => {
     if (e.target.checked) {
-      setRequirementList((requirementList) => [
-        ...requirementList,
-        e.target.value,
-      ]);
+      setRequirementList((requirementList) => [...requirementList, e.target.value]);
     } else {
       requirementList.splice(requirementList.indexOf(e.target.value), 1);
     }
@@ -226,18 +222,8 @@ const BasicDetailsMain = () => {
                   </div>
                 </div>
                 <div className={styles.areaNbudget_input_conatiner}>
-                  <input
-                    onChange={storeCommonDetails}
-                    id="area"
-                    type="tel"
-                    placeholder="Enter total area in sq.ft*"
-                  />
-                  <input
-                    onChange={storeCommonDetails}
-                    id="budget"
-                    type="tel"
-                    placeholder="Enter Aproximate budget*"
-                  />
+                  <input onChange={storeCommonDetails} id="area" type="tel" placeholder="Enter total area in sq.ft*" />
+                  <input onChange={storeCommonDetails} id="budget" type="tel" placeholder="Enter Aproximate budget*" />
                 </div>
               </div>
               <div className={styles.inputRow}>
@@ -250,12 +236,7 @@ const BasicDetailsMain = () => {
                   />
                 </div>
                 <div className={styles.location_input_conatiner}>
-                  <input
-                    onChange={storeCommonDetails}
-                    id="location"
-                    type="text"
-                    placeholder="Location*"
-                  />
+                  <input onChange={storeCommonDetails} id="location" type="text" placeholder="Location*" />
                 </div>
               </div>
               <div className={styles.moreDetails_container}>
@@ -271,18 +252,8 @@ const BasicDetailsMain = () => {
                   <p>Residential details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input
-                        type="tel"
-                        id="floor"
-                        onChange={storeResDetails}
-                        placeholder="Total floors*"
-                      />
-                      <input
-                        type="tel"
-                        id="bedroom"
-                        onChange={storeResDetails}
-                        placeholder="Total bedrooms*"
-                      />
+                      <input type="tel" id="floor" onChange={storeResDetails} placeholder="Total floors*" />
+                      <input type="tel" id="bedroom" onChange={storeResDetails} placeholder="Total bedrooms*" />
                     </div>
                     <div className={styles.floorNbedroom_input_conatiner}>
                       <input
@@ -304,16 +275,8 @@ const BasicDetailsMain = () => {
                     <div className={styles.requirementList_cards_container}>
                       {allRequirements?.map((item, index) => {
                         return (
-                          <div
-                            key={index}
-                            className={styles.requirementList_card}
-                          >
-                            <input
-                              type="checkbox"
-                              onClick={getValueChecked}
-                              id={item._id}
-                              value={item.item}
-                            />
+                          <div key={index} className={styles.requirementList_card}>
+                            <input type="checkbox" onClick={getValueChecked} id={item._id} value={item.item} />
                             <p>{item.item}</p>
                           </div>
                         );
@@ -330,21 +293,11 @@ const BasicDetailsMain = () => {
                   <div className={styles.inputRow}>
                     <div className={styles.renovation_radio_conatiner}>
                       <div className={styles.complete_radio}>
-                        <input
-                          type="radio"
-                          id="complete"
-                          name="completeOrPartial"
-                          value="Complete"
-                        />
+                        <input type="radio" id="complete" name="completeOrPartial" value="Complete" />
                         <label htmlFor="complete">Complete</label>
                       </div>
                       <div className={styles.complete_radio}>
-                        <input
-                          type="radio"
-                          id="partial"
-                          name="completeOrPartial"
-                          value="Partial"
-                        />
+                        <input type="radio" id="partial" name="completeOrPartial" value="Partial" />
                         <label htmlFor="partial">Partial</label>
                       </div>
                     </div>
@@ -480,21 +433,11 @@ const BasicDetailsMain = () => {
                   <div className={styles.inputRow}>
                     <div className={styles.renovation_radio_conatiner}>
                       <div className={styles.complete_radio}>
-                        <input
-                          type="radio"
-                          id="school"
-                          name="schoolOrCollege"
-                          value="School"
-                        />
+                        <input type="radio" id="school" name="schoolOrCollege" value="School" />
                         <label htmlFor="school">School</label>
                       </div>
                       <div className={styles.complete_radio}>
-                        <input
-                          type="radio"
-                          id="college"
-                          name="schoolOrCollege"
-                          value="Collage"
-                        />
+                        <input type="radio" id="college" name="schoolOrCollege" value="Collage" />
                         <label htmlFor="college">Collage</label>
                       </div>
                     </div>
@@ -503,9 +446,7 @@ const BasicDetailsMain = () => {
                         <option value="Lower primary">Lower primary</option>
                         <option value="Upper primary">Upper primary</option>
                         <option value="High School">High School</option>
-                        <option value="Higher secondary">
-                          Higher secondary
-                        </option>
+                        <option value="Higher secondary">Higher secondary</option>
                       </select>
                     </div>
                     <div className={styles.residentialSchool_card}>

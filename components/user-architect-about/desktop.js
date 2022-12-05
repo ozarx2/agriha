@@ -152,13 +152,13 @@ const UserArchitectAboutDesktop = () => {
                         <img src="/img/architect-about/share.svg" alt="share.svg" className={styles.shareIcon} />
                         Share
                       </div>
-                      <div className={styles.archOptionsIcons}>
+                      {/* <div className={styles.archOptionsIcons}>
                         <img src="/img/architect-about/heart.svg" alt="heart.svg" className={styles.heartIcon} />
                         Saved
                       </div>
                       <div className={styles.archOptionsSelect}>
                         <div className={styles.archOptionsSelectBtn}>Select</div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 

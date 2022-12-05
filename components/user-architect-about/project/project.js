@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import windowSize from "../../windowRes";
 
@@ -17,7 +18,7 @@ const FnProject = ({ singleArchitect, projects }) => {
             <div className={styles.archProjPicSection}>
               {projects?.map((item, index) => {
                 return (
-                  <>
+                  <Link href={`/project-details/${item._id}`} passHref>
                     <div className={styles.archProjectPic}>
                       <img
                         src={
@@ -31,7 +32,7 @@ const FnProject = ({ singleArchitect, projects }) => {
                       />
                       <div className={styles.archProjectTitle}>{item.projectname}</div>
                     </div>
-                  </>
+                  </Link>
                 );
               })}
             </div>
@@ -43,7 +44,7 @@ const FnProject = ({ singleArchitect, projects }) => {
             <div className={styles.archProjPicSection}>
               {projects?.map((item, index) => {
                 return (
-                  <>
+                  <Link href={`/project-details/${item._id}`} passHref>
                     <div className={styles.archProjectPic}>
                       <img
                         src={
@@ -57,7 +58,7 @@ const FnProject = ({ singleArchitect, projects }) => {
                       />
                       <div className={styles.archProjectTitle}>{item.projectname}</div>
                     </div>
-                  </>
+                  </Link>
                 );
               })}
             </div>

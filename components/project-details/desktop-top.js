@@ -74,11 +74,9 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
           <div className={`container ${styles.container} ${styles.stwo}`}>
             <div className={styles.stwo_inner}>
               <div className={styles.left}>
-                <Link href="/" passHref>
-                  <div className={styles.back}>
-                    <img src="/img/project-details/back.svg" alt="back" />
-                  </div>
-                </Link>
+                <div onClick={() => router.back()} className={styles.back}>
+                  <img src="/img/project-details/back.svg" alt="back" />
+                </div>
                 <Swiper
                   style={{
                     "--swiper-navigation-color": "#fff",

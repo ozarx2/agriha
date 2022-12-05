@@ -4,9 +4,9 @@
 import Link from "next/link";
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
-// import api_url from "../../src/utils/url";
-var api_url = "https://arclif-agriha.herokuapp.com";
+import api_url from "../../src/utils/url";
 import windowSize from "../windowRes";
+import AgrihaMyBidMainSingleBid from "./bid-single";
 
 import styles from "./main.module.css";
 
@@ -19,16 +19,6 @@ export default function AgrihaMyBidMain() {
   const loginActive = Store.loginActive;
   const setArchitectBidtPopup = Store.setArchitectBidtPopup;
 
-  // const [counter, setCounter] = React.useState(300);
-  // React.useEffect(() => {
-  //   counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
-  // }, [counter]);
-  // const dateObj = new Date(counter * 1000);
-  // const utcString = dateObj.toUTCString();
-  // const time = utcString.slice(-11, -4);
-
-  const time = "7";
-
   const [getAllBid, setGetAllBid] = useState([]);
   async function getAllProjects() {
     const response = await fetch(`${api_url}/projects/getbid/${userId}`, {
@@ -39,7 +29,9 @@ export default function AgrihaMyBidMain() {
     });
     const data = await response.json();
     if (data) {
-      setGetAllBid(data.data);
+      const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
+      const temp = data.data.filter((res) => new Date(res.createdAt) >= oldDate);
+      setGetAllBid(temp);
     }
   }
 
@@ -59,7 +51,13 @@ export default function AgrihaMyBidMain() {
                 <>
                   <div className={styles.desktop_outer}>
                     <div className={`container ${styles.container} ${styles.desktop}`}>
-                      <div className={styles.desktop_inner}>{AgrihaMyBidMainMyBid({ getAllBid, time })}</div>
+                      <div className={styles.desktop_inner}>
+                        <div className={styles.bid_max_outer}>
+                          {getAllBid?.map((item, i) => {
+                            return <AgrihaMyBidMainSingleBid item={item} i={i} />;
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </>
@@ -67,7 +65,13 @@ export default function AgrihaMyBidMain() {
                 <>
                   <div className={styles.mobile_outer}>
                     <div className={`container ${styles.container} ${styles.mobile}`}>
-                      <div className={styles.mobile_inner}>{AgrihaMyBidMainMyBid({ getAllBid, time })}</div>
+                      <div className={styles.mobile_inner}>
+                        <div className={styles.bid_max_outer}>
+                          {getAllBid?.map((item, i) => {
+                            return <AgrihaMyBidMainSingleBid item={item} i={i} />;
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </>
@@ -104,39 +108,3 @@ export default function AgrihaMyBidMain() {
     </>
   );
 }
-
-const AgrihaMyBidMainMyBid = ({ getAllBid, time }) => {
-  return (
-    <div className={styles.bid_max_outer}>
-      {getAllBid?.map((item, i) => {
-        console.log(item);
-        return (
-          <React.Fragment key={i}>
-            <div className={styles.bid_outer} key={i}>
-              <div className={styles.image}>
-                <img src="/img/landing/nophoto.jpg" alt="bid img" />
-              </div>
-              <div className={styles.time}>
-                <div className={styles.left}>{time}d : 7h : 15m : 10s</div>
-                <div className={styles.right}>16 Bid now</div>
-              </div>
-              <div className={styles.name}>
-                <div className={styles.left}>{item.project_name}</div>
-                <div className={styles.right}>
-                  <img src="/img/my-bid/arrow_right.svg" alt="view more" />
-                </div>
-              </div>
-              <div className={styles.result}>
-                <div className={styles.line}></div>
-                <Link href="/display-bid" passHref>
-                  <div className={styles.bid}>Bid Result</div>
-                </Link>
-                <div className={styles.line}></div>
-              </div>
-            </div>
-          </React.Fragment>
-        );
-      })}
-    </div>
-  );
-};

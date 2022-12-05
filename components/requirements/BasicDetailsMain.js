@@ -293,11 +293,23 @@ const BasicDetailsMain = () => {
                   <div className={styles.inputRow}>
                     <div className={styles.renovation_radio_conatiner}>
                       <div className={styles.complete_radio}>
-                        <input type="radio" id="complete" name="completeOrPartial" value="Complete" />
+                        <input
+                          type="radio"
+                          id="complete"
+                          name="completeOrPartial"
+                          value="Complete"
+                          onClick={storeRenovDetails}
+                        />
                         <label htmlFor="complete">Complete</label>
                       </div>
                       <div className={styles.complete_radio}>
-                        <input type="radio" id="partial" name="completeOrPartial" value="Partial" />
+                        <input
+                          type="radio"
+                          id="partial"
+                          name="completeOrPartial"
+                          value="Partial"
+                          onClick={storeRenovDetails}
+                        />
                         <label htmlFor="partial">Partial</label>
                       </div>
                     </div>

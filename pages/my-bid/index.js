@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
 import AgrihaMyBidMain from "../../components/my-bid/main";
@@ -14,6 +14,14 @@ import styles from "./index.module.css";
 
 export default function AgrihaProjectDetails() {
   const [Store] = useContext(StoreContext);
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
 
   const loginPopup = Store.loginPopup;
   const registerPopup = Store.registerPopup;

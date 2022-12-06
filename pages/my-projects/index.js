@@ -21,6 +21,14 @@ export default function ArchitectDashboard() {
   const notificationPopup = Store.notificationPopup;
   const addProjectImagePopup = Store.addProjectImagePopup;
 
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
   const [page, setPage] = useState("recent");
 
   return (

@@ -18,6 +18,7 @@ const UserArchitectAboutMain = () => {
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
+
   return (
     <>
       <Head>

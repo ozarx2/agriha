@@ -16,6 +16,14 @@ import FileUploadPopup from "../../components/common/file-upload-popup";
 import styles from "./index.module.css";
 
 export default function ArchitectDashboard() {
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
   const [Store] = useContext(StoreContext);
 
   const addProject = Store.addProject;
@@ -68,22 +76,12 @@ export default function ArchitectDashboard() {
             )}
             <div className={styles.main}>
               <Navbar />
-              <OngoingProjectMain
-                page={page}
-                setPage={setPage}
-                setProjectRequestPopup={setProjectRequestPopup}
-              />
+              <OngoingProjectMain page={page} setPage={setPage} setProjectRequestPopup={setProjectRequestPopup} />
             </div>
           </div>
           {addProject ? <AddProject /> : ""}
           {ongoingPopup ? <OngoingPopup /> : ""}
-          {projectRequestPopup ? (
-            <ProjectRequestPopup
-              setProjectRequestPopup={setProjectRequestPopup}
-            />
-          ) : (
-            ""
-          )}
+          {projectRequestPopup ? <ProjectRequestPopup setProjectRequestPopup={setProjectRequestPopup} /> : ""}
           {logout ? <LogoutPopup /> : ""}
           {notificationPopup ? <NotificationPopup /> : ""}
           {fileUploadPopup ? <FileUploadPopup /> : ""}

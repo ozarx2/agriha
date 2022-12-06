@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
 import AgrihaDisplayBidMain from "../../components/display-bid/main";
@@ -18,6 +18,14 @@ export default function AgrihaProjectDetailsBidUserView() {
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
 
   return (
     <>

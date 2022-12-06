@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Navbar from "../../components/common/navbar";
 import Sidebar from "../../components/common/sidebar";
@@ -22,6 +22,14 @@ export default function BidDetails() {
   const notificationPopup = Store.notificationPopup;
   const addProjectImagePopup = Store.addProjectImagePopup;
   const bidDataPopup = Store.bidDataPopup;
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
 
   return (
     <>

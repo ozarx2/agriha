@@ -14,6 +14,14 @@ import AddProjectImage from "../../components/common/add-project-image";
 import styles from "./index.module.css";
 
 export default function ArchitectDashboard() {
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
   const [Store] = useContext(StoreContext);
 
   const addProject = Store.addProject;
@@ -28,10 +36,7 @@ export default function ArchitectDashboard() {
     <>
       <Head>
         <title>Project Files - Architect Dashboard</title>
-        <meta
-          name="description"
-          content="Project Files - Architect Dashboard"
-        />
+        <meta name="description" content="Project Files - Architect Dashboard" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
@@ -55,14 +60,7 @@ export default function ArchitectDashboard() {
           {addProject ? <AddProject /> : ""}
           {logout ? <LogoutPopup /> : ""}
           {notificationPopup ? <NotificationPopup /> : ""}
-          {folderPopup ? (
-            <FolderPopup
-              folderPopup={folderPopup}
-              setFolderPopup={setFolderPopup}
-            />
-          ) : (
-            ""
-          )}
+          {folderPopup ? <FolderPopup folderPopup={folderPopup} setFolderPopup={setFolderPopup} /> : ""}
           {addProjectImagePopup ? <AddProjectImage /> : ""}
         </div>
       </div>

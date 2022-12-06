@@ -16,7 +16,11 @@ export default function ViewBidMain() {
     window.location.href = `/view-bid/${id}`;
   };
 
-  const bid = allBidArchitect.filter((val) => val.bid === true);
+  const temp = allBidArchitect.filter((val) => val.bid === true);
+  const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
+  const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
+
+  // const bid = allBidArchitect.filter((val) => val.bid === true);
 
   useEffect(() => {
     if (bid.length !== 0) {
@@ -33,12 +37,7 @@ export default function ViewBidMain() {
           <div className={styles.title}>
             Bid View
             <span className={styles.dot}>
-              <Image
-                src="/img/architect-dashboard/dot.svg"
-                alt="dot"
-                width={3}
-                height={3}
-              />
+              <Image src="/img/architect-dashboard/dot.svg" alt="dot" width={3} height={3} />
             </span>
             <span className={styles.number}>{bid?.length}</span>
           </div>
@@ -64,10 +63,7 @@ export default function ViewBidMain() {
                           <p>{item?.project_type}</p>
                         </div>
                       </div>
-                      <div
-                        className={styles.bid__projectCard__button}
-                        onClick={() => viewDetailsClick(item?._id)}
-                      >
+                      <div className={styles.bid__projectCard__button} onClick={() => viewDetailsClick(item?._id)}>
                         View details
                       </div>
                     </div>

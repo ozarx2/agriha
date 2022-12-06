@@ -180,6 +180,8 @@ const FnUserMyProjectMobile = () => {
                                         : "/img/my-project-user/mobile/projprofile.svg"
                                     }
                                     onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
+                                    alt="propic.jpg"
+                                    className={styles.propicDp}
                                   />
                                 </Link>
                               ) : (

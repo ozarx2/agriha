@@ -49,8 +49,6 @@ export default function AgrihaLandingHeaderNoSearch() {
     const token = localStorage.getItem("userToken");
     if (token) {
       setLoginActive(true);
-    } else {
-      window.location.href = "/";
     }
     const userId = localStorage.getItem("userId");
     if (userId) {

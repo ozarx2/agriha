@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import SecondaryDetailsMain from "../../../components/requirements/SecondaryDetailsMain";
 import AgrihaLandingHeaderNoSearch from "../../../components/user-common/header-ns";
@@ -6,6 +6,14 @@ import AgrihaLandingHeaderNoSearch from "../../../components/user-common/header-
 import styles from "./index.module.css";
 
 const SecondaryDetails = () => {
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <>
       <Head>

@@ -10,11 +10,7 @@ import { useEffect } from "react";
 import Request from "./request";
 import RequestMobile from "./request-mobile";
 
-export default function OngoingProjectMain({
-  page,
-  setPage,
-  setProjectRequestPopup,
-}) {
+export default function OngoingProjectMain({ page, setPage, setProjectRequestPopup }) {
   const [Store] = useContext(StoreContext);
 
   /* const fileUploadPopup = Store.fileUploadPopup; */
@@ -66,16 +62,10 @@ export default function OngoingProjectMain({
       <div className={styles.main_outer}>
         <div className={styles.sone_outer}>
           <div className={styles.sone_inner}>
-            <div
-              onClick={() => setPage("ongoing")}
-              className={page == "ongoing" ? styles.active : ""}
-            >
+            <div onClick={() => setPage("ongoing")} className={page == "ongoing" ? styles.active : ""}>
               Ongoing projects
             </div>
-            <div
-              onClick={() => setPage("request")}
-              className={page == "request" ? styles.active : ""}
-            >
+            <div onClick={() => setPage("request")} className={page == "request" ? styles.active : ""}>
               Project Request
             </div>
           </div>
@@ -90,26 +80,19 @@ export default function OngoingProjectMain({
                       <div className={styles.stwo_heading_outer}>
                         <div className={styles.stwo_username}>User name</div>
                         <div className={styles.stwo_project_id}>Project id</div>
-                        <div className={styles.stwo_starting_date}>
-                          Starting date
-                        </div>
-                        <div className={styles.stwo_upload_file}>
-                          Upload file
-                        </div>
+                        <div className={styles.stwo_starting_date}>Starting date</div>
+                        <div className={styles.stwo_upload_file}>Upload file</div>
                         {/* <div className={styles.stwo_suggest_product}>
                           Suggest product
                         </div> */}
-                        <div className={styles.stwo_document_folder}>
-                          Document folder
-                        </div>
+                        <div className={styles.stwo_document_folder}>Document folder</div>
                         {/* <div className={styles.stwo_more}>More</div> */}
                       </div>
 
                       {userProjects.map((item, i) => {
                         return (
                           <>
-                            {item?.creator?.name &&
-                            item?.status === "ongoing" ? (
+                            {item?.creator?.name && item?.status === "ongoing" ? (
                               <div key={i} className={styles.stwo_grid_outer}>
                                 <div className={styles.stwo_username}>
                                   <div className={styles.vertical_center}>
@@ -124,21 +107,11 @@ export default function OngoingProjectMain({
                                     <span>{item?.creator?.name}</span>
                                   </div>
                                 </div>
-                                <div className={styles.stwo_project_id}>
-                                  {item?.project_name}
-                                </div>
-                                <div className={styles.stwo_starting_date}>
-                                  {item?.starting_date}
-                                </div>
-                                <div
-                                  onClick={() => setFileUploadPopup(true)}
-                                  className={styles.stwo_upload_file}
-                                >
+                                <div className={styles.stwo_project_id}>{item?.project_name}</div>
+                                <div className={styles.stwo_starting_date}>{item?.starting_date}</div>
+                                <div onClick={() => setFileUploadPopup(true)} className={styles.stwo_upload_file}>
                                   <div className={styles.vertical_center}>
-                                    <img
-                                      src="/img/ongoing-project/upload-d.svg"
-                                      alt="alt"
-                                    />
+                                    <img src="/img/ongoing-project/upload-d.svg" alt="alt" />
                                     <span>Upload now</span>
                                   </div>
                                 </div>
@@ -154,10 +127,7 @@ export default function OngoingProjectMain({
                                 <Link href="/project-files" passHref>
                                   <div className={styles.stwo_document_folder}>
                                     <div className={styles.vertical_center}>
-                                      <img
-                                        src="/img/ongoing-project/file-d.svg"
-                                        alt="alt"
-                                      />
+                                      <img src="/img/ongoing-project/file-d.svg" alt="alt" />
                                       <span>Files</span>
                                     </div>
                                   </div>
@@ -199,17 +169,12 @@ export default function OngoingProjectMain({
                     <>
                       <div className={styles.no_project}>
                         <div className={styles.no_project_image}>
-                          <Image
-                            src="/img/architect-dashboard/no.svg"
-                            alt="no_project_image"
-                            width={115}
-                            height={85}
-                          />
+                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
                         </div>
                         <h3>Look like there is no ongoing projects is here</h3>
                         <h5>
-                          Now the field is blank, so please accept any excellent
-                          project request to gain the next project.
+                          Now the field is blank, so please accept any excellent project request to gain the next
+                          project.
                         </h5>
                       </div>
                     </>
@@ -224,12 +189,8 @@ export default function OngoingProjectMain({
                     <>
                       <div className={styles.stwo_heading_outer}>
                         <div className={styles.stwo_username}>User name</div>
-                        <div className={styles.stwo_description}>
-                          Description
-                        </div>
-                        <div className={styles.stwo_total_area}>
-                          Total area.sqft
-                        </div>
+                        <div className={styles.stwo_description}>Description</div>
+                        <div className={styles.stwo_total_area}>Total area.sqft</div>
                         <div className={styles.stwo_budget}>Budget</div>
                         {/* <div className={styles.stwo_reference_file}>
                           Reference File
@@ -263,18 +224,10 @@ export default function OngoingProjectMain({
                     <>
                       <div className={styles.no_project}>
                         <div className={styles.no_project_image}>
-                          <Image
-                            src="/img/architect-dashboard/no.svg"
-                            alt="no_project_image"
-                            width={115}
-                            height={85}
-                          />
+                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
                         </div>
                         <h3>Look like there is no project request is here</h3>
-                        <h5>
-                          The field is blank, so please make your profile
-                          attractive for the next project.
-                        </h5>
+                        <h5>The field is blank, so please make your profile attractive for the next project.</h5>
                       </div>
                     </>
                   )}
@@ -297,12 +250,8 @@ export default function OngoingProjectMain({
                       {userProjects.map((item, i) => {
                         return (
                           <>
-                            {item?.creator?.name &&
-                            item.status === "ongoing" ? (
-                              <div
-                                key={i}
-                                className={styles.stwo_mobile_grid_outer}
-                              >
+                            {item?.creator?.name && item.status === "ongoing" ? (
+                              <div key={i} className={styles.stwo_mobile_grid_outer}>
                                 <div className={styles.top}>
                                   <div className={styles.left}>
                                     <img
@@ -315,33 +264,18 @@ export default function OngoingProjectMain({
                                     />
                                     <div>{item?.creator?.name}</div>
                                   </div>
-                                  <div
-                                    onClick={() => setOngoingPopup(true)}
-                                    className={styles.right}
-                                  >
-                                    <img
-                                      src="/img/ongoing-project/3dots.svg"
-                                      alt="alt"
-                                    />
+                                  <div onClick={() => setOngoingPopup(true)} className={styles.right}>
+                                    <img src="/img/ongoing-project/3dots.svg" alt="alt" />
                                   </div>
                                 </div>
                                 <div className={styles.content}>
                                   <div className={styles.center}>
-                                    <div className={styles.left}>
-                                      {item?.project_name}
-                                    </div>
-                                    <div className={styles.right}>
-                                      {item?.starting_date}
-                                    </div>
+                                    <div className={styles.left}>{item?.project_name}</div>
+                                    <div className={styles.right}>{item?.starting_date}</div>
                                   </div>
                                   <div className={styles.bottom}>
-                                    <div
-                                      onClick={() => setFileUploadPopup(true)}
-                                    >
-                                      <img
-                                        src="/img/ongoing-project/upload-m.svg"
-                                        alt="alt"
-                                      />
+                                    <div onClick={() => setFileUploadPopup(true)}>
+                                      <img src="/img/ongoing-project/upload-m.svg" alt="alt" />
                                       <div>Upload now </div>
                                     </div>
                                     {/*  <div>
@@ -353,10 +287,7 @@ export default function OngoingProjectMain({
                                     </div> */}
                                     <Link href="/project-files" passHref>
                                       <div>
-                                        <img
-                                          src="/img/ongoing-project/file-m.svg"
-                                          alt="alt"
-                                        />
+                                        <img src="/img/ongoing-project/file-m.svg" alt="alt" />
                                         <div>Files</div>
                                       </div>
                                     </Link>
@@ -374,17 +305,12 @@ export default function OngoingProjectMain({
                     <>
                       <div className={styles.no_project}>
                         <div className={styles.no_project_image}>
-                          <Image
-                            src="/img/architect-dashboard/no.svg"
-                            alt="no_project_image"
-                            width={115}
-                            height={85}
-                          />
+                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
                         </div>
                         <h3>Look like there is no ongoing projects is here</h3>
                         <h5>
-                          Now the field is blank, so please accept any excellent
-                          project request to gain the next project.
+                          Now the field is blank, so please accept any excellent project request to gain the next
+                          project.
                         </h5>
                       </div>
                     </>
@@ -422,18 +348,10 @@ export default function OngoingProjectMain({
                     <>
                       <div className={styles.no_project}>
                         <div className={styles.no_project_image}>
-                          <Image
-                            src="/img/architect-dashboard/no.svg"
-                            alt="no_project_image"
-                            width={115}
-                            height={85}
-                          />
+                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
                         </div>
                         <h3>Look like there is no project request is here</h3>
-                        <h5>
-                          The field is blank, so please make your profile
-                          attractive for the next project.
-                        </h5>
+                        <h5>The field is blank, so please make your profile attractive for the next project.</h5>
                       </div>
                     </>
                   )}

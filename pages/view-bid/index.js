@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Navbar from "../../components/common/navbar";
 import Sidebar from "../../components/common/sidebar";
@@ -20,6 +20,14 @@ export default function ArchitectDashboard() {
   const logout = Store.logout;
   const notificationPopup = Store.notificationPopup;
   const addProjectImagePopup = Store.addProjectImagePopup;
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
 
   return (
     <>

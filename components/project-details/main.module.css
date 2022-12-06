@@ -221,7 +221,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding-top: 16px;
+    padding-top: 40px;
   }
   .stwo_inner .left {
     width: 50%;
@@ -252,9 +252,19 @@
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    line-height: 25px;
+    line-height: 23px;
     color: #5b5b5b;
-    padding-top: 21px;
+    padding-top: 2px;
+    max-width: 549px;
+  }
+  .stwo_inner .right .archcontent {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #5b5b5b;
+    padding-top: 2px;
     max-width: 549px;
   }
   .stwo_inner .right .profile {
@@ -334,6 +344,17 @@
     align-items: center;
     color: #393939;
     padding-bottom: 8.2px;
+  }
+}
+@media only screen and (min-width: 1380px) {
+  .stwo_inner .right .content {
+    padding-top: 21px;
+    line-height: 25px;
+  }
+  .stwo_inner .right .archcontent {
+    padding-top: 21px;
+    line-height: 25px;
+    font-size: 16px;
   }
 }
 

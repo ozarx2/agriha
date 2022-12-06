@@ -52,6 +52,7 @@ const ArchitectList = () => {
                                 ? item?.profile_pic
                                 : "https://www.shareicon.net/data/512x512/2016/09/15/829459_man_512x512.png"
                             }
+                            onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                             alt=""
                           />
                           <h4 className={styles.nameTable}>{item?.name}</h4>

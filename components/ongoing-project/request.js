@@ -41,7 +41,7 @@ const Request = ({ name, avatar, type, id }) => {
     <div className={`${styles.stwo_grid_outer} ${styles.request}`}>
       <div className={styles.stwo_username}>
         <div className={styles.vertical_center}>
-          <img src={avatar} alt="alt" />
+          <img src={avatar} onError={(e) => (e.target.src = "/img/landing/profile_img.svg")} alt="alt" />
           <span>{name}</span>
         </div>
       </div>

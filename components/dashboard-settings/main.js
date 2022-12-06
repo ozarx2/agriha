@@ -32,18 +32,10 @@ export default function DashboardSettingsMain() {
   const [country, setCountry] = useState("");
 
   useEffect(() => {
-    setFname(
-      data.registered_id?.name
-        ? data.registered_id?.name
-        : data.firstname + " " + data.lastname
-    );
-    setPhone(
-      data.registered_id?.phone ? data.registered_id?.phone : data?.phone
-    );
+    setFname(data.registered_id?.name ? data.registered_id?.name : data.firstname + " " + data.lastname);
+    setPhone(data.registered_id?.phone ? data.registered_id?.phone : data?.phone);
     setBio(data.bio);
-    setEmail(
-      data.registered_id?.email ? data.registered_id?.email : data?.email
-    );
+    setEmail(data.registered_id?.email ? data.registered_id?.email : data?.email);
     setLocation(data.location);
     setWebsite(data.website);
     setProfileImg(data?.profilepic ? data?.profilepic : "");
@@ -82,9 +74,7 @@ export default function DashboardSettingsMain() {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercent(percent);
@@ -126,9 +116,7 @@ export default function DashboardSettingsMain() {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercentCover(percent);
@@ -199,30 +187,18 @@ export default function DashboardSettingsMain() {
             <div className={styles.title}>
               <div className={styles.main}>Profile information</div>
               <div className={styles.sub}>
-                Some information from this will be dispalyed to users, so be
-                careful what you share
+                Some information from this will be dispalyed to users, so be careful what you share
               </div>
             </div>
             <div className={styles.form_1}>
               <div className={styles.field_row}>
                 <div className={styles.field}>
                   <span>Full name</span>
-                  <input
-                    type="text"
-                    placeholder="Full name"
-                    value={fname}
-                    readOnly
-                  />
+                  <input type="text" placeholder="Full name" value={fname} readOnly />
                 </div>
                 <div className={styles.field}>
                   <span>Website URL</span>
-                  <input
-                    id="web"
-                    type="text"
-                    placeholder="Website URL"
-                    defaultValue={website}
-                    onChange={storeValues}
-                  />
+                  <input id="web" type="text" placeholder="Website URL" defaultValue={website} onChange={storeValues} />
                 </div>
               </div>
               <div className={styles.field_row}>
@@ -249,11 +225,7 @@ export default function DashboardSettingsMain() {
               </div>
               <div className={styles.fullfield}>
                 <span>Tell something about yourself</span>
-                <textarea
-                  id="bio"
-                  defaultValue={bio}
-                  onChange={storeValues}
-                ></textarea>
+                <textarea id="bio" defaultValue={bio} onChange={storeValues}></textarea>
               </div>
               <div className={styles.field_row}>
                 <div className={styles.field}>
@@ -266,11 +238,8 @@ export default function DashboardSettingsMain() {
                   />
                   <div className={styles.upload_outer}>
                     <img
-                      src={
-                        profileImg
-                          ? profileImg
-                          : "/img/architect-dashboard/photo-upload.svg"
-                      }
+                      src={profileImg ? profileImg : "/img/architect-dashboard/photo-upload.svg"}
+                      onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                       alt="profile_upload"
                     />
                     <div>Add photo</div>
@@ -286,11 +255,8 @@ export default function DashboardSettingsMain() {
                   />
                   <div className={styles.upload_outer}>
                     <img
-                      src={
-                        coverImg
-                          ? coverImg
-                          : "/img/architect-dashboard/photo-upload.svg"
-                      }
+                      src={coverImg ? coverImg : "/img/architect-dashboard/photo-upload.svg"}
+                      onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                       alt="profile_upload"
                     />
                     <div>Add photo</div>
@@ -307,21 +273,11 @@ export default function DashboardSettingsMain() {
               <div className={styles.field_row}>
                 <div className={styles.field}>
                   <span>Email address</span>
-                  <input
-                    type="text"
-                    placeholder="Email address"
-                    value={email}
-                    readOnly
-                  />
+                  <input type="text" placeholder="Email address" value={email} readOnly />
                 </div>
                 <div className={styles.field}>
                   <span>Phone number</span>
-                  <input
-                    type="text"
-                    placeholder="Phone number"
-                    value={phone}
-                    readOnly
-                  />
+                  <input type="text" placeholder="Phone number" value={phone} readOnly />
                 </div>
               </div>
               <div className={styles.field_row}>
@@ -349,23 +305,11 @@ export default function DashboardSettingsMain() {
               <div className={styles.field_row}>
                 <div className={styles.field}>
                   <span>State</span>
-                  <input
-                    id="state"
-                    type="text"
-                    placeholder="State"
-                    defaultValue={state}
-                    onChange={storeValues}
-                  />
+                  <input id="state" type="text" placeholder="State" defaultValue={state} onChange={storeValues} />
                 </div>
                 <div className={styles.field}>
                   <span>Country</span>
-                  <input
-                    id="country"
-                    type="text"
-                    placeholder="Country"
-                    defaultValue={country}
-                    onChange={storeValues}
-                  />
+                  <input id="country" type="text" placeholder="Country" defaultValue={country} onChange={storeValues} />
                 </div>
               </div>
             </div>
@@ -373,8 +317,7 @@ export default function DashboardSettingsMain() {
             <br />
             <div className={styles.footer}>
               <div className={styles.footer_text}>
-                This account was craeted on{" "}
-                {moment(createDate).format("MMMM Do YYYY, h:mm:ss a")}
+                This account was craeted on {moment(createDate).format("MMMM Do YYYY, h:mm:ss a")}
               </div>
               <div>
                 <div className={styles.Cancel} onClick={cancelClick}>

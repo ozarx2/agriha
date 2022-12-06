@@ -27,10 +27,7 @@ export default function MyProjectsMain({ page, setPage }) {
       <div className={styles.main_outer}>
         <div className={styles.sone_outer}>
           <div className={styles.sone_inner}>
-            <div
-              onClick={() => setPage("recent")}
-              className={page == "recent" ? styles.active : ""}
-            >
+            <div onClick={() => setPage("recent")} className={page == "recent" ? styles.active : ""}>
               Recent project
             </div>
           </div>
@@ -60,6 +57,7 @@ export default function MyProjectsMain({ page, setPage }) {
                                         ? item?.Image[0]
                                         : "/img/architect-dashboard/noImg.jpeg"
                                     }
+                                    onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                                     alt="alt"
                                   />
                                 </div>
@@ -71,11 +69,7 @@ export default function MyProjectsMain({ page, setPage }) {
                                 </div>
                               </div>
                             </Link>
-                            {(i + 1) % 4 === 0 ? (
-                              <div className={styles.border_bottom}></div>
-                            ) : (
-                              ""
-                            )}
+                            {(i + 1) % 4 === 0 ? <div className={styles.border_bottom}></div> : ""}
                           </React.Fragment>
                         );
                       })}
@@ -84,21 +78,11 @@ export default function MyProjectsMain({ page, setPage }) {
                     <>
                       <div className={styles.no_project}>
                         <div className={styles.no_project_image}>
-                          <Image
-                            src="/img/architect-dashboard/no.svg"
-                            alt="no_project_image"
-                            width={115}
-                            height={85}
-                          />
+                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
                         </div>
                         <h3>Look like there is no recent projects is here</h3>
-                        <h5>
-                          Now field is blank, so please create your project is
-                          here
-                        </h5>
-                        <button onClick={() => setAddProject(true)}>
-                          Create now
-                        </button>
+                        <h5>Now field is blank, so please create your project is here</h5>
+                        <button onClick={() => setAddProject(true)}>Create now</button>
                       </div>
                     </>
                   )}
@@ -115,10 +99,7 @@ export default function MyProjectsMain({ page, setPage }) {
                           <Link href={`/my-projects/${i}`} passHref>
                             <div className={styles.stwo_grid_outer}>
                               <div className={styles.stwo_grid_image}>
-                                <img
-                                  src="/img/architect-dashboard/project/1.png"
-                                  alt="alt"
-                                />
+                                <img src="/img/architect-dashboard/project/1.png" alt="alt" />
                               </div>
                               <div className={styles.stwo_grid_title}>
                                 <h3>Agriha Project name</h3>
@@ -126,11 +107,7 @@ export default function MyProjectsMain({ page, setPage }) {
                               </div>
                             </div>
                           </Link>
-                          {(i + 1) % 4 === 0 ? (
-                            <div className={styles.border_bottom}></div>
-                          ) : (
-                            ""
-                          )}
+                          {(i + 1) % 4 === 0 ? <div className={styles.border_bottom}></div> : ""}
                         </React.Fragment>
                       ))}
                     </>
@@ -138,21 +115,11 @@ export default function MyProjectsMain({ page, setPage }) {
                     <>
                       <div className={styles.no_project}>
                         <div className={styles.no_project_image}>
-                          <Image
-                            src="/img/architect-dashboard/no.svg"
-                            alt="no_project_image"
-                            width={115}
-                            height={85}
-                          />
+                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
                         </div>
                         <h3>Look like there is no agriha projects is here</h3>
-                        <h5>
-                          Now field is blank, so please create your project is
-                          here
-                        </h5>
-                        <button onClick={() => setAddProject(true)}>
-                          Create now
-                        </button>
+                        <h5>Now field is blank, so please create your project is here</h5>
+                        <button onClick={() => setAddProject(true)}>Create now</button>
                       </div>
                     </>
                   )}

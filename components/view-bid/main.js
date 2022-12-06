@@ -56,6 +56,7 @@ export default function ViewBidMain() {
                               ? item?.thumbnail
                               : "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"
                           }
+                          onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                           alt=""
                         />
                         <div className={styles.bid__projectCard__title}>

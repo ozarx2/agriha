@@ -20,14 +20,8 @@ export default function NotificationPopup() {
               <div className={styles.left}>Notification</div>
               <div className={styles.right}>
                 <div>
-                  <div
-                    onClick={() => setNotificationPopup(false)}
-                    className={styles.close}
-                  >
-                    <img
-                      src="/img/architect-dashboard/close-round.svg"
-                      alt="alt"
-                    />
+                  <div onClick={() => setNotificationPopup(false)} className={styles.close}>
+                    <img src="/img/architect-dashboard/close-round.svg" alt="alt" />
                   </div>
                 </div>
               </div>
@@ -40,26 +34,21 @@ export default function NotificationPopup() {
                       <div className={styles.left}>
                         <img
                           src={
-                            item.user.profile_pic
-                              ? item.user.profile_pic
-                              : "/img/architect-dashboard/profile_img.svg"
+                            item.user.profile_pic ? item.user.profile_pic : "/img/architect-dashboard/profile_img.svg"
                           }
+                          onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                           alt="alt"
                         />
                         <div className={styles.title}>
                           <div className={styles.main}>{item.user.name}</div>
                           <div className={styles.sub}>
                             {item.user.name}
-                            {item.activity === "project added for you"
-                              ? " added a project for you"
-                              : ""}
+                            {item.activity === "project added for you" ? " added a project for you" : ""}
                           </div>
                         </div>
                       </div>
                       <div className={styles.right}>
-                        <div>
-                          {moment(item?.createdAt).startOf("day").fromNow()}
-                        </div>
+                        <div>{moment(item?.createdAt).startOf("day").fromNow()}</div>
                       </div>
                     </div>
                   </React.Fragment>
@@ -74,10 +63,7 @@ export default function NotificationPopup() {
           /> */}
           </div>
         </div>
-        <div
-          onClick={() => setNotificationPopup(false)}
-          className={styles.notificationPopupClose}
-        ></div>
+        <div onClick={() => setNotificationPopup(false)} className={styles.notificationPopupClose}></div>
       </div>
     </>
   );

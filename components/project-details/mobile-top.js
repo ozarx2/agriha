@@ -104,7 +104,10 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                     {`${projectDetails?.location} | ${projectDetails?.projectarea}q.ft`}
                   </div>
                   <div className={styles.profile}>
-                    <div className={styles.left}>
+                    <div
+                      className={styles.left}
+                      onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}
+                    >
                       <img
                         src={projectDetails?.architect_id?.profilepic}
                         onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}

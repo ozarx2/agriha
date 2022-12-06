@@ -14,9 +14,7 @@ const AddProjectImage = () => {
 
   let deleteBtnActiveData = [...files];
   const deleteBtnActiveTemp = deleteBtnActiveData.filter((res) => res.selected);
-  const selectAllBtnActiveTemp = deleteBtnActiveData.filter(
-    (res) => !res.selected
-  );
+  const selectAllBtnActiveTemp = deleteBtnActiveData.filter((res) => !res.selected);
   const selectDeleteImages = (i) => {
     let temp = [...files];
     if (temp[i].selected == undefined) {
@@ -52,44 +50,29 @@ const AddProjectImage = () => {
   return (
     <>
       <div className={styles.AddProjectImageOuter}>
-        <div
-          onClick={() => setAddProjectImagePopup(false)}
-          className={styles.AddProjectImageClose}
-        ></div>
+        <div onClick={() => setAddProjectImagePopup(false)} className={styles.AddProjectImageClose}></div>
         <div className={styles.AddProjectImageInner}>
           <div className={styles.heading}>
             <div className={styles.left}>
-              <div
-                onClick={() => setAddProjectImagePopup(false)}
-                className={styles.back}
-              >
+              <div onClick={() => setAddProjectImagePopup(false)} className={styles.back}>
                 <img src="/img/architect-dashboard/back.svg" alt="back" />
                 <span>Back</span>
               </div>
             </div>
             <div className={styles.right}>
               {selectAllBtnActiveTemp.length == 0 ? (
-                <div
-                  onClick={() => allSelectDeleteImages(false)}
-                  className={styles.all}
-                >
+                <div onClick={() => allSelectDeleteImages(false)} className={styles.all}>
                   Unselect All
                 </div>
               ) : (
-                <div
-                  onClick={() => allSelectDeleteImages(true)}
-                  className={styles.all}
-                >
+                <div onClick={() => allSelectDeleteImages(true)} className={styles.all}>
                   All Select
                 </div>
               )}
               {deleteBtnActiveTemp.length == 0 ? (
                 <div className={styles.delete}>Delete</div>
               ) : (
-                <div
-                  onClick={() => allDeleteImages()}
-                  className={styles.delete_active}
-                >
+                <div onClick={() => allDeleteImages()} className={styles.delete_active}>
                   Delete
                 </div>
               )}
@@ -99,13 +82,14 @@ const AddProjectImage = () => {
             <div className={styles.content_image_outer}>
               {files.map((item, index) => {
                 return (
-                  <div
-                    key={index}
-                    className={styles.content_image_single_outer}
-                  >
+                  <div key={index} className={styles.content_image_single_outer}>
                     {item.selected ? (
                       <>
-                        <img className={styles.imgDemo} src={item.url} />
+                        <img
+                          className={styles.imgDemo}
+                          src={item.url}
+                          onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                        />
                         <div className={`${styles.imgSelect} ${styles.active}`}>
                           <div className={styles.imgHoverDelete}>
                             <img
@@ -132,7 +116,11 @@ const AddProjectImage = () => {
                       </>
                     ) : (
                       <>
-                        <img className={styles.imgDemo} src={item.url} />
+                        <img
+                          className={styles.imgDemo}
+                          src={item.url}
+                          onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                        />
                         <div className={styles.imgHover}>
                           <div className={styles.imgHoverDelete}>
                             <img

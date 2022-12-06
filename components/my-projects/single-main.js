@@ -17,10 +17,7 @@ export default function SingleProjectsMain() {
   const [imagesNew, setImagesNew] = useState([]);
 
   const addFiles = (image) => {
-    setImagesNew((imagesNew) => [
-      ...imagesNew,
-      { src: image, width: 1080, height: 1080 },
-    ]);
+    setImagesNew((imagesNew) => [...imagesNew, { src: image, width: 1080, height: 1080 }]);
   };
 
   useEffect(() => {
@@ -64,16 +61,13 @@ export default function SingleProjectsMain() {
   /* GET PROJECT DETAILS */
   async function getProjects() {
     var token = localStorage.getItem("userToken");
-    const res = await fetch(
-      `${api_url}/projects/arcprojectsingle/${projectId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const data = await res.json();
     console.log(data[0]);
     setProjectDetails(data[0]);
@@ -93,16 +87,11 @@ export default function SingleProjectsMain() {
             <div className={styles.left}>
               <div className={styles.name}>{projectDetails?.projectname}</div>
               <div className={styles.location}>{projectDetails?.location}</div>
-              <div className={styles.area}>
-                {projectDetails?.projectarea} sq.ft
-              </div>
+              <div className={styles.area}>{projectDetails?.projectarea} sq.ft</div>
             </div>
             <div className={styles.right}>
               <div className={styles.edit}>
-                <img
-                  src="/img/architect-dashboard/edit-project.svg"
-                  alt="alt"
-                />
+                <img src="/img/architect-dashboard/edit-project.svg" alt="alt" />
                 <span>Edit</span>
               </div>
               <div className={styles.share}>
@@ -118,14 +107,10 @@ export default function SingleProjectsMain() {
               {projectDetails?.Image?.map((item, i) => {
                 return (
                   <React.Fragment key={i}>
-                    <div
-                      onClick={() => setProjectPopupOpen(true)}
-                      className={styles.stwo_grid_outer}
-                    >
+                    <div onClick={() => setProjectPopupOpen(true)} className={styles.stwo_grid_outer}>
                       <img
-                        src={
-                          item ? item : "/img/architect-dashboard/noImg.jpeg"
-                        }
+                        src={item ? item : "/img/architect-dashboard/noImg.jpeg"}
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                         alt="alt"
                       />
                     </div>
@@ -133,11 +118,7 @@ export default function SingleProjectsMain() {
                 );
               })}
             </div>
-            <Lightbox
-              open={projectPopupOpen}
-              close={() => setProjectPopupOpen(false)}
-              slides={slides}
-            />
+            <Lightbox open={projectPopupOpen} close={() => setProjectPopupOpen(false)} slides={slides} />
           </div>
         </div>
       </div>

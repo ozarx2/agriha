@@ -20,48 +20,31 @@ export default function MobileSidebar() {
 
   return (
     <>
-      <div
-        onClick={() => setMenu(false)}
-        className={styles.sidebar_close}
-      ></div>
+      <div onClick={() => setMenu(false)} className={styles.sidebar_close}></div>
       <div className={styles.sidebar_outer}>
         <div className={styles.sidebar}>
           <div className={styles.top}>
             <Link href="/" passHref>
-              <img
-                src="/img/architect-dashboard/agrihalogo.svg"
-                alt="agrihaLogo.svg"
-                className={styles.agrihaLogo}
-              />
+              <img src="/img/architect-dashboard/agrihalogo.svg" alt="agrihaLogo.svg" className={styles.agrihaLogo} />
             </Link>
-            <img
-              onClick={() => setMenu(false)}
-              src="/img/architect-dashboard/modal/close.svg"
-              alt="close.svg"
-            />
+            <img onClick={() => setMenu(false)} src="/img/architect-dashboard/modal/close.svg" alt="close.svg" />
           </div>
           <div className={styles.first}>
             <div className={styles.quarter}>
               <Link href="/dashboard-settings" passHref>
-                <div
-                  onClick={() => setMenu(false)}
-                  className={styles.mainListsCompany}
-                >
+                <div onClick={() => setMenu(false)} className={styles.mainListsCompany}>
                   <img
                     src={
-                      architectData?.profilepic
-                        ? architectData?.profilepic
-                        : "/img/architect-dashboard/profile_img.svg"
+                      architectData?.profilepic ? architectData?.profilepic : "/img/architect-dashboard/profile_img.svg"
                     }
+                    onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                     alt="amourDecor.svg"
                     className={styles.companyLogo}
                   />
                   <h4 className={styles.companyName}>
                     {architectData?.registered_id
                       ? architectData?.registered_id?.name
-                      : architectData?.firstname +
-                        " " +
-                        architectData?.lastname}
+                      : architectData?.firstname + " " + architectData?.lastname}
                   </h4>
                 </div>
               </Link>
@@ -71,8 +54,7 @@ export default function MobileSidebar() {
                 <div
                   onClick={() => setMenu(false)}
                   className={`${styles.mainLists} ${
-                    router.pathname == "/architect-dashboard" ||
-                    router.pathname == "/architect-dashboard/[index]"
+                    router.pathname == "/architect-dashboard" || router.pathname == "/architect-dashboard/[index]"
                       ? styles.active
                       : ""
                   }`}
@@ -93,9 +75,7 @@ export default function MobileSidebar() {
               <Link href="/my-projects" passHref>
                 <div
                   onClick={() => setMenu(false)}
-                  className={`${styles.mainLists} ${
-                    router.pathname == "/my-projects" ? styles.active : ""
-                  }`}
+                  className={`${styles.mainLists} ${router.pathname == "/my-projects" ? styles.active : ""}`}
                 >
                   <img
                     className={styles.imgselect}
@@ -113,9 +93,7 @@ export default function MobileSidebar() {
               <Link href="/ongoing-project" passHref>
                 <div
                   onClick={() => setMenu(false)}
-                  className={`${styles.mainLists} ${
-                    router.pathname == "/ongoing-project" ? styles.active : ""
-                  }`}
+                  className={`${styles.mainLists} ${router.pathname == "/ongoing-project" ? styles.active : ""}`}
                 >
                   <img
                     className={styles.imgselect}
@@ -133,9 +111,7 @@ export default function MobileSidebar() {
               <Link href="/project-files" passHref>
                 <div
                   onClick={() => setMenu(false)}
-                  className={`${styles.mainLists} ${
-                    router.pathname == "/project-files" ? styles.active : ""
-                  }`}
+                  className={`${styles.mainLists} ${router.pathname == "/project-files" ? styles.active : ""}`}
                 >
                   <img
                     className={styles.imgselect}
@@ -153,9 +129,7 @@ export default function MobileSidebar() {
               <Link href="/view-bid" passHref>
                 <div
                   onClick={() => setMenu(false)}
-                  className={`${styles.mainLists} ${
-                    router.pathname == "/view-bid" ? styles.active : ""
-                  }`}
+                  className={`${styles.mainLists} ${router.pathname == "/view-bid" ? styles.active : ""}`}
                 >
                   <img
                     className={styles.imgselect}
@@ -176,9 +150,7 @@ export default function MobileSidebar() {
             <Link href="/dashboard-settings" passHref>
               <div
                 onClick={() => setMenu(false)}
-                className={`${styles.mainLists} ${
-                  router.pathname == "/dashboard-settings" ? styles.active : ""
-                }`}
+                className={`${styles.mainLists} ${router.pathname == "/dashboard-settings" ? styles.active : ""}`}
               >
                 <img
                   className={styles.imgselect}
@@ -200,10 +172,7 @@ export default function MobileSidebar() {
               }}
               className={styles.mainLists}
             >
-              <img
-                src="/img/architect-dashboard/sidebar/logout.svg"
-                alt="agrihaLogo.svg"
-              />
+              <img src="/img/architect-dashboard/sidebar/logout.svg" alt="agrihaLogo.svg" />
               <h5 className={styles.logout}>Log out</h5>
             </div>
             <button

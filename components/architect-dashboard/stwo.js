@@ -35,12 +35,7 @@ export default function FnSTwo() {
           <div className={styles.title}>
             Own Projects
             <span className={styles.dot}>
-              <Image
-                src="/img/architect-dashboard/dot.svg"
-                alt="dot"
-                width={3}
-                height={3}
-              />
+              <Image src="/img/architect-dashboard/dot.svg" alt="dot" width={3} height={3} />
             </span>
             <span className={styles.number}>{projects?.length}</span>
           </div>
@@ -102,6 +97,7 @@ export default function FnSTwo() {
                                     ? item?.Image[0]
                                     : "/img/architect-dashboard/noImg.jpeg"
                                 }
+                                onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                                 alt="alt"
                               />
                             </div>
@@ -122,12 +118,7 @@ export default function FnSTwo() {
           ) : (
             <div className={styles.no_project}>
               <div className={styles.no_project_image}>
-                <Image
-                  src="/img/architect-dashboard/no.svg"
-                  alt="no_project_image"
-                  width={115}
-                  height={85}
-                />
+                <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
               </div>
               <h3>Look like there is no projects is here</h3>
               <h5>Now field is blank, so please create your project is here</h5>

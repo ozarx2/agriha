@@ -26,11 +26,8 @@ export default function FnSOne() {
           <div className={styles.left}>
             <div className={styles.profile_image}>
               <img
-                src={
-                  architectData?.profilepic
-                    ? architectData?.profilepic
-                    : "/img/architect-dashboard/profile_img.svg"
-                }
+                src={architectData?.profilepic ? architectData?.profilepic : "/img/architect-dashboard/profile_img.svg"}
+                onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                 alt="profile-image"
               />
               <Link href="/dashboard-settings" passHref>
@@ -48,12 +45,7 @@ export default function FnSOne() {
               <h4>Architect</h4>
               <h6>
                 <span className={styles.location}>
-                  <Image
-                    src="/img/architect-dashboard/location.svg"
-                    alt="location"
-                    width={12.23}
-                    height={11.11}
-                  />
+                  <Image src="/img/architect-dashboard/location.svg" alt="location" width={12.23} height={11.11} />
                 </span>
                 {architectData?.location}
               </h6>
@@ -81,12 +73,7 @@ export default function FnSOne() {
               <Link href="/ongoing-project" passHref>
                 <div className={`${styles.project} ${styles.ptwo}`}>
                   <div className={styles.img}>
-                    <Image
-                      src="/img/architect-dashboard/ongoing.svg"
-                      alt="ongoing"
-                      width={76}
-                      height={76}
-                    />
+                    <Image src="/img/architect-dashboard/ongoing.svg" alt="ongoing" width={76} height={76} />
                   </div>
                   <div className={styles.right}>
                     <div className={styles.title}>Ongoing</div>
@@ -97,12 +84,7 @@ export default function FnSOne() {
               <Link href="/ongoing-project#/request" passHref>
                 <div className={`${styles.project} ${styles.pthree}`}>
                   <div className={styles.img}>
-                    <Image
-                      src="/img/architect-dashboard/queue.svg"
-                      alt="queue"
-                      width={76}
-                      height={76}
-                    />
+                    <Image src="/img/architect-dashboard/queue.svg" alt="queue" width={76} height={76} />
                   </div>
                   <div className={styles.right}>
                     <div className={styles.title}>Queue</div>
@@ -114,12 +96,7 @@ export default function FnSOne() {
           </div>
           <Link href="/dashboard-settings" passHref>
             <div className={styles.dots}>
-              <Image
-                src="/img/architect-dashboard/3dots.svg"
-                alt="queue"
-                width={14.05}
-                height={7.51}
-              />
+              <Image src="/img/architect-dashboard/3dots.svg" alt="queue" width={14.05} height={7.51} />
             </div>
           </Link>
           <div className={styles.add_new_project}>
@@ -135,10 +112,7 @@ export default function FnSOne() {
           <Link href="/my-projects" passHref>
             <div className={`${styles.project} ${styles.pone}`}>
               <div className={styles.img}>
-                <img
-                  src="/img/architect-dashboard/total_project.svg"
-                  alt="total"
-                />
+                <img src="/img/architect-dashboard/total_project.svg" alt="total" />
               </div>
               <div className={styles.right}>
                 <div className={styles.title}>Projects</div>

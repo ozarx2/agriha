@@ -101,19 +101,19 @@ const UserArchitectAboutDesktop = () => {
                   <div className={styles.archCover}>
                     <img
                       src={singleArchitect?.coverpic ? singleArchitect?.coverpic : "/img/landing/nophoto.jpg"}
+                      onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                       alt="coverpic.svg"
                       className={styles.archCoverPic}
                     />
-                    <Link href="/user-my-architect" passHref>
-                      <div className={`${styles.backIcon}`}>
-                        <img src="/img/architect-about/back.svg" alt="back.svg" className={styles.backImg} />
-                      </div>
-                    </Link>
+                    <div onClick={() => router.back()} className={`${styles.backIcon}`}>
+                      <img src="/img/architect-about/back.svg" alt="back.svg" className={styles.backImg} />
+                    </div>
                   </div>
                   <div className={styles.archProfileArea}>
                     <div className={styles.archProfileSectionMain}>
                       <img
                         src={singleArchitect?.profilepic ? singleArchitect?.profilepic : "/img/landing/profile_img.svg"}
+                        onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                         alt="leftdp.svg"
                         className={styles.arcLeftPic}
                       />
@@ -206,7 +206,11 @@ const UserArchitectAboutDesktop = () => {
                   return (
                     <React.Fragment key={index}>
                       <div className={styles.archViewedProfileSection}>
-                        <img src={items?.coverpic ? items?.coverpic : "/img/landing/nophoto.jpg"} alt="" />
+                        <img
+                          src={items?.coverpic ? items?.coverpic : "/img/landing/nophoto.jpg"}
+                          onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                          alt=""
+                        />
                         <div className={styles.archViewedProfile}>
                           <div className={styles.archViewedTitle}>
                             {items?.registered_id?.name

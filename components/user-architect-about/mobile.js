@@ -80,13 +80,17 @@ const UserArchitectAboutMobile = () => {
     <>
       <div className={styles.sthree_outer}>
         <div className={styles.coverMob}>
-          <img src={singleArchitect?.coverpic ? singleArchitect?.coverpic : "/img/landing/nophoto.jpg"} alt="" />
-
-          <Link href="/user-my-architect" passHref>
-            <div className={`${styles.backIcon} ${router.pathname == "/user-my-architect"}`}>
-              <img src="/img/architect-about/mobile/backMob.svg" alt="" />
-            </div>
-          </Link>
+          <img
+            src={singleArchitect?.coverpic ? singleArchitect?.coverpic : "/img/landing/nophoto.jpg"}
+            onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+            alt=""
+          />
+          <div
+            onClick={() => router.back()}
+            className={`${styles.backIcon} ${router.pathname == "/user-my-architect"}`}
+          >
+            <img src="/img/architect-about/mobile/backMob.svg" alt="" />
+          </div>
         </div>
         <div className={styles.agrihaUserProDeskMain}>
           <div className={styles.sone_outer}>
@@ -94,6 +98,7 @@ const UserArchitectAboutMobile = () => {
               <div className={styles.archNameSectionMob}>
                 <img
                   src={singleArchitect?.profilepic ? singleArchitect?.profilepic : "/img/landing/profile_img.svg"}
+                  onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                   alt="profileMob.svg"
                 />
                 <div className={styles.archNameStarSectionMob}>

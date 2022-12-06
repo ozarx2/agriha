@@ -36,9 +36,7 @@ const AddProject = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercent(percent);
@@ -80,9 +78,7 @@ const AddProject = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercentProject(percent);
@@ -106,10 +102,7 @@ const AddProject = () => {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
-        setFiles((files) => [
-          ...files,
-          { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] },
-        ]);
+        setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
       }
     } else {
       alert("Cannot add more than 30 pictures");
@@ -138,13 +131,7 @@ const AddProject = () => {
   async function addProject() {
     var token = localStorage.getItem("userToken");
 
-    if (
-      projectTile !== "" &&
-      projectLocation !== "" &&
-      projectArea !== "" &&
-      projectImages !== [] &&
-      thumb !== ""
-    ) {
+    if (projectTile !== "" && projectLocation !== "" && projectArea !== "" && projectImages !== [] && thumb !== "") {
       const res = await fetch(`${api_url}/projects`, {
         method: "POST",
         headers: {
@@ -176,11 +163,7 @@ const AddProject = () => {
   };
 
   useEffect(() => {
-    if (
-      files.length === projectImages.length &&
-      files.length !== 0 &&
-      projectImages.length !== 0
-    ) {
+    if (files.length === projectImages.length && files.length !== 0 && projectImages.length !== 0) {
       addProject();
     }
   }, [projectImages]);
@@ -190,26 +173,15 @@ const AddProject = () => {
       <div className={styles.addProject}>
         <div className={styles.heading}>
           <div>Add new project</div>
-          <img
-            onClick={() => setAddProject(false)}
-            src="/img/architect-dashboard/modal/close.svg"
-            alt="close.svg"
-          />
+          <img onClick={() => setAddProject(false)} src="/img/architect-dashboard/modal/close.svg" alt="close.svg" />
         </div>
         <div className={styles.content}>
-          <p>
-            To add projects, all you need is images, title, location and area.
-          </p>
+          <p>To add projects, all you need is images, title, location and area.</p>
           <div key="title" className={styles.feild}>
             <div className={styles.title}>
               Project title<span>*</span>
             </div>
-            <input
-              id="projectTitle"
-              type="text"
-              placeholder="Enter project title"
-              onChange={storeProjectValues}
-            />
+            <input id="projectTitle" type="text" placeholder="Enter project title" onChange={storeProjectValues} />
           </div>
           <div key="thumbnail" className={styles.feild}>
             <div className={styles.title}>
@@ -238,12 +210,7 @@ const AddProject = () => {
             <div className={styles.title}>
               Total area<span>*</span>
             </div>
-            <input
-              id="projectArea"
-              type="text"
-              placeholder="Enter area in Sqft"
-              onChange={storeProjectValues}
-            />
+            <input id="projectArea" type="text" placeholder="Enter area in Sqft" onChange={storeProjectValues} />
           </div>
           <div key="multiple_img" className={styles.feild}>
             <div className={`${styles.title} ${styles.add_img_title}`}>
@@ -256,10 +223,7 @@ const AddProject = () => {
             >
               <div className={styles.mu_all_img_out}>
                 <div className={styles.mu_upload_out}>
-                  <img
-                    src="/img/architect-dashboard/add_images.svg"
-                    alt="add_images.svg"
-                  />
+                  <img src="/img/architect-dashboard/add_images.svg" alt="add_images.svg" />
                   <input
                     className={styles.custom_file_input}
                     type="file"
@@ -277,15 +241,12 @@ const AddProject = () => {
                         onClick={() => setAddProjectImagePopup(true)}
                         className={styles.imgDemo}
                         src={item.url}
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                       />
                     );
                   })}
                   {files?.length > 4 ? (
-                    <div
-                      key="more"
-                      onClick={() => setAddProjectImagePopup(true)}
-                      className={styles.plus_more}
-                    >
+                    <div key="more" onClick={() => setAddProjectImagePopup(true)} className={styles.plus_more}>
                       +{files?.length - 4} more
                     </div>
                   ) : null}
@@ -293,10 +254,7 @@ const AddProject = () => {
               </div>
             </div>
           </div>
-          <button
-            className={styles.cancel}
-            onClick={() => setAddProject(false)}
-          >
+          <button className={styles.cancel} onClick={() => setAddProject(false)}>
             Cancel
           </button>
           <button className={styles.upload} onClick={() => uploadClick()}>
@@ -305,10 +263,7 @@ const AddProject = () => {
           </button>
         </div>
       </div>
-      <div
-        onClick={() => setAddProject(false)}
-        className={styles.addProjectClose}
-      ></div>
+      <div onClick={() => setAddProject(false)} className={styles.addProjectClose}></div>
     </div>
   );
 };

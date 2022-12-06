@@ -70,7 +70,7 @@ const ViewProjectArch = () => {
           {projectImg?.map((items, index) => {
             return (
               <div onClick={() => imageview(items)} key={index} className={styles.image__project__viewProjectArch}>
-                <img src={items} alt="" />
+                <img src={items} onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")} alt="" />
               </div>
             );
           })}

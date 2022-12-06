@@ -54,6 +54,7 @@ const ArchitectSelectPopupContent = () => {
                 ? projectDetails?.architect_id?.profilepic
                 : "/img/landing/profile_img.svg"
             }
+            onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
             alt="profile"
           /> */}
           <div className={styles.content}>

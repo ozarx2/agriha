@@ -38,7 +38,7 @@ const RequestMobile = ({ name, avatar, type, id }) => {
     <div className={styles.stwo_mobile_request_grid_outer}>
       <div className={styles.top}>
         <div className={styles.left}>
-          <img src={avatar} alt="alt" />
+          <img src={avatar} onError={(e) => (e.target.src = "/img/landing/profile_img.svg")} alt="alt" />
           <div>
             <div>{name}</div>
             <div>{type}</div>

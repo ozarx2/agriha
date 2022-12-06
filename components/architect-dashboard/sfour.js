@@ -60,6 +60,7 @@ export default function FnSFour() {
                           src={
                             item?.creator?.profile_pic ? item?.creator?.profile_pic : "/img/ongoing-project/profile.jpg"
                           }
+                          onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                           alt="alt"
                         />
                         <div>{item?.creator?.name}</div>

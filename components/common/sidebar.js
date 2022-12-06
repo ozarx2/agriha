@@ -23,19 +23,14 @@ export default function Sidebar() {
           <div className={styles.first}>
             <div className={styles.top}>
               <Link href="/" passHref>
-                <img
-                  src="/img/architect-dashboard/agrihalogo.svg"
-                  alt="agrihaLogo.svg"
-                  className={styles.agrihaLogo}
-                />
+                <img src="/img/architect-dashboard/agrihalogo.svg" alt="agrihaLogo.svg" className={styles.agrihaLogo} />
               </Link>
             </div>
             <div className={styles.middle}>
               <Link href={`/architect-dashboard/${architectId}`} passHref>
                 <div
                   className={`${styles.mainLists} ${
-                    router.pathname == "/architect-dashboard" ||
-                    router.pathname == "/architect-dashboard/[index]"
+                    router.pathname == "/architect-dashboard" || router.pathname == "/architect-dashboard/[index]"
                       ? styles.active
                       : ""
                   }`}
@@ -54,11 +49,7 @@ export default function Sidebar() {
                 </div>
               </Link>
               <Link href="/my-projects" passHref>
-                <div
-                  className={`${styles.mainLists} ${
-                    router.pathname == "/my-projects" ? styles.active : ""
-                  }`}
-                >
+                <div className={`${styles.mainLists} ${router.pathname == "/my-projects" ? styles.active : ""}`}>
                   <img
                     className={styles.imgselect}
                     src="/img/architect-dashboard/sidebar/projects-s.svg"
@@ -73,11 +64,7 @@ export default function Sidebar() {
                 </div>
               </Link>
               <Link href="/ongoing-project" passHref>
-                <div
-                  className={`${styles.mainLists} ${
-                    router.pathname == "/ongoing-project" ? styles.active : ""
-                  }`}
-                >
+                <div className={`${styles.mainLists} ${router.pathname == "/ongoing-project" ? styles.active : ""}`}>
                   <img
                     className={styles.imgselect}
                     src="/img/architect-dashboard/sidebar/ongoing-s.svg"
@@ -92,11 +79,7 @@ export default function Sidebar() {
                 </div>
               </Link>
               <Link href="/project-files" passHref>
-                <div
-                  className={`${styles.mainLists} ${
-                    router.pathname == "/project-files" ? styles.active : ""
-                  }`}
-                >
+                <div className={`${styles.mainLists} ${router.pathname == "/project-files" ? styles.active : ""}`}>
                   <img
                     className={styles.imgselect}
                     src="/img/architect-dashboard/sidebar/files-s.svg"
@@ -111,11 +94,7 @@ export default function Sidebar() {
                 </div>
               </Link>
               <Link href="/view-bid" passHref>
-                <div
-                  className={`${styles.mainLists} ${
-                    router.pathname == "/view-bid" ? styles.active : ""
-                  }`}
-                >
+                <div className={`${styles.mainLists} ${router.pathname == "/view-bid" ? styles.active : ""}`}>
                   <img
                     className={styles.imgselect}
                     src="/img/architect-dashboard/sidebar/bid-s.svg"
@@ -136,10 +115,9 @@ export default function Sidebar() {
               <div className={styles.mainListsCompany}>
                 <img
                   src={
-                    architectData?.profilepic
-                      ? architectData?.profilepic
-                      : "/img/architect-dashboard/profile_img.svg"
+                    architectData?.profilepic ? architectData?.profilepic : "/img/architect-dashboard/profile_img.svg"
                   }
+                  onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                   alt="amourDecor.svg"
                   className={styles.companyLogo}
                 />
@@ -153,11 +131,7 @@ export default function Sidebar() {
           </div>
           <div className={styles.end}>
             <Link href="/dashboard-settings" passHref>
-              <div
-                className={`${styles.mainLists} ${
-                  router.pathname == "/dashboard-settings" ? styles.active : ""
-                }`}
-              >
+              <div className={`${styles.mainLists} ${router.pathname == "/dashboard-settings" ? styles.active : ""}`}>
                 <img
                   className={styles.imgselect}
                   src="/img/architect-dashboard/sidebar/settings-s.svg"
@@ -172,10 +146,7 @@ export default function Sidebar() {
               </div>
             </Link>
             <div onClick={() => setLogout(true)} className={styles.mainLists}>
-              <img
-                src="/img/architect-dashboard/sidebar/logout.svg"
-                alt="agrihaLogo.svg"
-              />
+              <img src="/img/architect-dashboard/sidebar/logout.svg" alt="agrihaLogo.svg" />
               <h5 className={styles.logout}>Log out</h5>
             </div>
           </div>

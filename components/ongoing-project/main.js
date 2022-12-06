@@ -102,6 +102,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                           ? item?.creator?.profile_pic
                                           : "/img/ongoing-project/profile.jpg"
                                       }
+                                      onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                                       alt="alt"
                                     />
                                     <span>{item?.creator?.name}</span>
@@ -260,6 +261,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                           ? item?.creator?.profile_pic
                                           : "/img/ongoing-project/profile.jpg"
                                       }
+                                      onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                                       alt="alt"
                                     />
                                     <div>{item?.creator?.name}</div>

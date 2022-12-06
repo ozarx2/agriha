@@ -68,6 +68,7 @@ export default function ProfilePopup() {
                               ? homeSeekerDetails?.profile_pic
                               : "/img/landing/profile_img.svg"
                           }
+                          onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                           alt="profile"
                           className={styles.profileDpDesktop}
                         />
@@ -141,6 +142,7 @@ export default function ProfilePopup() {
                               ? homeSeekerDetails?.profile_pic
                               : "/img/landing/profile_img.svg"
                           }
+                          onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                           alt="profile"
                         />
                       </div>

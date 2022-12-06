@@ -179,6 +179,7 @@ const FnUserMyProjectMobile = () => {
                                         ? items?.architect_id?.profilepic
                                         : "/img/my-project-user/mobile/projprofile.svg"
                                     }
+                                    onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                                   />
                                 </Link>
                               ) : (

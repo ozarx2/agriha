@@ -93,19 +93,16 @@ function ChooseArchitect() {
   async function selectArchitect() {
     const token = localStorage.getItem("userToken");
     console.log("clicked");
-    const res = await fetch(
-      `${api_url}/projects/Choose_architect/${projectId}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          architect_id: selectArchitectId,
-        }),
-      }
-    );
+    const res = await fetch(`${api_url}/projects/Choose_architect/${projectId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        architect_id: selectArchitectId,
+      }),
+    });
     const data = await res.json();
     console.log(data);
     if (res.status === 200) {
@@ -155,10 +152,7 @@ function ChooseArchitect() {
                 id="searchInput"
                 onChange={handleChange}
               />
-              <div
-                onClick={searchClick}
-                className={styles.cardContent__search__input}
-              >
+              <div onClick={searchClick} className={styles.cardContent__search__input}>
                 Search
               </div>
             </div>
@@ -186,19 +180,14 @@ function ChooseArchitect() {
                   >
                     {selectArchitectId == items._id ? (
                       <div className={styles.selectedIndication}>
-                        <Image
-                          alt=""
-                          src="/checkMark.svg"
-                          width={70}
-                          height={70}
-                        />
+                        <Image alt="" src="/checkMark.svg" width={70} height={70} />
                       </div>
                     ) : (
                       ""
                     )}
                   </div>
                   <div className={styles.avatar__profileCard__container}>
-                   {/*  <div
+                    {/*  <div
                       style={{
                         backgroundImage: `url(${
                           items.profilepic
@@ -217,6 +206,7 @@ function ChooseArchitect() {
                           ? items.profilepic
                           : "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector.png"
                       }
+                      onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                       alt=""
                     />
                     <div>
@@ -225,10 +215,7 @@ function ChooseArchitect() {
                           ? items?.registered_id?.name
                           : items.firstname + " " + items.lastname}
                       </h5>
-                      <div
-                        onClick={() => handleSelection(items._id)}
-                        className={styles.viewProfile__button}
-                      >
+                      <div onClick={() => handleSelection(items._id)} className={styles.viewProfile__button}>
                         SELECT
                       </div>
                     </div>
@@ -239,16 +226,10 @@ function ChooseArchitect() {
           </div>
           <div className={styles.buttonsContainer}>
             <div className={styles.buttonsContainer__btns}>
-              <div
-                className={styles.buttonsContainer__rightBtn}
-                onClick={backbutton}
-              >
+              <div className={styles.buttonsContainer__rightBtn} onClick={backbutton}>
                 Back
               </div>
-              <div
-                className={styles.buttonsContainer__rightBtn}
-                onClick={handleSubmit}
-              >
+              <div className={styles.buttonsContainer__rightBtn} onClick={handleSubmit}>
                 Next
               </div>
             </div>

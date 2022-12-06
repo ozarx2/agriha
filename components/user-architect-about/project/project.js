@@ -28,6 +28,7 @@ const FnProject = ({ singleArchitect, projects }) => {
                             ? item?.Image[0]
                             : "/img/architect-dashboard/noImg.jpeg"
                         }
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                         alt="projectpic1.svg"
                       />
                       <div className={styles.archProjectTitle}>{item.projectname}</div>
@@ -54,6 +55,7 @@ const FnProject = ({ singleArchitect, projects }) => {
                             ? item?.Image[0]
                             : "/img/architect-dashboard/noImg.jpeg"
                         }
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                         alt="projectpic1.svg"
                       />
                       <div className={styles.archProjectTitle}>{item.projectname}</div>

@@ -102,7 +102,10 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                 <div className={styles.content}>
                   {`${projectDetails?.location} | ${projectDetails?.projectarea}q.ft`}
                 </div>
-                <div className={styles.profile}>
+                <div
+                  onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}
+                  className={styles.profile}
+                >
                   <img
                     src={
                       projectDetails?.architect_id?.profilepic
@@ -114,7 +117,12 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   />
                   <span>{projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}</span>
                 </div>
-                <div className={styles.content}>{projectDetails?.architect_id?.bio}</div>
+                <div
+                  onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}
+                  className={styles.archcontent}
+                >
+                  {projectDetails?.architect_id?.bio}
+                </div>
                 {loginActive ? (
                   <div className={styles.buttons}>
                     <div className={styles.send} onClick={() => setArchitectSelectPopup(true)}>

@@ -10,6 +10,7 @@ import ArchitectBidPopupidPopup from "../components/user-common/architect-bid-po
 import ProfilePopup from "../components/user-common/profile-popup";
 
 import styles from "./index.module.css";
+import ErrorPage from "../components/error/main";
 
 export default function AgrihaLanding() {
   const [Store] = useContext(StoreContext);
@@ -33,9 +34,7 @@ export default function AgrihaLanding() {
               <AgrihaLandingHeader />
             </div>
             <div className={styles.main}>
-              <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
-              <h5 style={{ color: "#000000", textAlign: "center" }}>404 Not Found</h5>
-              <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+              <ErrorPage />
             </div>
             <div className={styles.footer}>
               <LandingFooter />

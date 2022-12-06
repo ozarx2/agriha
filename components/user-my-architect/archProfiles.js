@@ -70,7 +70,7 @@ const FnArchProfiles = () => {
               <div className={styles.archProfileMultipleView}>
                 <div
                   className={styles.archProfileMultipleViewImg}
-                  style={{ backgroundImage: `url(${coverpics()})`, backgroundColor: "gray" }}
+                  style={{ backgroundImage: `url(${coverpics()}), url("/img/landing/nophoto.jpg")` }}
                 ></div>
                 <div className={styles.archProfileDesignPic}>
                   <div className={styles.archProfileSection}>
@@ -103,35 +103,43 @@ const FnArchProfiles = () => {
                     </div>
                     <div className={styles.viewProfile}>
                       <Link href={`/user-architect-about/${items._id}`} passHref>
-                        <div className={`${styles.viewProfileBtn}`}>View Proifle</div>
+                        <div className={`${styles.viewProfileBtn}`}>View Profile</div>
                       </Link>
                     </div>
                   </div>
                   <div>
-                    <div className={styles.archLocationMain}>
-                      <img
-                        src="/img/architect/locationblue.svg"
-                        alt="locationblue.svg"
-                        className={styles.locationIconGreen}
-                      />
-                      <div className={styles.archlocation}>{items?.location}</div>
-                    </div>
+                    {items?.location ? (
+                      <div className={styles.archLocationMain}>
+                        <img
+                          src="/img/architect/locationblue.svg"
+                          alt="locationblue.svg"
+                          className={styles.locationIconGreen}
+                        />
+                        <div className={styles.archlocation}>{items?.location}</div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                     <div className={styles.category}>
                       <div>Architect</div>
                     </div>
                     <div className={styles.categorySubhead}>
                       <div>{items?.bio}</div>
                     </div>
-                    <Link href={`/user-architect-about/${items._id}`} passHref>
-                      <div className={styles.readMore}>
-                        <div>Read more</div>
-                        <img
-                          src="/img/architect/downarrow.svg"
-                          alt="downarrow.svg"
-                          className={styles.categoryDownIcon}
-                        />
-                      </div>
-                    </Link>
+                    {items?.bio ? (
+                      <Link href={`/user-architect-about/${items._id}`} passHref>
+                        <div className={styles.readMore}>
+                          <div>Read more</div>
+                          <img
+                            src="/img/architect/downarrow.svg"
+                            alt="downarrow.svg"
+                            className={styles.categoryDownIcon}
+                          />
+                        </div>
+                      </Link>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </div>

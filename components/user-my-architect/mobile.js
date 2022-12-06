@@ -42,7 +42,11 @@ const FnUserMyArchitectMobile = () => {
                   <div className={styles.archAboutMainSectionMob}>
                     <div className={styles.archAboutSectionMob}>
                       <div className={styles.archNameSectionMob}>
-                        <img src={items?.profilepic ? items?.profilepic : "/img/landing/profile_img.svg"} alt="" />
+                        <img
+                          src={items?.profilepic ? items?.profilepic : "/img/landing/profile_img.svg"}
+                          onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
+                          alt=""
+                        />
                         <div className={styles.archNameStarSectionMob}>
                           <div>
                             {items?.registered_id?.name
@@ -69,21 +73,33 @@ const FnUserMyArchitectMobile = () => {
                       </Link>
                     </div>
                   </div>
-                  <div className={styles.archDetailSecMainMob}>
-                    <div className={styles.archDetailSecMob}>
-                      <img src="/img/architect/mobile/locationMob.svg" alt="locationMob" />
-                      <span>{items?.location}</span>
-                    </div>
-                    <div className={styles.archReadmoreMob}>{items?.bio}</div>
-                    <div className={styles.archReadmoreBtnMob}>
-                      <Link href={`/user-architect-about/${items._id}`} passHref>
-                        <div>
-                          <span>Read more</span>
-                          <img src="/img/architect/mobile/downMob.svg" alt="downMob" />
+                  {items?.location && items?.bio ? (
+                    <div className={styles.archDetailSecMainMob}>
+                      {items?.location ? (
+                        <div className={styles.archDetailSecMob}>
+                          <img src="/img/architect/mobile/locationMob.svg" alt="locationMob" />
+                          <span>{items?.location}</span>
                         </div>
-                      </Link>
+                      ) : (
+                        ""
+                      )}
+                      <div className={styles.archReadmoreMob}>{items?.bio}</div>
+                      {items?.bio ? (
+                        <div className={styles.archReadmoreBtnMob}>
+                          <Link href={`/user-architect-about/${items._id}`} passHref>
+                            <div>
+                              <span>Read more</span>
+                              <img src="/img/architect/mobile/downMob.svg" alt="downMob" />
+                            </div>
+                          </Link>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
-                  </div>
+                  ) : (
+                    ""
+                  )}
                 </>
               );
             })}

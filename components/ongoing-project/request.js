@@ -2,11 +2,14 @@
 import React from "react";
 import { useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
 
 const Request = ({ name, avatar, type, id }) => {
   const [Store] = useContext(StoreContext);
+
+  console.log(id);
 
   const userProjectsDetails = Store.userProjectsDetails;
 
@@ -16,7 +19,7 @@ const Request = ({ name, avatar, type, id }) => {
   console.log(results);
 
   /* ACCEPT REQUEST */
-  async function acceptRequest(id) {
+  async function acceptRequest() {
     var token = localStorage.getItem("userToken");
 
     const res = await fetch(`${api_url}/projects/accept/${id}`, {
@@ -58,10 +61,7 @@ const Request = ({ name, avatar, type, id }) => {
       <div className={styles.stwo_action}>
         <div className={styles.vertical_center}>
           <div className={styles.ignore_btn}>Ignore</div>
-          <div
-            className={styles.accept_btn}
-            onClick={() => acceptRequest(item._id)}
-          >
+          <div className={styles.accept_btn} onClick={() => acceptRequest()}>
             Accept
           </div>
         </div>

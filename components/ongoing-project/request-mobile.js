@@ -16,7 +16,7 @@ const RequestMobile = ({ name, avatar, type, id }) => {
   console.log(results);
 
   /* ACCEPT REQUEST */
-  async function acceptRequest(id) {
+  async function acceptRequest() {
     var token = localStorage.getItem("userToken");
 
     const res = await fetch(`${api_url}/projects/accept/${id}`, {
@@ -45,11 +45,7 @@ const RequestMobile = ({ name, avatar, type, id }) => {
           </div>
         </div>
         <div className={styles.right}>
-          <img
-            onClick={() => setProjectRequestPopup(true)}
-            src="/img/ongoing-project/more.svg"
-            alt="alt"
-          />
+          <img onClick={() => setProjectRequestPopup(true)} src="/img/ongoing-project/more.svg" alt="alt" />
           <div>₹ 60,000,00</div>
         </div>
       </div>
@@ -74,10 +70,7 @@ const RequestMobile = ({ name, avatar, type, id }) => {
         </div>
         <div className={styles.bottom}>
           <div className={styles.ignore}>Decline</div>
-          <div
-            className={styles.accept}
-            onClick={() => acceptRequest(item._id)}
-          >
+          <div className={styles.accept} onClick={() => acceptRequest()}>
             Accept
           </div>
         </div>

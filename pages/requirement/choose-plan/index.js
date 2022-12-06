@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import ChoosePlanMain from "../../../components/requirements/ChoosePlanMain";
 import AgrihaLandingHeaderNoSearch from "../../../components/user-common/header-ns";
@@ -6,6 +6,14 @@ import AgrihaLandingHeaderNoSearch from "../../../components/user-common/header-
 import styles from "./index.module.css";
 
 const ChoosePlan = () => {
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <>
       <Head>

@@ -58,7 +58,7 @@ export default function DataPopup() {
             Fill data <span>*</span>
           </div>
           <div className={styles.inputContainer}>
-            <input type="tel" onChange={(e) => setQuote(e.target.value)} placeholder="Enter your amount" />
+            <input type="tel" onChange={(e) => setQuote(e.target.value)} placeholder="Enter your amount per sqft" />
           </div>
           <div className={styles.agreeContainer}>
             <p>

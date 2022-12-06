@@ -16,6 +16,14 @@ import styles from "./index-single.module.css";
 export default function ArchitectDashboard() {
   const [Store] = useContext(StoreContext);
 
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
   const addProject = Store.addProject;
   const menu = Store.menu;
   const logout = Store.logout;

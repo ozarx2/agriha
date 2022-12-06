@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Head from "next/head";
 import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
@@ -13,6 +13,7 @@ import LoginPopup from "../../components/user-common/login-popup";
 import UserMyProjects from "../../components/user-my-project/main";
 
 import styles from "./index.module.css";
+import { useEffect } from "react";
 
 const UserMyProjectMain = () => {
   const [Store] = useContext(StoreContext);
@@ -21,6 +22,15 @@ const UserMyProjectMain = () => {
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <>
       <Head>

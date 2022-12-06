@@ -42,6 +42,14 @@ export default function ArchitectDashboard() {
     getParameters();
   }, []);
 
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <>
       <Head>

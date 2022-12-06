@@ -19,6 +19,14 @@ export default function AgrihaProjectDetailsBidUserView() {
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
 
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <>
       <Head>

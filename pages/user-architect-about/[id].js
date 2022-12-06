@@ -22,8 +22,8 @@ const UserArchitectAboutMain = () => {
   return (
     <>
       <Head>
-        <title>Agriha User my project</title>
-        <meta name="description" content="Agriha Landing page" />
+        <title>Architect Profile | Agriha</title>
+        <meta name="description" content="Architect Profile | Agriha" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>

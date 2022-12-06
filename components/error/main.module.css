@@ -1,0 +1,23 @@
+.main_outer {
+  min-height: calc(100vh - 69px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_outer > img {
+  height: 300px;
+}
+
+@media only screen and (max-width: 600px) {
+  .main_outer {
+    height: calc(100vh - 20vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main_outer > img {
+    height: 100px;
+  }
+}

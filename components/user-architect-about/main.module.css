@@ -228,6 +228,8 @@
     padding-left: 10px;
     padding-right: 30px;
     margin: 10px;
+    display: flex;
+    align-items: center;
   }
   .archOptionsSelectBtn {
     color: #fff;

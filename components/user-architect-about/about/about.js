@@ -13,10 +13,10 @@ const FnAbout = ({ singleArchitect }) => {
       {windowRes.innerWidth >= 1100 ? (
         <div className={styles.archTabSubHead}>
           {singleArchitect?.bio}
-          <div className={styles.archTabReadmore}>
+          {/* <div className={styles.archTabReadmore}>
             Read more
             <img src="/img/architect-about/downarrow.svg" alt="downarrow.svg" className={styles.tabDownarrowIcon} />
-          </div>
+          </div> */}
         </div>
       ) : (
         <div className={styles.archTabSubHeadMob}>

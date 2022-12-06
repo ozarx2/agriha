@@ -5,7 +5,7 @@ import api_url from "../../src/utils/url";
 import styles from "./main.module.css";
 
 export default function AgrihaDisplayBidSingle({ i, items }) {
-  console.log(items);
+  //   console.log(items);
 
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);
@@ -23,7 +23,7 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
     setSingleArchitect(data);
   }
 
-  console.log(singleArchitect);
+  //   console.log(singleArchitect);
 
   useEffect(() => {
     getSingleArchitect();
@@ -33,16 +33,16 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
     <div className={styles.bid_outer} key={i}>
       <div className={styles.mright}>
         <img
-          src={
-            singleArchitect?.architect_id?.profilepic
-              ? singleArchitect?.architect_id?.profilepic
-              : "/img/landing/profile_img.svg"
-          }
+          src={singleArchitect?.profilepic ? singleArchitect?.profilepic : "/img/landing/profile_img.svg"}
           onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
           alt="architect photo"
         />
         <div className={styles.profile}>
-          <div className={styles.name}>{singleArchitect?.registered_id?.name}</div>
+          <div className={styles.name}>
+            {singleArchitect?.registered_id?.name
+              ? singleArchitect?.registered_id?.name
+              : singleArchitect?.firstname + " " + singleArchitect?.lastname}
+          </div>
           <div className={styles.rating}>
             <div className={styles.num}>4.5</div>
             <div className={styles.star}>
@@ -60,7 +60,7 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
       </div>
 
       <div className={styles.mleft}>
-        <div className={styles.cash}>₹ 32 Lakh</div>
+        <div className={styles.cash}>₹ {items?.quote} per sqft</div>
         <div className={styles.select}>Select</div>
       </div>
     </div>

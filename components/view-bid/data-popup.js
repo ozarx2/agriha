@@ -43,7 +43,7 @@ export default function DataPopup() {
         architect_id: architectId,
         quote: quote,
         user_id: bidUserId,
-        status: "ongoing",
+        status: "started",
       }),
     });
     const data = await res.json();

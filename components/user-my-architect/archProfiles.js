@@ -70,7 +70,7 @@ const FnArchProfiles = () => {
               <div className={styles.archProfileMultipleView}>
                 <div
                   className={styles.archProfileMultipleViewImg}
-                  style={{ backgroundImage: `url(${coverpics()})`, backgroundColor: "gray" }}
+                  style={{ backgroundImage: `url(${coverpics()}), url("/img/landing/nophoto.jpg")` }}
                 ></div>
                 <div className={styles.archProfileDesignPic}>
                   <div className={styles.archProfileSection}>
@@ -103,7 +103,7 @@ const FnArchProfiles = () => {
                     </div>
                     <div className={styles.viewProfile}>
                       <Link href={`/user-architect-about/${items._id}`} passHref>
-                        <div className={`${styles.viewProfileBtn}`}>View Proifle</div>
+                        <div className={`${styles.viewProfileBtn}`}>View Profile</div>
                       </Link>
                     </div>
                   </div>

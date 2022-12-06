@@ -2,16 +2,48 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import Link from "next/link";
-import React, { useRef, useState, useEffect } from "react";
-import StarRatings from "react-star-ratings";
+import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
+import { StoreContext } from "../../components/StoreContext";
 import windowSize from "../windowRes";
+import api_url from "../../src/utils/url";
+import AgrihaDisplayBidSingle from "./display-bid-single";
 
 import styles from "./main.module.css";
 
 export default function AgrihaDisplayBidMain() {
   const windowRes = windowSize();
+  const router = useRouter();
+  const { id } = router.query;
+  const bidId = id;
 
-  const [bid, setBid] = useState(true);
+  const [Store] = useContext(StoreContext);
+
+  const [bid, setBid] = useState(false);
+
+  const [getAllBidResult, setGetAllBidResult] = useState([]);
+  async function getAllBidResults() {
+    const response = await fetch(`${api_url}/quotation/${bidId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    if (data) {
+      const temp = data.data;
+      setGetAllBidResult(temp);
+      if (temp?.length > 0) {
+        setBid(true);
+      }
+    }
+  }
+
+  useEffect(() => {
+    getAllBidResults();
+  }, [bidId]);
+
+  // console.log(getAllBidResult);
 
   return (
     <>
@@ -23,7 +55,19 @@ export default function AgrihaDisplayBidMain() {
                 <>
                   <div className={styles.desktop_outer}>
                     <div className={`container ${styles.container} ${styles.desktop}`}>
-                      <div className={styles.desktop_inner}>{AgrihaMyBidMainMyBid()}</div>
+                      <div className={styles.desktop_inner}>
+                        <div className={styles.bid_max_outer}>
+                          <Link href="/my-bid" passHref>
+                            <div className={styles.back}>
+                              <img src="/img/my-bid/arrow_left.svg" alt="back" />
+                              <span>Your bid list</span>
+                            </div>
+                          </Link>
+                          {getAllBidResult?.map((items, i) => {
+                            return <AgrihaDisplayBidSingle key={i} i={i} items={items} />;
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </>
@@ -31,7 +75,19 @@ export default function AgrihaDisplayBidMain() {
                 <>
                   <div className={styles.mobile_outer}>
                     <div className={`container ${styles.container} ${styles.mobile}`}>
-                      <div className={styles.mobile_inner}>{AgrihaMyBidMainMyBid()}</div>
+                      <div className={styles.mobile_inner}>
+                        <div className={styles.bid_max_outer}>
+                          <Link href="/my-bid" passHref>
+                            <div className={styles.back}>
+                              <img src="/img/my-bid/arrow_left.svg" alt="back" />
+                              <span>Your bid list</span>
+                            </div>
+                          </Link>
+                          {getAllBidResult?.map((items, i) => {
+                            return <AgrihaDisplayBidSingle key={i} i={i} items={items} />;
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </>
@@ -50,44 +106,3 @@ export default function AgrihaDisplayBidMain() {
     </>
   );
 }
-
-const AgrihaMyBidMainMyBid = () => {
-  return (
-    <div className={styles.bid_max_outer}>
-      <Link href="/my-bid" passHref>
-        <div className={styles.back}>
-          <img src="/img/my-bid/arrow_left.svg" alt="back" />
-          <span>Your bid list</span>
-        </div>
-      </Link>
-      {Array.apply(null, { length: 5 }).map((e, i) => (
-        <div className={styles.bid_outer} key={i}>
-          <div className={styles.mright}>
-            <img src="/img/display-bid/profile.png" alt="architect photo" />
-            <div className={styles.profile}>
-              <div className={styles.name}>Althaf Rahman</div>
-              <div className={styles.rating}>
-                <div className={styles.num}>4.5</div>
-                <div className={styles.star}>
-                  <StarRatings
-                    rating={3.5}
-                    starRatedColor="#edbc3b"
-                    numberOfStars={5}
-                    starDimension="11px"
-                    starSpacing="0.5px"
-                    name="rating"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.mleft}>
-            <div className={styles.cash}>₹ 32 Lakh</div>
-            <div className={styles.select}>Select</div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};

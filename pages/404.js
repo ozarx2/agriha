@@ -34,7 +34,8 @@ export default function AgrihaLanding() {
             </div>
             <div className={styles.main}>
               <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
-              <h5 style={{ color: "#000000" }}>404 Not Found</h5>
+              <h5 style={{ color: "#000000", textAlign: "center" }}>404 Not Found</h5>
+              <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
             </div>
             <div className={styles.footer}>
               <LandingFooter />

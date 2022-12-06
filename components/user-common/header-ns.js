@@ -147,6 +147,7 @@ export default function AgrihaLandingHeaderNoSearch() {
                                 ? homeSeekerDetails?.profile_pic
                                 : "/img/landing/profile_img.svg"
                             }
+                            onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                             alt="profile"
                           />
                         </div>
@@ -177,6 +178,7 @@ export default function AgrihaLandingHeaderNoSearch() {
                                 ? homeSeekerDetails?.profile_pic
                                 : "/img/landing/profile_img.svg"
                             }
+                            onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                             alt="profile"
                           />
                         </div>

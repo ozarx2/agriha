@@ -23,7 +23,7 @@ const FnAward = ({ singleArchitect }) => {
       ) : (
         <div className={styles.archAwardSectionMob}>
           <div className={styles.archAwardSecMob}>
-            <div className={styles.archAwards}>
+            {/* <div className={styles.archAwards}>
               <img
                 src="/img/architect-award/mobile/silverMob.svg"
                 alt="silver.svg"
@@ -38,7 +38,7 @@ const FnAward = ({ singleArchitect }) => {
                 className={styles.archAwardGolden}
               />
               <div>Golden Award</div>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

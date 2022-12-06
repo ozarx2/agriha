@@ -140,11 +140,11 @@ const UserArchitectAboutDesktop = () => {
                         <div className={styles.profileSubHead}>Architects</div>
                       </div>
                     </div>
-                    <div
-                      className={styles.archProfileSectionMainRight}
-                      onClick={() => router.push(`tel:${singleArchitect?.phone}`)}
-                    >
-                      <div className={styles.archOptionsIcons}>
+                    <div className={styles.archProfileSectionMainRight}>
+                      <div
+                        className={styles.archOptionsIcons}
+                        onClick={() => router.push(`tel:${singleArchitect?.phone}`)}
+                      >
                         <img src="/img/architect-about/contact.svg" alt="contact.svg" className={styles.contactIcon} />
                         Contact
                       </div>

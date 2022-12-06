@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { StoreContext } from "../../components/StoreContext";
 import Navbar from "../../components/common/navbar";

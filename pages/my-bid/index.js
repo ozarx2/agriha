@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
 import AgrihaMyBidMain from "../../components/my-bid/main";

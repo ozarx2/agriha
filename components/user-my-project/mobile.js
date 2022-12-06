@@ -53,16 +53,20 @@ const FnUserMyProjectMobile = () => {
   };
   async function getProjectMob() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`https://agriha-server-dot-agriha-services.uc.r.appspot.com/projects/view`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      `https://agriha-server-dot-agriha-services.uc.r.appspot.com/projects/view`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const data = await res.json();
     // const withArchitectNoOrder = data.projects.filter((res) => res?.architect_id);
     const revert = data.projects.reverse();
+    console.log(data.projects);
     setProjectMob(revert);
   }
 
@@ -88,7 +92,9 @@ const FnUserMyProjectMobile = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercentProject(percent);
@@ -112,7 +118,10 @@ const FnUserMyProjectMobile = () => {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
-        setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
+        setFiles((files) => [
+          ...files,
+          { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] },
+        ]);
       }
     } else {
       alert("Cannot add more than 30 pictures");
@@ -159,7 +168,14 @@ const FnUserMyProjectMobile = () => {
                     <div className={styles.projImgMobMainSec}>
                       <div className={styles.projImgMobMian}>
                         <img
-                          src="/img/my-project-user/mobile/projmob.svg"
+                          src={
+                            items?.thumbnail
+                              ? items?.thumbnail
+                              : "/img/landing/nophoto.jpg"
+                          }
+                          onError={(e) =>
+                            (e.target.src = "/img/landing/nophoto.jpg")
+                          }
                           alt="projmob.svg"
                           className={styles.projmob}
                         />
@@ -167,31 +183,51 @@ const FnUserMyProjectMobile = () => {
                         <div className={styles.projImgProNamePicMobMainSec}>
                           <div className={styles.projImgProNamePicMobMain}>
                             <div>
-                              <div className={styles.projNameMob}>Project name</div>
-                              <div className={styles.projIdMob}>{items?.project_name}</div>
+                              <div className={styles.projNameMob}>
+                                Project name
+                              </div>
+                              <div className={styles.projIdMob}>
+                                {items?.project_name}
+                              </div>
                             </div>
                             <div className={styles.projProPicBtnsMob}>
                               {items.architect_id ? (
-                                <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
+                                <Link
+                                  href={`/user-architect-about/${items?.architect_id?._id}`}
+                                  passHref
+                                >
                                   <img
                                     src={
                                       items?.architect_id?.profilepic
                                         ? items?.architect_id?.profilepic
                                         : "/img/my-project-user/mobile/projprofile.svg"
                                     }
+                                    alt="propic.jpg"
+                                    className={styles.propicDp}
                                   />
                                 </Link>
                               ) : (
                                 ""
                               )}
 
-                              <div className={styles.viewMoreMob} onClick={() => toggleBtnMob(items._id)}>
-                                {viewMore && mainViewMore === items._id ? "View Less" : "View More"}
+                              <div
+                                className={styles.viewMoreMob}
+                                onClick={() => toggleBtnMob(items._id)}
+                              >
+                                {viewMore && mainViewMore === items._id
+                                  ? "View Less"
+                                  : "View More"}
                                 <span>
                                   {viewMore && mainViewMore === items._id ? (
-                                    <img src="/img/my-project-user/mobile/showlessmob.svg" alt="down.svg" />
+                                    <img
+                                      src="/img/my-project-user/mobile/showlessmob.svg"
+                                      alt="down.svg"
+                                    />
                                   ) : (
-                                    <img src="/img/my-project-user/mobile/showmoremob.svg" alt="up.svg" />
+                                    <img
+                                      src="/img/my-project-user/mobile/showmoremob.svg"
+                                      alt="up.svg"
+                                    />
                                   )}
                                 </span>{" "}
                               </div>
@@ -204,7 +240,9 @@ const FnUserMyProjectMobile = () => {
                       ) : (
                         <div className={styles.productsMobSecMain}>
                           <div className={styles.productsMobSec}>
-                            <div className={styles.productsMobSecHead}>Products</div>
+                            <div className={styles.productsMobSecHead}>
+                              Products
+                            </div>
                             <div>
                               <img
                                 src="/img/my-project-user/mobile/prodmob.svg"
@@ -234,64 +272,133 @@ const FnUserMyProjectMobile = () => {
                     <div className={styles.projStatusMainSecMob}>
                       <div className={styles.projStatusLeftMainMob}>
                         <div className={styles.profileStatusMob}>Status:</div>
-                        <div className={styles.profileStatusMob}>Started on:</div>
-                        <div className={styles.profileStatusMob}>Current stage:</div>
-                        <div className={styles.profileStatusMob}>Payment status:</div>
+                        <div className={styles.profileStatusMob}>
+                          Started on:
+                        </div>
+                        <div className={styles.profileStatusMob}>
+                          Current stage:
+                        </div>
+                        <div className={styles.profileStatusMob}>
+                          Payment status:
+                        </div>
 
-                        {items.bid ? <div className={styles.profileStatusMob}>Bid:</div> : ""}
+                        {items.bid ? (
+                          <div className={styles.profileStatusMob}>Bid:</div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div className={styles.projStatusRightMainMob}>
-                        <div className={styles.profileStatusMob}>{items?.status}</div>
-                        <div className={styles.profileStatusMob}>{items?.starting_date}</div>
-                        <div className={styles.profileStatusMob}>{items?.status}</div>
+                        <div className={styles.profileStatusMob}>
+                          {items?.status}
+                        </div>
+                        <div className={styles.profileStatusMob}>
+                          {items?.starting_date}
+                        </div>
+                        <div className={styles.profileStatusMob}>
+                          {items?.status}
+                        </div>
                         <div className={styles.profileStatusMob}>Pending</div>
 
-                        {items.bid ? <div className={styles.profileStatusMob}>Active</div> : ""}
+                        {items.bid ? (
+                          <div className={styles.profileStatusMob}>Active</div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                     {viewMore && mainViewMore === items._id ? (
                       <>
                         <div className={styles.suggestedProductsMainSecMob}>
                           <div className={styles.suggestedProductsMainMob}>
-                            <div className={styles.suggestedProductHead}>Suggested Products</div>
-                            <div className={styles.suggProdListMob}>3 Products list</div>
+                            <div className={styles.suggestedProductHead}>
+                              Suggested Products
+                            </div>
+                            <div className={styles.suggProdListMob}>
+                              3 Products list
+                            </div>
                           </div>
                         </div>
                         <div className={styles.suggestedBedProductsMainSecMob}>
                           <div className={styles.suggestedBedProductsMainMob}>
-                            <div className={styles.suggestedBedProductHead}>04 Brdroom Products</div>
-                            <div className={styles.suggProdListMob} onClick={() => toggleSuggProdMob(items._id)}>
+                            <div className={styles.suggestedBedProductHead}>
+                              04 Brdroom Products
+                            </div>
+                            <div
+                              className={styles.suggProdListMob}
+                              onClick={() => toggleSuggProdMob(items._id)}
+                            >
                               {suggestProd && sugProd === items._id ? (
-                                <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" />
+                                <img
+                                  src="/img/my-project-user/mobile/upmob.svg"
+                                  alt="upmob.svg"
+                                />
                               ) : (
-                                <img src="/img/my-project-user/mobile/downmob.svg" alt="downmob.svg" />
+                                <img
+                                  src="/img/my-project-user/mobile/downmob.svg"
+                                  alt="downmob.svg"
+                                />
                               )}
                             </div>
                           </div>
                           {suggestProd ? (
                             <div className={styles.bedProdMobMainSec}>
-                              <img src="/img/my-project-user/mobile/bedprodmob.svg" alt="bedprodmob.svg" />
-                              <img src="/img/my-project-user/mobile/bedprodmob2.svg" alt="bedprodmob2.svg" />
-                              <img src="/img/my-project-user/mobile/pic3.svg" alt="bedprodmob.svg" />
-                              <img src="/img/my-project-user/mobile/pic4.svg" alt="bedprodmob2.svg" />
+                              <div className={styles.coloumn}>
+                                <img
+                                  src="/img/my-project-user/mobile/bedprodmob.svg"
+                                  alt="bedprodmob.svg"
+                                />
+                              </div>
+                              <div className={styles.coloumn}>
+                                <img
+                                  src="/img/my-project-user/mobile/bedprodmob2.svg"
+                                  alt="bedprodmob2.svg"
+                                />
+                              </div>
+                              <div className={styles.coloumn}>
+                                <img
+                                  src="/img/my-project-user/mobile/pic3.svg"
+                                  alt="bedprodmob.svg"
+                                />
+                              </div>
+                              <div className={styles.coloumn}>
+                                <img
+                                  src="/img/my-project-user/mobile/pic4.svg"
+                                  alt="bedprodmob2.svg"
+                                />
+                              </div>
                             </div>
                           ) : (
                             ""
                           )}
                         </div>
-                        <div className={styles.suggestedKitchenProductsMainSecMob}>
-                          <div className={styles.suggestedKitechenProductsMainMob}>
-                            <div className={styles.suggestedKitchenProductHead}>00 Kitchen Products</div>
+                        <div
+                          className={styles.suggestedKitchenProductsMainSecMob}
+                        >
+                          <div
+                            className={styles.suggestedKitechenProductsMainMob}
+                          >
+                            <div className={styles.suggestedKitchenProductHead}>
+                              00 Kitchen Products
+                            </div>
                             <div className={styles.suggKitchenListMob}>
-                              <img src="/img/my-project-user/mobile/downmob.svg" alt="upmob.svg" />
+                              <img
+                                src="/img/my-project-user/mobile/downmob.svg"
+                                alt="upmob.svg"
+                              />
                             </div>
                           </div>
                         </div>
                         <div className={styles.suggestedHallProductsMainSecMob}>
                           <div className={styles.suggestedHallProductsMainMob}>
-                            <div className={styles.suggestedHallProductHead}>00 Hall Products</div>
+                            <div className={styles.suggestedHallProductHead}>
+                              00 Hall Products
+                            </div>
                             <div className={styles.suggHallListMob}>
-                              <img src="/img/my-project-user/mobile/downmob.svg" alt="downmob.svg" />
+                              <img
+                                src="/img/my-project-user/mobile/downmob.svg"
+                                alt="downmob.svg"
+                              />
                             </div>
                           </div>
                         </div>
@@ -301,18 +408,30 @@ const FnUserMyProjectMobile = () => {
                               File manager{" "}
                               <span onClick={() => toggleFileBtnMob(items._id)}>
                                 {viewFileMore && fileViewMore === items._id ? (
-                                  <img src="/img/my-project-user/mobile/upmob.svg" alt="up.svg" />
+                                  <img
+                                    src="/img/my-project-user/mobile/upmob.svg"
+                                    alt="up.svg"
+                                  />
                                 ) : (
-                                  <img src="/img/my-project-user/mobile/downmob.svg" alt="up.svg" />
+                                  <img
+                                    src="/img/my-project-user/mobile/downmob.svg"
+                                    alt="up.svg"
+                                  />
                                 )}
                               </span>
                             </div>
                             <div className={styles.fileSortSecMainMob}>
-                              <img src="img/my-project-user/mobile/sortmob.svg" alt="sortmob.svg" />
+                              <img
+                                src="img/my-project-user/mobile/sortmob.svg"
+                                alt="sortmob.svg"
+                              />
                               Sort list
                             </div>
                             <div className={styles.createFolderSecMainMob}>
-                              <img src="img/my-project-user/mobile/filetransmob.svg" alt="filetransmob.svg" />
+                              <img
+                                src="img/my-project-user/mobile/filetransmob.svg"
+                                alt="filetransmob.svg"
+                              />
                               Create folder
                             </div>
                           </div>
@@ -321,38 +440,56 @@ const FnUserMyProjectMobile = () => {
                           <div className={styles.filesMobSecMain}>
                             <div className={styles.filesMobSec}>
                               <div className={styles.fileImgNameSec}>
-                                <img src="img/my-project-user/mobile/folderMob.svg" alt="foldermob.svg" />
+                                <img
+                                  src="img/my-project-user/mobile/folderMob.svg"
+                                  alt="foldermob.svg"
+                                />
                                 <div className={styles.filesMobTitle}>
                                   <div>Interior design</div>
                                   <small>21/12/2022</small>
                                 </div>
                               </div>
                               <div className={styles.fileMoreMobSec}>
-                                <img src="img/my-project-user/mobile/moremob.svg" alt="moremob.svg" />
+                                <img
+                                  src="img/my-project-user/mobile/moremob.svg"
+                                  alt="moremob.svg"
+                                />
                               </div>
                             </div>
                             <div className={styles.filesMobSec}>
                               <div className={styles.fileImgNameSec}>
-                                <img src="img/my-project-user/mobile/pdfmob.svg" alt="pdfmob.svg" />
+                                <img
+                                  src="img/my-project-user/mobile/pdfmob.svg"
+                                  alt="pdfmob.svg"
+                                />
                                 <div className={styles.filesMobTitle}>
                                   <div>New lan.pdf</div>
                                   <small>21/12/2022</small>
                                 </div>
                               </div>
                               <div className={styles.fileMoreMobSec}>
-                                <img src="img/my-project-user/mobile/moremob.svg" alt="moremob.svg" />
+                                <img
+                                  src="img/my-project-user/mobile/moremob.svg"
+                                  alt="moremob.svg"
+                                />
                               </div>
                             </div>
                             <div className={styles.filesMobSec}>
                               <div className={styles.fileImgNameSec}>
-                                <img src="img/my-project-user/mobile/imgmob.svg" alt="imgmob.svg" />
+                                <img
+                                  src="img/my-project-user/mobile/imgmob.svg"
+                                  alt="imgmob.svg"
+                                />
                                 <div className={styles.filesMobTitle}>
                                   <div>Oi design.jpg</div>
                                   <small>21/12/2022</small>
                                 </div>
                               </div>
                               <div className={styles.fileMoreMobSec}>
-                                <img src="img/my-project-user/mobile/moremob.svg" alt="moremob.svg" />
+                                <img
+                                  src="img/my-project-user/mobile/moremob.svg"
+                                  alt="moremob.svg"
+                                />
                               </div>
                             </div>
                           </div>
@@ -361,12 +498,23 @@ const FnUserMyProjectMobile = () => {
                         )}
                         <div className={styles.sentFileMainSecMob}>
                           <div className={styles.sentFileMainMob}>
-                            <div className={styles.sentFileHead}>Send file to architect</div>
-                            <div className={styles.sentFileListMob} onClick={() => toggleSentFileMob(items._id)}>
+                            <div className={styles.sentFileHead}>
+                              Send file to architect
+                            </div>
+                            <div
+                              className={styles.sentFileListMob}
+                              onClick={() => toggleSentFileMob(items._id)}
+                            >
                               {sentFile && fileToArchitect === items._id ? (
-                                <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" />
+                                <img
+                                  src="/img/my-project-user/mobile/upmob.svg"
+                                  alt="upmob.svg"
+                                />
                               ) : (
-                                <img src="/img/my-project-user/mobile/downmob.svg" alt="downmob.svg" />
+                                <img
+                                  src="/img/my-project-user/mobile/downmob.svg"
+                                  alt="downmob.svg"
+                                />
                               )}
                             </div>
                           </div>

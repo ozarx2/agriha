@@ -45,6 +45,8 @@
   }
   .projmob {
     width: 100%;
+    height: 196px;
+    object-fit: cover;
   }
   .projNameMob {
     font-family: "Inter";
@@ -69,6 +71,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+  }
+  .propicDp {
+    width: 23%;
+    height: 36px;
+    border-radius: 50%;
+    /* padding-left: 20px; */
   }
   .projprofileMob {
     width: 34px;
@@ -113,18 +121,18 @@
     justify-content: space-between;
     align-items: center;
   }
-  .projProPicBtnsMob > img {
-    height: 28px;
-    width: 28px;
+  /* .projProPicBtnsMob > img {
+    height: 33px;
+    width: 23%;
     object-fit: cover;
     border-radius: 50%;
-  }
+  } */
   .productsMobSec .prodmob {
     padding-left: 13.44px;
     padding-right: 6.5px;
   }
   .prodmob {
-    width: 40px;
+    width: 25%;
     height: 40px;
     border-radius: 50%;
   }
@@ -133,7 +141,8 @@
     align-items: center;
     padding-top: 24px;
     padding-bottom: 20px;
-    margin-bottom: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
     border-bottom: 1px solid #e2e2e2;
   }
   .projStatusLeftMainMob {
@@ -194,12 +203,31 @@
     align-items: center;
     justify-content: space-between;
   }
+  .suggestedBedProductHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5f5f5f;
+  }
   .bedProdMobMainSec {
     display: inline-block;
     align-items: center;
     justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
+  }
+  .coloumn {
+    float: left;
+    width: 50%;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .coloumn > img {
+    width: 100%;
   }
   .bedProdMobMainSec > img {
     padding: 10px;
@@ -214,6 +242,14 @@
     align-items: center;
     justify-content: space-between;
   }
+  .suggestedKitchenProductHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5f5f5f;
+  }
   .suggestedHallProductsMainSecMob {
     padding-top: 19px;
     padding-bottom: 19px;
@@ -223,6 +259,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  .suggestedHallProductHead {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5f5f5f;
   }
   .dragDropSec {
     position: relative;

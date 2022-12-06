@@ -1,0 +1,13 @@
+.file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.file > div {
+  display: flex;
+  align-items: center;
+}
+.file > div > span {
+  padding-left: 10px;
+}

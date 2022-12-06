@@ -1,13 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import styles from "./uploadedfiles.module.css";
+import styles from "./uploadedfilesmob.module.css";
 
-const FnUploadFiles = ({ project_id }) => {
+const FnUploadFilesMob = ({ project_id }) => {
   const [fileUploads, setFileUpload] = useState([]);
 
   const result = fileUploads.filter((item) => item.project_id === project_id);
   console.log(project_id);
-
   useEffect(() => {
     getUploadFile();
   }, []);
@@ -28,7 +27,6 @@ const FnUploadFiles = ({ project_id }) => {
     setFileUpload(data.userFile);
   }
   console.log(fileUploads);
-
   return (
     <>
       <div className={styles.fileOuter}>
@@ -52,4 +50,4 @@ const FnUploadFiles = ({ project_id }) => {
   );
 };
 
-export default FnUploadFiles;
+export default FnUploadFilesMob;

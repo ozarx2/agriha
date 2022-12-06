@@ -1,13 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./archProfiles.module.css";
 import StarRatings from "react-star-ratings";
 import api_url from "../../src/utils/url";
 import dummy_token from "../../src/utils/dummy_token";
+import { StoreContext } from "../StoreContext";
 
 const FnArchProfiles = () => {
+  const [Store] = useContext(StoreContext);
+
+  const searchQueryArchitect = Store.searchQueryArchitect;
+
   const router = useRouter();
 
   /* GET PROJECT TYPES */
@@ -25,10 +30,33 @@ const FnArchProfiles = () => {
     const data = await res.json();
     setAllArchitects(data);
   }
+
   // console.log(allArchitects);
   useEffect(() => {
     getallArchitects();
   }, []);
+
+  async function getSearchArchitects(query) {
+    const res = await fetch(`${api_url}/search/key?l=${query}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${dummy_token}`,
+      },
+    });
+
+    const data = await res.json();
+    setAllArchitects(data.data);
+  }
+
+  useEffect(() => {
+    if (searchQueryArchitect !== "") {
+      getSearchArchitects(searchQueryArchitect);
+      console.log(searchQueryArchitect);
+    } else {
+      getallArchitects();
+    }
+  }, [searchQueryArchitect]);
 
   return (
     <>
@@ -42,17 +70,14 @@ const FnArchProfiles = () => {
               <div className={styles.archProfileMultipleView}>
                 <div
                   className={styles.archProfileMultipleViewImg}
-                  style={{ backgroundImage: `url(${coverpics()})` }}
+                  style={{ backgroundImage: `url(${coverpics()})`, backgroundColor: "gray" }}
                 ></div>
                 <div className={styles.archProfileDesignPic}>
                   <div className={styles.archProfileSection}>
                     <div className={styles.arcProfileGroupSection}>
                       <img
-                        src={
-                          items?.profilepic
-                            ? items?.profilepic
-                            : "/img/landing/profile_img.svg"
-                        }
+                        src={items?.profilepic ? items?.profilepic : "/img/landing/profile_img.svg"}
+                        onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                         alt="profilepic.svg"
                         className={styles.archProPic}
                       />
@@ -77,13 +102,8 @@ const FnArchProfiles = () => {
                       </div>
                     </div>
                     <div className={styles.viewProfile}>
-                      <Link
-                        href={`/user-architect-about/${items._id}`}
-                        passHref
-                      >
-                        <div className={`${styles.viewProfileBtn}`}>
-                          View Proifle
-                        </div>
+                      <Link href={`/user-architect-about/${items._id}`} passHref>
+                        <div className={`${styles.viewProfileBtn}`}>View Proifle</div>
                       </Link>
                     </div>
                   </div>
@@ -94,9 +114,7 @@ const FnArchProfiles = () => {
                         alt="locationblue.svg"
                         className={styles.locationIconGreen}
                       />
-                      <div className={styles.archlocation}>
-                        {items?.location}
-                      </div>
+                      <div className={styles.archlocation}>{items?.location}</div>
                     </div>
                     <div className={styles.category}>
                       <div>Architect</div>

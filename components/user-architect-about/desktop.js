@@ -221,8 +221,9 @@ const UserArchitectAboutDesktop = () => {
                           </div>
                           <div className={styles.archViewedRating}>
                             <div className={styles.viewedRatingNumber}>
-                              <AgrihaArchitectTotalRating id={items._id} />
-                              {/* {AgrihaArchitectTotalRating(items._id)} */}
+                              {/* <AgrihaArchitectTotalRating id={items._id} /> */}
+                              {console.log(AgrihaArchitectTotalRating(items._id))}
+                              {console.log(AgrihaArchitectTotalRating(items._id).length)}
                             </div>
                             <StarRatings
                               rating={4.5}
@@ -233,7 +234,8 @@ const UserArchitectAboutDesktop = () => {
                               name="rating"
                             />
                             <div className={styles.viewedRatingReviews}>
-                              <AgrihaArchitectTotalCount id={items._id} /> Reviews
+                              {AgrihaArchitectTotalRating(items._id).totalCount} Reviews
+                              {/* <AgrihaArchitectTotalCount id={items._id} /> Reviews */}
                               {/* {AgrihaArchitectRating(items._id).totalCount} Reviews */}
                             </div>
                           </div>

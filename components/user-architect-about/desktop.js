@@ -222,6 +222,7 @@ const UserArchitectAboutDesktop = () => {
                           <div className={styles.archViewedRating}>
                             <div className={styles.viewedRatingNumber}>
                               <AgrihaArchitectTotalRating id={items._id} />
+                              {/* {AgrihaArchitectTotalRating(items._id)} */}
                             </div>
                             <StarRatings
                               rating={4.5}

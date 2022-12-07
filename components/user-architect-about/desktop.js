@@ -12,6 +12,8 @@ import FnAward from "./award/award";
 import FnReview from "./review/review";
 import api_url from "../../src/utils/url";
 import dummy_token from "../../src/utils/dummy_token";
+import AgrihaArchitectTotalRating from "../user-common/totalRating";
+import AgrihaArchitectTotalCount from "../user-common/totalCount";
 
 import styles from "./main.module.css";
 
@@ -124,7 +126,7 @@ const UserArchitectAboutDesktop = () => {
                             : singleArchitect.firstname + " " + singleArchitect.lastname}
                         </div>
                         <div className={styles.archProfileRating}>
-                          <div className={styles.ratingNumber}>4.6</div>
+                          <div className={styles.ratingNumber}>4.5</div>
                           <div className={styles.ratingNumber}>
                             <StarRatings
                               rating={4}
@@ -218,7 +220,9 @@ const UserArchitectAboutDesktop = () => {
                               : items.firstname + " " + items.lastname}
                           </div>
                           <div className={styles.archViewedRating}>
-                            <div className={styles.viewedRatingNumber}>4.5</div>
+                            <div className={styles.viewedRatingNumber}>
+                              <AgrihaArchitectTotalRating id={items._id} />
+                            </div>
                             <StarRatings
                               rating={4.5}
                               starRatedColor="#edbc3b"
@@ -227,7 +231,10 @@ const UserArchitectAboutDesktop = () => {
                               starSpacing="1.5px"
                               name="rating"
                             />
-                            <div className={styles.viewedRatingReviews}>2 Reviews</div>
+                            <div className={styles.viewedRatingReviews}>
+                              <AgrihaArchitectTotalCount id={items._id} /> Reviews
+                              {/* {AgrihaArchitectRating(items._id).totalCount} Reviews */}
+                            </div>
                           </div>
                           <div className={styles.archViewedSubhead}>Architects</div>
                           <div className={styles.archViewProfileSection}>

@@ -72,7 +72,7 @@ export default function AgrihaLandingMain() {
 
   function groupN(array, num) {
     const group = [];
-    for (let i = 0; i < array.length; i += num) {
+    for (let i = 0; i < array?.length; i += num) {
       group.push(array.slice(i, i + num));
     }
     setAllProjectSliced(group);

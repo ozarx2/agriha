@@ -27,6 +27,24 @@ const FnFileUploadDesk = ({ projectId }) => {
     setDescription(e.target.value);
   };
 
+  const [fileUploads, setFileUpload] = useState([]);
+
+  async function getUploadFile() {
+    const token = localStorage.getItem("userToken");
+    const response = await fetch(
+      "https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/userfiles",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    setFileUpload(data.userFile);
+  }
+
   const handleSubmit = async (id) => {
     const token = localStorage.getItem("userToken");
     const res = await fetch(
@@ -80,12 +98,9 @@ const FnFileUploadDesk = ({ projectId }) => {
     );
   }
 
-  // console.log(projectImages);
-
   /* Multiple Image Uploading */
   var fileObj = [];
   var fileArray = [];
-
   const uploadMultipleFiles = (e) => {
     if (e.target.files.length <= 30) {
       fileObj.push(e.target.files);
@@ -108,13 +123,14 @@ const FnFileUploadDesk = ({ projectId }) => {
       handleUploadProject(temp[i].file);
     }
     setId(id);
-    // alert("uploaded");
+  };
+  const singleDeleteImage = (i) => {
+    let temp = [...files];
+    temp.splice(i, 1);
+    setFiles(temp);
   };
 
   useEffect(() => {
-    // console.log(uploadProject);
-    // console.log(files.length);
-    // console.log(projectImages.length);
     if (
       files.length === projectImages.length &&
       files.length !== 0 &&
@@ -124,11 +140,10 @@ const FnFileUploadDesk = ({ projectId }) => {
     }
   }, [projectImages]);
 
-  const singleDeleteImage = (i) => {
-    let temp = [...files];
-    temp.splice(i, 1);
-    setFiles(temp);
-  };
+  useEffect(() => {
+    getUploadFile();
+  }, []);
+
   return (
     <>
       <div className={styles.secTwoMain}>
@@ -157,21 +172,12 @@ const FnFileUploadDesk = ({ projectId }) => {
           </div>
           <div className={styles.fileOuter}>
             {files.map((file, key) => {
-              {
-                /* console.log("file +" + files); */
-              }
               return (
                 <div key={key} className={styles.file}>
                   <div>
                     <img src="/img/my-project-user/data.svg" />
                     <span>{file.file.name}</span>
                   </div>
-                  <img
-                    src="/img/architect-dashboard/delete-h.svg"
-                    alt=""
-                    onClick={() => singleDeleteImage(index)}
-                  />
-                  {/* <span className={styles.fileDelete}>Delete</span> */}
                 </div>
               );
             })}
@@ -194,7 +200,7 @@ const FnFileUploadDesk = ({ projectId }) => {
           </div>
         </div>
         <div>
-          <FnUploadFiles project_id={projectId} />
+          <FnUploadFiles project_id={projectId} fileUploads={fileUploads} />
         </div>
       </div>
     </>

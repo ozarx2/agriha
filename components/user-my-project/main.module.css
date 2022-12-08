@@ -120,13 +120,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
   }
-  /* .projProPicBtnsMob > img {
-    height: 33px;
-    width: 23%;
-    object-fit: cover;
-    border-radius: 50%;
-  } */
   .productsMobSec .prodmob {
     padding-left: 13.44px;
     padding-right: 6.5px;

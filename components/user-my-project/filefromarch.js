@@ -4,7 +4,10 @@ import styles from "./filefromarch.module.css";
 const FnFileFromArchDesk = () => {
   return (
     <>
-      <div className={styles.fileTitle}>File from Architect</div>
+      <div className={styles.fileTitle}>
+        <div>File from Architect</div>
+        <div className={styles.viewAll}>View all</div>
+      </div>
       <div className={styles.archFilesMainSec}>
         <div className={styles.fileList}>
           <img src="/img/my-project-user/data.svg" alt="data.svg" />

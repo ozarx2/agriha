@@ -184,7 +184,7 @@ const FnUserMyProjectMobile = () => {
                           <div className={styles.projImgProNamePicMobMain}>
                             <div>
                               <div className={styles.projNameMob}>
-                                Project name
+                                Project {key + 1}
                               </div>
                               <div className={styles.projIdMob}>
                                 {items?.project_name}

@@ -1,13 +1,27 @@
+.uploadedFiles {
+  padding-top: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #000000;
+}
 .file {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .file > div {
   display: flex;
   align-items: center;
+  font-size: 14px;
 }
 .file > div > span {
   padding-left: 10px;
+}
+.file > a {
+  font-size: 12px;
+  color: #642dda;
 }

@@ -65,7 +65,7 @@ const FnOngoingProjectUserSide = () => {
             <>
               <div key={key} className={styles.ongoingProjectSection}>
                 <div className={styles.projectNameSection}>
-                  <div className={styles.projectName}>My Project</div>
+                  <div className={styles.projectName}>Project {key + 1}</div>
                   <div className={styles.projectId}>{items?.project_name}</div>
                 </div>
                 <div className={styles.showMoreBtnSection}>
@@ -75,7 +75,6 @@ const FnOngoingProjectUserSide = () => {
                     </div>
                   </div> */}
                   {items.bid ? <div className={styles.bid}>Bid</div> : ""}
-
                   <div
                     id="less"
                     className={styles.showMore}

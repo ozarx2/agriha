@@ -1,11 +1,26 @@
 .archFilesMainSec {
-  padding-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #efefef;
 }
+.viewAll {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #686868;
+  padding: 3px 7px;
+  background: #f3f3f3;
+  border-radius: 2px;
+}
 .fileTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;

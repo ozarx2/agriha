@@ -19,6 +19,8 @@ import styles from "./landing-main.module.css";
 export default function AgrihaLandingMain() {
   const windowRes = windowSize();
 
+  const [filter, setFilter] = useState("All");
+
   const [Store] = useContext(StoreContext);
   const setRegisterPopup = Store.setRegisterPopup;
   const loginActive = Store.loginActive;
@@ -28,7 +30,7 @@ export default function AgrihaLandingMain() {
   const [projectTypes, setProjectTypes] = useState([]);
   async function getProjects() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/project-types`, {
+    const res = await fetch(`${api_url}/search/architect/company_names`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +38,8 @@ export default function AgrihaLandingMain() {
       },
     });
     const data = await res.json();
-    setProjectTypes(data.projecttype);
+    console.log(data);
+    setProjectTypes(data);
   }
 
   useEffect(() => {
@@ -55,11 +58,14 @@ export default function AgrihaLandingMain() {
     });
     const data = await response.json();
     if (data) {
-      // console.log(data.data);
+      console.log(data.data);
       const withArchitect = data.data.filter((res) => res?.architect_id);
-      // const withArchitectNoOrder = data.data.filter((res) => res?.architect_id);
-      // const withArchitect = withArchitectNoOrder.reverse();
-      setAllProject(withArchitect);
+      if (filter === "All") {
+        setAllProject(withArchitect);
+      } else {
+        let filtered = withArchitect.filter((res) => res?.architect_id?.companyname === filter);
+        setAllProject(filtered);
+      }
     }
   }
   // console.log(allProject);
@@ -76,7 +82,8 @@ export default function AgrihaLandingMain() {
 
   useEffect(() => {
     getAllProjects();
-  }, []);
+    console.log(filter);
+  }, [filter]);
 
   useEffect(() => {
     groupN(allProject, 4);
@@ -146,9 +153,21 @@ export default function AgrihaLandingMain() {
               <div className={styles.sthree_outer}>
                 <div className={`container ${styles.container} ${styles.sthree}`}>
                   <div className={styles.sthree_inner}>
-                    <div className={styles.active}>All</div>
+                    <div className={styles.active} onClick={() => setFilter("All")}>
+                      All
+                    </div>
                     {projectTypes?.map((item, index) => {
-                      return <div key={index}>{item.project_type}</div>;
+                      return (
+                        <>
+                          {item?.companyname ? (
+                            <div onClick={() => setFilter(item?.companyname)} key={index}>
+                              {item?.companyname}
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </>
+                      );
                     })}
                   </div>
                 </div>

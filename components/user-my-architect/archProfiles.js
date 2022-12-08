@@ -12,11 +12,12 @@ const FnArchProfiles = () => {
   const [Store] = useContext(StoreContext);
 
   const searchQueryArchitect = Store.searchQueryArchitect;
+  const setAllArchitects = Store.setAllArchitects;
+  const allArchitects = Store.allArchitects;
 
   const router = useRouter();
 
   /* GET PROJECT TYPES */
-  const [allArchitects, setAllArchitects] = useState([]);
   async function getallArchitects() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/architects/view`, {
@@ -33,7 +34,9 @@ const FnArchProfiles = () => {
 
   // console.log(allArchitects);
   useEffect(() => {
-    getallArchitects();
+    if (allArchitects.length === 0) {
+      getallArchitects();
+    }
   }, []);
 
   async function getSearchArchitects(query) {
@@ -54,7 +57,9 @@ const FnArchProfiles = () => {
       getSearchArchitects(searchQueryArchitect);
       console.log(searchQueryArchitect);
     } else {
-      getallArchitects();
+      if (allArchitects.length === 0) {
+        getallArchitects();
+      }
     }
   }, [searchQueryArchitect]);
 

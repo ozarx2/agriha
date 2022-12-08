@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import StarRatings from "react-star-ratings";
@@ -7,12 +7,17 @@ import api_url from "../../src/utils/url";
 import dummy_token from "../../src/utils/dummy_token";
 
 import styles from "./main.module.css";
+import { StoreContext } from "../StoreContext";
 
 const FnUserMyArchitectMobile = () => {
   const router = useRouter();
 
+  const [Store] = useContext(StoreContext);
+
+  const setAllArchitects = Store.setAllArchitects;
+  const allArchitects = Store.allArchitects;
+
   /* GET PROJECT TYPES */
-  const [allArchitects, setAllArchitects] = useState([]);
   async function getallArchitects() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/architects/view`, {
@@ -27,8 +32,11 @@ const FnUserMyArchitectMobile = () => {
     setAllArchitects(data);
   }
   console.log(allArchitects);
+
   useEffect(() => {
-    getallArchitects();
+    if (allArchitects.length === 0) {
+      getallArchitects();
+    }
   }, []);
 
   return (

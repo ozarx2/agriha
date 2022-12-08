@@ -24,7 +24,9 @@ export default function AgrihaLandingMain() {
   const [Store] = useContext(StoreContext);
   const setRegisterPopup = Store.setRegisterPopup;
   const loginActive = Store.loginActive;
-  const setArchitectBidtPopup = Store.setArchitectBidtPopup;
+  const projectResponse = Store.projectResponse;
+  const setProjectResponse = Store.setProjectResponse;
+  const setAllArchitects = Store.setAllArchitects;
 
   /* GET PROJECT TYPES */
   const [projectTypes, setProjectTypes] = useState([]);
@@ -46,7 +48,6 @@ export default function AgrihaLandingMain() {
     getProjects();
   }, []);
 
-  const [allProject, setAllProject] = useState([]);
   const [allProjectSliced, setAllProjectSliced] = useState([]);
 
   async function getAllProjects() {
@@ -61,14 +62,13 @@ export default function AgrihaLandingMain() {
       console.log(data.data);
       const withArchitect = data.data.filter((res) => res?.architect_id);
       if (filter === "All") {
-        setAllProject(withArchitect);
+        setProjectResponse(withArchitect);
       } else {
         let filtered = withArchitect.filter((res) => res?.architect_id?.companyname === filter);
-        setAllProject(filtered);
+        setProjectResponse(filtered);
       }
     }
   }
-  // console.log(allProject);
 
   function groupN(array, num) {
     const group = [];
@@ -78,16 +78,35 @@ export default function AgrihaLandingMain() {
     setAllProjectSliced(group);
   }
 
-  // console.log(allProjectSliced);
-
   useEffect(() => {
     getAllProjects();
     console.log(filter);
   }, [filter]);
 
   useEffect(() => {
-    groupN(allProject, 4);
-  }, [allProject]);
+    groupN(projectResponse, 4);
+  }, [projectResponse]);
+
+  async function getAllSearchResults(val) {
+    let archOnly = [];
+    const response = await fetch(`${api_url}/search?key=${val}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data.data);
+    archOnly = data.data?.filter((res) => res?.phone);
+    setAllArchitects(archOnly);
+    setProjectResponse(data.data?.filter((res) => res?.projectname && res?.architect_id));
+    console.log(data.data?.filter((res) => res?.projectname));
+  }
+
+  const allSearch = (query) => {
+    console.log(query);
+    getAllSearchResults(query);
+  };
 
   return (
     <>
@@ -100,7 +119,11 @@ export default function AgrihaLandingMain() {
                   <div className={styles.sone_inner}>
                     <div className={styles.search}>
                       <img src="/img/landing/search.svg" alt="search" />
-                      <input type="text" placeholder="Search Favorite Design" />
+                      <input
+                        type="text"
+                        onChange={(e) => allSearch(e.target.value)}
+                        placeholder="Search Favorite Design"
+                      />
                     </div>
                     <div className={styles.filters}>
                       <img src="/img/landing/filter.svg" alt="filter" />
@@ -256,7 +279,7 @@ export default function AgrihaLandingMain() {
           <div className={styles.sthree_outer}>
             <div className={`container ${styles.container} ${styles.sthree}`}>
               <div className={styles.sthree_inner}>
-                {allProject.length !== 0 ? (
+                {projectResponse?.length !== 0 ? (
                   <AgrihaImageGrid allProjectSliced={allProjectSliced} />
                 ) : (
                   <div className={styles.loading}>

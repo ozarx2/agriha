@@ -100,32 +100,20 @@ const UserArchitectAboutDesktop = () => {
                 <div className={styles.archAboutMainLeftSection}>
                   <div className={styles.archCover}>
                     <img
-                      src={
-                        singleArchitect?.coverpic
-                          ? singleArchitect?.coverpic
-                          : "/img/landing/nophoto.jpg"
-                      }
+                      src={singleArchitect?.coverpic ? singleArchitect?.coverpic : "/img/landing/nophoto.jpg"}
+                      onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                       alt="coverpic.svg"
                       className={styles.archCoverPic}
                     />
-                    <Link href="/user-my-architect" passHref>
-                      <div className={`${styles.backIcon}`}>
-                        <img
-                          src="/img/architect-about/back.svg"
-                          alt="back.svg"
-                          className={styles.backImg}
-                        />
-                      </div>
-                    </Link>
+                    <div onClick={() => router.back()} className={`${styles.backIcon}`}>
+                      <img src="/img/architect-about/back.svg" alt="back.svg" className={styles.backImg} />
+                    </div>
                   </div>
                   <div className={styles.archProfileArea}>
                     <div className={styles.archProfileSectionMain}>
                       <img
-                        src={
-                          singleArchitect?.profilepic
-                            ? singleArchitect?.profilepic
-                            : "/img/landing/profile_img.svg"
-                        }
+                        src={singleArchitect?.profilepic ? singleArchitect?.profilepic : "/img/landing/profile_img.svg"}
+                        onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                         alt="leftdp.svg"
                         className={styles.arcLeftPic}
                       />
@@ -133,9 +121,7 @@ const UserArchitectAboutDesktop = () => {
                         <div className={styles.archProfileName}>
                           {singleArchitect?.registered_id?.name
                             ? singleArchitect?.registered_id?.name
-                            : singleArchitect.firstname +
-                              " " +
-                              singleArchitect.lastname}
+                            : singleArchitect.firstname + " " + singleArchitect.lastname}
                         </div>
                         <div className={styles.archProfileRating}>
                           <div className={styles.ratingNumber}>4.6</div>
@@ -154,26 +140,16 @@ const UserArchitectAboutDesktop = () => {
                         <div className={styles.profileSubHead}>Architects</div>
                       </div>
                     </div>
-                    <div
-                      className={styles.archProfileSectionMainRight}
-                      onClick={() =>
-                        router.push(`tel:${singleArchitect?.phone}`)
-                      }
-                    >
-                      <div className={styles.archOptionsIcons}>
-                        <img
-                          src="/img/architect-about/contact.svg"
-                          alt="contact.svg"
-                          className={styles.contactIcon}
-                        />
-                        <span>Contact</span>
+                    <div className={styles.archProfileSectionMainRight}>
+                      <div
+                        className={styles.archOptionsIcons}
+                        onClick={() => router.push(`tel:${singleArchitect?.phone}`)}
+                      >
+                        <img src="/img/architect-about/contact.svg" alt="contact.svg" className={styles.contactIcon} />
+                        Contact
                       </div>
                       <div className={styles.archOptionsIcons}>
-                        <img
-                          src="/img/architect-about/share.svg"
-                          alt="share.svg"
-                          className={styles.shareIcon}
-                        />
+                        <img src="/img/architect-about/share.svg" alt="share.svg" className={styles.shareIcon} />
                         <span>Share</span>
                       </div>
                       {/* <div className={styles.archOptionsIcons}>
@@ -190,60 +166,29 @@ const UserArchitectAboutDesktop = () => {
 
                   <div className={styles.archAboutTabSection}>
                     <div className={styles.archTabTitles}>
-                      <div
-                        onClick={() => setTab("aboutus")}
-                        className={tab == "aboutus" ? styles.tabActive : ""}
-                      >
+                      <div onClick={() => setTab("aboutus")} className={tab == "aboutus" ? styles.tabActive : ""}>
                         About us
                       </div>
-                      <div
-                        onClick={() => setTab("projects")}
-                        className={tab == "projects" ? styles.tabActive : ""}
-                      >
+                      <div onClick={() => setTab("projects")} className={tab == "projects" ? styles.tabActive : ""}>
                         Projects
                       </div>
-                      <div
-                        onClick={() => setTab("awards")}
-                        className={tab == "awards" ? styles.tabActive : ""}
-                      >
+                      <div onClick={() => setTab("awards")} className={tab == "awards" ? styles.tabActive : ""}>
                         Awards
                       </div>
-                      <div
-                        onClick={() => setTab("review")}
-                        className={tab == "review" ? styles.tabActive : ""}
-                      >
+                      <div onClick={() => setTab("review")} className={tab == "review" ? styles.tabActive : ""}>
                         Review
                       </div>
                     </div>
                   </div>
 
                   {/*-----ARCHITECT ABOUT  SECTION-------*/}
-                  {tab == "aboutus" ? (
-                    <FnAbout singleArchitect={singleArchitect} />
-                  ) : (
-                    ""
-                  )}
+                  {tab == "aboutus" ? <FnAbout singleArchitect={singleArchitect} /> : ""}
                   {/*-----ARCHITECT PROJECT  SECTION-------*/}
-                  {tab == "projects" ? (
-                    <FnProject
-                      singleArchitect={singleArchitect}
-                      projects={projects}
-                    />
-                  ) : (
-                    ""
-                  )}
+                  {tab == "projects" ? <FnProject singleArchitect={singleArchitect} projects={projects} /> : ""}
                   {/*-----ARCHITECT AWARDS SECTION-------*/}
-                  {tab == "awards" ? (
-                    <FnAward singleArchitect={singleArchitect} />
-                  ) : (
-                    ""
-                  )}
+                  {tab == "awards" ? <FnAward singleArchitect={singleArchitect} /> : ""}
                   {/*-----ARCHITECT REVIEW SECTION-------*/}
-                  {tab == "review" ? (
-                    <FnReview singleArchitect={singleArchitect} />
-                  ) : (
-                    ""
-                  )}
+                  {tab == "review" ? <FnReview singleArchitect={singleArchitect} /> : ""}
                 </div>
               </div>
 
@@ -252,10 +197,7 @@ const UserArchitectAboutDesktop = () => {
               <div className={styles.archAboutMainRightSection}>
                 <div className={styles.archViewedSection}>
                   <div className={styles.archViewed}>People also viewed</div>
-                  <div
-                    onClick={() => router.push("/user-my-architect")}
-                    className={styles.archViewAll}
-                  >
+                  <div onClick={() => router.push("/user-my-architect")} className={styles.archViewAll}>
                     view all
                   </div>
                 </div>
@@ -265,11 +207,8 @@ const UserArchitectAboutDesktop = () => {
                     <React.Fragment key={index}>
                       <div className={styles.archViewedProfileSection}>
                         <img
-                          src={
-                            items?.coverpic
-                              ? items?.coverpic
-                              : "/img/landing/nophoto.jpg"
-                          }
+                          src={items?.coverpic ? items?.coverpic : "/img/landing/nophoto.jpg"}
+                          onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                           alt=""
                         />
                         <div className={styles.archViewedProfile}>
@@ -289,17 +228,13 @@ const UserArchitectAboutDesktop = () => {
                               name="rating"
                             />
                             <div className={styles.viewedRatingReviews}>
-                              2 Reviews
+                              {/* {AgrihaArchitectTotalRating(items._id).length} Reviews */}
+                              <AgrihaArchitectTotalCount id={items._id} /> Reviews
+                              {/* {AgrihaArchitectRating(items._id).totalCount} Reviews */}
                             </div>
                           </div>
-                          <div className={styles.archViewedSubhead}>
-                            Architects
-                          </div>
                           <div className={styles.archViewProfileSection}>
-                            <Link
-                              href={`/user-architect-about/${items._id}`}
-                              passHref
-                            >
+                            <Link href={`/user-architect-about/${items._id}`} passHref>
                               <a href="" className={styles.archViewProfile}>
                                 View profile
                               </a>

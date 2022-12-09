@@ -120,11 +120,6 @@ const FnFileUploadDesk = ({ projectId }) => {
     }
     setId(id);
   };
-  const singleDeleteImage = (i) => {
-    let temp = [...files];
-    temp.splice(i, 1);
-    setFiles(temp);
-  };
 
   useEffect(() => {
     if (

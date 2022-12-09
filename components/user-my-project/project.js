@@ -10,6 +10,7 @@ import FnPayment from "./payment";
 import FnSuggested from "./suggested";
 import api_url from "../../src/utils/url";
 import { Upload } from "antd";
+import moment from "moment";
 const { Dragger } = Upload;
 
 import styles from "./project.module.css";
@@ -140,7 +141,12 @@ const FnOngoingProjectUserSide = () => {
                         {items?.status}
                       </div>
                       <div className={styles.profileStatus}>
-                        {items?.starting_date}
+                        {
+                          /* {moment(items?.starting_date).format(
+                          "MMMM Do YYYY, h:mm:ss a"
+                        )} */
+                          items?.starting_date
+                        }
                       </div>
                       <div className={styles.profileStatus}>
                         {items?.status}

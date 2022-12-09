@@ -6,12 +6,14 @@ import { Upload } from "antd";
 const { Dragger } = Upload;
 
 import styles from "./fileuploadmob.module.css";
+
+import stylefl from "./uploadedfiles.module.css";
+
 import { useContext } from "react";
 import { useState } from "react";
-import FnUploadFilesMob from "./uploadedfilesmob";
 
 const FnFileUploadMob = ({ projectId }) => {
-  console.log(projectId);
+  // console.log(projectId);
   const [Store] = useContext(StoreContext);
   const [descriptionMob, setDescriptionMob] = useState("");
   const [id, setId] = useState("");
@@ -35,8 +37,9 @@ const FnFileUploadMob = ({ projectId }) => {
       }
     );
     const data = await response.json();
-    console.log(data);
-    setFileUpload(data.userFile);
+    if (data.status === 200) {
+      setFileUpload(data.userFile);
+    }
   }
 
   const handleSubmit = async (id) => {
@@ -57,8 +60,8 @@ const FnFileUploadMob = ({ projectId }) => {
       }
     );
     const data = await res.json();
-    // console.log(data);
   };
+
   /* Upload project images */
   const [files, setFiles] = useState([]);
   const [projectImages, setProjectImages] = useState([]);
@@ -91,7 +94,6 @@ const FnFileUploadMob = ({ projectId }) => {
     );
   }
 
-  console.log(projectImages);
   /* Multiple Image Uploading */
   var fileObj = [];
   var fileArray = [];
@@ -134,56 +136,83 @@ const FnFileUploadMob = ({ projectId }) => {
     getUploadFile();
   }, []);
 
+  const result = fileUploads?.filter((item) => item.project_id === projectId);
+  console.log(result);
+
   return (
     <>
-      <div className={styles.sentFileUploadMainSecMobTitle}>Upload files</div>
-      <input
-        className={styles.sentFileDescMob}
-        placeholder="Enter Description"
-        value={descriptionMob}
-        onChange={handlerMob}
-      />
+      {result.length === 0 ? (
+        <>
+          <div className={styles.sentFileUploadMainSecMobTitle}>
+            Upload files
+          </div>
+          <input
+            className={styles.sentFileDescMob}
+            placeholder="Enter Description"
+            value={descriptionMob}
+            onChange={handlerMob}
+          />
 
-      <div id="FnUserMyProjectMobileUpload" className={styles.dragDropSec}>
-        <input
-          className={styles.custom_file_input}
-          type="file"
-          multiple
-          onChange={uploadMultipleFiles}
-          placeholder="No file selected"
-          accept="application/pdf"
-        />
-        <div className={styles.dragDrop}>
-          Select file or <a href="">browse</a>
-        </div>
-        <div className={styles.fileOuter}>
-          {files.map((file, key) => {
-            console.log(file);
-            return (
-              <div key={key} className={styles.file}>
-                <div>
-                  <img src="/img/my-project-user/data.svg" />
-                  <span>{file.file.name}</span>
-                </div>
-                {/* <span className={styles.fileDelete}>Delete</span> */}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <div
-        className={styles.uploadFileDescMob}
-        onClick={() => uploadProject(projectId.projectId)}
-      >
-        <img
-          src="/img/my-project-user/mobile/uploadmob.svg"
-          alt="uploadmob.svg"
-        />
-        <span>UploadFile</span>
-      </div>
-      <div>
-        <FnUploadFilesMob project_id={projectId} fileUploads={fileUploads} />
-      </div>
+          <div id="FnUserMyProjectMobileUpload" className={styles.dragDropSec}>
+            <input
+              className={styles.custom_file_input}
+              type="file"
+              multiple
+              onChange={uploadMultipleFiles}
+              placeholder="No file selected"
+              accept="application/pdf"
+            />
+            <div className={styles.dragDrop}>
+              Select file or <a href="">browse</a>
+            </div>
+            <div className={styles.fileOuter}>
+              {files.map((file, key) => {
+                console.log(file);
+                return (
+                  <div key={key} className={styles.file}>
+                    <div>
+                      <img src="/img/my-project-user/data.svg" />
+                      <span>{file.file.name}</span>
+                    </div>
+                    {/* <span className={styles.fileDelete}>Delete</span> */}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div
+            className={styles.uploadFileDescMob}
+            onClick={() => uploadProject(projectId.projectId)}
+          >
+            <img
+              src="/img/my-project-user/mobile/uploadmob.svg"
+              alt="uploadmob.svg"
+            />
+            <span>UploadFile</span>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className={stylefl.fileOuter}>
+            {result?.map((items, key) => {
+              return (
+                <>
+                  <div className={stylefl.uploadedFiles}>Uploaded file:</div>
+                  <div className={stylefl.file}>
+                    <div>
+                      <img src="/img/my-project-user/data.svg" />
+                      <span>{items?.description}</span>
+                    </div>
+                    <a target="_blank" href={`${items}`}>
+                      view
+                    </a>
+                  </div>
+                </>
+              );
+            })}
+          </div>
+        </>
+      )}
     </>
   );
 };

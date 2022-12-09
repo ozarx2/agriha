@@ -109,6 +109,7 @@
 .profileDpNameSection {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .profileNameSec {
   display: flex;

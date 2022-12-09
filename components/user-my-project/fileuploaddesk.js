@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { StoreContext } from "../../components/StoreContext";
 import storage from "../../firebase";
@@ -6,10 +6,8 @@ import { Upload } from "antd";
 const { Dragger } = Upload;
 
 import styles from "./fileuploaddesk.module.css";
-import { useContext } from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import FnUploadFiles from "./uploadedfiles";
+
+import stylesf from "./uploadedfiles.module.css";
 
 const FnFileUploadDesk = ({ projectId }) => {
   // console.log(projectId);
@@ -17,15 +15,30 @@ const FnFileUploadDesk = ({ projectId }) => {
   const [description, setDescription] = useState("");
   const [id, setId] = useState("");
 
-  const cancelFunction = () => {
-    // console.log(files);
-    setFiles([]);
-    // console.log(files);
-  };
-
   const handler = (e) => {
     setDescription(e.target.value);
   };
+
+  const [fileUploads, setFileUpload] = useState([]);
+
+  async function getUploadFile() {
+    const token = localStorage.getItem("userToken");
+    const response = await fetch(
+      "https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/userfiles",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const data = await response.json();
+
+    if (data.status === 200) {
+      setFileUpload(data.userFile);
+    }
+  }
 
   const handleSubmit = async (id) => {
     const token = localStorage.getItem("userToken");
@@ -45,7 +58,6 @@ const FnFileUploadDesk = ({ projectId }) => {
       }
     );
     const data = await res.json();
-    // console.log(data);
   };
 
   /* Upload project images */
@@ -74,13 +86,12 @@ const FnFileUploadDesk = ({ projectId }) => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log(url);
           setProjectImages((projectImages) => [...projectImages, url]);
         });
       }
     );
   }
-
-  // console.log(projectImages);
 
   /* Multiple Image Uploading */
   var fileObj = [];
@@ -108,13 +119,9 @@ const FnFileUploadDesk = ({ projectId }) => {
       handleUploadProject(temp[i].file);
     }
     setId(id);
-    // alert("uploaded");
   };
 
   useEffect(() => {
-    // console.log(uploadProject);
-    // console.log(files.length);
-    // console.log(projectImages.length);
     if (
       files.length === projectImages.length &&
       files.length !== 0 &&
@@ -124,78 +131,101 @@ const FnFileUploadDesk = ({ projectId }) => {
     }
   }, [projectImages]);
 
-  const singleDeleteImage = (i) => {
-    let temp = [...files];
-    temp.splice(i, 1);
-    setFiles(temp);
-  };
+  useEffect(() => {
+    getUploadFile();
+  }, []);
+
+  const result = fileUploads?.filter((item) => item.project_id === projectId);
+  console.log(result);
+
   return (
     <>
       <div className={styles.secTwoMain}>
-        <div className={styles.fileUploadSectionArch}>
-          <div>File upload to Architect</div>
-        </div>
-        <div className={styles.uploadDescSec}>
-          <input
-            type="text"
-            className={styles.uploadDesc}
-            onChange={handler}
-            placeholder="Enter description"
-          />
-        </div>
-        <div className={styles.dragDropSec}>
-          <input
-            className={styles.custom_file_input}
-            type="file"
-            multiple
-            onChange={uploadMultipleFiles}
-            placeholder="No file selected"
-            accept="application/pdf"
-          />
-          <div className={styles.dragDrop}>
-            Drag & drop <a href="">Browse</a>
-          </div>
-          <div className={styles.fileOuter}>
-            {files.map((file, key) => {
-              {
-                /* console.log("file +" + files); */
-              }
-              return (
-                <div key={key} className={styles.file}>
-                  <div>
-                    <img src="/img/my-project-user/data.svg" />
-                    <span>{file.file.name}</span>
-                  </div>
-                  <img
-                    src="/img/architect-dashboard/delete-h.svg"
-                    alt=""
-                    onClick={() => singleDeleteImage(index)}
-                  />
-                  {/* <span className={styles.fileDelete}>Delete</span> */}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className={styles.fileButtonsSec}>
-          <div className={styles.cancelBtn} onClick={() => cancelFunction()}>
-            cancel
-          </div>
-          <div
-            className={styles.uploadBtn}
-            onClick={() => uploadProject(projectId.projectId)}
-          >
-            <img
-              src="/img/my-project-user/upload.svg"
-              alt="upload.svg"
-              className={styles.upload}
-            />
-            <span>Upload</span>
-          </div>
-        </div>
-        <div>
-          <FnUploadFiles project_id={projectId} />
-        </div>
+        {console.log(fileUploads)}
+        {result.length === 0 ? (
+          <>
+            <div className={styles.fileUploadSectionArch}>
+              <div>File upload to Architect</div>
+            </div>
+            <div className={styles.uploadDescSec}>
+              <input
+                type="text"
+                className={styles.uploadDesc}
+                onChange={handler}
+                placeholder="Enter description"
+              />
+            </div>
+            <div className={styles.dragDropSec}>
+              <input
+                className={styles.custom_file_input}
+                type="file"
+                multiple
+                onChange={uploadMultipleFiles}
+                placeholder="No file selected"
+                accept="application/pdf"
+              />
+              <div className={styles.dragDrop}>
+                Drag & drop <a href="">Browse</a>
+              </div>
+              <div className={styles.fileOuter}>
+                {files.map((file, key) => {
+                  return (
+                    <div key={key} className={styles.file}>
+                      <div>
+                        <img src="/img/my-project-user/data.svg" />
+                        <span>{file.file.name}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className={styles.fileButtonsSec}>
+              <div
+                className={styles.cancelBtn}
+                onClick={() => cancelFunction()}
+              >
+                cancel
+              </div>
+              <div
+                className={styles.uploadBtn}
+                onClick={() => uploadProject(projectId.projectId)}
+              >
+                <img
+                  src="/img/my-project-user/upload.svg"
+                  alt="upload.svg"
+                  className={styles.upload}
+                />
+                <span>Upload</span>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div>
+              <div className={stylesf.fileOuter}>
+                {result?.map((items, key) => {
+                  return (
+                    <>
+                      <div className={stylesf.uploadedFiles}>
+                        Uploaded file:
+                      </div>
+                      <div className={stylesf.file}>
+                        <div>
+                          <img src="/img/my-project-user/data.svg" />
+                          <span>{items?.description}</span>
+                        </div>
+                        <a target="_blank" href={`${items}`}>
+                          view
+                        </a>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

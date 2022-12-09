@@ -188,7 +188,7 @@ const UserArchitectAboutDesktop = () => {
                       </div>
                       <div className={styles.archOptionsIcons}>
                         <img src="/img/architect-about/share.svg" alt="share.svg" className={styles.shareIcon} />
-                        Share
+                        <span>Share</span>
                       </div>
                       {/* <div className={styles.archOptionsIcons}>
                         <img src="/img/architect-about/heart.svg" alt="heart.svg" className={styles.heartIcon} />
@@ -285,7 +285,6 @@ const UserArchitectAboutDesktop = () => {
                               {/* {AgrihaArchitectRating(items._id).totalCount} Reviews */}
                             </div>
                           </div>
-                          <div className={styles.archViewedSubhead}>Architects</div>
                           <div className={styles.archViewProfileSection}>
                             <Link href={`/user-architect-about/${items._id}`} passHref>
                               <a href="" className={styles.archViewProfile}>

@@ -2,37 +2,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./uploadedfilesmob.module.css";
 
-const FnUploadFilesMob = ({ project_id }) => {
-  const [fileUploads, setFileUpload] = useState([]);
-
+const FnUploadFilesMob = ({ project_id, fileUploads }) => {
   const result = fileUploads.filter((item) => item.project_id === project_id);
-  console.log(project_id);
-  useEffect(() => {
-    getUploadFile();
-  }, []);
-  async function getUploadFile() {
-    const token = localStorage.getItem("userToken");
-    const response = await fetch(
-      "https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/userfiles",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const data = await response.json();
-    console.log(data);
-    setFileUpload(data.userFile);
-  }
-  console.log(fileUploads);
   return (
     <>
       <div className={styles.fileOuter}>
         {result?.map((items, key) => {
           return (
             <>
+              <div className={styles.uploadedFiles}>Uploaded file:</div>
               <div className={styles.file}>
                 <div>
                   <img src="/img/my-project-user/data.svg" />

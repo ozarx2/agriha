@@ -10,6 +10,7 @@ import FnPayment from "./payment";
 import FnSuggested from "./suggested";
 import api_url from "../../src/utils/url";
 import { Upload } from "antd";
+import moment from "moment";
 const { Dragger } = Upload;
 
 import styles from "./project.module.css";
@@ -65,7 +66,7 @@ const FnOngoingProjectUserSide = () => {
             <>
               <div key={key} className={styles.ongoingProjectSection}>
                 <div className={styles.projectNameSection}>
-                  <div className={styles.projectName}>My Project</div>
+                  <div className={styles.projectName}>Project {key + 1}</div>
                   <div className={styles.projectId}>{items?.project_name}</div>
                 </div>
                 <div className={styles.showMoreBtnSection}>
@@ -75,7 +76,6 @@ const FnOngoingProjectUserSide = () => {
                     </div>
                   </div> */}
                   {items.bid ? <div className={styles.bid}>Bid</div> : ""}
-
                   <div
                     id="less"
                     className={styles.showMore}
@@ -141,7 +141,12 @@ const FnOngoingProjectUserSide = () => {
                         {items?.status}
                       </div>
                       <div className={styles.profileStatus}>
-                        {items?.starting_date}
+                        {
+                          /* {moment(items?.starting_date).format(
+                          "MMMM Do YYYY, h:mm:ss a"
+                        )} */
+                          items?.starting_date
+                        }
                       </div>
                       <div className={styles.profileStatus}>
                         {items?.status}

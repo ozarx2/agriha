@@ -51,17 +51,22 @@
     opacity: 0;
   }
   .dragDrop {
-    padding: 15px;
-    text-align: center;
+    padding: 13.67px 18.15px;
+    /* text-align: center; */
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 148.19%;
     color: #9a9a9a;
-    background: #ffffff;
-    border: 1px dashed #9b9a9a;
+    /* background: #ffffff;
+    border: 1px dashed #9b9a9a; */
+    background: #f8f5ff;
+    border: 0.5px dashed #642dda;
     border-radius: 7px;
+  }
+  .dragDrop > a {
+    color: #642dda;
   }
   .sentFileUploadMainSecMobTitle {
     font-family: "Inter";

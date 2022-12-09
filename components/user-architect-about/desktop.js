@@ -12,6 +12,8 @@ import FnAward from "./award/award";
 import FnReview from "./review/review";
 import api_url from "../../src/utils/url";
 import dummy_token from "../../src/utils/dummy_token";
+import AgrihaArchitectTotalRating from "../user-common/totalRating";
+import AgrihaArchitectTotalCount from "../user-common/totalCount";
 
 import styles from "./main.module.css";
 
@@ -86,6 +88,42 @@ const UserArchitectAboutDesktop = () => {
     setAllArchitects(data);
   }
 
+  //  function AgrihaArchitectTotalRating(id) {
+  //     var items = {};
+  //     // var items = [];
+  //     async function getRating({ id }) {
+  //       const token = localStorage.getItem("userToken");
+  //       const res = await fetch(`${api_url}/star-rating/${id}`, {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
+  //       const data = await res.json();
+  //       var r = 0;
+  //       var result = 0;
+  //       data?.data?.map((i) => {
+  //         r += i.rating;
+  //       });
+  //       length = data?.data?.length;
+  //       if (length === 0) {
+  //         result = 0;
+  //       } else {
+  //         result = Number(parseFloat(r / length).toFixed(2));
+  //       }
+  //       // items.push({ length: length, rating: result });
+  //       Object.assign(items, { length: length }, { rating: result });
+  //     }
+  //     const getRatings = getRating({ id });
+
+  //     console.log(items);
+  //     return {
+  //       TotalRating: 3.55,
+  //       totalCount: 6,
+  //     };
+  //   }
+
   useEffect(() => {
     getallArchitects();
   }, []);
@@ -124,7 +162,7 @@ const UserArchitectAboutDesktop = () => {
                             : singleArchitect.firstname + " " + singleArchitect.lastname}
                         </div>
                         <div className={styles.archProfileRating}>
-                          <div className={styles.ratingNumber}>4.6</div>
+                          <div className={styles.ratingNumber}>4.5</div>
                           <div className={styles.ratingNumber}>
                             <StarRatings
                               rating={4}
@@ -203,6 +241,14 @@ const UserArchitectAboutDesktop = () => {
                 </div>
 
                 {allArchitects?.slice(0, 3)?.map((items, index) => {
+                  {
+                    /* const [rate, setRate] = useState(0); */
+                  }
+                  const pull_data = (data) => {
+                    {
+                      /* setRate(data); */
+                    }
+                  };
                   return (
                     <React.Fragment key={index}>
                       <div className={styles.archViewedProfileSection}>
@@ -218,16 +264,26 @@ const UserArchitectAboutDesktop = () => {
                               : items.firstname + " " + items.lastname}
                           </div>
                           <div className={styles.archViewedRating}>
-                            <div className={styles.viewedRatingNumber}>4.5</div>
+                            <div className={styles.viewedRatingNumber}>
+                              <AgrihaArchitectTotalRating id={items._id} func={pull_data} />
+                              {/* {console.log(AgrihaArchitectTotalRating(items._id))} */}
+                              {/* {AgrihaArchitectTotalRating(items._id).rating} */}
+                              {/* {AgrihaArchitectTotalRating} */}
+                            </div>
                             <StarRatings
                               rating={4.5}
+                              // rating={Number(rate)}
                               starRatedColor="#edbc3b"
                               numberOfStars={5}
                               starDimension="14px"
                               starSpacing="1.5px"
                               name="rating"
                             />
-                            <div className={styles.viewedRatingReviews}>2 Reviews</div>
+                            <div className={styles.viewedRatingReviews}>
+                              {/* {AgrihaArchitectTotalRating(items._id).length} Reviews */}
+                              <AgrihaArchitectTotalCount id={items._id} /> Reviews
+                              {/* {AgrihaArchitectRating(items._id).totalCount} Reviews */}
+                            </div>
                           </div>
                           <div className={styles.archViewedSubhead}>Architects</div>
                           <div className={styles.archViewProfileSection}>

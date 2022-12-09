@@ -169,7 +169,7 @@ const FnUserMyProjectMobile = () => {
                         <div className={styles.projImgProNamePicMobMainSec}>
                           <div className={styles.projImgProNamePicMobMain}>
                             <div>
-                              <div className={styles.projNameMob}>Project name</div>
+                              <div className={styles.projNameMob}>Project {key + 1}</div>
                               <div className={styles.projIdMob}>{items?.project_name}</div>
                             </div>
                             <div className={styles.projProPicBtnsMob}>

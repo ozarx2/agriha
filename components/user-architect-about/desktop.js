@@ -183,11 +183,7 @@ const UserArchitectAboutDesktop = () => {
                         className={styles.archOptionsIcons}
                         onClick={() => router.push(`tel:${singleArchitect?.phone}`)}
                       >
-                        <img
-                          src="/img/architect-about/contaratect.svg"
-                          alt="contact.svg"
-                          className={styles.contactIcon}
-                        />
+                        <img src="/img/architect-about/contact.svg" alt="contact.svg" className={styles.contactIcon} />
                         Contact
                       </div>
                       <div className={styles.archOptionsIcons}>
@@ -245,9 +241,13 @@ const UserArchitectAboutDesktop = () => {
                 </div>
 
                 {allArchitects?.slice(0, 3)?.map((items, index) => {
-                  const [rate, setRate] = useState(0);
+                  {
+                    /* const [rate, setRate] = useState(0); */
+                  }
                   const pull_data = (data) => {
-                    setRate(data);
+                    {
+                      /* setRate(data); */
+                    }
                   };
                   return (
                     <React.Fragment key={index}>
@@ -271,7 +271,8 @@ const UserArchitectAboutDesktop = () => {
                               {/* {AgrihaArchitectTotalRating} */}
                             </div>
                             <StarRatings
-                              rating={Number(rate)}
+                              rating={4.5}
+                              // rating={Number(rate)}
                               starRatedColor="#edbc3b"
                               numberOfStars={5}
                               starDimension="14px"

@@ -2,6 +2,42 @@ import api_url from "../../src/utils/url";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
+function AgrihaArchitectTotalRating({ id, setRate }) {
+  const [rating, setRating] = useState(0);
+  const [l, setL] = useState(0);
+  const token = localStorage.getItem("userToken");
+
+  axios
+    .get(`${api_url}/star-rating/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      let r = 0;
+      response.data.data.map((items) => {
+        r += items.rating;
+      });
+      length = response.data.data.length;
+      setL(length);
+      if (length !== 0) {
+        let result = parseFloat(r / length).toFixed(2);
+        setRating(result);
+      } else {
+        let result = 0;
+        setRating(result);
+      }
+    });
+  setRate(parseFloat(rating));
+  return rating;
+  // return {
+  //   TotalRating: rating,
+  //   totalCount: l,
+  // };
+}
+export default AgrihaArchitectTotalRating;
+
 // export default function AgrihaArchitectTotalRating({ id }) {
 //   const [rating, setRating] = useState(0);
 //   const token = localStorage.getItem("userToken");
@@ -153,34 +189,3 @@ import React, { useState, useEffect } from "react";
 //   // items.push(itemPush);
 //   // Object.assign(items, { length: length }, { rating: result });
 // }
-
-function AgrihaArchitectTotalRating({ id, func }) {
-  const [rating, setRating] = useState(0);
-  const token = localStorage.getItem("userToken");
-
-  axios
-    .get(`${api_url}/star-rating/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => {
-      let r = 0;
-      response.data.data.map((items) => {
-        r += items.rating;
-      });
-      length = response.data.data.length;
-      if (length !== 0) {
-        let result = parseFloat(r / length).toFixed(2);
-        setRating(result);
-      } else {
-        let result = 0;
-        setRating(result);
-      }
-    });
-  console.log(rating);
-  func(rating);
-  return rating;
-}
-export default AgrihaArchitectTotalRating;

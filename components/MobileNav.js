@@ -1,4 +1,3 @@
-import { Logout } from "@mui/icons-material";
 import Image from "next/image";
 import React from "react";
 import styles from "../styles/MobileNav.module.css";
@@ -14,8 +13,8 @@ const MobileNav = () => {
 
   const logout = () => {
     localStorage.clear();
-    window.location.href = "/"
-  }
+    window.location.href = "/";
+  };
 
   return (
     <div className={styles.mobileNav}>

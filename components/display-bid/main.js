@@ -32,7 +32,7 @@ export default function AgrihaDisplayBidMain() {
     const data = await response.json();
     if (data) {
       const temp = data.data;
-      console.log(temp);
+      // console.log(temp);
       setGetAllBidResult(temp);
       if (temp?.length > 0) {
         setBid(true);

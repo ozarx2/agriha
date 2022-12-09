@@ -5,9 +5,6 @@ import Link from "next/link";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { StoreContext } from "../../components/StoreContext";
 import storage from "../../firebase";
-import { InboxOutlined } from "@ant-design/icons";
-import { message, Upload } from "antd";
-const { Dragger } = Upload;
 
 import styles from "./main.module.css";
 import FnFileUploadMob from "./fileuploadmob";

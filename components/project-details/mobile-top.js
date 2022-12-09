@@ -38,7 +38,7 @@ export default function AgrihaProjectDetailsMainMobileTop() {
       },
     });
     const data = await res.json();
-    console.log(data[0]);
+    // console.log(data[0]);
     setProjectDetails(data[0]);
   }
 

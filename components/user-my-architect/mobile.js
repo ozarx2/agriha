@@ -31,7 +31,7 @@ const FnUserMyArchitectMobile = () => {
     const data = await res.json();
     setAllArchitects(data);
   }
-  console.log(allArchitects);
+  // console.log(allArchitects);
 
   useEffect(() => {
     if (allArchitects.length === 0) {

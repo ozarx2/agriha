@@ -34,6 +34,8 @@ export const StoreContextProvider = (props) => {
   // Store Yaseen start
   const [bidUserId, setBidUserId] = useState("");
   const [searchQueryArchitect, setSearchQueryArchitect] = useState("");
+  const [allArchitects, setAllArchitects] = useState([]);
+  const [projectResponse, setProjectResponse] = useState([]);
   // Store Yaseen end
 
   // Store 61-5a start
@@ -109,6 +111,10 @@ export const StoreContextProvider = (props) => {
     setBidUserId,
     searchQueryArchitect,
     setSearchQueryArchitect,
+    allArchitects,
+    setAllArchitects,
+    projectResponse,
+    setProjectResponse,
     // Store Yaseen end
 
     // Store 61-5a start

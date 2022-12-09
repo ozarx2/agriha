@@ -76,6 +76,8 @@ export default function AgrihaLandingHeader() {
   const userId = Store.userId;
   const setUserId = Store.setUserId;
   const setUserRole = Store.setUserRole;
+  const setProjectResponse = Store.setProjectResponse;
+  const setAllArchitects = Store.setAllArchitects;
 
   const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
   async function getHomeSeekerDetails() {
@@ -107,6 +109,27 @@ export default function AgrihaLandingHeader() {
       setUserId(userId);
     }
   }, []);
+
+  async function getAllSearchResults(val) {
+    let archOnly = [];
+    const response = await fetch(`${api_url}/search?key=${val}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data.data);
+    archOnly = data.data?.filter((res) => res?.phone);
+    setAllArchitects(archOnly);
+    setProjectResponse(data.data?.filter((res) => res?.projectname && res?.architect_id));
+    console.log(data.data?.filter((res) => res?.projectname));
+  }
+
+  const allSearch = (query) => {
+    console.log(query);
+    getAllSearchResults(query);
+  };
 
   return (
     <>
@@ -283,7 +306,7 @@ export default function AgrihaLandingHeader() {
             <div id="search_outer" className={`search_outer ${styles.search_outer}`} style={{ top: "3px" }}>
               <div className={styles.search_out}>
                 <img src="/img/landing/search.svg" alt="search" />
-                <input type="text" placeholder="Search here..." />
+                <input type="text" onChange={(e) => allSearch(e.target.value)} placeholder="Search here..." />
               </div>
             </div>
           )}

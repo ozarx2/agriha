@@ -28,6 +28,7 @@ export default function ProfilePopup() {
     setLoginActive(false);
     setUserId("");
     setProfilePopup(false);
+    router.push("/");
   };
 
   const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);

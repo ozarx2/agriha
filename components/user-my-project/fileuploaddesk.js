@@ -89,6 +89,8 @@ const FnFileUploadDesk = ({ projectId }) => {
     );
   }
 
+  console.log(projectImages);
+
   /* Multiple Image Uploading */
   var fileObj = [];
   var fileArray = [];
@@ -132,7 +134,6 @@ const FnFileUploadDesk = ({ projectId }) => {
       <div className={styles.secTwoMain}>
         {console.log(fileUploads)}
         {console.log(files)}
-        {console.log(result)}
         {result.length === 0 ? (
           <>
             <div className={styles.fileUploadSectionArch}>

@@ -1,13 +1,41 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import StarRatings from "react-star-ratings";
-import AgrihaArchitectTotalRating from "../user-common/totalRating";
-import AgrihaArchitectTotalCount from "../user-common/totalCount";
+import axios from "axios";
+import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
 
 function AgrihaAlsoViewedSingle({ items }) {
   const [rate, setRate] = useState(0);
+  const [count, setCount] = useState(0);
+  const token = localStorage.getItem("userToken");
+
+  useEffect(() => {
+    const getRate = async () => {
+      const response = await axios.get(`${api_url}/star-rating/${items._id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      let r = 0;
+      response?.data?.data?.map((items) => {
+        r += items.rating;
+      });
+      length = response?.data?.data?.length;
+      setCount(length);
+      if (length !== 0 && r) {
+        let result = Math.round(parseFloat(r / length) * 100) / 100;
+        setRate(result);
+      } else {
+        let result = 0;
+        setRate(result);
+      }
+    };
+    getRate();
+  }, []);
+
   return (
     <div className={styles.archViewedProfileSection}>
       <img
@@ -20,10 +48,7 @@ function AgrihaAlsoViewedSingle({ items }) {
           {items?.registered_id?.name ? items?.registered_id?.name : items.firstname + " " + items.lastname}
         </div>
         <div className={styles.archViewedRating}>
-          <div className={styles.viewedRatingNumber}>
-            {/* <AgrihaArchitectTotalRating id={items._id} func={pull_data} rate={rate} /> */}
-            <AgrihaArchitectTotalRating id={items._id} setRate={setRate} />
-          </div>
+          <div className={styles.viewedRatingNumber}>{rate}</div>
           <StarRatings
             rating={rate}
             starRatedColor="#edbc3b"
@@ -32,9 +57,7 @@ function AgrihaAlsoViewedSingle({ items }) {
             starSpacing="1.5px"
             name="rating"
           />
-          <div className={styles.viewedRatingReviews}>
-            <AgrihaArchitectTotalCount id={items._id} /> Reviews
-          </div>
+          <div className={styles.viewedRatingReviews}>{count} Reviews</div>
         </div>
         <div className={styles.archViewProfileSection}>
           <Link href={`/user-architect-about/${items._id}`} passHref>

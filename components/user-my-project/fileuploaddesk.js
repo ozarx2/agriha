@@ -127,6 +127,7 @@ const FnFileUploadDesk = ({ projectId }) => {
     <>
       <div className={styles.secTwoMain}>
         {console.log(fileUploads)}
+        {console.log(files)}
         {result.length === 0 ? (
           <>
             <div className={styles.fileUploadSectionArch}>
@@ -178,9 +179,7 @@ const FnFileUploadDesk = ({ projectId }) => {
                 {result?.map((items, key) => {
                   return (
                     <>
-                      <div key={key} className={stylesf.uploadedFiles}>
-                        Uploaded file:
-                      </div>
+                      <div className={stylesf.uploadedFiles}>Uploaded file:</div>
                       <div className={stylesf.file}>
                         <div>
                           <img src="/img/my-project-user/data.svg" />

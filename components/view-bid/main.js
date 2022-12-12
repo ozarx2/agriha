@@ -20,7 +20,7 @@ export default function ViewBidMain() {
   const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
   const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
 
-  // const bid = allBidArchitect.filter((val) => val.bid === true);
+  console.log(bid);
 
   useEffect(() => {
     if (bid.length !== 0) {
@@ -60,8 +60,13 @@ export default function ViewBidMain() {
                           alt=""
                         />
                         <div className={styles.bid__projectCard__title}>
-                          <h5>{item?.project_name}</h5>
-                          <p>{item?.project_type}</p>
+                          <div className={styles.bid__projectCard__title__left}>
+                            <h5>{item?.project_name}</h5>
+                            <p>{item?.project_type}</p>
+                          </div>
+                          <div className={styles.bid__projectCard__title__right}>
+                            <p>{item?.starting_date}</p>
+                          </div>
                         </div>
                       </div>
                       <div className={styles.bid__projectCard__button} onClick={() => viewDetailsClick(item?._id)}>

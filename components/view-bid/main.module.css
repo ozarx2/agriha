@@ -45,21 +45,30 @@
   border: 1px solid #f1f1f1;
   border-top: 0px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.bid__projectCard__title > h5 {
+.bid__projectCard__title__left > h5 {
   color: #484848;
   font-weight: 500;
   font-size: 15px;
   line-height: 18.15px;
 }
 
-.bid__projectCard__title > p {
+.bid__projectCard__title__left > p {
   color: #bcbcbc;
   font-weight: 400;
   font-size: 13px;
   line-height: 15.73px;
   margin-top: 4px;
+}
+
+.bid__projectCard__title__right > p {
+  color: #9d9d9d;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .bid__projectCard__button {

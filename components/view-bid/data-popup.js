@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import api_url from "../../src/utils/url";
-import dummy_token from "../../src/utils/dummy_token";
 import { StoreContext } from "../StoreContext";
 import styles from "./data-popup.module.css";
 import { useRouter } from "next/router";
@@ -48,6 +47,9 @@ export default function DataPopup() {
     });
     const data = await res.json();
     console.log(data);
+    if (data.status === 200) {
+      setBidDataPopup(false);
+    }
   }
 
   return (

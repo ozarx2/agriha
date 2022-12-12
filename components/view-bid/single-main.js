@@ -14,6 +14,7 @@ export default function SingleProjectsMain() {
 
   const setBidDataPopup = Store.setBidDataPopup;
   const setBidUserId = Store.setBidUserId;
+  const architectId = Store.architectId;
 
   const router = useRouter();
   const { bid } = router.query;
@@ -22,6 +23,8 @@ export default function SingleProjectsMain() {
   const [projectDetails, setProjectDetilas] = useState([]);
   const [projectType, setProjectType] = useState("");
   const [projectTypeDetails, setProjectTypeDetails] = useState([]);
+
+  const [isQuoted, setIsQuoted] = useState(true);
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
@@ -40,6 +43,12 @@ export default function SingleProjectsMain() {
       setProjectType(data?.data[0]?.project_type);
       setBidUserId(data?.data[0]?.creator?._id);
       setProjectTypeDetails(data?.data[0]?.project_requirements[0]);
+      var result = data?.data[0]?.acceptQuotes.filter((res) => res === architectId);
+      if (result.length !== 0) {
+        setIsQuoted(true);
+      } else {
+        setIsQuoted(false);
+      }
     }
   }
 
@@ -343,12 +352,18 @@ export default function SingleProjectsMain() {
             ""
           )}
 
-          <div className={styles.buttons__container}>
-            <div className={styles.decline_button}>Decline</div>
-            <div className={styles.accept_button} onClick={acceptClick}>
-              Accept
-            </div>
-          </div>
+          {!isQuoted ? (
+            <>
+              <div className={styles.buttons__container}>
+                <div className={styles.decline_button}>Decline</div>
+                <div className={styles.accept_button} onClick={acceptClick}>
+                  Accept
+                </div>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

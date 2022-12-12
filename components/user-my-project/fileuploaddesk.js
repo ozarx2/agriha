@@ -23,16 +23,13 @@ const FnFileUploadDesk = ({ projectId }) => {
 
   async function getUploadFile() {
     const token = localStorage.getItem("userToken");
-    const response = await fetch(
-      "https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/userfiles",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch("https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/userfiles", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const data = await response.json();
 
     if (data.status === 200) {
@@ -42,21 +39,18 @@ const FnFileUploadDesk = ({ projectId }) => {
 
   const handleSubmit = async (id) => {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(
-      `https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/user`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          description: description,
-          files: projectImages,
-          project_id: id,
-        }),
-      }
-    );
+    const res = await fetch(`https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        description: description,
+        files: projectImages,
+        project_id: id,
+      }),
+    });
     const data = await res.json();
   };
 
@@ -75,9 +69,7 @@ const FnFileUploadDesk = ({ projectId }) => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercentProject(percent);
@@ -102,10 +94,7 @@ const FnFileUploadDesk = ({ projectId }) => {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
-        setFiles((files) => [
-          ...files,
-          { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] },
-        ]);
+        setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
       }
     } else {
       alert("Cannot add more than 30 pictures");
@@ -122,11 +111,7 @@ const FnFileUploadDesk = ({ projectId }) => {
   };
 
   useEffect(() => {
-    if (
-      files.length === projectImages.length &&
-      files.length !== 0 &&
-      projectImages.length !== 0
-    ) {
+    if (files.length === projectImages.length && files.length !== 0 && projectImages.length !== 0) {
       handleSubmit(id);
     }
   }, [projectImages]);
@@ -148,12 +133,7 @@ const FnFileUploadDesk = ({ projectId }) => {
               <div>File upload to Architect</div>
             </div>
             <div className={styles.uploadDescSec}>
-              <input
-                type="text"
-                className={styles.uploadDesc}
-                onChange={handler}
-                placeholder="Enter description"
-              />
+              <input type="text" className={styles.uploadDesc} onChange={handler} placeholder="Enter description" />
             </div>
             <div className={styles.dragDropSec}>
               <input
@@ -181,21 +161,11 @@ const FnFileUploadDesk = ({ projectId }) => {
               </div>
             </div>
             <div className={styles.fileButtonsSec}>
-              <div
-                className={styles.cancelBtn}
-                onClick={() => cancelFunction()}
-              >
+              <div className={styles.cancelBtn} onClick={() => cancelFunction()}>
                 cancel
               </div>
-              <div
-                className={styles.uploadBtn}
-                onClick={() => uploadProject(projectId.projectId)}
-              >
-                <img
-                  src="/img/my-project-user/upload.svg"
-                  alt="upload.svg"
-                  className={styles.upload}
-                />
+              <div className={styles.uploadBtn} onClick={() => uploadProject(projectId.projectId)}>
+                <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
                 <span>Upload</span>
               </div>
             </div>
@@ -204,10 +174,11 @@ const FnFileUploadDesk = ({ projectId }) => {
           <>
             <div>
               <div className={stylesf.fileOuter}>
+                {console.log(fileUploads)}
                 {result?.map((items, key) => {
                   return (
                     <>
-                      <div className={stylesf.uploadedFiles}>
+                      <div key={key} className={stylesf.uploadedFiles}>
                         Uploaded file:
                       </div>
                       <div className={stylesf.file}>

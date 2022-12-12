@@ -130,21 +130,6 @@ const FnFileUploadDesk = ({ projectId }) => {
   return (
     <>
       <div className={styles.secTwoMain}>
-        {
-          {
-            /* console.log(fileUploads) */
-          }
-        }
-        {
-          {
-            /* console.log(files) */
-          }
-        }
-        {
-          {
-            /* console.log(result) */
-          }
-        }
         {result.length === 0 ? (
           <>
             <div className={styles.fileUploadSectionArch}>

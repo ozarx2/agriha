@@ -22,6 +22,7 @@ export default function AgrihaDisplayBidMain() {
   const [bid, setBid] = useState(false);
 
   const [getAllBidResult, setGetAllBidResult] = useState([]);
+
   async function getAllBidResults() {
     const response = await fetch(`${api_url}/quotation/${bidId}`, {
       method: "GET",
@@ -43,8 +44,6 @@ export default function AgrihaDisplayBidMain() {
   useEffect(() => {
     getAllBidResults();
   }, [bidId]);
-
-  // console.log(getAllBidResult);
 
   return (
     <>

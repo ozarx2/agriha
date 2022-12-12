@@ -182,7 +182,11 @@ const FnFileUploadDesk = ({ projectId }) => {
           <>
             <div>
               <div className={stylesf.fileOuter}>
-                {console.log(result)}
+                {
+                  {
+                    /* console.log(result) */
+                  }
+                }
                 {console.log(fileUploads)}
                 {result?.map((items, key) => {
                   return (

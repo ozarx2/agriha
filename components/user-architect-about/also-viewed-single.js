@@ -1,40 +1,41 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import StarRatings from "react-star-ratings";
-import axios from "axios";
-import api_url from "../../src/utils/url";
+import AgrihaArchitectTotalRating from "../user-common/totalRating";
 
 import styles from "./main.module.css";
 
 function AgrihaAlsoViewedSingle({ items }) {
-  const [rate, setRate] = useState(0);
-  const [count, setCount] = useState(0);
-  const token = localStorage.getItem("userToken");
+  const rating = AgrihaArchitectTotalRating(items._id);
 
-  useEffect(() => {
-    const getRate = async () => {
-      const response = await axios.get(`${api_url}/star-rating/${items._id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      let r = 0;
-      response?.data?.data?.map((items) => {
-        r += items.rating;
-      });
-      length = response?.data?.data?.length;
-      setCount(length);
-      if (length !== 0 && r) {
-        let result = Math.round(parseFloat(r / length) * 100) / 100;
-        setRate(result);
-      } else {
-        let result = 0;
-        setRate(result);
-      }
-    };
-    getRate();
-  }, []);
+  // const [rate, setRate] = useState(0);
+  // const [count, setCount] = useState(0);
+  // const token = localStorage.getItem("userToken");
+
+  // useEffect(() => {
+  //   const getRate = async () => {
+  //     const response = await axios.get(`${api_url}/star-rating/${items._id}`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     let r = 0;
+  //     response?.data?.data?.map((items) => {
+  //       r += items.rating;
+  //     });
+  //     length = response?.data?.data?.length;
+  //     setCount(length);
+  //     if (length !== 0 && r) {
+  //       let result = Math.round(parseFloat(r / length) * 100) / 100;
+  //       setRate(result);
+  //     } else {
+  //       let result = 0;
+  //       setRate(result);
+  //     }
+  //   };
+  //   getRate();
+  // }, []);
 
   return (
     <div className={styles.archViewedProfileSection}>
@@ -48,16 +49,16 @@ function AgrihaAlsoViewedSingle({ items }) {
           {items?.registered_id?.name ? items?.registered_id?.name : items.firstname + " " + items.lastname}
         </div>
         <div className={styles.archViewedRating}>
-          <div className={styles.viewedRatingNumber}>{rate}</div>
+          <div className={styles.viewedRatingNumber}>{rating.TotalRating}</div>
           <StarRatings
-            rating={rate}
+            rating={rating.TotalRating}
             starRatedColor="#edbc3b"
             numberOfStars={5}
             starDimension="14px"
             starSpacing="1.5px"
             name="rating"
           />
-          <div className={styles.viewedRatingReviews}>{count} Reviews</div>
+          <div className={styles.viewedRatingReviews}>{rating.totalCount} Reviews</div>
         </div>
         <div className={styles.archViewProfileSection}>
           <Link href={`/user-architect-about/${items._id}`} passHref>

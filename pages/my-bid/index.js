@@ -15,14 +15,6 @@ import styles from "./index.module.css";
 export default function AgrihaProjectDetails() {
   const [Store] = useContext(StoreContext);
 
-  useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if (userId) {
-    } else {
-      window.location.href = "/";
-    }
-  }, []);
-
   const loginPopup = Store.loginPopup;
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;

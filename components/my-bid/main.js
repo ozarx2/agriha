@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
-import Link from "next/link";
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import api_url from "../../src/utils/url";
 import windowSize from "../windowRes";
@@ -20,6 +19,7 @@ export default function AgrihaMyBidMain() {
   const setArchitectBidtPopup = Store.setArchitectBidtPopup;
 
   const [getAllBid, setGetAllBid] = useState([]);
+
   async function getAllProjects() {
     const response = await fetch(`${api_url}/projects/getbid/${userId}`, {
       method: "GET",

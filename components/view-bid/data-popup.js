@@ -5,7 +5,7 @@ import { StoreContext } from "../StoreContext";
 import styles from "./data-popup.module.css";
 import { useRouter } from "next/router";
 
-export default function DataPopup() {
+export default function DataPopup({ setIsQuoted }) {
   const [Store] = useContext(StoreContext);
 
   const setBidDataPopup = Store.setBidDataPopup;
@@ -48,6 +48,7 @@ export default function DataPopup() {
     const data = await res.json();
     console.log(data);
     if (data.status === 200) {
+      setIsQuoted(true);
       setBidDataPopup(false);
     }
   }

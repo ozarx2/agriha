@@ -36,6 +36,7 @@ export const StoreContextProvider = (props) => {
   const [searchQueryArchitect, setSearchQueryArchitect] = useState("");
   const [allArchitects, setAllArchitects] = useState([]);
   const [projectResponse, setProjectResponse] = useState([]);
+  const [arcDashQueue, setArcDashQueue] = useState(false);
   // Store Yaseen end
 
   // Store 61-5a start
@@ -115,6 +116,8 @@ export const StoreContextProvider = (props) => {
     setAllArchitects,
     projectResponse,
     setProjectResponse,
+    arcDashQueue,
+    setArcDashQueue,
     // Store Yaseen end
 
     // Store 61-5a start

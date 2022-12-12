@@ -18,13 +18,12 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
   const setFileUploadPopup = Store.setFileUploadPopup;
   const setOngoingPopup = Store.setOngoingPopup;
   const userProjects = Store.userProjects;
-
-  console.log(userProjects);
+  const setArcDashQueue = Store.setArcDashQueue;
 
   const [project, setProject] = useState(false);
 
   useEffect(() => {
-    if (userProjects.length !== 0) {
+    if (userProjects?.length !== 0) {
       setProject(true);
     } else {
       setProject(false);
@@ -62,10 +61,16 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
       <div className={styles.main_outer}>
         <div className={styles.sone_outer}>
           <div className={styles.sone_inner}>
-            <div onClick={() => setPage("ongoing")} className={page == "ongoing" ? styles.active : ""}>
+            <div
+              onClick={() => (setPage("ongoing"), setArcDashQueue(false))}
+              className={page == "ongoing" ? styles.active : ""}
+            >
               Ongoing projects
             </div>
-            <div onClick={() => setPage("request")} className={page == "request" ? styles.active : ""}>
+            <div
+              onClick={() => (setPage("request"), setArcDashQueue(true))}
+              className={page == "request" ? styles.active : ""}
+            >
               Project Request
             </div>
           </div>
@@ -89,7 +94,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                         {/* <div className={styles.stwo_more}>More</div> */}
                       </div>
 
-                      {userProjects.map((item, i) => {
+                      {userProjects?.map((item, i) => {
                         return (
                           <>
                             {item?.creator?.name && item?.status === "ongoing" ? (
@@ -200,7 +205,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                         {/* <div className={styles.stwo_more}>More</div> */}
                       </div>
 
-                      {userProjects.map((item, i) => {
+                      {userProjects?.map((item, i) => {
                         return (
                           <>
                             {item.creator?.name && item.status === "started" ? (
@@ -248,7 +253,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                 <>
                   {project ? (
                     <>
-                      {userProjects.map((item, i) => {
+                      {userProjects?.map((item, i) => {
                         return (
                           <>
                             {item?.creator?.name && item.status === "ongoing" ? (
@@ -325,7 +330,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                 <>
                   {project ? (
                     <>
-                      {userProjects.map((item, i) => {
+                      {userProjects?.map((item, i) => {
                         return (
                           <>
                             {item.creator?.name && item.status === "started" ? (

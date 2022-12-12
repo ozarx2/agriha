@@ -16,14 +16,6 @@ import FileUploadPopup from "../../components/common/file-upload-popup";
 import styles from "./index.module.css";
 
 export default function ArchitectDashboard() {
-  useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if (userId) {
-    } else {
-      window.location.href = "/";
-    }
-  }, []);
-
   const [Store] = useContext(StoreContext);
 
   const addProject = Store.addProject;
@@ -33,25 +25,21 @@ export default function ArchitectDashboard() {
   const addProjectImagePopup = Store.addProjectImagePopup;
   const fileUploadPopup = Store.fileUploadPopup;
   const ongoingPopup = Store.ongoingPopup;
+  const arcDashQueue = Store.arcDashQueue;
 
   const [projectRequestPopup, setProjectRequestPopup] = useState(false);
   const [page, setPage] = useState("ongoing");
 
-  function getParameters() {
-    let urlString = window.location.href;
-    let paramString = urlString.split("/")[4];
-    let queryString = new URLSearchParams(paramString);
-    for (let pair of queryString.entries()) {
-      if (pair[0] === "request") {
-        setPage("request");
-      }
-      localStorage.setItem("architectId", pair[0]);
-      console.log(pair[0]);
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+    } else {
+      window.location.href = "/";
     }
-  }
+  }, []);
 
   useEffect(() => {
-    getParameters();
+    arcDashQueue ? setPage("request") : setPage("ongoing");
   }, []);
 
   return (

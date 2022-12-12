@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import React, { useState, useContext } from "react";
+import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,9 +16,17 @@ export default function FnSOne() {
   const architectData = Store.architectData;
   const allProjects = Store.projects;
   const assignedProjects = Store.userProjects;
+  const setArcDashQueue = Store.setArcDashQueue;
 
   const queue = assignedProjects?.filter((res) => res.status === "started");
   const ongoing = assignedProjects?.filter((res) => res.status === "ongoing");
+
+  const router = useRouter();
+
+  const queueClick = () => {
+    setArcDashQueue(true);
+    router.push("/ongoing-project");
+  };
 
   return (
     <>
@@ -81,17 +90,15 @@ export default function FnSOne() {
                   </div>
                 </div>
               </Link>
-              <Link href="/ongoing-project#/request" passHref>
-                <div className={`${styles.project} ${styles.pthree}`}>
-                  <div className={styles.img}>
-                    <Image src="/img/architect-dashboard/queue.svg" alt="queue" width={76} height={76} />
-                  </div>
-                  <div className={styles.right}>
-                    <div className={styles.title}>Queue</div>
-                    <div className={styles.count}>{queue?.length}</div>
-                  </div>
+              <div onClick={() => queueClick()} className={`${styles.project} ${styles.pthree}`}>
+                <div className={styles.img}>
+                  <Image src="/img/architect-dashboard/queue.svg" alt="queue" width={76} height={76} />
                 </div>
-              </Link>
+                <div className={styles.right}>
+                  <div className={styles.title}>Queue</div>
+                  <div className={styles.count}>{queue?.length}</div>
+                </div>
+              </div>
             </div>
           </div>
           <Link href="/dashboard-settings" passHref>
@@ -131,17 +138,15 @@ export default function FnSOne() {
               </div>
             </div>
           </Link>
-          <Link href="/ongoing-project#/request" passHref>
-            <div className={`${styles.project} ${styles.pthree}`}>
-              <div className={styles.img}>
-                <img src="/img/architect-dashboard/queue.svg" alt="queue" />
-              </div>
-              <div className={styles.right}>
-                <div className={styles.title}>Queue</div>
-                <div className={styles.count}>{queue?.length}</div>
-              </div>
+          <div onClick={() => queueClick()} className={`${styles.project} ${styles.pthree}`}>
+            <div className={styles.img}>
+              <img src="/img/architect-dashboard/queue.svg" alt="queue" />
             </div>
-          </Link>
+            <div className={styles.right}>
+              <div className={styles.title}>Queue</div>
+              <div className={styles.count}>{queue?.length}</div>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -9,7 +9,7 @@ import { StoreContext } from "../StoreContext";
 
 import styles from "./single-main.module.css";
 
-export default function SingleProjectsMain() {
+export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
   const [Store] = useContext(StoreContext);
 
   const setBidDataPopup = Store.setBidDataPopup;
@@ -23,8 +23,6 @@ export default function SingleProjectsMain() {
   const [projectDetails, setProjectDetilas] = useState([]);
   const [projectType, setProjectType] = useState("");
   const [projectTypeDetails, setProjectTypeDetails] = useState([]);
-
-  const [isQuoted, setIsQuoted] = useState(true);
 
   /* GET PROJECT DETAILS */
   async function getProjects() {

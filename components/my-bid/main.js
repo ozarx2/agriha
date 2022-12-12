@@ -45,7 +45,7 @@ export default function AgrihaMyBidMain() {
     <>
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
-          {userId != "" ? (
+          {userId != "" && getAllBid.length != 0 ? (
             <>
               {windowRes.innerWidth >= 1100 ? (
                 <>

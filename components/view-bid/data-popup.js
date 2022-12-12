@@ -42,7 +42,7 @@ export default function DataPopup({ setIsQuoted }) {
         architect_id: architectId,
         quote: quote,
         user_id: bidUserId,
-        status: "started",
+        status: "quoted",
       }),
     });
     const data = await res.json();

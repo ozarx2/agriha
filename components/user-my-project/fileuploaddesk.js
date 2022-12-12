@@ -130,9 +130,21 @@ const FnFileUploadDesk = ({ projectId }) => {
   return (
     <>
       <div className={styles.secTwoMain}>
-        {console.log(fileUploads)}
-        {console.log(files)}
-        {console.log(result)}
+        {
+          {
+            /* console.log(fileUploads) */
+          }
+        }
+        {
+          {
+            /* console.log(files) */
+          }
+        }
+        {
+          {
+            /* console.log(result) */
+          }
+        }
         {result.length === 0 ? (
           <>
             <div className={styles.fileUploadSectionArch}>
@@ -181,7 +193,11 @@ const FnFileUploadDesk = ({ projectId }) => {
           <>
             <div>
               <div className={stylesf.fileOuter}>
-                {console.log(result)}
+                {
+                  {
+                    /* console.log(result) */
+                  }
+                }
                 {console.log(fileUploads)}
                 {result?.map((items, key) => {
                   return (

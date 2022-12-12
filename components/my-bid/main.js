@@ -31,7 +31,8 @@ export default function AgrihaMyBidMain() {
     if (data) {
       const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
       const temp = data.data.filter((res) => new Date(res.createdAt) >= oldDate);
-      setGetAllBid(temp);
+      const final = temp.filter((res) => res.status !== "ongoing");
+      setGetAllBid(final);
     }
   }
 

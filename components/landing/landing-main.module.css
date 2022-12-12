@@ -94,8 +94,9 @@
   }
   .sone_inner .search {
     position: relative;
-    margin-right: 16px;
-    width: calc(100% - 262.8px);
+    /* margin-right: 16px; */
+    width: 100%;
+    /* width: calc(100% - 262.8px); */
   }
   .sone_inner .search img {
     max-width: 16px;

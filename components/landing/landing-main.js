@@ -126,14 +126,14 @@ export default function AgrihaLandingMain() {
                         placeholder="Search Favorite Design"
                       />
                     </div>
-                    <div className={styles.filters}>
+                    {/* <div className={styles.filters}>
                       <img src="/img/landing/filter.svg" alt="filter" />
                       <span>All filters</span>
                     </div>
                     <div className={styles.sort}>
                       <img src="/img/landing/sort.svg" alt="sort" />
                       <span>Sort list</span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

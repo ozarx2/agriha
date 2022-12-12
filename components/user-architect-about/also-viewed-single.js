@@ -8,35 +8,6 @@ import styles from "./main.module.css";
 function AgrihaAlsoViewedSingle({ items }) {
   const rating = AgrihaArchitectTotalRating(items._id);
 
-  // const [rate, setRate] = useState(0);
-  // const [count, setCount] = useState(0);
-  // const token = localStorage.getItem("userToken");
-
-  // useEffect(() => {
-  //   const getRate = async () => {
-  //     const response = await axios.get(`${api_url}/star-rating/${items._id}`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     let r = 0;
-  //     response?.data?.data?.map((items) => {
-  //       r += items.rating;
-  //     });
-  //     length = response?.data?.data?.length;
-  //     setCount(length);
-  //     if (length !== 0 && r) {
-  //       let result = Math.round(parseFloat(r / length) * 100) / 100;
-  //       setRate(result);
-  //     } else {
-  //       let result = 0;
-  //       setRate(result);
-  //     }
-  //   };
-  //   getRate();
-  // }, []);
-
   return (
     <div className={styles.archViewedProfileSection}>
       <img

@@ -27,6 +27,7 @@ export default function AgrihaLandingMain() {
   const projectResponse = Store.projectResponse;
   const setProjectResponse = Store.setProjectResponse;
   const setAllArchitects = Store.setAllArchitects;
+  const setArchitectBidtPopup = Store.setArchitectBidtPopup;
 
   /* GET PROJECT TYPES */
   const [projectTypes, setProjectTypes] = useState([]);
@@ -40,7 +41,7 @@ export default function AgrihaLandingMain() {
       },
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setProjectTypes(data);
   }
 
@@ -59,7 +60,7 @@ export default function AgrihaLandingMain() {
     });
     const data = await response.json();
     if (data) {
-      console.log(data.data);
+      // console.log(data.data);
       const withArchitect = data.data.filter((res) => res?.architect_id);
       if (filter === "All") {
         setProjectResponse(withArchitect);
@@ -80,7 +81,7 @@ export default function AgrihaLandingMain() {
 
   useEffect(() => {
     getAllProjects();
-    console.log(filter);
+    // console.log(filter);
   }, [filter]);
 
   useEffect(() => {
@@ -125,14 +126,14 @@ export default function AgrihaLandingMain() {
                         placeholder="Search Favorite Design"
                       />
                     </div>
-                    <div className={styles.filters}>
+                    {/* <div className={styles.filters}>
                       <img src="/img/landing/filter.svg" alt="filter" />
                       <span>All filters</span>
                     </div>
                     <div className={styles.sort}>
                       <img src="/img/landing/sort.svg" alt="sort" />
                       <span>Sort list</span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

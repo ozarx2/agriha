@@ -9,9 +9,7 @@ import FnFileFolder from "./folders";
 import FnPayment from "./payment";
 import FnSuggested from "./suggested";
 import api_url from "../../src/utils/url";
-import { Upload } from "antd";
 import moment from "moment";
-const { Dragger } = Upload;
 
 import styles from "./project.module.css";
 import FnFileUploadDesk from "./fileuploaddesk";
@@ -39,16 +37,13 @@ const FnOngoingProjectUserSide = () => {
   };
   async function getSingleProject() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(
-      "https://agriha-server-dot-agriha-services.uc.r.appspot.com/projects/view",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch("https://agriha-server-dot-agriha-services.uc.r.appspot.com/projects/view", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const data = await res.json();
     // const withArchitectNoOrder = data.projects.filter((res) => res?.architect_id);
     const revert = data.projects?.reverse();
@@ -76,22 +71,13 @@ const FnOngoingProjectUserSide = () => {
                     </div>
                   </div> */}
                   {items.bid ? <div className={styles.bid}>Bid</div> : ""}
-                  <div
-                    id="less"
-                    className={styles.showMore}
-                    onClick={() => toggleBtn(items._id)}
-                  >
-                    {showMore && selectprojectId === items._id
-                      ? "Show Less"
-                      : "Show More"}
+                  <div id="less" className={styles.showMore} onClick={() => toggleBtn(items._id)}>
+                    {showMore && selectprojectId === items._id ? "Show Less" : "Show More"}
 
                     {showMore && selectprojectId === items._id ? (
                       <img src="/img/my-project-user/showup.svg" alt="up.svg" />
                     ) : (
-                      <img
-                        src="/img/my-project-user/showdown.svg"
-                        alt="down.svg"
-                      />
+                      <img src="/img/my-project-user/showdown.svg" alt="down.svg" />
                     )}
                   </div>
                 </div>
@@ -100,10 +86,7 @@ const FnOngoingProjectUserSide = () => {
                 <div className={styles.secOne}>
                   {items.architect_id ? (
                     <div className={styles.profileDpNameSection}>
-                      <Link
-                        href={`/user-architect-about/${items?.architect_id?._id}`}
-                        passHref
-                      >
+                      <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
                         <div className={styles.profileNameSec}>
                           <img
                             src={
@@ -132,14 +115,10 @@ const FnOngoingProjectUserSide = () => {
                       <div className={styles.profileStatus}>Status:</div>
                       <div className={styles.profileStatus}>Started on:</div>
                       <div className={styles.profileStatus}>Current stage:</div>
-                      <div className={styles.profileStatus}>
-                        Payment status:
-                      </div>
+                      <div className={styles.profileStatus}>Payment status:</div>
                     </div>
                     <div className={styles.profileStatusRight}>
-                      <div className={styles.profileStatus}>
-                        {items?.status}
-                      </div>
+                      <div className={styles.profileStatus}>{items?.status}</div>
                       <div className={styles.profileStatus}>
                         {
                           /* {moment(items?.starting_date).format(
@@ -148,9 +127,7 @@ const FnOngoingProjectUserSide = () => {
                           items?.starting_date
                         }
                       </div>
-                      <div className={styles.profileStatus}>
-                        {items?.status}
-                      </div>
+                      <div className={styles.profileStatus}>{items?.status}</div>
                       <div className={styles.profileStatus}>Pending</div>
                     </div>
                   </div>

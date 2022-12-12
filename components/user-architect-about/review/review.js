@@ -20,6 +20,7 @@ const FnReview = ({ singleArchitect }) => {
 
   const [Store] = useContext(StoreContext);
   const userId = Store.userId;
+  const setLoginPopup = Store.setLoginPopup;
 
   const [newRating, setNewRating] = useState(0);
 
@@ -72,44 +73,52 @@ const FnReview = ({ singleArchitect }) => {
   return (
     <>
       {windowRes.innerWidth >= 1100 ? (
-        <div className={styles.archReviewSectionMain}>
-          <div className={styles.archReviewSection}>
-            <div className={styles.archReviewDesk}>
-              <div className={styles.archReviewStar}>
-                <StarRatings
-                  rating={newRating}
-                  starRatedColor="#edbc3b"
-                  numberOfStars={5}
-                  starDimension="25px"
-                  starSpacing="1.8px"
-                  changeRating={changeRating}
-                  name="rating"
-                />
-                <div className={styles.submitReview}>
-                  <div onClick={() => sendRating()}>Submit your rating</div>
-                </div>
+        <div className={styles.archReviewSection}>
+          {userId !== "" ? (
+            <>
+              <StarRatings
+                rating={newRating}
+                starRatedColor="#edbc3b"
+                numberOfStars={5}
+                starDimension="25px"
+                starSpacing="1.8px"
+                changeRating={changeRating}
+                name="rating"
+              />
+              <div className={styles.submitReview} onClick={() => sendRating()}>
+                Submit your rating
               </div>
+            </>
+          ) : (
+            <div className={styles.submitReview} onClick={() => setLoginPopup(true)}>
+              Login
             </div>
-          </div>
+          )}
         </div>
       ) : (
         <div className={styles.archReviewSectionMainMob}>
           <div className={styles.archReviewSectionMob}>
             <div>
-              <StarRatings
-                rating={newRating}
-                starRatedColor="#edbc3b"
-                numberOfStars={5}
-                starDimension="30px"
-                starSpacing="1.8px"
-                changeRating={changeRating}
-                name="rating"
-              />
-              <div>
-                <div className={styles.submitReview}>
-                  <div onClick={() => sendRating()}>Submit your rating</div>
+              {userId !== "" ? (
+                <>
+                  <StarRatings
+                    rating={newRating}
+                    starRatedColor="#edbc3b"
+                    numberOfStars={5}
+                    starDimension="30px"
+                    starSpacing="1.8px"
+                    changeRating={changeRating}
+                    name="rating"
+                  />
+                  <div className={styles.submitReview} onClick={() => sendRating()}>
+                    Submit your rating
+                  </div>
+                </>
+              ) : (
+                <div className={styles.submitReview} onClick={() => setLoginPopup(true)}>
+                  Login
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

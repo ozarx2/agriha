@@ -98,7 +98,7 @@ export default function AgrihaDisplayBidMain() {
             <>
               <div className={styles.no_bid}>
                 <img className={styles.main} src="/img/my-bid/no-bid.svg" alt="no bid" />
-                <div className={styles.text}>You have no bid received</div>
+                <div className={styles.text}>You have no quote received</div>
               </div>
             </>
           )}

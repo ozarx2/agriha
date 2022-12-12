@@ -13,6 +13,12 @@ const FnFileUploadDesk = ({ projectId }) => {
   const [description, setDescription] = useState("");
   const [id, setId] = useState("");
 
+  const cancelFunction = () => {
+    // console.log(files);
+    setFiles([]);
+    // console.log(files);
+  };
+
   const handler = (e) => {
     setDescription(e.target.value);
   };
@@ -126,6 +132,7 @@ const FnFileUploadDesk = ({ projectId }) => {
       <div className={styles.secTwoMain}>
         {console.log(fileUploads)}
         {console.log(files)}
+        {console.log(result)}
         {result.length === 0 ? (
           <>
             <div className={styles.fileUploadSectionArch}>
@@ -148,6 +155,7 @@ const FnFileUploadDesk = ({ projectId }) => {
               </div>
               <div className={styles.fileOuter}>
                 {files.map((file, key) => {
+                  console.log(file);
                   return (
                     <div key={key} className={styles.file}>
                       <div>
@@ -173,6 +181,7 @@ const FnFileUploadDesk = ({ projectId }) => {
           <>
             <div>
               <div className={stylesf.fileOuter}>
+                {console.log(result)}
                 {console.log(fileUploads)}
                 {result?.map((items, key) => {
                   return (

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { StoreContext } from "../../components/StoreContext";
 import storage from "../../firebase";
+import { Upload } from "antd";
+const { Dragger } = Upload;
 
 import styles from "./fileuploadmob.module.css";
 

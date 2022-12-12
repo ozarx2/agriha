@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Navbar from "../../components/common/navbar";
 import Sidebar from "../../components/common/sidebar";
@@ -22,6 +22,8 @@ export default function BidDetails() {
   const notificationPopup = Store.notificationPopup;
   const addProjectImagePopup = Store.addProjectImagePopup;
   const bidDataPopup = Store.bidDataPopup;
+
+  const [isQuoted, setIsQuoted] = useState(true);
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -53,14 +55,14 @@ export default function BidDetails() {
             )}
             <div className={styles.main}>
               <Navbar />
-              <SingleBidMain />
+              <SingleBidMain isQuoted={isQuoted} setIsQuoted={setIsQuoted} />
             </div>
           </div>
           {addProject ? <AddProject /> : ""}
           {logout ? <LogoutPopup /> : ""}
           {notificationPopup ? <NotificationPopup /> : ""}
           {addProjectImagePopup ? <AddProjectImage /> : ""}
-          {bidDataPopup ? <DataPopup /> : ""}
+          {bidDataPopup ? <DataPopup setIsQuoted={setIsQuoted} /> : ""}
         </div>
       </div>
     </>

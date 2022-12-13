@@ -41,7 +41,6 @@ export default function AgrihaLandingMain() {
       },
     });
     const data = await res.json();
-    // console.log(data);
     setProjectTypes(data);
   }
 
@@ -50,6 +49,14 @@ export default function AgrihaLandingMain() {
   }, []);
 
   const [allProjectSliced, setAllProjectSliced] = useState([]);
+
+  function groupN(array, num) {
+    const group = [];
+    for (let i = 0; i < array?.length; i += num) {
+      group.push(array.slice(i, i + num));
+    }
+    setAllProjectSliced(group);
+  }
 
   async function getAllProjects() {
     const response = await fetch(`${api_url}/projects/getallprojects`, {
@@ -60,7 +67,6 @@ export default function AgrihaLandingMain() {
     });
     const data = await response.json();
     if (data) {
-      // console.log(data.data);
       const withArchitect = data.data.filter((res) => res?.architect_id);
       if (filter === "All") {
         setProjectResponse(withArchitect);
@@ -71,17 +77,8 @@ export default function AgrihaLandingMain() {
     }
   }
 
-  function groupN(array, num) {
-    const group = [];
-    for (let i = 0; i < array?.length; i += num) {
-      group.push(array.slice(i, i + num));
-    }
-    setAllProjectSliced(group);
-  }
-
   useEffect(() => {
     getAllProjects();
-    // console.log(filter);
   }, [filter]);
 
   useEffect(() => {
@@ -97,15 +94,12 @@ export default function AgrihaLandingMain() {
       },
     });
     const data = await response.json();
-    console.log(data.data);
     archOnly = data.data?.filter((res) => res?.phone);
     setAllArchitects(archOnly);
     setProjectResponse(data.data?.filter((res) => res?.projectname && res?.architect_id));
-    console.log(data.data?.filter((res) => res?.projectname));
   }
 
   const allSearch = (query) => {
-    console.log(query);
     getAllSearchResults(query);
   };
 

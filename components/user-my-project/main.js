@@ -8,14 +8,39 @@ import FnUserMyProjectDesktop from "./desktop";
 import FnUserMyProjectMobile from "./mobile";
 
 import styles from "./main.module.css";
+import api_url from "../../src/utils/url";
 
 const UserMyProjects = () => {
+  const [allProjects, setAllProjects] = useState([]);
+
   const windowRes = windowSize();
+
+  async function getAllProjects() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/projects/view`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    setAllProjects(data.projects);
+  }
+
+  useEffect(() => {
+    getAllProjects();
+  }, []);
+
   return (
     <>
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
-          {windowRes.innerWidth >= 1100 ? <FnUserMyProjectDesktop /> : <FnUserMyProjectMobile />}
+          {windowRes.innerWidth >= 1100 ? (
+            <FnUserMyProjectDesktop projects={allProjects} />
+          ) : (
+            <FnUserMyProjectMobile projects={allProjects} />
+          )}
         </div>
       </div>
     </>

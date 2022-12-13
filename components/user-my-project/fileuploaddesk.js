@@ -1,49 +1,25 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { StoreContext } from "../../components/StoreContext";
 import storage from "../../firebase";
+import api_url from "../../src/utils/url";
 
 import styles from "./fileuploaddesk.module.css";
-
 import stylesf from "./uploadedfiles.module.css";
 
-const FnFileUploadDesk = ({ projectId }) => {
-  // console.log(projectId);
-  const [Store] = useContext(StoreContext);
+const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
   const [description, setDescription] = useState("");
-  const [id, setId] = useState("");
 
   const cancelFunction = () => {
-    // console.log(files);
     setFiles([]);
-    // console.log(files);
   };
 
-  const handler = (e) => {
-    setDescription(e.target.value);
-  };
+  var projectImages = [];
 
-  const [fileUploads, setFileUpload] = useState([]);
+  const handleSubmit = async () => {
+    console.log(projectImages);
 
-  async function getUploadFile() {
     const token = localStorage.getItem("userToken");
-    const response = await fetch("https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/userfiles", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-
-    if (data.status === 200) {
-      setFileUpload(data.userFile);
-    }
-  }
-
-  const handleSubmit = async (id) => {
-    const token = localStorage.getItem("userToken");
-    const res = await fetch(`https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/user`, {
+    const res = await fetch(`${api_url}/fileupload/user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,15 +28,17 @@ const FnFileUploadDesk = ({ projectId }) => {
       body: JSON.stringify({
         description: description,
         files: projectImages,
-        project_id: id,
+        project_id: projectId,
       }),
     });
     const data = await res.json();
+    console.log(data);
   };
+
+  /* <=========== FIREBASE UPLOAD START ===========> */
 
   /* Upload project images */
   const [files, setFiles] = useState([]);
-  const [projectImages, setProjectImages] = useState([]);
   const [percentProject, setPercentProject] = useState(0);
 
   function handleUploadProject(img) {
@@ -83,80 +61,70 @@ const FnFileUploadDesk = ({ projectId }) => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           console.log(url);
-          setProjectImages((projectImages) => [...projectImages, url]);
+          projectImages.push(url);
+          setTimeout(() => {
+            handleSubmit();
+          }, 1000);
         });
       }
     );
   }
-
-  console.log(projectImages);
 
   /* Multiple Image Uploading */
   var fileObj = [];
   var fileArray = [];
 
   const uploadMultipleFiles = (e) => {
-    if (e.target.files.length <= 30) {
+    if (e.target.files.length <= 1) {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
         setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
       }
     } else {
-      alert("Cannot add more than 30 pictures");
+      alert("Cannot add more than 1 pictures");
     }
   };
 
-  const uploadProject = (id) => {
+  const uploadProject = () => {
     let temp = [...files];
     let length = files.length;
     for (let i = 0; i < length; i++) {
       handleUploadProject(temp[i].file);
     }
-    setId(id);
   };
 
-  useEffect(() => {
-    if (files.length === projectImages.length && files.length !== 0 && projectImages.length !== 0) {
-      handleSubmit(id);
-    }
-  }, [projectImages]);
+  /* <=========== FIREBASE UPLOAD END ===========> */
 
-  useEffect(() => {
-    getUploadFile();
-  }, []);
-
-  const result = fileUploads?.filter((item) => item.project_id === projectId);
-  console.log(result);
+  const result = allUploadedFiles.filter((res) => res.project_id === projectId);
 
   return (
     <>
       <div className={styles.secTwoMain}>
-        {console.log(fileUploads)}
-        {console.log(files)}
         {result.length === 0 ? (
           <>
             <div className={styles.fileUploadSectionArch}>
               <div>File upload to Architect</div>
             </div>
             <div className={styles.uploadDescSec}>
-              <input type="text" className={styles.uploadDesc} onChange={handler} placeholder="Enter description" />
+              <input
+                type="text"
+                className={styles.uploadDesc}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Enter description"
+              />
             </div>
             <div className={styles.dragDropSec}>
               <input
                 className={styles.custom_file_input}
                 type="file"
-                multiple
                 onChange={uploadMultipleFiles}
                 placeholder="No file selected"
                 accept="application/pdf"
               />
-              <div className={styles.dragDrop}>
-                Drag & drop <a href="">Browse</a>
-              </div>
+              <div className={styles.dragDrop}>Drag & drop your file</div>
               <div className={styles.fileOuter}>
                 {files.map((file, key) => {
-                  console.log(file);
                   return (
                     <div key={key} className={styles.file}>
                       <div>
@@ -172,7 +140,7 @@ const FnFileUploadDesk = ({ projectId }) => {
               <div className={styles.cancelBtn} onClick={() => cancelFunction()}>
                 cancel
               </div>
-              <div className={styles.uploadBtn} onClick={() => uploadProject(projectId.projectId)}>
+              <div className={styles.uploadBtn} onClick={() => uploadProject()}>
                 <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
                 <span>Upload</span>
               </div>
@@ -182,28 +150,21 @@ const FnFileUploadDesk = ({ projectId }) => {
           <>
             <div>
               <div className={stylesf.fileOuter}>
-                {
-                  {
-                    /* console.log(result) */
-                  }
-                }
-                {console.log(fileUploads)}
                 {result?.map((items, key) => {
+                  console.log(items.files[0]);
                   return (
-                    <>
-                      <div key={key} className={stylesf.uploadedFiles}>
-                        Uploaded file:
-                      </div>
+                    <div key={key}>
+                      <div className={stylesf.uploadedFiles}>Uploaded file:</div>
                       <div className={stylesf.file}>
                         <div>
                           <img src="/img/my-project-user/data.svg" />
                           <span>{items?.description}</span>
                         </div>
-                        <a target="_blank" href={`${items}`}>
+                        <a target="_blank" href={`${items.files[0]}`}>
                           view
                         </a>
                       </div>
-                    </>
+                    </div>
                   );
                 })}
               </div>

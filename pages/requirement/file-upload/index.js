@@ -1,12 +1,18 @@
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { StoreContext } from "../../../components/StoreContext";
 import Head from "next/head";
 import FileUploadMain from "../../../components/requirements/FileUploadMain";
 import AgrihaLandingHeaderNoSearch from "../../../components/user-common/header-ns";
+import ProfilePopup from "../../../components/user-common/profile-popup";
 
 import styles from "./index.module.css";
 
-const ChoosePlan = () => {
+const FileUpload = () => {
+  const [Store] = useContext(StoreContext);
+
+  const profilePopup = Store.profilePopup;
+
   const router = useRouter();
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -35,8 +41,9 @@ const ChoosePlan = () => {
           </div>
         </div>
       </div>
+      {profilePopup ? <ProfilePopup /> : ""}
     </>
   );
 };
 
-export default ChoosePlan;
+export default FileUpload;

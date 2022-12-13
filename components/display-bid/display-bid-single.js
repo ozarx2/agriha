@@ -2,11 +2,12 @@ import { useRouter } from "next/router";
 import React, { useRef, useState, useEffect } from "react";
 import StarRatings from "react-star-ratings";
 import api_url from "../../src/utils/url";
+import AgrihaArchitectRating from "../user-common/rating";
 
 import styles from "./main.module.css";
 
 export default function AgrihaDisplayBidSingle({ i, items }) {
-  console.log(items);
+  const rating = AgrihaArchitectRating(items.architect_id);
 
   const router = useRouter();
 
@@ -90,10 +91,10 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
               : singleArchitect?.firstname + " " + singleArchitect?.lastname}
           </div>
           <div className={styles.rating}>
-            <div className={styles.num}>4.5</div>
+            <div className={styles.num}>{rating.rate}</div>
             <div className={styles.star}>
               <StarRatings
-                rating={3.5}
+                rating={rating.rate}
                 starRatedColor="#edbc3b"
                 numberOfStars={5}
                 starDimension="11px"
@@ -101,6 +102,7 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
                 name="rating"
               />
             </div>
+            <div className={styles.review}>{rating.review} Reviews</div>
           </div>
         </div>
       </div>

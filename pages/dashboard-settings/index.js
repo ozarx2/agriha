@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React, { useContext, useEffect } from "react";
-
+import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import Navbar from "../../components/common/navbar";
 import Sidebar from "../../components/common/sidebar";
@@ -10,16 +10,18 @@ import AddProject from "../../components/common/addproject";
 import LogoutPopup from "../../components/common/logout-popup";
 import NotificationPopup from "../../components/common/notification-popup";
 import AddProjectImage from "../../components/common/add-project-image";
+
 import styles from "./index.module.css";
 
 export default function ArchitectDashboard() {
   const [Store] = useContext(StoreContext);
 
+  const router = useRouter();
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
     } else {
-      window.location.href = "/";
+      router.push("/");
     }
   }, []);
 

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import Head from "next/head";
 import FileUploadMain from "../../../components/requirements/FileUploadMain";
@@ -6,11 +7,12 @@ import AgrihaLandingHeaderNoSearch from "../../../components/user-common/header-
 import styles from "./index.module.css";
 
 const ChoosePlan = () => {
+  const router = useRouter();
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
     } else {
-      window.location.href = "/";
+      router.push("/");
     }
   }, []);
 

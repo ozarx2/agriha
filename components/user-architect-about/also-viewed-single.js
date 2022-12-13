@@ -1,12 +1,12 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import StarRatings from "react-star-ratings";
-import AgrihaArchitectTotalRating from "../user-common/totalRating";
+import AgrihaArchitectRating from "../user-common/rating";
 
 import styles from "./main.module.css";
 
 function AgrihaAlsoViewedSingle({ items }) {
-  const rating = AgrihaArchitectTotalRating(items._id);
+  const rating = AgrihaArchitectRating(items._id);
 
   return (
     <div className={styles.archViewedProfileSection}>
@@ -20,16 +20,16 @@ function AgrihaAlsoViewedSingle({ items }) {
           {items?.registered_id?.name ? items?.registered_id?.name : items.firstname + " " + items.lastname}
         </div>
         <div className={styles.archViewedRating}>
-          <div className={styles.viewedRatingNumber}>{rating.TotalRating}</div>
+          <div className={styles.viewedRatingNumber}>{rating.rate}</div>
           <StarRatings
-            rating={rating.TotalRating}
+            rating={rating.rate}
             starRatedColor="#edbc3b"
             numberOfStars={5}
             starDimension="14px"
             starSpacing="1.5px"
             name="rating"
           />
-          <div className={styles.viewedRatingReviews}>{rating.totalCount} Reviews</div>
+          <div className={styles.viewedRatingReviews}>{rating.review} Reviews</div>
         </div>
         <div className={styles.archViewProfileSection}>
           <Link href={`/user-architect-about/${items._id}`} passHref>

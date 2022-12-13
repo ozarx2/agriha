@@ -3,14 +3,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import StarRatings from "react-star-ratings";
-import Progress from "../../components/progress-bar/index";
 import FnAbout from "./about/about";
 import FnProject from "./project/project";
 import FnAward from "./award/award";
 import FnReview from "./review/review";
 import api_url from "../../src/utils/url";
+import axios from "axios";
 import dummy_token from "../../src/utils/dummy_token";
 import AgrihaAlsoViewedSingle from "./also-viewed-single";
 
@@ -64,11 +63,37 @@ const UserArchitectAboutDesktop = () => {
     setProjects(data);
   }
 
+  const [rate, setRate] = useState(0);
+  const [count, setCount] = useState(0);
+  const token = localStorage.getItem("userToken");
+
   useEffect(() => {
     if (id !== "") {
       getSingleArchitect();
       getProjectOfArchitect();
     }
+    const getRate = async () => {
+      const response = await axios.get(`${api_url}/star-rating/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      let r = 0;
+      response?.data?.data?.map((items) => {
+        r += items.rating;
+      });
+      length = response?.data?.data?.length;
+      setCount(length);
+      if (length !== 0 && r) {
+        let result = Math.round(parseFloat(r / length) * 100) / 100;
+        setRate(result);
+      } else {
+        let result = 0;
+        setRate(result);
+      }
+    };
+    getRate();
   }, [id]);
 
   /* GET ALL ARCHITECT */
@@ -125,10 +150,10 @@ const UserArchitectAboutDesktop = () => {
                             : singleArchitect.firstname + " " + singleArchitect.lastname}
                         </div>
                         <div className={styles.archProfileRating}>
-                          <div className={styles.ratingNumber}>4.5</div>
+                          <div className={styles.ratingNumber}>{rate}</div>
                           <div className={styles.ratingNumber}>
                             <StarRatings
-                              rating={4}
+                              rating={rate}
                               starRatedColor="#edbc3b"
                               numberOfStars={5}
                               starDimension="14px"
@@ -136,7 +161,7 @@ const UserArchitectAboutDesktop = () => {
                               name="rating"
                             />
                           </div>
-                          <div className={styles.ratingReviews}>2 Reviews</div>
+                          <div className={styles.ratingReviews}>{count} Reviews</div>
                         </div>
                         <div className={styles.profileSubHead}>Architects</div>
                       </div>

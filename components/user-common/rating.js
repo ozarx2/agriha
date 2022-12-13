@@ -2,7 +2,7 @@ import api_url from "../../src/utils/url";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const AgrihaArchitectTotalRating = (id) => {
+const AgrihaArchitectRating = (id) => {
   const [rate, setRate] = useState(0);
   const [count, setCount] = useState(0);
   const token = localStorage.getItem("userToken");
@@ -33,9 +33,9 @@ const AgrihaArchitectTotalRating = (id) => {
   }, [id]);
 
   return {
-    TotalRating: rate,
-    totalCount: count,
+    rate: rate,
+    review: count,
   };
 };
 
-export default AgrihaArchitectTotalRating;
+export default AgrihaArchitectRating;

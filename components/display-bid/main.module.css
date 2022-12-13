@@ -98,6 +98,16 @@
     margin-right: 7.1px;
   }
   .star {
+    margin-right: 7.1px;
+  }
+  .review {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 9.8241px;
+    line-height: 12px;
+    color: #8d8d8d;
+    margin-top: 3px;
   }
   .cash {
     font-family: "Inter";
@@ -194,6 +204,16 @@
     margin-right: 7.1px;
   }
   .star {
+    margin-right: 7.1px;
+  }
+  .review {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 9.8241px;
+    line-height: 12px;
+    color: #8d8d8d;
+    margin-top: 5px;
   }
   .cash {
     font-family: "Inter";

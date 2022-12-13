@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Navbar from "../../components/common/navbar";
@@ -21,11 +22,12 @@ export default function ArchitectDashboard() {
   const notificationPopup = Store.notificationPopup;
   const addProjectImagePopup = Store.addProjectImagePopup;
 
+  const router = useRouter();
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
     } else {
-      window.location.href = "/";
+      router.push("/");
     }
   }, []);
 

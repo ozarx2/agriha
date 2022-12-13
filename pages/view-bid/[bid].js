@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Navbar from "../../components/common/navbar";
@@ -25,11 +26,12 @@ export default function BidDetails() {
 
   const [isQuoted, setIsQuoted] = useState(true);
 
+  const router = useRouter();
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
     } else {
-      window.location.href = "/";
+      router.push("/");
     }
   }, []);
 

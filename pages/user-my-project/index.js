@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
+import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Head from "next/head";
@@ -23,11 +24,12 @@ const UserMyProjectMain = () => {
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
 
+  const router = useRouter();
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
     } else {
-      window.location.href = "/";
+      router.push("/");
     }
   }, []);
 

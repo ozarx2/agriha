@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useContext, useEffect } from "react";
-
 import { StoreContext } from "../../components/StoreContext";
 import Navbar from "../../components/common/navbar";
 import Sidebar from "../../components/common/sidebar";
@@ -14,6 +14,7 @@ import AddProjectImage from "../../components/common/add-project-image";
 import FileUploadPopup from "../../components/common/file-upload-popup";
 import OngoingPopup from "../../components/common/ongoing-popup";
 import SearchPopUp from "../../components/common/search-popup";
+
 import styles from "./index.module.css";
 
 export default function ArchitectDashboard() {
@@ -42,11 +43,12 @@ export default function ArchitectDashboard() {
     getParameters();
   }, []);
 
+  const router = useRouter();
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
     } else {
-      window.location.href = "/";
+      router.push("/");
     }
   }, []);
 

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
@@ -19,11 +20,12 @@ export default function AgrihaProjectDetailsBidUserView() {
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
 
+  const router = useRouter();
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
     } else {
-      window.location.href = "/";
+      router.push("/");
     }
   }, []);
 

@@ -6,10 +6,10 @@ import React, { useState, useEffect } from "react";
 import StarRatings from "react-star-ratings";
 import FnAbout from "./about/about";
 import FnAward from "./award/award";
-import Link from "next/link";
 import FnProject from "./project/project";
 import FnReview from "./review/review";
 import api_url from "../../src/utils/url";
+import axios from "axios";
 import dummy_token from "../../src/utils/dummy_token";
 
 import styles from "./main.module.css";
@@ -69,11 +69,35 @@ const UserArchitectAboutMobile = () => {
     setProjects(data);
   }
 
+  const [rate, setRate] = useState(0);
+  const [count, setCount] = useState(0);
+
   useEffect(() => {
     if (id !== "") {
       getSingleArchitect();
       getProjectOfArchitect();
     }
+    const getRate = async () => {
+      const response = await axios.get(`${api_url}/star-rating/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      let r = 0;
+      response?.data?.data?.map((items) => {
+        r += items.rating;
+      });
+      length = response?.data?.data?.length;
+      setCount(length);
+      if (length !== 0 && r) {
+        let result = Math.round(parseFloat(r / length) * 100) / 100;
+        setRate(result);
+      } else {
+        let result = 0;
+        setRate(result);
+      }
+    };
+    getRate();
   }, [id]);
 
   return (
@@ -108,15 +132,16 @@ const UserArchitectAboutMobile = () => {
                       : singleArchitect.firstname + " " + singleArchitect.lastname}
                   </div>
                   <div className={styles.archStarSectionMob}>
-                    <div>4.5</div>
+                    <div>{rate}</div>
                     <StarRatings
-                      rating={4.5}
+                      rating={rate}
                       starRatedColor="#edbc3b"
                       numberOfStars={5}
                       starDimension="14px"
                       starSpacing="1.5px"
                       name="rating"
                     />
+                    <div>{count} Reviews</div>
                   </div>
                 </div>
               </div>

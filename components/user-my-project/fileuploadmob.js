@@ -1,16 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { StoreContext } from "../../components/StoreContext";
 import storage from "../../firebase";
+import api_url from "../../src/utils/url";
 
 import styles from "./fileuploadmob.module.css";
-
 import stylefl from "./uploadedfiles.module.css";
 
-import { useContext } from "react";
-import { useState } from "react";
-
-const FnFileUploadMob = ({ projectId }) => {
+const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
   // console.log(projectId);
   const [Store] = useContext(StoreContext);
   const [descriptionMob, setDescriptionMob] = useState("");
@@ -20,26 +17,9 @@ const FnFileUploadMob = ({ projectId }) => {
     setDescriptionMob(e.target.value);
   };
 
-  const [fileUploads, setFileUpload] = useState([]);
-
-  async function getUploadFile() {
+  const handleSubmit = async () => {
     const token = localStorage.getItem("userToken");
-    const response = await fetch("https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/userfiles", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-    if (data.status === 200) {
-      setFileUpload(data.userFile);
-    }
-  }
-
-  const handleSubmit = async (id) => {
-    const token = localStorage.getItem("userToken");
-    const res = await fetch(`https://agriha-server-dot-agriha-services.uc.r.appspot.com/fileupload/user`, {
+    const res = await fetch(`${api_url}/fileupload/user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +28,7 @@ const FnFileUploadMob = ({ projectId }) => {
       body: JSON.stringify({
         description: descriptionMob,
         files: projectImages,
-        project_id: id,
+        project_id: projectId,
       }),
     });
     const data = await res.json();
@@ -111,15 +91,11 @@ const FnFileUploadMob = ({ projectId }) => {
 
   useEffect(() => {
     if (files.length === projectImages.length && files.length !== 0 && projectImages.length !== 0) {
-      handleSubmit(id);
+      handleSubmit();
     }
   }, [projectImages]);
 
-  useEffect(() => {
-    getUploadFile();
-  }, []);
-
-  const result = fileUploads?.filter((item) => item.project_id === projectId);
+  const result = allUploadedFiles.filter((res) => res.project_id === projectId);
   console.log(result);
 
   return (
@@ -169,22 +145,25 @@ const FnFileUploadMob = ({ projectId }) => {
       ) : (
         <>
           <div className={stylefl.fileOuter}>
-            {result?.map((items, key) => {
-              return (
-                <>
-                  <div className={stylefl.uploadedFiles}>Uploaded file:</div>
-                  <div className={stylefl.file}>
-                    <div>
-                      <img src="/img/my-project-user/data.svg" />
-                      <span>{items?.description}</span>
+            {result
+              ?.slice(0)
+              .reverse()
+              .map((items, key) => {
+                return (
+                  <div key={key}>
+                    <div className={stylefl.uploadedFiles}>Uploaded file:</div>
+                    <div className={stylefl.file}>
+                      <div>
+                        <img src="/img/my-project-user/data.svg" />
+                        <span>{items?.description}</span>
+                      </div>
+                      <a target="_blank" href={`${items.files[0]}`}>
+                        view
+                      </a>
                     </div>
-                    <a target="_blank" href={`${items}`}>
-                      view
-                    </a>
                   </div>
-                </>
-              );
-            })}
+                );
+              })}
           </div>
         </>
       )}

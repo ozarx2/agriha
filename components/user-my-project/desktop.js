@@ -3,7 +3,7 @@ import FnOngoingProjectUserSide from "./project";
 
 import styles from "./main.module.css";
 
-const FnUserMyProjectDesktop = () => {
+const FnUserMyProjectDesktop = ({ projects }) => {
   return (
     <>
       <div className={styles.agrihaUserProDeskMain}>
@@ -21,7 +21,7 @@ const FnUserMyProjectDesktop = () => {
               </div>
             </div>
             <div>
-              <FnOngoingProjectUserSide />
+              <FnOngoingProjectUserSide projects={projects} />
             </div>
           </div>
         </div>

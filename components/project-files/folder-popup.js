@@ -25,15 +25,12 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
   const [documents, setDocuments] = useState([]);
 
   async function getUploadedFiles() {
-    const response = await fetch(
-      `${endpoint}/fileupload/uploaded_file/${projectId._id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${endpoint}/fileupload/uploaded_file/${projectId._id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
     console.log(data);
     console.log(data.data);
@@ -65,10 +62,7 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
 
   const addFiles = (file, filename) => {
     setFiles((files) => [...files, file]);
-    setUploadedDocuments((uploadedDocuments) => [
-      ...uploadedDocuments,
-      { filename: filename, url: file },
-    ]);
+    setUploadedDocuments((uploadedDocuments) => [...uploadedDocuments, { filename: filename, url: file }]);
   };
 
   /* UPLOAD DOCUMENTS */
@@ -88,9 +82,7 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercent(percent);
@@ -123,11 +115,7 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
     console.log(titleFileUpload);
     console.log(uploadedDocuments);
     console.log(projectId);
-    if (
-      titleFileUpload !== "" &&
-      uploadedDocuments !== [] &&
-      projectId !== ""
-    ) {
+    if (titleFileUpload !== "" && uploadedDocuments !== [] && projectId !== "") {
       const res = await fetch(`${endpoint}/fileupload`, {
         method: "POST",
         headers: {
@@ -179,25 +167,14 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
           <div className={styles.heading}>
             <div className={styles.left}>
               <div className={styles.main}>{projectId.project_name}</div>
-              <div className={styles.sub}>
-                {documents?.length} Document folders
-              </div>
+              <div className={styles.sub}>{documents?.length} Document folders</div>
             </div>
             <div className={styles.right}>
-              <div
-                onClick={() => setAddFolder(true)}
-                className={styles.add_folder}
-              >
-                <img
-                  src="/img/architect-dashboard/plus-yellow.svg"
-                  alt="sort"
-                />
+              <div onClick={() => setAddFolder(true)} className={styles.add_folder}>
+                <img src="/img/architect-dashboard/plus-yellow.svg" alt="sort" />
                 <span>Add Folder</span>
               </div>
-              <div
-                onClick={() => setFolderPopup(false)}
-                className={styles.back}
-              >
+              <div onClick={() => setFolderPopup(false)} className={styles.back}>
                 Back
               </div>
             </div>
@@ -207,31 +184,16 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
               <>
                 <div className={styles.create_folder}>
                   <div className={styles.one}>
-                    <input
-                      type="type"
-                      placeholder="Enter the title"
-                      onChange={titleChange}
-                    />
+                    <input type="type" placeholder="Enter the title" onChange={titleChange} />
                   </div>
                   <div className={styles.one}>
-                    <input
-                      type="type"
-                      placeholder="Enter the filename"
-                      onChange={fileNameChange}
-                    />
+                    <input type="type" placeholder="Enter the filename" onChange={fileNameChange} />
                   </div>
                   <div className={styles.two}>
-                    <input
-                      type="file"
-                      accept="application/pdf"
-                      onChange={handleChange}
-                    />
+                    <input type="file" accept="application/pdf" onChange={handleChange} />
                   </div>
                   {uploading ? (
-                    <div
-                      className={styles.imageAddingLoading}
-                      id="loadingImageUpload"
-                    >
+                    <div className={styles.imageAddingLoading} id="loadingImageUpload">
                       uploading
                       <PulseLoader color="#000000" size={4} />
                     </div>
@@ -239,10 +201,7 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
                     ""
                   )}
                   <div className={styles.three}>
-                    <div
-                      onClick={() => setAddFolder(false)}
-                      className={styles.clear}
-                    >
+                    <div onClick={() => setAddFolder(false)} className={styles.clear}>
                       Clear
                     </div>
                     <div onClick={uploadFiles} className={styles.upload}>
@@ -263,9 +222,7 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
                     <Accordion
                       folder_name={item?.title}
                       paymentStatus={item?.payment_status}
-                      date={moment(item?.updatedAt).format(
-                        "MMMM Do YYYY, h:mm:ss a"
-                      )}
+                      date={moment(item?.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
                       folderId={item?._id}
                     >
                       <div className={styles.Pfile_outer}>
@@ -273,31 +230,19 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
                           return (
                             <>
                               {file.isDelete ? (
-                                <div
-                                  className={`${styles.Pfile} ${styles.deleted}`}
-                                  key={i}
-                                >
+                                <div className={`${styles.Pfile} ${styles.deleted}`} key={i}>
                                   <div className={styles.left}>
                                     <div className={styles.img}>
-                                      <img
-                                        src="/img/architect-dashboard/file-d.svg"
-                                        alt="alt"
-                                      />
+                                      <img src="/img/architect-dashboard/file-d.svg" alt="alt" />
                                     </div>
                                     <div className={styles.name}>
                                       <div className={styles.first}>
                                         <div>{file.filename}</div>
                                         <div>
                                           {lock ? (
-                                            <img
-                                              src="/img/architect-dashboard/slock-d.svg"
-                                              alt="alt"
-                                            />
+                                            <img src="/img/architect-dashboard/slock-d.svg" alt="alt" />
                                           ) : (
-                                            <img
-                                              src="/img/architect-dashboard/sunlock-d.svg"
-                                              alt="alt"
-                                            />
+                                            <img src="/img/architect-dashboard/sunlock-d.svg" alt="alt" />
                                           )}
                                         </div>
                                       </div>
@@ -305,16 +250,10 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
                                   </div>
                                   <div className={styles.right}>
                                     <div className={styles.delete}>
-                                      <img
-                                        src="/img/architect-dashboard/delete-d.svg"
-                                        alt="alt"
-                                      />
+                                      <img src="/img/architect-dashboard/delete-d.svg" alt="alt" />
                                     </div>
                                     <div className={styles.download}>
-                                      <img
-                                        src="/img/architect-dashboard/download-d.svg"
-                                        alt="alt"
-                                      />
+                                      <img src="/img/architect-dashboard/download-d.svg" alt="alt" />
                                     </div>
                                   </div>
                                 </div>
@@ -322,10 +261,7 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
                                 <div className={styles.Pfile}>
                                   <div className={styles.left}>
                                     <div className={styles.img}>
-                                      <img
-                                        src="/img/architect-dashboard/file.svg"
-                                        alt="alt"
-                                      />
+                                      <img src="/img/architect-dashboard/file.svg" alt="alt" />
                                     </div>
                                     <div className={styles.name}>
                                       <div className={styles.first}>
@@ -336,9 +272,7 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
                                   <div className={styles.right}>
                                     <div className={styles.delete}>
                                       <img
-                                        onClick={() =>
-                                          deleteFile(file.id, item._id)
-                                        }
+                                        onClick={() => deleteFile(file.id, item._id)}
                                         className={styles.delete_h}
                                         src="/img/architect-dashboard/fdelete-h.svg"
                                         alt="alt"

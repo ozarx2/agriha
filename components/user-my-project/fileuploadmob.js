@@ -8,7 +8,6 @@ import styles from "./fileuploadmob.module.css";
 import stylefl from "./uploadedfiles.module.css";
 
 const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
-  // console.log(projectId);
   const [Store] = useContext(StoreContext);
   const [descriptionMob, setDescriptionMob] = useState("");
   const [id, setId] = useState("");
@@ -96,7 +95,6 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
   }, [projectImages]);
 
   const result = allUploadedFiles.filter((res) => res.project_id === projectId);
-  console.log(result);
 
   return (
     <>

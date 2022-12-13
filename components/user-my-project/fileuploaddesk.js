@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import api_url from "../../src/utils/url";
+import { PulseLoader } from "react-spinners";
 
 import styles from "./fileuploaddesk.module.css";
 import stylesf from "./uploadedfiles.module.css";
 
 const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
   const [description, setDescription] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const cancelFunction = () => {
     setFiles([]);
@@ -16,8 +18,6 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
   var projectImages = [];
 
   const handleSubmit = async () => {
-    console.log(projectImages);
-
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/fileupload/user`, {
       method: "POST",
@@ -32,7 +32,8 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    setIsLoading(false);
+    window.location.reload();
   };
 
   /* <=========== FIREBASE UPLOAD START ===========> */
@@ -42,6 +43,7 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
   const [percentProject, setPercentProject] = useState(0);
 
   function handleUploadProject(img) {
+    setIsLoading(true);
     if (!img) {
       alert("Please choose a file first!");
     }
@@ -60,7 +62,6 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
           projectImages.push(url);
           setTimeout(() => {
             handleSubmit();
@@ -141,8 +142,16 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
                 cancel
               </div>
               <div className={styles.uploadBtn} onClick={() => uploadProject()}>
-                <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
-                <span>Upload</span>
+                {isLoading ? (
+                  <div>
+                    <PulseLoader color="#642dda" size={10} />
+                  </div>
+                ) : (
+                  <>
+                    <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
+                    <span>Upload</span>
+                  </>
+                )}
               </div>
             </div>
           </>
@@ -151,7 +160,6 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
             <div>
               <div className={stylesf.fileOuter}>
                 {result?.map((items, key) => {
-                  console.log(items.files[0]);
                   return (
                     <div key={key}>
                       <div className={stylesf.uploadedFiles}>Uploaded file:</div>

@@ -2,12 +2,21 @@
   padding-top: 20px;
   padding-bottom: 10px;
 }
-.archFilesMainSec > div {
-  border-bottom: 1px solid #efefef;
+.fileListOuter {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 10px 0;
 }
+
+.archFilesMainSecInner {
+  border-bottom: 1px solid #efefef;
+}
+
+.archFilesMainSecInner > p {
+  font-size: 13px;
+}
+
 .viewAll {
   font-family: "Inter";
   font-style: normal;
@@ -68,4 +77,11 @@
 }
 .dataLock > img {
   padding-right: 7px;
+}
+
+.archFilesMainSecInner__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
 }

@@ -117,7 +117,7 @@ const FnOngoingProjectUserSide = ({ projects }) => {
                     <FnFileUploadDesk projectId={items._id} allUploadedFiles={uploadedFiles} />
                   </div>
                   <div className={styles.secThree}>
-                    <FnFileFromArchDesk />
+                    <FnFileFromArchDesk projectId={items._id} />
                   </div>
                 </div>
                 <div className={styles.projDetails} id="projDetails">

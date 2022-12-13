@@ -1,36 +1,118 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import endpoint from "../../src/utils/endpoint";
 import styles from "./filefromarch.module.css";
 
-const FnFileFromArchDesk = () => {
+const FnFileFromArchDesk = ({ projectId }) => {
+  const [documents, setDocuments] = useState([]);
+  const [sliced, setSliced] = useState([]);
+  const [viewAll, setViewAll] = useState(false);
+
+  async function getUploadedFiles() {
+    const response = await fetch(`${endpoint}/fileupload/uploaded_file/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    var documentsForProject = data.data.filter((res) => res.project_id === projectId);
+    setDocuments(documentsForProject);
+    setSliced(documentsForProject?.slice(0, 3));
+  }
+
+  useEffect(() => {
+    if (projectId) {
+      getUploadedFiles();
+    }
+  }, [projectId]);
+
+  const viewAllClick = () => {
+    if (!viewAll) {
+      setViewAll(true);
+    } else {
+      setViewAll(false);
+    }
+  };
+
+  useEffect(() => {
+    if (viewAll) {
+      setSliced(documents);
+    } else {
+      setSliced(documents?.slice(0, 3));
+    }
+  }, [viewAll]);
+
   return (
     <>
       <div className={styles.fileTitle}>
         <div>File from Architect</div>
-        <div className={styles.viewAll}>View all</div>
+        <div className={styles.viewAll} onClick={() => viewAllClick()}>
+          View all
+        </div>
       </div>
       <div className={styles.archFilesMainSec}>
-        <div>
+        {sliced.length !== 0 ? (
+          sliced?.map((items, index) => {
+            return (
+              <div key={index} className={styles.archFilesMainSecInner}>
+                <div className={styles.archFilesMainSecInner__top}>
+                  <p>{items.title}</p>
+                  {items?.payment_status ? (
+                    <div className={styles.dataLock}>
+                      <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
+                      <a href={`${items.url}`}>
+                        <span>Unlocked</span>
+                      </a>
+                    </div>
+                  ) : (
+                    <div className={styles.dataLock}>
+                      <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
+                      <span>Locked</span>
+                    </div>
+                  )}
+                </div>
+                {items?.files.map((file, key) => {
+                  return (
+                    <div className={styles.fileListOuter} key={key}>
+                      <div className={styles.fileList}>
+                        <img src="/img/my-project-user/data.svg" alt="data.svg" />
+                        <span>{file.filename}</span>
+                      </div>
+                      <div className={styles.dataDate}>27/10/2022</div>
+                      {items?.payment_status ? (
+                        <div className={styles.dataLock}>
+                          <img src="/img/my-project-user/mobile/downloadmob.svg" alt="unlock.svg" />
+                          <a target="_blank" href={`${file?.url}`}>
+                            <span>download</span>
+                          </a>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })
+        ) : (
+          <>
+            <p>No file Found</p>
+          </>
+        )}
+        {/* <div>
           <div className={styles.fileList}>
             <img src="/img/my-project-user/data.svg" alt="data.svg" />
             <span>Photograph.jpg</span>
           </div>
           <div className={styles.dataDate}>27/10/2022</div>
           <div className={styles.dataLock}>
-            <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
-            <span>Unlock file</span>
+            <img src="/img/my-project-user/mobile/downloadmob.svg" alt="unlock.svg" />
+            <span>download</span>
           </div>
-        </div>
-        <div>
-          <div className={styles.fileList}>
-            <img src="/img/my-project-user/data.svg" alt="data.svg" />
-            <span>Photograph.jpg</span>
-          </div>
-          <div className={styles.dataDate}>27/10/2022</div>
-          <div className={styles.dataLock}>
-            <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
-            <span>Unlock file</span>
-          </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

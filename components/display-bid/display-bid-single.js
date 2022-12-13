@@ -35,7 +35,7 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
   }, []);
 
   /* ACCEPT REQUEST */
-  async function acceptRequest(id) {
+  async function acceptRequest(id, archid) {
     var token = localStorage.getItem("userToken");
 
     const res = await fetch(`${api_url}/projects/accept/${id}`, {
@@ -45,6 +45,7 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
+        architect_id: archid,
         status: "ongoing",
       }),
     });
@@ -69,10 +70,9 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
       }),
     });
     const data = await response.json();
-    console.log(data);
 
     if (data.status === "ongoing") {
-      acceptRequest(projectId);
+      acceptRequest(projectId, archid);
     }
   }
 

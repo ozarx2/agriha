@@ -12,6 +12,9 @@
 .archFilesMainSecInner {
   border-bottom: 1px solid #efefef;
 }
+.archFilesMainSecInner:last-child {
+  border-bottom: none;
+}
 
 .archFilesMainSecInner > p {
   font-size: 13px;
@@ -62,6 +65,22 @@
   line-height: 15px;
   color: #393333;
 }
+.dataUnLock {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2b5797;
+  padding: 6px;
+  border: 1px solid #2b5797;
+  border-radius: 4px;
+}
+.dataUnLock > img {
+  padding-right: 7px;
+}
 .dataLock {
   display: flex;
   align-items: center;
@@ -78,10 +97,42 @@
 .dataLock > img {
   padding-right: 7px;
 }
-
+.dataDownload {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #642dda;
+  padding: 6px;
+  border: 1px solid #642dda;
+  border-radius: 4px;
+}
+.dataDownload > img {
+  padding-right: 7px;
+}
 .archFilesMainSecInner__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
+}
+.found {
+  font-size: 14px;
+  font-family: "Inter";
+  font-style: normal;
+}
+.unlock {
+  width: 24px;
+  height: 15px;
+}
+.lock {
+  width: 24px;
+  height: 15px;
+}
+.download {
+  width: 24px;
+  height: 15px;
 }

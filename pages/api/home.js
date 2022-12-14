@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
+import api_url from "../../src/utils/url";
 
 export default function test(req, res) {
-  var allProject = {};
   async function getAllProjects() {
     const response = await fetch(`${api_url}/projects/getallprojects`, {
       method: "POST",
@@ -12,10 +12,8 @@ export default function test(req, res) {
     const data = await response.json();
     if (data) {
       const withArchitect = data.data.filter((res) => res?.architect_id);
-      allProject.push = { withArchitect };
-      console.log(withArchitect);
+      res.status(200).json(withArchitect);
     }
   }
   getAllProjects();
-  res.status(200).json(allProject);
 }

@@ -1,6 +1,6 @@
 .grid_max_outer {
   display: inline-block;
-  width: calc(100%+9.6px);
+  width: calc(100% + 9.6px) !important;
   margin: 0 -4.8px;
 }
 .grid_max_outer img {

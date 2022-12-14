@@ -3,6 +3,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import api_url from "../../src/utils/url";
+import local_url from "../../src/utils/local_url";
 import AgrihaImageGrid from "../user-common/image-grid";
 import { StoreContext } from "../../components/StoreContext";
 import Link from "next/link";
@@ -60,12 +61,14 @@ export default function AgrihaLandingMain() {
 
   async function getAllProjects() {
     const response = await fetch(`${api_url}/projects/getallprojects`, {
+      // const response = await fetch(`${local_url}/home`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
     });
     const data = await response.json();
+    // console.log(data);
     if (data) {
       const withArchitect = data.data.filter((res) => res?.architect_id);
       if (filter === "All") {

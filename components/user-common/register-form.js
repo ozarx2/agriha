@@ -18,6 +18,9 @@ export default function RegisterPopupForm() {
   const setRegisterPopup = Store.setRegisterPopup;
   const userRole = Store.userRole;
 
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState("Must fill all data");
+
   const termsClick = () => {
     window.location.href = "/terms";
   };
@@ -26,13 +29,17 @@ export default function RegisterPopupForm() {
     window.location.href = "/privacypolicy";
   };
 
-  function showOtp() {
-    sendOTPClick();
-  }
-
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+
+  function showOtp() {
+    if (name !== "" && phone !== "" && email !== "") {
+      sendOTPClick();
+    } else {
+      setIsError(true);
+    }
+  }
 
   const storeValues = (event) => {
     if (event.target.name === "name") {
@@ -116,6 +123,7 @@ export default function RegisterPopupForm() {
           placeholder="Enter Mobile number"
         />
         <input type="email" onChange={storeValues} id="email" name="email" maxLength={40} placeholder="Email address" />
+        {isError ? <p>{error}</p> : ""}
         <div className={styles.privacy}>
           By continuing you agree to Arclif&apos;s <span onClick={termsClick}>Terms of Service</span> and{" "}
           <span onClick={policyClick}>Privacy policy</span>.

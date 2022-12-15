@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 // import endpoint from "../../src/utils/endpoint";
 var endpoint = "https://agriha-server-dot-agriha-services.uc.r.appspot.com";
@@ -16,6 +16,9 @@ export default function LoginPopupForm() {
   const setRegisterPopup = Store.setRegisterPopup;
   const setBid = Store.setBid;
   const userRole = Store.userRole;
+
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState("Please enter Mobile Number");
 
   const [phone, setphone] = useState("");
 
@@ -38,6 +41,10 @@ export default function LoginPopupForm() {
     });
     const data = await res.json();
     console.log(data);
+    if (data.status === 401) {
+      setIsError(true);
+      setError("invalid Mobile number");
+    }
     if (data.status === 200) {
       localStorage.setItem("token", data.token);
       setFromLoginOrRegister("login");
@@ -61,13 +68,18 @@ export default function LoginPopupForm() {
   }
 
   function showOtp() {
-    handleSubmit();
+    if (phone !== "") {
+      handleSubmit();
+    } else {
+      setIsError(true);
+    }
   }
 
   return (
     <>
       <div className={styles.stwo}>
         <input type="tel" onChange={storeValues} placeholder="Enter Mobile Number" />
+        {isError ? <p>{error}</p> : ""}
         <div onClick={() => showOtp()} className={styles.submit}>
           {/* Send OTP */}
           Login

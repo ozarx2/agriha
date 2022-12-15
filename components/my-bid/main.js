@@ -55,7 +55,7 @@ export default function AgrihaMyBidMain() {
                       <div className={styles.desktop_inner}>
                         <div className={styles.bid_max_outer}>
                           {getAllBid?.map((item, i) => {
-                            return <AgrihaMyBidMainSingleBid item={item} i={i} />;
+                            return <AgrihaMyBidMainSingleBid key={i} item={item} i={i} />;
                           })}
                         </div>
                       </div>
@@ -69,7 +69,7 @@ export default function AgrihaMyBidMain() {
                       <div className={styles.mobile_inner}>
                         <div className={styles.bid_max_outer}>
                           {getAllBid?.map((item, i) => {
-                            return <AgrihaMyBidMainSingleBid item={item} i={i} />;
+                            return <AgrihaMyBidMainSingleBid key={i} item={item} i={i} />;
                           })}
                         </div>
                       </div>

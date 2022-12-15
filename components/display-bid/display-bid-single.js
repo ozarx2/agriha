@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import StarRatings from "react-star-ratings";
@@ -32,11 +33,56 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
     setSingleArchitect(data);
   }
 
-  console.log(items);
+  // console.log(items);
 
   useEffect(() => {
     getSingleArchitect();
   }, []);
+
+  const router = useRouter();
+
+  /* ACCEPT REQUEST */
+  async function acceptRequest(id, archid) {
+    var token = localStorage.getItem("userToken");
+
+    const res = await fetch(`${api_url}/projects/accept/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        architect_id: archid,
+        status: "ongoing",
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    if (data.projectdata.status === "ongoing") {
+      setBidArchitectSelectPopup(false);
+      router.push("/my-bid");
+    }
+  }
+
+  // SELECT ARCHITECT BID
+  async function selectArchitcect(id, archid, projectId) {
+    const response = await fetch(`${api_url}/quotation/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        architect_id: archid,
+        status: "ongoing",
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    if (data.status === "ongoing") {
+      acceptRequest(projectId, archid);
+    }
+  }
 
   return (
     <div className={styles.bid_outer} key={i}>
@@ -76,7 +122,10 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
         <div
           className={styles.select}
           onClick={() => (
-            setDisplayBidArchitet(singleArchitect), setDisplayBidItems(items), setBidArchitectSelectPopup(true)
+            setDisplayBidArchitet(singleArchitect),
+            setDisplayBidItems(items),
+            setBidArchitectSelectPopup(true),
+            selectArchitcect(items._id, items.architect_id, items.project_id)
           )}
           // onClick={() => selectArchitcect(items._id, items.architect_id, items.project_id)}
         >

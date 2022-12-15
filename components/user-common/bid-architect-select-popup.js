@@ -4,7 +4,6 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
-import api_url from "../../src/utils/url";
 import windowSize from "../windowRes";
 
 import styles from "./architect-select-popup.module.css";
@@ -37,51 +36,8 @@ const ArchitectSelectPopupContent = () => {
   const displayBidItems = Store.displayBidItems;
   const displayBidArchitet = Store.displayBidArchitet;
 
-  // console.log(displayBidArchitet);
-
   const router = useRouter();
-
-  /* ACCEPT REQUEST */
-  async function acceptRequest(id, archid) {
-    var token = localStorage.getItem("userToken");
-
-    const res = await fetch(`${api_url}/projects/accept/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        architect_id: archid,
-        status: "ongoing",
-      }),
-    });
-
-    const data = await res.json();
-    console.log(data);
-    if (data.projectdata.status === "ongoing") {
-      router.push("/my-bid");
-    }
-  }
-
-  // SELECT ARCHITECT BID
-  async function selectArchitcect(id, archid, projectId) {
-    const response = await fetch(`${api_url}/quotation/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        architect_id: archid,
-        status: "ongoing",
-      }),
-    });
-    const data = await response.json();
-    console.log(data);
-    if (data.status === "ongoing") {
-      acceptRequest(projectId, archid);
-    }
-  }
+  // console.log(displayBidArchitet);
 
   return (
     <>
@@ -99,17 +55,20 @@ const ArchitectSelectPopupContent = () => {
         </div>
         <div className={styles.line}></div>
         <div className={styles.buttons}>
-          <div className={styles.back} onClick={() => setBidArchitectSelectPopup(false)}>
-            Go to back
+          <div className={styles.continue} onClick={() => (setBidArchitectSelectPopup(false), router.push("/my-bid"))}>
+            OK
           </div>
-          <div
+          {/* <div className={styles.back} onClick={() => setBidArchitectSelectPopup(false)}>
+            OK
+          </div> */}
+          {/* <div
             className={styles.continue}
             onClick={() =>
               selectArchitcect(displayBidItems._id, displayBidItems.architect_id, displayBidItems.project_id)
             }
           >
             Continue
-          </div>
+          </div> */}
         </div>
       </div>
     </>

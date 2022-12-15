@@ -265,8 +265,7 @@ const BasicDetailsMain = () => {
     handleSubmit();
   };
 
-  /* CREATE PROJECT */
-  const handleSubmit = () => {
+  useEffect(() => {
     if (selectedtype === "Residential") {
       setProjectDetails(residentialDetails);
     }
@@ -300,50 +299,59 @@ const BasicDetailsMain = () => {
     if (selectedtype === "School/College building") {
       setProjectDetails(schoolDetails);
     }
-    const data = new Date();
-    const formatDate = moment(data).format("DD/MM/YYYY");
-    const token = localStorage.getItem("userToken");
-    let config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    axios
-      .post(
-        `${api_url}/projects/Choose_project`,
-        {
-          project_type: selectedtype,
-          starting_date: formatDate,
-          ending_date: "null",
-          status: "started",
-          architect_id: bidArchitectId,
-          bid: bid,
-          projectsub_type: null,
-          project_type_details: projectDetails,
-          requiremet_list: requirementList,
-          project_requirements: [
-            {
-              area: area,
-              budget: budget,
-              plot: plot,
-              location: location,
-              suggessions: suggessions,
-            },
-          ],
+  }, [selectedtype]);
+
+  /* CREATE PROJECT */
+  const handleSubmit = () => {
+    console.log(projectDetails);
+    if (projectDetails.length !== 0) {
+      const data = new Date();
+      const formatDate = moment(data).format("DD/MM/YYYY");
+      const token = localStorage.getItem("userToken");
+      let config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-        config
-      )
-      .then((response) => {
-        console.log(response);
-        if (response.data.status == 200) {
-          localStorage.setItem("projectId", response.data.data._id);
-          window.location.href = "/requirement/secondary-details";
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Something went wrong please try again");
-      });
+      };
+      axios
+        .post(
+          `${api_url}/projects/Choose_project`,
+          {
+            project_type: selectedtype,
+            starting_date: formatDate,
+            ending_date: "null",
+            status: "started",
+            architect_id: bidArchitectId,
+            bid: bid,
+            projectsub_type: null,
+            project_type_details: projectDetails,
+            requiremet_list: requirementList,
+            project_requirements: [
+              {
+                area: area,
+                budget: budget,
+                plot: plot,
+                location: location,
+                suggessions: suggessions,
+              },
+            ],
+          },
+          config
+        )
+        .then((response) => {
+          console.log(response.data);
+          if (response.data.status == 200) {
+            localStorage.setItem("projectId", response.data.data._id);
+            window.location.href = "/requirement/secondary-details";
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Something went wrong please try again");
+        });
+    } else {
+      console.log("no data");
+    }
   };
 
   const getValueChecked = (e) => {

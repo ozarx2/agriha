@@ -3,7 +3,6 @@
 @media only screen and (max-width: 1100px) {
   .fileFromMainMob {
     display: flex;
-    align-items: center;
     justify-content: space-between;
   }
   .fileFromHead {
@@ -14,51 +13,141 @@
     line-height: 17px;
     color: #5f5f5f;
   }
-  .fileFromDataMainSecMob {
-    padding-top: 19px;
-    padding-bottom: 19px;
-    /* border-bottom: 1px solid #e2e2e2; */
+  .archFilesMainSec {
+    padding-top: 20px;
+    padding-bottom: 10px;
   }
-  .fileFromDataMainMob {
+  .fileListOuter {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #e2e2e2;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin: 10px 0;
   }
-  .fileFromDataMainMob > div > img {
-    padding-right: 10px;
-    text-align: center;
+
+  .archFilesMainSecInner {
+    border-bottom: 1px solid #efefef;
   }
-  .dataLeftMob {
+  .archFilesMainSecInner:last-child {
+    border-bottom: none;
+  }
+
+  .archFilesMainSecInner > p {
+    font-size: 13px;
+  }
+
+  .viewAll {
+    text-align: right;
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #686868;
+    border-radius: 2px;
+  }
+  .fileTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
     font-size: 14px;
+    line-height: 148.19%;
+    color: #000000;
+  }
+  .fileList {
+    display: flex;
+    align-items: center;
+  }
+  .fileList > span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
     line-height: 16px;
     color: #393333;
   }
-  .dataRightMobUnlock {
+  .fileList img {
+    padding-right: 11px;
+  }
+  .dataDate {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #393333;
+  }
+  .dataUnLock {
+    display: flex;
+    align-items: center;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #2b5797;
     padding: 6px;
+    border: 1px solid #2b5797;
+    border-radius: 4px;
+  }
+  .dataUnLock > img {
+    padding-right: 7px;
+  }
+  .dataLock {
+    display: flex;
+    align-items: center;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #2b5797;
+    padding: 6px;
+    border: 1px solid #2b5797;
+    border-radius: 4px;
+  }
+  .dataLock > img {
+    padding-right: 7px;
+  }
+  .dataDownload {
+    display: flex;
+    align-items: center;
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
     color: #642dda;
+    padding: 6px;
     border: 1px solid #642dda;
     border-radius: 4px;
   }
-  .dataRightMobDownload {
-    padding: 6px;
+  .dataDownload > img {
+    padding-right: 7px;
+  }
+  .archFilesMainSecInner__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  .found {
+    font-size: 14px;
     font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-    color: #34a853;
-    border: 1px solid #34a853;
-    border-radius: 4px;
+  }
+  .unlock {
+    width: 24px;
+    height: 15px;
+  }
+  .lock {
+    width: 24px;
+    height: 15px;
+  }
+  .download {
+    width: 24px;
+    height: 15px;
   }
 }

@@ -51,9 +51,19 @@ export default function Navbar() {
     }
   }, []);
 
+  /* GET ARCHITECT ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      localStorage.setItem("architectId", pair[0]);
+      setArchitectId(pair[0]);
+    }
+  }
+
   useEffect(() => {
-    var id = localStorage.getItem("architectId");
-    setArchitectId(id);
+    getParameters();
   }, []);
 
   /* GET ARCHITECT DATA */

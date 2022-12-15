@@ -18,17 +18,22 @@ import styles from "./main.module.css";
 const UserArchitectAboutDesktop = () => {
   const [tab, setTab] = useState("aboutus");
 
-  const router = useRouter();
-  const { id } = router.query;
+  const [id, setID] = useState("");
 
-  // function getIdParameters() {
-  //   let urlString = window.location.href;
-  //   let paramString = urlString.split("/")[4];
-  //   let queryString = new URLSearchParams(paramString);
-  //   for (let pair of queryString.entries()) {
-  //     console.log(pair[0]);
-  //   }
-  // }
+  const router = useRouter();
+  /* GET ARCHITECT ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setID(pair[0]);
+    }
+  }
+
+  useEffect(() => {
+    getParameters();
+  }, []);
 
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);

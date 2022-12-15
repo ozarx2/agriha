@@ -21,6 +21,8 @@ const UserArchitectAboutDesktop = () => {
   const [id, setID] = useState("");
 
   const router = useRouter();
+  const { userId } = router.query;
+
   /* GET ARCHITECT ID */
   function getParameters() {
     let urlString = window.location.href;
@@ -33,7 +35,10 @@ const UserArchitectAboutDesktop = () => {
 
   useEffect(() => {
     getParameters();
-  }, []);
+  }, [userId]);
+
+  // console.log(id);
+  // console.log(userId);
 
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);

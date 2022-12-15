@@ -397,12 +397,28 @@
   margin-left: 10px;
 }
 
-.bottom__main_inner {
+.bottom__main_inner__container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: flex-end;
   margin-top: 50px;
   margin-bottom: 30px;
+}
+
+.bottom__main_inner__container > p {
+  margin-right: 20px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: normal;
+  color: red;
+}
+
+.bottom__main_inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .contactUs_button {
@@ -462,7 +478,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 400px;
+  height: 470px;
   margin-top: 50px;
 }
 
@@ -498,7 +514,8 @@
 }
 
 .lists_plan_card {
-  margin: 20px 0px;
+  margin: 10px 0px;
+  display: flex;
 }
 
 .lists_plan_card > ul > li {
@@ -506,6 +523,7 @@
   color: #4d4361;
   font-size: 13px;
   font-weight: 400;
+  margin: 10px 20px;
 }
 
 .select_plan_card {

@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { PulseLoader } from "react-spinners";
 import api_url from "../../src/utils/url";
 import styles from "./RequirementsMain.module.css";
 
@@ -12,9 +13,9 @@ const ChoosePlanMain = () => {
   const [planID, setPlanID] = useState("");
   const [serviceList, setServiceList] = useState([]);
 
-  const goToFileUpload = () => {
-    handleSubmit();
-  };
+  const [error, setError] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   /* GET PLAN DETAILS */
   async function getPlanDetails() {
@@ -79,19 +80,21 @@ const ChoosePlanMain = () => {
     }
   };
 
-  console.log(serviceList);
-
-  /* CREATE PROJECT */
-  const handleSubmit = () => {
+  const goToFileUpload = () => {
     const token = localStorage.getItem("userToken");
     const projectID = localStorage.getItem("projectId");
+
     let config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
-    selectPlan
-      ? axios
+
+    if (selectPlan) {
+      if (planID !== "") {
+        setIsError(false);
+        setIsLoading(true);
+        axios
           .patch(
             `${api_url}/projects/update/${projectID}`,
             {
@@ -100,16 +103,22 @@ const ChoosePlanMain = () => {
             config
           )
           .then((response) => {
-            console.log(response.data);
             if (response.data) {
               window.location.href = "/requirement/file-upload";
             }
           })
           .catch((error) => {
             console.log(error);
-            alert("Something went wrong please try again");
-          })
-      : axios
+          });
+      } else {
+        setIsError(true);
+        setError("please choose a plan first");
+      }
+    } else {
+      if (serviceList.length !== 0) {
+        setIsError(false);
+        setIsLoading(true);
+        axios
           .patch(
             `${api_url}/projects/update/${projectID}`,
             {
@@ -118,15 +127,18 @@ const ChoosePlanMain = () => {
             config
           )
           .then((response) => {
-            console.log(response.data);
             if (response.data) {
               window.location.href = "/requirement/file-upload";
             }
           })
           .catch((error) => {
             console.log(error);
-            alert("Something went wrong please try again");
           });
+      } else {
+        setIsError(true);
+        setError("must select your requirements");
+      }
+    }
   };
 
   return (
@@ -234,10 +246,14 @@ const ChoosePlanMain = () => {
               )}
             </div>
           </div>
-          <div className={styles.bottom__main_inner}>
-            <div className={styles.contactUs_button}>Contact us</div>
-            <div className={styles.save_button} onClick={goToFileUpload}>
-              Save & Continue
+
+          <div className={styles.bottom__main_inner__container}>
+            {isError ? <p>{error}</p> : ""}
+            <div className={styles.bottom__main_inner}>
+              <div className={styles.contactUs_button}>Contact us</div>
+              <div className={styles.save_button} onClick={goToFileUpload}>
+                {isLoading ? <PulseLoader color="#ffffff" /> : "Save & Continue"}
+              </div>
             </div>
           </div>
         </div>

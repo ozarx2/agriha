@@ -1,20 +1,18 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { StoreContext } from "../../components/StoreContext";
 import storage from "../../firebase";
 import api_url from "../../src/utils/url";
+import { PulseLoader } from "react-spinners";
 
 import styles from "./fileuploadmob.module.css";
 import stylefl from "./uploadedfiles.module.css";
 
 const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
-  const [Store] = useContext(StoreContext);
   const [descriptionMob, setDescriptionMob] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [id, setId] = useState("");
 
-  const handlerMob = (e) => {
-    setDescriptionMob(e.target.value);
-  };
+  var projectImages = [];
 
   const handleSubmit = async () => {
     const token = localStorage.getItem("userToken");
@@ -31,14 +29,18 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
       }),
     });
     const data = await res.json();
+    setIsLoading(false);
+    window.location.reload();
   };
+
+  /* <=========== FIREBASE UPLOAD START ===========> */
 
   /* Upload project images */
   const [files, setFiles] = useState([]);
-  const [projectImages, setProjectImages] = useState([]);
   const [percentProject, setPercentProject] = useState(0);
 
   function handleUploadProject(img) {
+    setIsLoading(true);
     if (!img) {
       alert("Please choose a file first!");
     }
@@ -57,7 +59,10 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          setProjectImages((projectImages) => [...projectImages, url]);
+          projectImages.push(url);
+          setTimeout(() => {
+            handleSubmit();
+          }, 1000);
         });
       }
     );
@@ -68,31 +73,26 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
   var fileArray = [];
 
   const uploadMultipleFiles = (e) => {
-    if (e.target.files.length <= 30) {
+    if (e.target.files.length <= 1) {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
         setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
       }
     } else {
-      alert("Cannot add more than 30 pictures");
+      alert("Cannot add more than 1 pictures");
     }
   };
 
-  const uploadProject = (id) => {
+  const uploadProject = () => {
     let temp = [...files];
     let length = files.length;
     for (let i = 0; i < length; i++) {
       handleUploadProject(temp[i].file);
     }
-    setId(id);
   };
 
-  useEffect(() => {
-    if (files.length === projectImages.length && files.length !== 0 && projectImages.length !== 0) {
-      handleSubmit();
-    }
-  }, [projectImages]);
+  /* <=========== FIREBASE UPLOAD END ===========> */
 
   const result = allUploadedFiles.filter((res) => res.project_id === projectId);
 
@@ -102,24 +102,21 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
         <>
           <div className={styles.sentFileUploadMainSecMobTitle}>Upload files</div>
           <input
+            type="text"
             className={styles.sentFileDescMob}
             placeholder="Enter Description"
-            value={descriptionMob}
-            onChange={handlerMob}
+            onChange={(e) => setDescriptionMob(e.target.value)}
           />
 
           <div id="FnUserMyProjectMobileUpload" className={styles.dragDropSec}>
             <input
               className={styles.custom_file_input}
               type="file"
-              multiple
               onChange={uploadMultipleFiles}
               placeholder="No file selected"
               accept="application/pdf"
             />
-            <div className={styles.dragDrop}>
-              Select file or <a href="">browse</a>
-            </div>
+            <div className={styles.dragDrop}>Drag & drop your file</div>
             <div className={styles.fileOuter}>
               {files.map((file, key) => {
                 console.log(file);
@@ -129,39 +126,43 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
                       <img src="/img/my-project-user/data.svg" />
                       <span>{file.file.name}</span>
                     </div>
-                    {/* <span className={styles.fileDelete}>Delete</span> */}
                   </div>
                 );
               })}
             </div>
           </div>
-          <div className={styles.uploadFileDescMob} onClick={() => uploadProject(projectId.projectId)}>
-            <img src="/img/my-project-user/mobile/uploadmob.svg" alt="uploadmob.svg" />
-            <span>UploadFile</span>
+          <div className={styles.uploadFileDescMob} onClick={() => uploadProject()}>
+            {isLoading ? (
+              <div>
+                <PulseLoader color="#642dda" size={10} />
+              </div>
+            ) : (
+              <>
+                <img src="/img/my-project-user/mobile/uploadmob.svg" alt="uploadmob.svg" />
+                <span>UploadFile</span>
+              </>
+            )}
           </div>
         </>
       ) : (
         <>
           <div className={stylefl.fileOuter}>
-            {result
-              ?.slice(0)
-              .reverse()
-              .map((items, key) => {
-                return (
-                  <div key={key}>
-                    <div className={stylefl.uploadedFiles}>Uploaded file:</div>
-                    <div className={stylefl.file}>
-                      <div>
-                        <img src="/img/my-project-user/data.svg" />
-                        <span>{items?.description}</span>
-                      </div>
-                      <a target="_blank" href={`${items.files[0]}`}>
-                        view
-                      </a>
+            {result?.map((items, key) => {
+              return (
+                <div key={key}>
+                  <div className={stylefl.uploadedFiles}>Uploaded file:</div>
+                  <div className={stylefl.file}>
+                    <div>
+                      <img src="/img/my-project-user/data.svg" />
+                      <span>{items?.description}</span>
                     </div>
+                    <a target="_blank" href={`${items.files[0]}`}>
+                      view
+                    </a>
                   </div>
-                );
-              })}
+                </div>
+              );
+            })}
           </div>
         </>
       )}

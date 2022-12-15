@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import endpoint from "../../src/utils/endpoint";
+
 import styles from "./filefromarch.module.css";
 
 const FnFileFromArchDesk = ({ projectId }) => {
@@ -60,15 +61,15 @@ const FnFileFromArchDesk = ({ projectId }) => {
                 <div className={styles.archFilesMainSecInner__top}>
                   <p>{items.title}</p>
                   {items?.payment_status ? (
-                    <div className={styles.dataLock}>
-                      <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
+                    <div className={styles.dataUnLock}>
+                      <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" className={styles.unlock} />
                       <a href={`${items.url}`}>
                         <span>Unlocked</span>
                       </a>
                     </div>
                   ) : (
                     <div className={styles.dataLock}>
-                      <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" />
+                      <img src="/img/my-project-user/lock.svg" alt="lock.svg" className={styles.lock} />
                       <span>Locked</span>
                     </div>
                   )}
@@ -82,14 +83,16 @@ const FnFileFromArchDesk = ({ projectId }) => {
                       </div>
                       <div className={styles.dataDate}>27/10/2022</div>
                       {items?.payment_status ? (
-                        <div className={styles.dataLock}>
-                          <img src="/img/my-project-user/mobile/downloadmob.svg" alt="unlock.svg" />
+                        <div className={styles.dataDownload}>
+                          <img src="/img/my-project-user/download.svg" alt="unlock.svg" className={styles.download} />
                           <a target="_blank" href={`${file?.url}`}>
-                            <span>download</span>
+                            <span>Download</span>
                           </a>
                         </div>
                       ) : (
-                        ""
+                        <div className={styles.dataDownload}>
+                          <span>Can't Download</span>
+                        </div>
                       )}
                     </div>
                   );
@@ -99,7 +102,7 @@ const FnFileFromArchDesk = ({ projectId }) => {
           })
         ) : (
           <>
-            <p>No file Found</p>
+            <p className={styles.found}>No file Found</p>
           </>
         )}
         {/* <div>

@@ -8,8 +8,10 @@ export default function NotificationPopup() {
   const [Store] = useContext(StoreContext);
 
   const setNotificationPopup = Store.setNotificationPopup;
-  const activityLog = Store.activityLog;
-  console.log(activityLog);
+  const dataActivity = Store.activityLog;
+  const temp = dataActivity.slice(0).reverse();
+  const activityLog = temp.slice(0, 10);
+  // console.log(activityLog);
 
   return (
     <>
@@ -34,16 +36,18 @@ export default function NotificationPopup() {
                       <div className={styles.left}>
                         <img
                           src={
-                            item.user.profile_pic ? item.user.profile_pic : "/img/architect-dashboard/profile_img.svg"
+                            item?.user?.profile_pic
+                              ? item?.user?.profile_pic
+                              : "/img/architect-dashboard/profile_img.svg"
                           }
                           onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                           alt="alt"
                         />
                         <div className={styles.title}>
-                          <div className={styles.main}>{item.user.name}</div>
+                          <div className={styles.main}>{item?.user?.name}</div>
                           <div className={styles.sub}>
-                            {item.user.name}
-                            {item.activity === "project added for you" ? " added a project for you" : ""}
+                            {item?.user?.name}
+                            {item?.activity === "project added for you" ? " added a project for you" : ""}
                           </div>
                         </div>
                       </div>

@@ -143,7 +143,7 @@ const FnUserMyprojectsile = ({ projects }) => {
                 .reverse()
                 .map((items, key) => {
                   return (
-                    <>
+                    <React.Fragment key={key}>
                       <div className={styles.projImgMobMainSec}>
                         <div className={styles.projImgMobMian}>
                           <img
@@ -383,7 +383,7 @@ const FnUserMyprojectsile = ({ projects }) => {
                           </div>
                         </>
                       ) : null}
-                    </>
+                    </React.Fragment>
                   );
                 })}
             </div>

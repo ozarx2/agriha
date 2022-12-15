@@ -23,7 +23,7 @@ const UserArchitectAboutMobile = () => {
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);
   async function getSingleArchitect() {
-    console.log(id);
+    // console.log(id);
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/architects/${id}`, {
       method: "GET",

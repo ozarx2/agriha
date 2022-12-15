@@ -228,7 +228,7 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
                     <div className={styles.Pfile_outer}>
                       {item?.files?.map((file, i) => {
                         return (
-                          <>
+                          <React.Fragment key={i}>
                             {file.isDelete ? (
                               <div className={`${styles.Pfile} ${styles.deleted}`} key={i}>
                                 <div className={styles.left}>
@@ -302,7 +302,7 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
                                 </div>
                               </div>
                             )}
-                          </>
+                          </React.Fragment>
                         );
                       })}
                     </div>

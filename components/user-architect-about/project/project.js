@@ -16,9 +16,9 @@ const FnProject = ({ singleArchitect, projects }) => {
         <div className={styles.archProjectSectionMain}>
           <div className={styles.archProjectSection}>
             <div className={styles.archProjPicSection}>
-              {projects?.map((item, index) => {
+              {projects?.map((item, i) => {
                 return (
-                  <Link href={`/project-details/${item._id}`} passHref>
+                  <Link key={i} href={`/project-details/${item._id}`} passHref>
                     <div className={styles.archProjectPic}>
                       <img
                         src={
@@ -43,9 +43,9 @@ const FnProject = ({ singleArchitect, projects }) => {
         <div className={styles.archProjectSectionMain}>
           <div className={styles.archProjectSection}>
             <div className={styles.archProjPicSection}>
-              {projects?.map((item, index) => {
+              {projects?.map((item, i) => {
                 return (
-                  <Link href={`/project-details/${item._id}`} passHref>
+                  <Link key={i} href={`/project-details/${item._id}`} passHref>
                     <div className={styles.archProjectPic}>
                       <img
                         src={

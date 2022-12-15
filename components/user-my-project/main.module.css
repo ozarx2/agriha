@@ -73,7 +73,7 @@
     padding: 20px;
   }
   .propicDp {
-    width: 23%;
+    width: 36px;
     height: 36px;
     border-radius: 50%;
     /* padding-left: 20px; */
@@ -97,9 +97,12 @@
     margin-left: 10px;
   }
   .viewMoreMob > span {
-    padding-left: 2.5px;
+    padding-left: 5.5px;
     padding-right: 13px;
   }
+  /* .viewMoreMob > span > img {
+    padding-right: 5px;
+  } */
   .productsMobSecMain {
     padding: 20px;
   }
@@ -136,8 +139,8 @@
     align-items: center;
     padding-top: 24px;
     padding-bottom: 20px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-bottom: 1px solid #e2e2e2;
   }
   .projStatusLeftMainMob {
@@ -317,8 +320,11 @@
     font-size: 14px;
     line-height: 17px;
     color: #000000;
+    display: flex;
+    align-items: center;
+    text-align: center;
   }
-  .fileUploadSecMainMobTitle > span {
+  .fileUploadSecMainMobTitle > span > img {
     padding-left: 17px;
   }
   .fileSortSecMainMob {
@@ -328,6 +334,8 @@
     font-size: 12px;
     line-height: 15px;
     color: #7d7d7d;
+    display: flex;
+    align-items: center;
   }
   .fileSortSecMainMob > img {
     padding-right: 17px;
@@ -339,6 +347,8 @@
     font-size: 12px;
     line-height: 15px;
     color: #7d7d7d;
+    display: flex;
+    align-items: center;
   }
   .createFolderSecMainMob > img {
     padding-right: 17px;

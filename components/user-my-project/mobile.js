@@ -185,7 +185,7 @@ const FnUserMyprojectsile = ({ projects }) => {
                                     ) : (
                                       <img src="/img/my-project-user/mobile/showmoremob.svg" alt="up.svg" />
                                     )}
-                                  </span>{" "}
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -251,7 +251,12 @@ const FnUserMyprojectsile = ({ projects }) => {
                           </div>
                           <div className={styles.suggestedBedProductsMainSecMob}>
                             <div className={styles.suggestedBedProductsMainMob}>
-                              <div className={styles.suggestedBedProductHead}>04 Brdroom Products</div>
+                              <div
+                                className={styles.suggestedBedProductHead}
+                                onClick={() => toggleSuggProdMob(items._id)}
+                              >
+                                04 Brdroom Products
+                              </div>
                               <div className={styles.suggProdListMob} onClick={() => toggleSuggProdMob(items._id)}>
                                 {suggestProd && sugProd === items._id ? (
                                   <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" />
@@ -297,8 +302,11 @@ const FnUserMyprojectsile = ({ projects }) => {
                           </div>
                           <div className={styles.fileUploadSecMainMob}>
                             <div className={styles.fileUploadSecMainMobHead}>
-                              <div className={styles.fileUploadSecMainMobTitle}>
-                                File manager{" "}
+                              <div
+                                className={styles.fileUploadSecMainMobTitle}
+                                onClick={() => toggleFileBtnMob(items._id)}
+                              >
+                                File manager
                                 <span onClick={() => toggleFileBtnMob(items._id)}>
                                   {viewFileMore && fileViewMore === items._id ? (
                                     <img src="/img/my-project-user/mobile/upmob.svg" alt="up.svg" />
@@ -361,7 +369,9 @@ const FnUserMyprojectsile = ({ projects }) => {
                           )}
                           <div className={styles.sentFileMainSecMob}>
                             <div className={styles.sentFileMainMob}>
-                              <div className={styles.sentFileHead}>Send file to architect</div>
+                              <div className={styles.sentFileHead} onClick={() => toggleSentFileMob(items._id)}>
+                                Send file to architect
+                              </div>
                               <div className={styles.sentFileListMob} onClick={() => toggleSentFileMob(items._id)}>
                                 {sentFile && fileToArchitect === items._id ? (
                                   <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" />

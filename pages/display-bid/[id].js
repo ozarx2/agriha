@@ -9,6 +9,7 @@ import LoginPopup from "../../components/user-common/login-popup";
 import RegisterPopup from "../../components/user-common/register-popup";
 import OtpPopup from "../../components/user-common/otp-popup";
 import ProfilePopup from "../../components/user-common/profile-popup";
+import BidArchitectSelectPopup from "../../components/user-common/bid-architect-select-popup";
 
 import styles from "./index.module.css";
 
@@ -19,6 +20,7 @@ export default function AgrihaProjectDetailsBidUserView() {
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
+  const bidArchitectSelectPopup = Store.bidArchitectSelectPopup;
 
   const router = useRouter();
   useEffect(() => {
@@ -54,6 +56,7 @@ export default function AgrihaProjectDetailsBidUserView() {
         {registerPopup ? <RegisterPopup /> : ""}
         {otpPopup ? <OtpPopup /> : ""}
         {profilePopup ? <ProfilePopup /> : ""}
+        {bidArchitectSelectPopup ? <BidArchitectSelectPopup /> : ""}
       </div>
     </>
   );

@@ -9,14 +9,14 @@ import styles from "./main.module.css";
 const Request = ({ name, avatar, type, id }) => {
   const [Store] = useContext(StoreContext);
 
-  console.log(id);
+  // console.log(id);
 
   const userProjectsDetails = Store.userProjectsDetails;
 
   const results = userProjectsDetails?.filter((res) => res.project === id);
 
-  console.log(userProjectsDetails);
-  console.log(results);
+  // console.log(userProjectsDetails);
+  // console.log(results);
 
   /* ACCEPT REQUEST */
   async function acceptRequest() {

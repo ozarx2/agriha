@@ -24,12 +24,12 @@ export default function SingleProjectsMain() {
     if (projectDetails.Image?.length !== 0) {
       projectDetails?.Image?.map((item, i) => {
         addFiles(item);
-        console.log(item);
+        // console.log(item);
       });
     }
   }, [projectDetails.Image]);
 
-  console.log(imagesNew);
+  // console.log(imagesNew);
 
   const slides = imagesNew.map(({ src, key, width, height, images }) => ({
     src,
@@ -50,7 +50,7 @@ export default function SingleProjectsMain() {
     let queryString = new URLSearchParams(paramString);
     for (let pair of queryString.entries()) {
       setProjectId(pair[0]);
-      console.log(pair[0]);
+      // console.log(pair[0]);
     }
   }
 
@@ -69,7 +69,7 @@ export default function SingleProjectsMain() {
       },
     });
     const data = await res.json();
-    console.log(data[0]);
+    // console.log(data[0]);
     setProjectDetails(data[0]);
   }
 

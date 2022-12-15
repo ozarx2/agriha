@@ -32,8 +32,8 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
       },
     });
     const data = await response.json();
-    console.log(data);
-    console.log(data.data);
+    // console.log(data);
+    // console.log(data.data);
     setDocuments(data.data);
   }
 
@@ -218,96 +218,95 @@ export default function FolderPopup({ folderPopup, setFolderPopup }) {
               .reverse()
               .map((item, index) => {
                 return (
-                  <>
-                    <Accordion
-                      folder_name={item?.title}
-                      paymentStatus={item?.payment_status}
-                      date={moment(item?.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
-                      folderId={item?._id}
-                    >
-                      <div className={styles.Pfile_outer}>
-                        {item?.files?.map((file, i) => {
-                          return (
-                            <>
-                              {file.isDelete ? (
-                                <div className={`${styles.Pfile} ${styles.deleted}`} key={i}>
-                                  <div className={styles.left}>
-                                    <div className={styles.img}>
-                                      <img src="/img/architect-dashboard/file-d.svg" alt="alt" />
-                                    </div>
-                                    <div className={styles.name}>
-                                      <div className={styles.first}>
-                                        <div>{file.filename}</div>
-                                        <div>
-                                          {lock ? (
-                                            <img src="/img/architect-dashboard/slock-d.svg" alt="alt" />
-                                          ) : (
-                                            <img src="/img/architect-dashboard/sunlock-d.svg" alt="alt" />
-                                          )}
-                                        </div>
+                  <Accordion
+                    folder_name={item?.title}
+                    paymentStatus={item?.payment_status}
+                    date={moment(item?.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
+                    folderId={item?._id}
+                    key={index}
+                  >
+                    <div className={styles.Pfile_outer}>
+                      {item?.files?.map((file, i) => {
+                        return (
+                          <>
+                            {file.isDelete ? (
+                              <div className={`${styles.Pfile} ${styles.deleted}`} key={i}>
+                                <div className={styles.left}>
+                                  <div className={styles.img}>
+                                    <img src="/img/architect-dashboard/file-d.svg" alt="alt" />
+                                  </div>
+                                  <div className={styles.name}>
+                                    <div className={styles.first}>
+                                      <div>{file.filename}</div>
+                                      <div>
+                                        {lock ? (
+                                          <img src="/img/architect-dashboard/slock-d.svg" alt="alt" />
+                                        ) : (
+                                          <img src="/img/architect-dashboard/sunlock-d.svg" alt="alt" />
+                                        )}
                                       </div>
                                     </div>
                                   </div>
-                                  <div className={styles.right}>
-                                    <div className={styles.delete}>
-                                      <img src="/img/architect-dashboard/delete-d.svg" alt="alt" />
-                                    </div>
-                                    <div className={styles.download}>
-                                      <img src="/img/architect-dashboard/download-d.svg" alt="alt" />
+                                </div>
+                                <div className={styles.right}>
+                                  <div className={styles.delete}>
+                                    <img src="/img/architect-dashboard/delete-d.svg" alt="alt" />
+                                  </div>
+                                  <div className={styles.download}>
+                                    <img src="/img/architect-dashboard/download-d.svg" alt="alt" />
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className={styles.Pfile}>
+                                <div className={styles.left}>
+                                  <div className={styles.img}>
+                                    <img src="/img/architect-dashboard/file.svg" alt="alt" />
+                                  </div>
+                                  <div className={styles.name}>
+                                    <div className={styles.first}>
+                                      <div>{file.filename}</div>
                                     </div>
                                   </div>
                                 </div>
-                              ) : (
-                                <div className={styles.Pfile}>
-                                  <div className={styles.left}>
-                                    <div className={styles.img}>
-                                      <img src="/img/architect-dashboard/file.svg" alt="alt" />
-                                    </div>
-                                    <div className={styles.name}>
-                                      <div className={styles.first}>
-                                        <div>{file.filename}</div>
-                                      </div>
-                                    </div>
+                                <div className={styles.right}>
+                                  <div className={styles.delete}>
+                                    <img
+                                      onClick={() => deleteFile(file.id, item._id)}
+                                      className={styles.delete_h}
+                                      src="/img/architect-dashboard/fdelete-h.svg"
+                                      alt="alt"
+                                    />
+                                    <img
+                                      className={styles.delete_nh}
+                                      src="/img/architect-dashboard/fdelete-nh.svg"
+                                      alt="alt"
+                                    />
                                   </div>
-                                  <div className={styles.right}>
-                                    <div className={styles.delete}>
-                                      <img
-                                        onClick={() => deleteFile(file.id, item._id)}
-                                        className={styles.delete_h}
-                                        src="/img/architect-dashboard/fdelete-h.svg"
-                                        alt="alt"
-                                      />
-                                      <img
-                                        className={styles.delete_nh}
-                                        src="/img/architect-dashboard/fdelete-nh.svg"
-                                        alt="alt"
-                                      />
-                                    </div>
-                                    <div className={styles.download}>
-                                      <Link href={file.url} passHref>
-                                        <a download target="_blank">
-                                          <img
-                                            className={styles.download_h}
-                                            src="/img/architect-dashboard/fdown-h.svg"
-                                            alt="alt"
-                                          />
-                                        </a>
-                                      </Link>
-                                      <img
-                                        className={styles.download_nh}
-                                        src="/img/architect-dashboard/fdown-nh.svg"
-                                        alt="alt"
-                                      />
-                                    </div>
+                                  <div className={styles.download}>
+                                    <Link href={file.url} passHref>
+                                      <a download target="_blank">
+                                        <img
+                                          className={styles.download_h}
+                                          src="/img/architect-dashboard/fdown-h.svg"
+                                          alt="alt"
+                                        />
+                                      </a>
+                                    </Link>
+                                    <img
+                                      className={styles.download_nh}
+                                      src="/img/architect-dashboard/fdown-nh.svg"
+                                      alt="alt"
+                                    />
                                   </div>
                                 </div>
-                              )}
-                            </>
-                          );
-                        })}
-                      </div>
-                    </Accordion>
-                  </>
+                              </div>
+                            )}
+                          </>
+                        );
+                      })}
+                    </div>
+                  </Accordion>
                 );
               })}
           </div>

@@ -18,7 +18,7 @@ export default function FnSFour() {
   const [ongoingProject, setOngoingProject] = useState(true);
 
   const ongoing = userProjects?.filter((res) => res.status === "ongoing");
-  console.log(userProjects);
+  // console.log(userProjects);
 
   useEffect(() => {
     if (userProjects?.length !== 0) {

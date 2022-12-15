@@ -17,8 +17,10 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
   /* const setOngoingId = Store.setOngoingId; */
   const setFileUploadPopup = Store.setFileUploadPopup;
   const setOngoingPopup = Store.setOngoingPopup;
-  const userProjects = Store.userProjects;
+  const userProjectsNotOrder = Store.userProjects;
   const setArcDashQueue = Store.setArcDashQueue;
+
+  const userProjects = userProjectsNotOrder.slice(0).reverse();
 
   const [project, setProject] = useState(false);
 
@@ -96,7 +98,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
 
                       {userProjects?.map((item, i) => {
                         return (
-                          <>
+                          <React.Fragment key={i}>
                             {item?.creator?.name && item?.status === "ongoing" ? (
                               <div key={i} className={styles.stwo_grid_outer}>
                                 <div className={styles.stwo_username}>
@@ -167,7 +169,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                             ) : (
                               ""
                             )}
-                          </>
+                          </React.Fragment>
                         );
                       })}
                     </>
@@ -207,7 +209,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
 
                       {userProjects?.map((item, i) => {
                         return (
-                          <>
+                          <React.Fragment key={i}>
                             {item.creator?.name && item.status === "started" ? (
                               <Request
                                 name={item?.creator?.name}
@@ -222,7 +224,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                             ) : (
                               " "
                             )}
-                          </>
+                          </React.Fragment>
                         );
                       })}
                     </>
@@ -255,7 +257,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                     <>
                       {userProjects?.map((item, i) => {
                         return (
-                          <>
+                          <React.Fragment key={i}>
                             {item?.creator?.name && item.status === "ongoing" ? (
                               <div key={i} className={styles.stwo_mobile_grid_outer}>
                                 <div className={styles.top}>
@@ -304,7 +306,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                             ) : (
                               ""
                             )}
-                          </>
+                          </React.Fragment>
                         );
                       })}
                     </>
@@ -332,7 +334,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                     <>
                       {userProjects?.map((item, i) => {
                         return (
-                          <>
+                          <React.Fragment key={i}>
                             {item.creator?.name && item.status === "started" ? (
                               <RequestMobile
                                 name={item?.creator?.name}
@@ -347,7 +349,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                             ) : (
                               ""
                             )}
-                          </>
+                          </React.Fragment>
                         );
                       })}
                     </>

@@ -44,6 +44,9 @@ export const StoreContextProvider = (props) => {
   const [fromLoginOrRegister, setFromLoginOrRegister] = useState("");
   const [userId, setUserId] = useState("");
   const [userRole, setUserRole] = useState("user");
+  const [bidArchitectSelectPopup, setBidArchitectSelectPopup] = useState("");
+  const [displayBidItems, setDisplayBidItems] = useState([]);
+  const [displayBidArchitet, setDisplayBidArchitet] = useState([]);
   // Store 61-5a end
 
   // Store Hashir start
@@ -129,8 +132,12 @@ export const StoreContextProvider = (props) => {
     setUserId,
     userRole,
     setUserRole,
-    // Store 61-5a end
-    // Store 61-5a end
+    bidArchitectSelectPopup,
+    setBidArchitectSelectPopup,
+    displayBidItems,
+    setDisplayBidItems,
+    displayBidArchitet,
+    setDisplayBidArchitet,
     // Store 61-5a end
 
     // Store Hashir start

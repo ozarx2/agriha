@@ -52,7 +52,9 @@ const FnFileFromArchMob = ({ projectId }) => {
   return (
     <>
       <div className={styles.fileFromMainMob}>
-        <div className={styles.fileFromHead}>File from architect</div>
+        <div className={styles.fileFromHead} onClick={() => toggleFileDataMob(projectId)}>
+          File from architect
+        </div>
 
         <div className={styles.fileFromListMob} onClick={() => toggleFileDataMob(projectId)}>
           {fileData && fileFromArch === projectId ? (

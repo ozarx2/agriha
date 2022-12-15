@@ -15,12 +15,12 @@ const FnFileFolder = () => {
                 <div className={styles.viewAll}>
                   <div>
                     <div>View all</div>
-                    <img src="/img/my-project-user/viewalldown.svg" alt="" />
+                    <img src="/img/my-project-user/viewalldown.svg" alt="viewalldown.svg" />
                   </div>
                 </div>
               </div>
               <div className={styles.filefolderSearch}>
-                <img src="/img/my-project-user/search.svg" alt="" />
+                <img src="/img/my-project-user/search.svg" alt="search.svg" />
                 <div className={styles.searchbardiv}>
                   <input type="search" placeholder="Search folder here..." className={styles.searchbar} />
                 </div>

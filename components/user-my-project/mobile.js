@@ -185,7 +185,7 @@ const FnUserMyprojectsile = ({ projects }) => {
                                     ) : (
                                       <img src="/img/my-project-user/mobile/showmoremob.svg" alt="up.svg" />
                                     )}
-                                  </span>{" "}
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -251,7 +251,12 @@ const FnUserMyprojectsile = ({ projects }) => {
                           </div>
                           <div className={styles.suggestedBedProductsMainSecMob}>
                             <div className={styles.suggestedBedProductsMainMob}>
-                              <div className={styles.suggestedBedProductHead}>04 Brdroom Products</div>
+                              <div
+                                className={styles.suggestedBedProductHead}
+                                onClick={() => toggleSuggProdMob(items._id)}
+                              >
+                                04 Brdroom Products
+                              </div>
                               <div className={styles.suggProdListMob} onClick={() => toggleSuggProdMob(items._id)}>
                                 {suggestProd && sugProd === items._id ? (
                                   <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" />
@@ -298,7 +303,7 @@ const FnUserMyprojectsile = ({ projects }) => {
                           <div className={styles.fileUploadSecMainMob}>
                             <div className={styles.fileUploadSecMainMobHead}>
                               <div className={styles.fileUploadSecMainMobTitle}>
-                                File manager{" "}
+                                File manager
                                 <span onClick={() => toggleFileBtnMob(items._id)}>
                                   {viewFileMore && fileViewMore === items._id ? (
                                     <img src="/img/my-project-user/mobile/upmob.svg" alt="up.svg" />

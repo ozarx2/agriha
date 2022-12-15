@@ -10,7 +10,6 @@ import stylefl from "./uploadedfiles.module.css";
 const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
   const [descriptionMob, setDescriptionMob] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [id, setId] = useState("");
 
   var projectImages = [];
 
@@ -138,7 +137,7 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
               </div>
             ) : (
               <>
-                <img src="/img/my-project-user/mobile/uploadmob.svg" alt="uploadmob.svg" />
+                <img src="/img/my-project-user/mobile/uploadmob.svg" alt="uploadmob.svg" className={styles.upload} />
                 <span>UploadFile</span>
               </>
             )}

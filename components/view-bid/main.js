@@ -20,7 +20,7 @@ export default function ViewBidMain() {
   const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
   const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
 
-  console.log(bid);
+  // console.log(bid);
 
   useEffect(() => {
     if (bid.length !== 0) {
@@ -47,33 +47,31 @@ export default function ViewBidMain() {
               .reverse()
               .map((item, index) => {
                 return (
-                  <>
-                    <div key={index} className={styles.bid__projectCard}>
-                      <div className={styles.bid__projectCard__top}>
-                        <img
-                          src={
-                            item?.thumbnail
-                              ? item?.thumbnail
-                              : "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"
-                          }
-                          onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                          alt=""
-                        />
-                        <div className={styles.bid__projectCard__title}>
-                          <div className={styles.bid__projectCard__title__left}>
-                            <h5>{item?.project_name}</h5>
-                            <p>{item?.project_type}</p>
-                          </div>
-                          <div className={styles.bid__projectCard__title__right}>
-                            <p>{item?.starting_date}</p>
-                          </div>
+                  <div key={index} className={styles.bid__projectCard}>
+                    <div className={styles.bid__projectCard__top}>
+                      <img
+                        src={
+                          item?.thumbnail
+                            ? item?.thumbnail
+                            : "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"
+                        }
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                        alt=""
+                      />
+                      <div className={styles.bid__projectCard__title}>
+                        <div className={styles.bid__projectCard__title__left}>
+                          <h5>{item?.project_name}</h5>
+                          <p>{item?.project_type}</p>
+                        </div>
+                        <div className={styles.bid__projectCard__title__right}>
+                          <p>{item?.starting_date}</p>
                         </div>
                       </div>
-                      <div className={styles.bid__projectCard__button} onClick={() => viewDetailsClick(item?._id)}>
-                        View details
-                      </div>
                     </div>
-                  </>
+                    <div className={styles.bid__projectCard__button} onClick={() => viewDetailsClick(item?._id)}>
+                      View details
+                    </div>
+                  </div>
                 );
               })}
           </div>

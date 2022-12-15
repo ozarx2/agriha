@@ -33,6 +33,7 @@ const UserArchitectAboutDesktop = () => {
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);
   async function getSingleArchitect() {
+    // console.log(id);
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/architects/${id}`, {
       method: "GET",
@@ -181,10 +182,10 @@ const UserArchitectAboutDesktop = () => {
                       {/* <div className={styles.archOptionsIcons}>
                         <img src="/img/architect-about/heart.svg" alt="heart.svg" className={styles.heartIcon} />
                         Saved
-                      </div>
+                      </div> */}
                       <div className={styles.archOptionsSelect}>
                         <div className={styles.archOptionsSelectBtn}>Select</div>
-                      </div> */}
+                      </div>
                     </div>
                   </div>
 

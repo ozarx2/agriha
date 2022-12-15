@@ -44,7 +44,7 @@ const FnUserMyArchitectMobile = () => {
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>
             {allArchitects?.map((items, i) => {
-              return <MobAgrihaArchProfileSingle items={items} i={i} />;
+              return <MobAgrihaArchProfileSingle key={i} items={items} i={i} />;
             })}
           </div>
         </div>

@@ -231,6 +231,10 @@
     display: flex;
     align-items: center;
   }
+  .archOptionsSelect {
+    display: flex;
+    align-items: center;
+  }
   .archOptionsSelectBtn {
     color: #fff;
     background: #642dda;

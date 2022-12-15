@@ -67,7 +67,7 @@ const FnArchProfiles = () => {
   return (
     <>
       {allArchitects?.map((items, i) => {
-        return <AgrihaArchProfileSingle items={items} i={i} />;
+        return <AgrihaArchProfileSingle key={i} items={items} i={i} />;
       })}
     </>
   );

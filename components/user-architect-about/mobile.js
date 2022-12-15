@@ -23,6 +23,7 @@ const UserArchitectAboutMobile = () => {
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);
   async function getSingleArchitect() {
+    // console.log(id);
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/architects/${id}`, {
       method: "GET",
@@ -31,8 +32,8 @@ const UserArchitectAboutMobile = () => {
         "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
-        Authorization: `Bearer ${dummy_token}`,
+        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();

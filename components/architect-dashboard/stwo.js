@@ -16,7 +16,7 @@ export default function FnSTwo() {
   const setAddProject = Store.setAddProject;
   const projects = Store.projects;
 
-  console.log(projects);
+  // console.log(projects);
 
   const [project, setProject] = useState(true);
 
@@ -84,33 +84,31 @@ export default function FnSTwo() {
               >
                 {projects?.map((item, index) => {
                   return (
-                    <div key={index}>
-                      <SwiperSlide>
-                        <Link href="/my-projects" passHref>
-                          <div className={styles.slide_outer}>
-                            <div className={styles.slide_image}>
-                              <img
-                                src={
-                                  item?.thumbnail
-                                    ? item?.thumbnail
-                                    : item?.Image[0]
-                                    ? item?.Image[0]
-                                    : "/img/architect-dashboard/noImg.jpeg"
-                                }
-                                onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                                alt="alt"
-                              />
-                            </div>
-                            <div className={styles.slide_title}>
-                              <h3>{item?.projectname}</h3>
-                              <p>
-                                {item?.location} | {item?.projectarea}
-                              </p>
-                            </div>
+                    <SwiperSlide key={index}>
+                      <Link href="/my-projects" passHref>
+                        <div className={styles.slide_outer}>
+                          <div className={styles.slide_image}>
+                            <img
+                              src={
+                                item?.thumbnail
+                                  ? item?.thumbnail
+                                  : item?.Image[0]
+                                  ? item?.Image[0]
+                                  : "/img/architect-dashboard/noImg.jpeg"
+                              }
+                              onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                              alt="alt"
+                            />
                           </div>
-                        </Link>
-                      </SwiperSlide>
-                    </div>
+                          <div className={styles.slide_title}>
+                            <h3>{item?.projectname}</h3>
+                            <p>
+                              {item?.location} | {item?.projectarea}
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    </SwiperSlide>
                   );
                 })}
               </Swiper>

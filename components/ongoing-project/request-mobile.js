@@ -12,8 +12,8 @@ const RequestMobile = ({ name, avatar, type, id }) => {
 
   const results = userProjectsDetails?.filter((res) => res.project === id);
 
-  console.log(userProjectsDetails);
-  console.log(results);
+  // console.log(userProjectsDetails);
+  // console.log(results);
 
   /* ACCEPT REQUEST */
   async function acceptRequest() {

@@ -177,17 +177,17 @@ export default function AgrihaLandingMain() {
                     <div className={styles.active} onClick={() => setFilter("All")}>
                       All
                     </div>
-                    {projectTypes?.map((item, index) => {
+                    {projectTypes?.map((item, i) => {
                       return (
-                        <>
+                        <React.Fragment key={i}>
                           {item?.companyname ? (
-                            <div onClick={() => setFilter(item?.companyname)} key={index}>
+                            <div onClick={() => setFilter(item?.companyname)} key={i}>
                               {item?.companyname}
                             </div>
                           ) : (
                             ""
                           )}
-                        </>
+                        </React.Fragment>
                       );
                     })}
                   </div>

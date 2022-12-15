@@ -47,36 +47,21 @@ export default function ProjectFilesMain({ setFolderPopup }) {
                 <>
                   {allDocuments?.map((item, i) => {
                     return (
-                      <>
-                        <div
-                          key={i}
-                          onClick={() => filePopup(item)}
-                          className={styles.folder_outer}
-                        >
-                          <div className={styles.left}>
-                            <img
-                              src="/img/architect-dashboard/folder-files.svg"
-                              alt="folder"
-                            />
-                            <span>{item.project_name}</span>
-                          </div>
-                          <div className={styles.right}>
-                            <div className={styles.progress}>
-                              {item.status === "completed" ? (
-                                <img
-                                  src="/img/architect-dashboard/p-c.svg"
-                                  alt="p-c"
-                                />
-                              ) : (
-                                <img
-                                  src="/img/architect-dashboard/p-nc.svg"
-                                  alt="p-nc"
-                                />
-                              )}
-                            </div>
+                      <div key={i} onClick={() => filePopup(item)} className={styles.folder_outer}>
+                        <div className={styles.left}>
+                          <img src="/img/architect-dashboard/folder-files.svg" alt="folder" />
+                          <span>{item.project_name}</span>
+                        </div>
+                        <div className={styles.right}>
+                          <div className={styles.progress}>
+                            {item.status === "completed" ? (
+                              <img src="/img/architect-dashboard/p-c.svg" alt="p-c" />
+                            ) : (
+                              <img src="/img/architect-dashboard/p-nc.svg" alt="p-nc" />
+                            )}
                           </div>
                         </div>
-                      </>
+                      </div>
                     );
                   })}
                 </>

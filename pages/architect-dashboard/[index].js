@@ -29,20 +29,6 @@ export default function ArchitectDashboard() {
   const ongoingPopup = Store.ongoingPopup;
   const searchpopup = Store.searchpopup;
 
-  /* GET ARCHITECT ID */
-  function getParameters() {
-    let urlString = window.location.href;
-    let paramString = urlString.split("/")[4];
-    let queryString = new URLSearchParams(paramString);
-    for (let pair of queryString.entries()) {
-      localStorage.setItem("architectId", pair[0]);
-    }
-  }
-
-  useEffect(() => {
-    getParameters();
-  }, []);
-
   const router = useRouter();
   useEffect(() => {
     const userId = localStorage.getItem("userId");

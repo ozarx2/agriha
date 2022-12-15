@@ -1,19 +1,17 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
 import api_url from "../../src/utils/url";
+import fetchWithCache from "../../components/global/fetchWithCache";
 
 export default function test(req, res) {
-  async function getAllProjects() {
-    const response = await fetch(`${api_url}/projects/getallprojects`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    if (data) {
-      const withArchitect = data.data.filter((res) => res?.architect_id);
-      res.status(200).json(withArchitect);
-    }
-  }
+  const url = `${api_url}/projects/getallprojects`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
   getAllProjects();
+  async function getAllProjects() {
+    const data = await fetchWithCache(url, options);
+    res.status(200).json(data);
+  }
 }

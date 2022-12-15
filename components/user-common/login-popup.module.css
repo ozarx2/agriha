@@ -16,6 +16,7 @@
   z-index: 3;
   height: 100%;
 }
+
 @media only screen and (max-width: 766px) {
   .LoginPopupInner {
     width: 100%;
@@ -348,4 +349,10 @@
     font-weight: 500;
     color: #642dda;
   }
+}
+
+.stwo > p {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }

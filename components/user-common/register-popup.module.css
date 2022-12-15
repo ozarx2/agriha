@@ -397,3 +397,10 @@
     color: #642dda;
   }
 }
+
+.stwo > p {
+  color: red;
+  font-size: 12px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}

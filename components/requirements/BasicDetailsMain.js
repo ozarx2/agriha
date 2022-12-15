@@ -265,8 +265,7 @@ const BasicDetailsMain = () => {
     handleSubmit();
   };
 
-  /* CREATE PROJECT */
-  const handleSubmit = () => {
+  useEffect(() => {
     if (selectedtype === "Residential") {
       setProjectDetails(residentialDetails);
     }
@@ -300,14 +299,12 @@ const BasicDetailsMain = () => {
     if (selectedtype === "School/College building") {
       setProjectDetails(schoolDetails);
     }
-    if (
-      projectDetails.length !== 0 &&
-      area !== "" &&
-      budget !== "" &&
-      plot !== "" &&
-      location !== "" &&
-      suggessions !== ""
-    ) {
+  }, [selectedtype]);
+
+  /* CREATE PROJECT */
+  const handleSubmit = () => {
+    console.log(projectDetails);
+    if (projectDetails.length !== 0) {
       const data = new Date();
       const formatDate = moment(data).format("DD/MM/YYYY");
       const token = localStorage.getItem("userToken");
@@ -342,7 +339,7 @@ const BasicDetailsMain = () => {
           config
         )
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
           if (response.data.status == 200) {
             localStorage.setItem("projectId", response.data.data._id);
             window.location.href = "/requirement/secondary-details";
@@ -353,7 +350,7 @@ const BasicDetailsMain = () => {
           alert("Something went wrong please try again");
         });
     } else {
-      alert("must fill all data");
+      console.log("no data");
     }
   };
 

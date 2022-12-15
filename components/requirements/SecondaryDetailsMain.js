@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { PulseLoader } from "react-spinners";
 import api_url from "../../src/utils/url";
 import styles from "./RequirementsMain.module.css";
 
@@ -11,6 +12,10 @@ const SecondaryDetailsMain = () => {
   const [country, setCountry] = useState("");
   const [workLocation, setWorkLocation] = useState("");
   const [address, setAddress] = useState("");
+
+  const [error, setError] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const storeDetails = () => {
     setPincode(document.getElementById("pincode").value);
@@ -23,6 +28,7 @@ const SecondaryDetailsMain = () => {
 
   /* CREATE PROJECT */
   const handleSubmit = () => {
+    setIsLoading(true);
     const token = localStorage.getItem("userToken");
     const projectID = localStorage.getItem("projectId");
     let config = {
@@ -63,7 +69,8 @@ const SecondaryDetailsMain = () => {
     if (pincode !== "" && district !== "" && state !== "" && country !== "") {
       handleSubmit();
     } else {
-      alert("Please fill required* fields");
+      setIsError(true);
+      setError("must fill all details");
     }
   };
 
@@ -123,10 +130,14 @@ const SecondaryDetailsMain = () => {
               </div>
             </div>
           </div>
-          <div className={styles.bottom__main_inner}>
-            <div className={styles.contactUs_button}>Contact us</div>
-            <div className={styles.save_button} onClick={goToChoosePlan}>
-              Save & Continue
+
+          <div className={styles.bottom__main_inner__container}>
+            {isError ? <p>{error}</p> : ""}
+            <div className={styles.bottom__main_inner}>
+              <div className={styles.contactUs_button}>Contact us</div>
+              <div className={styles.save_button} onClick={goToChoosePlan}>
+                {isLoading ? <PulseLoader color="#ffffff" /> : "Save & Continue"}
+              </div>
             </div>
           </div>
         </div>

@@ -9,14 +9,13 @@ import { StoreContext } from "../StoreContext";
 
 import styles from "./RequirementsMain.module.css";
 import api_url from "../../src/utils/url";
+import { PulseLoader } from "react-spinners";
 
 const BasicDetailsMain = () => {
   const [Store] = useContext(StoreContext);
 
   const bid = Store.bid;
   const bidArchitectId = Store.bidArchitectId;
-  const setBid = Store.setBid;
-  const setBidArchitectId = Store.setBidArchitectId;
 
   const [projectTypes, setProjectTypes] = useState([]);
   const [allRequirements, setRequirements] = useState([]);
@@ -61,6 +60,10 @@ const BasicDetailsMain = () => {
   const [isPool, setIsPool] = useState(false);
 
   const [rooms, setRooms] = useState("");
+
+  const [error, setError] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const storeCommonDetails = () => {
     setArea(document.getElementById("area").value);
@@ -282,7 +285,6 @@ const BasicDetailsMain = () => {
 
   useEffect(() => {
     if (selectedtype === "Residential") {
-      console.log(residentialDetails);
       setProjectDetails(residentialDetails);
     }
     if (selectedtype === "Renovation") {
@@ -356,7 +358,6 @@ const BasicDetailsMain = () => {
       },
     });
     const data = await res.json();
-    console.log(data.projecttype);
     setProjectTypes(data.projecttype);
   }
 
@@ -371,7 +372,6 @@ const BasicDetailsMain = () => {
       },
     });
     const data = await res.json();
-    console.log(data.data);
     setRequirements(data.data);
   }
 
@@ -389,6 +389,7 @@ const BasicDetailsMain = () => {
   };
 
   const handleRequest = () => {
+    setIsLoading(true);
     const data = new Date();
     const formatDate = moment(data).format("DD/MM/YYYY");
     const token = localStorage.getItem("userToken");
@@ -423,10 +424,9 @@ const BasicDetailsMain = () => {
         config
       )
       .then((response) => {
-        console.log(response.data);
         if (response.data.status == 200) {
           localStorage.setItem("projectId", response.data.data._id);
-          /* window.location.href = "/requirement/secondary-details"; */
+          window.location.href = "/requirement/secondary-details";
         }
       })
       .catch((error) => {
@@ -438,19 +438,23 @@ const BasicDetailsMain = () => {
   /* CREATE PROJECT */
   const handleSubmit = () => {
     if (area !== "" && budget !== "" && plot !== "" && location !== "") {
+      setIsError(false);
       if (selectedtype === "Residential") {
         if (floor !== "" && bedroom !== "" && bathroom !== "" && familyMembers !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill Residential details");
+          setIsError(true);
+          setError("must fill Residential details");
         }
       }
       if (selectedtype === "Renovation") {
         if (renovationType !== "") {
-          console.log("all set");
+          setIsError(false);
           handleRequest();
         } else {
-          console.log("must fill Renovation details");
+          setIsError(true);
+          setError("must fill Renovation details");
         }
       }
       if (selectedtype === "Interior") {
@@ -461,86 +465,109 @@ const BasicDetailsMain = () => {
       }
       if (selectedtype === "Apartment") {
         if (floor !== "") {
+          setIsError(false);
           handleRequest();
         } else {
-          console.log("must fill Apartment details");
+          setIsError(true);
+          setError("must fill Apartment details");
         }
       }
       if (selectedtype === "Hotels/restaurants") {
         if (floor !== "" && occupancy !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill Hotels/restaurants details");
+          setIsError(true);
+          setError("must fill Hotels/restaurants details");
         }
       }
       if (selectedtype === "Hospitals/medical lab") {
         if (floor !== "" && beds !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill Hospitals/medical lab details");
+          setIsError(true);
+          setError("must fill Hospitals/medical lab details");
         }
       }
       if (selectedtype === "Auditorium") {
         if (floor !== "" && hall !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill Auditorium lab details");
+          setIsError(true);
+          setError("must fill Auditorium lab details");
         }
       }
       if (selectedtype === "Industrial/warehouse") {
         if (businessIndustrial !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill Industrial/warehouse details");
+          setIsError(true);
+          setError("must fill Industrial/warehouse details");
         }
       }
       if (selectedtype === "Mall") {
         if (floor !== "" && occupancy !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill Mall details");
+          setIsError(true);
+          setError("must fill Mall details");
         }
       }
       if (selectedtype === "Multiplex") {
         if (screens !== "" && occupancy !== "") {
+          setIsError(false);
           handleRequest();
         } else {
-          console.log("must fill Multiplex details");
+          setIsError(true);
+          setError("must fill Multiplex details");
         }
       }
       if (selectedtype === "Religious building") {
         if (religion !== "" && occupancy !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill Religious building details");
+          setIsError(true);
+          setError("must fill Religious building details");
         }
       }
       if (selectedtype === "School/College building") {
         if (schoolOrCollage !== "" && schoolType !== "" && floor !== "" && occupancy !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill School/College building details");
+          setIsError(true);
+          setError("must fill School/College building details");
         }
       }
       if (selectedtype === "Sports building") {
         if (sportType !== "" && occupancy !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill Sports building details");
+          setIsError(true);
+          setError("must fill Sports building details");
         }
       }
       if (selectedtype === "Hostel") {
         if (floor !== "" && rooms !== "") {
           handleRequest();
+          setIsError(false);
         } else {
-          console.log("must fill Hostel details");
+          setIsError(true);
+          setError("must fill Hostel details");
         }
       }
       if (selectedtype === "Farmhouse") {
         handleRequest();
       }
     } else {
-      console.log("must fill all details");
+      setIsError(true);
+      setError("must fill all details");
     }
   };
 
@@ -972,10 +999,14 @@ const BasicDetailsMain = () => {
               )}
             </div>
           </div>
-          <div className={styles.bottom__main_inner}>
-            <div className={styles.contactUs_button}>Contact us</div>
-            <div className={styles.save_button} onClick={goToSecondaryDetails}>
-              Save & Continue
+
+          <div className={styles.bottom__main_inner__container}>
+            {isError ? <p>{error}</p> : ""}
+            <div className={styles.bottom__main_inner}>
+              <div className={styles.contactUs_button}>Contact us</div>
+              <div className={styles.save_button} onClick={goToSecondaryDetails}>
+                {isLoading ? <PulseLoader color="#ffffff" /> : "Save & Continue"}
+              </div>
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@ const BasicDetailsMain = () => {
 
   const [renovationType, setRenovationtype] = useState("");
 
-  const [apartmentType, setApartmentType] = useState("");
+  const [apartmentType, setApartmentType] = useState("1 BHK");
 
   const [occupancy, setOccupancy] = useState("");
   const [terraceCafe, setTerraceCafe] = useState(false);
@@ -54,8 +54,13 @@ const BasicDetailsMain = () => {
   const [religion, setReligion] = useState("");
 
   const [schoolOrCollage, setSchoolOrCollage] = useState("");
-  const [schoolType, setSchoolType] = useState("");
+  const [schoolType, setSchoolType] = useState("none");
   const [isResidentialSchool, setIsResidentialSchool] = useState(false);
+
+  const [sportType, setSportType] = useState("");
+  const [isPool, setIsPool] = useState(false);
+
+  const [rooms, setRooms] = useState("");
 
   const storeCommonDetails = () => {
     setArea(document.getElementById("area").value);
@@ -72,8 +77,15 @@ const BasicDetailsMain = () => {
     setFamilyMembers(document.getElementById("familyMembers").value);
   };
 
+  const getValueChecked = (e) => {
+    if (e.target.checked) {
+      setRequirementList((requirementList) => [...requirementList, e.target.value]);
+    } else {
+      requirementList.splice(requirementList.indexOf(e.target.value), 1);
+    }
+  };
+
   const storeRenovDetails = (e) => {
-    console.log(e.target.value);
     setRenovationtype(e.target.value);
   };
 
@@ -138,6 +150,37 @@ const BasicDetailsMain = () => {
     setSchoolType(document.getElementById("schoolType").value);
     setFloor(document.getElementById("floorSchool").value);
     setOccupancy(document.getElementById("occupancySchool").value);
+  };
+
+  const storeSchoolOrCollege = (e) => {
+    console.log(e.target.value);
+    setSchoolOrCollage(e.target.value);
+  };
+
+  const residentialSchoolToggle = (e) => {
+    if (e.target.checked) {
+      setIsResidentialSchool(true);
+    } else {
+      setIsResidentialSchool(false);
+    }
+  };
+
+  const storeSportsDetails = () => {
+    setSportType(document.getElementById("sportType").value);
+    setOccupancy(document.getElementById("occupancySport").value);
+  };
+
+  const poolToggle = (e) => {
+    if (e.target.checked) {
+      setIsPool(true);
+    } else {
+      setIsPool(false);
+    }
+  };
+
+  const storeHostelDetails = () => {
+    setFloor(document.getElementById("floorHostel").value);
+    setRooms(document.getElementById("roomsHostel").value);
   };
 
   const residentialDetails = [
@@ -222,6 +265,86 @@ const BasicDetailsMain = () => {
     },
   ];
 
+  const sportDetails = [
+    {
+      type_of_sport: sportType,
+      occupancy: occupancy,
+      pool: isPool,
+    },
+  ];
+
+  const HostelDetails = [
+    {
+      total_floors: floor,
+      total_rooms: rooms,
+    },
+  ];
+
+  useEffect(() => {
+    if (selectedtype === "Residential") {
+      console.log(residentialDetails);
+      setProjectDetails(residentialDetails);
+    }
+    if (selectedtype === "Renovation") {
+      setProjectDetails(renovationDetails);
+    }
+    if (selectedtype === "Apartment") {
+      setProjectDetails(apartmentDetails);
+    }
+    if (selectedtype === "Hotels/restaurants") {
+      setProjectDetails(hotelsDetails);
+    }
+    if (selectedtype === "Hospitals/medical lab") {
+      setProjectDetails(hospitalDetails);
+    }
+    if (selectedtype === "Auditorium") {
+      setProjectDetails(auditoriumDetails);
+    }
+    if (selectedtype === "Industrial/warehouse") {
+      setProjectDetails(industrialDetails);
+    }
+    if (selectedtype === "Mall") {
+      setProjectDetails(mallDetails);
+    }
+    if (selectedtype === "Multiplex") {
+      setProjectDetails(multiplexDetails);
+    }
+    if (selectedtype === "Religious building") {
+      setProjectDetails(religiousDetails);
+    }
+    if (selectedtype === "School/College building") {
+      setProjectDetails(schoolDetails);
+    }
+    if (selectedtype === "Sports building") {
+      setProjectDetails(sportDetails);
+    }
+    if (selectedtype === "Hostel") {
+      setProjectDetails(HostelDetails);
+    }
+  }, [
+    selectedtype,
+    floor,
+    bedroom,
+    bathroom,
+    familyMembers,
+    renovationType,
+    apartmentType,
+    occupancy,
+    terraceCafe,
+    outdoorKitchen,
+    beds,
+    hall,
+    businessIndustrial,
+    screens,
+    religion,
+    schoolOrCollage,
+    schoolType,
+    isResidentialSchool,
+    sportType,
+    isPool,
+    rooms,
+  ]);
+
   /* GET PROJECT TYPES */
   async function getProjects() {
     const token = localStorage.getItem("userToken");
@@ -265,106 +388,161 @@ const BasicDetailsMain = () => {
     handleSubmit();
   };
 
-  useEffect(() => {
-    if (selectedtype === "Residential") {
-      setProjectDetails(residentialDetails);
-    }
-    if (selectedtype === "Renovation") {
-      setProjectDetails(renovationDetails);
-    }
-    if (selectedtype === "Apartment") {
-      setProjectDetails(apartmentDetails);
-    }
-    if (selectedtype === "Hotels/restaurants") {
-      setProjectDetails(hotelsDetails);
-    }
-    if (selectedtype === "Hospitals/medical lab") {
-      setProjectDetails(hospitalDetails);
-    }
-    if (selectedtype === "Auditorium") {
-      setProjectDetails(auditoriumDetails);
-    }
-    if (selectedtype === "Industrial/warehouse") {
-      setProjectDetails(industrialDetails);
-    }
-    if (selectedtype === "Mall") {
-      setProjectDetails(mallDetails);
-    }
-    if (selectedtype === "Multiplex") {
-      setProjectDetails(multiplexDetails);
-    }
-    if (selectedtype === "Religious building") {
-      setProjectDetails(religiousDetails);
-    }
-    if (selectedtype === "School/College building") {
-      setProjectDetails(schoolDetails);
-    }
-  }, [selectedtype]);
+  const handleRequest = () => {
+    const data = new Date();
+    const formatDate = moment(data).format("DD/MM/YYYY");
+    const token = localStorage.getItem("userToken");
+    let config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    axios
+      .post(
+        `${api_url}/projects/Choose_project`,
+        {
+          project_type: selectedtype,
+          starting_date: formatDate,
+          ending_date: "null",
+          status: "started",
+          architect_id: bidArchitectId,
+          bid: bid,
+          projectsub_type: null,
+          project_type_details: projectDetails,
+          requirement_list: requirementList,
+          project_requirements: [
+            {
+              area: area,
+              budget: budget,
+              plot: plot,
+              location: location,
+              suggessions: suggessions,
+            },
+          ],
+        },
+        config
+      )
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.status == 200) {
+          localStorage.setItem("projectId", response.data.data._id);
+          /* window.location.href = "/requirement/secondary-details"; */
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Something went wrong please try again");
+      });
+  };
 
   /* CREATE PROJECT */
   const handleSubmit = () => {
-    console.log(projectDetails);
-    if (projectDetails.length !== 0) {
-      const data = new Date();
-      const formatDate = moment(data).format("DD/MM/YYYY");
-      const token = localStorage.getItem("userToken");
-      let config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      axios
-        .post(
-          `${api_url}/projects/Choose_project`,
-          {
-            project_type: selectedtype,
-            starting_date: formatDate,
-            ending_date: "null",
-            status: "started",
-            architect_id: bidArchitectId,
-            bid: bid,
-            projectsub_type: null,
-            project_type_details: projectDetails,
-            requiremet_list: requirementList,
-            project_requirements: [
-              {
-                area: area,
-                budget: budget,
-                plot: plot,
-                location: location,
-                suggessions: suggessions,
-              },
-            ],
-          },
-          config
-        )
-        .then((response) => {
-          console.log(response.data);
-          if (response.data.status == 200) {
-            localStorage.setItem("projectId", response.data.data._id);
-            window.location.href = "/requirement/secondary-details";
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          alert("Something went wrong please try again");
-        });
+    if (area !== "" && budget !== "" && plot !== "" && location !== "") {
+      if (selectedtype === "Residential") {
+        if (floor !== "" && bedroom !== "" && bathroom !== "" && familyMembers !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Residential details");
+        }
+      }
+      if (selectedtype === "Renovation") {
+        if (renovationType !== "") {
+          console.log("all set");
+          handleRequest();
+        } else {
+          console.log("must fill Renovation details");
+        }
+      }
+      if (selectedtype === "Interior") {
+        handleRequest();
+      }
+      if (selectedtype === "Landscaping") {
+        handleRequest();
+      }
+      if (selectedtype === "Apartment") {
+        if (floor !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Apartment details");
+        }
+      }
+      if (selectedtype === "Hotels/restaurants") {
+        if (floor !== "" && occupancy !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Hotels/restaurants details");
+        }
+      }
+      if (selectedtype === "Hospitals/medical lab") {
+        if (floor !== "" && beds !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Hospitals/medical lab details");
+        }
+      }
+      if (selectedtype === "Auditorium") {
+        if (floor !== "" && hall !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Auditorium lab details");
+        }
+      }
+      if (selectedtype === "Industrial/warehouse") {
+        if (businessIndustrial !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Industrial/warehouse details");
+        }
+      }
+      if (selectedtype === "Mall") {
+        if (floor !== "" && occupancy !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Mall details");
+        }
+      }
+      if (selectedtype === "Multiplex") {
+        if (screens !== "" && occupancy !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Multiplex details");
+        }
+      }
+      if (selectedtype === "Religious building") {
+        if (religion !== "" && occupancy !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Religious building details");
+        }
+      }
+      if (selectedtype === "School/College building") {
+        if (schoolOrCollage !== "" && schoolType !== "" && floor !== "" && occupancy !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill School/College building details");
+        }
+      }
+      if (selectedtype === "Sports building") {
+        if (sportType !== "" && occupancy !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Sports building details");
+        }
+      }
+      if (selectedtype === "Hostel") {
+        if (floor !== "" && rooms !== "") {
+          handleRequest();
+        } else {
+          console.log("must fill Hostel details");
+        }
+      }
+      if (selectedtype === "Farmhouse") {
+        handleRequest();
+      }
     } else {
-      console.log("no data");
+      console.log("must fill all details");
     }
   };
-
-  const getValueChecked = (e) => {
-    if (e.target.checked) {
-      setRequirementList((requirementList) => [...requirementList, e.target.value]);
-    } else {
-      requirementList.splice(requirementList.indexOf(e.target.value), 1);
-    }
-  };
-
-  useEffect(() => {
-    console.log(requirementList);
-  }, [requirementList]);
 
   return (
     <>
@@ -469,7 +647,7 @@ const BasicDetailsMain = () => {
                     </div>
                   </div>
                   <div className={styles.requirementList_container}>
-                    <p>Select your Requirements</p>
+                    <p>Select your Requirements (optional)</p>
                     <div className={styles.requirementList_cards_container}>
                       {allRequirements?.map((item, index) => {
                         return (
@@ -698,11 +876,23 @@ const BasicDetailsMain = () => {
                   <div className={styles.inputRow}>
                     <div className={styles.renovation_radio_conatiner}>
                       <div className={styles.complete_radio}>
-                        <input type="radio" id="school" name="schoolOrCollege" value="School" />
+                        <input
+                          type="radio"
+                          id="school"
+                          name="schoolOrCollege"
+                          value="School"
+                          onClick={storeSchoolOrCollege}
+                        />
                         <label htmlFor="school">School</label>
                       </div>
                       <div className={styles.complete_radio}>
-                        <input type="radio" id="college" name="schoolOrCollege" value="Collage" />
+                        <input
+                          type="radio"
+                          id="college"
+                          name="schoolOrCollege"
+                          value="Collage"
+                          onClick={storeSchoolOrCollege}
+                        />
                         <label htmlFor="college">Collage</label>
                       </div>
                     </div>
@@ -716,7 +906,7 @@ const BasicDetailsMain = () => {
                       </select>
                     </div>
                     <div className={styles.residentialSchool_card}>
-                      <input type="checkbox" />
+                      <input type="checkbox" onClick={residentialSchoolToggle} />
                       <p>Residential School</p>
                     </div>
                   </div>
@@ -738,12 +928,17 @@ const BasicDetailsMain = () => {
                   <p>Sports building details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="text" placeholder="Type of sport*" />
-                      <input type="tel" placeholder="Total occupancy*" />
+                      <input type="text" onChange={storeSportsDetails} placeholder="Type of sport*" id="sportType" />
+                      <input
+                        type="tel"
+                        onChange={storeSportsDetails}
+                        id="occupancySport"
+                        placeholder="Total occupancy*"
+                      />
                     </div>
                     <div className={styles.terraceNoutdoor_container}>
                       <div className={styles.terraceNoutdoor_card}>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={poolToggle} />
                         <p>Pool</p>
                       </div>
                     </div>
@@ -757,8 +952,18 @@ const BasicDetailsMain = () => {
                   <p>Hostel details</p>
                   <div className={styles.inputRow}>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input type="tel" placeholder="Total no. of floors*" />
-                      <input type="tel" placeholder="Total no. of rooms*" />
+                      <input
+                        type="tel"
+                        onChange={storeHostelDetails}
+                        id="floorHostel"
+                        placeholder="Total no. of floors*"
+                      />
+                      <input
+                        type="tel"
+                        onChange={storeHostelDetails}
+                        id="roomsHostel"
+                        placeholder="Total no. of rooms*"
+                      />
                     </div>
                   </div>
                 </div>

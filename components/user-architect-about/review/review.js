@@ -15,27 +15,26 @@ import styles from "./review.module.css";
 const FnReview = ({ singleArchitect }) => {
   const windowRes = windowSize();
 
-  const [id, setID] = useState("");
-
   const router = useRouter();
-  const { userId } = router.query;
+  const { id } = router.query;
 
+  const [userIdSpl, setUserIdSpl] = useState("");
   /* GET ARCHITECT ID */
   function getParameters() {
     let urlString = window.location.href;
     let paramString = urlString.split("/")[4];
     let queryString = new URLSearchParams(paramString);
     for (let pair of queryString.entries()) {
-      setID(pair[0]);
+      setUserIdSpl(pair[0]);
     }
   }
 
   useEffect(() => {
     getParameters();
-  }, [userId]);
+  }, [id]);
 
   const [Store] = useContext(StoreContext);
-  const userIdStore = Store.userId;
+  const userId = Store.userId;
   const setLoginPopup = Store.setLoginPopup;
 
   const [newRating, setNewRating] = useState(0);
@@ -43,7 +42,7 @@ const FnReview = ({ singleArchitect }) => {
   /* GET CURRENT RATING */
   async function getCurrentArchitectRating() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/star-rating/${id}`, {
+    const res = await fetch(`${api_url}/star-rating/${userIdSpl}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +51,7 @@ const FnReview = ({ singleArchitect }) => {
       },
     });
     const data = await res.json();
-    const hisRating = data?.data?.filter((res) => res?.user_id === userIdStore);
+    const hisRating = data?.data?.filter((res) => res?.user_id === userId);
     // console.log(hisRating);
     if (hisRating) {
       setNewRating(hisRating[0]?.rating);
@@ -60,10 +59,10 @@ const FnReview = ({ singleArchitect }) => {
   }
 
   useEffect(() => {
-    if (id !== "") {
+    if (userIdSpl !== "") {
       getCurrentArchitectRating();
     }
-  }, [id]);
+  }, [userIdSpl]);
 
   /* SENS ARCHITECT RATING */
   const changeRating = (newRating, name) => {
@@ -79,8 +78,8 @@ const FnReview = ({ singleArchitect }) => {
         // Authorization: `Bearer ${dummy_token}`,
       },
       body: JSON.stringify({
-        architect_id: id,
-        user_id: userIdStore,
+        architect_id: userIdSpl,
+        user_id: userId,
         rating: newRating,
         comment: "",
       }),
@@ -93,7 +92,7 @@ const FnReview = ({ singleArchitect }) => {
     <>
       {windowRes.innerWidth >= 1100 ? (
         <div className={styles.archReviewSection}>
-          {userIdStore !== "" ? (
+          {userId !== "" ? (
             <>
               <StarRatings
                 rating={newRating}
@@ -118,7 +117,7 @@ const FnReview = ({ singleArchitect }) => {
         <div className={styles.archReviewSectionMainMob}>
           <div className={styles.archReviewSectionMob}>
             <div>
-              {userIdStore !== "" ? (
+              {userId !== "" ? (
                 <>
                   <StarRatings
                     rating={newRating}

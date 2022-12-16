@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
+import { StoreContext } from "../../components/StoreContext";
 import StarRatings from "react-star-ratings";
 import FnAbout from "./about/about";
 import FnProject from "./project/project";
@@ -18,34 +19,34 @@ import styles from "./main.module.css";
 const UserArchitectAboutDesktop = () => {
   const [tab, setTab] = useState("aboutus");
 
-  const [id, setID] = useState("");
+  const [Store] = useContext(StoreContext);
+  const userId = Store.userId;
+  const setLoginPopup = Store.setLoginPopup;
+  const setArchitectProfileSelectPopup = Store.setArchitectProfileSelectPopup;
 
   const router = useRouter();
-  const { userId } = router.query;
+  const { id } = router.query;
 
+  const [userIdSpl, setUserIdSpl] = useState("");
   /* GET ARCHITECT ID */
   function getParameters() {
     let urlString = window.location.href;
     let paramString = urlString.split("/")[4];
     let queryString = new URLSearchParams(paramString);
     for (let pair of queryString.entries()) {
-      setID(pair[0]);
+      setUserIdSpl(pair[0]);
     }
   }
 
   useEffect(() => {
     getParameters();
-  }, [userId]);
-
-  // console.log(id);
-  // console.log(userId);
+  }, [id]);
 
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);
   async function getSingleArchitect() {
-    // console.log(id);
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/architects/${id}`, {
+    const res = await fetch(`${api_url}/architects/${userIdSpl}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +63,7 @@ const UserArchitectAboutDesktop = () => {
 
   async function getProjectOfArchitect() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/projects/${id}`, {
+    const res = await fetch(`${api_url}/projects/${userIdSpl}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -79,12 +80,12 @@ const UserArchitectAboutDesktop = () => {
   const token = localStorage.getItem("userToken");
 
   useEffect(() => {
-    if (id !== "") {
+    if (userIdSpl !== "") {
       getSingleArchitect();
       getProjectOfArchitect();
     }
     const getRate = async () => {
-      const response = await axios.get(`${api_url}/star-rating/${id}`, {
+      const response = await axios.get(`${api_url}/star-rating/${userIdSpl}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -105,7 +106,7 @@ const UserArchitectAboutDesktop = () => {
       }
     };
     getRate();
-  }, [id]);
+  }, [userIdSpl]);
 
   /* GET ALL ARCHITECT */
   const [allArchitects, setAllArchitects] = useState([]);
@@ -178,13 +179,28 @@ const UserArchitectAboutDesktop = () => {
                       </div>
                     </div>
                     <div className={styles.archProfileSectionMainRight}>
-                      <div
-                        className={styles.archOptionsIcons}
-                        onClick={() => router.push(`tel:${singleArchitect?.phone}`)}
-                      >
-                        <img src="/img/architect-about/contact.svg" alt="contact.svg" className={styles.contactIcon} />
-                        Contact
-                      </div>
+                      {userId !== "" ? (
+                        <div
+                          className={styles.archOptionsIcons}
+                          onClick={() => router.push(`tel:${singleArchitect?.phone}`)}
+                        >
+                          <img
+                            src="/img/architect-about/contact.svg"
+                            alt="contact.svg"
+                            className={styles.contactIcon}
+                          />
+                          Contact
+                        </div>
+                      ) : (
+                        <div className={styles.archOptionsIcons} onClick={() => setLoginPopup(true)}>
+                          <img
+                            src="/img/architect-about/contact.svg"
+                            alt="contact.svg"
+                            className={styles.contactIcon}
+                          />
+                          Contact
+                        </div>
+                      )}
                       <div className={styles.archOptionsIcons}>
                         <img src="/img/architect-about/share.svg" alt="share.svg" className={styles.shareIcon} />
                         <span>Share</span>
@@ -193,9 +209,15 @@ const UserArchitectAboutDesktop = () => {
                         <img src="/img/architect-about/heart.svg" alt="heart.svg" className={styles.heartIcon} />
                         Saved
                       </div> */}
-                      <div className={styles.archOptionsSelect}>
-                        <div className={styles.archOptionsSelectBtn}>Select</div>
-                      </div>
+                      {userId !== "" ? (
+                        <div className={styles.archOptionsSelect} onClick={() => setArchitectProfileSelectPopup(true)}>
+                          <div className={styles.archOptionsSelectBtn}>Select</div>
+                        </div>
+                      ) : (
+                        <div className={styles.archOptionsSelect} onClick={() => setLoginPopup(true)}>
+                          <div className={styles.archOptionsSelectBtn}>Select</div>
+                        </div>
+                      )}
                     </div>
                   </div>
 

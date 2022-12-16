@@ -9,16 +9,16 @@ import windowSize from "../windowRes";
 
 import styles from "./architect-select-popup.module.css";
 
-export default function ArchitectSelectPopup() {
+export default function ArchitectSelectProfilePopup() {
   const windowRes = windowSize();
 
   const [Store] = useContext(StoreContext);
-  const setArchitectSelectPopup = Store.setArchitectSelectPopup;
+  const setArchitectProfileSelectPopup = Store.setArchitectProfileSelectPopup;
 
   return (
     <>
       <div id="ArchitectSelectPopupOuter" className={styles.ArchitectSelectPopupOuter}>
-        <div onClick={() => setArchitectSelectPopup(false)} className={styles.ArchitectSelectPopupClose}></div>
+        <div onClick={() => setArchitectProfileSelectPopup(false)} className={styles.ArchitectSelectPopupClose}></div>
         <div className={styles.ArchitectSelectPopupInner}>
           {windowRes.innerWidth >= 767 ? (
             <div className={styles.desktop}>{ArchitectSelectPopupContent()}</div>
@@ -35,12 +35,12 @@ const ArchitectSelectPopupContent = () => {
   const [Store] = useContext(StoreContext);
   const setBidArchitectId = Store.setBidArchitectId;
   const setBid = Store.setBid;
-  const setArchitectSelectPopup = Store.setArchitectSelectPopup;
+  const setArchitectProfileSelectPopup = Store.setArchitectProfileSelectPopup;
 
   const router = useRouter();
   const { id } = router.query;
 
-  const [projectId, setProjectId] = useState("");
+  const [archId, setArchId] = useState("");
 
   /* GET ARCHITECT ID */
   function getParameters() {
@@ -48,7 +48,7 @@ const ArchitectSelectPopupContent = () => {
     let paramString = urlString.split("/")[4];
     let queryString = new URLSearchParams(paramString);
     for (let pair of queryString.entries()) {
-      setProjectId(pair[0]);
+      setArchId(pair[0]);
     }
   }
 
@@ -56,25 +56,26 @@ const ArchitectSelectPopupContent = () => {
     getParameters();
   }, [id]);
 
-  /* GET PROJECT DETAILS */
-  const [projectDetails, setProjectDetails] = useState([]);
-  async function getProjects() {
-    const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
+  const [singleArchitect, setSingleArchitect] = useState([]);
+  async function getSingleArchitect() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/architects/${archId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${dummy_token}`,
       },
     });
     const data = await res.json();
-    console.log(data[0]);
-    setProjectDetails(data[0]);
+    setSingleArchitect(data);
   }
 
   useEffect(() => {
-    if (projectId !== "") {
-      getProjects();
+    if (archId !== "") {
+      getSingleArchitect();
     }
-  }, [projectId]);
+  }, [archId]);
 
   const sentRequirement = (id) => {
     setBidArchitectId(id);
@@ -83,32 +84,28 @@ const ArchitectSelectPopupContent = () => {
     router.push("/requirement/basic-details");
   };
 
+  console.log(singleArchitect);
+
   return (
     <>
       <div className={styles.popupouter}>
         <div className={styles.profiles}>
           <img
-            src={
-              projectDetails?.architect_id?.profilepic
-                ? projectDetails?.architect_id?.profilepic
-                : "/img/landing/profile_img.svg"
-            }
+            src={singleArchitect?.profilepic ? singleArchitect?.profilepic : "/img/landing/profile_img.svg"}
             onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
             alt="profile"
           />
           <div className={styles.content}>
-            <div className={styles.name}>
-              {projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}
-            </div>
+            <div className={styles.name}>{singleArchitect?.firstname + " " + singleArchitect?.lastname}</div>
             <div className={styles.msg}>You have now selected this architect and you want to continue</div>
           </div>
         </div>
         <div className={styles.line}></div>
         <div className={styles.buttons}>
-          <div className={styles.back} onClick={() => setArchitectSelectPopup(false)}>
+          <div className={styles.back} onClick={() => setArchitectProfileSelectPopup(false)}>
             Go to back
           </div>
-          <div className={styles.continue} onClick={() => sentRequirement(projectDetails?.architect_id?._id)}>
+          <div className={styles.continue} onClick={() => sentRequirement(archId)}>
             Continue
           </div>
         </div>

@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import { StoreContext } from "../../components/StoreContext";
 import StarRatings from "react-star-ratings";
 import FnAbout from "./about/about";
 import FnAward from "./award/award";
@@ -17,31 +18,33 @@ import styles from "./main.module.css";
 const UserArchitectAboutMobile = () => {
   const [tab, setTab] = useState("aboutus");
 
-  const [id, setID] = useState("");
+  const [Store] = useContext(StoreContext);
+  const userId = Store.userId;
+  const setLoginPopup = Store.setLoginPopup;
 
   const router = useRouter();
-  const { userId } = router.query;
+  const { id } = router.query;
 
+  const [userIdSpl, setUserIdSpl] = useState("");
   /* GET ARCHITECT ID */
   function getParameters() {
     let urlString = window.location.href;
     let paramString = urlString.split("/")[4];
     let queryString = new URLSearchParams(paramString);
     for (let pair of queryString.entries()) {
-      setID(pair[0]);
+      setUserIdSpl(pair[0]);
     }
   }
 
   useEffect(() => {
     getParameters();
-  }, [userId]);
+  }, [id]);
 
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);
   async function getSingleArchitect() {
-    // console.log(id);
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/architects/${id}`, {
+    const res = await fetch(`${api_url}/architects/${userIdSpl}`, {
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -55,26 +58,13 @@ const UserArchitectAboutMobile = () => {
     const data = await res.json();
     setSingleArchitect(data);
   }
-  // async function getSingleArchitect() {
-  //   const token = localStorage.getItem("userToken");
-  //   const res = await fetch(`${api_url}/architects/${id}`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       // Authorization: `Bearer ${token}`,
-  //       Authorization: `Bearer ${dummy_token}`,
-  //     },
-  //   });
-  //   const data = await res.json();
-  //   setSingleArchitect(data);
-  // }
 
   /* GET PROJECT of a architect */
   const [projects, setProjects] = useState([]);
 
   async function getProjectOfArchitect() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/projects/${id}`, {
+    const res = await fetch(`${api_url}/projects/${userIdSpl}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -90,12 +80,12 @@ const UserArchitectAboutMobile = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (id !== "") {
+    if (userIdSpl !== "") {
       getSingleArchitect();
       getProjectOfArchitect();
     }
     const getRate = async () => {
-      const response = await axios.get(`${api_url}/star-rating/${id}`, {
+      const response = await axios.get(`${api_url}/star-rating/${userIdSpl}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -115,7 +105,7 @@ const UserArchitectAboutMobile = () => {
       }
     };
     getRate();
-  }, [id]);
+  }, [userIdSpl]);
 
   return (
     <>
@@ -163,7 +153,7 @@ const UserArchitectAboutMobile = () => {
                 </div>
               </div>
               <div className={styles.callShareSaveSecMainMob}>
-                <div>
+                {userId !== "" ? (
                   <div
                     className={styles.callShareSaveSecMob}
                     onClick={() => router.push(`tel:${singleArchitect?.phone}`)}
@@ -171,19 +161,22 @@ const UserArchitectAboutMobile = () => {
                     <img src="/img/architect-about/mobile/contactMob.svg" alt="contactMob.svg" />
                     <div>Contact</div>
                   </div>
-                </div>
-                <div>
-                  <div className={styles.callShareSaveSecMob}>
-                    <img src="/img/architect-about/mobile/shareMob.svg" alt="shareMob.svg" />
-                    <div>Share</div>
+                ) : (
+                  <div className={styles.callShareSaveSecMob} onClick={() => setLoginPopup(true)}>
+                    <img src="/img/architect-about/mobile/contactMob.svg" alt="contactMob.svg" />
+                    <div>Contact</div>
                   </div>
+                )}
+
+                <div className={styles.callShareSaveSecMob}>
+                  <img src="/img/architect-about/mobile/shareMob.svg" alt="shareMob.svg" />
+                  <div>Share</div>
                 </div>
-                {/* <div>
+                {/* 
                   <div className={styles.callShareSaveSecMob}>
                     <img src="/img/architect-about/mobile/saveMob.svg" alt="saveMob.svg" />
                     <div>Save</div>
-                  </div>
-                </div> */}
+                  </div> */}
               </div>
               {/*-----ARCHITECT TAB  SECTION-------*/}
 

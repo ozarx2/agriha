@@ -67,6 +67,7 @@ const ArchitectSelectPopupContent = () => {
   const sentRequirement = (id) => {
     setBidArchitectId(id);
     setBid(false);
+
     router.push("/requirement/basic-details");
   };
 

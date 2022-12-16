@@ -63,7 +63,12 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    getParameters();
+    var id = localStorage.getItem("architectId");
+    if (id !== null) {
+      setArchitectId(id);
+    } else {
+      getParameters();
+    }
   }, []);
 
   /* GET ARCHITECT DATA */

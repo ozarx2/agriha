@@ -388,6 +388,10 @@ const BasicDetailsMain = () => {
     handleSubmit();
   };
 
+  /* =================TEST================= */
+
+  /* ====================================== */
+
   const handleRequest = () => {
     setIsLoading(true);
     const data = new Date();

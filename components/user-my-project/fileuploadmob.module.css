@@ -49,6 +49,7 @@
     right: 0;
     height: 100%;
     opacity: 0;
+    cursor: pointer;
   }
   .dragDrop {
     padding: 13.67px 18.15px;
@@ -64,6 +65,7 @@
     background: #f8f5ff;
     border: 0.5px dashed #642dda;
     border-radius: 7px;
+    cursor: pointer;
   }
   .dragDrop > a {
     color: #642dda;
@@ -113,6 +115,7 @@
     justify-content: center;
     padding: 14px;
     color: #ffffff;
+    cursor: pointer;
   }
   .uploadFileDescMob > span {
     font-family: "Inter";

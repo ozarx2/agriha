@@ -13,9 +13,7 @@ const FnPayment = () => {
             <div className={styles.paymentCard}>
               <div className={styles.paymentStatus}>
                 Previous Payment
-                <span>
-                  <img src="/img/my-project-user/info.svg" alt="info.svg" />
-                </span>
+                <img src="/img/my-project-user/info.svg" alt="info.svg" />
               </div>
               <div className={styles.paymentDate}>30/10/2021</div>
             </div>
@@ -37,9 +35,7 @@ const FnPayment = () => {
             <div className={styles.currentPaymentCard}>
               <div className={styles.currentPaymentStatus}>
                 Current Payment
-                <span>
-                  <img src="/img/my-project-user/info.svg" alt="info.svg" />
-                </span>
+                <img src="/img/my-project-user/info.svg" alt="info.svg" />
               </div>
               <div className={styles.currentPaymentDate}>01/11/2021</div>
             </div>

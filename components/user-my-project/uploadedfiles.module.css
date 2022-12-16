@@ -24,4 +24,5 @@
 .file > a {
   font-size: 12px;
   color: #642dda;
+  cursor: pointer;
 }

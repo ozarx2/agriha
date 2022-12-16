@@ -119,6 +119,7 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
             <input
               className={styles.custom_file_input}
               type="file"
+              multiple
               onChange={uploadMultipleFiles}
               placeholder="No file selected"
               accept="application/pdf"

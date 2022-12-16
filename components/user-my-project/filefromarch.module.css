@@ -30,6 +30,7 @@
   padding: 3px 7px;
   background: #f3f3f3;
   border-radius: 2px;
+  cursor: pointer;
 }
 .fileTitle {
   display: flex;
@@ -93,6 +94,7 @@
   padding: 6px;
   border: 1px solid #2b5797;
   border-radius: 4px;
+  cursor: pointer;
 }
 .dataLock > img {
   padding-right: 7px;
@@ -109,6 +111,7 @@
   padding: 6px;
   border: 1px solid #642dda;
   border-radius: 4px;
+  cursor: pointer;
 }
 .dataDownload > img {
   padding-right: 7px;

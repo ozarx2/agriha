@@ -20,7 +20,7 @@ export default function ViewBidMain() {
   const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
   const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
 
-  // console.log(bid);
+  console.log(bid);
 
   useEffect(() => {
     if (bid.length !== 0) {

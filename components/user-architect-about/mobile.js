@@ -17,8 +17,24 @@ import styles from "./main.module.css";
 const UserArchitectAboutMobile = () => {
   const [tab, setTab] = useState("aboutus");
 
+  const [id, setID] = useState("");
+
   const router = useRouter();
-  const { id } = router.query;
+  const { userId } = router.query;
+
+  /* GET ARCHITECT ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setID(pair[0]);
+    }
+  }
+
+  useEffect(() => {
+    getParameters();
+  }, [userId]);
 
   /* GET Single Architect details */
   const [singleArchitect, setSingleArchitect] = useState([]);

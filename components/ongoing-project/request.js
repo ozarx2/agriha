@@ -6,12 +6,13 @@ import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
 
-const Request = ({ name, avatar, type, id }) => {
+const Request = ({ name, avatar, type, id, setpage }) => {
   const [Store] = useContext(StoreContext);
 
   // console.log(id);
 
   const userProjectsDetails = Store.userProjectsDetails;
+  const setArcDashQueue = Store.setArcDashQueue;
 
   const results = userProjectsDetails?.filter((res) => res.project === id);
 
@@ -35,6 +36,9 @@ const Request = ({ name, avatar, type, id }) => {
 
     const data = await res.json();
     console.log(data);
+    if (data.projectdata) {
+      setArcDashQueue(false);
+    }
   }
 
   return (

@@ -1,57 +1,12 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import endpoint from "../../src/utils/endpoint";
-
 import styles from "./filefromarch.module.css";
 
-const FnFileFromArchDesk = ({ projectId }) => {
-  const [documents, setDocuments] = useState([]);
-  const [sliced, setSliced] = useState([]);
-  const [viewAll, setViewAll] = useState(false);
-
-  async function getUploadedFiles() {
-    const response = await fetch(`${endpoint}/fileupload/uploaded_file/${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    var documentsForProject = data.data.filter((res) => res.project_id === projectId);
-    setDocuments(documentsForProject);
-    setSliced(documentsForProject?.slice(0, 3));
-  }
-
-  useEffect(() => {
-    if (projectId) {
-      getUploadedFiles();
-    }
-  }, [projectId]);
-
-  const viewAllClick = () => {
-    if (!viewAll) {
-      setViewAll(true);
-    } else {
-      setViewAll(false);
-    }
-  };
-
-  useEffect(() => {
-    if (viewAll) {
-      setSliced(documents);
-    } else {
-      setSliced(documents?.slice(0, 3));
-    }
-  }, [viewAll]);
-
+const FnFileFromArchDesk = ({ sliced }) => {
   return (
     <>
       <div className={styles.fileTitle}>
         <div>File from Architect</div>
-        <div className={styles.viewAll} onClick={() => viewAllClick()}>
-          View all
-        </div>
+        <div className={styles.viewAll}>View all</div>
       </div>
       <div className={styles.archFilesMainSec}>
         {sliced.length !== 0 ? (

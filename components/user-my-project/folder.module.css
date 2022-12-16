@@ -1,5 +1,7 @@
 .filefolderSectionMain {
   margin: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 .filefolderHead {
@@ -48,7 +50,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  color: #642DDA;
+  color: #642dda;
 }
 .viewAll > div > img {
   padding-left: 10px;

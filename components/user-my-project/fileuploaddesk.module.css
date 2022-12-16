@@ -50,6 +50,7 @@
   right: 0;
   height: 100%;
   opacity: 0;
+  cursor: pointer;
 }
 .dragDrop {
   padding: 15px;
@@ -63,6 +64,7 @@
   background: #ffffff;
   border: 1px dashed #9b9a9a;
   border-radius: 7px;
+  cursor: pointer;
 }
 .fileButtonsSec {
   display: flex;
@@ -82,6 +84,7 @@
   border: 1px solid #9b9a9a;
   border-radius: 6.3913px;
   margin-right: 25px;
+  cursor: pointer;
 }
 .uploadBtn {
   display: flex;
@@ -95,6 +98,7 @@
   line-height: 15px;
   color: #7e7e7e;
   padding: 11px 25px;
+  cursor: pointer;
 }
 .upload {
   padding-right: 5px;
@@ -105,9 +109,11 @@
   } */
   .cancelBtn {
     padding: 13px 20px;
+    cursor: pointer;
   }
   .uploadBtn {
     padding: 11px 20px;
+    cursor: pointer;
   }
   .uploadBtnMain {
     width: 100%;

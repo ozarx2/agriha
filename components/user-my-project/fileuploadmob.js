@@ -72,14 +72,14 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
   var fileArray = [];
 
   const uploadMultipleFiles = (e) => {
-    if (e.target.files.length <= 1) {
+    if (e.target.files.length <= 10) {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
         setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
       }
     } else {
-      alert("Cannot add more than 1 pictures");
+      alert("Cannot add more than 10 pictures");
     }
   };
 

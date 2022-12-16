@@ -61,10 +61,18 @@ export default function ViewBidMain() {
                       <div className={styles.bid__projectCard__title}>
                         <div className={styles.bid__projectCard__title__left}>
                           <h5>{item?.project_name}</h5>
-                          <p>{item?.project_type}</p>
+                          <p>
+                            {item?.project_type}
+                            {item?.project_requirements[0]?.location
+                              ? ` at ${item?.project_requirements[0]?.location}`
+                              : ""}
+                          </p>
                         </div>
                         <div className={styles.bid__projectCard__title__right}>
                           <p>{item?.starting_date}</p>
+                          <p>
+                            {item?.project_requirements[0]?.budget ? `₹ ${item?.project_requirements[0]?.budget}` : ""}
+                          </p>
                         </div>
                       </div>
                     </div>

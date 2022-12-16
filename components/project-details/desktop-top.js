@@ -26,7 +26,22 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
 
   const router = useRouter();
   const { id } = router.query;
-  const projectId = id;
+
+  const [projectId, setProjectId] = useState("");
+
+  /* GET ARCHITECT ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setProjectId(pair[0]);
+    }
+  }
+
+  useEffect(() => {
+    getParameters();
+  }, [id]);
 
   /* GET PROJECT DETAILS */
   const [projectDetails, setProjectDetails] = useState([]);

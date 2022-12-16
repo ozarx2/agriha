@@ -15,11 +15,27 @@ import styles from "./review.module.css";
 const FnReview = ({ singleArchitect }) => {
   const windowRes = windowSize();
 
+  const [id, setID] = useState("");
+
   const router = useRouter();
-  const { id } = router.query;
+  const { userId } = router.query;
+
+  /* GET ARCHITECT ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setID(pair[0]);
+    }
+  }
+
+  useEffect(() => {
+    getParameters();
+  }, [userId]);
 
   const [Store] = useContext(StoreContext);
-  const userId = Store.userId;
+  const userIdStore = Store.userId;
   const setLoginPopup = Store.setLoginPopup;
 
   const [newRating, setNewRating] = useState(0);
@@ -36,8 +52,11 @@ const FnReview = ({ singleArchitect }) => {
       },
     });
     const data = await res.json();
-    const hisRating = data.data.filter((res) => res.user_id === userId);
-    setNewRating(hisRating[0]?.rating);
+    const hisRating = data?.data?.filter((res) => res?.user_id === userIdStore);
+    // console.log(hisRating);
+    if (hisRating) {
+      setNewRating(hisRating[0]?.rating);
+    }
   }
 
   useEffect(() => {
@@ -61,7 +80,7 @@ const FnReview = ({ singleArchitect }) => {
       },
       body: JSON.stringify({
         architect_id: id,
-        user_id: userId,
+        user_id: userIdStore,
         rating: newRating,
         comment: "",
       }),
@@ -74,7 +93,7 @@ const FnReview = ({ singleArchitect }) => {
     <>
       {windowRes.innerWidth >= 1100 ? (
         <div className={styles.archReviewSection}>
-          {userId !== "" ? (
+          {userIdStore !== "" ? (
             <>
               <StarRatings
                 rating={newRating}
@@ -99,7 +118,7 @@ const FnReview = ({ singleArchitect }) => {
         <div className={styles.archReviewSectionMainMob}>
           <div className={styles.archReviewSectionMob}>
             <div>
-              {userId !== "" ? (
+              {userIdStore !== "" ? (
                 <>
                   <StarRatings
                     rating={newRating}

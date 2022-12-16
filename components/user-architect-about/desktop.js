@@ -22,6 +22,7 @@ const UserArchitectAboutDesktop = () => {
   const [Store] = useContext(StoreContext);
   const userId = Store.userId;
   const setLoginPopup = Store.setLoginPopup;
+  const setArchitectProfileSelectPopup = Store.setArchitectProfileSelectPopup;
 
   const router = useRouter();
   const { id } = router.query;
@@ -209,7 +210,7 @@ const UserArchitectAboutDesktop = () => {
                         Saved
                       </div> */}
                       {userId !== "" ? (
-                        <div className={styles.archOptionsSelect}>
+                        <div className={styles.archOptionsSelect} onClick={() => setArchitectProfileSelectPopup(true)}>
                           <div className={styles.archOptionsSelectBtn}>Select</div>
                         </div>
                       ) : (

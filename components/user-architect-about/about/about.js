@@ -14,6 +14,7 @@ const FnAbout = ({ singleArchitect }) => {
   const [Store] = useContext(StoreContext);
   const userIdStore = Store.userId;
   const setLoginPopup = Store.setLoginPopup;
+  const setArchitectProfileSelectPopup = Store.setArchitectProfileSelectPopup;
   return (
     <>
       {windowRes.innerWidth >= 1100 ? (
@@ -29,12 +30,12 @@ const FnAbout = ({ singleArchitect }) => {
           {singleArchitect?.bio}
 
           {userIdStore !== "" ? (
-            <div className={styles.archTabReadmoreMob}>
-              <div>Create project with Architect</div>{" "}
+            <div className={styles.archTabReadmoreMob} onClick={() => setArchitectProfileSelectPopup(true)}>
+              <div>Create project with Architect</div>
             </div>
           ) : (
             <div className={styles.archTabReadmoreMob} onClick={() => setLoginPopup(true)}>
-              <div>Create project with Architect</div>{" "}
+              <div>Create project with Architect</div>
             </div>
           )}
         </div>

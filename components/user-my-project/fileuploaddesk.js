@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import api_url from "../../src/utils/url";
@@ -76,14 +76,14 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
   var fileArray = [];
 
   const uploadMultipleFiles = (e) => {
-    if (e.target.files.length <= 10) {
+    if (e.target.files.length <= 1) {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
         setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
       }
     } else {
-      alert("Cannot add more than 10 pictures");
+      alert("Cannot add more than 1 pictures");
     }
   };
 
@@ -97,89 +97,86 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
 
   /* <=========== FIREBASE UPLOAD END ===========> */
 
-  const result = allUploadedFiles.filter((res) => res.project_id === projectId);
-
   return (
     <>
       <div className={styles.secTwoMain}>
-        {/* {result.length === 0 ? ( */}
-        <>
-          <div className={styles.fileUploadSectionArch}>
-            <div>File upload</div>
-          </div>
-          <div className={styles.uploadDescSec}>
-            <input
-              type="text"
-              className={styles.uploadDesc}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter description"
-            />
-          </div>
-          <div className={styles.dragDropSec}>
-            <input
-              className={styles.custom_file_input}
-              type="file"
-              multiple
-              onChange={uploadMultipleFiles}
-              placeholder="No file selected"
-              accept="application/pdf"
-            />
-            <div className={styles.dragDrop}>Drag & drop your file</div>
-            <div className={styles.fileOuter}>
-              {files.map((file, key) => {
-                return (
-                  <div key={key} className={styles.file}>
-                    <div>
-                      <img src="/img/my-project-user/data.svg" />
-                      <span>{file.file.name}</span>
-                    </div>
-                  </div>
-                );
-              })}
+        {allUploadedFiles.length === 0 ? (
+          <>
+            <div className={styles.fileUploadSectionArch}>
+              <div>File upload to Architect</div>
             </div>
-          </div>
-          <div className={styles.fileButtonsSec}>
-            <div className={styles.cancelBtn} onClick={() => cancelFunction()}>
-              cancel
+            <div className={styles.uploadDescSec}>
+              <input
+                type="text"
+                className={styles.uploadDesc}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Enter description"
+              />
             </div>
-            <div className={styles.uploadBtn} onClick={() => uploadProject()}>
-              {isLoading ? (
-                <div>
-                  <PulseLoader color="#642dda" size={10} />
-                </div>
-              ) : (
-                <>
-                  <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
-                  <span>Upload</span>
-                </>
-              )}
-            </div>
-          </div>
-        </>
-        {/* ) : ( */}
-        <>
-          <div>
-            <div className={stylesf.fileOuter}>
-              {result?.map((items, key) => {
-                return (
-                  <div key={key}>
-                    <div className={stylesf.uploadedFiles}>Uploaded file:</div>
-                    <div className={stylesf.file}>
+            <div className={styles.dragDropSec}>
+              <input
+                className={styles.custom_file_input}
+                type="file"
+                onChange={uploadMultipleFiles}
+                placeholder="No file selected"
+                accept="application/pdf"
+              />
+              <div className={styles.dragDrop}>Drag & drop your file</div>
+              <div className={styles.fileOuter}>
+                {files.map((file, key) => {
+                  return (
+                    <div key={key} className={styles.file}>
                       <div>
                         <img src="/img/my-project-user/data.svg" />
-                        <span>{items?.description}</span>
+                        <span>{file.file.name}</span>
                       </div>
-                      <a target="_blank" href={`${items.files[0]}`}>
-                        view
-                      </a>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </>
-        {/* [)}] */}
+            <div className={styles.fileButtonsSec}>
+              <div className={styles.cancelBtn} onClick={() => cancelFunction()}>
+                cancel
+              </div>
+              <div className={styles.uploadBtn} onClick={() => uploadProject()}>
+                {isLoading ? (
+                  <div>
+                    <PulseLoader color="#642dda" size={10} />
+                  </div>
+                ) : (
+                  <>
+                    <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
+                    <span>Upload</span>
+                  </>
+                )}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div>
+              <div className={stylesf.fileOuter}>
+                {allUploadedFiles?.map((items, key) => {
+                  return (
+                    <div key={key}>
+                      <div className={stylesf.uploadedFiles}>Uploaded file:</div>
+                      <div className={stylesf.file}>
+                        <div>
+                          <img src="/img/my-project-user/data.svg" />
+                          <span>{items?.description}</span>
+                        </div>
+                        <a target="_blank" href={`${items.files[0]}`}>
+                          view
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

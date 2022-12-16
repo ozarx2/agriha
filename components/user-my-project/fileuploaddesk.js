@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import api_url from "../../src/utils/url";
@@ -97,12 +97,10 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
 
   /* <=========== FIREBASE UPLOAD END ===========> */
 
-  const result = allUploadedFiles.filter((res) => res.project_id === projectId);
-
   return (
     <>
       <div className={styles.secTwoMain}>
-        {result.length === 0 ? (
+        {allUploadedFiles.length === 0 ? (
           <>
             <div className={styles.fileUploadSectionArch}>
               <div>File upload to Architect</div>
@@ -159,7 +157,7 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
           <>
             <div>
               <div className={stylesf.fileOuter}>
-                {result?.map((items, key) => {
+                {allUploadedFiles?.map((items, key) => {
                   return (
                     <div key={key}>
                       <div className={stylesf.uploadedFiles}>Uploaded file:</div>

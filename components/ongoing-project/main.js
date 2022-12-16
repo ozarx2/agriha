@@ -220,6 +220,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                 }
                                 type={item?.project_type}
                                 id={item._id}
+                                setPage={setPage}
                               />
                             ) : (
                               " "

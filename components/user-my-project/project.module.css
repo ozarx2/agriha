@@ -51,6 +51,7 @@
   border: 0.827914px solid #098482;
   border-radius: 5.7954px;
   padding: 9px;
+  cursor: pointer;
 }
 .showMore > img {
   margin-left: 5px;

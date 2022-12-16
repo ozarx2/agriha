@@ -36,8 +36,10 @@
   font-size: 14px;
   line-height: 148.19%;
   color: #969696;
+  display: flex;
+  align-items: center;
 }
-.paymentStatus > span {
+.paymentStatus > img {
   padding-left: 10px;
 }
 .paymentRate {
@@ -53,8 +55,8 @@
 .paymentRate > span {
   width: fit-content;
   padding: 2px 7px;
-  background: #E9E0FC;
-border-radius: 4px;
+  background: #e9e0fc;
+  border-radius: 4px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -119,8 +121,10 @@ border-radius: 4px;
   font-size: 14px;
   line-height: 148.19%;
   color: #969696;
+  display: flex;
+  align-items: center;
 }
-.currentPaymentStatus > span {
+.currentPaymentStatus > img {
   padding-left: 10px;
 }
 .currentPaymentRate {

@@ -1,3 +1,3 @@
-var endpoint = "https://agriha-server-dot-agriha-services.uc.r.appspot.com";
+var endpoint = "https://agrihav2-test.onrender.com";
 
 export default endpoint;

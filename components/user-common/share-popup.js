@@ -4,6 +4,7 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect, useContext } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
 import { StoreContext } from "../../components/StoreContext";
 import windowSize from "../windowRes";
 
@@ -57,18 +58,18 @@ const ArchitectSelectPopupContent = ({ url }) => {
         <div className={styles.popupinner}>
           <h4>Share to social media platform</h4>
           <div className={styles.social}>
-            <a target="_blank" href={`https://web.whatsapp.com/send?text=${url}`}>
+            <WhatsappShareButton url={url}>
               <img src="/img/icons/w.svg" alt="WhatsApp" />
               <span>WhatsApp</span>
-            </a>
-            <a target="_blank" href={`https://twitter.com/share?text=&url=${url}`}>
-              <img src="/img/icons/t.svg" alt="WhatsApp" />
+            </WhatsappShareButton>
+            <TwitterShareButton url={url}>
+              <img src="/img/icons/t.svg" alt="Twitter" />
               <span>Twitter</span>
-            </a>
-            <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}>
-              <img src="/img/icons/f.svg" alt="WhatsApp" />
+            </TwitterShareButton>
+            <FacebookShareButton url={url}>
+              <img src="/img/icons/f.svg" alt="Facebook" />
               <span>Facebook</span>
-            </a>
+            </FacebookShareButton>
           </div>
           <div className={styles.url}>
             <input id="urlInput" type="text" value={url} readonly />

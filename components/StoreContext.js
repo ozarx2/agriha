@@ -48,7 +48,7 @@ export const StoreContextProvider = (props) => {
   const [displayBidItems, setDisplayBidItems] = useState([]);
   const [displayBidArchitet, setDisplayBidArchitet] = useState([]);
   const [architectProfileSelectPopup, setArchitectProfileSelectPopup] = useState(false);
-  const [sharePopup, setSharePopup] = useState(true);
+  const [sharePopup, setSharePopup] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
   // Store 61-5a end
 

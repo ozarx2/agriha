@@ -58,6 +58,14 @@ const UserArchitectAboutMain = () => {
     setSingleArchitect(data);
   }
 
+  useEffect(() => {
+    if (userIdSpl !== "") {
+      getSingleArchitect();
+    }
+  }, [userIdSpl]);
+
+  console.log(singleArchitect);
+
   return (
     <>
       <Head>

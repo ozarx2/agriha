@@ -21,6 +21,7 @@ const UserArchitectAboutMobile = () => {
   const [Store] = useContext(StoreContext);
   const userId = Store.userId;
   const setLoginPopup = Store.setLoginPopup;
+  const setSharePopup = Store.setSharePopup;
 
   const router = useRouter();
   const { id } = router.query;
@@ -168,7 +169,7 @@ const UserArchitectAboutMobile = () => {
                   </div>
                 )}
 
-                <div className={styles.callShareSaveSecMob}>
+                <div className={styles.callShareSaveSecMob} onClick={() => setSharePopup(true)}>
                   <img src="/img/architect-about/mobile/shareMob.svg" alt="shareMob.svg" />
                   <div>Share</div>
                 </div>

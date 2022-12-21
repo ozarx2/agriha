@@ -8,6 +8,7 @@ import AgrihaImageGrid from "../user-common/image-grid";
 import { StoreContext } from "../../components/StoreContext";
 import Link from "next/link";
 import windowSize from "../windowRes";
+import axios from "axios";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Keyboard, Autoplay, Pagination, Navigation } from "swiper";
@@ -44,6 +45,28 @@ export default function AgrihaLandingMain() {
     const data = await res.json();
     setProjectTypes(data);
   }
+
+  // const getProjects = () => {
+  //   const token = localStorage.getItem("userToken");
+  //   let config = {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   };
+  //   axios
+  //     .get(`${api_url}/search/architect/company_names`, config)
+  //     .then((response) => {
+  //       if (response.data.status == 200) {
+  //         console.log(response.data);
+  //         setProjectTypes(data);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       alert("Something went wrong please try again");
+  //     });
+  // };
 
   useEffect(() => {
     getProjects();

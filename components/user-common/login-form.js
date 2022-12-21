@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
-// import endpoint from "../../src/utils/endpoint";
-var endpoint = "https://agriha-server-dot-agriha-services.uc.r.appspot.com";
+import endpoint from "../../src/utils/endpoint";
 
 import styles from "./login-popup.module.css";
 

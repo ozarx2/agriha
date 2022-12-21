@@ -28,77 +28,94 @@
   position: relative;
 }
 
-.popupouter {
-  padding: 25px 23px 13.16px 23px;
+.close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
 }
-.profiles {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 21px;
+.popupinner {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 30px;
+  position: relative;
 }
-.profiles img {
-  width: 45px;
-  height: 45px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 22px;
-}
-.content {
-}
-.name {
+.popupinner h4 {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
-  font-size: 17px;
-  line-height: 22px;
-  color: #383838;
+  font-size: 16px;
+  line-height: 19px;
+  color: #454545;
 }
-.msg {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 20px;
-  color: #5c5c5c;
-  padding-top: 4px;
-}
-.line {
-  height: 1px;
-  background: #ebebeb;
-}
-.buttons {
+.social {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-top: 13px;
+  margin-top: 25px;
+  margin-bottom: 55px;
 }
-.back {
+.social > a {
+  display: flex;
+  align-items: center;
+}
+.social > button {
+  display: flex;
+  align-items: center;
+}
+.social img {
+  height: 30px;
+  margin-right: 8px;
+}
+.social span {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-  text-align: center;
-  color: #642dda;
-  background: #f1eaff;
-  border-radius: 3.1475px;
-  display: inline-block;
-  padding: 9.23px 26.48px;
-  margin-right: 9.44px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #606060;
+  margin-right: 20px;
 }
-.continue {
+.url {
+  background: #ffffff;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px;
+  padding: 6px;
+}
+.url input {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-  text-align: center;
-  color: #ffffff;
-  background: #642dda;
-  border-radius: 3.1475px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #7d7d7d;
+  border: none;
+  outline: none;
+  width: calc(100% - 112px);
+  padding: 0 12px;
+}
+.url a {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #575757;
+  background: #efefef;
+  border-radius: 3px;
+  padding: 10px 25px;
   display: inline-block;
-  padding: 9.23px 26.48px;
+}
+.copy {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #7d7d7d;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-top: 12px;
+  text-align: center;
 }
 
 @media only screen and (max-width: 766px) {

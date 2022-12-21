@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import LandingFooter from "../../components/user-common/footer";
 import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
@@ -22,6 +23,48 @@ const UserArchitectAboutMain = () => {
   const profilePopup = Store.profilePopup;
   const architectProfileSelectPopup = Store.architectProfileSelectPopup;
   const sharePopup = Store.sharePopup;
+
+  const router = useRouter();
+  const { id } = router.query;
+
+  const [userIdSpl, setUserIdSpl] = useState("");
+  /* GET ARCHITECT ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setUserIdSpl(pair[0]);
+    }
+  }
+
+  useEffect(() => {
+    getParameters();
+  }, [id]);
+
+  /* GET Single Architect details */
+  const [singleArchitect, setSingleArchitect] = useState([]);
+  async function getSingleArchitect() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/architects/${userIdSpl}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${dummy_token}`,
+      },
+    });
+    const data = await res.json();
+    setSingleArchitect(data);
+  }
+
+  useEffect(() => {
+    if (userIdSpl !== "") {
+      getSingleArchitect();
+    }
+  }, [userIdSpl]);
+
+  console.log(singleArchitect);
 
   return (
     <>

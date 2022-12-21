@@ -14,7 +14,7 @@ const ProfileSettings = () => {
   /* User Details Get Api */
   async function getUser() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`https://agrihav2.herokuapp.com/user/profile`, {
+    const res = await fetch(`https://agrihav2-test.onrender.com/user/profile`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -122,9 +122,7 @@ const ProfileSettings = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercent(percent);
@@ -173,28 +171,15 @@ const ProfileSettings = () => {
               className={styles.imageProfile__profileSettings}
             ></div>
             <div className={styles.options__avatar__profileSettings}>
-              <div
-                style={{ cursor: "pointer" }}
-                className={styles.editButton__profileSettings}
-              >
-                <input
-                  id="profileImg"
-                  type="file"
-                  accept=""
-                  onChange={handleImageChange}
-                />
+              <div style={{ cursor: "pointer" }} className={styles.editButton__profileSettings}>
+                <input id="profileImg" type="file" accept="" onChange={handleImageChange} />
               </div>
             </div>
           </div>
           <fieldset className={registerstyles.input__container__settings}>
             <legend style={{ color: "#4a4a4a" }}>Name</legend>
             <div className={registerstyles.input__box__settings}>
-              <input
-                id="name"
-                type="text"
-                defaultValue={name}
-                style={{ color: "#000000" }}
-              />
+              <input id="name" type="text" defaultValue={name} style={{ color: "#000000" }} />
             </div>
           </fieldset>
         </div>
@@ -238,25 +223,13 @@ const ProfileSettings = () => {
           <fieldset className={registerstyles.input__container__settings}>
             <legend style={{ color: "#4a4a4a" }}>Location</legend>
             <div className={registerstyles.input__box__settings}>
-              <input
-                onChange={storeValues}
-                style={{ color: "#000000" }}
-                id="location"
-                type="text"
-                value={location}
-              />
+              <input onChange={storeValues} style={{ color: "#000000" }} id="location" type="text" value={location} />
             </div>
           </fieldset>
           <fieldset className={registerstyles.input__container__settings}>
             <legend style={{ color: "#4a4a4a" }}>Pincode</legend>
             <div className={registerstyles.input__box__settings}>
-              <input
-                onChange={storeValues}
-                style={{ color: "#000000" }}
-                id="pincode"
-                type="text"
-                value={pincode}
-              />
+              <input onChange={storeValues} style={{ color: "#000000" }} id="pincode" type="text" value={pincode} />
             </div>
           </fieldset>
         </div>
@@ -276,13 +249,7 @@ const ProfileSettings = () => {
           <fieldset className={registerstyles.input__container__settings}>
             <legend style={{ color: "#4a4a4a" }}>City</legend>
             <div className={registerstyles.input__box__settings}>
-              <input
-                onChange={storeValues}
-                style={{ color: "#000000" }}
-                id="city"
-                type="text"
-                defaultValue={city}
-              />
+              <input onChange={storeValues} style={{ color: "#000000" }} id="city" type="text" defaultValue={city} />
             </div>
           </fieldset>
           <fieldset className={registerstyles.input__container__settings}>
@@ -300,13 +267,7 @@ const ProfileSettings = () => {
           <fieldset className={registerstyles.input__container__settings}>
             <legend style={{ color: "#4a4a4a" }}>State</legend>
             <div className={registerstyles.input__box__settings}>
-              <input
-                onChange={storeValues}
-                style={{ color: "#000000" }}
-                id="state"
-                type="text"
-                defaultValue={state}
-              />
+              <input onChange={storeValues} style={{ color: "#000000" }} id="state" type="text" defaultValue={state} />
             </div>
           </fieldset>
           <fieldset className={registerstyles.input__container__settings}>
@@ -322,18 +283,10 @@ const ProfileSettings = () => {
             </div>
           </fieldset>
           <div className={styles.buttonContainer__profileSettings}>
-            <div
-              onClick={discardClick}
-              style={{ cursor: "pointer" }}
-              className={styles.discardButton}
-            >
+            <div onClick={discardClick} style={{ cursor: "pointer" }} className={styles.discardButton}>
               DISCARD
             </div>
-            <div
-              style={{ cursor: "pointer" }}
-              onClick={updateUser}
-              className={styles.saveChangesButton}
-            >
+            <div style={{ cursor: "pointer" }} onClick={updateUser} className={styles.saveChangesButton}>
               SAVE CHANGES
             </div>
           </div>

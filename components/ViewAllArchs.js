@@ -30,7 +30,7 @@ const ViewAllArchs = () => {
 
   async function getAllArchitect() {
     const res = await fetch(`${api_url}/architects/view`, {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${dummy_token}`,

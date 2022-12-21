@@ -42,14 +42,17 @@ export default function SharePopup() {
 const ArchitectSelectPopupContent = ({ url }) => {
   const [Store] = useContext(StoreContext);
   const setSharePopup = Store.setSharePopup;
+  const sharePopup = Store.sharePopup;
 
   const [copy, setCopy] = useState(false);
 
   const copiedlink = () => {
     setCopy(true);
-    setInterval(function () {
+    setTimeout(function () {
       setSharePopup(false);
+      setCopy(false);
     }, 1000);
+    clearTimeout();
   };
 
   return (

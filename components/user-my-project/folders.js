@@ -18,7 +18,7 @@ const FnFileFolder = ({ documents }) => {
     window.location.href = url;
   };
 
-  console.log(documents);
+  // console.log(documents);
   return (
     <>
       {!isFolederOpen ? (
@@ -28,7 +28,7 @@ const FnFileFolder = ({ documents }) => {
               <div className={styles.filefolderTitle}>
                 <div>
                   <div className={styles.folderSectionHead}>
-                    File Folders. <span>{documents.length}</span>
+                    File Folders. <span>{documents?.length}</span>
                   </div>
                   <div className={styles.viewAll}>
                     <div>

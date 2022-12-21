@@ -20,7 +20,7 @@ const FnUserMyArchitectMobile = () => {
   async function getallArchitects() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/architects/view`, {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: `Bearer ${token}`,
@@ -28,6 +28,7 @@ const FnUserMyArchitectMobile = () => {
       },
     });
     const data = await res.json();
+    // console.log(data);
     setAllArchitects(data);
   }
   // console.log(allArchitects);

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/ProjectView.module.css";
 import registerstyles from "../styles/BodyRegister.module.css";
+import api_url from "../src/utils/url";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -14,7 +15,7 @@ const ProfileSettings = () => {
   /* User Details Get Api */
   async function getUser() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`https://agrihav2-test.onrender.com/user/profile`, {
+    const res = await fetch(`${api_url}/user/profile`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

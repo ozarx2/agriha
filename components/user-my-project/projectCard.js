@@ -46,7 +46,7 @@ const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate })
       },
     });
     const data = await response.json();
-    var documentsForProject = data.data.filter((res) => res.project_id === id);
+    var documentsForProject = data.data?.filter((res) => res.project_id === id);
     setDocuments(documentsForProject);
     setSliced(documentsForProject?.slice(0, 3));
   }

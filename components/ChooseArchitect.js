@@ -25,7 +25,7 @@ function ChooseArchitect() {
   async function getAllArchitect() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/architects/view`, {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + `${token}`,

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./filefromarch.module.css";
 
 const FnFileFromArchDesk = ({ sliced }) => {
+  // console.log(sliced);
   return (
     <>
       <div className={styles.fileTitle}>
@@ -9,7 +10,7 @@ const FnFileFromArchDesk = ({ sliced }) => {
         <div className={styles.viewAll}>View all</div>
       </div>
       <div className={styles.archFilesMainSec}>
-        {sliced.length !== 0 ? (
+        {sliced?.length !== 0 ? (
           sliced?.map((items, index) => {
             return (
               <div key={index} className={styles.archFilesMainSecInner}>

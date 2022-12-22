@@ -29,7 +29,7 @@ const FnUserMyArchitectMobile = () => {
     });
     const data = await res.json();
     // console.log(data);
-    setAllArchitects(data);
+    setAllArchitects(data.data);
   }
   // console.log(allArchitects);
 

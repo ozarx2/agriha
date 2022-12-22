@@ -32,8 +32,8 @@ function ChooseArchitect() {
       },
     });
     const data = await res.json();
-    console.log(data);
-    setArchitects(data);
+    // console.log(data);
+    setArchitects(data.data);
     document.getElementById("loaderNoDataFound").style.display = "none";
     if (data.length <= 0) {
       document.getElementById("noDataFound").style.display = "block";

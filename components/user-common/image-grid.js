@@ -15,7 +15,8 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
         {allProjectSliced.map((item, index) => {
           return (
             <React.Fragment key={index}>
-              <div className={styles.grid_outer}>
+              <div className={`${styles.grid_outer} ${allProjectSliced.length <= "3" ? styles.low : ""}`}>
+                {/* <div className={styles.grid_outer}> */}
                 {item[0] ? (
                   <div className={styles.one_outer} onClick={() => gotoProjectDetail(item[0]?._id)}>
                     <div className={styles.img_out}>

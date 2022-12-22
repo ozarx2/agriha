@@ -37,8 +37,8 @@ const ViewAllArchs = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
-    setArchitects(data);
+    // console.log(data);
+    setArchitects(data.data);
   }
 
   useEffect(() => {

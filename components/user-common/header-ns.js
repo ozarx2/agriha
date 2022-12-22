@@ -22,6 +22,7 @@ export default function AgrihaLandingHeaderNoSearch() {
   const setLoginActive = Store.setLoginActive;
   const userId = Store.userId;
   const setUserId = Store.setUserId;
+  const userRole = Store.userRole;
   const setUserRole = Store.setUserRole;
 
   const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
@@ -45,14 +46,21 @@ export default function AgrihaLandingHeaderNoSearch() {
     }
   }, [userId]);
 
+  console.log(userRole);
+
   useEffect(() => {
     const token = localStorage.getItem("userToken");
+    const userRole = localStorage.getItem("userRole");
     if (token) {
-      setLoginActive(true);
+      if (userRole === "user") {
+        setLoginActive(true);
+      }
     }
     const userId = localStorage.getItem("userId");
     if (userId) {
-      setUserId(userId);
+      if (userRole === "user") {
+        setUserId(userId);
+      }
     }
   }, []);
 

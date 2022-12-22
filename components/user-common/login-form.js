@@ -55,6 +55,7 @@ export default function LoginPopupForm() {
       setRegisterPopup(false);
       localStorage.setItem("userToken", data.token);
       localStorage.setItem("userId", data.id);
+      localStorage.setItem("userRole", data.role);
       setUserId(data.id);
       setLoginActive(true);
       if (data.role === "user") {

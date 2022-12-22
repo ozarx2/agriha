@@ -140,7 +140,7 @@ export default function AgrihaLandingHeaderNoSearch() {
                     {loginActive ? (
                       <>
                         <div onClick={() => setProfilePopup(true)} className={styles.profile}>
-                          <span>{homeSeekerDetails?.name}</span>
+                          <span>{homeSeekerDetails?.registered_id?.name}</span>
                           <img
                             src={
                               homeSeekerDetails?.profile_pic
@@ -171,7 +171,7 @@ export default function AgrihaLandingHeaderNoSearch() {
                     {loginActive ? (
                       <>
                         <div onClick={() => setProfilePopup(true)} className={styles.profile}>
-                          <span>{homeSeekerDetails?.name}</span>
+                          <span>{homeSeekerDetails?.registered_id?.name}</span>
                           <img
                             src={
                               homeSeekerDetails?.profile_pic

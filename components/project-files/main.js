@@ -16,7 +16,7 @@ export default function ProjectFilesMain({ setFolderPopup }) {
   const allDocuments = userProjects?.filter((res) => res.status === "ongoing");
 
   useEffect(() => {
-    if (userProjects.length <= 0) {
+    if (userProjects?.length <= 0) {
       setFiles(false);
     } else {
       setFiles(true);

@@ -75,10 +75,7 @@ const Request = ({ name, avatar, type, id, setpage }) => {
           <img src="/img/ongoing-project/3dots.svg" alt="alt" />
         </div>
         <div className={styles.popup_outer} id={`more${i}`}>
-          <div
-            className={styles.view_more}
-            onClick={() => setProjectRequestPopup(true)}
-          >
+          <div className={styles.view_more} onClick={() => setProjectRequestPopup(true)}>
             View more
           </div>
           <div onClick={() => moreClick(i)} className={styles.cancel}>

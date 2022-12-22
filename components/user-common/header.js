@@ -90,6 +90,7 @@ export default function AgrihaLandingHeader() {
       },
     });
     const data = await res.json();
+    // console.log(data);
     setHomeSeekerDetails(data.userData);
   }
 
@@ -194,7 +195,7 @@ export default function AgrihaLandingHeader() {
                     {loginActive ? (
                       <>
                         <div onClick={() => setProfilePopup(true)} className={styles.profile}>
-                          <span>{homeSeekerDetails?.name}</span>
+                          <span>{homeSeekerDetails?.registered_id?.name}</span>
                           <img
                             src={
                               homeSeekerDetails?.profile_pic
@@ -225,7 +226,7 @@ export default function AgrihaLandingHeader() {
                     {loginActive ? (
                       <>
                         <div onClick={() => setProfilePopup(true)} className={styles.profile}>
-                          <span>{homeSeekerDetails?.name}</span>
+                          <span>{homeSeekerDetails?.registered_id?.name}</span>
                           <img
                             src={
                               homeSeekerDetails?.profile_pic

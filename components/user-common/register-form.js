@@ -89,6 +89,7 @@ export default function RegisterPopupForm() {
           setRegisterPopup(false);
           localStorage.setItem("userId", response.data.id);
           localStorage.setItem("userToken", response.data.token);
+          localStorage.setItem("userRole", response.data.role);
           if (response.data.role === "user") {
             setBid(true);
             window.location.href = "/requirement/basic-details";

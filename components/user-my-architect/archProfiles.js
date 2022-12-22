@@ -30,7 +30,7 @@ const FnArchProfiles = () => {
       },
     });
     const data = await res.json();
-    setAllArchitects(data);
+    setAllArchitects(data.data);
   }
 
   // console.log(allArchitects);

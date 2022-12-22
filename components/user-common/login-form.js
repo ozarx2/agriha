@@ -39,7 +39,7 @@ export default function LoginPopupForm() {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 401) {
       setIsError(true);
       setError("invalid Mobile number");

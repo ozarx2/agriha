@@ -42,6 +42,7 @@ export default function ProfilePopup() {
       },
     });
     const data = await res.json();
+    console.log(data);
     setHomeSeekerDetails(data.userData);
   }
 
@@ -76,7 +77,7 @@ export default function ProfilePopup() {
                         <img src="/img/profile/edit.svg" alt="profile" className={styles.edit} />
                       </div>
                       <div className={styles.userProfileNameDeskSection}>
-                        <div className={styles.profileName}>{homeSeekerDetails?.name}</div>
+                        <div className={styles.profileName}>{homeSeekerDetails?.registered_id?.name}</div>
                         <div className={styles.subHead}>{homeSeekerDetails?.registered_id?.email}</div>
                         <div className={styles.subHead}>{homeSeekerDetails?.registered_id?.phone}</div>
                       </div>
@@ -121,8 +122,16 @@ export default function ProfilePopup() {
                     </div>
                     <div className={styles.right}>
                       <div className={styles.profile}>
-                        <span>Althaf Rahman</span>
-                        <img src="/img/landing/profile_img.svg" alt="profile" />
+                        <span>{homeSeekerDetails?.registered_id?.name}</span>
+                        <img
+                          src={
+                            homeSeekerDetails?.profile_pic
+                              ? homeSeekerDetails?.profile_pic
+                              : "/img/landing/profile_img.svg"
+                          }
+                          onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
+                          alt="profile"
+                        />
                       </div>
                     </div>
                   </div>
@@ -147,7 +156,7 @@ export default function ProfilePopup() {
                           alt="profile"
                         />
                       </div>
-                      <div className={styles.name}>{homeSeekerDetails?.name}</div>
+                      <div className={styles.name}>{homeSeekerDetails?.registered_id?.name}</div>
                       <div className={styles.details}>
                         <span>{homeSeekerDetails?.registered_id?.email}</span>
                         <span>.</span>

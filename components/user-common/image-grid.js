@@ -9,6 +9,7 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
   const gotoProjectDetail = (id) => {
     router.push(`/project-details/${id}`);
   };
+  // console.log(allProjectSliced);
   return (
     <>
       <div className={styles.grid_max_outer}>

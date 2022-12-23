@@ -132,7 +132,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                     <span>Send product</span>
                                   </div>
                                 </div> */}
-                                <Link href="/project-files" passHref>
+                                <Link href={`/project-files/${item._id}`} passHref>
                                   <div className={styles.stwo_document_folder}>
                                     <div className={styles.vertical_center}>
                                       <img src="/img/ongoing-project/file-d.svg" alt="alt" />
@@ -295,7 +295,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                       />
                                       <div>Send product</div>
                                     </div> */}
-                                    <Link href="/project-files" passHref>
+                                    <Link href={`/project-files/${item._id}`} passHref>
                                       <div>
                                         <img src="/img/ongoing-project/file-m.svg" alt="alt" />
                                         <div>Files</div>

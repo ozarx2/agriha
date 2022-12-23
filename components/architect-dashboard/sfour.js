@@ -89,7 +89,7 @@ export default function FnSFour() {
                           />
                           <div>Send product</div>
                         </div> */}
-                        <Link href="/project-files" passHref>
+                        <Link href={`/project-files/${item._id}`} passHref>
                           <div>
                             <img src="/img/ongoing-project/file-m.svg" alt="alt" />
                             <div>Files</div>

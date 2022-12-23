@@ -45,16 +45,26 @@
   flex-wrap: wrap;
 }
 
-.folder_outer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.folder_all_outer {
   background: #ffffff;
   border: 1px solid #e8e8e8;
   border-radius: 9px;
   padding: 7px 15px;
   margin: 10px;
   max-width: 225px;
+}
+
+.folder_all_outer .full img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.folder_outer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .folder_outer .left {
   display: flex;

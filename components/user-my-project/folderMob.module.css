@@ -60,10 +60,10 @@
   .createFolderSecMainMob > img {
     padding-right: 17px;
   }
-  .filesMobSecMain {
+  /* .filesMobSecMain {
     padding-top: 19px;
     padding-bottom: 19px;
-  }
+  } */
   .filesMobSec {
     display: flex;
     align-items: center;
@@ -98,10 +98,10 @@
     text-align: center;
     color: #b7b7b7;
   }
-  .filesMobSecMain {
+  /* .filesMobSecMain {
     padding-top: 19px;
     padding-bottom: 19px;
-  }
+  } */
   .filesMobSec {
     display: flex;
     align-items: center;
@@ -109,8 +109,8 @@
     background: #f7f7f7;
     border-radius: 6.44965px;
     padding: 23px 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
   }
   .filesMobTitle {
     padding-left: 27px;

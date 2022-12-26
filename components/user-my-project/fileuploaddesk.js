@@ -100,7 +100,6 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
   return (
     <>
       <div className={styles.secTwoMain}>
-        {/* {allUploadedFiles.length === 0 ? ( */}
         <>
           <div className={styles.fileUploadSectionArch}>
             <div>File upload to Architect</div>
@@ -153,7 +152,6 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
             </div>
           </div>
         </>
-        {/* ) : ( */}
         <>
           <div>
             <div className={stylesf.fileOuter}>
@@ -176,7 +174,6 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
             </div>
           </div>
         </>
-        {/* )} */}
       </div>
     </>
   );

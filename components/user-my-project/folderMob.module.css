@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+@media only screen and (max-width: 1100px) {
+  .fileUploadSecMainMobHead {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+  }
+  .fileUploadSecMainMob {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .fileUploadSecMainMobTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .fileUploadSecMainMobTitle > span > img {
+    padding-left: 17px;
+  }
+  .fileCount {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+  }
+  .fileSortSecMainMob {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #7d7d7d;
+    display: flex;
+    align-items: center;
+  }
+  .fileSortSecMainMob > img {
+    padding-right: 17px;
+  }
+  .createFolderSecMainMob {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #7d7d7d;
+    display: flex;
+    align-items: center;
+  }
+  .createFolderSecMainMob > img {
+    padding-right: 17px;
+  }
+  .filesMobSecMain {
+    padding-top: 19px;
+    padding-bottom: 19px;
+  }
+  .filesMobSec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f7f7f7;
+    border-radius: 6.44965px;
+    padding: 23px 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .filesMobTitle {
+    padding-left: 27px;
+  }
+  .fileImgNameSec {
+    display: flex;
+    align-items: center;
+  }
+  .fileImgNameSec > div {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #232323;
+  }
+  .fileImgNameSec > small {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    text-align: center;
+    color: #b7b7b7;
+  }
+  .filesMobSecMain {
+    padding-top: 19px;
+    padding-bottom: 19px;
+  }
+  .filesMobSec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f7f7f7;
+    border-radius: 6.44965px;
+    padding: 23px 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .filesMobTitle {
+    padding-left: 27px;
+  }
+  .fileImgNameSec {
+    display: flex;
+    align-items: center;
+  }
+  .fileImgNameSec > div {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #232323;
+  }
+  .fileImgNameSec > small {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    text-align: center;
+    color: #b7b7b7;
+  }
+}

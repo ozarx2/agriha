@@ -34,6 +34,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
         Authorization: `Bearer ${token}`,
       },
     });
+
     const data = await res.json();
     if (data.status === 200) {
       setProjectDetilas(data?.data[0]);
@@ -61,6 +62,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
   return (
     <>
+      {console.log(projectDetails)}
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
           <div className={styles.title}>{projectDetails?.project_name}</div>
@@ -196,6 +198,29 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
               <div className={styles.resultSection}>
                 <p>Is outdoor Kitchen need?</p>
                 <div className={styles.resultTextContainer}>No</div>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+
+          {projectType === "Hotels/restaurants" ? (
+            <div className={styles.results__container}>
+              <div className={styles.resultSection}>
+                <p>Total Floors</p>
+                <div className={styles.resultTextContainer}>3</div>
+              </div>
+              <div className={styles.resultSection}>
+                <p>Total occupancy</p>
+                <div className={styles.resultTextContainer}>3000</div>
+              </div>
+              <div className={styles.resultSection}>
+                <p>Terrace Restaurant/Cafe</p>
+                <div className={styles.resultTextContainer}>test</div>
+              </div>
+              <div className={styles.resultSection}>
+                <p>Outer kitchen</p>
+                <div className={styles.resultTextContainer}>y/n</div>
               </div>
             </div>
           ) : (

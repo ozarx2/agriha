@@ -116,6 +116,21 @@
 .dataDownload > img {
   padding-right: 7px;
 }
+
+.dataNoDownload {
+  display: flex;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #642dda;
+  padding: 6px;
+  border: 1px solid #642dda;
+  border-radius: 4px;
+  cursor: not-allowed;
+}
 .archFilesMainSecInner__top {
   display: flex;
   align-items: center;

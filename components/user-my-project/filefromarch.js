@@ -46,7 +46,7 @@ const FnFileFromArchDesk = ({ sliced }) => {
                           </a>
                         </div>
                       ) : (
-                        <div className={styles.dataDownload}>
+                        <div className={styles.dataNoDownload}>
                           <span>Can't Download</span>
                         </div>
                       )}

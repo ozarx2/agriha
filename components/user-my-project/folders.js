@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import FnfilesOpen from "./filesOpen";
-import styles from "./folder.module.css";
 import FnFolderCard from "./foldercard";
+import styles from "./folder.module.css";
 
 const FnFileFolder = ({ documents }) => {
   const [isFolederOpen, setIsFolderOpen] = useState(false);

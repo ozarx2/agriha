@@ -21,14 +21,26 @@
 }
 .resultSectionDetails {
   display: flex;
-  flex: auto;
-  gap: 10px;
   font-size: 13px;
   font-weight: 400;
   margin-top: 10px;
 }
-.resultSectionDetails > div {
+.table_out,
+.table_out th,
+.table_out td {
+  border: none;
 }
+.table_out {
+}
+.table_out td:not(:last-child) {
+  padding-right: 10px;
+}
+/* .resultSectionDetails > div {
+  flex: 1 1;
+}
+.resultSectionDetails > div::before {
+  content: ": ";
+} */
 .titleHead {
   font-size: 16px;
   font-weight: 500;
@@ -44,11 +56,14 @@
   gap: 20px;
 } */
 
-.resultSection > p {
+.main_inner p {
   color: #303030;
   font-size: 12px;
   font-weight: 400;
   line-height: 14.52px;
+}
+.main_inner .rsl::before {
+  content: ": ";
 }
 .resultSectionDetails > a {
   color: blue;

@@ -170,11 +170,7 @@ function ChooseArchitect() {
                   <div
                     onClick={() => viewProfileClick(items._id)}
                     style={{
-                      backgroundImage: `url(${
-                        items.coverpic
-                          ? items.coverpic
-                          : "https://ictevangelist.com/wp-content/uploads/2013/01/sample-img.png"
-                      })`,
+                      backgroundImage: `url(${items.coverpic ? items.coverpic : "/img/common/ni.jpg"})`,
                     }}
                     className={styles.profileCard__bg}
                   >

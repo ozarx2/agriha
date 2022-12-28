@@ -23,6 +23,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
   const [projectDetails, setProjectDetilas] = useState([]);
   const [projectType, setProjectType] = useState("");
   const [projectTypeDetails, setProjectTypeDetails] = useState([]);
+  const [reqList, setReqList] = useState("");
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
@@ -60,138 +61,88 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
     setBidDataPopup(true);
   };
 
+  console.log(projectDetails);
+
   return (
     <>
-      {console.log(projectDetails)}
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
           <div className={styles.title}>{projectDetails?.project_name}</div>
           <div className={styles.titleHead}>Basic details</div>
           <div className={styles.results__container}>
-            <div className={styles.resultSectionDetails}>
-              <p>Project type : </p>
-              <div> {projectType}</div>
-            </div>
-            <div className={styles.resultSectionDetails}>
-              <p>Project Code : </p>
-              <div> {projectDetails?.project_name}</div>
-            </div>
-            <div className={styles.resultSectionDetails}>
-              <p>Expected area of project : </p>
-              <div> {projectTypeDetails?.area} SQFT</div>
-            </div>
-            <div className={styles.resultSectionDetails}>
-              <p>Expected Budget of project : </p>
-              <div> ₹ {projectTypeDetails?.budget}</div>
-            </div>
-            <div className={styles.resultSectionDetails}>
-              <p>Total Plot : </p>
-              <div> {projectTypeDetails?.plot}</div>
-            </div>
-            <div className={styles.resultSectionDetails}>
-              <p>Number of floors : </p>
-              <div> {projectTypeDetails?.suggessions}</div>
-            </div>
-            <div className={styles.resultSectionDetails}>
-              <p>Project Location : </p>
-              <div> {projectTypeDetails?.location}</div>
-            </div>
-
-            {/* <div className={styles.resultSection}>
-              <p>Project type</p>
-              <div className={styles.resultTextContainer}>{projectType}</div>
-            </div>
-            <div className={styles.resultSection}>
-              <p>Project Code</p>
-              <div className={styles.resultTextContainer}>{projectDetails?.project_name}</div>
-            </div>
-            <div className={styles.resultSection}>
-              <p>Expected area of project</p>
-              <div className={styles.resultTextContainer}>{projectTypeDetails?.area} SQFT</div>
-            </div>
-            <div className={styles.resultSection}>
-              <p>Expected Budget of project</p>
-              <div className={styles.resultTextContainer}>₹ {projectTypeDetails?.budget}</div>
-            </div>
-            <div className={styles.resultSection}>
-              <p>Total Plot</p>
-              <div className={styles.resultTextContainer}>{projectTypeDetails?.plot}</div>
-            </div>
-            <div className={styles.resultSection}>
-              <p>Number of floors</p>
-              <div className={styles.resultTextContainer}>{projectTypeDetails?.suggessions}</div>
-            </div>
-            <div className={styles.resultSection}>
-              <p>Project Location</p>
-              <div className={styles.resultTextContainer}>{projectTypeDetails?.location}</div>
-            </div> */}
+            <table className={styles.table_out}>
+              <tr>
+                <td>Project type</td>
+                <td>: {projectType}</td>
+              </tr>
+              <tr>
+                <td>Project Code</td>
+                <td>: {projectDetails?.project_name}</td>
+              </tr>
+              <tr>
+                <td>Expected area of project</td>
+                <td>: {projectTypeDetails?.area} SQFT</td>
+              </tr>
+              <tr>
+                <td>Total Plot</td>
+                <td>: {projectTypeDetails?.plot}</td>
+              </tr>
+              <tr>
+                <td>Number of floors</td>
+                <td>: {projectTypeDetails?.suggessions}</td>
+              </tr>
+              <tr>
+                <td>Project Location</td>
+                <td>: {projectTypeDetails?.location}</td>
+              </tr>
+            </table>
           </div>
-
           {projectType === "Residential" ? (
             <div className={styles.results__container}>
-              <div className={styles.resultSectionDetails}>
-                <p>Total Floors : </p>
-                <div resultSectionDetails>{projectDetails?.project_type_details[0]?.total_floors}</div>
-              </div>
-              <div className={styles.resultSectionDetails}>
-                <p>Total Bedrooms : </p>
-                <div resultSectionDetails>{projectDetails?.project_type_details[0]?.total_bedroom}</div>
-              </div>
-              <div className={styles.resultSectionDetails}>
-                <p>Total Attched Bathrooms : </p>
-                <div resultSectionDetails>{projectDetails?.project_type_details[0]?.total_bathroom}</div>
-              </div>
-              <div className={styles.resultSectionDetails}>
-                <p>Total Family members : </p>
-                <div resultSectionDetails>{projectDetails?.project_type_details[0]?.total_familyMembers}</div>
-              </div>
-              {projectDetails?.requirement_list.length !==
-              (
-                <>
-                  {projectDetails?.requirement_list?.map((item, index) => {
-                    return (
-                      <div key={index} className={styles.resultSectionDetails}>
-                        <p>Requirement List</p>
-                        <div className={styles.resultTextContainerList}>
-                          <ul>
-                            <li>Bedrrom</li>
-                            <li>Sitout</li>
-                            <li>Kitchen</li>
-                            <li>washroom</li>
-                            <li>gamerrom</li>
-                            <li>patio</li>
-                            <li>varanda</li>
-                          </ul>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </>
-              )}
+              <table className={styles.table_out}>
+                <tr>
+                  <td>Total Floors</td>
+                  <td>: {projectDetails?.project_type_details[0]?.total_floors}</td>
+                </tr>
+                <tr>
+                  <td>Total Bedrooms</td>
+                  <td>: {projectDetails?.project_type_details[0]?.total_bedroom}</td>
+                </tr>
+                <tr>
+                  <td>Total Attched Bathrooms</td>
+                  <td>: {projectDetails?.project_type_details[0]?.total_bathroom}</td>
+                </tr>
+                <tr>
+                  <td>Total Family members</td>
+                  <td>: {projectDetails?.project_type_details[0]?.total_familyMembers}</td>
+                </tr>
+                {projectDetails?.requirement_list?.length !== 0 ? (
+                  <tr>
+                    <td>Requirement List</td>
+                    <td>
+                      :{" "}
+                      {projectDetails?.requirement_list?.map((item, index) => {
+                        return <React.Fragment key={index}>{item},</React.Fragment>;
+                      })}
+                    </td>
+                  </tr>
+                ) : (
+                  ""
+                )}
+              </table>
             </div>
           ) : (
             ""
           )}
 
-          {/* {projectType === "Renovation" ? (
-            <div className={styles.results__container}>
-              <div className={styles.resultSection}>
-                <p>Renovation type</p>
-                <div resultSectionDetails>
-                  {projectDetails.project_type_details[0].renovation_type}
-                </div>
-              </div>
-            </div>
-          ) : (
-            ""
-          )} */}
-
           {projectType === "Renovation" ? (
             <div className={styles.results__container}>
-              <div className={styles.resultSectionDetails}>
-                <p>Renovation type : </p>
-                <div> {projectDetails.project_type_details[0].renovation_type}</div>
-              </div>
+              <table className={styles.table_out}>
+                <tr>
+                  <td>Renovation type</td>
+                  <td>: {projectDetails.project_type_details[0].renovation_type}</td>
+                </tr>
+              </table>
             </div>
           ) : (
             ""
@@ -199,165 +150,155 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
           {projectType === "Apartment" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>Total Floors : </p>
+                <p>Total Floors</p>
                 <div>{projectDetails.project_type_details[0].total_floors}</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Apartment Type :</p>
+                <p>Apartment Type</p>
                 <div>{projectDetails.project_type_details[0].apartment_type}</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {projectType === "Mall" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>Total Floors : </p>
+                <p>Total Floors</p>
                 <div>3</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Total Occupancy : </p>
+                <p>Total Occupancy</p>
                 <div>3000</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {projectType === "Hospitals/medical lab" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>Total Floors : </p>
+                <p>Total Floors</p>
                 <div>3</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Total Beds : </p>
+                <p>Total Beds</p>
                 <div>3000</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {projectType === "Auditorium" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>Total Floors : </p>
+                <p>Total Floors</p>
                 <div>3</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Total Halls : </p>
+                <p>Total Halls</p>
                 <div>5</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {projectType === "Industrial/warehouse" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>Type of Business : </p>
+                <p>Type of Business</p>
                 <div>Food</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {projectType === "Multiplex" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>Total Screens : </p>
+                <p>Total Screens</p>
                 <div>3</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Total Occupancy : </p>
+                <p>Total Occupancy</p>
                 <div>3000</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {projectType === "Religious building" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>Total of Religion : </p>
+                <p>Total of Religion</p>
                 <div>Hindu</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Total Occupancy : </p>
+                <p>Total Occupancy</p>
                 <div>3000</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {projectType === "School/College building" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>School/College : </p>
+                <p>School/College</p>
                 <div>College</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>School type : </p>
+                <p>School type</p>
                 <div>LP</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>is residential school? : </p>
+                <p>is residential school ?</p>
                 <div>Yes</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Total Floors : </p>
+                <p>Total Floors</p>
                 <div>3</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Total Occupancy : </p>
+                <p>Total Occupancy</p>
                 <div>2000</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {projectType === "Sports building" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>Total of Sport : </p>
+                <p>Total of Sport</p>
                 <div>Hindu</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Total Occupancy : </p>
+                <p>Total Occupancy</p>
                 <div>3000</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>is Pool need? : </p>
+                <p>is Pool need ?</p>
                 <div>No</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {projectType === "Hostel" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSectionDetails}>
-                <p>Total Floors : </p>
+                <p>Total Floors</p>
                 <div>3</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Total Rooms : </p>
+                <p>Total Rooms</p>
                 <div>30</div>
               </div>
             </div>
           ) : (
             ""
           )}
-
           {/* {projectType === "Apartment" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSection}>
@@ -374,63 +315,61 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
           ) : (
             ""
           )} */}
-
           {/* <============Secondary-details=============> */}
-
           <div className={styles.titleHead}>Secondary-details</div>
-
-          {projectType === "Renovation" ? (
+          {/* {projectType === "Renovation" ? ( */}
+          {projectDetails?.secondary_details ? (
             <>
               <div className={styles.resultSectionDetails}>
-                <p>Pincode : </p>
-                <div> {projectDetails?.secondary_details[0]?.pincode}</div>
+                <p>Pincode</p>
+                <div>{projectDetails?.secondary_details[0]?.pincode}</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>District : </p>
-                <div> {projectDetails?.secondary_details[0]?.district}</div>
+                <p>District</p>
+                <div>{projectDetails?.secondary_details[0]?.district}</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>State : </p>
-                <div> {projectDetails?.secondary_details[0]?.state}</div>
+                <p>State</p>
+                <div>{projectDetails?.secondary_details[0]?.state}</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Country : </p>
-                <div> {projectDetails?.secondary_details[0]?.country}</div>
+                <p>Country</p>
+                <div>{projectDetails?.secondary_details[0]?.country}</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Work location : </p>
-                <div> {projectDetails?.secondary_details[0]?.work_location}</div>
+                <p>Work location</p>
+                <div>{projectDetails?.secondary_details[0]?.work_location}</div>
               </div>
               <div className={styles.resultSectionDetails}>
-                <p>Address : </p>
-                <div> {projectDetails?.secondary_details[0]?.address}</div>
+                <p>Address</p>
+                <div>{projectDetails?.secondary_details[0]?.address}</div>
               </div>
             </>
           ) : (
             ""
           )}
-
+          {/* ) : (
+            ""
+          )} */}
           {/* <============Choose-plan=============> */}
-
           <div className={styles.titleHead}>Choose-plan</div>
-
           {/* {projectType === "Renovation" ? (
             <> */}
           <div className={styles.resultSectionDetails}>
-            <p>Plan name : </p>
-            <div> {projectDetails?.plan_id?.plan_name}</div>
+            <p>Plan name</p>
+            <div>{projectDetails?.plan_id?.plan_name}</div>
           </div>
           {projectDetails?.plan_id?.plan_name === "BASIC" ? (
             <div className={styles.resultSectionDetails}>
-              <p>Plan services : </p>
-              <div> {projectDetails?.plan_id?.plan_services}</div>
+              <p>Plan services</p>
+              <div>{projectDetails?.plan_id?.plan_services}</div>
             </div>
           ) : (
             ""
           )}
           {projectDetails?.plan_id?.plan_name === "PLUS" ? (
             <div className={styles.resultSectionDetails}>
-              <p>Plan services : </p>
+              <p>Plan services</p>
               <div>{projectDetails?.plan_id?.plan_services}</div>
             </div>
           ) : (
@@ -438,8 +377,8 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
           )}
           {projectDetails?.plan_id?.plan_name === "ELITE" ? (
             <div className={styles.resultSectionDetails}>
-              <p>Plan services : </p>
-              <div> {projectDetails?.plan_id?.plan_services}</div>
+              <p>Plan services</p>
+              <div>{projectDetails?.plan_id?.plan_services}</div>
             </div>
           ) : (
             ""
@@ -448,45 +387,54 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
           ) : (
             ""
           )} */}
-
           {/* <============File-uploads=============> */}
-
           <div className={styles.titleHead}>File-uploads</div>
-
           {/* {projectType === "Renovation" ? (
             <> */}
           <div className={styles.resultSectionDetails}>
-            <p>Upload site plan : </p>
-            <a href={projectDetails.site_plan} target="_blank">
-              view
-            </a>
+            <p>Upload site plan</p>
+            <div>
+              <a href={projectDetails.site_plan} target="_blank">
+                view
+              </a>
+            </div>
           </div>
           <div className={styles.resultSectionDetails}>
-            <p>Upload referance images :</p>
-            {projectDetails?.reference_images?.map((items, key) => {
-              return (
-                <>
-                  {/* <a href={projectDetails.reference_images} target="_blank">
+            <p>Upload referance images</p>
+            <div>
+              {projectDetails?.reference_images?.map((items, key) => {
+                return (
+                  <>
+                    {/* <a href={projectDetails.reference_images} target="_blank">
                   : <img src={projectDetails.reference_images} alt="reference_images" />
                 </a> */}
-                  <img src={items} alt="reference_images" />
-                </>
-              );
-            })}
+                    <img
+                      src={item ? item : "/img/landing/nophoto.jpg"}
+                      onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                      alt="reference_images"
+                    />
+                  </>
+                );
+              })}
+            </div>
           </div>
-
           <div className={styles.resultSectionDetails}>
-            <p>Upload thumbnail images :</p>
+            <p>Upload thumbnail images</p>
             {/* <a href={projectDetails.thumbnail} target="_blank">
                   : view
                 </a> */}
-            <img src={projectDetails.thumbnail} alt="thumbnail" />
+            <div>
+              <img
+                src={projectDetails?.thumbnail ? projectDetails?.thumbnail : "/img/common/ni.jpg"}
+                onError={(e) => (e.target.src = "/img/common/ina.png")}
+                alt="thumbnail"
+              />
+            </div>
           </div>
           {/* </>
           ) : (
             ""
           )} */}
-
           {/* {projectType === "Apartment" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSection}>
@@ -503,7 +451,6 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
           ) : (
             ""
           )} */}
-
           {projectType === "Hotels/restaurants" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSection}>
@@ -526,7 +473,6 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
           ) : (
             ""
           )}
-
           {/* {projectType === "Hotels/restaurants" ? (
             <div className={styles.results__container}>
               <div className={styles.resultSection}>
@@ -549,7 +495,6 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
           ) : (
             ""
           )} */}
-
           {!isQuoted ? (
             <>
               <div className={styles.buttons__container}>

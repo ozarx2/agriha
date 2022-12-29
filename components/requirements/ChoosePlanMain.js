@@ -1,9 +1,9 @@
 import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PulseLoader } from "react-spinners";
 import api_url from "../../src/utils/url";
+import Link from "next/link";
+
 import styles from "./RequirementsMain.module.css";
 
 const ChoosePlanMain = () => {
@@ -250,7 +250,9 @@ const ChoosePlanMain = () => {
           <div className={styles.bottom__main_inner__container}>
             {isError ? <p>{error}</p> : ""}
             <div className={styles.bottom__main_inner}>
-              <div className={styles.contactUs_button}>Contact us</div>
+              <Link href="/">
+                <div className={styles.contactUs_button}>Cancel</div>
+              </Link>
               <div className={styles.save_button} onClick={goToFileUpload}>
                 {isLoading ? <PulseLoader color="#ffffff" /> : "Save & Continue"}
               </div>

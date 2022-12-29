@@ -46,7 +46,7 @@ export default function AgrihaLandingHeaderNoSearch() {
     }
   }, [userId]);
 
-  console.log(userRole);
+  // console.log(userRole);
 
   useEffect(() => {
     const token = localStorage.getItem("userToken");

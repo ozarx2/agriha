@@ -17,6 +17,11 @@ export default function FnSOne() {
   const allProjects = Store.projects;
   const assignedProjects = Store.userProjects;
   const setArcDashQueue = Store.setArcDashQueue;
+  const allBidArchitect = Store.allBidArchitect;
+
+  const temp = allBidArchitect.filter((val) => val.bid === true);
+  const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
+  const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
 
   const queue = assignedProjects?.filter((res) => res.status === "started");
   const ongoing = assignedProjects?.filter((res) => res.status === "ongoing");
@@ -63,7 +68,7 @@ export default function FnSOne() {
           <div className={styles.line}></div>
           <div className={styles.right}>
             <div className={styles.project_outer}>
-              <Link href="/my-projects" passHref>
+              <Link href="/view-bid" passHref>
                 <div className={`${styles.project} ${styles.pone}`}>
                   <div className={styles.img}>
                     <Image
@@ -74,8 +79,8 @@ export default function FnSOne() {
                     />
                   </div>
                   <div className={styles.right}>
-                    <div className={styles.title}>Projects</div>
-                    <div className={styles.count}>{allProjects?.length}</div>
+                    <div className={styles.title}>Bid</div>
+                    <div className={styles.count}>{bid?.length}</div>
                   </div>
                 </div>
               </Link>
@@ -95,7 +100,7 @@ export default function FnSOne() {
                   <Image src="/img/architect-dashboard/queue.svg" alt="queue" width={76} height={76} />
                 </div>
                 <div className={styles.right}>
-                  <div className={styles.title}>Queue</div>
+                  <div className={styles.title}>Request</div>
                   <div className={styles.count}>{queue?.length}</div>
                 </div>
               </div>
@@ -122,8 +127,8 @@ export default function FnSOne() {
                 <img src="/img/architect-dashboard/total_project.svg" alt="total" />
               </div>
               <div className={styles.right}>
-                <div className={styles.title}>Projects</div>
-                <div className={styles.count}>{allProjects?.length}</div>
+                <div className={styles.title}>Bid</div>
+                <div className={styles.count}>{bid?.length}</div>
               </div>
             </div>
           </Link>
@@ -143,7 +148,7 @@ export default function FnSOne() {
               <img src="/img/architect-dashboard/queue.svg" alt="queue" />
             </div>
             <div className={styles.right}>
-              <div className={styles.title}>Queue</div>
+              <div className={styles.title}>Request</div>
               <div className={styles.count}>{queue?.length}</div>
             </div>
           </div>

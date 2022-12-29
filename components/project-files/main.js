@@ -49,34 +49,37 @@ export default function ProjectFilesMain({ setFolderPopup }) {
             <div className={styles.folder_max_outer}>
               {files ? (
                 <>
-                  {allDocuments?.map((item, i) => {
-                    return (
-                      <div key={i} onClick={() => filePopup(item)} className={styles.folder_all_outer}>
-                        <div className={styles.full}>
-                          <img
-                            src={item?.thumbnail ? item?.thumbnail : "/img/landing/nophoto.jpg"}
-                            onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                            alt="alt"
-                          />
-                        </div>
-                        <div className={styles.folder_outer}>
-                          <div className={styles.left}>
-                            <img src="/img/architect-dashboard/folder-files.svg" alt="folder" />
-                            <span>{item.project_name}</span>
+                  {allDocuments
+                    ?.slice(0)
+                    .reverse()
+                    ?.map((item, i) => {
+                      return (
+                        <div key={i} onClick={() => filePopup(item)} className={styles.folder_all_outer}>
+                          <div className={styles.full}>
+                            <img
+                              src={item?.thumbnail ? item?.thumbnail : "/img/landing/nophoto.jpg"}
+                              onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                              alt="alt"
+                            />
                           </div>
-                          <div className={styles.right}>
-                            <div className={styles.progress}>
-                              {item.status === "completed" ? (
-                                <img src="/img/architect-dashboard/p-c.svg" alt="p-c" />
-                              ) : (
-                                <img src="/img/architect-dashboard/p-nc.svg" alt="p-nc" />
-                              )}
+                          <div className={styles.folder_outer}>
+                            <div className={styles.left}>
+                              <img src="/img/architect-dashboard/folder-files.svg" alt="folder" />
+                              <span>{item.project_name}</span>
+                            </div>
+                            <div className={styles.right}>
+                              <div className={styles.progress}>
+                                {item.status === "completed" ? (
+                                  <img src="/img/architect-dashboard/p-c.svg" alt="p-c" />
+                                ) : (
+                                  <img src="/img/architect-dashboard/p-nc.svg" alt="p-nc" />
+                                )}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
                 </>
               ) : (
                 <div className={styles.no_files}>

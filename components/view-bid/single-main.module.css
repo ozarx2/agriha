@@ -30,10 +30,31 @@
 .table_out td {
   border: none;
 }
+.table_out td:first-child {
+  min-width: 190px;
+}
 .table_out {
 }
-.table_out td:not(:last-child) {
+.table_out img {
+  max-width: 100%;
+  height: 150px;
+}
+.table_out a {
+  padding: 5px 0;
+  display: inline-block;
+}
+.table_out a:not(:last-child) {
   padding-right: 10px;
+}
+.loading {
+  min-height: calc(100vh - 450px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.loading img {
+  width: 40px;
 }
 /* .resultSectionDetails > div {
   flex: 1 1;
@@ -119,9 +140,6 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-top: 70px;
-  padding-right: 20px;
-  padding-bottom: 50px;
 }
 
 .decline_button {

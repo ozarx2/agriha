@@ -53,9 +53,7 @@ export default function OtpPopup() {
                       <img src="/img/landing/logo.svg" alt="logo" />
                     </picture>
                   </div>
-                  <div className={styles.right}>
-                    <div>Architect Sign in/up</div>
-                  </div>
+                  <div className={styles.right}>{/* <div>Architect Sign in/up</div> */}</div>
                 </div>
               </div>
             </div>

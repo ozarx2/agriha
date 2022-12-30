@@ -55,26 +55,28 @@ export default function ViewBidMain() {
                     />
                     <div>
                       <table className={styles.table_out}>
-                        <tr>
-                          <td>Name</td>
-                          <td>: {item?.project_name}</td>
-                        </tr>
-                        <tr>
-                          <td>Type</td>
-                          <td>: {item?.project_type}</td>
-                        </tr>
-                        <tr>
-                          <td>Location</td>
-                          <td>: {item?.project_requirements[0]?.location}</td>
-                        </tr>
-                        <tr>
-                          <td>Starting Date</td>
-                          <td>: {item?.starting_date}</td>
-                        </tr>
-                        <tr>
-                          <td>Budget</td>
-                          <td>: {item?.project_requirements[0]?.budget}</td>
-                        </tr>
+                        <tbody>
+                          <tr>
+                            <td>Name</td>
+                            <td>: {item?.project_name}</td>
+                          </tr>
+                          <tr>
+                            <td>Type</td>
+                            <td>: {item?.project_type}</td>
+                          </tr>
+                          <tr>
+                            <td>Location</td>
+                            <td>: {item?.project_requirements[0]?.location}</td>
+                          </tr>
+                          <tr>
+                            <td>Starting Date</td>
+                            <td>: {item?.starting_date}</td>
+                          </tr>
+                          <tr>
+                            <td>Budget</td>
+                            <td>: {item?.project_requirements[0]?.budget}</td>
+                          </tr>
+                        </tbody>
                       </table>
                       {/* <div className={styles.bid__projectCard__title}>
                         <h5>{item?.project_name}</h5>

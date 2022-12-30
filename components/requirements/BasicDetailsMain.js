@@ -627,8 +627,8 @@ const BasicDetailsMain = () => {
                   </div>
                 </div>
                 <div className={styles.areaNbudget_input_conatiner}>
-                  <input onChange={storeCommonDetails} id="area" type="tel" placeholder="Enter total area in sq.ft*" />
-                  <input onChange={storeCommonDetails} id="budget" type="tel" placeholder="Enter Aproximate budget*" />
+                  <input onChange={storeCommonDetails} id="area" type="tel" placeholder="Total area in sq.ft*" />
+                  <input onChange={storeCommonDetails} id="budget" type="tel" placeholder="Budget*" />
                 </div>
               </div>
               <div className={styles.inputRow}>
@@ -649,7 +649,7 @@ const BasicDetailsMain = () => {
                   type="text"
                   onChange={storeCommonDetails}
                   id="suggessions"
-                  placeholder="Enter your suggessions (optional)"
+                  placeholder="Enter your suggestions (optional)"
                 />
               </div>
               {selectedtype === "Residential" ? (
@@ -661,18 +661,8 @@ const BasicDetailsMain = () => {
                       <input type="tel" id="bedroom" onChange={storeResDetails} placeholder="Total bedrooms*" />
                     </div>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input
-                        type="tel"
-                        id="bathroom"
-                        onChange={storeResDetails}
-                        placeholder="Total attached bathrooms*"
-                      />
-                      <input
-                        type="tel"
-                        id="familyMembers"
-                        onChange={storeResDetails}
-                        placeholder="Total family members*"
-                      />
+                      <input type="tel" id="bathroom" onChange={storeResDetails} placeholder="Attached bathrooms*" />
+                      <input type="tel" id="familyMembers" onChange={storeResDetails} placeholder="Family members*" />
                     </div>
                   </div>
                   <div className={styles.requirementList_container}>

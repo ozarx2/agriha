@@ -1,15 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import moment from "moment";
-import React from "react";
-import { useContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../StoreContext";
+import { PulseLoader } from "react-spinners";
+import api_url from "../../src/utils/url";
+import Link from "next/link";
 
 import styles from "./RequirementsMain.module.css";
-import api_url from "../../src/utils/url";
-import { PulseLoader } from "react-spinners";
 
 const BasicDetailsMain = () => {
   const [Store] = useContext(StoreContext);
@@ -629,8 +627,8 @@ const BasicDetailsMain = () => {
                   </div>
                 </div>
                 <div className={styles.areaNbudget_input_conatiner}>
-                  <input onChange={storeCommonDetails} id="area" type="tel" placeholder="Enter total area in sq.ft*" />
-                  <input onChange={storeCommonDetails} id="budget" type="tel" placeholder="Enter Aproximate budget*" />
+                  <input onChange={storeCommonDetails} id="area" type="tel" placeholder="Total area in sq.ft*" />
+                  <input onChange={storeCommonDetails} id="budget" type="tel" placeholder="Budget*" />
                 </div>
               </div>
               <div className={styles.inputRow}>
@@ -651,7 +649,7 @@ const BasicDetailsMain = () => {
                   type="text"
                   onChange={storeCommonDetails}
                   id="suggessions"
-                  placeholder="Enter your suggessions (optional)"
+                  placeholder="Enter your suggestions (optional)"
                 />
               </div>
               {selectedtype === "Residential" ? (
@@ -663,18 +661,8 @@ const BasicDetailsMain = () => {
                       <input type="tel" id="bedroom" onChange={storeResDetails} placeholder="Total bedrooms*" />
                     </div>
                     <div className={styles.floorNbedroom_input_conatiner}>
-                      <input
-                        type="tel"
-                        id="bathroom"
-                        onChange={storeResDetails}
-                        placeholder="Total attached bathrooms*"
-                      />
-                      <input
-                        type="tel"
-                        id="familyMembers"
-                        onChange={storeResDetails}
-                        placeholder="Total family members*"
-                      />
+                      <input type="tel" id="bathroom" onChange={storeResDetails} placeholder="Attached bathrooms*" />
+                      <input type="tel" id="familyMembers" onChange={storeResDetails} placeholder="Family members*" />
                     </div>
                   </div>
                   <div className={styles.requirementList_container}>
@@ -927,19 +915,25 @@ const BasicDetailsMain = () => {
                         <label htmlFor="college">Collage</label>
                       </div>
                     </div>
-                    <div className={styles.apartment_types}>
-                      <select onClick={storeSchoolDetails} id="schoolType">
-                        <option value="Lower primary">None</option>
-                        <option value="Lower primary">Lower primary</option>
-                        <option value="Upper primary">Upper primary</option>
-                        <option value="High School">High School</option>
-                        <option value="Higher secondary">Higher secondary</option>
-                      </select>
-                    </div>
-                    <div className={styles.residentialSchool_card}>
-                      <input type="checkbox" onClick={residentialSchoolToggle} />
-                      <p>Residential School</p>
-                    </div>
+                    {schoolOrCollage === "School" ? (
+                      <>
+                        <div className={styles.apartment_types}>
+                          <select onClick={storeSchoolDetails} id="schoolType">
+                            <option value="Lower primary">None</option>
+                            <option value="Lower primary">Lower primary</option>
+                            <option value="Upper primary">Upper primary</option>
+                            <option value="High School">High School</option>
+                            <option value="Higher secondary">Higher secondary</option>
+                          </select>
+                        </div>
+                        <div className={styles.residentialSchool_card}>
+                          <input type="checkbox" onClick={residentialSchoolToggle} />
+                          <p>Residential School</p>
+                        </div>
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className={styles.floorNbedroom_input_conatiner}>
                     <input type="tel" id="floorSchool" placeholder="Total floors*" onChange={storeSchoolDetails} />
@@ -1007,7 +1001,9 @@ const BasicDetailsMain = () => {
           <div className={styles.bottom__main_inner__container}>
             {isError ? <p>{error}</p> : ""}
             <div className={styles.bottom__main_inner}>
-              <div className={styles.contactUs_button}>Contact us</div>
+              <Link href="/">
+                <div className={styles.contactUs_button}>Cancel</div>
+              </Link>
               <div className={styles.save_button} onClick={goToSecondaryDetails}>
                 {isLoading ? <PulseLoader color="#ffffff" /> : "Save & Continue"}
               </div>

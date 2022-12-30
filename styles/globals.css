@@ -12,7 +12,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+img {
+  max-width: 100%;
+}
 table,
 th,
 td {
@@ -251,14 +253,8 @@ img[data-testid="grid-gallery-item_thumbnail"] {
   display: block !important;
 }
 .landing_stwo_inner .swiper-pagination-bullet {
-  width: var(
-    --swiper-pagination-bullet-width,
-    var(--swiper-pagination-bullet-size, 5px)
-  );
-  height: var(
-    --swiper-pagination-bullet-height,
-    var(--swiper-pagination-bullet-size, 5px)
-  );
+  width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 5px));
+  height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 5px));
 }
 .landing_stwo_inner .swiper-pagination-bullet-active {
   background-color: #642dda !important;
@@ -422,9 +418,7 @@ img[data-testid="grid-gallery-item_thumbnail"] {
   height: 100%;
   opacity: 0.4;
 }
-#AgrihaProjectDetail_desktop_section_outer
-  .mySwiper
-  .swiper-slide-thumb-active {
+#AgrihaProjectDetail_desktop_section_outer .mySwiper .swiper-slide-thumb-active {
   opacity: 1;
 }
 #AgrihaProjectDetail_desktop_section_outer .mySwiper2 .swiper-slide img {

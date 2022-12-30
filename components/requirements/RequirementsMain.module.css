@@ -883,4 +883,23 @@
     width: 80px;
     font-size: 10px;
   }
+  .areaNbudget_input_conatiner > input,
+  .plot_input_conatiner > input,
+  .location_input_conatiner > input,
+  .floorNbedroom_input_conatiner > input,
+  .pincodeNdistrict_input_conatiner > input,
+  .left_inputRow_fileUpload > input,
+  .projectType_select_container,
+  .serviceList_card,
+  .requirementList_card,
+  .complete_radio,
+  .apartment_types,
+  .terraceNoutdoor_card,
+  .residentialSchool_card,
+  .inputRow_fileUpload {
+    padding: 0px 10px;
+  }
+  .moreDetails_container > textarea {
+    padding: 10px 10px;
+  }
 }

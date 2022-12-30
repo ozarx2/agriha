@@ -50,7 +50,7 @@ export default function MobileSidebar() {
               </Link>
             </div>
             <div className={styles.middle}>
-              <Link href={`/architect-dashboard${architectId}`} passHref>
+              <Link href={`/architect-dashboard/${architectId}`} passHref>
                 <div
                   onClick={() => setMenu(false)}
                   className={`${styles.mainLists} ${

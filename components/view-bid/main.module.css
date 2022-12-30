@@ -26,18 +26,36 @@
 .bidCard__container {
   margin-top: 25px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  /* grid-template-columns: repeat(5, 1fr); */
   gap: 25px;
 }
 
 .bid__projectCard {
-  min-width: 263px;
+  /* min-width: 263px; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
 }
 
-.bid__projectCard__top > img {
+.bid__projectCard > img {
   height: 183px;
-  width: 100%;
+  width: 250px;
   object-fit: cover;
+}
+
+.bid__projectCard > div {
+  /* width: calc(100% - 250px); */
+  padding-left: 10px;
+}
+
+.table_out,
+.table_out th,
+.table_out td {
+  border: none;
+}
+.table_out td:first-child {
+  min-width: 190px;
 }
 
 .bid__projectCard__title {
@@ -73,16 +91,13 @@
 }
 
 .bid__projectCard__button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   border: 1px solid #019071;
-  height: 46px;
-  width: 100%;
   font-size: 14px;
   font-weight: 400;
   color: #019071;
-  margin-top: 8px;
+  margin-top: 15px;
+  padding: 10px 30px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -92,7 +107,7 @@
   background-color: #019071;
 }
 
-@media only screen and (max-width: 1820px) {
+/* @media only screen and (max-width: 1820px) {
   .bidCard__container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -104,7 +119,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-}
+} */
 
 @media only screen and (max-width: 1200px) {
   .main_outer {
@@ -119,23 +134,41 @@
     margin-top: 124px;
     padding-right: 20px;
   }
-  .bidCard__container {
+  /* .bidCard__container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  }
+  } */
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .bidCard__container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
   }
-}
+} */
 
 @media only screen and (max-width: 768px) {
   .main_outer {
     margin-top: 124px;
     padding: 0px;
     padding-top: 6px;
+  }
+  .table_out td:first-child {
+    min-width: 70px;
+  }
+  .bid__projectCard > img {
+    height: 123px;
+    width: 180px;
+  }
+}
+@media only screen and (max-width: 465px) {
+  .bid__projectCard > img {
+    height: 100px;
+    width: 130px;
+  }
+  .table_out,
+  .table_out th,
+  .table_out td {
+    font-size: 12px;
   }
 }

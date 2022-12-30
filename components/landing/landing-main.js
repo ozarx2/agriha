@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState, useEffect, useContext } from "react";
+import { WhatsappShareButton } from "react-share";
 import api_url from "../../src/utils/url";
 import local_url from "../../src/utils/local_url";
 import AgrihaImageGrid from "../user-common/image-grid";
@@ -183,8 +184,9 @@ export default function AgrihaLandingMain() {
                             Get Started
                           </div>
                         )}
-
-                        <div className={styles.contact}>Contact us</div>
+                        <a href="https://web.whatsapp.com/send?phone=918921244492&submit=Continue" target="_blank">
+                          <div className={styles.contact}>Contact us</div>
+                        </a>
                       </div>
                     </div>
                     <div className={styles.right}>
@@ -249,7 +251,9 @@ export default function AgrihaLandingMain() {
                                 Get Started
                               </div>
                             )}
-                            <div className={styles.contact}> Contact us</div>
+                            <a href="https://api.whatsapp.com/send?phone=918921244492&submit=Continue" target="_blank">
+                              <div className={styles.contact}>Contact us</div>
+                            </a>
                           </div>
                         </div>
                       </div>

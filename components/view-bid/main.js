@@ -20,7 +20,7 @@ export default function ViewBidMain() {
   const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
   const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
 
-  console.log(bid);
+  // console.log(bid);
 
   useEffect(() => {
     if (bid.length !== 0) {
@@ -48,36 +48,52 @@ export default function ViewBidMain() {
               .map((item, index) => {
                 return (
                   <div key={index} className={styles.bid__projectCard}>
-                    <div className={styles.bid__projectCard__top}>
-                      <img
-                        src={
-                          item?.thumbnail
-                            ? item?.thumbnail
-                            : "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"
-                        }
-                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                        alt=""
-                      />
-                      <div className={styles.bid__projectCard__title}>
-                        <div className={styles.bid__projectCard__title__left}>
-                          <h5>{item?.project_name}</h5>
-                          <p>
-                            {item?.project_type}
-                            {item?.project_requirements[0]?.location
-                              ? ` at ${item?.project_requirements[0]?.location}`
-                              : ""}
-                          </p>
-                        </div>
-                        <div className={styles.bid__projectCard__title__right}>
-                          <p>{item?.starting_date}</p>
-                          <p>
-                            {item?.project_requirements[0]?.budget ? `₹ ${item?.project_requirements[0]?.budget}` : ""}
-                          </p>
-                        </div>
+                    <img
+                      src={item?.thumbnail ? item?.thumbnail : "/img/common/ni.jpg"}
+                      onError={(e) => (e.target.src = "/img/common/ina.png")}
+                      alt=""
+                    />
+                    <div>
+                      <table className={styles.table_out}>
+                        <tbody>
+                          <tr>
+                            <td>Name</td>
+                            <td>: {item?.project_name}</td>
+                          </tr>
+                          <tr>
+                            <td>Type</td>
+                            <td>: {item?.project_type}</td>
+                          </tr>
+                          <tr>
+                            <td>Location</td>
+                            <td>: {item?.project_requirements[0]?.location}</td>
+                          </tr>
+                          <tr>
+                            <td>Starting Date</td>
+                            <td>: {item?.starting_date}</td>
+                          </tr>
+                          <tr>
+                            <td>Budget</td>
+                            <td>: {item?.project_requirements[0]?.budget}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      {/* <div className={styles.bid__projectCard__title}>
+                        <h5>{item?.project_name}</h5>
+                        <p>
+                          {item?.project_type}
+                          {item?.project_requirements[0]?.location
+                            ? ` at ${item?.project_requirements[0]?.location}`
+                            : ""}
+                        </p>
+                        <p>{item?.starting_date}</p>
+                        <p>
+                          {item?.project_requirements[0]?.budget ? `₹ ${item?.project_requirements[0]?.budget}` : ""}
+                        </p>
+                      </div> */}
+                      <div className={styles.bid__projectCard__button} onClick={() => viewDetailsClick(item?._id)}>
+                        View details
                       </div>
-                    </div>
-                    <div className={styles.bid__projectCard__button} onClick={() => viewDetailsClick(item?._id)}>
-                      View details
                     </div>
                   </div>
                 );

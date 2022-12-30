@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import styles from "./RequirementsMain.module.css";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import axios from "axios";
 import api_url from "../../src/utils/url";
 import { PulseLoader } from "react-spinners";
+import Link from "next/link";
+
+import styles from "./RequirementsMain.module.css";
 
 const FileUploadMain = () => {
   const [sitePlanDetails, setSitePlanDetails] = useState([]);
@@ -386,7 +388,9 @@ const FileUploadMain = () => {
             </div>
           </div>
           <div className={styles.bottom__main_inner}>
-            <div className={styles.contactUs_button}>Contact us</div>
+            <Link href="/">
+              <div className={styles.contactUs_button}>Cancel</div>
+            </Link>
             <div className={styles.save_button} onClick={goToUserDash}>
               {isLoading ? <PulseLoader color="#ffffff" /> : "Send Requirement"}
             </div>

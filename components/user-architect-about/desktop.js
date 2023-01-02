@@ -17,7 +17,7 @@ import AgrihaAlsoViewedSingle from "./also-viewed-single";
 import styles from "./main.module.css";
 
 const UserArchitectAboutDesktop = () => {
-  const [tab, setTab] = useState("aboutus");
+  const [tab, setTab] = useState("projects");
 
   const [Store] = useContext(StoreContext);
   const userId = Store.userId;
@@ -217,11 +217,11 @@ const UserArchitectAboutDesktop = () => {
 
               <div className={styles.archAboutTabSection}>
                 <div className={styles.archTabTitles}>
-                  <div onClick={() => setTab("aboutus")} className={tab == "aboutus" ? styles.tabActive : ""}>
-                    About us
-                  </div>
                   <div onClick={() => setTab("projects")} className={tab == "projects" ? styles.tabActive : ""}>
                     Projects
+                  </div>
+                  <div onClick={() => setTab("aboutus")} className={tab == "aboutus" ? styles.tabActive : ""}>
+                    About us
                   </div>
                   <div onClick={() => setTab("awards")} className={tab == "awards" ? styles.tabActive : ""}>
                     Awards

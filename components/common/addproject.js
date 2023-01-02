@@ -5,10 +5,11 @@ import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
+import { useEffect } from "react";
+import { PulseLoader } from "react-spinners";
+import api_url from "../../src/utils/url";
 
 import styles from "./addproject.module.css";
-import { useEffect } from "react";
-import api_url from "../../src/utils/url";
 
 const AddProject = () => {
   const [Store] = useContext(StoreContext);
@@ -151,6 +152,7 @@ const AddProject = () => {
       const data = await res.json();
 
       if (data.status === 200) {
+        setLoading(false);
         window.location.reload();
       }
     } else {
@@ -159,6 +161,7 @@ const AddProject = () => {
   }
 
   const uploadClick = () => {
+    setLoading(true);
     uploadProject();
   };
 
@@ -258,8 +261,14 @@ const AddProject = () => {
             Cancel
           </button>
           <button className={styles.upload} onClick={() => uploadClick()}>
-            <img src="/img/architect-dashboard/upload-cloud.svg" alt="upload" />
-            Upload project
+            {loading ? (
+              <PulseLoader color="#ffffff" />
+            ) : (
+              <>
+                <img src="/img/architect-dashboard/upload-cloud.svg" alt="upload" />
+                <span>Upload project</span>
+              </>
+            )}
           </button>
         </div>
       </div>

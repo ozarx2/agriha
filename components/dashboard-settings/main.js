@@ -19,6 +19,7 @@ export default function DashboardSettingsMain() {
   const [fname, setFname] = useState("");
   const [phone, setPhone] = useState("");
   const [bio, setBio] = useState("");
+  const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const [website, setWebsite] = useState("");
@@ -35,6 +36,7 @@ export default function DashboardSettingsMain() {
     setFname(data.registered_id?.name ? data.registered_id?.name : data.firstname + " " + data.lastname);
     setPhone(data.registered_id?.phone ? data.registered_id?.phone : data?.phone);
     setBio(data.bio);
+    setCompany(data.companyname);
     setEmail(data.registered_id?.email ? data.registered_id?.email : data?.email);
     setLocation(data.location);
     setWebsite(data.website);
@@ -48,8 +50,11 @@ export default function DashboardSettingsMain() {
     setCountry(data?.country);
   }, [data]);
 
+  console.log(data);
+
   const storeValues = () => {
     setBio(document.getElementById("bio").value);
+    setCompany(document.getElementById("company").value);
     setLocation(document.getElementById("location").value);
     setWebsite(document.getElementById("web").value);
     setSpecialized(document.getElementById("specialized").value);
@@ -160,6 +165,7 @@ export default function DashboardSettingsMain() {
         profilepic: profileImg,
         website: website,
         bio: bio,
+        companyname: company,
         coverpic: coverImg,
         specialized: specialized,
         address: address,
@@ -219,6 +225,18 @@ export default function DashboardSettingsMain() {
                     type="text"
                     placeholder="Working/office location"
                     defaultValue={location}
+                    onChange={storeValues}
+                  />
+                </div>
+              </div>
+              <div className={styles.field_row_s}>
+                <div className={styles.fullfield}>
+                  <span>Company name</span>
+                  <input
+                    id="company"
+                    type="text"
+                    placeholder="Company name"
+                    defaultValue={company}
                     onChange={storeValues}
                   />
                 </div>

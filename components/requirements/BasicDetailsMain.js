@@ -627,7 +627,7 @@ const BasicDetailsMain = () => {
                   </div>
                 </div>
                 <div className={styles.areaNbudget_input_conatiner}>
-                  <input onChange={storeCommonDetails} id="area" type="tel" placeholder="Total area in sq.ft*" />
+                  <input onChange={storeCommonDetails} id="area" type="tel" placeholder="Total area in sqft*" />
                   <input onChange={storeCommonDetails} id="budget" type="tel" placeholder="Budget*" />
                 </div>
               </div>
@@ -637,7 +637,7 @@ const BasicDetailsMain = () => {
                     type="text"
                     onChange={storeCommonDetails}
                     id="plot"
-                    placeholder="Total plot in cent/acre (eg. 1200 acre)*"
+                    placeholder="Total plot in cent (eg. 1200)*"
                   />
                 </div>
                 <div className={styles.location_input_conatiner}>

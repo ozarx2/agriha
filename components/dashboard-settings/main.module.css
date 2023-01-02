@@ -32,6 +32,11 @@
   align-items: center;
   margin: 10px -20px;
 }
+.field_row_s {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
+}
 .field {
   margin: 0 20px;
   width: 50%;
@@ -67,7 +72,8 @@
   transition: all 0.7s ease-out 0s;
 }
 
-.profile_upload, .cover_upload {
+.profile_upload,
+.cover_upload {
   opacity: 0;
   height: 50px;
 }
@@ -297,7 +303,7 @@
 }
 @media only screen and (max-width: 1100px) {
   .main_outer {
-    margin-top: 124px;
+    margin-top: 67px;
     padding-right: 20px;
   }
   .field {

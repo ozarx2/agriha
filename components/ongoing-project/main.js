@@ -333,6 +333,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                 <>
                   {project ? (
                     <>
+                      {console.log(userProjects)}
                       {userProjects?.map((item, i) => {
                         return (
                           <React.Fragment key={i}>

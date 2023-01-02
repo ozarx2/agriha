@@ -636,7 +636,7 @@
     display: block;
   }
   .main_outer {
-    margin-top: 124px;
+    margin-top: 67px;
     padding-right: 20px;
   }
   .sone_inner {
@@ -662,7 +662,7 @@
 }
 @media only screen and (max-width: 768px) {
   .main_outer {
-    margin-top: 124px;
+    margin-top: 67px;
     padding: 0px;
     padding-top: 6px;
   }

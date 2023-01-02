@@ -1,7 +1,7 @@
 .paymentDetailes {
-  margin: 40px;
-  border-bottom: 1px solid #e2e2e2;
-  padding-bottom: 40px;
+  /* margin: 40px; */
+  /* border-bottom: 1px solid #e2e2e2; */
+  /* padding-bottom: 40px; */
 }
 .paymentTitle {
   font-family: "Inter";
@@ -18,7 +18,7 @@
   justify-content: space-between;
 }
 .paymentCardSectionMain {
-  display: flex;
+  /* display: flex; */
   background: #fefefe;
   border: 1px solid #e8e8e8;
   border-radius: 5px;
@@ -27,7 +27,7 @@
 .paymentCardSection {
   margin: 5px;
   padding: 20px;
-  border-right: 1px dashed #989797;
+  /* border-bottom: 1px dashed #989797; */
 }
 .paymentStatus {
   font-family: "Inter";
@@ -107,7 +107,7 @@
 
 .currentPaymentCardSection {
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
 }
 .currentPaymentCard {
   display: flex;

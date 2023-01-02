@@ -6,6 +6,7 @@ import FnFileFromArchDesk from "./filefromarch";
 import FnFileUploadDesk from "./fileuploaddesk";
 import FnFileFolder from "./folders";
 import FnPayment from "./payment";
+import FnPaymentLast from "./paymentLast";
 import styles from "./project.module.css";
 import FnSuggested from "./suggested";
 
@@ -134,7 +135,7 @@ const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate })
             </div>
           </div>
           <div className={styles.secTwo}>
-            <FnPayment />
+            <FnPaymentLast />
 
             {/* <FnFileUploadDesk projectId={id} allUploadedFiles={results} /> */}
           </div>
@@ -146,8 +147,8 @@ const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate })
           {showMore && selectprojectId === id ? (
             <>
               <FnSuggested />
-              {/* <FnPayment /> */}
               <FnFileUploadDesk projectId={id} allUploadedFiles={results} />
+              <FnPayment />
               <FnFileFolder documents={documents} />
             </>
           ) : null}

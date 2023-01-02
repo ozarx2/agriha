@@ -29,6 +29,7 @@
   padding-left: 10px;
 }
 .suggestedProductItemsSectionMain {
+  /* width: fit-content; */
   display: flex;
   overflow-x: scroll;
   overflow-y: none;

@@ -134,7 +134,9 @@ const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate })
             </div>
           </div>
           <div className={styles.secTwo}>
-            <FnFileUploadDesk projectId={id} allUploadedFiles={results} />
+            <FnPayment />
+
+            {/* <FnFileUploadDesk projectId={id} allUploadedFiles={results} /> */}
           </div>
           <div className={styles.secThree}>
             <FnFileFromArchDesk sliced={sliced} />
@@ -144,7 +146,8 @@ const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate })
           {showMore && selectprojectId === id ? (
             <>
               <FnSuggested />
-              <FnPayment />
+              {/* <FnPayment /> */}
+              <FnFileUploadDesk projectId={id} allUploadedFiles={results} />
               <FnFileFolder documents={documents} />
             </>
           ) : null}

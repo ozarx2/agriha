@@ -1,3 +1,8 @@
+.secTwoMain {
+  margin: 40px;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 40px;
+}
 .fileUploadSectionArch {
   font-family: "Inter";
   font-style: normal;
@@ -74,6 +79,7 @@
   /* width: 100%; */
 }
 .cancelBtn {
+  width: 100%;
   padding: 13px 51px;
   font-family: "Inter";
   font-style: normal;
@@ -87,8 +93,10 @@
   cursor: pointer;
 }
 .uploadBtn {
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   border: 1px solid #642dda;
   border-radius: 6.3913px;
   font-family: "Inter";
@@ -108,6 +116,7 @@
     display: none;
   } */
   .cancelBtn {
+    text-align: center;
     padding: 13px 20px;
     cursor: pointer;
   }

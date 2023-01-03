@@ -9,9 +9,11 @@ export default function NotificationPopup() {
 
   const setNotificationPopup = Store.setNotificationPopup;
   const dataActivity = Store.activityLog;
+  // console.log(dataActivity);
   const temp = dataActivity.slice(0).reverse();
+  // console.log(temp);
   const activityLog = temp.slice(0, 10);
-  // console.log(activityLog);
+  console.log(activityLog);
 
   return (
     <>
@@ -46,8 +48,15 @@ export default function NotificationPopup() {
                         <div className={styles.title}>
                           <div className={styles.main}>{item?.user?.name}</div>
                           <div className={styles.sub}>
-                            {item?.user?.name}
-                            {item?.activity === "project added for you" ? " added a project for you" : ""}
+                            {/* {item?.user?.name} */}
+                            {/* {item?.user?.name} {item?.activity} */}
+                            {item?.activity === "project added for you"
+                              ? `${item?.user?.name} added a project for you`
+                              : ""}
+                            {item?.activity === "quotation received from architects"
+                              ? `${item?.user?.name} received a quotation from architects`
+                              : ""}
+                            {item?.activity === "Quotation Accepted" ? "Quotation Accepted" : ""}
                           </div>
                         </div>
                       </div>

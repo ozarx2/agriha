@@ -3,15 +3,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
+import { PulseLoader } from "react-spinners";
 import Accordion from "./accordion";
-import styles from "./folder-popup.module.css";
 import endpoint from "../../src/utils/endpoint";
 import moment from "moment/moment";
-import { PulseLoader } from "react-spinners";
-
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import Link from "next/link";
+
+import styles from "./folder-popup.module.css";
 
 export default function FolderPopup() {
   const [lock, setLock] = useState(false);
@@ -141,9 +141,9 @@ export default function FolderPopup() {
 
   /* UPLOAD FILES*/
   async function uploadFiles() {
-    console.log(titleFileUpload);
-    console.log(uploadedDocuments);
-    console.log(projectId);
+    // console.log(titleFileUpload);
+    // console.log(uploadedDocuments);
+    // console.log(projectId);
     if (titleFileUpload !== "" && uploadedDocuments !== [] && projectId !== "") {
       const res = await fetch(`${endpoint}/fileupload`, {
         method: "POST",
@@ -245,6 +245,8 @@ export default function FolderPopup() {
             ?.slice(0)
             .reverse()
             .map((item, index) => {
+              var lockcl = item?.payment_status;
+              var lockc = !lockcl;
               return (
                 <Accordion
                   folder_name={item?.title}
@@ -267,7 +269,7 @@ export default function FolderPopup() {
                                   <div className={styles.first}>
                                     <div>{file.filename}</div>
                                     <div>
-                                      {lock ? (
+                                      {lockc ? (
                                         <img src="/img/architect-dashboard/slock-d.svg" alt="alt" />
                                       ) : (
                                         <img src="/img/architect-dashboard/sunlock-d.svg" alt="alt" />
@@ -299,17 +301,23 @@ export default function FolderPopup() {
                               </div>
                               <div className={styles.right}>
                                 <div className={styles.delete}>
-                                  <img
-                                    onClick={() => deleteFile(file.id, item._id)}
-                                    className={styles.delete_h}
-                                    src="/img/architect-dashboard/fdelete-h.svg"
-                                    alt="alt"
-                                  />
-                                  <img
-                                    className={styles.delete_nh}
-                                    src="/img/architect-dashboard/fdelete-nh.svg"
-                                    alt="alt"
-                                  />
+                                  {lockc ? (
+                                    <>
+                                      <img
+                                        onClick={() => deleteFile(file.id, item._id)}
+                                        className={styles.delete_h}
+                                        src="/img/architect-dashboard/fdelete-h.svg"
+                                        alt="alt"
+                                      />
+                                      <img
+                                        className={styles.delete_nh}
+                                        src="/img/architect-dashboard/fdelete-nh.svg"
+                                        alt="alt"
+                                      />
+                                    </>
+                                  ) : (
+                                    ""
+                                  )}
                                 </div>
                                 <div className={styles.download}>
                                   <Link href={file.url} passHref>

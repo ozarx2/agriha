@@ -1,19 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
-import styles from "./folder-popup.module.css";
+import React, { useState, useEffect, useContext } from "react";
 import endpoint from "../../src/utils/endpoint";
 import { PulseLoader } from "react-spinners";
-
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 
-export default function Accordion({
-  folder_name,
-  children,
-  paymentStatus,
-  date,
-  folderId,
-}) {
+import styles from "./folder-popup.module.css";
+
+export default function Accordion({ folder_name, children, paymentStatus, date, folderId }) {
   const [isShowing, setIsShowing] = useState(false);
   const [addFile, setAddFile] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -65,9 +59,7 @@ export default function Accordion({
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         // update progress
         setPercent(percent);
@@ -121,10 +113,7 @@ export default function Accordion({
         <div onClick={toggle} className={styles.Pfolder}>
           <div className={styles.left}>
             <div className={styles.folderimg}>
-              <img
-                src="/img/architect-dashboard/folder-files.svg"
-                alt="folder"
-              />
+              <img src="/img/architect-dashboard/folder-files.svg" alt="folder" />
             </div>
             <div className={styles.folderDetailsConatiner}>
               <div className={styles.title__folderDetailsConatiner}>
@@ -161,24 +150,12 @@ export default function Accordion({
                 alt="alt"
                 onClick={() => handleUnlock(folderId)}
               />
-              <img
-                className={styles.lock_nh}
-                src="/img/architect-dashboard/lock-nh.svg"
-                alt="alt"
-              />
+              <img className={styles.lock_nh} src="/img/architect-dashboard/lock-nh.svg" alt="alt" />
             </>
           ) : (
             <>
-              <img
-                className={styles.lock_h}
-                src="/img/architect-dashboard/olock-nh.svg"
-                alt="alt"
-              />
-              <img
-                className={styles.lock_nh}
-                src="/img/architect-dashboard/olock-nh.svg"
-                alt="alt"
-              />
+              <img className={styles.lock_h} src="/img/architect-dashboard/olock-nh.svg" alt="alt" />
+              <img className={styles.lock_nh} src="/img/architect-dashboard/olock-nh.svg" alt="alt" />
             </>
           )}
         </div>
@@ -187,24 +164,13 @@ export default function Accordion({
         <div className={styles.add_new_file}>
           <div className={styles.create_folder}>
             <div className={styles.one}>
-              <input
-                type="type"
-                placeholder="Enter the filename"
-                onChange={fileNameChange}
-              />
+              <input type="type" placeholder="Enter the filename" onChange={fileNameChange} />
             </div>
             <div className={styles.two}>
-              <input
-                type="file"
-                accept="application/pdf"
-                onChange={handleChange}
-              />
+              <input type="file" accept="application/pdf" onChange={handleChange} />
             </div>
             {uploading ? (
-              <div
-                className={styles.imageAddingLoading}
-                id="loadingImageUpload"
-              >
+              <div className={styles.imageAddingLoading} id="loadingImageUpload">
                 uploading
                 <PulseLoader color="#000000" size={4} />
               </div>

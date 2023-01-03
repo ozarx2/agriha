@@ -1,16 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState, useContext } from "react";
-import moment from "moment";
-
+import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
+import moment from "moment";
 import api_url from "../../src/utils/url";
-import styles from "./main.module.css";
-
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 
+import styles from "./main.module.css";
+
 export default function DashboardSettingsMain() {
+  const router = useRouter();
   const [Store] = useContext(StoreContext);
 
   const architectId = Store.architectId;
@@ -36,7 +37,7 @@ export default function DashboardSettingsMain() {
     setFname(data.registered_id?.name ? data.registered_id?.name : data.firstname + " " + data.lastname);
     setPhone(data.registered_id?.phone ? data.registered_id?.phone : data?.phone);
     setBio(data.bio);
-    setCompany(data.companyname);
+    setCompany(data.companyName);
     setEmail(data.registered_id?.email ? data.registered_id?.email : data?.email);
     setLocation(data.location);
     setWebsite(data.website);
@@ -165,7 +166,7 @@ export default function DashboardSettingsMain() {
         profilepic: profileImg,
         website: website,
         bio: bio,
-        companyname: company,
+        companyName: company,
         coverpic: coverImg,
         specialized: specialized,
         address: address,
@@ -175,9 +176,8 @@ export default function DashboardSettingsMain() {
       }),
     });
     const data = await res.json();
-    console.log(data);
     if (data) {
-      window.location.href = `/architect-dashboard/${architectId}`;
+      router.push(`/architect-dashboard/${architectId}`);
     }
   }
 

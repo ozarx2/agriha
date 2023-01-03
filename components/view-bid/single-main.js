@@ -55,6 +55,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
   }, [projectId]);
 
   const acceptClick = () => {
+    // setIsQuoted(true);
     setBidDataPopup(true);
   };
 

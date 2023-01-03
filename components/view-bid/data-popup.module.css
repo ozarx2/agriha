@@ -49,6 +49,15 @@
   color: #019071;
 }
 
+.inputContainer > p {
+  background-color: #fafffe;
+  font-size: 12px;
+  font-weight: 400;
+  color: red;
+  padding-top: 10px;
+  padding-left: 14px;
+}
+
 .agreeContainer {
   margin-top: 14px;
   border-bottom: 1px solid #ebebeb;

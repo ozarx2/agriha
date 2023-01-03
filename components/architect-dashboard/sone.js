@@ -23,8 +23,8 @@ export default function FnSOne() {
   const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
   const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
 
-  const queue = assignedProjects?.filter((res) => res.status === "started");
-  const ongoing = assignedProjects?.filter((res) => res.status === "ongoing");
+  const queue = assignedProjects?.filter((res) => res.creator?.registered_id?.name && res.status === "started");
+  const ongoing = assignedProjects?.filter((res) => res.creator?.registered_id?.name && res.status === "ongoing");
 
   const router = useRouter();
 

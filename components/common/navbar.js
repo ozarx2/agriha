@@ -42,7 +42,7 @@ export default function Navbar() {
       setPath("Project files");
     } else if (router.pathname == "/view-bid") {
       setPath("View Bid");
-    } else if (router.pathname == "/view-bid/[id]") {
+    } else if (router.pathname == "/view-bid/[bid]") {
       setPath("View Bid");
     } else if (router.pathname == "/dashboard-settings") {
       setPath("Settings");
@@ -245,7 +245,9 @@ export default function Navbar() {
           </div>
           <div>{path}</div>
           <div>
-            <img src="/img/architect-dashboard/call-mobile.svg" alt="call" />
+            <a href="tel:8921244492">
+              <img src="/img/architect-dashboard/call-mobile.svg" alt="call" />
+            </a>
           </div>
         </div>
         {/* <div className={styles.mobile_nav_second}>

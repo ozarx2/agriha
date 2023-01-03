@@ -1,3 +1,8 @@
+.secTwoMain {
+  margin: 40px;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 40px;
+}
 .fileUploadSectionArch {
   font-family: "Inter";
   font-style: normal;
@@ -28,7 +33,7 @@
   color: #db0025;
 }
 .uploadDescSec > input {
-  width: 100%;
+  width: 50%;
   background: #ffffff;
   border: 1px solid #d2d2d2;
   border-radius: 7px;
@@ -49,10 +54,12 @@
   left: 0;
   right: 0;
   height: 100%;
+  width: 50%;
   opacity: 0;
   cursor: pointer;
 }
 .dragDrop {
+  width: 50%;
   padding: 15px;
   text-align: center;
   font-family: "Roboto";
@@ -69,11 +76,14 @@
 .fileButtonsSec {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding-top: 21px;
   /* width: 100%; */
 }
 .cancelBtn {
+  text-align: center;
+  /* width: 23.7%; */
+  width: 23.1%;
   padding: 13px 51px;
   font-family: "Inter";
   font-style: normal;
@@ -87,8 +97,11 @@
   cursor: pointer;
 }
 .uploadBtn {
+  width: 25%;
+  /* width: 24%; */
   display: flex;
   align-items: center;
+  justify-content: center;
   border: 1px solid #642dda;
   border-radius: 6.3913px;
   font-family: "Inter";
@@ -108,6 +121,7 @@
     display: none;
   } */
   .cancelBtn {
+    text-align: center;
     padding: 13px 20px;
     cursor: pointer;
   }

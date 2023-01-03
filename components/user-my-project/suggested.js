@@ -26,7 +26,7 @@ const FnSuggested = () => {
                   <div className={styles.productName}>Wash Base</div>
                   <div className={styles.productDate}>25 feb 2022 (20 days ago)</div>
                 </div>
-                <div className={styles.productRate}>₹ 4999.00</div>
+                <div className={styles.productRate}>₹4999.00</div>
               </div>
             </div>
           </div>

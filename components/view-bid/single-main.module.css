@@ -239,3 +239,16 @@
     width: 99%;
   }
 }
+
+@media only screen and (max-width: 475px) {
+  .table_out td:first-child {
+    min-width: 140px;
+  }
+  .table_out td {
+    font-size: 12px;
+  }
+
+  .buttons__container {
+    padding-bottom: 20px;
+  }
+}

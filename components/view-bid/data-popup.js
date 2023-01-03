@@ -16,10 +16,13 @@ export default function DataPopup({ setIsQuoted }) {
   const { bid } = router.query;
   const projectId = bid;
 
-  const [quote, setQuote] = useState();
+  const [quote, setQuote] = useState("");
+  const [emptyQuote, setEmptyQuote] = useState(false);
+  const [sendActive, setSendActive] = useState(true);
 
   const goBackClick = () => {
     setBidDataPopup(false);
+    // setIsQuoted(false);
   };
 
   const termsClick = () => {
@@ -31,25 +34,31 @@ export default function DataPopup({ setIsQuoted }) {
   };
 
   async function sendClick() {
-    console.log(architectId);
-    const res = await fetch(`${api_url}/quotation`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        project_id: projectId,
-        architect_id: architectId,
-        quote: quote,
-        user_id: bidUserId,
-        status: "quoted",
-      }),
-    });
-    const data = await res.json();
-    console.log(data);
-    if (data.status === 200) {
-      setIsQuoted(true);
-      setBidDataPopup(false);
+    if (quote !== "") {
+      setSendActive(false);
+      const res = await fetch(`${api_url}/quotation`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          project_id: projectId,
+          architect_id: architectId,
+          quote: quote,
+          user_id: bidUserId,
+          status: "quoted",
+        }),
+      });
+      const data = await res.json();
+      if (data.status === 200) {
+        setIsQuoted(true);
+        setBidDataPopup(false);
+      } else {
+        setSendActive(true);
+        setEmptyQuote(false);
+      }
+    } else {
+      setEmptyQuote(true);
     }
   }
 
@@ -62,6 +71,7 @@ export default function DataPopup({ setIsQuoted }) {
           </div>
           <div className={styles.inputContainer}>
             <input type="tel" onChange={(e) => setQuote(e.target.value)} placeholder="Enter your amount per sqft" />
+            {emptyQuote ? <p>Please enter amount</p> : ""}
           </div>
           <div className={styles.agreeContainer}>
             <p>
@@ -73,9 +83,13 @@ export default function DataPopup({ setIsQuoted }) {
             <div className={styles.goBack_button} onClick={goBackClick}>
               Go back
             </div>
-            <div className={styles.send_button} onClick={sendClick}>
-              Send
-            </div>
+            {sendActive ? (
+              <div className={styles.send_button} onClick={sendClick}>
+                Send
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

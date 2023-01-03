@@ -42,7 +42,7 @@ export default function ProfilePopup() {
       },
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setHomeSeekerDetails(data.userData);
   }
 

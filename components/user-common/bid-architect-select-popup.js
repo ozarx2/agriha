@@ -37,7 +37,7 @@ const ArchitectSelectPopupContent = () => {
   const displayBidArchitet = Store.displayBidArchitet;
 
   const router = useRouter();
-  // console.log(displayBidArchitet);
+  console.log(displayBidArchitet);
 
   return (
     <>
@@ -49,7 +49,11 @@ const ArchitectSelectPopupContent = () => {
             alt="profile"
           />
           <div className={styles.content}>
-            <div className={styles.name}>{displayBidArchitet?.firstname + " " + displayBidArchitet?.lastname}</div>
+            <div className={styles.name}>
+              {displayBidArchitet?.firstname && displayBidArchitet?.lastname
+                ? displayBidArchitet?.firstname + " " + displayBidArchitet?.lastname
+                : displayBidArchitet?.registered_id?.name}
+            </div>
             <div className={styles.msg}>You have now selected this architect and you want to continue</div>
           </div>
         </div>

@@ -210,9 +210,9 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                       {userProjects?.map((item, i) => {
                         return (
                           <React.Fragment key={i}>
-                            {item.creator?.name && item.status === "started" ? (
+                            {item.creator?.registered_id?.name && item.status === "started" ? (
                               <Request
-                                name={item?.creator?.name}
+                                name={item.creator?.registered_id?.name}
                                 avatar={
                                   item?.creator?.profile_pic
                                     ? item?.creator?.profile_pic
@@ -337,9 +337,9 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                       {userProjects?.map((item, i) => {
                         return (
                           <React.Fragment key={i}>
-                            {item.creator?.name && item.status === "started" ? (
+                            {item.creator?.registered_id?.name && item.status === "started" ? (
                               <RequestMobile
-                                name={item?.creator?.name}
+                                name={item.creator?.registered_id?.name}
                                 avatar={
                                   item?.creator?.profile_pic
                                     ? item?.creator?.profile_pic

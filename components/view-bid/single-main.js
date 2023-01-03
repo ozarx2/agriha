@@ -59,7 +59,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
     setBidDataPopup(true);
   };
 
-  console.log(projectDetails);
+  // console.log(projectDetails);
 
   return (
     <>
@@ -166,14 +166,18 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Apartment" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Floors</p>
-                  <div>{projectDetails.project_type_details[0].total_floors}</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Apartment Type</p>
-                  <div>{projectDetails.project_type_details[0].apartment_type}</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Total Floors</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_floors}</td>
+                    </tr>
+                    <tr>
+                      <td>Apartment Type</td>
+                      <td>: {projectDetails?.project_type_details[0]?.apartment_type}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -181,22 +185,26 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Hotels/restaurants" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSection}>
-                  <p>Total Floors</p>
-                  <div className={styles.resultTextContainer}>3</div>
-                </div>
-                <div className={styles.resultSection}>
-                  <p>Total Occupancy</p>
-                  <div className={styles.resultTextContainer}>3000</div>
-                </div>
-                <div className={styles.resultSection}>
-                  <p>Is Terrace restaurant/cafe need?</p>
-                  <div className={styles.resultTextContainer}>Yes</div>
-                </div>
-                <div className={styles.resultSection}>
-                  <p>Is outdoor Kitchen need?</p>
-                  <div className={styles.resultTextContainer}>No</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Total Floors</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_floors}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Occupancy</td>
+                      <td>: {projectDetails?.project_type_details[0]?.occupancy}</td>
+                    </tr>
+                    <tr>
+                      <td>Is Terrace restaurant/cafe need?</td>
+                      <td>: {projectDetails?.project_type_details[0]?.terraceRestaurant_cafe ? "Yes" : "No"}</td>
+                    </tr>
+                    <tr>
+                      <td>Is outdoor Kitchen need?</td>
+                      <td>: {projectDetails?.project_type_details[0]?.outdoorKitchen ? "Yes" : "No"}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -204,14 +212,18 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Hospitals/medical lab" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Floors</p>
-                  <div>3</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Beds</p>
-                  <div>3000</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Total Floors</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_floors}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Beds</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_beds}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -219,14 +231,18 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Auditorium" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Floors</p>
-                  <div>3</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Halls</p>
-                  <div>5</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Total Floors</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_floors}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Halls</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_halls}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -234,10 +250,14 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Industrial/warehouse" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>Type of Business</p>
-                  <div>Food</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Type of Business</td>
+                      <td>: {projectDetails?.project_type_details[0]?.type_of_business}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -245,14 +265,18 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Mall" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Floors</p>
-                  <div>3</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Occupancy</p>
-                  <div>3000</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Total Floors</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_floors}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Occupancy</td>
+                      <td>: {projectDetails?.project_type_details[0]?.occupancy}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -260,14 +284,18 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Multiplex" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Screens</p>
-                  <div>3</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Occupancy</p>
-                  <div>3000</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Total Screens</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_screens}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Occupancy</td>
+                      <td>: {projectDetails?.project_type_details[0]?.occupancy}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -275,14 +303,18 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Religious building" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total of Religion</p>
-                  <div>Hindu</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Occupancy</p>
-                  <div>3000</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Type of Religion</td>
+                      <td>: {projectDetails?.project_type_details[0]?.type_of_religion}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Occupancy</td>
+                      <td>: {projectDetails?.project_type_details[0]?.occupancy}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -290,26 +322,36 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "School/College building" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>School/College</p>
-                  <div>College</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>School type</p>
-                  <div>LP</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>is residential school ?</p>
-                  <div>Yes</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Floors</p>
-                  <div>3</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Occupancy</p>
-                  <div>2000</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>School/College</td>
+                      <td>: {projectDetails?.project_type_details[0]?.school_or_Collage}</td>
+                    </tr>
+                    {projectDetails?.project_type_details[0]?.school_or_Collage === "School" ? (
+                      <>
+                        <tr>
+                          <td>School type</td>
+                          <td>: {projectDetails?.project_type_details[0]?.school_type}</td>
+                        </tr>
+                        <tr>
+                          <td>is residential school ?</td>
+                          <td>: {projectDetails?.project_type_details[0]?.is_residential_school ? "Yes" : "No"}</td>
+                        </tr>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                    <tr>
+                      <td>Total Floors</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_floors}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Occupancy</td>
+                      <td>: {projectDetails?.project_type_details[0]?.occupancy}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""

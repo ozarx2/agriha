@@ -121,7 +121,7 @@ export default function FnSOne() {
       </div>
       <div className={`${styles.right} ${styles.mobile}`}>
         <div className={styles.project_outer}>
-          <Link href="/my-projects" passHref>
+          <Link href="/view-bid" passHref>
             <div className={`${styles.project} ${styles.pone}`}>
               <div className={styles.img}>
                 <img src="/img/architect-dashboard/total_project.svg" alt="total" />

@@ -134,7 +134,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                         <td>
                           :{" "}
                           {projectDetails?.requirement_list?.map((item, index) => {
-                            return <React.Fragment key={index}>{item},</React.Fragment>;
+                            return <React.Fragment key={index}>{item}, </React.Fragment>;
                           })}
                         </td>
                       </tr>
@@ -316,18 +316,22 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Sports building" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>Type of Sports</p>
-                  <div>Hindu</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Occupancy</p>
-                  <div>3000</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>is Pool need ?</p>
-                  <div>No</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Type of Sports</td>
+                      <td>: {projectDetails?.project_type_details[0]?.type_of_sport}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Occupancy</td>
+                      <td>: {projectDetails?.project_type_details[0]?.occupancy}</td>
+                    </tr>
+                    <tr>
+                      <td>is Pool need ?</td>
+                      <td>: {projectDetails?.project_type_details[0]?.pool ? "Yes" : "No"}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -335,14 +339,18 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
             {projectType === "Hostel" ? (
               <div className={styles.results__container}>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Floors</p>
-                  <div>3</div>
-                </div>
-                <div className={styles.resultSectionDetails}>
-                  <p>Total Rooms</p>
-                  <div>30</div>
-                </div>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>Total Floors</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_floors}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Rooms</td>
+                      <td>: {projectDetails?.project_type_details[0]?.total_rooms}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ) : (
               ""
@@ -417,7 +425,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                           <td>
                             :{" "}
                             {projectDetails?.plan_services?.map((item, index) => {
-                              return <React.Fragment key={index}>{item},</React.Fragment>;
+                              return <React.Fragment key={index}>{item}, </React.Fragment>;
                             })}
                           </td>
                         </tr>

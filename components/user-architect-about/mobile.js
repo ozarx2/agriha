@@ -16,7 +16,7 @@ import dummy_token from "../../src/utils/dummy_token";
 import styles from "./main.module.css";
 
 const UserArchitectAboutMobile = () => {
-  const [tab, setTab] = useState("aboutus");
+  const [tab, setTab] = useState("projects");
 
   const [Store] = useContext(StoreContext);
   const userId = Store.userId;
@@ -183,12 +183,13 @@ const UserArchitectAboutMobile = () => {
 
               <div className={styles.archAboutTabSection}>
                 <div className={styles.archTabTitles}>
-                  <div onClick={() => setTab("aboutus")} className={tab == "aboutus" ? styles.tabActive : ""}>
-                    About us
-                  </div>
                   <div onClick={() => setTab("projects")} className={tab == "projects" ? styles.tabActive : ""}>
                     Projects
                   </div>
+                  <div onClick={() => setTab("aboutus")} className={tab == "aboutus" ? styles.tabActive : ""}>
+                    About us
+                  </div>
+
                   <div onClick={() => setTab("awards")} className={tab == "awards" ? styles.tabActive : ""}>
                     Awards
                   </div>

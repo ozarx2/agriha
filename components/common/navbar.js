@@ -183,7 +183,7 @@ export default function Navbar() {
                 <span>Back</span>
               </Link>
             </div>
-          ) : router.pathname == "/view-bid/[id]" ? (
+          ) : router.pathname == "/view-bid/[bid]" ? (
             <div className={styles.back}>
               <img src="/img/architect-dashboard/back.svg" alt="back.jpg" />
               <Link href="/view-bid" passHref>
@@ -248,12 +248,12 @@ export default function Navbar() {
             <img src="/img/architect-dashboard/call-mobile.svg" alt="call" />
           </div>
         </div>
-        <div className={styles.mobile_nav_second}>
+        {/* <div className={styles.mobile_nav_second}>
           <div className={styles.searchBox}>
             <input type="text" placeholder="What would you like to do ?" />
             <img src="/img/architect-dashboard/navbar/search.svg" className={styles.searchIcon} alt="search.jpg" />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

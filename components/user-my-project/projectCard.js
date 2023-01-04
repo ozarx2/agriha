@@ -10,7 +10,7 @@ import FnPaymentLast from "./paymentLast";
 import styles from "./project.module.css";
 import FnSuggested from "./suggested";
 
-const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate }) => {
+const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId, status, startDate }) => {
   const [showMore, setShowMore] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [selectprojectId, setSelectprojectId] = useState("");
@@ -18,6 +18,7 @@ const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate })
   const [documents, setDocuments] = useState([]);
   const [sliced, setSliced] = useState([]);
   const [viewAll, setViewAll] = useState(false);
+  const [suggestion, setSuggestion] = useState([]);
 
   const toggleBtn = (id) => {
     setShowMore((prevState) => !prevState);
@@ -64,6 +65,16 @@ const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate })
       setSliced(documents?.slice(0, 3));
     }
   }, [viewAll]);
+
+  useEffect(() => {
+    async function suggestedData() {
+      const response = await fetch("https://ecommnerc-test.onrender.com/product");
+      const data = await response.json();
+      setSuggestion(data);
+      // console.log(data);
+    }
+    suggestedData();
+  }, []);
 
   const viewAllClick = () => {
     if (!viewAll) {
@@ -121,16 +132,20 @@ const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate })
 
             <div className={styles.profileStatusSection}>
               <div className={styles.profileStatusLeft}>
-                <div className={styles.profileStatus}>Status:</div>
-                <div className={styles.profileStatus}>Started on:</div>
-                <div className={styles.profileStatus}>Current stage:</div>
-                <div className={styles.profileStatus}>Payment status:</div>
+                <div className={styles.profileStatus}>Status</div>
+                <div className={styles.profileStatus}>Started on</div>
+                <div className={styles.profileStatus}>Place</div>
+                <div className={styles.profileStatus}>Budget</div>
+                <div className={styles.profileStatus}>Area</div>
+                <div className={styles.profileStatus}>Payment status</div>
               </div>
               <div className={styles.profileStatusRight}>
-                <div className={styles.profileStatus}>{status}</div>
-                <div className={styles.profileStatus}>{startDate}</div>
-                <div className={styles.profileStatus}>{status}</div>
-                <div className={styles.profileStatus}>Pending</div>
+                <div className={styles.profileStatus}>: {status}</div>
+                <div className={styles.profileStatus}>: {startDate}</div>
+                <div className={styles.profileStatus}>: {place}</div>
+                <div className={styles.profileStatus}>: {budget}</div>
+                <div className={styles.profileStatus}>: {area}</div>
+                <div className={styles.profileStatus}>: Pending</div>
               </div>
             </div>
           </div>
@@ -146,7 +161,7 @@ const FnProjectCard = ({ index, name, bid, id, architectId, status, startDate })
         <div className={styles.projDetails} id="projDetails">
           {showMore && selectprojectId === id ? (
             <>
-              <FnSuggested />
+              <FnSuggested suggestion={suggestion} />
               <FnFileUploadDesk projectId={id} allUploadedFiles={results} />
               <FnPayment />
               <FnFileFolder documents={documents} />

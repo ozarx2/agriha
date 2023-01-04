@@ -12,7 +12,7 @@ import endpoint from "../../src/utils/endpoint";
 import FnfolderMob from "./folderMob";
 import FnFolderMob from "./folderMob";
 
-const FnprojectCardMob = ({ index, name, bid, id, architectId, status, startDate, thumbnail }) => {
+const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architectId, status, startDate, thumbnail }) => {
   const [files, setFiles] = useState([]);
   const [viewMore, setViewMore] = useState(false);
   const [sentFile, setSentFile] = useState(false);
@@ -182,6 +182,16 @@ const FnprojectCardMob = ({ index, name, bid, id, architectId, status, startDate
     }
   }, [viewAll]);
 
+  // useEffect(() => {
+  //   async function suggestedData() {
+  //     const response = await fetch("https://ecommnerc-test.onrender.com/product");
+  //     const data = await response.json();
+  //     setSuggestion(data);
+  //     // console.log(data);
+  //   }
+  //   suggestedData();
+  // }, []);
+
   return (
     <div>
       <div className={styles.projImgMobMainSec}>
@@ -247,24 +257,61 @@ const FnprojectCardMob = ({ index, name, bid, id, architectId, status, startDate
           </div>
         )}
       </div>
-      <div className={styles.projStatusMainSecMob}>
+      {/* <div className={styles.projStatusMainSecMob}>
         <div className={styles.projStatusLeftMainMob}>
-          <div className={styles.profileStatusMob}>Status:</div>
-          <div className={styles.profileStatusMob}>Started on:</div>
-          <div className={styles.profileStatusMob}>Current stage:</div>
-          <div className={styles.profileStatusMob}>Payment status:</div>
+          <div className={styles.profileStatusMob}>Status</div>
+          <div className={styles.profileStatusMob}>Started on</div>
+          <div className={styles.profileStatusMob}>Place</div>
+          <div className={styles.profileStatusMob}>Budget</div>
+          <div className={styles.profileStatusMob}>Area</div>
+          <div className={styles.profileStatusMob}>Payment status</div>
 
-          {bid ? <div className={styles.profileStatusMob}>Bid:</div> : ""}
+          {bid ? <div className={styles.profileStatusMob}>Bid</div> : ""}
         </div>
         <div className={styles.projStatusRightMainMob}>
-          <div className={styles.profileStatusMob}>{status}</div>
-          <div className={styles.profileStatusMob}>{startDate}</div>
-          <div className={styles.profileStatusMob}>{status}</div>
-          <div className={styles.profileStatusMob}>Pending</div>
+          <div className={styles.profileStatusMob}>: {status}</div>
+          <div className={styles.profileStatusMob}>: {startDate}</div>
+          <div className={styles.profileStatusMob}>: {place}</div>
+          <div className={styles.profileStatusMob}>: {budget}</div>
+          <div className={styles.profileStatusMob}>: {area}</div>
+          <div className={styles.profileStatusMob}>: Pending</div>
 
-          {bid ? <div className={styles.profileStatusMob}>Active</div> : ""}
+          {bid ? <div className={styles.profileStatusMob}>: Active</div> : ""}
         </div>
-      </div>
+      </div> */}
+      <table className={styles.table_out}>
+        <tbody>
+          <tr>
+            <td>Status</td>
+            <td className={styles.tableDataResult}>: {status}</td>
+          </tr>
+          <tr>
+            <td>Started on</td>
+            <td className={styles.tableDataResult}>: {startDate}</td>
+          </tr>
+          <tr>
+            <td>Place</td>
+            <td className={styles.tableDataResult}>: {place}</td>
+          </tr>
+          <tr>
+            <td>Budget</td>
+            <td className={styles.tableDataResult}>: {budget}</td>
+          </tr>
+          <tr>
+            <td>Area</td>
+            <td className={styles.tableDataResult}>: {area}</td>
+          </tr>
+          <tr>
+            <td>Payment status</td>
+            <td className={styles.tableDataResult}>: Pending</td>
+          </tr>
+          <tr>
+            {bid ? <td>Bid</td> : ""}
+            {bid ? <td className={styles.tableDataResult}>: Active</td> : ""}
+          </tr>
+        </tbody>
+      </table>
+
       {viewMore && mainViewMore === id ? (
         <>
           <div className={styles.suggestedProductsMainSecMob}>

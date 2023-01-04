@@ -1,14 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
+import moment from "moment";
 import styles from "./suggested.module.css";
 
-const FnSuggested = () => {
+const FnSuggested = ({ suggestion }) => {
   return (
     <>
       <div className={styles.suggestedMain}>
         <div className={styles.suggestedHead}>
           <div className={styles.suggestedTitle}>
             Suggested Products.
-            <span>15</span>
+            <span>{suggestion?.length}</span>
           </div>
           <div className={styles.suggestedViewall}>
             <div>
@@ -18,54 +19,22 @@ const FnSuggested = () => {
           </div>
         </div>
         <div className={styles.suggestedProductItemsSectionMain}>
-          <div className={styles.suggestedProductItemsSection}>
-            <div className={styles.suggestedProductItems}>
-              <img src="/img/my-project-user/washbase.svg" alt="" />
-              <div className={styles.productDetailes}>
-                <div>
-                  <div className={styles.productName}>Wash Base</div>
-                  <div className={styles.productDate}>25 feb 2022 (20 days ago)</div>
+          {suggestion?.map((items, index) => {
+            return (
+              <div key={index} className={styles.suggestedProductItemsSection}>
+                <div className={styles.suggestedProductItems}>
+                  <img src={items.thumbnail} alt="thumbnail" />
+                  <div className={styles.productDetailes}>
+                    <div>
+                      <div className={styles.productName}>{items.name}</div>
+                      <div className={styles.productDate}>{moment(items.updatedAt).format("MMM Do YY")} </div>
+                    </div>
+                    <div className={styles.productRate}>₹ {items.mrp}</div>
+                  </div>
                 </div>
-                <div className={styles.productRate}>₹4999.00</div>
               </div>
-            </div>
-          </div>
-          <div className={styles.suggestedProductItemsSection}>
-            <div className={styles.suggestedProductItems}>
-              <img src="/img/my-project-user/sug1.svg" alt="" />
-              <div className={styles.productDetailes}>
-                <div>
-                  <div className={styles.productName}>Side table</div>
-                  <div className={styles.productDate}>25 feb 2022 (20 days ago)</div>
-                </div>
-                <div className={styles.productRate}>₹ 3999.00</div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.suggestedProductItemsSection}>
-            <div className={styles.suggestedProductItems}>
-              <img src="/img/my-project-user/sug2.svg" alt="" />
-              <div className={styles.productDetailes}>
-                <div>
-                  <div className={styles.productName}>Royal chair</div>
-                  <div className={styles.productDate}>25 feb 2022 (20 days ago)</div>
-                </div>
-                <div className={styles.productRate}>₹ 5999.00</div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.suggestedProductItemsSection}>
-            <div className={styles.suggestedProductItems}>
-              <img src="/img/my-project-user/sug3.svg" alt="" />
-              <div className={styles.productDetailes}>
-                <div>
-                  <div className={styles.productName}>Dining table</div>
-                  <div className={styles.productDate}>25 feb 2022 (20 days ago)</div>
-                </div>
-                <div className={styles.productRate}>₹ 14999.00</div>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </>

@@ -12,6 +12,9 @@ const FnOngoingProjectUserSide = ({ projects }) => {
               <FnProjectCard
                 index={index}
                 name={items.project_name}
+                place={items.creator.location}
+                budget={items?.project_requirements[0]?.budget}
+                area={items?.project_requirements[0]?.area}
                 bid={items.bid}
                 id={items._id}
                 architectId={items.architect_id}

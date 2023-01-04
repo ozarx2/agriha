@@ -7,7 +7,7 @@ const FnFileFromArchDesk = ({ sliced }) => {
     <>
       <div className={styles.fileTitle}>
         <div>File from Architect</div>
-        <div className={styles.viewAll}>View all</div>
+        {/* <div className={styles.viewAll}>View all</div> */}
       </div>
       <div className={styles.archFilesMainSec}>
         {sliced?.length !== 0 ? (

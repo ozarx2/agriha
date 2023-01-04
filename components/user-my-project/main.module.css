@@ -134,6 +134,29 @@
     height: 40px;
     border-radius: 50%;
   }
+  .table_out,
+  .table_out th,
+  .table_out td {
+    margin-top: 20px;
+    border: none;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 148.19%;
+    color: #9a9a9a;
+    padding-right: 10px;
+    /* border-bottom: 1px solid #e2e2e2; */
+  }
+  .table_out td:first-child {
+    min-width: 100px;
+  }
+  .table_out .tableDataResult {
+    color: #5f5f5f;
+  }
   .projStatusMainSecMob {
     display: flex;
     align-items: center;
@@ -404,10 +427,10 @@
   .sentFileHead {
     font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #5f5f5f;
+    color: #000000;
   }
   .sentFileUploadMainSecMob {
     padding: 20px;
@@ -435,10 +458,10 @@
   .fileFromHead {
     font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #5f5f5f;
+    color: #000000;
   }
   .fileFromMainSecMob {
     padding-top: 5px;

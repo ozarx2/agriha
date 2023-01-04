@@ -1,0 +1,101 @@
+.suggestedProductsMainSecMob {
+  padding-top: 19px;
+  padding-bottom: 19px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.suggestedProductsMainMob {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.suggestedProductHead {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+.suggProdListMob {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ababab;
+}
+.suggestedBedProductsMainSecMob {
+  padding-top: 19px;
+  padding-bottom: 19px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.suggestedBedProductsMainMob {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.suggestedBedProductHead {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #5f5f5f;
+}
+.bedProdMobMainSec {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  /* padding-top: 20px;
+    padding-bottom: 20px; */
+}
+.coloumn {
+  float: left;
+  width: 50%;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.coloumn > img {
+  width: 100%;
+}
+.bedProdMobMainSec > img {
+  padding: 10px;
+}
+.suggestedKitchenProductsMainSecMob {
+  padding-top: 19px;
+  padding-bottom: 19px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.suggestedKitechenProductsMainMob {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.suggestedKitchenProductHead {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #5f5f5f;
+}
+.suggestedHallProductsMainSecMob {
+  padding-top: 19px;
+  padding-bottom: 19px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.suggestedHallProductsMainMob {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.suggestedHallProductHead {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #5f5f5f;
+}

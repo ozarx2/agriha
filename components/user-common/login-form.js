@@ -8,13 +8,13 @@ export default function LoginPopupForm() {
   const [Store] = useContext(StoreContext);
 
   const setOtpPopup = Store.setOtpPopup;
+  const userRole = Store.userRole;
+  const setLoginPopup = Store.setLoginPopup;
   const setFromLoginOrRegister = Store.setFromLoginOrRegister;
   const setLoginActive = Store.setLoginActive;
   const setUserId = Store.setUserId;
-  const setLoginPopup = Store.setLoginPopup;
   const setRegisterPopup = Store.setRegisterPopup;
   const setBid = Store.setBid;
-  const userRole = Store.userRole;
 
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState("Please enter Mobile Number");
@@ -26,8 +26,8 @@ export default function LoginPopupForm() {
   };
 
   async function handleSubmit() {
-    // const res = await fetch(`${endpoint}/auth/mobile_login`, {
-    const res = await fetch(`${endpoint}/auth/test/login`, {
+    const res = await fetch(`${endpoint}/auth/mobile_login`, {
+      // const res = await fetch(`${endpoint}/auth/test/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,31 +39,33 @@ export default function LoginPopupForm() {
       }),
     });
     const data = await res.json();
-    // console.log(data);
-    if (data.status === 401) {
-      setIsError(true);
-      setError("invalid Mobile number");
-    }
+    console.log(data);
     if (data.status === 200) {
-      localStorage.setItem("token", data.token);
       setFromLoginOrRegister("login");
-      // setOtpPopup(true);
+      setOtpPopup(true);
+      setLoginPopup(false);
+      localStorage.setItem("token", data.token);
 
       // dummy login start
-      setOtpPopup(false);
-      setLoginPopup(false);
-      setRegisterPopup(false);
-      localStorage.setItem("userToken", data.token);
-      localStorage.setItem("userId", data.id);
-      localStorage.setItem("userRole", data.role);
-      setUserId(data.id);
-      setLoginActive(true);
-      if (data.role === "user") {
-        setBid(true);
-      } else if (data.role === "architect") {
-        window.location.href = `/architect-dashboard/${data.id}`;
-      }
+
+      // setOtpPopup(false);
+      // setLoginPopup(false);
+      // setRegisterPopup(false);
+      // localStorage.setItem("userToken", data.token);
+      // localStorage.setItem("userId", data.id);
+      // localStorage.setItem("userRole", data.role);
+      // setUserId(data.id);
+      // setLoginActive(true);
+      // if (data.role === "user") {
+      //   setBid(true);
+      // } else if (data.role === "architect") {
+      //   window.location.href = `/architect-dashboard/${data.id}`;
+      // }
+
       // dummy login end
+    } else {
+      setIsError(true);
+      setError(data.message);
     }
   }
 

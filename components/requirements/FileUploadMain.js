@@ -113,8 +113,8 @@ const FileUploadMain = () => {
         config
       )
       .then((response) => {
-        console.log(response.data);
-        console.log("refrerance uploaded");
+        // console.log(response.data);
+        // console.log("refrerance uploaded");
         setReferaceLoading(false);
       })
       .catch((error) => {
@@ -362,7 +362,7 @@ const FileUploadMain = () => {
                     <p>{thumbnailDetails.length === 0 ? "Upload Thumbnail Image" : thumbnailDetails.name}</p>
                   </div>
                   {thumbnailDetails.length !== 0 ? (
-                    <div className={styles.uploadButtonActive} onClick={handleUploadThumb}>
+                    <div className={styles.uploadButtonActive} onClick={() => handleUploadThumb(thumbnailDetails)}>
                       {thumbnailLoading ? (
                         <PulseLoader color="#ffffff" />
                       ) : (

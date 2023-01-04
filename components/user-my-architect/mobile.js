@@ -7,15 +7,20 @@ import { StoreContext } from "../StoreContext";
 import MobAgrihaArchProfileSingle from "./mobArchProfile";
 
 import styles from "./main.module.css";
+import stylesp from "./pagination.module.css";
 
 const FnUserMyArchitectMobile = () => {
   const router = useRouter();
 
   const [Store] = useContext(StoreContext);
+  const [page, setPage] = useState(0);
 
   const setAllArchitects = Store.setAllArchitects;
   const allArchitects = Store.allArchitects;
 
+  const handlePages = (value) => {
+    console.log(value);
+  };
   /* GET PROJECT TYPES */
   async function getallArchitects() {
     const token = localStorage.getItem("userToken");
@@ -28,8 +33,8 @@ const FnUserMyArchitectMobile = () => {
       },
     });
     const data = await res.json();
-    // console.log(data);
-    setAllArchitects(data.data);
+    console.log(data);
+    // setAllArchitects(data.data);
   }
   // console.log(allArchitects);
 
@@ -47,6 +52,23 @@ const FnUserMyArchitectMobile = () => {
             {allArchitects?.map((items, i) => {
               return <MobAgrihaArchProfileSingle key={i} items={items} i={i} />;
             })}
+            <div className={stylesp.paginationSection}>
+              <div className={stylesp.pageination}>
+                <img
+                  src="/img/architect/left.svg"
+                  alt="left.svg"
+                  onClick={() => handlePages(-1)}
+                />
+                <div className={stylesp.pageNum}>
+                  01 <span>of 03</span>
+                </div>
+                <img
+                  src="/img/architect/right.svg"
+                  alt="left.svg"
+                  onClick={() => handlePages(+1)}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

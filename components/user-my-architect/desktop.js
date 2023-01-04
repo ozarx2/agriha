@@ -15,7 +15,6 @@ const FnUserMyArchitectDesktop = () => {
             <ArchHead />
             <FnFilter />
             <FnArchProfiles />
-            <FnArchPagination />
           </div>
         </div>
       </div>

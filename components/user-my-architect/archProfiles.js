@@ -8,6 +8,7 @@ import { StoreContext } from "../StoreContext";
 import AgrihaArchProfileSingle from "./archProfile";
 
 import styles from "./archProfiles.module.css";
+import stylesp from "./pagination.module.css";
 
 const FnArchProfiles = () => {
   const [Store] = useContext(StoreContext);
@@ -18,10 +19,12 @@ const FnArchProfiles = () => {
 
   const router = useRouter();
 
+  const [page, setPage] = useState(1);
+
   /* GET PROJECT TYPES */
   async function getallArchitects() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/architects/view`, {
+    const res = await fetch(`${api_url}/architects/view?page=${page}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -33,12 +36,19 @@ const FnArchProfiles = () => {
     setAllArchitects(data.data);
   }
 
+  const handlePages = (value) => {
+    const pages = page + value;
+    if (pages >= 1) {
+      setPage(pages);
+    }
+  };
+
   // console.log(allArchitects);
   useEffect(() => {
-    if (allArchitects.length === 0) {
-      getallArchitects();
-    }
-  }, []);
+    // if (allArchitects.length === 0) {
+    getallArchitects();
+    // }
+  }, [page]);
 
   async function getSearchArchitects(query) {
     const res = await fetch(`${api_url}/search/key?l=${query}`, {
@@ -67,8 +77,29 @@ const FnArchProfiles = () => {
   return (
     <>
       {allArchitects?.map((items, i) => {
-        return <AgrihaArchProfileSingle key={i} items={items} i={i} />;
+        return (
+          <>
+            <AgrihaArchProfileSingle key={i} items={items} i={i} />
+          </>
+        );
       })}
+      <div className={stylesp.paginationSection}>
+        <div className={stylesp.pageination}>
+          <img
+            src="/img/architect/left.svg"
+            alt="left.svg"
+            onClick={() => handlePages(-1)}
+          />
+          <div className={stylesp.pageNum}>
+            <span>Page : {page} </span>
+          </div>
+          <img
+            src="/img/architect/right.svg"
+            alt="left.svg"
+            onClick={() => handlePages(+1)}
+          />
+        </div>
+      </div>
     </>
   );
 };

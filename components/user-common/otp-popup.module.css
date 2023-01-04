@@ -335,6 +335,15 @@
     margin-top: 31px;
     margin-bottom: 27px;
   }
+  .desktop_content_outer .stwo p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: red;
+    padding-top: 10px;
+  }
   .desktop_content_outer .stwo .additional .resend {
     font-family: "Inter";
     font-style: normal;

@@ -17,7 +17,10 @@ export default function OtpPopupForm() {
   const setRegisterPopup = Store.setRegisterPopup;
   const setLoginActive = Store.setLoginActive;
   const setUserId = Store.setUserId;
-  const setFromLoginOrRegister = Store.setFromLoginOrRegister;
+  const fromLoginOrRegister = Store.fromLoginOrRegister;
+
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState("Please enter Mobile Number");
 
   var a = document.getElementById("a"),
     b = document.getElementById("b"),
@@ -58,22 +61,24 @@ export default function OtpPopupForm() {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
+      setUserId(data.id);
       setLoginActive(true);
-      setOtpPopup(false);
-      setLoginPopup(false);
-      setRegisterPopup(false);
       localStorage.setItem("userToken", data.token);
       localStorage.setItem("userId", data.id);
-      setUserId(data.id);
-
+      localStorage.setItem("userRole", data.role);
       if (data.role === "user") {
         setBid(true);
-        // window.location.href = "/dashboard";
       } else if (data.role === "architect") {
         window.location.href = `/architect-dashboard/${data.id}`;
       }
+      setLoginPopup(false);
+      setRegisterPopup(false);
+      setOtpPopup(false);
+    } else {
+      setIsError(true);
+      setError(data.message);
     }
   }
 
@@ -92,16 +97,26 @@ export default function OtpPopupForm() {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
+      setUserId(data.id);
+      setLoginActive(true);
+
+      localStorage.setItem("userId", data.id);
+      localStorage.setItem("userToken", data.token);
+      localStorage.setItem("userRole", data.role);
       if (data.role === "user") {
-        localStorage.setItem("userToken", data.token);
         setBid(true);
         window.location.href = "/requirement/basic-details";
       } else if (data.role === "architect") {
-        localStorage.setItem("userToken", data.token);
         window.location.href = `/architect-dashboard/${data.id}`;
       }
+      setLoginPopup(false);
+      setRegisterPopup(false);
+      setOtpPopup(false);
+    } else {
+      setIsError(true);
+      setError(data.message);
     }
   }
 
@@ -128,6 +143,7 @@ export default function OtpPopupForm() {
           <input id="e" type="tel" maxLength="1" onChange={() => OtpNextActive(d, e, f)} />
           <input id="f" type="tel" maxLength="1" onChange={() => OtpNextActive(e, f, f)} />
         </div>
+        {isError ? <p>{error}</p> : ""}
         <div className={styles.additional}>
           <div className={styles.resend}>
             Don&apos;t receive the code ? <span>Resend</span>
@@ -141,7 +157,7 @@ export default function OtpPopupForm() {
           </div>
         ) : (
           <>
-            {setFromLoginOrRegister == "login" ? (
+            {fromLoginOrRegister == "login" ? (
               <div className={styles.submit} onClick={verifyClickLogin}>
                 Verify
               </div>

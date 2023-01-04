@@ -8,14 +8,14 @@ import styles from "./register-popup.module.css";
 export default function RegisterPopupForm() {
   const [Store] = useContext(StoreContext);
 
-  const setOtpPopup = Store.setOtpPopup;
+  const userRole = Store.userRole;
   const setFromLoginOrRegister = Store.setFromLoginOrRegister;
+  const setRegisterPopup = Store.setRegisterPopup;
+  const setOtpPopup = Store.setOtpPopup;
   const setBid = Store.setBid;
   const setLoginActive = Store.setLoginActive;
   const setUserId = Store.setUserId;
   const setLoginPopup = Store.setLoginPopup;
-  const setRegisterPopup = Store.setRegisterPopup;
-  const userRole = Store.userRole;
 
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState("Must fill all data");
@@ -64,45 +64,44 @@ export default function RegisterPopupForm() {
 
   /* REGISTER API */
   async function handleSubmit() {
-    console.log(phone);
+    // console.log(phone);
     axios
-      // .post(`${endpoint}/auth/register`, {
-      .post(`${endpoint}/auth/test/register`, {
+      .post(`${endpoint}/auth/register`, {
+        // .post(`${endpoint}/auth/test/register`, {
         name: name,
         phone: `+91${phone}`,
         email: email,
         role: userRole,
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.status === 200) {
-          // localStorage.setItem("token", response.data.token);
-          // setOtpPopup(true);
           setFromLoginOrRegister("register");
-          // setRegisterPopup(false);
+          setOtpPopup(true);
+          setRegisterPopup(false);
+          localStorage.setItem("token", response.data.token);
 
           // dummy login start
-          setUserId(response.data.id);
-          setLoginActive(true);
-          setOtpPopup(false);
-          setLoginPopup(false);
-          setRegisterPopup(false);
-          localStorage.setItem("userId", response.data.id);
-          localStorage.setItem("userToken", response.data.token);
-          localStorage.setItem("userRole", response.data.role);
-          if (response.data.role === "user") {
-            setBid(true);
-            window.location.href = "/requirement/basic-details";
-          } else if (response.data.role === "architect") {
-            window.location.href = `/architect-dashboard/${response.data.id}`;
-          }
+
+          // setUserId(response.data.id);
+          // setLoginActive(true);
+          // setOtpPopup(false);
+          // setLoginPopup(false);
+          // setRegisterPopup(false);
+          // localStorage.setItem("userId", response.data.id);
+          // localStorage.setItem("userToken", response.data.token);
+          // localStorage.setItem("userRole", response.data.role);
+          // if (response.data.role === "user") {
+          //   setBid(true);
+          //   window.location.href = "/requirement/basic-details";
+          // } else if (response.data.role === "architect") {
+          //   window.location.href = `/architect-dashboard/${response.data.id}`;
+          // }
+
           // dummy login end
-        }
-        if (response.data.status === 409) {
-          /* document.getElementById("loaderSentOtpRegister").style.display =
-            "none";
-          document.getElementById("sentOTPRegister").style.display = "block";
-          document.getElementById("errorMobile").style.display = "block"; */
+        } else {
+          setIsError(true);
+          setError(response.data.message);
         }
       })
       .catch((error) => {

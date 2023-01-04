@@ -28,7 +28,7 @@ const ChoosePlanMain = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setPlanDetials(data.data);
   }
 
@@ -44,7 +44,7 @@ const ChoosePlanMain = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setAllServices(data.plan_services);
   }
 

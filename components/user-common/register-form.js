@@ -64,7 +64,7 @@ export default function RegisterPopupForm() {
 
   /* REGISTER API */
   async function handleSubmit() {
-    console.log(phone);
+    // console.log(phone);
     axios
       .post(`${endpoint}/auth/register`, {
         // .post(`${endpoint}/auth/test/register`, {
@@ -74,7 +74,7 @@ export default function RegisterPopupForm() {
         role: userRole,
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.status === 200) {
           setFromLoginOrRegister("register");
           setOtpPopup(true);

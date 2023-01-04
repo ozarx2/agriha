@@ -21,6 +21,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
   const setArcDashQueue = Store.setArcDashQueue;
 
   const userProjects = userProjectsNotOrder?.slice(0).reverse();
+  console.log(userProjects);
 
   const [project, setProject] = useState(false);
 

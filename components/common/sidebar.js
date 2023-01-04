@@ -22,7 +22,8 @@ export default function Sidebar() {
         <div className={styles.sidebar}>
           <div className={styles.first}>
             <div className={styles.top}>
-              <Link href={`/architect-dashboard/${architectId}`} passHref>
+              {/* <Link href={`/architect-dashboard/${architectId}`} passHref> */}
+              <Link href={`/`} passHref>
                 <img src="/img/architect-dashboard/agrihalogo.svg" alt="agrihaLogo.svg" className={styles.agrihaLogo} />
               </Link>
             </div>

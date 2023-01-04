@@ -24,7 +24,8 @@ export default function MobileSidebar() {
       <div className={styles.sidebar_outer}>
         <div className={styles.sidebar}>
           <div className={styles.top}>
-            <Link href={`/architect-dashboard/${architectId}`} passHref>
+            {/* <Link href={`/architect-dashboard/${architectId}`} passHref> */}
+            <Link href={`/`} passHref>
               <img src="/img/architect-dashboard/agrihalogo.svg" alt="agrihaLogo.svg" className={styles.agrihaLogo} />
             </Link>
             <img onClick={() => setMenu(false)} src="/img/architect-dashboard/modal/close.svg" alt="close.svg" />

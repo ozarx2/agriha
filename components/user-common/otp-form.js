@@ -61,7 +61,7 @@ export default function OtpPopupForm() {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
       setUserId(data.id);
       setLoginActive(true);
@@ -97,7 +97,7 @@ export default function OtpPopupForm() {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
       setUserId(data.id);
       setLoginActive(true);

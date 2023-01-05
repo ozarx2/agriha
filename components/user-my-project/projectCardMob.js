@@ -258,28 +258,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
           </div>
         )}
       </div>
-      {/* <div className={styles.projStatusMainSecMob}>
-        <div className={styles.projStatusLeftMainMob}>
-          <div className={styles.profileStatusMob}>Status</div>
-          <div className={styles.profileStatusMob}>Started on</div>
-          <div className={styles.profileStatusMob}>Place</div>
-          <div className={styles.profileStatusMob}>Budget</div>
-          <div className={styles.profileStatusMob}>Area</div>
-          <div className={styles.profileStatusMob}>Payment status</div>
 
-          {bid ? <div className={styles.profileStatusMob}>Bid</div> : ""}
-        </div>
-        <div className={styles.projStatusRightMainMob}>
-          <div className={styles.profileStatusMob}>: {status}</div>
-          <div className={styles.profileStatusMob}>: {startDate}</div>
-          <div className={styles.profileStatusMob}>: {place}</div>
-          <div className={styles.profileStatusMob}>: {budget}</div>
-          <div className={styles.profileStatusMob}>: {area}</div>
-          <div className={styles.profileStatusMob}>: Pending</div>
-
-          {bid ? <div className={styles.profileStatusMob}>: Active</div> : ""}
-        </div>
-      </div> */}
       <table className={styles.table_out}>
         <tbody>
           <tr>

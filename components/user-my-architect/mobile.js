@@ -13,18 +13,23 @@ const FnUserMyArchitectMobile = () => {
   const router = useRouter();
 
   const [Store] = useContext(StoreContext);
-  const [page, setPage] = useState(0);
 
   const setAllArchitects = Store.setAllArchitects;
   const allArchitects = Store.allArchitects;
 
   const handlePages = (value) => {
-    console.log(value);
+    const pages = page + value;
+    if (pages >= 1) {
+      setPage(pages);
+    }
   };
+
+  const [page, setPage] = useState(1);
+
   /* GET PROJECT TYPES */
   async function getallArchitects() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/architects/view`, {
+    const res = await fetch(`${api_url}/architects/view?page=${page}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -33,16 +38,13 @@ const FnUserMyArchitectMobile = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
-    // setAllArchitects(data.data);
+    setAllArchitects(data.data);
   }
   // console.log(allArchitects);
 
   useEffect(() => {
-    if (allArchitects.length === 0) {
-      getallArchitects();
-    }
-  }, []);
+    getallArchitects();
+  }, [page]);
 
   return (
     <>
@@ -60,7 +62,7 @@ const FnUserMyArchitectMobile = () => {
                   onClick={() => handlePages(-1)}
                 />
                 <div className={stylesp.pageNum}>
-                  01 <span>of 03</span>
+                  <span>Page : {page} </span>
                 </div>
                 <img
                   src="/img/architect/right.svg"

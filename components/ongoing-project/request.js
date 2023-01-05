@@ -6,7 +6,7 @@ import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
 
-const Request = ({ name, avatar, type, id, setpage }) => {
+const Request = ({ name, avatar, type, id, setPage, item }) => {
   const [Store] = useContext(StoreContext);
 
   // console.log(id);
@@ -20,7 +20,7 @@ const Request = ({ name, avatar, type, id, setpage }) => {
   // console.log(results);
 
   /* ACCEPT REQUEST */
-  async function acceptRequest() {
+  async function acceptRequest(status) {
     var token = localStorage.getItem("userToken");
 
     const res = await fetch(`${api_url}/projects/accept/${id}`, {
@@ -30,14 +30,17 @@ const Request = ({ name, avatar, type, id, setpage }) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        status: "ongoing",
+        status: status,
       }),
     });
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.projectdata) {
       setArcDashQueue(false);
+    }
+    if (data) {
+      setPage("ongoing");
     }
   }
 
@@ -51,10 +54,11 @@ const Request = ({ name, avatar, type, id, setpage }) => {
       </div>
       <div className={styles.stwo_description}>{type}</div>
       <div className={styles.stwo_total_area}>
-        {results[0]?.total_area} <span>sqft</span>
+        {item?.project_requirements[0]?.area} <span>sqft</span>
       </div>
       <div className={styles.stwo_budget}>
-        <span>₹ {results[0]?.total_budget}</span>
+        <span>₹ </span>
+        {item?.project_requirements[0]?.budget}
       </div>
       {/* <div className={styles.stwo_reference_file}>
         <div className={styles.download_btn}>
@@ -64,8 +68,10 @@ const Request = ({ name, avatar, type, id, setpage }) => {
       </div> */}
       <div className={styles.stwo_action}>
         <div className={styles.vertical_center}>
-          <div className={styles.ignore_btn}>Ignore</div>
-          <div className={styles.accept_btn} onClick={() => acceptRequest()}>
+          <div className={styles.ignore_btn} onClick={() => acceptRequest("declined")}>
+            Ignore
+          </div>
+          <div className={styles.accept_btn} onClick={() => acceptRequest("ongoing")}>
             Accept
           </div>
         </div>

@@ -118,7 +118,7 @@ export default function Navbar() {
     });
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setUserProjects(data?.dataresp?.data);
     setUserProjectsDetails(data?.dataresp?.details);
   }

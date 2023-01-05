@@ -2,10 +2,11 @@
 import React from "react";
 import { useContext } from "react";
 import { StoreContext } from "../StoreContext";
+import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
 
-const RequestMobile = ({ name, avatar, type, id }) => {
+const RequestMobile = ({ name, avatar, type, id, item, setPage }) => {
   const [Store] = useContext(StoreContext);
 
   const userProjectsDetails = Store.userProjectsDetails;
@@ -16,7 +17,7 @@ const RequestMobile = ({ name, avatar, type, id }) => {
   // console.log(results);
 
   /* ACCEPT REQUEST */
-  async function acceptRequest() {
+  async function acceptRequest(status) {
     var token = localStorage.getItem("userToken");
 
     const res = await fetch(`${api_url}/projects/accept/${id}`, {
@@ -26,12 +27,15 @@ const RequestMobile = ({ name, avatar, type, id }) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        status: "ongoing",
+        status: status,
       }),
     });
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
+    if (data) {
+      setPage("ongoing");
+    }
   }
 
   return (
@@ -46,16 +50,16 @@ const RequestMobile = ({ name, avatar, type, id }) => {
         </div>
         <div className={styles.right}>
           <img onClick={() => setProjectRequestPopup(true)} src="/img/ongoing-project/more.svg" alt="alt" />
-          <div>₹ 60,000,00</div>
+          <div>₹ {item?.project_requirements[0]?.budget}</div>
         </div>
       </div>
       <div className={styles.content}>
         <div className={styles.center}>
           <div className={styles.left}>
             <div>
-              2500 <span>sqft</span>
+              {item?.project_requirements[0]?.area} <span>sqft</span>
             </div>
-            <div>Malappuram, kerala, india</div>
+            <div>{item?.project_requirements[0]?.location}</div>
           </div>
           {/* <div className={styles.right}>
         <img
@@ -69,8 +73,10 @@ const RequestMobile = ({ name, avatar, type, id }) => {
       </div> */}
         </div>
         <div className={styles.bottom}>
-          <div className={styles.ignore}>Decline</div>
-          <div className={styles.accept} onClick={() => acceptRequest()}>
+          <div className={styles.ignore} onClick={() => acceptRequest("declined")}>
+            Decline
+          </div>
+          <div className={styles.accept} onClick={() => acceptRequest("ongoing")}>
             Accept
           </div>
         </div>

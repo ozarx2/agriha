@@ -21,7 +21,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
   const setArcDashQueue = Store.setArcDashQueue;
 
   const userProjects = userProjectsNotOrder?.slice(0).reverse();
-  console.log(userProjects);
+  // console.log(userProjects);
 
   const [project, setProject] = useState(false);
 
@@ -100,7 +100,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                       {userProjects?.map((item, i) => {
                         return (
                           <React.Fragment key={i}>
-                            {item?.creator?.name && item?.status === "ongoing" ? (
+                            {item.creator?.registered_id?.name && item?.status === "ongoing" ? (
                               <div key={i} className={styles.stwo_grid_outer}>
                                 <div className={styles.stwo_username}>
                                   <div className={styles.vertical_center}>
@@ -113,7 +113,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                       onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                                       alt="alt"
                                     />
-                                    <span>{item?.creator?.name}</span>
+                                    <span>{item.creator?.registered_id?.name}</span>
                                   </div>
                                 </div>
                                 <div className={styles.stwo_project_id}>{item?.project_name}</div>
@@ -222,6 +222,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                 type={item?.project_type}
                                 id={item._id}
                                 setPage={setPage}
+                                item={item}
                               />
                             ) : (
                               " "
@@ -260,7 +261,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                       {userProjects?.map((item, i) => {
                         return (
                           <React.Fragment key={i}>
-                            {item?.creator?.name && item.status === "ongoing" ? (
+                            {item.creator?.registered_id?.name && item.status === "ongoing" ? (
                               <div key={i} className={styles.stwo_mobile_grid_outer}>
                                 <div className={styles.top}>
                                   <div className={styles.left}>
@@ -273,7 +274,7 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                       onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                                       alt="alt"
                                     />
-                                    <div>{item?.creator?.name}</div>
+                                    <div>{item.creator?.registered_id?.name}</div>
                                   </div>
                                   <div onClick={() => setOngoingPopup(true)} className={styles.right}>
                                     <img src="/img/ongoing-project/3dots.svg" alt="alt" />
@@ -347,6 +348,8 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                 }
                                 type={item?.project_type}
                                 id={item._id}
+                                item={item}
+                                setPage={setPage}
                               />
                             ) : (
                               ""

@@ -71,7 +71,7 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
       const response = await fetch("https://ecommnerc-test.onrender.com/product");
       const data = await response.json();
       setSuggestion(data);
-      // console.log(data);
+      console.log(data);
     }
     suggestedData();
   }, []);

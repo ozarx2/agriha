@@ -33,7 +33,7 @@ const FnArchProfiles = () => {
       },
     });
     const data = await res.json();
-    setAllArchitects(data.data);
+    setAllArchitects(data);
   }
 
   const handlePages = (value) => {
@@ -60,7 +60,7 @@ const FnArchProfiles = () => {
     });
 
     const data = await res.json();
-    setAllArchitects(data);
+    setAllArchitects(data.data);
   }
 
   useEffect(() => {

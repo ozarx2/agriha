@@ -60,7 +60,7 @@ const FnArchProfiles = () => {
     });
 
     const data = await res.json();
-    setAllArchitects(data.data);
+    setAllArchitects(data);
   }
 
   useEffect(() => {

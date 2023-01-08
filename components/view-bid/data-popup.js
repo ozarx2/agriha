@@ -11,6 +11,7 @@ export default function DataPopup({ setIsQuoted }) {
   const setBidDataPopup = Store.setBidDataPopup;
   const architectId = Store.architectId;
   const bidUserId = Store.bidUserId;
+  const setArcDashQueue = Store.setArcDashQueue;
 
   const router = useRouter();
   const { bid } = router.query;
@@ -32,6 +33,35 @@ export default function DataPopup({ setIsQuoted }) {
   const privacyPolicyClick = () => {
     window.location.href = "/privacypolicy";
   };
+
+  /* ACCEPT REQUEST */
+  async function acceptRequest(status) {
+    var token = localStorage.getItem("userToken");
+
+    const res = await fetch(`${api_url}/projects/accept/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        status: status,
+      }),
+    });
+
+    const data = await res.json();
+    // console.log(data);
+    if (data.projectdata) {
+      setArcDashQueue(false);
+    }
+    if (data) {
+      setIsQuoted(true);
+      setBidDataPopup(false);
+    } else {
+      setSendActive(true);
+      setEmptyQuote(false);
+    }
+  }
 
   async function sendClick() {
     if (quote !== "") {

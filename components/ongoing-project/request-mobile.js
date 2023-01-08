@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
+import Link from "next/link";
 import { StoreContext } from "../StoreContext";
 import api_url from "../../src/utils/url";
 
@@ -49,7 +49,10 @@ const RequestMobile = ({ name, avatar, type, id, item, setPage }) => {
           </div>
         </div>
         <div className={styles.right}>
-          <img onClick={() => setProjectRequestPopup(true)} src="/img/ongoing-project/more.svg" alt="alt" />
+          <Link href={`/view-bid/${item._id}`}>
+            <img src="/img/ongoing-project/more.svg" alt="alt" />
+          </Link>
+          {/* <img onClick={() => setProjectRequestPopup(true)} src="/img/ongoing-project/more.svg" alt="alt" /> */}
           <div>₹ {item?.project_requirements[0]?.budget}</div>
         </div>
       </div>

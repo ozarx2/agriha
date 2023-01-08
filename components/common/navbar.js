@@ -43,7 +43,7 @@ export default function Navbar() {
     } else if (router.pathname == "/view-bid") {
       setPath("View Bid");
     } else if (router.pathname == "/view-bid/[bid]") {
-      setPath("View Bid");
+      setPath("View");
     } else if (router.pathname == "/dashboard-settings") {
       setPath("Settings");
     } else {
@@ -176,23 +176,12 @@ export default function Navbar() {
     <>
       <div className={styles.navbar_outer}>
         <div className={styles.start}>
-          {router.pathname == "/my-projects/[id]" ? (
-            <div className={styles.back}>
-              <img src="/img/architect-dashboard/back.svg" alt="back.jpg" />
-              <Link href="/my-projects" passHref>
-                <span>Back</span>
-              </Link>
-            </div>
-          ) : router.pathname == "/view-bid/[bid]" ? (
-            <div className={styles.back}>
-              <img src="/img/architect-dashboard/back.svg" alt="back.jpg" />
-              <Link href="/view-bid" passHref>
-                <span>Back</span>
-              </Link>
-            </div>
-          ) : (
-            ""
-          )}
+          <div className={styles.back} onClick={() => router.back()}>
+            <img src="/img/architect-dashboard/back.svg" alt="back.jpg" />
+            <Link href="/my-projects" passHref>
+              <span>Back</span>
+            </Link>
+          </div>
 
           <h5>{path}</h5>
         </div>

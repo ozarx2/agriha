@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import React from "react";
 import { useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
@@ -68,6 +69,9 @@ const Request = ({ name, avatar, type, id, setPage, item }) => {
       </div> */}
       <div className={styles.stwo_action}>
         <div className={styles.vertical_center}>
+          <Link href={`/view-bid/${item._id}`}>
+            <div className={styles.view_btn}>View</div>
+          </Link>
           <div className={styles.ignore_btn} onClick={() => acceptRequest("declined")}>
             Ignore
           </div>

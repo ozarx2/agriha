@@ -309,6 +309,35 @@
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
 }
+.view_btn {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #019071;
+  background: #f7f7f7;
+  border: 1px solid #019071;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-right: 8px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.view_btn:hover {
+  color: #000;
+  border: 1px solid #000;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
 .ignore_btn {
   font-family: "Inter";
   font-style: normal;

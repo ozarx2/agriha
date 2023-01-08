@@ -13,7 +13,7 @@ export default function NotificationPopup() {
   const temp = dataActivity.slice(0).reverse();
   // console.log(temp);
   const activityLog = temp.slice(0, 10);
-  console.log(activityLog);
+  // console.log(activityLog);
 
   return (
     <>

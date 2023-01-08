@@ -71,7 +71,7 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
       const response = await fetch("https://ecommnerc-test.onrender.com/product");
       const data = await response.json();
       setSuggestion(data);
-      // console.log(data);
+      console.log(data);
     }
     suggestedData();
   }, []);
@@ -130,24 +130,38 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
               </div>
             )}
 
-            <div className={styles.profileStatusSection}>
-              <div className={styles.profileStatusLeft}>
-                <div className={styles.profileStatus}>Status</div>
-                <div className={styles.profileStatus}>Started on</div>
-                <div className={styles.profileStatus}>Place</div>
-                <div className={styles.profileStatus}>Budget</div>
-                <div className={styles.profileStatus}>Area</div>
-                <div className={styles.profileStatus}>Payment status</div>
-              </div>
-              <div className={styles.profileStatusRight}>
-                <div className={styles.profileStatus}>: {status}</div>
-                <div className={styles.profileStatus}>: {startDate}</div>
-                <div className={styles.profileStatus}>: {place}</div>
-                <div className={styles.profileStatus}>: {budget}</div>
-                <div className={styles.profileStatus}>: {area}</div>
-                <div className={styles.profileStatus}>: Pending</div>
-              </div>
-            </div>
+            <table className={styles.table_out}>
+              <tbody>
+                <tr>
+                  <td>Status</td>
+                  <td className={styles.tableDataResult}>: {status}</td>
+                </tr>
+                <tr>
+                  <td>Started on</td>
+                  <td className={styles.tableDataResult}>: {startDate}</td>
+                </tr>
+                <tr>
+                  <td>Place</td>
+                  <td className={styles.tableDataResult}>: {place}</td>
+                </tr>
+                <tr>
+                  <td>Budget</td>
+                  <td className={styles.tableDataResult}>: {budget}</td>
+                </tr>
+                <tr>
+                  <td>Area</td>
+                  <td className={styles.tableDataResult}>: {area}</td>
+                </tr>
+                <tr>
+                  <td>Payment status</td>
+                  <td className={styles.tableDataResult}>: Pending</td>
+                </tr>
+                {/* <tr>
+                  {bid ? <td>Bid</td> : ""}
+                  {bid ? <td className={styles.tableDataResult}>: Active</td> : ""}
+                </tr> */}
+              </tbody>
+            </table>
           </div>
           <div className={styles.secTwo}>
             <FnPaymentLast />

@@ -27,6 +27,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
   const [documents, setDocuments] = useState([]);
   const [fileData, setFileData] = useState(false);
   const [fileFromArch, setfileFromArch] = useState("");
+  const [suggestion, setSuggestion] = useState([]);
 
   const toggleFileDataMob = (projectId) => {
     setFileData((prevState) => !prevState);
@@ -145,9 +146,9 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
     setSliced(documentsForProject?.slice(0, 3));
   }
 
-  useEffect(() => {
-    getUploadFile();
-  }, []);
+  // useEffect(() => {
+  //   getUploadFile();
+  // }, []);
 
   async function getUploadedFiles() {
     const response = await fetch(`${endpoint}/fileupload/uploaded_file/${id}`, {
@@ -182,15 +183,15 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
     }
   }, [viewAll]);
 
-  // useEffect(() => {
-  //   async function suggestedData() {
-  //     const response = await fetch("https://ecommnerc-test.onrender.com/product");
-  //     const data = await response.json();
-  //     setSuggestion(data);
-  //     // console.log(data);
-  //   }
-  //   suggestedData();
-  // }, []);
+  useEffect(() => {
+    async function suggestedData() {
+      const response = await fetch("https://ecommnerc-test.onrender.com/product");
+      const data = await response.json();
+      setSuggestion(data);
+      console.log(data);
+    }
+    suggestedData();
+  }, []);
 
   return (
     <div>
@@ -257,28 +258,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
           </div>
         )}
       </div>
-      {/* <div className={styles.projStatusMainSecMob}>
-        <div className={styles.projStatusLeftMainMob}>
-          <div className={styles.profileStatusMob}>Status</div>
-          <div className={styles.profileStatusMob}>Started on</div>
-          <div className={styles.profileStatusMob}>Place</div>
-          <div className={styles.profileStatusMob}>Budget</div>
-          <div className={styles.profileStatusMob}>Area</div>
-          <div className={styles.profileStatusMob}>Payment status</div>
 
-          {bid ? <div className={styles.profileStatusMob}>Bid</div> : ""}
-        </div>
-        <div className={styles.projStatusRightMainMob}>
-          <div className={styles.profileStatusMob}>: {status}</div>
-          <div className={styles.profileStatusMob}>: {startDate}</div>
-          <div className={styles.profileStatusMob}>: {place}</div>
-          <div className={styles.profileStatusMob}>: {budget}</div>
-          <div className={styles.profileStatusMob}>: {area}</div>
-          <div className={styles.profileStatusMob}>: Pending</div>
-
-          {bid ? <div className={styles.profileStatusMob}>: Active</div> : ""}
-        </div>
-      </div> */}
       <table className={styles.table_out}>
         <tbody>
           <tr>
@@ -323,7 +303,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
           <div className={styles.suggestedBedProductsMainSecMob}>
             <div className={styles.suggestedBedProductsMainMob}>
               <div className={styles.suggestedBedProductHead} onClick={() => toggleSuggProdMob(id)}>
-                04 Brdroom Products
+                05 Hall Products
               </div>
               <div className={styles.suggProdListMob} onClick={() => toggleSuggProdMob(id)}>
                 {suggestProd && sugProd === id ? (
@@ -335,18 +315,15 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
             </div>
             {suggestProd ? (
               <div className={styles.bedProdMobMainSec}>
-                <div className={styles.coloumn}>
-                  <img src="/img/my-project-user/mobile/bedprodmob.svg" alt="bedprodmob.svg" />
-                </div>
-                <div className={styles.coloumn}>
-                  <img src="/img/my-project-user/mobile/bedprodmob2.svg" alt="bedprodmob2.svg" />
-                </div>
-                <div className={styles.coloumn}>
-                  <img src="/img/my-project-user/mobile/pic3.svg" alt="bedprodmob.svg" />
-                </div>
-                <div className={styles.coloumn}>
-                  <img src="/img/my-project-user/mobile/pic4.svg" alt="bedprodmob2.svg" />
-                </div>
+                {suggestion?.map((sugg, index) => {
+                  return (
+                    <>
+                      <div className={styles.coloumn}>
+                        <img src={sugg?.thumbnail} alt="bedprodmob.svg" />
+                      </div>
+                    </>
+                  );
+                })}
               </div>
             ) : (
               ""
@@ -362,7 +339,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
           </div>
           <div className={styles.suggestedHallProductsMainSecMob}>
             <div className={styles.suggestedHallProductsMainMob}>
-              <div className={styles.suggestedHallProductHead}>00 Hall Products</div>
+              <div className={styles.suggestedHallProductHead}>00 Bedroom Products</div>
               <div className={styles.suggHallListMob}>
                 <img src="/img/my-project-user/mobile/downmob.svg" alt="downmob.svg" />
               </div>

@@ -88,15 +88,16 @@ export default function AgrihaLandingMain() {
 
   async function getAllProjects() {
     console.log("Get all projects API");
-    const response = await fetch(
-      `${api_url}/projects/getallprojects?page=${page}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${api_url}/projects/getallprojects?page=${page}`, {
+      // const response = await fetch(
+      //   `http://localhost:8080/projects/getallprojects?page=${page}`,
+      //   {
+      // const response = await fetch(`${local_url}/home`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
     if (data) {
       const withArchitect = data.data.filter((res) => res?.architect_id);

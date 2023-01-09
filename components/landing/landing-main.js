@@ -18,7 +18,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import styles from "./landing-main.module.css";
-import Page from "twilio/lib/base/Page";
 
 export default function AgrihaLandingMain() {
   const windowRes = windowSize();

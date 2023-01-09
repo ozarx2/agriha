@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useContext } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { StoreContext } from "../StoreContext";
 import api_url from "../../src/utils/url";
@@ -7,9 +8,13 @@ import api_url from "../../src/utils/url";
 import styles from "./main.module.css";
 
 const RequestMobile = ({ name, avatar, type, id, item, setPage }) => {
+  const router = useRouter();
+
   const [Store] = useContext(StoreContext);
 
   const userProjectsDetails = Store.userProjectsDetails;
+  const setRequestOrBid = Store.setRequestOrBid;
+  const setRequestOrBidID = Store.setRequestOrBidID;
 
   const results = userProjectsDetails?.filter((res) => res.project === id);
 
@@ -38,6 +43,12 @@ const RequestMobile = ({ name, avatar, type, id, item, setPage }) => {
     }
   }
 
+  const viewFunction = () => {
+    setRequestOrBid("request");
+    setRequestOrBidID(id);
+    router.push(`/view-bid/${item._id}`);
+  };
+
   return (
     <div className={styles.stwo_mobile_request_grid_outer}>
       <div className={styles.top}>
@@ -49,9 +60,7 @@ const RequestMobile = ({ name, avatar, type, id, item, setPage }) => {
           </div>
         </div>
         <div className={styles.right}>
-          <Link href={`/view-bid/${item._id}`}>
-            <img src="/img/ongoing-project/more.svg" alt="alt" />
-          </Link>
+          <img src="/img/ongoing-project/more.svg" alt="alt" onClick={() => viewFunction()} />
           {/* <img onClick={() => setProjectRequestPopup(true)} src="/img/ongoing-project/more.svg" alt="alt" /> */}
           <div>₹ {item?.project_requirements[0]?.budget}</div>
         </div>
@@ -74,11 +83,9 @@ const RequestMobile = ({ name, avatar, type, id, item, setPage }) => {
         />
         <span>Reference file</span>
       </div> */}
-          <Link href={`/view-bid/${item._id}`}>
-            <div className={styles.right}>
-              <span className={styles.accept}>VIEW</span>
-            </div>
-          </Link>
+          <div className={styles.right} onClick={() => viewFunction()}>
+            <span className={styles.accept}>VIEW</span>
+          </div>
         </div>
         {/* <div className={styles.bottom}>
           <div className={styles.ignore} onClick={() => acceptRequest("declined")}>

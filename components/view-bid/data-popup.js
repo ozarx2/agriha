@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useContext } from "react";
-import api_url from "../../src/utils/url";
-import { StoreContext } from "../StoreContext";
-import styles from "./data-popup.module.css";
+import React, { useState, useContext } from "react";
 import { useRouter } from "next/router";
+import { StoreContext } from "../StoreContext";
+import api_url from "../../src/utils/url";
+
+import styles from "./data-popup.module.css";
 
 export default function DataPopup({ setIsQuoted }) {
   const [Store] = useContext(StoreContext);
@@ -12,6 +12,8 @@ export default function DataPopup({ setIsQuoted }) {
   const architectId = Store.architectId;
   const bidUserId = Store.bidUserId;
   const setArcDashQueue = Store.setArcDashQueue;
+  const requestOrBid = Store.requestOrBid;
+  const requestOrBidID = Store.requestOrBidID;
 
   const router = useRouter();
   const { bid } = router.query;
@@ -38,7 +40,7 @@ export default function DataPopup({ setIsQuoted }) {
   async function acceptRequest(status) {
     var token = localStorage.getItem("userToken");
 
-    const res = await fetch(`${api_url}/projects/accept/${id}`, {
+    const res = await fetch(`${api_url}/projects/accept/${requestOrBidID}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -92,6 +94,21 @@ export default function DataPopup({ setIsQuoted }) {
     }
   }
 
+  async function acceptRequestNew(status) {
+    var token = localStorage.getItem("userToken");
+
+    const res = await fetch(`${api_url}/projects/accept/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        status: status,
+      }),
+    });
+  }
+
   return (
     <>
       <div className={styles.FolderPopupOuter}>
@@ -113,7 +130,11 @@ export default function DataPopup({ setIsQuoted }) {
             <div className={styles.goBack_button} onClick={goBackClick}>
               Go back
             </div>
-            {sendActive ? (
+            {requestOrBid == "request" ? (
+              <div className={styles.send_button} onClick={acceptRequestNew}>
+                Send
+              </div>
+            ) : sendActive ? (
               <div className={styles.send_button} onClick={sendClick}>
                 Send
               </div>

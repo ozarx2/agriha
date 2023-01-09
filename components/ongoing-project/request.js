@@ -1,19 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
+import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
 
 const Request = ({ name, avatar, type, id, setPage, item }) => {
+  const router = useRouter();
+
   const [Store] = useContext(StoreContext);
 
   // console.log(id);
 
   const userProjectsDetails = Store.userProjectsDetails;
   const setArcDashQueue = Store.setArcDashQueue;
+  const setRequestOrBid = Store.setRequestOrBid;
+  const setRequestOrBidID = Store.setRequestOrBidID;
 
   const results = userProjectsDetails?.filter((res) => res.project === id);
 
@@ -45,7 +49,11 @@ const Request = ({ name, avatar, type, id, setPage, item }) => {
     }
   }
 
-  console.log("aa");
+  const viewFunction = () => {
+    setRequestOrBid("request");
+    setRequestOrBidID(id);
+    router.push(`/view-bid/${item._id}`);
+  };
 
   return (
     <div className={`${styles.stwo_grid_outer} ${styles.request}`}>
@@ -80,9 +88,9 @@ const Request = ({ name, avatar, type, id, setPage, item }) => {
           <div className={styles.accept_btn} onClick={() => acceptRequest("ongoing")}>
             Accept
           </div> */}
-          <Link href={`/view-bid/${item._id}`}>
-            <div className={styles.accept_btn}>View</div>
-          </Link>
+          <div className={styles.accept_btn} onClick={() => viewFunction()}>
+            View
+          </div>
         </div>
       </div>
       {/* <div className={styles.stwo_more}>

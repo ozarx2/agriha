@@ -34,6 +34,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
     });
 
     const data = await res.json();
+    console.log(data);
     if (data.status === 200) {
       setProjectDetilas(data?.data[0]);
       setProjectType(data?.data[0]?.project_type);

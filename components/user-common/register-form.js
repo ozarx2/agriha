@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import axios from "axios";
 import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import { getCountryListMap } from "country-flags-dial-code";
+import axios from "axios";
 import endpoint from "../../src/utils/endpoint";
+
 import styles from "./register-popup.module.css";
 
 export default function RegisterPopupForm() {
@@ -109,10 +111,13 @@ export default function RegisterPopupForm() {
       });
   }
 
+  console.log(getCountryListMap());
+
   return (
     <>
       <div className={styles.stwo}>
         <input type="text" onChange={storeValues} id="name" name="name" maxLength={24} placeholder="Enter Full name" />
+        {/* <input type="text" onChange={storeValues} id="name" name="name" maxLength={3} /> */}
         <input
           type="tel"
           onChange={storeValues}

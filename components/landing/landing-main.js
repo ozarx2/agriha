@@ -73,24 +73,21 @@ export default function AgrihaLandingMain() {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-  }, []);
-  useEffect(() => {
-    if (scrolling === true) {
-      window.onscroll = function (ev) {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-          console.log("workspace scroll");
-          setPage(page + 1);
-        }
-      };
-    }
-  }, [scrollTop]);
-
+    window.onscroll = function (ev) {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        setPage(page + 1);
+      }
+    };
+  });
+  // console.log(page);
   async function getAllProjects() {
-    console.log("Get all projects API");
     const response = await fetch(
       `${api_url}/projects/getallprojects?page=${page}`,
       {
+        // const response = await fetch(
+        //   `http://localhost:8080/projects/getallprojects?page=${page}`,
+        //   {
+        // const response = await fetch(`${local_url}/home`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Head from "next/head";
 import LandingFooter from "../../components/user-common/footer";

@@ -18,6 +18,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import styles from "./landing-main.module.css";
+import Page from "twilio/lib/base/Page";
 
 export default function AgrihaLandingMain() {
   const windowRes = windowSize();
@@ -35,6 +36,7 @@ export default function AgrihaLandingMain() {
   /* GET PROJECT TYPES */
   const [projectTypes, setProjectTypes] = useState([]);
   const [arcProjects, setArcprojects] = useState([]);
+
   async function getProjects() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/search/architect/company_names`, {
@@ -48,34 +50,12 @@ export default function AgrihaLandingMain() {
     setProjectTypes(data);
   }
 
-  // const getProjects = () => {
-  //   const token = localStorage.getItem("userToken");
-  //   let config = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  //   axios
-  //     .get(`${api_url}/search/architect/company_names`, config)
-  //     .then((response) => {
-  //       if (response.data.status == 200) {
-  //         console.log(response.data);
-  //         setProjectTypes(data);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       alert("Something went wrong please try again");
-  //     });
-  // };
-
   useEffect(() => {
     getProjects();
   }, []);
 
   const [allProjectSliced, setAllProjectSliced] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
 
   function groupN(array, num) {
     const group = [];
@@ -84,22 +64,34 @@ export default function AgrihaLandingMain() {
     }
     setAllProjectSliced(group);
   }
+
+  const [scrolling, setScrolling] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  const onScroll = (e) => {
+    setScrollTop(e.target.documentElement.scrollTop);
+    setScrolling(e.target.documentElement.scrollTop > scrollTop);
+  };
+
   useEffect(() => {
-    window.onscroll = function (ev) {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        setPage(page + 1);
-      }
-    };
-  });
-  console.log(page);
+    window.addEventListener("scroll", onScroll);
+  }, []);
+  useEffect(() => {
+    if (scrolling === true) {
+      window.onscroll = function (ev) {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          console.log("workspace scroll");
+          setPage(page + 1);
+        }
+      };
+    }
+  }, [scrollTop]);
+
   async function getAllProjects() {
+    console.log("Get all projects API");
     const response = await fetch(
       `${api_url}/projects/getallprojects?page=${page}`,
       {
-        // const response = await fetch(
-        //   `http://localhost:8080/projects/getallprojects?page=${page}`,
-        //   {
-        // const response = await fetch(`${local_url}/home`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,10 +104,10 @@ export default function AgrihaLandingMain() {
       if (filter === "All") {
         setProjectResponse([...projectResponse, ...withArchitect]);
       } else {
-        // let filtered = withArchitect.filter(
-        //   (res) => res?.architect_id?.companyname === filter
-        // );
-        // setProjectResponse(filtered);
+        let filtered = withArchitect.filter(
+          (res) => res?.architect_id?.companyname === filter
+        );
+        setProjectResponse(filtered);
       }
     }
   }

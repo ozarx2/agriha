@@ -16,10 +16,28 @@ const FnArchProfiles = () => {
   const searchQueryArchitect = Store.searchQueryArchitect;
   const setAllArchitects = Store.setAllArchitects;
   const allArchitects = Store.allArchitects;
-
   const router = useRouter();
 
   const [page, setPage] = useState(1);
+  const [scrolling, setScrolling] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  const onScroll = (e) => {
+    setScrollTop(e.target.documentElement.scrollTop);
+    setScrolling(e.target.documentElement.scrollTop > scrollTop);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (scrolling === true) {
+      if (scrollTop + window.innerHeight >= document.body.offsetHeight + 36) {
+        setPage(page + 1);
+      }
+    }
+  }, [scrollTop]);
 
   /* GET PROJECT TYPES */
   async function getallArchitects() {
@@ -33,16 +51,8 @@ const FnArchProfiles = () => {
       },
     });
     const data = await res.json();
-    setAllArchitects(data);
+    setAllArchitects([...allArchitects, ...data]);
   }
-
-  const handlePages = (value) => {
-    const pages = page + value;
-    if (pages >= 1) {
-      setPage(pages);
-    }
-  };
-
   // console.log(allArchitects);
   useEffect(() => {
     // if (allArchitects.length === 0) {
@@ -83,7 +93,7 @@ const FnArchProfiles = () => {
           </>
         );
       })}
-      <div className={stylesp.paginationSection}>
+      {/* <div className={stylesp.paginationSection}>
         <div className={stylesp.pageination}>
           <img
             src="/img/architect/left.svg"
@@ -99,7 +109,7 @@ const FnArchProfiles = () => {
             onClick={() => handlePages(+1)}
           />
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

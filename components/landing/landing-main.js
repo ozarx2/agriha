@@ -91,21 +91,18 @@ export default function AgrihaLandingMain() {
       }
     };
   });
-  console.log(page);
+  // console.log(page);
   async function getAllProjects() {
-    const response = await fetch(
-      `${api_url}/projects/getallprojects?page=${page}`,
-      {
-        // const response = await fetch(
-        //   `http://localhost:8080/projects/getallprojects?page=${page}`,
-        //   {
-        // const response = await fetch(`${local_url}/home`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${api_url}/projects/getallprojects?page=${page}`, {
+      // const response = await fetch(
+      //   `http://localhost:8080/projects/getallprojects?page=${page}`,
+      //   {
+      // const response = await fetch(`${local_url}/home`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
     if (data) {
       const withArchitect = data.data.filter((res) => res?.architect_id);
@@ -139,9 +136,7 @@ export default function AgrihaLandingMain() {
     const data = await response.json();
     archOnly = data.data?.filter((res) => res?.phone);
     setAllArchitects(archOnly);
-    setProjectResponse(
-      data.data?.filter((res) => res?.projectname && res?.architect_id)
-    );
+    setProjectResponse(data.data?.filter((res) => res?.projectname && res?.architect_id));
   }
 
   const allSearch = (query) => {
@@ -181,75 +176,50 @@ export default function AgrihaLandingMain() {
                 <div className={`container ${styles.container} ${styles.stwo}`}>
                   <div className={styles.stwo_inner}>
                     <div className={styles.left}>
-                      <img
-                        src="/img/landing/banner-left.png"
-                        alt="left banner"
-                      />
+                      <img src="/img/landing/banner-left.png" alt="left banner" />
                     </div>
                     <div className={styles.center}>
                       <div className={styles.title}>
-                        Leading Architects for you to{" "}
-                        <span>design your space</span>
+                        Leading Architects for you to <span>design your space</span>
                       </div>
                       <div className={styles.content}>
-                        connect and get best bedroom, kitchen, bathroom,
-                        livingroom, dining, interior, landscape, furniture,
-                        electrical designs
+                        connect and get best bedroom, kitchen, bathroom, livingroom, dining, interior, landscape,
+                        furniture, electrical designs
                       </div>
                       <div className={styles.buttons}>
                         {loginActive ? (
-                          <div
-                            className={styles.start}
-                            onClick={() => setArchitectBidtPopup(true)}
-                          >
+                          <div className={styles.start} onClick={() => setArchitectBidtPopup(true)}>
                             <img src="/img/landing/plus.svg" alt="plus" />
                             <span>Invite Quote</span>
                           </div>
                         ) : (
-                          <div
-                            className={styles.start}
-                            onClick={() => setRegisterPopup(true)}
-                          >
+                          <div className={styles.start} onClick={() => setRegisterPopup(true)}>
                             Get Started
                           </div>
                         )}
-                        <a
-                          href="https://web.whatsapp.com/send?phone=918921244492&submit=Continue"
-                          target="_blank"
-                        >
+                        <a href="https://web.whatsapp.com/send?phone=918921244492&submit=Continue" target="_blank">
                           <div className={styles.contact}>Contact us</div>
                         </a>
                       </div>
                     </div>
                     <div className={styles.right}>
-                      <img
-                        src="/img/landing/banner-right.png"
-                        alt="right banner"
-                      />
+                      <img src="/img/landing/banner-right.png" alt="right banner" />
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className={styles.sthree_outer}>
-                <div
-                  className={`container ${styles.container} ${styles.sthree}`}
-                >
+                <div className={`container ${styles.container} ${styles.sthree}`}>
                   <div className={styles.sthree_inner}>
-                    <div
-                      className={styles.active}
-                      onClick={() => setFilter("All")}
-                    >
+                    <div className={styles.active} onClick={() => setFilter("All")}>
                       All
                     </div>
                     {projectTypes?.map((item, i) => {
                       return (
                         <React.Fragment key={i}>
                           {item?.companyname ? (
-                            <div
-                              onClick={() => setFilter(item?.companyname)}
-                              key={i}
-                            >
+                            <div onClick={() => setFilter(item?.companyname)} key={i}>
                               {item?.companyname}
                             </div>
                           ) : (
@@ -278,35 +248,23 @@ export default function AgrihaLandingMain() {
                         backgroundImage: "url(/img/landing/sone-right.svg)",
                       }}
                     >
-                      <div
-                        className={`container ${styles.container} ${styles.sone}`}
-                      >
+                      <div className={`container ${styles.container} ${styles.sone}`}>
                         <div className={styles.sone_inner}>
                           <div className={styles.heading}>
-                            Leading Architects for you to{" "}
-                            <span>Design your space</span>
+                            Leading Architects for you to <span>Design your space</span>
                           </div>
                           <div className={styles.buttons}>
                             {loginActive ? (
-                              <div
-                                className={styles.started}
-                                onClick={() => setArchitectBidtPopup(true)}
-                              >
+                              <div className={styles.started} onClick={() => setArchitectBidtPopup(true)}>
                                 <img src="/img/landing/plus.svg" alt="plus" />
                                 <span>Invite Quote</span>
                               </div>
                             ) : (
-                              <div
-                                onClick={() => setRegisterPopup(true)}
-                                className={styles.started}
-                              >
+                              <div onClick={() => setRegisterPopup(true)} className={styles.started}>
                                 Get Started
                               </div>
                             )}
-                            <a
-                              href="https://api.whatsapp.com/send?phone=918921244492&submit=Continue"
-                              target="_blank"
-                            >
+                            <a href="https://api.whatsapp.com/send?phone=918921244492&submit=Continue" target="_blank">
                               <div className={styles.contact}>Contact us</div>
                             </a>
                           </div>
@@ -317,9 +275,7 @@ export default function AgrihaLandingMain() {
                 </div>
 
                 <div className={styles.stwo_outer}>
-                  <div
-                    className={`container ${styles.container} ${styles.stwo}`}
-                  >
+                  <div className={`container ${styles.container} ${styles.stwo}`}>
                     <div className={styles.stwo_inner}>
                       <div className="landing_stwo_inner">
                         <Swiper
@@ -336,13 +292,7 @@ export default function AgrihaLandingMain() {
                           pagination={{
                             clickable: true,
                           }}
-                          modules={[
-                            Mousewheel,
-                            Keyboard,
-                            Autoplay,
-                            Pagination,
-                            Navigation,
-                          ]}
+                          modules={[Mousewheel, Keyboard, Autoplay, Pagination, Navigation]}
                           className="mySwiper"
                         >
                           <SwiperSlide>

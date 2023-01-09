@@ -74,15 +74,20 @@ const RequestMobile = ({ name, avatar, type, id, item, setPage }) => {
         />
         <span>Reference file</span>
       </div> */}
+          <Link href={`/view-bid/${item._id}`}>
+            <div className={styles.right}>
+              <span className={styles.accept}>VIEW</span>
+            </div>
+          </Link>
         </div>
-        <div className={styles.bottom}>
+        {/* <div className={styles.bottom}>
           <div className={styles.ignore} onClick={() => acceptRequest("declined")}>
             Decline
           </div>
           <div className={styles.accept} onClick={() => acceptRequest("ongoing")}>
             Accept
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

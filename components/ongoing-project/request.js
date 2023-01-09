@@ -45,6 +45,8 @@ const Request = ({ name, avatar, type, id, setPage, item }) => {
     }
   }
 
+  console.log("aa");
+
   return (
     <div className={`${styles.stwo_grid_outer} ${styles.request}`}>
       <div className={styles.stwo_username}>
@@ -69,7 +71,7 @@ const Request = ({ name, avatar, type, id, setPage, item }) => {
       </div> */}
       <div className={styles.stwo_action}>
         <div className={styles.vertical_center}>
-          <Link href={`/view-bid/${item._id}`}>
+          {/* <Link href={`/view-bid/${item._id}`}>
             <div className={styles.view_btn}>View</div>
           </Link>
           <div className={styles.ignore_btn} onClick={() => acceptRequest("declined")}>
@@ -77,7 +79,10 @@ const Request = ({ name, avatar, type, id, setPage, item }) => {
           </div>
           <div className={styles.accept_btn} onClick={() => acceptRequest("ongoing")}>
             Accept
-          </div>
+          </div> */}
+          <Link href={`/view-bid/${item._id}`}>
+            <div className={styles.accept_btn}>View</div>
+          </Link>
         </div>
       </div>
       {/* <div className={styles.stwo_more}>

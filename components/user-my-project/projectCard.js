@@ -156,17 +156,11 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
                   <td>Payment status</td>
                   <td className={styles.tableDataResult}>: Pending</td>
                 </tr>
-                {/* <tr>
-                  {bid ? <td>Bid</td> : ""}
-                  {bid ? <td className={styles.tableDataResult}>: Active</td> : ""}
-                </tr> */}
               </tbody>
             </table>
           </div>
           <div className={styles.secTwo}>
             <FnPaymentLast />
-
-            {/* <FnFileUploadDesk projectId={id} allUploadedFiles={results} /> */}
           </div>
           <div className={styles.secThree}>
             <FnFileFromArchDesk sliced={sliced} />

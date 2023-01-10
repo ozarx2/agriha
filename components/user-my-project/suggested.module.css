@@ -1,7 +1,6 @@
 .suggestedMain {
   margin: 40px;
   border-bottom: 1px solid #e2e2e2;
-  padding-bottom: 40px;
 }
 .suggestedTitle {
   font-family: "Inter";
@@ -28,47 +27,65 @@
 .suggestedViewall > div > img {
   padding-left: 10px;
 }
-.suggestedProductItemsSectionMain {
+.suggProdSecMain {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.suggProdSec {
   display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 17px;
+  color: #5f5f5f;
 }
-
-.suggestedProductItemsSection {
-  overflow-x: scroll;
-  overflow-y: none;
+.suggProdSec > span {
+  padding-right: 5px;
 }
-.suggestedProductItemsSection::-webkit-scrollbar {
+.suggProdSec > div {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.suggestedProListMain {
+  display: flex;
+  align-items: center;
+  overflow-y: scroll;
+}
+.suggestedProListMain::-webkit-scrollbar {
   display: none;
 }
-.suggestedProductItemsSection {
-  /* padding-right: 30px;
-  padding-top: 20px; */
-  padding-top: 20px;
-  padding-right: 10px;
-}
-.suggestedProductItems {
-  /* width: fit-content; */
-  width: 100%;
-  height: 100%;
+.suggProList {
   border: 0.87317px solid #e4e4e4;
+  min-width: 280px;
+  margin-right: 10px;
+  width: min-content;
 }
-.suggestedProductItems > img {
+/* .suggProList > img {
+  width: 50%;
+  height: 50%;
+} */
+/* .suggProList > img {
   width: fit-content;
-}
-.productDetailes {
+} */
+.suggProDetailes {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 10px;
 }
-.productName {
+.prodName {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 18px;
   color: #642dda;
 }
-.productDate {
+.prodDate {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
@@ -76,30 +93,14 @@
   line-height: 148.19%;
   color: #878787;
 }
-.productRate {
-  width: fit-content;
-  padding: 6.99px 16.59px;
-  background: #642dda;
-  border-radius: 19.2097px;
+.prodRate {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 12.2244px;
   line-height: 15px;
   color: #ffffff;
-}
-.test {
-  display: flex;
-  margin: 30px;
-  overflow-x: scroll;
-}
-.test::-webkit-scrollbar {
-  display: none;
-}
-.test > div {
-  display: flex;
-  align-items: center;
-  margin: 30px;
-}
-@media only screen and (max-width: 1500px) {
+  padding: 6.99px 16.56px;
+  background: #642dda;
+  border-radius: 19.2097px;
 }

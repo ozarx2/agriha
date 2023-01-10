@@ -70,7 +70,7 @@ const FnSuggested = ({ suggestion }) => {
           )}
           <div>
             <div className={styles.suggProdSec}>
-              <span>00</span>
+              <span>0{suggestion?.length}</span>
               <div onClick={() => toggleBed()}>bedroom-product</div>
               {bed ? (
                 <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" onClick={() => toggleBed()} />

@@ -1,8 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import axios from "axios";
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import axios from "axios";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import endpoint from "../../src/utils/endpoint";
+
 import styles from "./register-popup.module.css";
 
 export default function RegisterPopupForm() {
@@ -29,6 +32,7 @@ export default function RegisterPopupForm() {
   };
 
   const [name, setName] = useState("");
+  const [code, setCode] = useState("91");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
@@ -69,7 +73,7 @@ export default function RegisterPopupForm() {
       .post(`${endpoint}/auth/register`, {
         // .post(`${endpoint}/auth/test/register`, {
         name: name,
-        phone: `+91${phone}`,
+        phone: `+${code}${phone}`,
         email: email,
         role: userRole,
       })
@@ -109,18 +113,27 @@ export default function RegisterPopupForm() {
       });
   }
 
+  useEffect(() => {
+    if (document.getElementById("name")) {
+      document.getElementById("name").focus();
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.stwo}>
         <input type="text" onChange={storeValues} id="name" name="name" maxLength={24} placeholder="Enter Full name" />
-        <input
-          type="tel"
-          onChange={storeValues}
-          id="phone"
-          name="phone"
-          maxLength={10}
-          placeholder="Enter Mobile number"
-        />
+        <div className={styles.phone_feild}>
+          <PhoneInput country={"in"} value={code} onChange={(phone) => setCode(phone)} />
+          <input
+            type="tel"
+            onChange={storeValues}
+            id="phone"
+            name="phone"
+            maxLength={10}
+            placeholder="Enter Mobile number"
+          />
+        </div>
         <input type="email" onChange={storeValues} id="email" name="email" maxLength={40} placeholder="Email address" />
         {isError ? <p>{error}</p> : ""}
         <div className={styles.privacy}>

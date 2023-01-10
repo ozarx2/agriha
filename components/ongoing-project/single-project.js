@@ -6,7 +6,7 @@ import api_url from "../../src/utils/url";
 
 import styles from "./single-main.module.css";
 
-export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
+export default function SingleOngoingProjectsMain() {
   const [Store] = useContext(StoreContext);
 
   const setBidDataPopup = Store.setBidDataPopup;

@@ -1,16 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import Image from "next/image";
 import Link from "next/link";
-
-import styles from "./main.module.css";
-import { useEffect } from "react";
 import Request from "./request";
 import RequestMobile from "./request-mobile";
 
+import styles from "./main.module.css";
+
 export default function OngoingProjectMain({ page, setPage, setProjectRequestPopup }) {
+  const router = useRouter();
   const [Store] = useContext(StoreContext);
 
   /* const fileUploadPopup = Store.fileUploadPopup; */
@@ -102,7 +103,10 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                           <React.Fragment key={i}>
                             {item.creator?.registered_id?.name && item?.status === "ongoing" ? (
                               <div key={i} className={styles.stwo_grid_outer}>
-                                <div className={styles.stwo_username}>
+                                <div
+                                  onClick={() => router.push(`/ongoing-project/${item._id}`)}
+                                  className={styles.stwo_username}
+                                >
                                   <div className={styles.vertical_center}>
                                     <img
                                       src={
@@ -116,8 +120,18 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                     <span>{item.creator?.registered_id?.name}</span>
                                   </div>
                                 </div>
-                                <div className={styles.stwo_project_id}>{item?.project_name}</div>
-                                <div className={styles.stwo_starting_date}>{item?.starting_date}</div>
+                                <div
+                                  onClick={() => router.push(`/ongoing-project/${item._id}`)}
+                                  className={styles.stwo_project_id}
+                                >
+                                  {item?.project_name}
+                                </div>
+                                <div
+                                  onClick={() => router.push(`/ongoing-project/${item._id}`)}
+                                  className={styles.stwo_starting_date}
+                                >
+                                  {item?.starting_date}
+                                </div>
                                 <div onClick={() => setFileUploadPopup(true)} className={styles.stwo_upload_file}>
                                   <div className={styles.vertical_center}>
                                     <img src="/img/ongoing-project/upload-d.svg" alt="alt" />
@@ -276,7 +290,11 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                     />
                                     <div>{item.creator?.registered_id?.name}</div>
                                   </div>
-                                  <div onClick={() => setOngoingPopup(true)} className={styles.right}>
+                                  <div
+                                    onClick={() => router.push(`/ongoing-project/${item._id}`)}
+                                    // onClick={() => setOngoingPopup(true)}
+                                    className={styles.right}
+                                  >
                                     <img src="/img/ongoing-project/3dots.svg" alt="alt" />
                                   </div>
                                 </div>

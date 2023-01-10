@@ -50,6 +50,8 @@ export const StoreContextProvider = (props) => {
   const [architectProfileSelectPopup, setArchitectProfileSelectPopup] = useState(false);
   const [sharePopup, setSharePopup] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
+  const [requestOrBid, setRequestOrBid] = useState("");
+  const [requestOrBidID, setRequestOrBidID] = useState("");
   // Store 61-5a end
 
   // Store Hashir start
@@ -147,6 +149,10 @@ export const StoreContextProvider = (props) => {
     setSharePopup,
     shareUrl,
     setShareUrl,
+    requestOrBid,
+    setRequestOrBid,
+    requestOrBidID,
+    setRequestOrBidID,
     // Store 61-5a end
 
     // Store Hashir start

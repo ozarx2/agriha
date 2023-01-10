@@ -451,6 +451,12 @@ img[data-testid="grid-gallery-item_thumbnail"] {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAYAAABRVo5BAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADOSURBVHgBtdU7DoMwDADQfMTQjbEjp2Aut2ErR0m33IY1Gz0CR8geRaldlSqqgDiWainCQnrGAicIATFNU4tLVIRCEGNccI3j2JFhlndN08xUrIwxXms9QL7WYLkl0HIH7c6IsUgIYbDWrkVYi+XvDSqWe9UoeBdS8CEs4VN4hovwCJNghhdI25TSQ1Ohc873fX+RUt5gXZWoCHiSxytAT4bYqlLq/inw/N/LYX0O1gCwRo415KxtxdrIrKOjFr3hdq7WIIx85MjoG5xfwAtsXQltt7bPmwAAAABJRU5ErkJggg==") !important;
 }
 
+.react-tel-input input.form-control {
+  margin-left: 35px;
+  width: 70px !important;
+  height: 45px;
+}
+
 @media only screen and (max-width: 1600px) {
   .pone .swiper {
     width: 209px;

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import endpoint from "../../src/utils/endpoint";
@@ -131,6 +131,12 @@ export default function OtpPopupForm() {
       handleSubmitLogin(a.value + b.value + c.value + d.value + e.value + f.value);
     }
   };
+
+  useEffect(() => {
+    if (document.getElementById("a")) {
+      document.getElementById("a").focus();
+    }
+  }, []);
 
   return (
     <>

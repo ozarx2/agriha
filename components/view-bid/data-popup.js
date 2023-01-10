@@ -29,11 +29,11 @@ export default function DataPopup({ setIsQuoted }) {
   };
 
   const termsClick = () => {
-    window.location.href = "/terms";
+    router.push("/terms");
   };
 
   const privacyPolicyClick = () => {
-    window.location.href = "/privacypolicy";
+    router.push("/privacypolicy");
   };
 
   /* ACCEPT REQUEST */
@@ -97,7 +97,7 @@ export default function DataPopup({ setIsQuoted }) {
   async function acceptRequestNew(status) {
     var token = localStorage.getItem("userToken");
 
-    const res = await fetch(`${api_url}/projects/accept/${id}`, {
+    const res = await fetch(`${api_url}/projects/accept/${requestOrBidID}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -107,6 +107,10 @@ export default function DataPopup({ setIsQuoted }) {
         status: status,
       }),
     });
+    const data = await res.json();
+    if (data.projectdata) {
+      router.push("/ongoing-project");
+    }
   }
 
   return (
@@ -114,7 +118,7 @@ export default function DataPopup({ setIsQuoted }) {
       <div className={styles.FolderPopupOuter}>
         <div className={styles.FolderPopupInner}>
           <div className={styles.title}>
-            Fill data <span>*</span>
+            add quote <span>*</span>
           </div>
           <div className={styles.inputContainer}>
             <input type="tel" onChange={(e) => setQuote(e.target.value)} placeholder="Enter your amount per sqft" />
@@ -131,7 +135,7 @@ export default function DataPopup({ setIsQuoted }) {
               Go back
             </div>
             {requestOrBid == "request" ? (
-              <div className={styles.send_button} onClick={acceptRequestNew}>
+              <div className={styles.send_button} onClick={() => acceptRequestNew("ongoing")}>
                 Send
               </div>
             ) : sendActive ? (

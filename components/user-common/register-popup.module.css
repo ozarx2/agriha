@@ -16,6 +16,16 @@
   z-index: 3;
   height: 100%;
 }
+.phone_feild {
+  width: 100%;
+}
+.phone_feild > div {
+  display: inline-block !important;
+  width: 115px;
+}
+.phone_feild input {
+  width: calc(100% - 115px) !important;
+}
 @media only screen and (max-width: 766px) {
   .RegisterPopupInner {
     width: 100%;

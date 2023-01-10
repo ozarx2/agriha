@@ -12,6 +12,9 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
   const setBidDataPopup = Store.setBidDataPopup;
   const setBidUserId = Store.setBidUserId;
   const architectId = Store.architectId;
+  const setRequestOrBid = Store.setRequestOrBid;
+  const requestOrBidID = Store.requestOrBidID;
+  const requestOrBid = Store.requestOrBid;
 
   const router = useRouter();
   const { bid } = router.query;
@@ -60,6 +63,23 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
     setBidDataPopup(true);
   };
 
+  async function acceptRequestNew(status) {
+    var token = localStorage.getItem("userToken");
+
+    console.log(requestOrBidID);
+
+    const res = await fetch(`${api_url}/projects/accept/${requestOrBidID}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        status: status,
+      }),
+    });
+  }
+
   // console.log(projectDetails);
 
   return (
@@ -69,7 +89,13 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
           <div className={styles.main_inner}>
             {!isQuoted ? (
               <div className={styles.buttons__container}>
-                <div className={styles.decline_button}>Decline</div>
+                {requestOrBid == "request" ? (
+                  <div className={styles.decline_button} onClick={() => acceptRequestNew("declined")}>
+                    Decline
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div className={styles.accept_button} onClick={acceptClick}>
                   Accept
                 </div>

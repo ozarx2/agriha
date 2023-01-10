@@ -1,6 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import endpoint from "../../src/utils/endpoint";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 import styles from "./login-popup.module.css";
 
@@ -20,6 +22,7 @@ export default function LoginPopupForm() {
   const [error, setError] = useState("Please enter Mobile Number");
 
   const [phone, setphone] = useState("");
+  const [code, setCode] = useState("91");
 
   const storeValues = (e) => {
     setphone(e.target.value);
@@ -34,7 +37,7 @@ export default function LoginPopupForm() {
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
-        phone: `+91${phone}`,
+        phone: `+${code}${phone}`,
         role: userRole,
       }),
     });
@@ -77,10 +80,19 @@ export default function LoginPopupForm() {
     }
   }
 
+  useEffect(() => {
+    if (document.getElementById("phone_no")) {
+      document.getElementById("phone_no").focus();
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.stwo}>
-        <input type="tel" onChange={storeValues} placeholder="Enter Mobile Number" />
+        <div className={styles.phone_feild}>
+          <PhoneInput country={"in"} value={code} onChange={(phone) => setCode(phone)} />
+          <input id="phone_no" type="tel" onChange={storeValues} placeholder="Enter Mobile Number" />
+        </div>
         {isError ? <p>{error}</p> : ""}
         <div onClick={() => showOtp()} className={styles.submit}>
           {/* Send OTP */}

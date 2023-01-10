@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
+import Link from "next/link";
 import api_url from "../../src/utils/url";
 
 import styles from "./single-main.module.css";
@@ -9,16 +10,11 @@ import styles from "./single-main.module.css";
 export default function SingleOngoingProjectsMain() {
   const [Store] = useContext(StoreContext);
 
-  const setBidDataPopup = Store.setBidDataPopup;
   const setBidUserId = Store.setBidUserId;
-  const architectId = Store.architectId;
-  const setRequestOrBid = Store.setRequestOrBid;
-  const requestOrBidID = Store.requestOrBidID;
-  const requestOrBid = Store.requestOrBid;
 
   const router = useRouter();
-  const { bid } = router.query;
-  const projectId = bid;
+  const { id } = router.query;
+  const projectId = id;
 
   const [projectDetails, setProjectDetilas] = useState([]);
   const [projectType, setProjectType] = useState("");
@@ -37,18 +33,12 @@ export default function SingleOngoingProjectsMain() {
     });
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
       setProjectDetilas(data?.data[0]);
       setProjectType(data?.data[0]?.project_type);
       setBidUserId(data?.data[0]?.creator?._id);
       setProjectTypeDetails(data?.data[0]?.project_requirements[0]);
-      var result = data?.data[0]?.acceptQuotes.filter((res) => res === architectId);
-      if (result.length !== 0) {
-        setIsQuoted(true);
-      } else {
-        setIsQuoted(false);
-      }
     }
   }
 
@@ -58,51 +48,18 @@ export default function SingleOngoingProjectsMain() {
     }
   }, [projectId]);
 
-  const acceptClick = () => {
-    // setIsQuoted(true);
-    setBidDataPopup(true);
-  };
-
-  async function acceptRequestNew(status) {
-    var token = localStorage.getItem("userToken");
-
-    console.log(requestOrBidID);
-
-    const res = await fetch(`${api_url}/projects/accept/${requestOrBidID}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        status: status,
-      }),
-    });
-  }
-
-  // console.log(projectDetails);
-
   return (
     <>
       <div className={styles.main_outer}>
         {projectDetails?.length !== 0 ? (
           <div className={styles.main_inner}>
-            {!isQuoted ? (
-              <div className={styles.buttons__container}>
-                {requestOrBid == "request" ? (
-                  <div className={styles.decline_button} onClick={() => acceptRequestNew("declined")}>
-                    Decline
-                  </div>
-                ) : (
-                  ""
-                )}
-                <div className={styles.accept_button} onClick={acceptClick}>
-                  Accept
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
+            <div className={styles.buttons__container}>
+              <Link href={`/project-files/${projectDetails._id}`} passHref>
+                <div className={styles.decline_button}>Files</div>
+              </Link>
+              <div className={styles.accept_button}>Add Payment</div>
+              <div className={styles.accept_button}>Add Products</div>
+            </div>
             <div className={styles.title}>{projectDetails?.project_name}</div>
             <div className={styles.titleHead}>Basic details</div>
             <div className={styles.results__container}>

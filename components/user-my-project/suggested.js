@@ -10,6 +10,7 @@ const FnSuggested = ({ suggestion }) => {
   const [hallProd, setHallProd] = useState("");
   const [kitchenProd, setKitchenProd] = useState("");
   const [bedProd, setBedProd] = useState("");
+  const [viewAllProd, setViewAllProd] = useState("");
 
   const toggleHall = () => {
     setHall((prevState) => !prevState);
@@ -23,6 +24,9 @@ const FnSuggested = ({ suggestion }) => {
     setKitchen((prevState) => !prevState);
     setKitchenProd();
   };
+
+  const Furniture = suggestion.filter((res) => res.category_id?.category_name === "Furniture");
+
   return (
     <>
       <div className={styles.suggestedMain}>
@@ -31,13 +35,14 @@ const FnSuggested = ({ suggestion }) => {
             Suggested Products.
             <span>03</span>
           </div>
-          <div className={styles.suggestedViewall}>
+          {/* <div className={styles.suggestedViewall}>
             <div>
               <div>View all</div>
-              <img src="/img/my-project-user/viewallright.svg" alt="" />
+              <img src="/img/my-project-user/viewallright.svg" alt="viewall" />
             </div>
-          </div>
+          </div> */}
         </div>
+
         <div className={styles.suggProdSecMain}>
           <div className={styles.suggProdSec}>
             <span>0{suggestion?.length}</span>
@@ -70,7 +75,7 @@ const FnSuggested = ({ suggestion }) => {
           )}
           <div>
             <div className={styles.suggProdSec}>
-              <span>0{suggestion?.length}</span>
+              <span>0{Furniture?.length}</span>
               <div onClick={() => toggleBed()}>bedroom-product</div>
               {bed ? (
                 <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" onClick={() => toggleBed()} />
@@ -81,7 +86,7 @@ const FnSuggested = ({ suggestion }) => {
             {bed ? (
               // {bed && suggestion?.category_id?.category_name === "Furniture" ? (
               <div className={styles.suggestedProListMain}>
-                {suggestion?.map((items, index) => {
+                {Furniture?.map((items, index) => {
                   return (
                     <div key={index} className={styles.suggProList}>
                       <img src={items.thumbnail} alt="thumbnail" />
@@ -100,34 +105,6 @@ const FnSuggested = ({ suggestion }) => {
               ""
             )}
           </div>
-          {/* <div>
-            <div className={styles.suggProdSec}>
-              <span>00</span>
-              <div>bedroomdd-product</div>
-              
-            </div>
-            {suggestion?.category_id?.category_name === "Furniture" ? (
-              
-              <div className={styles.suggestedProListMain}>
-                {suggestion?.map((items, index) => {
-                  return (
-                    <div key={index} className={styles.suggProList}>
-                      <img src={items.thumbnail} alt="thumbnail" />
-                      <div className={styles.suggProDetailes}>
-                        <div>
-                          <div className={styles.prodName}>{items.name}</div>
-                          <div className={styles.prodDate}>{moment(items.updatedAt).format("MMM Do YY")}</div>
-                        </div>
-                        <div className={styles.prodRate}>₹ {items.mrp}</div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              ""
-            )}
-          </div> */}
           <div>
             <div className={styles.suggProdSec}>
               <span>10</span>

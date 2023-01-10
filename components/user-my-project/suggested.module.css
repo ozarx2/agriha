@@ -62,8 +62,12 @@
   border: 0.87317px solid #e4e4e4;
   min-width: 280px;
   margin-right: 10px;
+  width: min-content;
 }
-
+/* .suggProList > img {
+  width: 50%;
+  height: 50%;
+} */
 /* .suggProList > img {
   width: fit-content;
 } */

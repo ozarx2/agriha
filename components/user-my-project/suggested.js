@@ -100,18 +100,14 @@ const FnSuggested = ({ suggestion }) => {
               ""
             )}
           </div>
-          <div>
+          {/* <div>
             <div className={styles.suggProdSec}>
               <span>00</span>
               <div>bedroomdd-product</div>
-              {/* {bed ? (
-                <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" onClick={() => toggleBed()} />
-              ) : (
-                <img src="/img/my-project-user/mobile/downmob.svg" alt="downmob.svg" onClick={() => toggleBed()} />
-              )} */}
+              
             </div>
             {suggestion?.category_id?.category_name === "Furniture" ? (
-              // {bed && suggestion?.category_id?.category_name === "Furniture" ? (
+              
               <div className={styles.suggestedProListMain}>
                 {suggestion?.map((items, index) => {
                   return (
@@ -131,7 +127,7 @@ const FnSuggested = ({ suggestion }) => {
             ) : (
               ""
             )}
-          </div>
+          </div> */}
           <div>
             <div className={styles.suggProdSec}>
               <span>10</span>

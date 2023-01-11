@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import { PulseLoader } from "react-spinners";
 import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -21,6 +22,7 @@ export default function RegisterPopupForm() {
   const setLoginPopup = Store.setLoginPopup;
 
   const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("Must fill all data");
 
   const termsClick = () => {
@@ -38,6 +40,7 @@ export default function RegisterPopupForm() {
 
   function showOtp() {
     if (name !== "" && phone !== "" && email !== "") {
+      setLoading(true);
       sendOTPClick();
     } else {
       setIsError(true);
@@ -79,6 +82,7 @@ export default function RegisterPopupForm() {
       })
       .then((response) => {
         // console.log(response.data);
+        setLoading(false);
         if (response.data.status === 200) {
           setFromLoginOrRegister("register");
           setOtpPopup(true);
@@ -140,9 +144,15 @@ export default function RegisterPopupForm() {
           By continuing you agree to Arclif&apos;s <span onClick={termsClick}>Terms of Service</span> and{" "}
           <span onClick={policyClick}>Privacy policy</span>.
         </div>
-        <div onClick={() => showOtp()} className={styles.submit}>
-          Send OTP
-        </div>
+        {loading ? (
+          <div onClick={() => showOtp()} className={styles.submit}>
+            <PulseLoader color="#ffffff" />
+          </div>
+        ) : (
+          <div onClick={() => showOtp()} className={styles.submit}>
+            Send OTP
+          </div>
+        )}
       </div>
     </>
   );

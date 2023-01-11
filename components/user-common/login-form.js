@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import { PulseLoader } from "react-spinners";
 import endpoint from "../../src/utils/endpoint";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -19,6 +20,7 @@ export default function LoginPopupForm() {
   const setBid = Store.setBid;
 
   const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("Please enter Mobile Number");
 
   const [phone, setphone] = useState("");
@@ -43,6 +45,7 @@ export default function LoginPopupForm() {
     });
     const data = await res.json();
     // console.log(data);
+    setLoading(false);
     if (data.status === 200) {
       setFromLoginOrRegister("login");
       setOtpPopup(true);
@@ -74,6 +77,7 @@ export default function LoginPopupForm() {
 
   function showOtp() {
     if (phone !== "") {
+      setLoading(true);
       handleSubmit();
     } else {
       setIsError(true);
@@ -94,11 +98,15 @@ export default function LoginPopupForm() {
           <input id="phone_no" type="tel" onChange={storeValues} placeholder="Enter Mobile Number" />
         </div>
         {isError ? <p>{error}</p> : ""}
-        <div onClick={() => showOtp()} className={styles.submit}>
-          {/* Send OTP */}
-          Login
-        </div>
-        <div></div>
+        {loading ? (
+          <div className={styles.submit}>
+            <PulseLoader color="#ffffff" />
+          </div>
+        ) : (
+          <div onClick={() => showOtp()} className={styles.submit}>
+            Send OTP
+          </div>
+        )}
       </div>
     </>
   );

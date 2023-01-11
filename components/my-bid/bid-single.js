@@ -65,7 +65,7 @@ export default function AgrihaMyBidMainSingleBid({ item, i }) {
           <div className={styles.left}>{countDown}</div>
           <div className={styles.right}>{getAllBidResult?.length ? getAllBidResult?.length : "0"} Bid now</div>
         </div>
-        <div className={styles.name}>
+        <div className={styles.name} onClick={() => router.push(`/my-bid/${item._id}`)}>
           <div className={styles.left}>{item.project_name}</div>
           <div className={styles.right}>
             <img src="/img/my-bid/arrow_right.svg" alt="view more" />

@@ -83,6 +83,7 @@ export default function AgrihaLandingHeader() {
   const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
   async function getHomeSeekerDetails() {
     const token = localStorage.getItem("userToken");
+    console.log(token);
     const res = await fetch(`${api_url}/user/profile`, {
       method: "GET",
       headers: {
@@ -95,11 +96,14 @@ export default function AgrihaLandingHeader() {
     setHomeSeekerDetails(data.userData);
   }
 
-  useEffect(() => {
-    if (userId !== "") {
-      getHomeSeekerDetails();
-    }
-  }, [userId]);
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("userToken");
+    useEffect(() => {
+      if (userId !== "" && token) {
+        getHomeSeekerDetails();
+      }
+    }, [userId, token]);
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("userToken");

@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
-import AgrihaMyBidMain from "../../components/my-bid/main";
+import AgrihaMyBidSingleMain from "../../components/my-bid/single";
 import LandingFooter from "../../components/user-common/footer";
 import LoginPopup from "../../components/user-common/login-popup";
 import RegisterPopup from "../../components/user-common/register-popup";
@@ -34,7 +34,7 @@ export default function AgrihaProjectDetails() {
               <AgrihaLandingHeaderNoSearch />
             </div>
             <div className={styles.main}>
-              <AgrihaMyBidMain />
+              <AgrihaMyBidSingleMain />
             </div>
             <div className={styles.footer}>
               <LandingFooter />

@@ -25,6 +25,7 @@ export default function ProfilePopup() {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("userToken");
+    localStorage.removeItem("userRole");
     setLoginActive(false);
     setUserId("");
     setProfilePopup(false);

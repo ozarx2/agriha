@@ -86,7 +86,7 @@ export default function AgrihaLandingMain() {
   }, [scrollTop]);
 
   async function getAllProjects() {
-    console.log("Get all projects API");
+    console.log("working....####");
     const response = await fetch(
       `${api_url}/projects/getallprojects?page=${page}`,
       {

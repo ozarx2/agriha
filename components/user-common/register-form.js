@@ -87,7 +87,7 @@ export default function RegisterPopupForm() {
           setFromLoginOrRegister("register");
           setOtpPopup(true);
           setRegisterPopup(false);
-          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("token", response.data.otpToken);
 
           // dummy login start
 

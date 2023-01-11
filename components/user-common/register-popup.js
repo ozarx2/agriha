@@ -18,6 +18,7 @@ export default function RegisterPopup() {
   const setLoginPopup = Store.setLoginPopup;
   const setRegisterPopup = Store.setRegisterPopup;
   const otpPopup = Store.otpPopup;
+  const userRole = Store.userRole;
 
   const windowRes = windowSize();
 
@@ -101,7 +102,7 @@ export default function RegisterPopup() {
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
                     <div className={styles.text}>
-                      <div className={styles.textone}>Registraion</div>
+                      <div className={styles.textone}>Registration</div>
                       <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
                   </div>
@@ -173,7 +174,11 @@ export default function RegisterPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Already a member? <span onClick={() => showLogin()}>Login</span>
+                      Already a member?{" "}
+                      <span onClick={() => showLogin()}>
+                        {userRole === "user" ? "HomeSeeker" : "Architect"} Login
+                        {/* Login */}
+                      </span>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import moment from "moment";
 import { useState } from "react";
+
 import styles from "./suggested.module.css";
 
 const FnSuggested = ({ suggestion }) => {
@@ -31,10 +32,7 @@ const FnSuggested = ({ suggestion }) => {
     <>
       <div className={styles.suggestedMain}>
         <div className={styles.suggestedHead}>
-          <div className={styles.suggestedTitle}>
-            Suggested Products.
-            <span>03</span>
-          </div>
+          <div className={styles.suggestedTitle}>Suggested Products</div>
           {/* <div className={styles.suggestedViewall}>
             <div>
               <div>View all</div>
@@ -107,7 +105,7 @@ const FnSuggested = ({ suggestion }) => {
           </div>
           <div>
             <div className={styles.suggProdSec}>
-              <span>10</span>
+              <span>01</span>
               <div onClick={() => toggleKitchen()}> kitchen-product</div>
               {kitchen ? (
                 <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" onClick={() => toggleKitchen()} />
@@ -117,13 +115,13 @@ const FnSuggested = ({ suggestion }) => {
             </div>
             {kitchen ? (
               <div className={styles.suggestedProListMain}>
-                {Array.apply(null, { length: 10 }).map((e, i) => (
+                {Array.apply(null, { length: 1 }).map((e, i) => (
                   <div className={styles.suggProList}>
                     <img src="/img/my-project-user/washbase.svg" alt="" />
                     <div className={styles.suggProDetailes}>
                       <div>
                         <div className={styles.prodName}>Wash Base</div>
-                        <div className={styles.prodDate}>25 feb 2022 (20 days ago)</div>
+                        <div className={styles.prodDate}>feb 4th 22</div>
                       </div>
                       <div className={styles.prodRate}>₹ 4999.00</div>
                     </div>

@@ -8,7 +8,10 @@
 .sone_inner {
 }
 .sone_inner .title {
-  margin-bottom: 20px;
+  margin: 10px 1px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
 }
 .sone_inner .title .main {
   font-family: "Inter";
@@ -26,6 +29,24 @@
   font-size: 12px;
   line-height: 15px;
   color: #a3a3a3;
+}
+.paymentBtn {
+  margin: 0 20px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  color: #ffffff;
+  background: #019071;
+  border: 1px solid #019071;
+  border-radius: 3px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 7px 15px;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
 }
 .field_row {
   display: flex;

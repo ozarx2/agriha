@@ -9,6 +9,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 
 import styles from "./main.module.css";
+import Link from "next/link";
 
 export default function DashboardSettingsMain() {
   const router = useRouter();
@@ -51,7 +52,7 @@ export default function DashboardSettingsMain() {
     setCountry(data?.country);
   }, [data]);
 
-  console.log(data);
+  // console.log(data);
 
   const storeValues = () => {
     setBio(document.getElementById("bio").value);
@@ -191,10 +192,15 @@ export default function DashboardSettingsMain() {
         <div className={styles.sone_outer}>
           <div className={styles.sone_inner}>
             <div className={styles.title}>
-              <div className={styles.main}>Profile information</div>
-              <div className={styles.sub}>
-                Some information from this will be dispalyed to users, so be careful what you share
+              <div>
+                <div className={styles.main}>Profile information</div>
+                <div className={styles.sub}>
+                  Some information from this will be dispalyed to users, so be careful what you share
+                </div>
               </div>
+              <Link href={`/payment${data?._id}`}>
+                <div className={styles.paymentBtn}>Add payment</div>
+              </Link>
             </div>
             <div className={styles.form_1}>
               <div className={styles.field_row}>

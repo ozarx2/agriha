@@ -20,6 +20,7 @@ export default function LoginPopup() {
   const setLoginPopup = Store.setLoginPopup;
   const setRegisterPopup = Store.setRegisterPopup;
   const otpPopup = Store.otpPopup;
+  const userRole = Store.userRole;
 
   const windowRes = windowSize();
 
@@ -177,7 +178,11 @@ export default function LoginPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Not on Agriha services yet? <span onClick={() => showSignup()}>Sign up</span>
+                      Not on Agriha services yet?{" "}
+                      <span onClick={() => showSignup()}>
+                        {userRole === "user" ? "HomeSeeker" : "Architect"} Sign up
+                        {/* Sign up */}
+                      </span>
                     </div>
                   </div>
                 </div>

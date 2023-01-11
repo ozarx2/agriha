@@ -219,14 +219,18 @@ export default function AgrihaLandingHeader() {
                       </>
                     ) : (
                       <>
-                        <div
+                        {/* <div
                           onClick={() => (setUserRole("architect"), setLoginPopup(true))}
                           className={styles.architect}
                         >
-                          Are you an Architect ?
+                          Architect Login
+                        </div> */}
+                        <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                          Architect Login
                         </div>
+                        &nbsp;
                         <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
-                          User Login
+                          HomeSeeker Login
                         </div>
                       </>
                     )}
@@ -250,14 +254,18 @@ export default function AgrihaLandingHeader() {
                       </>
                     ) : (
                       <>
-                        <div
+                        {/* <div
                           onClick={() => (setUserRole("architect"), setLoginPopup(true))}
                           className={styles.architect}
                         >
                           Architect Login
+                        </div> */}
+                        <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                          Architect Login
                         </div>
+                        &nbsp;
                         <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
-                          Login
+                          HomeSeeker Login
                         </div>
                       </>
                     )}

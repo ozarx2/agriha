@@ -65,7 +65,7 @@ export default function FnSFour() {
                         />
                         <div>{item?.creator?.name}</div>
                       </div>
-                      {console.log(item)}
+                      {/* {console.log(item)} */}
                       <Link href={`/ongoing-project/${item._id}`} passHref>
                         <div className={styles.right}>
                           <img src="/img/ongoing-project/3dots.svg" alt="alt" />

@@ -80,10 +80,11 @@ export default function AgrihaLandingHeader() {
   const setProjectResponse = Store.setProjectResponse;
   const setAllArchitects = Store.setAllArchitects;
 
+  const [archIdHeader, setArchIdHeader] = useState("");
   const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
   async function getHomeSeekerDetails() {
     const token = localStorage.getItem("userToken");
-    console.log(token);
+    // console.log(token);
     const res = await fetch(`${api_url}/user/profile`, {
       method: "GET",
       headers: {
@@ -119,6 +120,12 @@ export default function AgrihaLandingHeader() {
         setUserId(userId);
       }
     }
+    const architectId = localStorage.getItem("architectId");
+    if (architectId) {
+      if (userRole === "architect") {
+        setArchIdHeader(architectId);
+      }
+    }
   }, []);
 
   async function getAllSearchResults(val) {
@@ -130,15 +137,15 @@ export default function AgrihaLandingHeader() {
       },
     });
     const data = await response.json();
-    console.log(data.data);
+    // console.log(data.data);
     archOnly = data.data?.filter((res) => res?.phone);
     setAllArchitects(archOnly);
     setProjectResponse(data.data?.filter((res) => res?.projectname && res?.architect_id));
-    console.log(data.data?.filter((res) => res?.projectname));
+    // console.log(data.data?.filter((res) => res?.projectname));
   }
 
   const allSearch = (query) => {
-    console.log(query);
+    // console.log(query);
     getAllSearchResults(query);
   };
 
@@ -225,9 +232,18 @@ export default function AgrihaLandingHeader() {
                         >
                           Architect Login
                         </div> */}
-                        <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
-                          Architect Login
-                        </div>
+                        {archIdHeader !== "" ? (
+                          <div
+                            onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
+                            className={styles.login}
+                          >
+                            Architect Login
+                          </div>
+                        ) : (
+                          <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                            Architect Login
+                          </div>
+                        )}
                         &nbsp;
                         <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
                           HomeSeeker Login
@@ -260,9 +276,18 @@ export default function AgrihaLandingHeader() {
                         >
                           Architect Login
                         </div> */}
-                        <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
-                          Architect Login
-                        </div>
+                        {archIdHeader !== "" ? (
+                          <div
+                            onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
+                            className={styles.login}
+                          >
+                            Architect Login
+                          </div>
+                        ) : (
+                          <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                            Architect Login
+                          </div>
+                        )}
                         &nbsp;
                         <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
                           HomeSeeker Login

@@ -132,7 +132,8 @@ export default function RegisterPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Already a member? <span onClick={() => showLogin()}>Login</span>
+                      Already a member?{" "}
+                      <span onClick={() => showLogin()}>{userRole === "user" ? "HomeSeeker" : "Architect"} Login</span>
                     </div>
                   </div>
                 </div>
@@ -163,9 +164,9 @@ export default function RegisterPopup() {
                     </div> */}
                     <GoogleLogin
                       onSuccess={(credentialResponse) => {
-                        console.log(credentialResponse);
+                        // console.log(credentialResponse);
                         var decoded = jwt_decode(credentialResponse.credential);
-                        console.log(decoded);
+                        // console.log(decoded);
                       }}
                       onError={() => {
                         console.log("Login Failed");
@@ -175,10 +176,7 @@ export default function RegisterPopup() {
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
                       Already a member?{" "}
-                      <span onClick={() => showLogin()}>
-                        {userRole === "user" ? "HomeSeeker" : "Architect"} Login
-                        {/* Login */}
-                      </span>
+                      <span onClick={() => showLogin()}>{userRole === "user" ? "HomeSeeker" : "Architect"} Login</span>
                     </div>
                   </div>
                 </div>

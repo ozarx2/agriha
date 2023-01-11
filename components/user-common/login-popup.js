@@ -134,7 +134,10 @@ export default function LoginPopup() {
                   </div>
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
-                      Not on Agriha services yet? <span onClick={() => showSignup()}>Sign up</span>
+                      Not on Agriha services yet?{" "}
+                      <span onClick={() => showSignup()}>
+                        {userRole === "user" ? "HomeSeeker" : "Architect"} Sign up
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -165,9 +168,9 @@ export default function LoginPopup() {
                     </div> */}
                     <GoogleLogin
                       onSuccess={(credentialResponse) => {
-                        console.log(credentialResponse);
+                        // console.log(credentialResponse);
                         var decoded = jwt_decode(credentialResponse.credential);
-                        console.log(decoded);
+                        // console.log(decoded);
                         handleSubmit(decoded.name, decoded.email, decoded.picture);
                       }}
                       onError={() => {
@@ -181,7 +184,6 @@ export default function LoginPopup() {
                       Not on Agriha services yet?{" "}
                       <span onClick={() => showSignup()}>
                         {userRole === "user" ? "HomeSeeker" : "Architect"} Sign up
-                        {/* Sign up */}
                       </span>
                     </div>
                   </div>

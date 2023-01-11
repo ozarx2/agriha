@@ -25,6 +25,7 @@ export default function AgrihaLandingHeaderNoSearch() {
   const userRole = Store.userRole;
   const setUserRole = Store.setUserRole;
 
+  const [archIdHeader, setArchIdHeader] = useState("");
   const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
   async function getHomeSeekerDetails() {
     const token = localStorage.getItem("userToken");
@@ -65,6 +66,12 @@ export default function AgrihaLandingHeaderNoSearch() {
     if (userId) {
       if (userRole === "user") {
         setUserId(userId);
+      }
+    }
+    const architectId = localStorage.getItem("architectId");
+    if (architectId) {
+      if (userRole === "architect") {
+        setArchIdHeader(architectId);
       }
     }
   }, []);
@@ -173,9 +180,18 @@ export default function AgrihaLandingHeaderNoSearch() {
                         >
                           Architect Login
                         </div> */}
-                        <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
-                          Architect Login
-                        </div>
+                        {archIdHeader !== "" ? (
+                          <div
+                            onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
+                            className={styles.login}
+                          >
+                            Architect Login
+                          </div>
+                        ) : (
+                          <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                            Architect Login
+                          </div>
+                        )}
                         &nbsp;
                         <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
                           HomeSeeker Login
@@ -208,9 +224,18 @@ export default function AgrihaLandingHeaderNoSearch() {
                         >
                           Architect Login
                         </div> */}
-                        <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
-                          Architect Login
-                        </div>
+                        {archIdHeader !== "" ? (
+                          <div
+                            onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
+                            className={styles.login}
+                          >
+                            Architect Login
+                          </div>
+                        ) : (
+                          <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                            Architect Login
+                          </div>
+                        )}
                         &nbsp;
                         <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
                           HomeSeeker Login

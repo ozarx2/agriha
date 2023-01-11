@@ -34,6 +34,7 @@ const FnArchProfiles = () => {
   useEffect(() => {
     if (scrolling === true) {
       if (scrollTop + window.innerHeight >= document.body.offsetHeight + 36) {
+        console.log("working");
         setPage(page + 1);
       }
     }
@@ -41,6 +42,7 @@ const FnArchProfiles = () => {
 
   /* GET PROJECT TYPES */
   async function getallArchitects() {
+    console.log("working with desktop");
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/architects/view?page=${page}`, {
       method: "GET",
@@ -55,9 +57,7 @@ const FnArchProfiles = () => {
   }
   // console.log(allArchitects);
   useEffect(() => {
-    // if (allArchitects.length === 0) {
     getallArchitects();
-    // }
   }, [page]);
 
   async function getSearchArchitects(query) {
@@ -78,9 +78,9 @@ const FnArchProfiles = () => {
       getSearchArchitects(searchQueryArchitect);
       console.log(searchQueryArchitect);
     } else {
-      if (allArchitects.length === 0) {
-        getallArchitects();
-      }
+      // if (allArchitects.length === 0) {
+      //   // getallArchitects();
+      // }
     }
   }, [searchQueryArchitect]);
 

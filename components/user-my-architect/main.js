@@ -13,7 +13,11 @@ const UserMyArchitects = () => {
   return (
     <div className={styles.main_outer}>
       <div className={styles.main_inner}>
-        {windowRes.innerWidth >= 1100 ? <FnUserMyArchitectDesktop /> : <FnUserMyArchitectMobile />}
+        {windowRes.innerWidth <= 1100 ? (
+          <FnUserMyArchitectMobile />
+        ) : (
+          <FnUserMyArchitectDesktop />
+        )}
       </div>
     </div>
   );

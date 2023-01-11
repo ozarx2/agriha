@@ -34,6 +34,7 @@ const FnArchProfiles = () => {
   useEffect(() => {
     if (scrolling === true) {
       if (scrollTop + window.innerHeight >= document.body.offsetHeight + 36) {
+        console.log("working");
         setPage(page + 1);
       }
     }
@@ -41,24 +42,22 @@ const FnArchProfiles = () => {
 
   /* GET PROJECT TYPES */
   async function getallArchitects() {
+    console.log("working with desktop");
     const token = localStorage.getItem("userToken");
-    console.log("desktop architect data calling");
-    // const res = await fetch(`${api_url}/architects/view?page=${page}`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     // Authorization: `Bearer ${token}`,
-    //     Authorization: `Bearer ${dummy_token}`,
-    //   },
-    // });
-    // const data = await res.json();
-    // setAllArchitects([...allArchitects, ...data]);
+    const res = await fetch(`${api_url}/architects/view?page=${page}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${dummy_token}`,
+      },
+    });
+    const data = await res.json();
+    setAllArchitects([...allArchitects, ...data]);
   }
   // console.log(allArchitects);
   useEffect(() => {
-    // if (allArchitects.length === 0) {
     getallArchitects();
-    // }
   }, [page]);
 
   async function getSearchArchitects(query) {
@@ -79,9 +78,9 @@ const FnArchProfiles = () => {
       getSearchArchitects(searchQueryArchitect);
       console.log(searchQueryArchitect);
     } else {
-      if (allArchitects.length === 0) {
-        getallArchitects();
-      }
+      // if (allArchitects.length === 0) {
+      //   // getallArchitects();
+      // }
     }
   }, [searchQueryArchitect]);
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
+import { PulseLoader } from "react-spinners";
 import endpoint from "../../src/utils/endpoint";
 
 import styles from "./otp-popup.module.css";
@@ -20,6 +21,7 @@ export default function OtpPopupForm() {
   const fromLoginOrRegister = Store.fromLoginOrRegister;
 
   const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("Please enter Mobile Number");
 
   var a = document.getElementById("a"),
@@ -62,6 +64,7 @@ export default function OtpPopupForm() {
     });
     const data = await res.json();
     // console.log(data);
+    setLoading(false);
     if (data.status === 200) {
       setUserId(data.id);
       setLoginActive(true);
@@ -73,6 +76,7 @@ export default function OtpPopupForm() {
       } else if (data.role === "architect") {
         window.location.href = `/architect-dashboard/${data.id}`;
       }
+
       setLoginPopup(false);
       setRegisterPopup(false);
       setOtpPopup(false);
@@ -98,6 +102,7 @@ export default function OtpPopupForm() {
     });
     const data = await res.json();
     // console.log(data);
+    setLoading(false);
     if (data.status === 200) {
       setUserId(data.id);
       setLoginActive(true);
@@ -122,12 +127,14 @@ export default function OtpPopupForm() {
 
   const verifyClick = () => {
     if (a.value !== "") {
+      setLoading(true);
       handleSubmit(a.value + b.value + c.value + d.value + e.value + f.value);
     }
   };
 
   const verifyClickLogin = () => {
     if (a.value !== "") {
+      setLoading(true);
       handleSubmitLogin(a.value + b.value + c.value + d.value + e.value + f.value);
     }
   };
@@ -152,7 +159,8 @@ export default function OtpPopupForm() {
         {isError ? <p>{error}</p> : ""}
         <div className={styles.additional}>
           <div className={styles.resend}>
-            Don&apos;t receive the code ? <span>Resend</span>
+            Remaining time
+            {/* Don&apos;t receive the code ? <span>Resend</span> */}
           </div>
           <div className={styles.time}>{time}</div>
         </div>
@@ -164,13 +172,29 @@ export default function OtpPopupForm() {
         ) : (
           <>
             {fromLoginOrRegister == "login" ? (
-              <div className={styles.submit} onClick={verifyClickLogin}>
-                Verify
-              </div>
+              <>
+                {loading ? (
+                  <div className={styles.submit}>
+                    <PulseLoader color="#ffffff" />
+                  </div>
+                ) : (
+                  <div className={styles.submit} onClick={verifyClickLogin}>
+                    Verify
+                  </div>
+                )}
+              </>
             ) : (
-              <div className={styles.submit} onClick={verifyClick}>
-                Verify
-              </div>
+              <>
+                {loading ? (
+                  <div className={styles.submit}>
+                    <PulseLoader color="#ffffff" />
+                  </div>
+                ) : (
+                  <div className={styles.submit} onClick={verifyClick}>
+                    Verify
+                  </div>
+                )}
+              </>
             )}
           </>
         )}

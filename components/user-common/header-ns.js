@@ -39,12 +39,17 @@ export default function AgrihaLandingHeaderNoSearch() {
     setHomeSeekerDetails(data.userData);
   }
 
-  useEffect(() => {
-    if (userId !== "") {
-      setLoginActive(true);
-      getHomeSeekerDetails();
-    }
-  }, [userId]);
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("userToken");
+    useEffect(() => {
+      if (userId !== "" && token) {
+        getHomeSeekerDetails();
+      }
+      if (userId !== "") {
+        setLoginActive(true);
+      }
+    }, [userId, token]);
+  }
 
   // console.log(userRole);
 

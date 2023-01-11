@@ -107,6 +107,71 @@
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
 }
+.content .feild > select {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  color: #d6cece;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px 20px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.content .feild > select:hover,
+.content .feild > select:focus,
+.content .feild > select:active {
+  color: #019071;
+  border: 1px solid #019071;
+  outline: none;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+
+.content .feild > textarea {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  color: #d6cece;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px 20px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.content .feild > textarea:hover,
+.content .feild > textarea:focus,
+.content .feild > textarea:active {
+  color: #019071;
+  border: 1px solid #019071;
+  outline: none;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
 .content .feild > input::placeholder {
   color: #d6cece;
 }

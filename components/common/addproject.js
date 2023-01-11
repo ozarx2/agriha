@@ -21,6 +21,7 @@ const AddProject = () => {
   const setFiles = Store.setFiles;
 
   const [loading, setLoading] = useState(false);
+  const [projectTypes, setProjectTypes] = useState([]);
 
   /* Upload thumb images */
   const [percent, setPercent] = useState(0);
@@ -122,11 +123,20 @@ const AddProject = () => {
   const [projectTile, setProjectTitle] = useState("");
   const [projectLocation, setProjectLocation] = useState("");
   const [projectArea, setProjectArea] = useState("");
+  const [projectType, setProjectType] = useState("");
+  const [projectTag, setProjectTag] = useState("");
+  const [projectDescription, setProjectDescription] = useState("");
 
   const storeProjectValues = () => {
     setProjectTitle(document.getElementById("projectTitle").value);
     setProjectLocation(document.getElementById("projectLocation").value);
     setProjectArea(document.getElementById("projectArea").value);
+    setProjectTag(document.getElementById("hashtag").value);
+    setProjectDescription(document.getElementById("projectDescription").value);
+  };
+
+  const chooseProjectType = (e) => {
+    setProjectType(e.target.value);
   };
 
   async function addProject() {
@@ -146,6 +156,9 @@ const AddProject = () => {
           projectarea: projectArea,
           Image: projectImages,
           thumbnail: thumb,
+          project_type: projectType,
+          description: projectDescription,
+          hashtag: projectTag,
         }),
       });
 
@@ -171,6 +184,23 @@ const AddProject = () => {
     }
   }, [projectImages]);
 
+  async function getProjects() {
+    const token = localStorage.getItem("userToken");
+    const res = await fetch(`${api_url}/project-types`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    setProjectTypes(data.projecttype);
+  }
+
+  useEffect(() => {
+    getProjects();
+  }, []);
+
   return (
     <div className={styles.addProjectOuter}>
       <div className={styles.addProject}>
@@ -186,17 +216,19 @@ const AddProject = () => {
             </div>
             <input id="projectTitle" type="text" placeholder="Enter project title" onChange={storeProjectValues} />
           </div>
-          <div key="thumbnail" className={styles.feild}>
+          <div key="type" className={styles.feild}>
             <div className={styles.title}>
-              Thumbnail<span>*</span>
+              Project Type<span>*</span>
             </div>
-            <input
-              className={styles.custom_file_input}
-              type="file"
-              placeholder="No file selected"
-              accept="image/png, image/jpg, image/jpeg"
-              onChange={uploadThumbFiles}
-            />
+            <select onChange={chooseProjectType}>
+              {projectTypes?.map((project, index) => {
+                return (
+                  <option key={index} value={project.project_type}>
+                    {project.project_type}
+                  </option>
+                );
+              })}
+            </select>
           </div>
           <div key="location" className={styles.feild}>
             <div className={styles.title}>
@@ -214,6 +246,30 @@ const AddProject = () => {
               Total area<span>*</span>
             </div>
             <input id="projectArea" type="text" placeholder="Enter area in Sqft" onChange={storeProjectValues} />
+          </div>
+          <div key="hashtag" className={styles.feild}>
+            <div className={styles.title}>
+              Hashtag<span>*</span>
+            </div>
+            <input id="hashtag" type="text" placeholder="Enter hashtag" onChange={storeProjectValues} />
+          </div>
+          <div key="description" className={styles.feild}>
+            <div className={styles.title}>
+              Description<span>*</span>
+            </div>
+            <textarea id="projectDescription" type="text" placeholder="Description" onChange={storeProjectValues} />
+          </div>
+          <div key="thumbnail" className={styles.feild}>
+            <div className={styles.title}>
+              Thumbnail<span>*</span>
+            </div>
+            <input
+              className={styles.custom_file_input}
+              type="file"
+              placeholder="No file selected"
+              accept="image/png, image/jpg, image/jpeg"
+              onChange={uploadThumbFiles}
+            />
           </div>
           <div key="multiple_img" className={styles.feild}>
             <div className={`${styles.title} ${styles.add_img_title}`}>

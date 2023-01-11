@@ -79,6 +79,7 @@ export default function AgrihaLandingMain() {
     if (scrolling === true) {
       window.onscroll = function (ev) {
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          console.log("workspace scroll");
           setPage(page + 1);
         }
       };

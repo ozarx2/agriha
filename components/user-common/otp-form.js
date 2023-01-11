@@ -51,7 +51,6 @@ export default function OtpPopupForm() {
   /* VERIFY OTP Login */
   async function handleSubmitLogin(otp) {
     const token = localStorage.getItem("token");
-
     const res = await fetch(`${endpoint}/auth/verify_login`, {
       method: "POST",
       headers: {
@@ -76,7 +75,6 @@ export default function OtpPopupForm() {
       } else if (data.role === "architect") {
         window.location.href = `/architect-dashboard/${data.id}`;
       }
-
       setLoginPopup(false);
       setRegisterPopup(false);
       setOtpPopup(false);
@@ -89,7 +87,6 @@ export default function OtpPopupForm() {
   /* VERIFY OTP Register */
   async function handleSubmit(otp) {
     const token = localStorage.getItem("token");
-
     const res = await fetch(`${endpoint}/auth/verify_mobile`, {
       method: "POST",
       headers: {
@@ -106,7 +103,6 @@ export default function OtpPopupForm() {
     if (data.status === 200) {
       setUserId(data.id);
       setLoginActive(true);
-
       localStorage.setItem("userId", data.id);
       localStorage.setItem("userToken", data.token);
       localStorage.setItem("userRole", data.role);

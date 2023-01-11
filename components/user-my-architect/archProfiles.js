@@ -42,16 +42,17 @@ const FnArchProfiles = () => {
   /* GET PROJECT TYPES */
   async function getallArchitects() {
     const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/architects/view?page=${page}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
-        Authorization: `Bearer ${dummy_token}`,
-      },
-    });
-    const data = await res.json();
-    setAllArchitects([...allArchitects, ...data]);
+    console.log("desktop architect data calling");
+    // const res = await fetch(`${api_url}/architects/view?page=${page}`, {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     // Authorization: `Bearer ${token}`,
+    //     Authorization: `Bearer ${dummy_token}`,
+    //   },
+    // });
+    // const data = await res.json();
+    // setAllArchitects([...allArchitects, ...data]);
   }
   // console.log(allArchitects);
   useEffect(() => {

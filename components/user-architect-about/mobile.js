@@ -22,6 +22,7 @@ const UserArchitectAboutMobile = () => {
   const userId = Store.userId;
   const setLoginPopup = Store.setLoginPopup;
   const setSharePopup = Store.setSharePopup;
+  const setArchitectProfileSelectPopup = Store.setArchitectProfileSelectPopup;
 
   const router = useRouter();
   const { id } = router.query;
@@ -166,6 +167,18 @@ const UserArchitectAboutMobile = () => {
                   <div className={styles.callShareSaveSecMob} onClick={() => setLoginPopup(true)}>
                     <img src="/img/architect-about/mobile/contactMob.svg" alt="contactMob.svg" />
                     <div>Contact</div>
+                  </div>
+                )}
+
+                {userId !== "" ? (
+                  <div className={styles.callShareSaveSecMob} onClick={() => setArchitectProfileSelectPopup(true)}>
+                    <img src="/img/architect-about/mobile/add.svg" alt="add.svg" />
+                    <div>Select</div>
+                  </div>
+                ) : (
+                  <div className={styles.callShareSaveSecMob} onClick={() => setLoginPopup(true)}>
+                    <img src="/img/architect-about/mobile/add.svg" alt="add.svg" />
+                    <div>Select</div>
                   </div>
                 )}
 

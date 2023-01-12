@@ -23,6 +23,7 @@ export default function AgrihaLandingMain() {
   const windowRes = windowSize();
 
   const [filter, setFilter] = useState("All");
+  const [loadingAjax, setLoadingAjax] = useState(false);
 
   const [Store] = useContext(StoreContext);
   const setRegisterPopup = Store.setRegisterPopup;
@@ -314,7 +315,16 @@ export default function AgrihaLandingMain() {
             <div className={`container ${styles.container} ${styles.sthree}`}>
               <div className={styles.sthree_inner}>
                 {projectResponse?.length !== 0 ? (
-                  <AgrihaImageGrid allProjectSliced={allProjectSliced} />
+                  <>
+                    <AgrihaImageGrid allProjectSliced={allProjectSliced} />
+                    {loadingAjax ? (
+                      <div className={styles.loading_ajax}>
+                        <img src="/img/landing/loading.svg" alt="Loading..." />
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+                  </>
                 ) : (
                   <div className={styles.loading}>
                     <img src="/img/landing/loading.svg" alt="Loading..." />

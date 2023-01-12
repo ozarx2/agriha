@@ -1,14 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import api_url from "../../src/utils/url";
+import { useRouter } from "next/router";
 
 import styles from "./single-main.module.css";
 
 export default function SingleProjectsMain() {
+  const router = useRouter();
+
   const [projectPopupOpen, setProjectPopupOpen] = useState(false);
 
   const [projectId, setProjectId] = useState("");
@@ -79,6 +82,10 @@ export default function SingleProjectsMain() {
     }
   }, [projectId]);
 
+  const editProject = (id) => {
+    router.push(`/edit-project/${id}`);
+  };
+
   return (
     <>
       <div className={styles.main_outer}>
@@ -90,7 +97,7 @@ export default function SingleProjectsMain() {
               <div className={styles.area}>{projectDetails?.projectarea} sq.ft</div>
             </div>
             <div className={styles.right}>
-              <div className={styles.edit}>
+              <div className={styles.edit} onClick={() => editProject(projectId)}>
                 <img src="/img/architect-dashboard/edit-project.svg" alt="alt" />
                 <span>Edit</span>
               </div>

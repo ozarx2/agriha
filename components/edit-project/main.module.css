@@ -4,6 +4,7 @@
   padding-left: 25px;
   padding-right: 5vw;
   height: 100%;
+  padding-bottom: 50px;
 }
 
 .title_editProjectMain {
@@ -45,6 +46,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 6px;
+}
+
+.thumbnailInput {
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .editThumbnail_editProjectMain {
@@ -55,6 +63,7 @@
   cursor: pointer;
   font-size: 13px;
   color: #575757;
+  margin-top: -20px;
 }
 
 .editThumbnail_editProjectMain:hover {
@@ -90,7 +99,7 @@
   font-size: 13px;
   line-height: 19px;
   width: 100%;
-  color: #d6cece;
+  color: #393939;
   background: #ffffff;
   border: 1px solid #dedede;
   border-radius: 6px;
@@ -102,6 +111,7 @@
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
   outline: none;
+  cursor: text;
 }
 
 .inputBox_editProjectMain > input:hover {
@@ -119,7 +129,7 @@
 .imageConatiner_editProjectMain {
   margin-top: 25px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   gap: 25px;
 }
 
@@ -144,7 +154,9 @@
 
 .imageBox_editProjectMain {
   width: 100%;
-  height: 160px;
+  height: 100px;
+  margin-bottom: 10px;
+  width: 100px;
 }
 
 .imageBox_editProjectMain > img {
@@ -152,4 +164,65 @@
   width: 100%;
   object-fit: cover;
   margin-top: 5px;
+  border-radius: 6px;
+}
+
+.updateButtonContainer {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.updateButton {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 19px;
+  color: #ffffff;
+  background: #019071;
+  border: 1px solid #019071;
+  border-radius: 6px;
+  width: 150px;
+  padding: 10px;
+  margin: 0px 0 10px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.updateButton:hover {
+  background: #1e1e1e;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+
+.addNew_image {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.addNew_image > img {
+  height: 100px;
+}
+
+.addNewImage_input {
+  margin-left: -100px;
+  height: 100px;
+  width: 100px;
+  opacity: 0;
 }

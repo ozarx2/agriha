@@ -68,6 +68,7 @@
   border-radius: 5px;
   padding: 9px 21px;
   margin-right: 15px;
+  cursor: pointer;
 }
 .sone_inner .right .share {
   display: flex;

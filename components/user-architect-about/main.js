@@ -14,7 +14,7 @@ const UserArchitectAbout = () => {
     <>
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
-          {windowRes.innerWidth >= 1100 ? <UserArchitectAboutDesktop /> : <UserArchitectAboutMobile />}
+          {windowRes.innerWidth <= 1100 ? <UserArchitectAboutMobile /> : <UserArchitectAboutDesktop />}
         </div>
       </div>
     </>

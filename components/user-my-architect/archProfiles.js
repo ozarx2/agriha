@@ -16,6 +16,9 @@ const FnArchProfiles = () => {
   const searchQueryArchitect = Store.searchQueryArchitect;
   const setAllArchitects = Store.setAllArchitects;
   const allArchitects = Store.allArchitects;
+  const arcPaginatioCount = Store.arcPaginatioCount;
+  const setArcPaginationCount = Store.setArcPaginationCount;
+
   const router = useRouter();
 
   const [page, setPage] = useState(1);
@@ -34,31 +37,31 @@ const FnArchProfiles = () => {
   useEffect(() => {
     if (scrolling === true) {
       if (scrollTop + window.innerHeight >= document.body.offsetHeight + 36) {
-        console.log("working");
-        setPage(page + 1);
+        setArcPaginationCount(arcPaginatioCount + 1);
       }
     }
   }, [scrollTop]);
 
   /* GET PROJECT TYPES */
   async function getallArchitects() {
-    console.log("working with desktop");
-    const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/architects/view?page=${page}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
-        Authorization: `Bearer ${dummy_token}`,
-      },
-    });
-    const data = await res.json();
-    setAllArchitects([...allArchitects, ...data]);
+    if (window.innerWidth >= 1100 && arcPaginatioCount * 5 != allArchitects.length) {
+      const token = localStorage.getItem("userToken");
+      const res = await fetch(`${api_url}/architects/view?page=${arcPaginatioCount}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${dummy_token}`,
+        },
+      });
+      const data = await res.json();
+      setAllArchitects([...allArchitects, ...data]);
+    }
   }
   // console.log(allArchitects);
   useEffect(() => {
     getallArchitects();
-  }, [page]);
+  }, [arcPaginatioCount]);
 
   async function getSearchArchitects(query) {
     const res = await fetch(`${api_url}/search/key?l=${query}`, {

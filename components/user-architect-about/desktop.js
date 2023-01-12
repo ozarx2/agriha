@@ -78,7 +78,6 @@ const UserArchitectAboutDesktop = () => {
 
   const [rate, setRate] = useState(0);
   const [count, setCount] = useState(0);
-  const token = localStorage.getItem("userToken");
 
   useEffect(() => {
     if (userIdSpl !== "") {
@@ -86,6 +85,7 @@ const UserArchitectAboutDesktop = () => {
       getProjectOfArchitect();
     }
     const getRate = async () => {
+      const token = localStorage.getItem("userToken");
       const response = await axios.get(`${api_url}/star-rating/${userIdSpl}`, {
         headers: {
           "Content-Type": "application/json",

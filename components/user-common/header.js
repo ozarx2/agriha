@@ -235,12 +235,15 @@ export default function AgrihaLandingHeader() {
                         {archIdHeader !== "" ? (
                           <div
                             onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
-                            className={styles.login}
+                            className={styles.logins}
                           >
                             Architect Login
                           </div>
                         ) : (
-                          <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                          <div
+                            onClick={() => (setUserRole("architect"), setLoginPopup(true))}
+                            className={styles.logins}
+                          >
                             Architect Login
                           </div>
                         )}
@@ -279,12 +282,15 @@ export default function AgrihaLandingHeader() {
                         {archIdHeader !== "" ? (
                           <div
                             onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
-                            className={styles.login}
+                            className={styles.logins}
                           >
                             Architect Login
                           </div>
                         ) : (
-                          <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                          <div
+                            onClick={() => (setUserRole("architect"), setLoginPopup(true))}
+                            className={styles.logins}
+                          >
                             Architect Login
                           </div>
                         )}

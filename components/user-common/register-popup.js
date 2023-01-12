@@ -103,7 +103,7 @@ export default function RegisterPopup() {
                   <div className={styles.sone}>
                     <div className={styles.text}>
                       <div className={styles.textone}>
-                        {userRole === "user" ? "HomeSeeker" : "Architect"} Registraion
+                        {userRole === "user" ? "HomeSeeker" : "Architect"} Registration
                       </div>
                       <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
@@ -151,7 +151,7 @@ export default function RegisterPopup() {
                     </div>
                     <div className={styles.text}>
                       <div className={styles.textone}>
-                        {userRole === "user" ? "HomeSeeker" : "Architect"} Registraion
+                        {userRole === "user" ? "HomeSeeker" : "Architect"} Registration
                       </div>
                       <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>

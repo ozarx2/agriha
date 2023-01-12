@@ -78,6 +78,7 @@
     padding-bottom: 14px;
     border-bottom: 1px solid #ebebeb;
   }
+
   .callShareSaveSecMob {
     display: flex;
     align-items: center;
@@ -86,6 +87,29 @@
     padding-right: 5.5px;
   }
   .callShareSaveSecMob > div {
+    padding-left: 5.5px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #818181;
+  }
+  .callShareSaveSecMobS {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 5px 6px;
+    padding-right: 25px;
+    border: 2px solid #642dda;
+    border-radius: 30px;
+  }
+  .callShareSaveSecMobS > img {
+    padding-right: 5.5px;
+  }
+  .callShareSaveSecMobS > div {
     padding-left: 5.5px;
     font-family: "Inter";
     font-style: normal;

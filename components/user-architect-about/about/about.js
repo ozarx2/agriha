@@ -29,7 +29,7 @@ const FnAbout = ({ singleArchitect }) => {
         <div className={styles.archTabSubHeadMob}>
           {singleArchitect?.bio}
 
-          {userIdStore !== "" ? (
+          {/* {userIdStore !== "" ? (
             <div className={styles.archTabReadmoreMob} onClick={() => setArchitectProfileSelectPopup(true)}>
               <div>Create project with Architect</div>
             </div>
@@ -37,7 +37,7 @@ const FnAbout = ({ singleArchitect }) => {
             <div className={styles.archTabReadmoreMob} onClick={() => setLoginPopup(true)}>
               <div>Create project with Architect</div>
             </div>
-          )}
+          )} */}
         </div>
       )}
     </>

@@ -13,7 +13,7 @@ const FnUserMyArchitectDesktop = () => {
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>
             <ArchHead />
-            <FnFilter />
+            {/* <FnFilter /> */}
             <FnArchProfiles />
           </div>
         </div>

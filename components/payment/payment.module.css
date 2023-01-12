@@ -33,6 +33,7 @@
 .transactionTypeTitle {
   text-align: center;
   margin-bottom: 20px;
+  text-decoration: underline;
 }
 .typesOfTransactionUpi {
   display: flex;
@@ -53,6 +54,9 @@
 .qr {
   width: 80px;
   height: 80px;
+  margin-right: 112px;
+  margin-top: 20px;
+  margin-bottom: -35px;
 }
 .typesOfTransactionUpi {
   font-family: "Inter";
@@ -61,11 +65,15 @@
   font-size: 16px;
 }
 .typesOfTransactionAcc {
+  display: flex;
+  justify-content: center;
+  /* border: 1px dashed #9b9a9a; */
+  border-radius: 7px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  padding-top: 100px;
+  /* padding-top: 100px; */
   /* text-align: center; */
   padding-bottom: 10px;
 }
@@ -116,14 +124,19 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
+  margin-top: 15px;
   /* color: #a7a7a7; */
   background: #fff;
   border: 1px solid #dedede;
   border-radius: 3px;
-  width: 70%;
+  width: 90%;
   padding: 7px 20px;
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
+}
+.dropdown {
+  margin-top: 20px;
+  margin-left: 15px;
 }
 /* .table_out img {
   max-width: 100%;

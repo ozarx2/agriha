@@ -13,57 +13,57 @@ import styles from "./header.module.css";
 export default function AgrihaLandingHeader() {
   const windowRes = windowSize();
 
-  if (typeof window !== "undefined") {
-    if (windowRes.innerWidth <= 1100) {
-      window.addEventListener("wheel", function (event) {
-        if (event.deltaY < 0) {
-          // console.log("scrolling up");
-          if (document.getElementById("search_outer")) {
-            document.getElementById("search_outer").style.top = "57px";
-          }
-          if (document.getElementById("menu_mobile_outer")) {
-            document.getElementById("menu_mobile_outer").style.marginTop = "111px";
-          }
-        } else if (event.deltaY > 0) {
-          // console.log("scrolling down");
-          if (document.getElementById("search_outer")) {
-            document.getElementById("search_outer").style.top = "3px";
-          }
-          if (document.getElementById("menu_mobile_outer")) {
-            document.getElementById("menu_mobile_outer").style.marginTop = "57px";
-          }
-        }
-      });
+  // if (typeof window !== "undefined") {
+  //   if (windowRes.innerWidth <= 1100) {
+  //     window.addEventListener("wheel", function (event) {
+  //       if (event.deltaY < 0) {
+  //         // console.log("scrolling up");
+  //         if (document.getElementById("search_outer")) {
+  //           document.getElementById("search_outer").style.top = "57px";
+  //         }
+  //         if (document.getElementById("menu_mobile_outer")) {
+  //           document.getElementById("menu_mobile_outer").style.marginTop = "111px";
+  //         }
+  //       } else if (event.deltaY > 0) {
+  //         // console.log("scrolling down");
+  //         if (document.getElementById("search_outer")) {
+  //           document.getElementById("search_outer").style.top = "3px";
+  //         }
+  //         if (document.getElementById("menu_mobile_outer")) {
+  //           document.getElementById("menu_mobile_outer").style.marginTop = "57px";
+  //         }
+  //       }
+  //     });
 
-      if (typeof document !== "undefined") {
-        var touchPos;
-        document.body.ontouchstart = function (e) {
-          touchPos = e.changedTouches[0].clientY;
-        };
-        document.body.ontouchmove = function (e) {
-          let newTouchPos = e.changedTouches[0].clientY;
-          if (newTouchPos > touchPos) {
-            // console.log("finger moving down");
-            if (document.getElementById("search_outer")) {
-              document.getElementById("search_outer").style.top = "57px";
-            }
-            if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop = "111px";
-            }
-          }
-          if (newTouchPos < touchPos) {
-            // console.log("finger moving up");
-            if (document.getElementById("search_outer")) {
-              document.getElementById("search_outer").style.top = "3px";
-            }
-            if (document.getElementById("menu_mobile_outer")) {
-              document.getElementById("menu_mobile_outer").style.marginTop = "57px";
-            }
-          }
-        };
-      }
-    }
-  }
+  //     if (typeof document !== "undefined") {
+  //       var touchPos;
+  //       document.body.ontouchstart = function (e) {
+  //         touchPos = e.changedTouches[0].clientY;
+  //       };
+  //       document.body.ontouchmove = function (e) {
+  //         let newTouchPos = e.changedTouches[0].clientY;
+  //         if (newTouchPos > touchPos) {
+  //           // console.log("finger moving down");
+  //           if (document.getElementById("search_outer")) {
+  //             document.getElementById("search_outer").style.top = "57px";
+  //           }
+  //           if (document.getElementById("menu_mobile_outer")) {
+  //             document.getElementById("menu_mobile_outer").style.marginTop = "111px";
+  //           }
+  //         }
+  //         if (newTouchPos < touchPos) {
+  //           // console.log("finger moving up");
+  //           if (document.getElementById("search_outer")) {
+  //             document.getElementById("search_outer").style.top = "3px";
+  //           }
+  //           if (document.getElementById("menu_mobile_outer")) {
+  //             document.getElementById("menu_mobile_outer").style.marginTop = "57px";
+  //           }
+  //         }
+  //       };
+  //     }
+  //   }
+  // }
 
   const router = useRouter();
   const { id } = router.query;
@@ -304,7 +304,8 @@ export default function AgrihaLandingHeader() {
             ""
           ) : (
             <div className={`container ${styles.container} ${styles.container_menu_mobile_outer}`}>
-              <div id="menu_mobile_outer" className={styles.menu_mobile_outer} style={{ marginTop: "57px" }}>
+              {/* <div id="menu_mobile_outer" className={styles.menu_mobile_outer} style={{ marginTop: "57px" }}> */}
+              <div id="menu_mobile_outer" className={styles.menu_mobile_outer} style={{ marginTop: "111px" }}>
                 <div className={styles.menu}>
                   {router.pathname == "/project-details/[id]" ? (
                     <div onClick={() => router.back()} className={styles.back}>
@@ -347,7 +348,8 @@ export default function AgrihaLandingHeader() {
           {windowRes.innerWidth >= 1100 ? (
             ""
           ) : (
-            <div id="search_outer" className={`search_outer ${styles.search_outer}`} style={{ top: "3px" }}>
+            <div id="search_outer" className={`search_outer ${styles.search_outer}`} style={{ top: "57px" }}>
+              {/* <div id="search_outer" className={`search_outer ${styles.search_outer}`} style={{ top: "3px" }}> */}
               <div className={styles.search_out}>
                 <img src="/img/landing/search.svg" alt="search" />
                 <input type="text" onChange={(e) => allSearch(e.target.value)} placeholder="Search here..." />

@@ -104,7 +104,7 @@ export default function LoginPopup() {
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
                     <div className={styles.text}>
-                      <div className={styles.textone}>Log in</div>
+                      <div className={styles.textone}>{userRole === "user" ? "HomeSeeker" : "Architect"} Log in</div>
                       <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export default function LoginPopup() {
                       <img src="/img/project-details/back.svg" alt="back" />
                     </div>
                     <div className={styles.text}>
-                      <div className={styles.textone}>Log in</div>
+                      <div className={styles.textone}>{userRole === "user" ? "HomeSeeker" : "Architect"} Log in</div>
                       <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
                     </div>
                   </div>

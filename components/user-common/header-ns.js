@@ -5,9 +5,10 @@ import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import styles from "./header.module.css";
 import windowSize from "../windowRes";
 import api_url from "../../src/utils/url";
+
+import styles from "./header.module.css";
 
 export default function AgrihaLandingHeaderNoSearch() {
   const router = useRouter();
@@ -183,12 +184,15 @@ export default function AgrihaLandingHeaderNoSearch() {
                         {archIdHeader !== "" ? (
                           <div
                             onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
-                            className={styles.login}
+                            className={styles.logins}
                           >
                             Architect Login
                           </div>
                         ) : (
-                          <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                          <div
+                            onClick={() => (setUserRole("architect"), setLoginPopup(true))}
+                            className={styles.logins}
+                          >
                             Architect Login
                           </div>
                         )}
@@ -227,12 +231,15 @@ export default function AgrihaLandingHeaderNoSearch() {
                         {archIdHeader !== "" ? (
                           <div
                             onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
-                            className={styles.login}
+                            className={styles.logins}
                           >
                             Architect Login
                           </div>
                         ) : (
-                          <div onClick={() => (setUserRole("architect"), setLoginPopup(true))} className={styles.login}>
+                          <div
+                            onClick={() => (setUserRole("architect"), setLoginPopup(true))}
+                            className={styles.logins}
+                          >
                             Architect Login
                           </div>
                         )}

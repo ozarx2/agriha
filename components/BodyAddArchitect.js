@@ -149,7 +149,7 @@ const BodyAddArchitect = () => {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
       document.getElementById("projectDetailsContainer").style.display = "block";
       document.getElementById("architectDetailsConatiner").style.display = "none";

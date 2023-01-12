@@ -171,12 +171,12 @@ const UserArchitectAboutMobile = () => {
                 )}
 
                 {userId !== "" ? (
-                  <div className={styles.callShareSaveSecMob} onClick={() => setArchitectProfileSelectPopup(true)}>
+                  <div className={styles.callShareSaveSecMobS} onClick={() => setArchitectProfileSelectPopup(true)}>
                     <img src="/img/architect-about/mobile/add.svg" alt="add.svg" />
                     <div>Select</div>
                   </div>
                 ) : (
-                  <div className={styles.callShareSaveSecMob} onClick={() => setLoginPopup(true)}>
+                  <div className={styles.callShareSaveSecMobS} onClick={() => setLoginPopup(true)}>
                     <img src="/img/architect-about/mobile/add.svg" alt="add.svg" />
                     <div>Select</div>
                   </div>

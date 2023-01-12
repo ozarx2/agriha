@@ -9,6 +9,7 @@ import windowSize from "../windowRes";
 import ArchHead from "./archHead";
 
 import styles from "./main.module.css";
+import stylesp from "./pagination.module.css";
 
 const FnUserMyArchitectMobile = () => {
   const windowRes = windowSize();

@@ -1,18 +1,17 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import Navbar from "../../components/common/navbar";
 import Sidebar from "../../components/common/sidebar";
 import MobileSidebar from "../../components/common/mobile-sidebar";
-import SinglePaymentMain from "../../components/payment/payment";
 import AddProject from "../../components/common/addproject";
 import LogoutPopup from "../../components/common/logout-popup";
 import NotificationPopup from "../../components/common/notification-popup";
 import AddProjectImage from "../../components/common/add-project-image";
-import DataPopup from "../../components/view-bid/data-popup";
 
 import styles from "./index-single.module.css";
+import EditProjectMain from "../../components/edit-project/main";
 
 export default function BidDetails() {
   const [Store] = useContext(StoreContext);
@@ -22,9 +21,6 @@ export default function BidDetails() {
   const logout = Store.logout;
   const notificationPopup = Store.notificationPopup;
   const addProjectImagePopup = Store.addProjectImagePopup;
-  const bidDataPopup = Store.bidDataPopup;
-
-  const [isQuoted, setIsQuoted] = useState(true);
 
   const router = useRouter();
   useEffect(() => {
@@ -57,14 +53,13 @@ export default function BidDetails() {
             )}
             <div className={styles.main}>
               <Navbar />
-              <SinglePaymentMain />
+              <EditProjectMain />
             </div>
           </div>
           {addProject ? <AddProject /> : ""}
           {logout ? <LogoutPopup /> : ""}
           {notificationPopup ? <NotificationPopup /> : ""}
           {addProjectImagePopup ? <AddProjectImage /> : ""}
-          {bidDataPopup ? <DataPopup setIsQuoted={setIsQuoted} /> : ""}
         </div>
       </div>
     </>

@@ -1,0 +1,155 @@
+.main_outer {
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-left: 25px;
+  padding-right: 5vw;
+  height: 100%;
+}
+
+.title_editProjectMain {
+  margin-top: 25px;
+}
+
+.title_editProjectMain > h3 {
+  font-size: 15px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+}
+
+.title_editProjectMain > h4 {
+  font-size: 13px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 3px;
+  color: #575757;
+}
+
+.details_editProjectMain {
+  margin-top: 30px;
+}
+
+.thumbnail_editProjectMain {
+  width: 250px;
+  height: 160px;
+}
+
+.thumbnail_editProjectMain > p {
+  font-size: 14px;
+  color: #575757;
+}
+
+.thumbnail_editProjectMain > img {
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.editThumbnail_editProjectMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #575757;
+}
+
+.editThumbnail_editProjectMain:hover {
+  color: #303030;
+}
+
+.editIcon {
+  height: 12px;
+  margin-right: 5px;
+}
+
+.inputContainer_editProjectMain {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.inputBox_editProjectMain {
+  width: 100%;
+}
+
+.inputBox_editProjectMain > p {
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.inputBox_editProjectMain > input {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  width: 100%;
+  color: #d6cece;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  padding: 10px 20px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+  outline: none;
+}
+
+.inputBox_editProjectMain > input:hover {
+  color: #019071;
+  border: 1px solid #019071;
+  outline: none;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+
+.imageConatiner_editProjectMain {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.deleteIcon {
+  height: 12px;
+  margin-right: 5px;
+}
+
+.deleteImage_editProjectMain {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #575757;
+}
+
+.deleteImage_editProjectMain:hover {
+  color: #303030;
+}
+
+.imageBox_editProjectMain {
+  width: 100%;
+  height: 160px;
+}
+
+.imageBox_editProjectMain > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  margin-top: 5px;
+}

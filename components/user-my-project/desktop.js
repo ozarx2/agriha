@@ -9,7 +9,7 @@ const FnUserMyProjectDesktop = ({ projects }) => {
       <div className={styles.agrihaUserProDeskMain}>
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>
-            <div className={styles.buttonsMainSection}>
+            {/* <div className={styles.buttonsMainSection}>
               <div className={styles.myProjBtnOne}>
                 <div className={styles.btn}>Ongoing Projects</div>
               </div>
@@ -19,7 +19,7 @@ const FnUserMyProjectDesktop = ({ projects }) => {
               <div className={styles.myProjBtnThree}>
                 <div className={styles.btn}>All Projects</div>
               </div>
-            </div>
+            </div> */}
             <div>
               <FnOngoingProjectUserSide projects={projects} />
             </div>

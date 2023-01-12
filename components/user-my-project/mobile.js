@@ -8,10 +8,10 @@ const FnUserMyprojectsile = ({ projects }) => {
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>
             <div className={styles.projMobSecMain}>
-              <div className={styles.projBtnsMob}>
+              {/* <div className={styles.projBtnsMob}>
                 <div className={styles.projBtnsOne}>Ongoing Projects</div>
                 <div className={styles.projBtnsTwo}>Projects History</div>
-              </div>
+              </div> */}
               {projects
                 ?.slice(0)
                 .reverse()

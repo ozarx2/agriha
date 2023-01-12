@@ -13,6 +13,7 @@ import stylesp from "./pagination.module.css";
 
 const FnUserMyArchitectMobile = () => {
   const router = useRouter();
+  const [loadingAjax, setLoadingAjax] = useState(false);
 
   const [Store] = useContext(StoreContext);
 
@@ -35,8 +36,10 @@ const FnUserMyArchitectMobile = () => {
 
   useEffect(() => {
     if (scrolling === true) {
-      if (scrollTop + window.innerHeight >= document.body.offsetHeight + 92) {
-        setArcPaginationCount(arcPaginatioCount + 1);
+      if (loadingAjax === false) {
+        if (scrollTop + window.innerHeight >= document.body.offsetHeight + 92) {
+          setArcPaginationCount(arcPaginatioCount + 1);
+        }
       }
     }
   }, [scrollTop]);
@@ -44,6 +47,7 @@ const FnUserMyArchitectMobile = () => {
   /* GET PROJECT TYPES */
   async function getallArchitects() {
     if (window.innerWidth <= 1100 && arcPaginatioCount * 5 != allArchitects.length) {
+      setLoadingAjax(true);
       const token = localStorage.getItem("userToken");
       const res = await fetch(`${api_url}/architects/view?page=${arcPaginatioCount}`, {
         method: "GET",
@@ -54,8 +58,12 @@ const FnUserMyArchitectMobile = () => {
         },
       });
       const data = await res.json();
-      console.log(data);
-      setAllArchitects([...allArchitects, ...data]);
+      if (data) {
+        setLoadingAjax(false);
+        setScrolling(false);
+        setScrollTop(0);
+        setAllArchitects([...allArchitects, ...data]);
+      }
     }
   }
 
@@ -73,6 +81,13 @@ const FnUserMyArchitectMobile = () => {
               return <MobAgrihaArchProfileSingle key={i} items={items} i={i} />;
             })}
           </div>
+          {loadingAjax ? (
+            <div className={styles.loading_ajax}>
+              <img src="/img/landing/loading.svg" alt="Loading..." />
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>

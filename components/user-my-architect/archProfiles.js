@@ -12,6 +12,7 @@ import stylesp from "./pagination.module.css";
 
 const FnArchProfiles = () => {
   const [Store] = useContext(StoreContext);
+  const [loadingAjax, setLoadingAjax] = useState(false);
 
   const searchQueryArchitect = Store.searchQueryArchitect;
   const setAllArchitects = Store.setAllArchitects;
@@ -36,8 +37,10 @@ const FnArchProfiles = () => {
 
   useEffect(() => {
     if (scrolling === true) {
-      if (scrollTop + window.innerHeight >= document.body.offsetHeight + 36) {
-        setArcPaginationCount(arcPaginatioCount + 1);
+      if (loadingAjax === false) {
+        if (scrollTop + window.innerHeight >= document.body.offsetHeight + 36) {
+          setArcPaginationCount(arcPaginatioCount + 1);
+        }
       }
     }
   }, [scrollTop]);
@@ -45,6 +48,7 @@ const FnArchProfiles = () => {
   /* GET PROJECT TYPES */
   async function getallArchitects() {
     if (window.innerWidth >= 1100 && arcPaginatioCount * 5 != allArchitects.length) {
+      setLoadingAjax(true);
       const token = localStorage.getItem("userToken");
       const res = await fetch(`${api_url}/architects/view?page=${arcPaginatioCount}`, {
         method: "GET",
@@ -55,7 +59,12 @@ const FnArchProfiles = () => {
         },
       });
       const data = await res.json();
-      setAllArchitects([...allArchitects, ...data]);
+      if (data) {
+        setLoadingAjax(false);
+        setScrolling(false);
+        setScrollTop(0);
+        setAllArchitects([...allArchitects, ...data]);
+      }
     }
   }
   // console.log(allArchitects);
@@ -96,21 +105,20 @@ const FnArchProfiles = () => {
           </>
         );
       })}
+      {loadingAjax ? (
+        <div className={styles.loading_ajax}>
+          <img src="/img/landing/loading.svg" alt="Loading..." />
+        </div>
+      ) : (
+        <></>
+      )}
       {/* <div className={stylesp.paginationSection}>
         <div className={stylesp.pageination}>
-          <img
-            src="/img/architect/left.svg"
-            alt="left.svg"
-            onClick={() => handlePages(-1)}
-          />
+          <img src="/img/architect/left.svg" alt="left.svg" onClick={() => handlePages(-1)} />
           <div className={stylesp.pageNum}>
             <span>Page : {page} </span>
           </div>
-          <img
-            src="/img/architect/right.svg"
-            alt="left.svg"
-            onClick={() => handlePages(+1)}
-          />
+          <img src="/img/architect/right.svg" alt="left.svg" onClick={() => handlePages(+1)} />
         </div>
       </div> */}
     </>

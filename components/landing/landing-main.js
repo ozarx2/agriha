@@ -23,6 +23,7 @@ export default function AgrihaLandingMain() {
   const windowRes = windowSize();
 
   const [filter, setFilter] = useState("All");
+  const [loadingAjax, setLoadingAjax] = useState(false);
 
   const [Store] = useContext(StoreContext);
   const setRegisterPopup = Store.setRegisterPopup;
@@ -76,14 +77,14 @@ export default function AgrihaLandingMain() {
 
   useEffect(() => {
     if (scrolling === true) {
-      if (windowRes.innerWidth <= 1100) {
-        if (scrollTop + window.innerHeight >= document.body.offsetHeight + 111) {
-          setScrolling(false);
+      if (loadingAjax === false) {
+        if (window.innerWidth <= 1100) {
+          if (scrollTop + window.innerHeight >= document.body.offsetHeight + 111) {
+            setLandingPage(landingPage + 1);
+          }
+        } else if (scrollTop + window.innerHeight >= document.body.offsetHeight) {
           setLandingPage(landingPage + 1);
         }
-      } else if (scrollTop + window.innerHeight >= document.body.offsetHeight) {
-        setScrolling(false);
-        setLandingPage(landingPage + 1);
       }
     }
   }, [scrollTop]);
@@ -94,6 +95,7 @@ export default function AgrihaLandingMain() {
 
   async function getAllProjects() {
     if (landingPage * 16 != projectResponse.length) {
+      setLoadingAjax(true);
       const response = await fetch(`${api_url}/projects/getallprojects?page=${landingPage}`, {
         method: "POST",
         headers: {
@@ -102,6 +104,9 @@ export default function AgrihaLandingMain() {
       });
       const data = await response.json();
       if (data) {
+        setLoadingAjax(false);
+        setScrolling(false);
+        setScrollTop(0);
         const withArchitect = data.data.filter((res) => res?.architect_id);
         if (filter === "All") {
           setProjectResponse([...projectResponse, ...withArchitect]);
@@ -314,7 +319,16 @@ export default function AgrihaLandingMain() {
             <div className={`container ${styles.container} ${styles.sthree}`}>
               <div className={styles.sthree_inner}>
                 {projectResponse?.length !== 0 ? (
-                  <AgrihaImageGrid allProjectSliced={allProjectSliced} />
+                  <>
+                    <AgrihaImageGrid allProjectSliced={allProjectSliced} />
+                    {loadingAjax ? (
+                      <div className={styles.loading_ajax}>
+                        <img src="/img/landing/loading.svg" alt="Loading..." />
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+                  </>
                 ) : (
                   <div className={styles.loading}>
                     <img src="/img/landing/loading.svg" alt="Loading..." />

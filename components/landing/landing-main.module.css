@@ -85,6 +85,16 @@
 .loading img {
   width: 40px;
 }
+.loading_ajax {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.loading_ajax img {
+  width: 40px;
+}
 
 @media only screen and (min-width: 1100px) {
   .sone_inner {

@@ -8,18 +8,17 @@ import MobAgrihaArchProfileSingle from "./mobArchProfile";
 
 import styles from "./main.module.css";
 import stylesp from "./pagination.module.css";
-import windowSize from "../windowRes";
 
 const FnUserMyArchitectMobile = () => {
-  const windowRes = windowSize();
   const router = useRouter();
 
   const [Store] = useContext(StoreContext);
 
   const setAllArchitects = Store.setAllArchitects;
   const allArchitects = Store.allArchitects;
+  const arcPaginatioCount = Store.arcPaginatioCount;
+  const setArcPaginationCount = Store.setArcPaginationCount;
 
-  const [page, setPage] = useState(1);
   const [scrolling, setScrolling] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
 
@@ -35,16 +34,16 @@ const FnUserMyArchitectMobile = () => {
   useEffect(() => {
     if (scrolling === true) {
       if (scrollTop + window.innerHeight >= document.body.offsetHeight + 92) {
-        setPage(page + 1);
+        setArcPaginationCount(arcPaginatioCount + 1);
       }
     }
   }, [scrollTop]);
 
   /* GET PROJECT TYPES */
   async function getallArchitects() {
-    if (windowRes.innerWidth <= 1100) {
+    if (window.innerWidth <= 1100 && arcPaginatioCount * 5 != allArchitects.length) {
       const token = localStorage.getItem("userToken");
-      const res = await fetch(`${api_url}/architects/view?page=${page}`, {
+      const res = await fetch(`${api_url}/architects/view?page=${arcPaginatioCount}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -53,13 +52,14 @@ const FnUserMyArchitectMobile = () => {
         },
       });
       const data = await res.json();
+      console.log(data);
       setAllArchitects([...allArchitects, ...data]);
     }
   }
 
   useEffect(() => {
     getallArchitects();
-  }, [page]);
+  }, [arcPaginatioCount]);
 
   return (
     <>

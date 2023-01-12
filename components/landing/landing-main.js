@@ -31,6 +31,8 @@ export default function AgrihaLandingMain() {
   const setProjectResponse = Store.setProjectResponse;
   const setAllArchitects = Store.setAllArchitects;
   const setArchitectBidtPopup = Store.setArchitectBidtPopup;
+  const landingPage = Store.landingPage;
+  const setLandingPage = Store.setLandingPage;
 
   /* GET PROJECT TYPES */
   const [projectTypes, setProjectTypes] = useState([]);
@@ -73,42 +75,47 @@ export default function AgrihaLandingMain() {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-  }, []);
-  useEffect(() => {
     if (scrolling === true) {
-      window.onscroll = function (ev) {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-          console.log("workspace scroll");
-          setPage(page + 1);
+      if (windowRes.innerWidth <= 1100) {
+        if (scrollTop + window.innerHeight >= document.body.offsetHeight + 111) {
+          setScrolling(false);
+          setLandingPage(landingPage + 1);
         }
-      };
+      } else if (scrollTop + window.innerHeight >= document.body.offsetHeight) {
+        setScrolling(false);
+        setLandingPage(landingPage + 1);
+      }
     }
   }, [scrollTop]);
 
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+  }, []);
+
   async function getAllProjects() {
-    // console.log("working....####");
-    const response = await fetch(`${api_url}/projects/getallprojects?page=${page}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    if (data) {
-      const withArchitect = data.data.filter((res) => res?.architect_id);
-      if (filter === "All") {
-        setProjectResponse([...projectResponse, ...withArchitect]);
-      } else {
-        let filtered = withArchitect.filter((res) => res?.architect_id?.companyname === filter);
-        setProjectResponse(filtered);
+    if (landingPage * 16 != projectResponse.length) {
+      const response = await fetch(`${api_url}/projects/getallprojects?page=${landingPage}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      if (data) {
+        const withArchitect = data.data.filter((res) => res?.architect_id);
+        if (filter === "All") {
+          setProjectResponse([...projectResponse, ...withArchitect]);
+        } else {
+          let filtered = withArchitect.filter((res) => res?.architect_id?.companyname === filter);
+          setProjectResponse(filtered);
+        }
       }
     }
   }
 
   useEffect(() => {
     getAllProjects();
-  }, [filter, page]);
+  }, [filter, landingPage]);
 
   useEffect(() => {
     groupN(projectResponse, 4);

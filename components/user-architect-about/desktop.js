@@ -123,7 +123,7 @@ const UserArchitectAboutDesktop = () => {
     });
     const data = await res.json();
     console.log(data);
-    setAllArchitects(data.data);
+    setAllArchitects(data);
   }
 
   useEffect(() => {

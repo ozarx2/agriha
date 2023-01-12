@@ -57,6 +57,11 @@ export const StoreContextProvider = (props) => {
   // Store Hashir start
   // Store Hashir end
 
+  // Store SHIJIN start
+  const [landingPage, setLandingPage] = useState(1);
+  const [arcPaginatioCount, setArcPaginationCount] = useState(1);
+  // Store SHIJIN end
+
   const Store = {
     addProject,
     setAddProject,
@@ -158,6 +163,14 @@ export const StoreContextProvider = (props) => {
     // Store Hashir start
 
     // Store Hashir end
+
+    // Store SHIJIN start
+    landingPage,
+    setLandingPage,
+    arcPaginatioCount,
+    setArcPaginationCount,
+
+    // Store SHIJIN end
   };
 
   return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;

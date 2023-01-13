@@ -27,7 +27,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
     const res = await fetch(`${api_url}/projects/single/${projectId}`, {
       method: "GET",
       headers: {
@@ -64,7 +64,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
   };
 
   async function acceptRequestNew(status) {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     // console.log(requestOrBidID);
 

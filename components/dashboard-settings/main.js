@@ -151,7 +151,7 @@ export default function DashboardSettingsMain() {
   };
 
   async function updateArchitect() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
     const res = await fetch(`${api_url}/architects/${architectId}`, {
       method: "PATCH",
       headers: {

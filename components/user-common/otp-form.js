@@ -67,12 +67,15 @@ export default function OtpPopupForm() {
     if (data.status === 200) {
       setUserId(data.id);
       setLoginActive(true);
-      localStorage.setItem("userToken", data.token);
-      localStorage.setItem("userId", data.id);
-      localStorage.setItem("userRole", data.role);
+      localStorage.removeItem("token");
+      localStorage.setItem("role", data.role);
       if (data.role === "user") {
+        localStorage.setItem("userToken", data.token);
+        localStorage.setItem("userId", data.id);
         setBid(true);
       } else if (data.role === "architect") {
+        localStorage.setItem("architectToken", data.token);
+        localStorage.setItem("architectId", data.id);
         window.location.href = `/architect-dashboard/${data.id}`;
       }
       setLoginPopup(false);
@@ -103,13 +106,16 @@ export default function OtpPopupForm() {
     if (data.status === 200) {
       setUserId(data.id);
       setLoginActive(true);
-      localStorage.setItem("userId", data.id);
-      localStorage.setItem("userToken", data.token);
-      localStorage.setItem("userRole", data.role);
+      localStorage.removeItem("token");
+      localStorage.setItem("role", data.role);
       if (data.role === "user") {
+        localStorage.setItem("userId", data.id);
+        localStorage.setItem("userToken", data.token);
         setBid(true);
         window.location.href = "/requirement/basic-details";
       } else if (data.role === "architect") {
+        localStorage.setItem("architectId", data.id);
+        localStorage.setItem("architectToken", data.token);
         window.location.href = `/architect-dashboard/${data.id}`;
       }
       setLoginPopup(false);

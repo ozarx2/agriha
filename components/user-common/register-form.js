@@ -88,25 +88,6 @@ export default function RegisterPopupForm() {
           setOtpPopup(true);
           setRegisterPopup(false);
           localStorage.setItem("token", response.data.otpToken);
-
-          // dummy login start
-
-          // setUserId(response.data.id);
-          // setLoginActive(true);
-          // setOtpPopup(false);
-          // setLoginPopup(false);
-          // setRegisterPopup(false);
-          // localStorage.setItem("userId", response.data.id);
-          // localStorage.setItem("userToken", response.data.token);
-          // localStorage.setItem("userRole", response.data.role);
-          // if (response.data.role === "user") {
-          //   setBid(true);
-          //   window.location.href = "/requirement/basic-details";
-          // } else if (response.data.role === "architect") {
-          //   window.location.href = `/architect-dashboard/${response.data.id}`;
-          // }
-
-          // dummy login end
         } else {
           setIsError(true);
           setError(response.data.message);

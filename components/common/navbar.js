@@ -73,7 +73,7 @@ export default function Navbar() {
 
   /* GET ARCHITECT DATA */
   async function getArchitect() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     const res = await fetch(`${api_url}/architects/${architectId}`, {
       method: "GET",
@@ -89,7 +89,7 @@ export default function Navbar() {
 
   /* GET ARCHITECT PROJECTS */
   async function getProjects() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     const res = await fetch(`${api_url}/projects/${architectId}`, {
       method: "GET",
@@ -107,7 +107,7 @@ export default function Navbar() {
 
   /* GET USER PROJECTS */
   async function getAssignedProjects() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     const res = await fetch(`${api_url}/projects/singleuserproject/${architectId}`, {
       method: "GET",
@@ -147,7 +147,7 @@ export default function Navbar() {
 
   /* GET ACTIVITY LOG */
   async function getActivityLog() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     const res = await fetch(`${api_url}/activitylog/${architectId}`, {
       method: "GET",

@@ -51,24 +51,6 @@ export default function LoginPopupForm() {
       setOtpPopup(true);
       setLoginPopup(false);
       localStorage.setItem("token", data.token);
-
-      // dummy login start
-
-      // setOtpPopup(false);
-      // setLoginPopup(false);
-      // setRegisterPopup(false);
-      // localStorage.setItem("userToken", data.token);
-      // localStorage.setItem("userId", data.id);
-      // localStorage.setItem("userRole", data.role);
-      // setUserId(data.id);
-      // setLoginActive(true);
-      // if (data.role === "user") {
-      //   setBid(true);
-      // } else if (data.role === "architect") {
-      //   window.location.href = `/architect-dashboard/${data.id}`;
-      // }
-
-      // dummy login end
     } else {
       setIsError(true);
       setError(data.message);

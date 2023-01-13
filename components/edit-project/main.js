@@ -28,7 +28,7 @@ export default function EditProjectMain() {
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
       method: "GET",
@@ -57,7 +57,7 @@ export default function EditProjectMain() {
 
   async function editProjectArchitect() {
     console.log(projectImages);
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     const res = await fetch(`${api_url}/projects/${projectId}`, {
       method: "PATCH",

@@ -23,7 +23,7 @@ export default function SingleOngoingProjectsMain() {
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
     const res = await fetch(`${api_url}/projects/single/${projectId}`, {
       method: "GET",
       headers: {

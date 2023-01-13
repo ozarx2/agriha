@@ -77,10 +77,14 @@ export default function SingleOngoingProjectsMain() {
                     <td>Expected area of project</td>
                     <td>: {projectTypeDetails?.area} SQFT</td>
                   </tr>
-                  <tr>
-                    <td>Total Plot</td>
-                    <td>: {projectTypeDetails?.plot}</td>
-                  </tr>
+                  {projectType === "Interior" ? (
+                    ""
+                  ) : (
+                    <tr>
+                      <td>Total Plot</td>
+                      <td>: {projectTypeDetails?.plot}</td>
+                    </tr>
+                  )}
                   <tr>
                     <td>Number of floors</td>
                     <td>: {projectTypeDetails?.suggessions}</td>

@@ -16,30 +16,23 @@ export default function FnSTwo() {
   const setAddProject = Store.setAddProject;
   const projects = Store.projects;
 
-  // console.log(projects);
-
-  const [project, setProject] = useState(true);
-
-  useEffect(() => {
-    if (projects.length !== 0) {
-      setProject(true);
-    } else {
-      setProject(false);
-    }
-  }, [projects]);
-
   return (
     <>
       <div className={styles.stwo_outer}>
         <div className={styles.stwo_inner}>
           <div className={styles.title}>
-            Own Projects
-            <span className={styles.dot}>
-              <Image src="/img/architect-dashboard/dot.svg" alt="dot" width={3} height={3} />
-            </span>
-            <span className={styles.number}>{projects?.length}</span>
+            <div>
+              Own Projects
+              <span className={styles.dot}>
+                <Image src="/img/architect-dashboard/dot.svg" alt="dot" width={3} height={3} />
+              </span>
+              <span className={styles.number}>{projects?.length}</span>
+            </div>
+            <Link href="/my-projects" passHref>
+              <div>View all</div>
+            </Link>
           </div>
-          {project ? (
+          {projects?.length !== 0 ? (
             <div className={`architect_dashboard ${styles.slider_outer}`}>
               <Swiper
                 autoHeight={true}
@@ -86,9 +79,12 @@ export default function FnSTwo() {
                   ?.slice(0)
                   .reverse()
                   ?.map((item, index) => {
+                    {
+                      /* console.log(item); */
+                    }
                     return (
                       <SwiperSlide key={index}>
-                        <Link href="/my-projects" passHref>
+                        <Link href={`/my-projects/${item._id}`} passHref>
                           <div className={styles.slide_outer}>
                             <div className={styles.slide_image}>
                               <img

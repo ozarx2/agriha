@@ -107,6 +107,17 @@
   background-color: #019071;
 }
 
+.loading {
+  min-height: calc(100vh - 450px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.loading img {
+  width: 40px;
+}
+
 /* @media only screen and (max-width: 1820px) {
   .bidCard__container {
     display: grid;

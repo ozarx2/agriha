@@ -263,7 +263,7 @@ export default function EditProjectMain() {
               <div className={styles.inputContainer_editProjectMain}>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Project Title</p>
-                  <input type="text" readOnly value={projectName} />
+                  <input type="text" onChange={(e) => setProjectName(e.target.value)} defaultValue={projectName} />
                 </div>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Project type</p>

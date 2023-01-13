@@ -51,61 +51,66 @@ export default function FnSFour() {
           </div>
           {ongoingProject ? (
             <div className={styles.stwo_grid_mobile_max_outer}>
-              {ongoing?.map((item, index) => {
-                return (
-                  <div key={index} className={styles.stwo_mobile_grid_outer}>
-                    <div className={styles.top}>
-                      <div className={styles.left}>
-                        <img
-                          src={
-                            item?.creator?.profile_pic ? item?.creator?.profile_pic : "/img/ongoing-project/profile.jpg"
-                          }
-                          onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                          alt="alt"
-                        />
-                        <div>{item?.creator?.name}</div>
-                      </div>
-                      {/* {console.log(item)} */}
-                      <Link href={`/ongoing-project/${item._id}`} passHref>
-                        <div className={styles.right}>
-                          <img src="/img/ongoing-project/3dots.svg" alt="alt" />
+              {ongoing
+                ?.slice(0)
+                .reverse()
+                ?.map((item, index) => {
+                  return (
+                    <div key={index} className={styles.stwo_mobile_grid_outer}>
+                      <div className={styles.top}>
+                        <div className={styles.left}>
+                          <img
+                            src={
+                              item?.creator?.profile_pic
+                                ? item?.creator?.profile_pic
+                                : "/img/ongoing-project/profile.jpg"
+                            }
+                            onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                            alt="alt"
+                          />
+                          <div>{item?.creator?.name}</div>
                         </div>
-                      </Link>
-                      {/* <div
+                        {/* {console.log(item)} */}
+                        <Link href={`/ongoing-project/${item._id}`} passHref>
+                          <div className={styles.right}>
+                            <img src="/img/ongoing-project/3dots.svg" alt="alt" />
+                          </div>
+                        </Link>
+                        {/* <div
                         onClick={() => setOngoingPopup(true)}
                         className={styles.right}
                       >
                         <img src="/img/ongoing-project/3dots.svg" alt="alt" />
                       </div> */}
-                    </div>
-                    <div className={styles.content}>
-                      <div className={styles.center}>
-                        <div className={styles.left}>{item?.project_name}</div>
-                        <div className={styles.right}>{item?.starting_date}</div>
                       </div>
-                      <div className={styles.bottom}>
-                        <div onClick={() => uploadClick(item?._id)}>
-                          <img src="/img/ongoing-project/upload-m.svg" alt="alt" />
-                          <div>Upload now </div>
+                      <div className={styles.content}>
+                        <div className={styles.center}>
+                          <div className={styles.left}>{item?.project_name}</div>
+                          <div className={styles.right}>{item?.starting_date}</div>
                         </div>
-                        {/* <div>
+                        <div className={styles.bottom}>
+                          <div onClick={() => uploadClick(item?._id)}>
+                            <img src="/img/ongoing-project/upload-m.svg" alt="alt" />
+                            <div>Upload now </div>
+                          </div>
+                          {/* <div>
                           <img
                             src="/img/ongoing-project/send-m.svg"
                             alt="alt"
                           />
                           <div>Send product</div>
                         </div> */}
-                        <Link href={`/project-files/${item._id}`} passHref>
-                          <div>
-                            <img src="/img/ongoing-project/file-m.svg" alt="alt" />
-                            <div>Files</div>
-                          </div>
-                        </Link>
+                          <Link href={`/project-files/${item._id}`} passHref>
+                            <div>
+                              <img src="/img/ongoing-project/file-m.svg" alt="alt" />
+                              <div>Files</div>
+                            </div>
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           ) : (
             <div className={styles.no_project}>

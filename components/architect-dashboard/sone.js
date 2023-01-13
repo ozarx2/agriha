@@ -64,7 +64,11 @@ export default function FnSOne() {
                 {architectData?.location}
               </h6>
             </div>
+            <div className={styles.verifiedImage}>
+              <Image src="/img/common/blue.svg" alt="location" width={60} height={60} />
+            </div>
           </div>
+
           <div className={styles.line}></div>
           <div className={styles.right}>
             <div className={styles.project_outer}>

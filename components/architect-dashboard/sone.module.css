@@ -14,8 +14,7 @@
   display: flex;
   align-items: center;
 }
-.right {
-}
+
 .profile_image {
   height: 110px;
   width: 110px;
@@ -27,6 +26,7 @@
   max-width: 100%;
   border-radius: 50%;
   max-height: 110px;
+  min-height: 110px;
   min-width: 110px;
   object-fit: cover;
 }
@@ -35,6 +35,7 @@
   max-width: 23px;
   bottom: 5px;
   right: 6px;
+  cursor: pointer;
 }
 .profile_image .edit img {
   max-width: 100%;
@@ -71,6 +72,11 @@
 .content h6 .location {
   margin-right: 7px;
 }
+
+.verifiedImage {
+  margin-left: 30px;
+}
+
 .line {
   border-right: 1px solid #ecebeb;
   height: 110px;
@@ -257,6 +263,7 @@
   }
   .profile_image > img {
     max-height: 56px;
+    min-height: 56px;
     min-width: 56px;
   }
   .profile_image .edit {

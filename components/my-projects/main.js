@@ -43,36 +43,39 @@ export default function MyProjectsMain({ page, setPage }) {
                 <>
                   {project ? (
                     <>
-                      {projects?.map((item, i) => {
-                        return (
-                          <React.Fragment key={i}>
-                            <Link href={`/my-projects/${item._id}`} passHref>
-                              <div className={styles.stwo_grid_outer}>
-                                <div className={styles.stwo_grid_image}>
-                                  <img
-                                    src={
-                                      item?.thumbnail
-                                        ? item?.thumbnail
-                                        : item?.Image[0]
-                                        ? item?.Image[0]
-                                        : "/img/architect-dashboard/noImg.jpeg"
-                                    }
-                                    onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                                    alt="alt"
-                                  />
+                      {projects
+                        ?.slice(0)
+                        ?.reverse()
+                        .map((item, i) => {
+                          return (
+                            <React.Fragment key={i}>
+                              <Link href={`/my-projects/${item._id}`} passHref>
+                                <div className={styles.stwo_grid_outer}>
+                                  <div className={styles.stwo_grid_image}>
+                                    <img
+                                      src={
+                                        item?.thumbnail
+                                          ? item?.thumbnail
+                                          : item?.Image[0]
+                                          ? item?.Image[0]
+                                          : "/img/architect-dashboard/noImg.jpeg"
+                                      }
+                                      onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                                      alt="alt"
+                                    />
+                                  </div>
+                                  <div className={styles.stwo_grid_title}>
+                                    <h3>{item.projectname}</h3>
+                                    <p>
+                                      {item.location} | {item.projectarea}
+                                    </p>
+                                  </div>
                                 </div>
-                                <div className={styles.stwo_grid_title}>
-                                  <h3>{item.projectname}</h3>
-                                  <p>
-                                    {item.location} | {item.projectarea}
-                                  </p>
-                                </div>
-                              </div>
-                            </Link>
-                            {(i + 1) % 4 === 0 ? <div className={styles.border_bottom}></div> : ""}
-                          </React.Fragment>
-                        );
-                      })}
+                              </Link>
+                              {(i + 1) % 4 === 0 ? <div className={styles.border_bottom}></div> : ""}
+                            </React.Fragment>
+                          );
+                        })}
                     </>
                   ) : (
                     <>

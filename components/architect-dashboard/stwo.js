@@ -82,35 +82,38 @@ export default function FnSTwo() {
                 modules={[FreeMode, Pagination]}
                 className="architect_project"
               >
-                {projects?.map((item, index) => {
-                  return (
-                    <SwiperSlide key={index}>
-                      <Link href="/my-projects" passHref>
-                        <div className={styles.slide_outer}>
-                          <div className={styles.slide_image}>
-                            <img
-                              src={
-                                item?.thumbnail
-                                  ? item?.thumbnail
-                                  : item?.Image[0]
-                                  ? item?.Image[0]
-                                  : "/img/architect-dashboard/noImg.jpeg"
-                              }
-                              onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                              alt="alt"
-                            />
+                {projects
+                  ?.slice(0)
+                  .reverse()
+                  ?.map((item, index) => {
+                    return (
+                      <SwiperSlide key={index}>
+                        <Link href="/my-projects" passHref>
+                          <div className={styles.slide_outer}>
+                            <div className={styles.slide_image}>
+                              <img
+                                src={
+                                  item?.thumbnail
+                                    ? item?.thumbnail
+                                    : item?.Image[0]
+                                    ? item?.Image[0]
+                                    : "/img/architect-dashboard/noImg.jpeg"
+                                }
+                                onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                                alt="alt"
+                              />
+                            </div>
+                            <div className={styles.slide_title}>
+                              <h3>{item?.projectname}</h3>
+                              <p>
+                                {item?.location} | {item?.projectarea}
+                              </p>
+                            </div>
                           </div>
-                          <div className={styles.slide_title}>
-                            <h3>{item?.projectname}</h3>
-                            <p>
-                              {item?.location} | {item?.projectarea}
-                            </p>
-                          </div>
-                        </div>
-                      </Link>
-                    </SwiperSlide>
-                  );
-                })}
+                        </Link>
+                      </SwiperSlide>
+                    );
+                  })}
               </Swiper>
             </div>
           ) : (

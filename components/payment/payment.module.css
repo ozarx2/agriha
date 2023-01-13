@@ -138,6 +138,9 @@
   margin-top: 20px;
   margin-left: 15px;
 }
+.addBtn {
+  text-align: center;
+}
 /* .table_out img {
   max-width: 100%;
   height: 150px;

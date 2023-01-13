@@ -152,6 +152,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
           ) : (
             ""
           )}
+          <div className={styles.addBtn}>Add</div>
         </div>
 
         {/* {projectDetails?.length !== 0 ? (

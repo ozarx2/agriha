@@ -302,6 +302,17 @@ export default function EditProjectMain() {
                     </div>
                   );
                 })}
+                {files?.map((item, index) => {
+                  return (
+                    <div key={index} className={styles.imageBox_editProjectMainFiles}>
+                      <img
+                        src={item.url}
+                        alt="image_project"
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                      />
+                    </div>
+                  );
+                })}
                 <div className={styles.addNewImage_container}>
                   <div className={styles.addNew_image}>
                     <img src="/img/architect-dashboard/add_images.svg" alt="add_images.svg" />
@@ -315,19 +326,6 @@ export default function EditProjectMain() {
                     />
                   </div>
                 </div>
-              </div>
-              <div className={styles.imageConatiner_editProjectMain}>
-                {files?.map((item, index) => {
-                  return (
-                    <div key={index} className={styles.imageBox_editProjectMain}>
-                      <img
-                        src={item.url}
-                        alt="image_project"
-                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                      />
-                    </div>
-                  );
-                })}
               </div>
 
               <div className={styles.updateButtonContainer}>

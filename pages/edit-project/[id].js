@@ -34,7 +34,7 @@ export default function BidDetails() {
   return (
     <>
       <Head>
-        <title>Payment View - Architect Dashboard</title>
+        <title>Edit Architect Project - Architect Dashboard</title>
         <meta name="description" content="Bid View - Architect Dashboard" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

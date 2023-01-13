@@ -63,7 +63,7 @@ export default function SingleProjectsMain() {
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
     const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
       method: "GET",
       headers: {

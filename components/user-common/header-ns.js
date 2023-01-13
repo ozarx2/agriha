@@ -57,7 +57,7 @@ export default function AgrihaLandingHeaderNoSearch() {
 
   useEffect(() => {
     const token = localStorage.getItem("userToken");
-    const userRole = localStorage.getItem("userRole");
+    const userRole = localStorage.getItem("role");
     if (token) {
       if (userRole === "user") {
         setLoginActive(true);

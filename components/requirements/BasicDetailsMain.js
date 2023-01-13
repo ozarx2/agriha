@@ -66,7 +66,6 @@ const BasicDetailsMain = () => {
   const storeCommonDetails = () => {
     setArea(document.getElementById("area").value);
     setBudget(document.getElementById("budget").value);
-    setPlot(document.getElementById("plot").value);
     setLocation(document.getElementById("location").value);
     setSuggessions(document.getElementById("suggessions").value);
   };
@@ -439,10 +438,10 @@ const BasicDetailsMain = () => {
 
   /* CREATE PROJECT */
   const handleSubmit = () => {
-    if (area !== "" && budget !== "" && plot !== "" && location !== "") {
+    if (area !== "" && budget !== "" && location !== "") {
       setIsError(false);
       if (selectedtype === "Residential") {
-        if (floor !== "" && bedroom !== "" && bathroom !== "" && familyMembers !== "") {
+        if (plot !== "" && floor !== "" && bedroom !== "" && bathroom !== "" && familyMembers !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -451,7 +450,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Renovation") {
-        if (renovationType !== "") {
+        if (plot !== "" && renovationType !== "") {
           setIsError(false);
           handleRequest();
         } else {
@@ -463,10 +462,16 @@ const BasicDetailsMain = () => {
         handleRequest();
       }
       if (selectedtype === "Landscaping") {
-        handleRequest();
+        if (plot !== "") {
+          setIsError(false);
+          handleRequest();
+        } else {
+          setIsError(true);
+          setError("must fill plot details");
+        }
       }
       if (selectedtype === "Apartment") {
-        if (floor !== "") {
+        if (plot !== "" && floor !== "") {
           setIsError(false);
           handleRequest();
         } else {
@@ -475,7 +480,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Hotels/restaurants") {
-        if (floor !== "" && occupancy !== "") {
+        if (plot !== "" && floor !== "" && occupancy !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -484,7 +489,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Hospitals/medical lab") {
-        if (floor !== "" && beds !== "") {
+        if (plot !== "" && floor !== "" && beds !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -493,7 +498,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Auditorium") {
-        if (floor !== "" && hall !== "") {
+        if (plot !== "" && floor !== "" && hall !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -502,7 +507,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Industrial/warehouse") {
-        if (businessIndustrial !== "") {
+        if (plot !== "" && businessIndustrial !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -511,7 +516,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Mall") {
-        if (floor !== "" && occupancy !== "") {
+        if (plot !== "" && floor !== "" && occupancy !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -520,7 +525,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Multiplex") {
-        if (screens !== "" && occupancy !== "") {
+        if (plot !== "" && screens !== "" && occupancy !== "") {
           setIsError(false);
           handleRequest();
         } else {
@@ -529,7 +534,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Religious building") {
-        if (religion !== "" && occupancy !== "") {
+        if (plot !== "" && religion !== "" && occupancy !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -538,7 +543,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "School/College building") {
-        if (schoolOrCollage !== "" && schoolType !== "" && floor !== "" && occupancy !== "") {
+        if (plot !== "" && schoolOrCollage !== "" && floor !== "" && occupancy !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -547,7 +552,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Sports building") {
-        if (sportType !== "" && occupancy !== "") {
+        if (plot !== "" && sportType !== "" && occupancy !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -556,7 +561,7 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Hostel") {
-        if (floor !== "" && rooms !== "") {
+        if (plot !== "" && floor !== "" && rooms !== "") {
           handleRequest();
           setIsError(false);
         } else {
@@ -565,7 +570,13 @@ const BasicDetailsMain = () => {
         }
       }
       if (selectedtype === "Farmhouse") {
-        handleRequest();
+        if (plot !== "") {
+          setIsError(false);
+          handleRequest();
+        } else {
+          setIsError(true);
+          setError("must fill plot details");
+        }
       }
     } else {
       setIsError(true);
@@ -632,14 +643,18 @@ const BasicDetailsMain = () => {
                 </div>
               </div>
               <div className={styles.inputRow}>
-                <div className={styles.plot_input_conatiner}>
-                  <input
-                    type="text"
-                    onChange={storeCommonDetails}
-                    id="plot"
-                    placeholder="Total plot in cent (eg. 1200)*"
-                  />
-                </div>
+                {selectedtype === "Interior" ? (
+                  ""
+                ) : (
+                  <div className={styles.plot_input_conatiner}>
+                    <input
+                      type="text"
+                      onChange={(e) => setPlot(e.target.value)}
+                      id="plot"
+                      placeholder="Total plot in cent (eg. 1200)*"
+                    />
+                  </div>
+                )}
                 <div className={styles.location_input_conatiner}>
                   <input onChange={storeCommonDetails} id="location" type="text" placeholder="Location*" />
                 </div>

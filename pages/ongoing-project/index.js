@@ -33,7 +33,7 @@ export default function ArchitectDashboard() {
 
   const router = useRouter();
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
+    const userId = localStorage.getItem("architectId");
     if (userId) {
     } else {
       router.push("/");

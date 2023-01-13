@@ -16,7 +16,7 @@ import styles from "./index.module.css";
 export default function ArchitectDashboardFilesSingle() {
   const router = useRouter();
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
+    const userId = localStorage.getItem("architectId");
     if (userId) {
     } else {
       router.push("/");

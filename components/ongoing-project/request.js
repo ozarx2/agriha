@@ -26,7 +26,7 @@ const Request = ({ name, avatar, type, id, setPage, item }) => {
 
   /* ACCEPT REQUEST */
   async function acceptRequest(status) {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     const res = await fetch(`${api_url}/projects/accept/${id}`, {
       method: "PATCH",

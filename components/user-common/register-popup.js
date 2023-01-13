@@ -45,13 +45,12 @@ export default function RegisterPopup() {
         role: "user",
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
+        localStorage.setItem("token", response.data.token);
         if (response.data.message === "user registeration successfully") {
-          localStorage.setItem("token", response.data.token);
           window.location.href = "/requirement/basic-details";
         }
         if (response.data.message === "user login successfully") {
-          localStorage.setItem("token", response.data.token);
           window.location.href = "/dashboard";
         }
       })

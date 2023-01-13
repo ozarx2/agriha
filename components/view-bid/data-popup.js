@@ -38,7 +38,7 @@ export default function DataPopup({ setIsQuoted }) {
 
   /* ACCEPT REQUEST */
   async function acceptRequest(status) {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     const res = await fetch(`${api_url}/projects/accept/${requestOrBidID}`, {
       method: "PATCH",
@@ -95,7 +95,7 @@ export default function DataPopup({ setIsQuoted }) {
   }
 
   async function acceptRequestNew(status) {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     const res = await fetch(`${api_url}/projects/accept/${requestOrBidID}`, {
       method: "PATCH",

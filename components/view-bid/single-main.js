@@ -27,7 +27,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
     const res = await fetch(`${api_url}/projects/single/${projectId}`, {
       method: "GET",
       headers: {
@@ -64,9 +64,9 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
   };
 
   async function acceptRequestNew(status) {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
-    console.log(requestOrBidID);
+    // console.log(requestOrBidID);
 
     const res = await fetch(`${api_url}/projects/accept/${requestOrBidID}`, {
       method: "PATCH",
@@ -120,10 +120,14 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                     <td>Expected area of project</td>
                     <td>: {projectTypeDetails?.area} SQFT</td>
                   </tr>
-                  <tr>
-                    <td>Total Plot</td>
-                    <td>: {projectTypeDetails?.plot}</td>
-                  </tr>
+                  {projectType === "Interior" ? (
+                    ""
+                  ) : (
+                    <tr>
+                      <td>Total Plot</td>
+                      <td>: {projectTypeDetails?.plot}</td>
+                    </tr>
+                  )}
                   <tr>
                     <td>Number of floors</td>
                     <td>: {projectTypeDetails?.suggessions}</td>

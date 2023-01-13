@@ -140,7 +140,7 @@ const AddProject = () => {
   };
 
   async function addProject() {
-    var token = localStorage.getItem("userToken");
+    var token = localStorage.getItem("architectToken");
 
     if (projectTile !== "" && projectLocation !== "" && projectArea !== "" && projectImages !== [] && thumb !== "") {
       const res = await fetch(`${api_url}/projects`, {
@@ -185,7 +185,7 @@ const AddProject = () => {
   }, [projectImages]);
 
   async function getProjects() {
-    const token = localStorage.getItem("userToken");
+    const token = localStorage.getItem("architectToken");
     const res = await fetch(`${api_url}/project-types`, {
       method: "GET",
       headers: {

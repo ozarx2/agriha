@@ -24,7 +24,7 @@ export default function BidDetails() {
 
   const router = useRouter();
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
+    const userId = localStorage.getItem("architectId");
     if (userId) {
     } else {
       router.push("/");

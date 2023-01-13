@@ -123,7 +123,7 @@ const AddProject = () => {
   const [projectTile, setProjectTitle] = useState("");
   const [projectLocation, setProjectLocation] = useState("");
   const [projectArea, setProjectArea] = useState("");
-  const [projectType, setProjectType] = useState("");
+  const [projectType, setProjectType] = useState("Residential");
   const [projectTag, setProjectTag] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
 
@@ -136,8 +136,11 @@ const AddProject = () => {
   };
 
   const chooseProjectType = (e) => {
+    console.log(e.target.value);
     setProjectType(e.target.value);
   };
+
+  console.log(projectType);
 
   async function addProject() {
     var token = localStorage.getItem("architectToken");
@@ -163,6 +166,7 @@ const AddProject = () => {
       });
 
       const data = await res.json();
+      console.log(data);
 
       if (data.status === 200) {
         setLoading(false);
@@ -179,7 +183,12 @@ const AddProject = () => {
   };
 
   useEffect(() => {
-    if (files.length === projectImages.length && files.length !== 0 && projectImages.length !== 0) {
+    if (
+      files.length === projectImages.length &&
+      files.length !== 0 &&
+      projectImages.length !== 0 &&
+      projectType !== ""
+    ) {
       addProject();
     }
   }, [projectImages]);

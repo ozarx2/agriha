@@ -8,6 +8,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 
 import styles from "./main.module.css";
+import { PulseLoader } from "react-spinners";
 
 export default function EditProjectMain() {
   const router = useRouter();
@@ -25,6 +26,8 @@ export default function EditProjectMain() {
 
   const [tembImages, setTembImages] = useState([]);
   const [tembCount, setTembCount] = useState(0);
+
+  const [loading, setLoading] = useState(false);
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
@@ -79,9 +82,9 @@ export default function EditProjectMain() {
 
     const data = await res.json();
     console.log(data);
-    /* if (data) {
+    if (data) {
       window.history.back();
-    } */
+    }
   }
 
   /* Upload thumb images */
@@ -162,6 +165,7 @@ export default function EditProjectMain() {
   const [files, setFiles] = useState([]);
 
   const uploadMultipleFiles = (e) => {
+    setIsImageAdded(true);
     if (e.target.files.length <= 30) {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
@@ -182,17 +186,51 @@ export default function EditProjectMain() {
     }
   };
 
-  const saveProject = () => {
-    uploadProject();
-  };
+  const [isImageAdded, setIsImageAdded] = useState(false);
 
-  console.log(tembCount);
+  const checkFinal = () => {
+    if (!isImageAdded) {
+      setLoading(true);
+      editProjectArchitect();
+    } else {
+      setLoading(true);
+      uploadProject();
+    }
+  };
 
   useEffect(() => {
     if (tembCount !== 0 && tembImages.length === tembCount) {
       editProjectArchitect();
     }
-  }, [tembImages, tembCount]);
+  }, [tembCount, tembImages]);
+
+  async function deleteImageArchitectProject(image) {
+    var token = localStorage.getItem("userToken");
+
+    const res = await fetch(`${api_url}/projects/arc_img/${projectId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        url: image,
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    if (data.acknowledged && data.matchedCount === 1) {
+      getProjects();
+    }
+  }
+
+  const deleteImage = (image) => {
+    var res = confirm("are your sure want to delete?");
+    if (res) {
+      deleteImageArchitectProject(image);
+    }
+  };
 
   return (
     <>
@@ -225,7 +263,7 @@ export default function EditProjectMain() {
               <div className={styles.inputContainer_editProjectMain}>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Project Title</p>
-                  <input type="text" readOnly value={projectName} />
+                  <input type="text" onChange={(e) => setProjectName(e.target.value)} defaultValue={projectName} />
                 </div>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Project type</p>
@@ -252,11 +290,26 @@ export default function EditProjectMain() {
                 {projectImages?.map((item, index) => {
                   return (
                     <div key={index} className={styles.imageBox_editProjectMain}>
-                      <div className={styles.deleteImage_editProjectMain}>
+                      <div className={styles.deleteImage_editProjectMain} onClick={() => deleteImage(item)}>
                         <FontAwesomeIcon icon={faTrash} className={styles.deleteIcon} />
                         Delete
                       </div>
-                      <img src={item} alt="image_project" />
+                      <img
+                        src={item}
+                        alt="image_project"
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                      />
+                    </div>
+                  );
+                })}
+                {files?.map((item, index) => {
+                  return (
+                    <div key={index} className={styles.imageBox_editProjectMainFiles}>
+                      <img
+                        src={item.url}
+                        alt="image_project"
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                      />
                     </div>
                   );
                 })}
@@ -274,19 +327,10 @@ export default function EditProjectMain() {
                   </div>
                 </div>
               </div>
-              <div className={styles.imageConatiner_editProjectMain}>
-                {files?.map((item, index) => {
-                  return (
-                    <div key={index} className={styles.imageBox_editProjectMain}>
-                      <img src={item.url} alt="image_project" />
-                    </div>
-                  );
-                })}
-              </div>
 
               <div className={styles.updateButtonContainer}>
-                <div className={styles.updateButton} onClick={saveProject}>
-                  Save Project
+                <div className={styles.updateButton} onClick={checkFinal}>
+                  {loading ? <PulseLoader color="#ffffff" /> : "Save Project"}
                 </div>
               </div>
             </div>

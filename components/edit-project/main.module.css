@@ -129,7 +129,7 @@
 .imageConatiner_editProjectMain {
   margin-top: 25px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   gap: 25px;
 }
 
@@ -152,19 +152,25 @@
   color: #303030;
 }
 
-.imageBox_editProjectMain {
+.imageBox_editProjectMain,
+.imageBox_editProjectMainFiles {
   width: 100%;
   height: 100px;
   margin-bottom: 10px;
   width: 100px;
 }
 
-.imageBox_editProjectMain > img {
+.imageBox_editProjectMain > img,
+.imageBox_editProjectMainFiles > img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   margin-top: 5px;
   border-radius: 6px;
+}
+
+.imageBox_editProjectMainFiles > img {
+  margin-top: 25px;
 }
 
 .updateButtonContainer {
@@ -213,7 +219,7 @@
 .addNew_image {
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .addNew_image > img {
@@ -225,4 +231,66 @@
   height: 100px;
   width: 100px;
   opacity: 0;
+}
+
+@media only screen and (max-width: 1615px) {
+  .imageConatiner_editProjectMain {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1290px) {
+  .imageConatiner_editProjectMain {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .imageConatiner_editProjectMain {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+@media only screen and (max-width: 935px) {
+  .imageConatiner_editProjectMain {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media only screen and (max-width: 685px) {
+  .imageConatiner_editProjectMain {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 535px) {
+  .imageConatiner_editProjectMain {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .inputContainer_editProjectMain {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .imageBox_editProjectMain,
+  .imageBox_editProjectMainFiles {
+    max-width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    width: 100px;
+  }
+  .addNew_image > img {
+    height: 80px;
+  }
+
+  .addNewImage_input {
+    margin-left: -80px;
+    height: 80px;
+    width: 80px;
+    opacity: 0;
+  }
 }

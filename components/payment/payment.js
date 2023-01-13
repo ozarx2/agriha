@@ -16,37 +16,42 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
   const projectId = id;
   const options = ["Gpay", "Paytm", "Phonepay"];
   const defaultOption = options[0];
-  const [online, setOnline] = useState(false);
-  const [account, setAccount] = useState(false);
-  const [onlineChange, setOnlineChange] = useState(false);
-  const [accountChange, setAccountChange] = useState(false);
+  const [onlineOrAccount, setOnlineOrAccount] = useState("online");
 
-  const onlinToggleSec = () => {
-    setOnline((prevState) => !prevState);
-    setOnlineChange();
-  };
-  const accountToggle = () => {
-    setAccount((prevState) => !prevState);
-    setAccountChange();
+  const handleClick = () => {
+    setActive(!active);
   };
   return (
     <>
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
           <div className={styles.paymentsectionMain}>Mode of Payment</div>
-          <div className={styles.paymentMode}>
+          {/* <div className={styles.paymentMode}>
             <div className={styles.modeInput}>
-              <input onClick={() => onlinToggleSec()} type="radio" id="" name="online" value="online" />
+              <input onClick={() => setOnlineOrAccount("online")} type="radio" id="" name="payment" value="online" />
               online
             </div>
             <div className={styles.modeInput}>
-              <input onClick={() => accountToggle()} type="radio" id="" name="online" value="online" />
+              <input onClick={() => setOnlineOrAccount("account")} type="radio" id="" name="payment" value="account" />
               account transfer
+            </div>
+          </div> */}
+          <div className={styles.paymentMode}>
+            <div className={styles.modeInput}>
+              <div onClick={() => setOnlineOrAccount("online")}>online</div>
+              {/* <input onClick={() => setOnlineOrAccount("online")} type="radio" id="" name="payment" value="online" />
+              online */}
+            </div>
+            <div className={styles.modeAccount}>
+              <div onClick={() => setOnlineOrAccount("account")}>account transfer</div>
+
+              {/* <input onClick={() => setOnlineOrAccount("account")} type="radio" id="" name="payment" value="account" />
+              account transfer */}
             </div>
           </div>
 
-          <div className={styles.transactionTypeTitle}>Type of transactions :</div>
-          {online ? (
+          {/* <div className={styles.transactionTypeTitle}>Type of transactions :</div> */}
+          {onlineOrAccount === "online" ? (
             <div className={styles.typesOfTransactionUpi}>
               <table className={styles.table_out}>
                 <tbody>
@@ -66,9 +71,9 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                     </td>
                   </tr>
                   <tr>
+                    {/* <img src="/img/upi.svg" alt="upi.svg" className={styles.upiIcon} /> */}
                     <td>
-                      <img src="/img/upi.svg" alt="upi.svg" className={styles.upiIcon} />
-                      UPI
+                      UPI id/number
                       {/* <td>
                       <Dropdown
                         className={styles.dropdown}
@@ -116,9 +121,6 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
               </table>
             </div>
           ) : (
-            ""
-          )}
-          {account ? (
             <div className={styles.typesOfTransactionAcc}>
               <table className={styles.table_out}>
                 <tbody>
@@ -149,10 +151,10 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                 </tbody>
               </table>
             </div>
-          ) : (
-            ""
           )}
-          <div className={styles.addBtn}>Add</div>
+          <div className={styles.paymentMode}>
+            <div className={styles.modeInput}>Add</div>
+          </div>
         </div>
 
         {/* {projectDetails?.length !== 0 ? (

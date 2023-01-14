@@ -28,18 +28,22 @@ export default function EditProjectMain() {
   const [tembCount, setTembCount] = useState(0);
 
   const [loading, setLoading] = useState(false);
+  const [thumbLoading, setThumbLoading] = useState(false);
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
     var token = localStorage.getItem("architectToken");
 
-    const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      `${api_url}/projects/arcprojectsingle/${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const data = await res.json();
     console.log(data[0]);
     setThumbnail(data[0]?.thumbnail);
@@ -101,7 +105,9 @@ export default function EditProjectMain() {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercent(percent);
@@ -111,12 +117,14 @@ export default function EditProjectMain() {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           setThumbnail(url);
+          setThumbLoading(false);
         });
       }
     );
   }
 
   const uploadThumbFiles = (event) => {
+    setThumbLoading(true);
     if (!event.target.files[0]) {
       alert("Please choose a file first!");
     } else {
@@ -142,7 +150,9 @@ export default function EditProjectMain() {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercentProject(percent);
@@ -170,7 +180,10 @@ export default function EditProjectMain() {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
-        setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
+        setFiles((files) => [
+          ...files,
+          { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] },
+        ]);
       }
     } else {
       alert("Cannot add more than 30 pictures");
@@ -244,8 +257,19 @@ export default function EditProjectMain() {
             <div className={styles.details_editProjectMain}>
               <div className={styles.thumbnail_editProjectMain}>
                 <p>Thumbnail</p>
+                {thumbLoading ? (
+                  <div className={styles.thumbLoadingContainer}>
+                    <PulseLoader color="#ffffff" />
+                  </div>
+                ) : (
+                  ""
+                )}
                 <img
-                  src={thumbnail ? thumbnail : "/img/architect-dashboard/noImg.jpeg"}
+                  src={
+                    thumbnail
+                      ? thumbnail
+                      : "/img/architect-dashboard/noImg.jpeg"
+                  }
                   onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
                   alt="thumbnail"
                 />
@@ -256,26 +280,45 @@ export default function EditProjectMain() {
                   onChange={uploadThumbFiles}
                 />
                 <div className={styles.editThumbnail_editProjectMain}>
-                  <FontAwesomeIcon icon={faPencil} className={styles.editIcon} />
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    className={styles.editIcon}
+                  />
                   edit
                 </div>
               </div>
               <div className={styles.inputContainer_editProjectMain}>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Project Title</p>
-                  <input type="text" onChange={(e) => setProjectName(e.target.value)} defaultValue={projectName} />
+                  <input
+                    type="text"
+                    onChange={(e) => setProjectName(e.target.value)}
+                    defaultValue={projectName}
+                  />
                 </div>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Project type</p>
-                  <input type="text" onChange={(e) => setProjectType(e.target.value)} defaultValue={projectType} />
+                  <input
+                    type="text"
+                    onChange={(e) => setProjectType(e.target.value)}
+                    defaultValue={projectType}
+                  />
                 </div>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Location</p>
-                  <input type="text" onChange={(e) => setLocation(e.target.value)} defaultValue={location} />
+                  <input
+                    type="text"
+                    onChange={(e) => setLocation(e.target.value)}
+                    defaultValue={location}
+                  />
                 </div>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Total area</p>
-                  <input type="text" onChange={(e) => setProjectArea(e.target.value)} defaultValue={projectArea} />
+                  <input
+                    type="text"
+                    onChange={(e) => setProjectArea(e.target.value)}
+                    defaultValue={projectArea}
+                  />
                 </div>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Hashtag</p>
@@ -283,39 +326,62 @@ export default function EditProjectMain() {
                 </div>
                 <div className={styles.inputBox_editProjectMain}>
                   <p>Description</p>
-                  <input type="text" onChange={(e) => setDescription(e.target.value)} defaultValue={description} />
+                  <input
+                    type="text"
+                    onChange={(e) => setDescription(e.target.value)}
+                    defaultValue={description}
+                  />
                 </div>
               </div>
               <div className={styles.imageConatiner_editProjectMain}>
                 {projectImages?.map((item, index) => {
                   return (
-                    <div key={index} className={styles.imageBox_editProjectMain}>
-                      <div className={styles.deleteImage_editProjectMain} onClick={() => deleteImage(item)}>
-                        <FontAwesomeIcon icon={faTrash} className={styles.deleteIcon} />
+                    <div
+                      key={index}
+                      className={styles.imageBox_editProjectMain}
+                    >
+                      <div
+                        className={styles.deleteImage_editProjectMain}
+                        onClick={() => deleteImage(item)}
+                      >
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className={styles.deleteIcon}
+                        />
                         Delete
                       </div>
                       <img
                         src={item}
                         alt="image_project"
-                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                        onError={(e) =>
+                          (e.target.src = "/img/landing/nophoto.jpg")
+                        }
                       />
                     </div>
                   );
                 })}
                 {files?.map((item, index) => {
                   return (
-                    <div key={index} className={styles.imageBox_editProjectMainFiles}>
+                    <div
+                      key={index}
+                      className={styles.imageBox_editProjectMainFiles}
+                    >
                       <img
                         src={item.url}
                         alt="image_project"
-                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                        onError={(e) =>
+                          (e.target.src = "/img/landing/nophoto.jpg")
+                        }
                       />
                     </div>
                   );
                 })}
                 <div className={styles.addNewImage_container}>
                   <div className={styles.addNew_image}>
-                    <img src="/img/architect-dashboard/add_images.svg" alt="add_images.svg" />
+                    <img
+                      src="/img/architect-dashboard/add_images.svg"
+                      alt="add_images.svg"
+                    />
                     <input
                       className={styles.addNewImage_input}
                       type="file"

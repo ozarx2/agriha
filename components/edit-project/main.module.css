@@ -31,6 +31,15 @@
   margin-top: 30px;
 }
 
+.thumbLoadingContainer {
+  width: 250px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -160px;
+}
+
 .thumbnail_editProjectMain {
   width: 250px;
   height: 160px;

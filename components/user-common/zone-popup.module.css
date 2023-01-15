@@ -417,22 +417,23 @@
 
 /* Yaseen */
 
-.notOnAgrihaContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 30px;
+.content_inner .stwo label {
+  font-size: 13px;
+  color: #585858;
+}
+
+.content_inner .stwo select {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
   font-size: 12px;
-}
-
-.notOnAgrihaContainer > span {
-  color: #4c0ad6;
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 767px) {
-  .notOnAgrihaContainer {
-    margin-top: 20px;
-  }
+  line-height: 15px;
+  color: #642dda;
+  background: #f8f5ff;
+  border: 0.5px solid #642dda;
+  border-radius: 6px;
+  padding: 14.67px 18.15px;
+  width: 100%;
+  margin-bottom: 14px;
+  margin-top: 5px;
 }

@@ -11,6 +11,7 @@ import ArchitectBidPopupidPopup from "../components/user-common/architect-bid-po
 import ProfilePopup from "../components/user-common/profile-popup";
 
 import styles from "./index.module.css";
+import ZonePopup from "../components/user-common/zone-popup";
 
 export default function AgrihaLanding() {
   const [Store] = useContext(StoreContext);
@@ -18,8 +19,10 @@ export default function AgrihaLanding() {
   const loginPopup = Store.loginPopup;
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
+  const zonePopup = Store.zonePopup;
   const architectBidPopup = Store.architectBidPopup;
   const profilePopup = Store.profilePopup;
+
   return (
     <>
       <Head>
@@ -44,6 +47,7 @@ export default function AgrihaLanding() {
         {loginPopup ? <LoginPopup /> : ""}
         {registerPopup ? <RegisterPopup /> : ""}
         {otpPopup ? <OtpPopup /> : ""}
+        {zonePopup ? <ZonePopup /> : ""}
         {architectBidPopup ? <ArchitectBidPopupidPopup /> : ""}
         {profilePopup ? <ProfilePopup /> : ""}
       </div>

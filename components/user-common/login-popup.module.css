@@ -365,3 +365,25 @@
   font-size: 12px;
   margin-top: 5px;
 }
+
+/* Yaseen */
+
+.notOnAgrihaContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  font-size: 12px;
+}
+
+.notOnAgrihaContainer > span {
+  color: #4c0ad6;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+  .notOnAgrihaContainer {
+    margin-top: 20px;
+  }
+}

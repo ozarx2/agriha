@@ -23,41 +23,49 @@ export default function SinglePaymentProjectMain({ isQuoted, setIsQuoted }) {
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
           <div className={styles.title}>Add payment to project</div>
-          <table className={styles.table_out}>
-            <tbody>
-              <tr>
-                <td>Payment details </td>
-                <td>
-                  :
-                  <Dropdown
-                    className={styles.dropdown}
-                    options={options}
-                    // onChange={this._onSelect}
-                    value={defaultOption}
-                    placeholder="Select an option"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>Payable amount </td>
-                <td>
-                  : <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td> Stage og payment </td>
-                <td>
-                  : <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td> Status of payment </td>
-                <td>
-                  : <input type="text" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div className={styles.paymentColoumns}>
+            <table className={styles.table_out}>
+              <tbody>
+                <tr>
+                  <td>Payment details </td>
+                  <td>
+                    :
+                    <Dropdown
+                      className={styles.dropdown}
+                      options={options}
+                      // onChange={this._onSelect}
+                      value={defaultOption}
+                      placeholder="Select an option"
+                    />
+                  </td>
+                  <td>
+                    <button className={styles.addAcc}>Add account</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Payable amount </td>
+                  <td>
+                    : <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td> Stage og payment </td>
+                  <td>
+                    : <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td> Status of payment </td>
+                  <td>
+                    : <input type="text" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className={styles.paymentMode}>
+            <div className={styles.modeInput}>Add payment</div>
+          </div>
         </div>
 
         {/* {projectDetails?.length !== 0 ? (

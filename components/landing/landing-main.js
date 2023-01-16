@@ -57,7 +57,6 @@ export default function AgrihaLandingMain() {
   }, []);
 
   const [allProjectSliced, setAllProjectSliced] = useState([]);
-  const [page, setPage] = useState(1);
 
   function groupN(array, num) {
     const group = [];
@@ -67,71 +66,51 @@ export default function AgrihaLandingMain() {
     setAllProjectSliced(group);
   }
 
-  const [scrolling, setScrolling] = useState(false);
-  const [scrollTop, setScrollTop] = useState(0);
-
-  const onScroll = (e) => {
-    setScrollTop(e.target.documentElement.scrollTop);
-    setScrolling(e.target.documentElement.scrollTop > scrollTop);
-  };
-
-  useEffect(() => {
-    if (scrolling === true) {
-      if (loadingAjax === false) {
-        if (window.innerWidth <= 1100) {
-          if (
-            scrollTop + window.innerHeight >=
-            document.body.offsetHeight + 111
-          ) {
-            setLandingPage(landingPage + 1);
-          }
-        } else if (
-          scrollTop + window.innerHeight >=
-          document.body.offsetHeight
-        ) {
-          setLandingPage(landingPage + 1);
-        }
-      }
-    }
-  }, [scrollTop]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-  }, []);
-
-  async function getAllProjects() {
-    if (landingPage * 16 != projectResponse.length) {
-      setLoadingAjax(true);
-      const response = await fetch(
-        `${api_url}/projects/getallprojects?page=${landingPage}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-      if (data) {
-        setLoadingAjax(false);
-        setScrolling(false);
-        setScrollTop(0);
-        const withArchitect = data.data.filter((res) => res?.architect_id);
-        if (filter === "All") {
-          setProjectResponse([...projectResponse, ...withArchitect]);
-        } else {
-          let filtered = withArchitect.filter(
-            (res) => res?.architect_id?.companyname === filter
-          );
-          setProjectResponse(filtered);
-        }
-      }
-    }
-  }
+  const [scrolling, setScrolling] = useState(true);
 
   useEffect(() => {
     getAllProjects();
   }, [filter, landingPage]);
+
+  if (typeof window !== "undefined") {
+    window.onscroll = function (ev) {
+      console.log(window.innerHeight + window.scrollY);
+      console.log(document.body.offsetHeight);
+      if (scrolling) {
+        if (window.innerHeight + window.scrollY === document.body.offsetHeight) {
+          console.log("working....");
+          setLandingPage(landingPage + 1);
+        }
+      }
+    };
+  }
+
+  async function getAllProjects() {
+    console.log(landingPage);
+    if (landingPage * 16 != projectResponse.length) {
+      setLoadingAjax(true);
+      const response = await fetch(`${api_url}/projects/getallprojects?page=${landingPage}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      if (data.data.length > 0) {
+        setLoadingAjax(false);
+        const withArchitect = data.data?.filter((res) => res?.architect_id);
+
+        if (filter === "All") {
+          setProjectResponse([...projectResponse, ...withArchitect]);
+        } else {
+          let filtered = withArchitect.filter((res) => res?.architect_id?.companyname === filter);
+          setProjectResponse(filtered);
+        }
+      } else {
+        setScrolling(false);
+      }
+    }
+  }
 
   useEffect(() => {
     groupN(projectResponse, 4);
@@ -148,9 +127,7 @@ export default function AgrihaLandingMain() {
     const data = await response.json();
     archOnly = data.data?.filter((res) => res?.phone);
     setAllArchitects(archOnly);
-    setProjectResponse(
-      data.data?.filter((res) => res?.projectname && res?.architect_id)
-    );
+    setProjectResponse(data.data?.filter((res) => res?.projectname && res?.architect_id));
   }
 
   const allSearch = (query) => {
@@ -191,75 +168,50 @@ export default function AgrihaLandingMain() {
                 <div className={`container ${styles.container} ${styles.stwo}`}>
                   <div className={styles.stwo_inner}>
                     <div className={styles.left}>
-                      <img
-                        src="/img/landing/banner-left.png"
-                        alt="left banner"
-                      />
+                      <img src="/img/landing/banner-left.png" alt="left banner" />
                     </div>
                     <div className={styles.center}>
                       <div className={styles.title}>
-                        Leading Architects for you to{" "}
-                        <span>design your space</span>
+                        Leading Architects for you to <span>design your space</span>
                       </div>
                       <div className={styles.content}>
-                        connect and get best bedroom, kitchen, bathroom,
-                        livingroom, dining, interior, landscape, furniture,
-                        electrical designs
+                        connect and get best bedroom, kitchen, bathroom, livingroom, dining, interior, landscape,
+                        furniture, electrical designs
                       </div>
                       <div className={styles.buttons}>
                         {loginActive ? (
-                          <div
-                            className={styles.start}
-                            onClick={() => setArchitectBidtPopup(true)}
-                          >
+                          <div className={styles.start} onClick={() => setArchitectBidtPopup(true)}>
                             <img src="/img/landing/plus.svg" alt="plus" />
                             <span>Invite Quote</span>
                           </div>
                         ) : (
-                          <div
-                            className={styles.start}
-                            onClick={() => setRegisterPopup(true)}
-                          >
+                          <div className={styles.start} onClick={() => setRegisterPopup(true)}>
                             Get Started
                           </div>
                         )}
-                        <a
-                          href="https://web.whatsapp.com/send?phone=918921244492&submit=Continue"
-                          target="_blank"
-                        >
+                        <a href="https://web.whatsapp.com/send?phone=918921244492&submit=Continue" target="_blank">
                           <div className={styles.contact}>Contact us</div>
                         </a>
                       </div>
                     </div>
                     <div className={styles.right}>
-                      <img
-                        src="/img/landing/banner-right.png"
-                        alt="right banner"
-                      />
+                      <img src="/img/landing/banner-right.png" alt="right banner" />
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className={styles.sthree_outer}>
-                <div
-                  className={`container ${styles.container} ${styles.sthree}`}
-                >
+                <div className={`container ${styles.container} ${styles.sthree}`}>
                   <div className={styles.sthree_inner}>
-                    <div
-                      className={styles.active}
-                      onClick={() => setFilter("All")}
-                    >
+                    <div className={styles.active} onClick={() => setFilter("All")}>
                       All
                     </div>
                     {projectTypes?.map((item, i) => {
                       return (
                         <React.Fragment key={i}>
                           {item?.companyname ? (
-                            <div
-                              onClick={() => setFilter(item?.companyname)}
-                              key={i}
-                            >
+                            <div onClick={() => setFilter(item?.companyname)} key={i}>
                               {item?.companyname}
                             </div>
                           ) : (
@@ -288,35 +240,23 @@ export default function AgrihaLandingMain() {
                         backgroundImage: "url(/img/landing/sone-right.svg)",
                       }}
                     >
-                      <div
-                        className={`container ${styles.container} ${styles.sone}`}
-                      >
+                      <div className={`container ${styles.container} ${styles.sone}`}>
                         <div className={styles.sone_inner}>
                           <div className={styles.heading}>
-                            Leading Architects for you to{" "}
-                            <span>Design your space</span>
+                            Leading Architects for you to <span>Design your space</span>
                           </div>
                           <div className={styles.buttons}>
                             {loginActive ? (
-                              <div
-                                className={styles.started}
-                                onClick={() => setArchitectBidtPopup(true)}
-                              >
+                              <div className={styles.started} onClick={() => setArchitectBidtPopup(true)}>
                                 <img src="/img/landing/plus.svg" alt="plus" />
                                 <span>Invite Quote</span>
                               </div>
                             ) : (
-                              <div
-                                onClick={() => setRegisterPopup(true)}
-                                className={styles.started}
-                              >
+                              <div onClick={() => setRegisterPopup(true)} className={styles.started}>
                                 Get Started
                               </div>
                             )}
-                            <a
-                              href="https://api.whatsapp.com/send?phone=918921244492&submit=Continue"
-                              target="_blank"
-                            >
+                            <a href="https://api.whatsapp.com/send?phone=918921244492&submit=Continue" target="_blank">
                               <div className={styles.contact}>Contact us</div>
                             </a>
                           </div>
@@ -327,9 +267,7 @@ export default function AgrihaLandingMain() {
                 </div>
 
                 <div className={styles.stwo_outer}>
-                  <div
-                    className={`container ${styles.container} ${styles.stwo}`}
-                  >
+                  <div className={`container ${styles.container} ${styles.stwo}`}>
                     <div className={styles.stwo_inner}>
                       <div className="landing_stwo_inner">
                         <Swiper
@@ -346,13 +284,7 @@ export default function AgrihaLandingMain() {
                           pagination={{
                             clickable: true,
                           }}
-                          modules={[
-                            Mousewheel,
-                            Keyboard,
-                            Autoplay,
-                            Pagination,
-                            Navigation,
-                          ]}
+                          modules={[Mousewheel, Keyboard, Autoplay, Pagination, Navigation]}
                           className="mySwiper"
                         >
                           <SwiperSlide>

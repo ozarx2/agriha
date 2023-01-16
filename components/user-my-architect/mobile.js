@@ -13,7 +13,8 @@ import stylesp from "./pagination.module.css";
 
 const FnUserMyArchitectMobile = () => {
   const router = useRouter();
-  const { location } = router.query;
+  const { s } = router.query;
+  const location = s;
   const [loadingAjax, setLoadingAjax] = useState(false);
 
   const [Store] = useContext(StoreContext);
@@ -32,7 +33,9 @@ const FnUserMyArchitectMobile = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
+    if (location === undefined) {
+      window.addEventListener("scroll", onScroll);
+    }
   }, []);
 
   useEffect(() => {
@@ -74,7 +77,7 @@ const FnUserMyArchitectMobile = () => {
 
   return (
     <>
-      <ArchHead location={location} />
+      <ArchHead s={location} />
       <div className={styles.agrihaUserProDeskMain}>
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>

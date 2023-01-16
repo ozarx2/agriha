@@ -13,18 +13,23 @@ const ArchHead = (props) => {
 
   // store location
   useEffect(() => {
-    setSearchQueryArchitect(props.location);
+    setSearchQueryArchitect(props.s);
   }, [props]);
 
   const searchInputChange = (query) => {
+    // console.log(query);
     if (query) {
-      router.push(`/user-my-architect?location=${query}`, undefined, { shallow: true });
+      router.push(`/user-my-architect?s=${query}`, undefined, { shallow: true });
       setSearchQueryArchitect(query);
     } else {
-      setSearchQueryArchitect();
       setAllArchitects([]);
+      // setSearchQueryArchitect();
       router.push(`/user-my-architect`);
     }
+  };
+
+  const handleKeyDown = (e) => {
+    console.log(e.keyCode);
   };
 
   return (
@@ -48,6 +53,7 @@ const ArchHead = (props) => {
                 type="text"
                 defaultValue={searchQueryArchitect}
                 onChange={(e) => searchInputChange(e.target.value)}
+                onKeyDown={handleKeyDown}
                 placeholder="Enter location or architect name"
                 id="architectSearchInput"
               />

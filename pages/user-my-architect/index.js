@@ -21,14 +21,20 @@ const UserMyProjectMain = () => {
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
+  const searchQueryArchitect = Store.searchQueryArchitect;
+  console.log(searchQueryArchitect);
 
   return (
     <>
-      <Head>
-        <title>Agriha User my project</title>
-        <meta name="description" content="Agriha Landing page" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      {searchQueryArchitect ? (
+        <Head>
+          <title>{searchQueryArchitect}</title>
+          <meta name="description" content="Agriha Landing page" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      ) : (
+        ""
+      )}
       <div>
         <div className={styles.container_outer}>
           <div className={styles.container_inner}>

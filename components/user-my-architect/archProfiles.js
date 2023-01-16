@@ -20,8 +20,8 @@ const FnArchProfiles = () => {
   const setArcPaginationCount = Store.setArcPaginationCount;
 
   const router = useRouter();
-  const { location } = router.query;
-
+  const { s } = router.query;
+  const location = s;
   const [scrolling, setScrolling] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
 
@@ -31,17 +31,13 @@ const FnArchProfiles = () => {
   };
 
   useEffect(() => {
-    console.log(location);
-    if (!location) {
-      window.addEventListener("scroll", onScroll);
-    }
+    window.addEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    if (scrolling === true) {
+    if (scrolling === true && location === undefined) {
       if (loadingAjax === false) {
-        if (scrollTop + window.innerHeight >= document.body.offsetHeight + 36) {
-          console.log("count incremental scrolling");
+        if (scrollTop + window.innerHeight >= document.body.offsetHeight + 35) {
           setArcPaginationCount(arcPaginatioCount + 1);
         }
       }
@@ -49,23 +45,21 @@ const FnArchProfiles = () => {
   }, [scrollTop]);
 
   useEffect(() => {
-    if (location) {
+    console.log(location);
+    if (location && location != undefined) {
       setArcPaginationCount(1);
       getSearchArchitects(location);
-    } else if (location === undefined) {
-      getallArchitects();
     }
   }, [location]);
 
   useEffect(() => {
-    if (!location) {
+    if (location === undefined) {
       getallArchitects();
     }
-  }, [arcPaginatioCount]);
+  }, [arcPaginatioCount, location]);
 
   /* GET PROJECT TYPES */
   async function getallArchitects() {
-    console.log(arcPaginatioCount);
     if (window.innerWidth >= 1100 && arcPaginatioCount * 5 != allArchitects.length) {
       setLoadingAjax(true);
       const token = localStorage.getItem("userToken");

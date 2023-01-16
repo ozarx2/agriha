@@ -48,8 +48,7 @@ export const StoreContextProvider = (props) => {
   const [bidArchitectSelectPopup, setBidArchitectSelectPopup] = useState("");
   const [displayBidItems, setDisplayBidItems] = useState([]);
   const [displayBidArchitet, setDisplayBidArchitet] = useState([]);
-  const [architectProfileSelectPopup, setArchitectProfileSelectPopup] =
-    useState(false);
+  const [architectProfileSelectPopup, setArchitectProfileSelectPopup] = useState(false);
   const [sharePopup, setSharePopup] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
   const [requestOrBid, setRequestOrBid] = useState("");
@@ -177,9 +176,5 @@ export const StoreContextProvider = (props) => {
     // Store SHIJIN end
   };
 
-  return (
-    <StoreContext.Provider value={[Store]}>
-      {props.children}
-    </StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;
 };

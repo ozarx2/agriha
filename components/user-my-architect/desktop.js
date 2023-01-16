@@ -9,13 +9,13 @@ import FnArchPagination from "./pagination";
 
 const FnUserMyArchitectDesktop = () => {
   const router = useRouter();
-  const { location } = router.query;
+  const { s } = router.query;
   return (
     <>
       <div className={styles.agrihaUserProDeskMain}>
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>
-            <ArchHead location={location} />
+            <ArchHead s={s} />
             {/* <FnFilter /> */}
             <FnArchProfiles />
           </div>

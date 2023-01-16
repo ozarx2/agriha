@@ -2,15 +2,16 @@ import Head from "next/head";
 import React, { useContext } from "react";
 import { StoreContext } from "../components/StoreContext";
 import AgrihaLandingHeader from "../components/user-common/header";
+import AgrihaLandingHeaderNoSearch from "../components/user-common/header-ns";
 import LandingFooter from "../components/user-common/footer";
 import LoginPopup from "../components/user-common/login-popup";
 import RegisterPopup from "../components/user-common/register-popup";
 import OtpPopup from "../components/user-common/otp-popup";
 import ArchitectBidPopupidPopup from "../components/user-common/architect-bid-popup";
 import ProfilePopup from "../components/user-common/profile-popup";
+import ErrorPage from "../components/error/main";
 
 import styles from "./index.module.css";
-import ErrorPage from "../components/error/main";
 
 export default function AgrihaLanding() {
   const [Store] = useContext(StoreContext);
@@ -31,7 +32,7 @@ export default function AgrihaLanding() {
         <div className={styles.container_outer}>
           <div className={styles.container_inner}>
             <div className={styles.header}>
-              <AgrihaLandingHeader />
+              <AgrihaLandingHeaderNoSearch />
             </div>
             <div className={styles.main}>
               <ErrorPage />

@@ -63,82 +63,84 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
   return (
     <>
       <div className={styles.main_outer}>
-        <div className={styles.sone_outer}>
-          <div className={styles.sone_inner}>
-            <div
-              onClick={() => (setPage("ongoing"), setArcDashQueue(false))}
-              className={page == "ongoing" ? styles.active : ""}
-            >
-              Ongoing projects
+        {userProjectsNotOrder?.length !== 0 ? (
+          <>
+            <div className={styles.sone_outer}>
+              <div className={styles.sone_inner}>
+                <div
+                  onClick={() => (setPage("ongoing"), setArcDashQueue(false))}
+                  className={page == "ongoing" ? styles.active : ""}
+                >
+                  Ongoing projects
+                </div>
+                <div
+                  onClick={() => (setPage("request"), setArcDashQueue(true))}
+                  className={page == "request" ? styles.active : ""}
+                >
+                  Project Request
+                </div>
+              </div>
             </div>
-            <div
-              onClick={() => (setPage("request"), setArcDashQueue(true))}
-              className={page == "request" ? styles.active : ""}
-            >
-              Project Request
-            </div>
-          </div>
-        </div>
-        <div className={styles.stwo_outer}>
-          <div className={styles.stwo_inner}>
-            <div className={styles.stwo_grid_max_outer}>
-              {page == "ongoing" ? (
-                <>
-                  {project ? (
+            <div className={styles.stwo_outer}>
+              <div className={styles.stwo_inner}>
+                <div className={styles.stwo_grid_max_outer}>
+                  {page == "ongoing" ? (
                     <>
-                      <div className={styles.stwo_heading_outer}>
-                        <div className={styles.stwo_username}>User name</div>
-                        <div className={styles.stwo_project_id}>Project id</div>
-                        <div className={styles.stwo_starting_date}>Starting date</div>
-                        <div className={styles.stwo_upload_file}>Upload file</div>
-                        {/* <div className={styles.stwo_suggest_product}>
+                      {project ? (
+                        <>
+                          <div className={styles.stwo_heading_outer}>
+                            <div className={styles.stwo_username}>User name</div>
+                            <div className={styles.stwo_project_id}>Project id</div>
+                            <div className={styles.stwo_starting_date}>Starting date</div>
+                            <div className={styles.stwo_upload_file}>Upload file</div>
+                            {/* <div className={styles.stwo_suggest_product}>
                           Suggest product
                         </div> */}
-                        <div className={styles.stwo_document_folder}>Document folder</div>
-                        {/* <div className={styles.stwo_more}>More</div> */}
-                      </div>
+                            <div className={styles.stwo_document_folder}>Document folder</div>
+                            {/* <div className={styles.stwo_more}>More</div> */}
+                          </div>
 
-                      {userProjects?.map((item, i) => {
-                        return (
-                          <React.Fragment key={i}>
-                            {item.creator?.registered_id?.name && item?.status === "ongoing" ? (
-                              <div key={i} className={styles.stwo_grid_outer}>
-                                <div
-                                  onClick={() => router.push(`/ongoing-project/${item._id}`)}
-                                  className={styles.stwo_username}
-                                >
-                                  <div className={styles.vertical_center}>
-                                    <img
-                                      src={
-                                        item?.creator?.profile_pic
-                                          ? item?.creator?.profile_pic
-                                          : "/img/ongoing-project/profile.jpg"
-                                      }
-                                      onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
-                                      alt="alt"
-                                    />
-                                    <span>{item.creator?.registered_id?.name}</span>
-                                  </div>
-                                </div>
-                                <div
-                                  onClick={() => router.push(`/ongoing-project/${item._id}`)}
-                                  className={styles.stwo_project_id}
-                                >
-                                  {item?.project_name}
-                                </div>
-                                <div
-                                  onClick={() => router.push(`/ongoing-project/${item._id}`)}
-                                  className={styles.stwo_starting_date}
-                                >
-                                  {item?.starting_date}
-                                </div>
-                                <div onClick={() => setFileUploadPopup(true)} className={styles.stwo_upload_file}>
-                                  <div className={styles.vertical_center}>
-                                    <img src="/img/ongoing-project/upload-d.svg" alt="alt" />
-                                    <span>Upload now</span>
-                                  </div>
-                                </div>
-                                {/* <div className={styles.stwo_suggest_product}>
+                          {userProjects?.map((item, i) => {
+                            return (
+                              <React.Fragment key={i}>
+                                {item.creator?.registered_id?.name && item?.status === "ongoing" ? (
+                                  <div key={i} className={styles.stwo_grid_outer}>
+                                    <div
+                                      onClick={() => router.push(`/ongoing-project/${item._id}`)}
+                                      className={styles.stwo_username}
+                                    >
+                                      <div className={styles.vertical_center}>
+                                        <img
+                                          src={
+                                            item?.creator?.profile_pic
+                                              ? item?.creator?.profile_pic
+                                              : "/img/ongoing-project/profile.jpg"
+                                          }
+                                          onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
+                                          alt="alt"
+                                        />
+                                        <span>{item.creator?.registered_id?.name}</span>
+                                      </div>
+                                    </div>
+                                    <div
+                                      onClick={() => router.push(`/ongoing-project/${item._id}`)}
+                                      className={styles.stwo_project_id}
+                                    >
+                                      {item?.project_name}
+                                    </div>
+                                    <div
+                                      onClick={() => router.push(`/ongoing-project/${item._id}`)}
+                                      className={styles.stwo_starting_date}
+                                    >
+                                      {item?.starting_date}
+                                    </div>
+                                    <div onClick={() => setFileUploadPopup(true)} className={styles.stwo_upload_file}>
+                                      <div className={styles.vertical_center}>
+                                        <img src="/img/ongoing-project/upload-d.svg" alt="alt" />
+                                        <span>Upload now</span>
+                                      </div>
+                                    </div>
+                                    {/* <div className={styles.stwo_suggest_product}>
                                   <div className={styles.vertical_center}>
                                     <img
                                       src="/img/ongoing-project/send-d.svg"
@@ -147,15 +149,15 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                     <span>Send product</span>
                                   </div>
                                 </div> */}
-                                <Link href={`/project-files/${item._id}`} passHref>
-                                  <div className={styles.stwo_document_folder}>
-                                    <div className={styles.vertical_center}>
-                                      <img src="/img/ongoing-project/file-d.svg" alt="alt" />
-                                      <span>Files</span>
-                                    </div>
-                                  </div>
-                                </Link>
-                                {/* <div className={styles.stwo_more}>
+                                    <Link href={`/project-files/${item._id}`} passHref>
+                                      <div className={styles.stwo_document_folder}>
+                                        <div className={styles.vertical_center}>
+                                          <img src="/img/ongoing-project/file-d.svg" alt="alt" />
+                                          <span>Files</span>
+                                        </div>
+                                      </div>
+                                    </Link>
+                                    {/* <div className={styles.stwo_more}>
                                   <div onClick={() => moreClick(i)}>
                                     <img
                                       src="/img/ongoing-project/3dots.svg"
@@ -180,220 +182,248 @@ export default function OngoingProjectMain({ page, setPage, setProjectRequestPop
                                     </div>
                                   </div>
                                 </div> */}
-                              </div>
-                            ) : (
-                              ""
-                            )}
-                          </React.Fragment>
-                        );
-                      })}
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+                              </React.Fragment>
+                            );
+                          })}
+                        </>
+                      ) : (
+                        <>
+                          <div className={styles.no_project}>
+                            <div className={styles.no_project_image}>
+                              <Image
+                                src="/img/architect-dashboard/no.svg"
+                                alt="no_project_image"
+                                width={115}
+                                height={85}
+                              />
+                            </div>
+                            <h3>Look like there is no ongoing projects is here</h3>
+                            <h5>
+                              Now the field is blank, so please accept any excellent project request to gain the next
+                              project.
+                            </h5>
+                          </div>
+                        </>
+                      )}
                     </>
                   ) : (
-                    <>
-                      <div className={styles.no_project}>
-                        <div className={styles.no_project_image}>
-                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
-                        </div>
-                        <h3>Look like there is no ongoing projects is here</h3>
-                        <h5>
-                          Now the field is blank, so please accept any excellent project request to gain the next
-                          project.
-                        </h5>
-                      </div>
-                    </>
+                    ""
                   )}
-                </>
-              ) : (
-                ""
-              )}
-              {page == "request" ? (
-                <>
-                  {project ? (
+                  {page == "request" ? (
                     <>
-                      <div className={styles.stwo_heading_outer}>
-                        <div className={styles.stwo_username}>User name</div>
-                        <div className={styles.stwo_description}>Description</div>
-                        <div className={styles.stwo_total_area}>Total area.sqft</div>
-                        <div className={styles.stwo_budget}>Budget</div>
-                        {/* <div className={styles.stwo_reference_file}>
+                      {project ? (
+                        <>
+                          <div className={styles.stwo_heading_outer}>
+                            <div className={styles.stwo_username}>User name</div>
+                            <div className={styles.stwo_description}>Description</div>
+                            <div className={styles.stwo_total_area}>Total area.sqft</div>
+                            <div className={styles.stwo_budget}>Budget</div>
+                            {/* <div className={styles.stwo_reference_file}>
                           Reference File
                         </div> */}
-                        <div className={styles.stwo_action}>Action</div>
-                        {/* <div className={styles.stwo_more}>More</div> */}
-                      </div>
+                            <div className={styles.stwo_action}>Action</div>
+                            {/* <div className={styles.stwo_more}>More</div> */}
+                          </div>
 
-                      {userProjects?.map((item, i) => {
-                        return (
-                          <React.Fragment key={i}>
-                            {item.creator?.registered_id?.name && item.status === "started" ? (
-                              <Request
-                                name={item.creator?.registered_id?.name}
-                                avatar={
-                                  item?.creator?.profile_pic
-                                    ? item?.creator?.profile_pic
-                                    : "/img/ongoing-project/profile.jpg"
-                                }
-                                type={item?.project_type}
-                                id={item._id}
-                                setPage={setPage}
-                                item={item}
+                          {userProjects?.map((item, i) => {
+                            return (
+                              <React.Fragment key={i}>
+                                {item.creator?.registered_id?.name && item.status === "started" ? (
+                                  <Request
+                                    name={item.creator?.registered_id?.name}
+                                    avatar={
+                                      item?.creator?.profile_pic
+                                        ? item?.creator?.profile_pic
+                                        : "/img/ongoing-project/profile.jpg"
+                                    }
+                                    type={item?.project_type}
+                                    id={item._id}
+                                    setPage={setPage}
+                                    item={item}
+                                  />
+                                ) : (
+                                  " "
+                                )}
+                              </React.Fragment>
+                            );
+                          })}
+                        </>
+                      ) : (
+                        <>
+                          <div className={styles.no_project}>
+                            <div className={styles.no_project_image}>
+                              <Image
+                                src="/img/architect-dashboard/no.svg"
+                                alt="no_project_image"
+                                width={115}
+                                height={85}
                               />
-                            ) : (
-                              " "
-                            )}
-                          </React.Fragment>
-                        );
-                      })}
+                            </div>
+                            <h3>Look like there is no project request is here</h3>
+                            <h5>The field is blank, so please make your profile attractive for the next project.</h5>
+                          </div>
+                        </>
+                      )}
                     </>
                   ) : (
-                    <>
-                      <div className={styles.no_project}>
-                        <div className={styles.no_project_image}>
-                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
-                        </div>
-                        <h3>Look like there is no project request is here</h3>
-                        <h5>The field is blank, so please make your profile attractive for the next project.</h5>
-                      </div>
-                    </>
+                    ""
                   )}
-                </>
-              ) : (
-                ""
-              )}
-            </div>
+                </div>
 
-            {/* desktop above , mobile started below */}
-            <div className={styles.stwo_mobile_title}>
-              {page == "ongoing" ? "Your ongoing projects here" : ""}
-              {page == "request" ? "Your have projects request here" : ""}
-            </div>
-            <div className={styles.stwo_grid_mobile_max_outer}>
-              {page == "ongoing" ? (
-                <>
-                  {project ? (
+                {/* desktop above , mobile started below */}
+                <div className={styles.stwo_mobile_title}>
+                  {page == "ongoing" ? "Your ongoing projects here" : ""}
+                  {page == "request" ? "Your have projects request here" : ""}
+                </div>
+                <div className={styles.stwo_grid_mobile_max_outer}>
+                  {page == "ongoing" ? (
                     <>
-                      {userProjects?.map((item, i) => {
-                        return (
-                          <React.Fragment key={i}>
-                            {item.creator?.registered_id?.name && item.status === "ongoing" ? (
-                              <div key={i} className={styles.stwo_mobile_grid_outer}>
-                                <div className={styles.top}>
-                                  <div className={styles.left}>
-                                    <img
-                                      src={
-                                        item?.creator?.profile_pic
-                                          ? item?.creator?.profile_pic
-                                          : "/img/ongoing-project/profile.jpg"
-                                      }
-                                      onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
-                                      alt="alt"
-                                    />
-                                    <div>{item.creator?.registered_id?.name}</div>
-                                  </div>
-                                  <div
-                                    onClick={() => router.push(`/ongoing-project/${item._id}`)}
-                                    // onClick={() => setOngoingPopup(true)}
-                                    className={styles.right}
-                                  >
-                                    <img src="/img/ongoing-project/3dots.svg" alt="alt" />
-                                  </div>
-                                </div>
-                                <div className={styles.content}>
-                                  <div className={styles.center}>
-                                    <div className={styles.left}>{item?.project_name}</div>
-                                    <div className={styles.right}>{item?.starting_date}</div>
-                                  </div>
-                                  <div className={styles.bottom}>
-                                    <div onClick={() => setFileUploadPopup(true)}>
-                                      <img src="/img/ongoing-project/upload-m.svg" alt="alt" />
-                                      <div>Upload now </div>
+                      {project ? (
+                        <>
+                          {userProjects?.map((item, i) => {
+                            return (
+                              <React.Fragment key={i}>
+                                {item.creator?.registered_id?.name && item.status === "ongoing" ? (
+                                  <div key={i} className={styles.stwo_mobile_grid_outer}>
+                                    <div className={styles.top}>
+                                      <div className={styles.left}>
+                                        <img
+                                          src={
+                                            item?.creator?.profile_pic
+                                              ? item?.creator?.profile_pic
+                                              : "/img/ongoing-project/profile.jpg"
+                                          }
+                                          onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
+                                          alt="alt"
+                                        />
+                                        <div>{item.creator?.registered_id?.name}</div>
+                                      </div>
+                                      <div
+                                        onClick={() => router.push(`/ongoing-project/${item._id}`)}
+                                        // onClick={() => setOngoingPopup(true)}
+                                        className={styles.right}
+                                      >
+                                        <img src="/img/ongoing-project/3dots.svg" alt="alt" />
+                                      </div>
                                     </div>
-                                    {/*  <div>
+                                    <div className={styles.content}>
+                                      <div className={styles.center}>
+                                        <div className={styles.left}>{item?.project_name}</div>
+                                        <div className={styles.right}>{item?.starting_date}</div>
+                                      </div>
+                                      <div className={styles.bottom}>
+                                        <div onClick={() => setFileUploadPopup(true)}>
+                                          <img src="/img/ongoing-project/upload-m.svg" alt="alt" />
+                                          <div>Upload now </div>
+                                        </div>
+                                        {/*  <div>
                                       <img
                                         src="/img/ongoing-project/send-m.svg"
                                         alt="alt"
                                       />
                                       <div>Send product</div>
                                     </div> */}
-                                    <Link href={`/project-files/${item._id}`} passHref>
-                                      <div>
-                                        <img src="/img/ongoing-project/file-m.svg" alt="alt" />
-                                        <div>Files</div>
+                                        <Link href={`/project-files/${item._id}`} passHref>
+                                          <div>
+                                            <img src="/img/ongoing-project/file-m.svg" alt="alt" />
+                                            <div>Files</div>
+                                          </div>
+                                        </Link>
                                       </div>
-                                    </Link>
+                                    </div>
                                   </div>
-                                </div>
-                              </div>
-                            ) : (
-                              ""
-                            )}
-                          </React.Fragment>
-                        );
-                      })}
-                    </>
-                  ) : (
-                    <>
-                      <div className={styles.no_project}>
-                        <div className={styles.no_project_image}>
-                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
-                        </div>
-                        <h3>Look like there is no ongoing projects is here</h3>
-                        <h5>
-                          Now the field is blank, so please accept any excellent project request to gain the next
-                          project.
-                        </h5>
-                      </div>
-                    </>
-                  )}
-                </>
-              ) : (
-                ""
-              )}
-              {page == "request" ? (
-                <>
-                  {project ? (
-                    <>
-                      {userProjects?.map((item, i) => {
-                        return (
-                          <React.Fragment key={i}>
-                            {item.creator?.registered_id?.name && item.status === "started" ? (
-                              <RequestMobile
-                                name={item.creator?.registered_id?.name}
-                                avatar={
-                                  item?.creator?.profile_pic
-                                    ? item?.creator?.profile_pic
-                                    : "/img/ongoing-project/profile.jpg"
-                                }
-                                type={item?.project_type}
-                                id={item._id}
-                                item={item}
-                                setPage={setPage}
+                                ) : (
+                                  ""
+                                )}
+                              </React.Fragment>
+                            );
+                          })}
+                        </>
+                      ) : (
+                        <>
+                          <div className={styles.no_project}>
+                            <div className={styles.no_project_image}>
+                              <Image
+                                src="/img/architect-dashboard/no.svg"
+                                alt="no_project_image"
+                                width={115}
+                                height={85}
                               />
-                            ) : (
-                              ""
-                            )}
-                          </React.Fragment>
-                        );
-                      })}
+                            </div>
+                            <h3>Look like there is no ongoing projects is here</h3>
+                            <h5>
+                              Now the field is blank, so please accept any excellent project request to gain the next
+                              project.
+                            </h5>
+                          </div>
+                        </>
+                      )}
                     </>
                   ) : (
-                    <>
-                      <div className={styles.no_project}>
-                        <div className={styles.no_project_image}>
-                          <Image src="/img/architect-dashboard/no.svg" alt="no_project_image" width={115} height={85} />
-                        </div>
-                        <h3>Look like there is no project request is here</h3>
-                        <h5>The field is blank, so please make your profile attractive for the next project.</h5>
-                      </div>
-                    </>
+                    ""
                   )}
-                </>
-              ) : (
-                ""
-              )}
+                  {page == "request" ? (
+                    <>
+                      {project ? (
+                        <>
+                          {userProjects?.map((item, i) => {
+                            return (
+                              <React.Fragment key={i}>
+                                {item.creator?.registered_id?.name && item.status === "started" ? (
+                                  <RequestMobile
+                                    name={item.creator?.registered_id?.name}
+                                    avatar={
+                                      item?.creator?.profile_pic
+                                        ? item?.creator?.profile_pic
+                                        : "/img/ongoing-project/profile.jpg"
+                                    }
+                                    type={item?.project_type}
+                                    id={item._id}
+                                    item={item}
+                                    setPage={setPage}
+                                  />
+                                ) : (
+                                  ""
+                                )}
+                              </React.Fragment>
+                            );
+                          })}
+                        </>
+                      ) : (
+                        <>
+                          <div className={styles.no_project}>
+                            <div className={styles.no_project_image}>
+                              <Image
+                                src="/img/architect-dashboard/no.svg"
+                                alt="no_project_image"
+                                width={115}
+                                height={85}
+                              />
+                            </div>
+                            <h3>Look like there is no project request is here</h3>
+                            <h5>The field is blank, so please make your profile attractive for the next project.</h5>
+                          </div>
+                        </>
+                      )}
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className={styles.main_inner}>
+            <div className={styles.loading}>
+              <img src="/img/landing/loading.svg" alt="Loading..." />
             </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

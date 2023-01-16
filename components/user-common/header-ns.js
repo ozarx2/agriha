@@ -197,9 +197,13 @@ export default function AgrihaLandingHeaderNoSearch() {
                           </div>
                         )}
                         &nbsp;
-                        <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
-                          HomeSeeker Login
-                        </div>
+                        {archIdHeader !== "" ? (
+                          ""
+                        ) : (
+                          <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
+                            HomeSeeker Login
+                          </div>
+                        )}
                       </>
                     )}
                   </div>
@@ -244,9 +248,13 @@ export default function AgrihaLandingHeaderNoSearch() {
                           </div>
                         )}
                         &nbsp;
-                        <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
-                          HomeSeeker Login
-                        </div>
+                        {archIdHeader !== "" ? (
+                          ""
+                        ) : (
+                          <div onClick={() => (setUserRole("user"), setLoginPopup(true))} className={styles.login}>
+                            HomeSeeker Login
+                          </div>
+                        )}
                       </>
                     )}
                   </div>

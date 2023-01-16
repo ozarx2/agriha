@@ -140,7 +140,7 @@ const AddProject = () => {
     setProjectType(e.target.value);
   };
 
-  console.log(projectType);
+  // console.log(projectType);
 
   async function addProject() {
     var token = localStorage.getItem("architectToken");

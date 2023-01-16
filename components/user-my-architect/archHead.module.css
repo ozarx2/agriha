@@ -107,4 +107,7 @@
   .search_outer input {
     padding: 13px 13px 13px 29px;
   }
+  .architectHead {
+    padding: 20px;
+  }
 }

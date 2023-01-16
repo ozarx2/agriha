@@ -72,7 +72,7 @@ export default function SingleProjectsMain() {
       },
     });
     const data = await res.json();
-    // console.log(data[0]);
+    console.log(data[0]);
     setProjectDetails(data[0]);
   }
 
@@ -93,8 +93,13 @@ export default function SingleProjectsMain() {
           <div className={styles.sone_inner}>
             <div className={styles.left}>
               <div className={styles.name}>{projectDetails?.projectname}</div>
-              <div className={styles.location}>{projectDetails?.location}</div>
-              <div className={styles.area}>{projectDetails?.projectarea} sq.ft</div>
+              <div className={styles.location}>
+                <span>{projectDetails?.location}</span> - <span>{projectDetails?.project_type}</span>
+              </div>
+              <div className={styles.area}>
+                <span>{projectDetails?.projectarea}</span>
+                <span> sq.ft</span>
+              </div>
             </div>
             <div className={styles.right}>
               <div className={styles.edit} onClick={() => editProject(projectId)}>
@@ -106,6 +111,36 @@ export default function SingleProjectsMain() {
                 <span>Share</span>
               </div>
             </div>
+          </div>
+        </div>
+        <div className={styles.sone_one_outer}>
+          <div className={styles.sone_one_inner}>
+            <img
+              className={styles.thumbnail}
+              src={projectDetails?.thumbnail ? projectDetails?.thumbnail : "/img/architect-dashboard/noImg.jpeg"}
+              onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+              alt="alt"
+            />
+            <table>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <div className={styles.stwo_outer}>

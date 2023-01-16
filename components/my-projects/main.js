@@ -67,7 +67,7 @@ export default function MyProjectsMain({ page, setPage }) {
                                   <div className={styles.stwo_grid_title}>
                                     <h3>{item.projectname}</h3>
                                     <p>
-                                      {item.location} | {item.projectarea}
+                                      <span>{item.location}</span> | <span>{item.projectarea}</span>
                                     </p>
                                   </div>
                                 </div>

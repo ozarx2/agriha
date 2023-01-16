@@ -83,6 +83,9 @@
   line-height: 18px;
   color: #484848;
   margin: 0;
+  width: 97%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .slide_title p {
   font-family: "Inter";
@@ -93,6 +96,15 @@
   color: #5a5a5a;
   margin: 0;
   margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.slide_title p span {
+  display: inline-block;
+  max-width: 46%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .no_project {
   text-align: center;

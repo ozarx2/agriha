@@ -116,7 +116,7 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                 <div className={styles.stwo_max}>
                   <div className={styles.heading}>{projectDetails?.projectname}</div>
                   <div className={styles.content}>
-                    {`${projectDetails?.location} | ${projectDetails?.projectarea}q.ft`}
+                    <span>{`${projectDetails?.location}`}</span> | <span>{`${projectDetails?.projectarea}q.ft`}</span>
                   </div>
                   <div className={styles.profile}>
                     <div

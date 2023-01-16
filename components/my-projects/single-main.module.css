@@ -8,8 +8,10 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  width: 100%;
 }
 .sone_inner .left {
+  width: 100%;
 }
 .sone_inner .left .name {
   font-family: "Inter";
@@ -19,6 +21,9 @@
   line-height: 19px;
   color: #262626;
   padding: 4px 0;
+  width: 97%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sone_inner .left .location {
   font-family: "Inter";
@@ -27,6 +32,9 @@
   font-size: 14px;
   line-height: 17px;
   color: #5a5a5a;
+  width: 97%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sone_inner .left .area {
   font-family: "Inter";
@@ -38,9 +46,16 @@
   color: #019071;
   background: #e0fffb;
   border-radius: 47px;
-  display: inline-block;
+  display: flex;
   padding: 5px 6px;
   margin-top: 12px;
+  max-width: fit-content;
+}
+.sone_inner .left .area span:first-child {
+  max-width: 97%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
 }
 .sone_inner .right {
   display: flex;

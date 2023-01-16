@@ -74,11 +74,8 @@ export default function AgrihaLandingMain() {
 
   if (typeof window !== "undefined") {
     window.onscroll = function (ev) {
-      console.log(window.innerHeight + window.scrollY);
-      console.log(document.body.offsetHeight);
-      if (scrolling) {
-        if (window.innerHeight + window.scrollY === document.body.offsetHeight) {
-          console.log("working....");
+      if (scrolling && loadingAjax === false) {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
           setLandingPage(landingPage + 1);
         }
       }
@@ -86,7 +83,6 @@ export default function AgrihaLandingMain() {
   }
 
   async function getAllProjects() {
-    console.log(landingPage);
     if (landingPage * 16 != projectResponse.length) {
       setLoadingAjax(true);
       const response = await fetch(`${api_url}/projects/getallprojects?page=${landingPage}`, {

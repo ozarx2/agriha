@@ -33,6 +33,8 @@ export default function FnSOne() {
     router.push("/ongoing-project");
   };
 
+  console.log(architectData);
+
   return (
     <>
       {architectData?.length !== 0 ? (
@@ -65,12 +67,12 @@ export default function FnSOne() {
                     <span className={styles.location}>
                       <Image src="/img/architect-dashboard/location.svg" alt="location" width={12.23} height={11.11} />
                     </span>
-                    {architectData?.location}
+                    {architectData?.zone}
                   </h6>
                 </div>
                 {architectData.verified ? (
                   <div className={styles.verifiedImage}>
-                    <Image src="/img/common/blue.svg" alt="location" width={60} height={60} />
+                    <Image src="/img/common/blue.svg" alt="verified" width={50} height={50} />
                   </div>
                 ) : (
                   ""

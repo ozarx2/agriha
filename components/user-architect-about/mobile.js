@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState, useContext } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import StarRatings from "react-star-ratings";
@@ -11,7 +12,6 @@ import FnProject from "./project/project";
 import FnReview from "./review/review";
 import api_url from "../../src/utils/url";
 import axios from "axios";
-import dummy_token from "../../src/utils/dummy_token";
 
 import styles from "./main.module.css";
 
@@ -153,6 +153,13 @@ const UserArchitectAboutMobile = () => {
                     <div>{count} Reviews</div>
                   </div>
                 </div>
+                {singleArchitect.verified ? (
+                  <div className={styles.verifiedImage_mobile}>
+                    <Image src="/img/common/blue.svg" alt="verified" width={40} height={40} />
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
               <div className={styles.callShareSaveSecMainMob}>
                 {userId !== "" ? (

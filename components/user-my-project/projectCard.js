@@ -86,6 +86,8 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
 
   let results = uploadedFiles.filter((res) => res.project_id === id);
 
+  console.log(documents.length);
+
   return (
     <div className={styles.mainSection}>
       <div>
@@ -169,10 +171,10 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
         <div className={styles.projDetails} id="projDetails">
           {showMore && selectprojectId === id ? (
             <>
-              <FnSuggested suggestion={suggestion} />
+              {/* <FnSuggested suggestion={suggestion} /> */}
               <FnFileUploadDesk projectId={id} allUploadedFiles={results} />
               <FnPayment />
-              <FnFileFolder documents={documents} />
+              {documents.length !== 0 ? <FnFileFolder documents={documents} /> : ""}
             </>
           ) : null}
         </div>

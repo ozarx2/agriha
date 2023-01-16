@@ -21,8 +21,6 @@
     top: 16px;
     left: 16px;
   }
-  .archAboutMainSectionMob {
-  }
   .archAboutSectionMob {
     display: flex;
     align-items: center;
@@ -594,4 +592,14 @@
     text-decoration-line: underline;
     color: #642dda;
   }
+}
+
+/* Yaseen */
+
+.verifiedImage_web {
+  margin-left: -60px;
+}
+
+.verifiedImage_mobile {
+  margin-left: 10px;
 }

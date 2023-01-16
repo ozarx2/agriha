@@ -98,11 +98,7 @@ export default function ZonePopupForm() {
     <>
       <div className={styles.stwo}>
         <label for="district">Select your District</label>
-        <select
-          name="districts"
-          id="districts"
-          onChange={(e) => setDistrict(e.target.value)}
-        >
+        <select name="districts" id="districts" onChange={(e) => setDistrict(e.target.value)}>
           {districts.map((item, index) => {
             return (
               <option key={index} value={item}>
@@ -113,11 +109,7 @@ export default function ZonePopupForm() {
         </select>
 
         <label for="panchayaths">Select your Panchayath</label>
-        <select
-          name="panchayaths"
-          id="panchayaths"
-          onChange={(e) => setPanchayath(e.target.value)}
-        >
+        <select name="panchayaths" id="panchayaths" onChange={(e) => setPanchayath(e.target.value)}>
           {panchayathList[0]?.panchayth?.map((item, index) => {
             return (
               <option key={index} value={item}>
@@ -127,13 +119,7 @@ export default function ZonePopupForm() {
           })}
         </select>
 
-        <input
-          type="text"
-          id="zone"
-          placeholder="Zone"
-          readOnly
-          defaultValue={zone}
-        />
+        <input type="text" id="zone" placeholder="Zone" readOnly defaultValue={zone ? `You are in ${zone} zone` : ""} />
         {isError ? <p>{error}</p> : ""}
         {loading ? (
           <div className={styles.submit}>

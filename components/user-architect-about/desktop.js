@@ -15,6 +15,7 @@ import dummy_token from "../../src/utils/dummy_token";
 import AgrihaAlsoViewedSingle from "./also-viewed-single";
 
 import styles from "./main.module.css";
+import Image from "next/image";
 
 const UserArchitectAboutDesktop = () => {
   const [tab, setTab] = useState("projects");
@@ -175,9 +176,16 @@ const UserArchitectAboutDesktop = () => {
                       </div>
                       <div className={styles.ratingReviews}>{count} Reviews</div>
                     </div>
-                    <div className={styles.profileSubHead}>Architects</div>
+                    <div className={styles.profileSubHead}>Architect</div>
                   </div>
                 </div>
+                {singleArchitect.verified ? (
+                  <div className={styles.verifiedImage_web}>
+                    <Image src="/img/common/blue.svg" alt="verified" width={40} height={40} />
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div className={styles.archProfileSectionMainRight}>
                   {userId !== "" ? (
                     <div

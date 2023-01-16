@@ -72,7 +72,7 @@ export default function FnSOne() {
                 </div>
                 {architectData.verified ? (
                   <div className={styles.verifiedImage}>
-                    <Image src="/img/common/blue.svg" alt="location" width={60} height={60} />
+                    <Image src="/img/common/blue.svg" alt="verified" width={50} height={50} />
                   </div>
                 ) : (
                   ""

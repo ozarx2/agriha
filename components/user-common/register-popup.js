@@ -36,38 +36,44 @@ export default function RegisterPopup() {
   }, [otpPopup]);
 
   /* GOOGLE AUTH */
-  async function handleSubmit(name, email, profile) {
-    axios
-      .post(`${endpoint}/auth/google/Login`, {
-        name: name,
-        email: email,
-        profilePic: profile,
-        role: "user",
-      })
-      .then((response) => {
-        // console.log(response.data);
-        localStorage.setItem("token", response.data.token);
-        if (response.data.message === "user registeration successfully") {
-          window.location.href = "/requirement/basic-details";
-        }
-        if (response.data.message === "user login successfully") {
-          window.location.href = "/dashboard";
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // async function handleSubmit(name, email, profile) {
+  //   axios
+  //     .post(`${endpoint}/auth/google/Login`, {
+  //       name: name,
+  //       email: email,
+  //       profilePic: profile,
+  //       role: "user",
+  //     })
+  //     .then((response) => {
+  //       // console.log(response.data);
+  //       localStorage.setItem("token", response.data.token);
+  //       if (response.data.message === "user registeration successfully") {
+  //         window.location.href = "/requirement/basic-details";
+  //       }
+  //       if (response.data.message === "user login successfully") {
+  //         window.location.href = "/dashboard";
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   return (
     <>
       <div id="RegisterPopupOuter" className={styles.RegisterPopupOuter}>
-        <div onClick={() => setRegisterPopup(false)} className={styles.RegisterPopupClose}></div>
+        <div
+          onClick={() => setRegisterPopup(false)}
+          className={styles.RegisterPopupClose}
+        ></div>
         <div className={styles.RegisterPopupInner}>
           {windowRes.innerWidth >= 767 ? (
             <div className={styles.desktop_header}>
               <div className={styles.header_inner}>
-                <div onClick={() => setRegisterPopup(false)} className={styles.left}>
+                <div
+                  onClick={() => setRegisterPopup(false)}
+                  className={styles.left}
+                >
                   <picture>
                     <img src="/img/landing/header-close.svg" alt="close" />
                   </picture>
@@ -82,14 +88,18 @@ export default function RegisterPopup() {
             </div>
           ) : (
             <div className={styles.header}>
-              <div className={`container ${styles.container} ${styles.header_container}`}>
+              <div
+                className={`container ${styles.container} ${styles.header_container}`}
+              >
                 <div className={styles.header_inner}>
                   <div className={styles.left}>
                     <picture>
                       <img src="/img/landing/logo.svg" alt="logo" />
                     </picture>
                   </div>
-                  <div className={styles.right}>{/* <div>Architect Sign in/up</div> */}</div>
+                  <div className={styles.right}>
+                    {/* <div>Architect Sign in/up</div> */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -102,15 +112,27 @@ export default function RegisterPopup() {
                   <div className={styles.sone}>
                     <div className={styles.text}>
                       <div className={styles.textone}>
-                        {userRole === "user" ? "HomeSeeker" : "Architect"} Registration
+                        {userRole === "user" ? "HomeSeeker" : "Architect"}{" "}
+                        Registration
                       </div>
-                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                      <div className={styles.texttwo}>
+                        OTP will be sent via sms to your Mobile Number
+                      </div>
                     </div>
                   </div>
                   <RegisterPopupForm />
                 </div>
               </div>
-              <div className={styles.sthree_full}>
+
+              {/* Added by Yaseen */}
+              <div className={styles.notOnAgrihaContainer}>
+                Not on Agriha services yet?{" "}
+                <span onClick={() => showSignup()}>
+                  {userRole === "user" ? "HomeSeeker" : "Architect"} Sign up
+                </span>
+              </div>
+
+              {/* <div className={styles.sthree_full}>
                 <div className={styles.line}></div>
                 <div className={styles.or}>OR</div>
               </div>
@@ -123,7 +145,11 @@ export default function RegisterPopup() {
                         console.log(credentialResponse);
                         var decoded = jwt_decode(credentialResponse.credential);
                         console.log(decoded);
-                        handleSubmit(decoded.name, decoded.email, decoded.picture);
+                        handleSubmit(
+                          decoded.name,
+                          decoded.email,
+                          decoded.picture
+                        );
                       }}
                       onError={() => {
                         console.log("Login Failed");
@@ -134,42 +160,58 @@ export default function RegisterPopup() {
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
                       Already a member?{" "}
-                      <span onClick={() => showLogin()}>{userRole === "user" ? "HomeSeeker" : "Architect"} Login</span>
+                      <span onClick={() => showLogin()}>
+                        {userRole === "user" ? "HomeSeeker" : "Architect"} Login
+                      </span>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </>
           ) : (
             <div className={styles.content_outer}>
-              <div className={`container ${styles.container} ${styles.content}`}>
+              <div
+                className={`container ${styles.container} ${styles.content}`}
+              >
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
-                    <div onClick={() => setRegisterPopup(false)} className={styles.back}>
+                    <div
+                      onClick={() => setRegisterPopup(false)}
+                      className={styles.back}
+                    >
                       <img src="/img/project-details/back.svg" alt="back" />
                     </div>
                     <div className={styles.text}>
                       <div className={styles.textone}>
-                        {userRole === "user" ? "HomeSeeker" : "Architect"} Registration
+                        {userRole === "user" ? "HomeSeeker" : "Architect"}{" "}
+                        Registration
                       </div>
-                      <div className={styles.texttwo}>OTP will be sent via sms to your Mobile Number</div>
+                      <div className={styles.texttwo}>
+                        OTP will be sent via sms to your Mobile Number
+                      </div>
                     </div>
                   </div>
                   <RegisterPopupForm />
-                  <div className={styles.sthree}>
+
+                  {/* Added by Yaseen */}
+                  <div className={styles.notOnAgrihaContainer}>
+                    Not on Agriha services yet?{" "}
+                    <span onClick={() => showSignup()}>
+                      {userRole === "user" ? "HomeSeeker" : "Architect"} Sign up
+                    </span>
+                  </div>
+
+                  {/* <div className={styles.sthree}>
                     <div className={styles.line}></div>
                     <div className={styles.or}>OR</div>
                   </div>
                   <div className={styles.sfour}>
-                    {/* <div className={styles.google}>
-                      <img src="/img/landing/google.svg" alt="google" />
-                      <span>Continue with Google</span>
-                    </div> */}
+                    
                     <GoogleLogin
                       onSuccess={(credentialResponse) => {
-                        // console.log(credentialResponse);
+                        
                         var decoded = jwt_decode(credentialResponse.credential);
-                        // console.log(decoded);
+                        
                       }}
                       onError={() => {
                         console.log("Login Failed");
@@ -179,9 +221,11 @@ export default function RegisterPopup() {
                   <div className={styles.sfive}>
                     <div className={styles.signup}>
                       Already a member?{" "}
-                      <span onClick={() => showLogin()}>{userRole === "user" ? "HomeSeeker" : "Architect"} Login</span>
+                      <span onClick={() => showLogin()}>
+                        {userRole === "user" ? "HomeSeeker" : "Architect"} Login
+                      </span>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

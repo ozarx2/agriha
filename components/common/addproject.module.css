@@ -22,8 +22,8 @@
 }
 .addProject {
   width: 30vw;
-  height: 100%;
-  /* height: fit-content; */
+  /* height: 100%; */
+  height: fit-content;
   min-height: 680px;
   background-color: #ffffff;
   padding: 20px;

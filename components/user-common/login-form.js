@@ -21,7 +21,9 @@ export default function LoginPopupForm() {
 
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [resentLoading, setResentLoading] = useState(false);
   const [error, setError] = useState("Please enter Mobile Number");
+  const [showOtpText, setShowOtpText] = useState(false);
 
   const [phone, setphone] = useState("");
   const [code, setCode] = useState("91");
@@ -52,8 +54,12 @@ export default function LoginPopupForm() {
       setLoginPopup(false);
       localStorage.setItem("token", data.token);
     } else {
-      setIsError(true);
-      setError(data.message);
+      if (data.message === "Registeration process is not correct.Please register correctly") {
+        setShowOtpText(true);
+        setError(false);
+      } else {
+        setIsError(true);
+      }
     }
   }
 
@@ -72,6 +78,33 @@ export default function LoginPopupForm() {
     }
   }, []);
 
+  async function resentOTP() {
+    const res = await fetch(`${endpoint}/auth/resent_otp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        phone: `+${code}${phone}`,
+        role: userRole,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 200) {
+      setFromLoginOrRegister("register");
+      setOtpPopup(true);
+      setLoginPopup(false);
+      localStorage.setItem("token", data.otpToken);
+    }
+  }
+
+  const registerClick = () => {
+    setResentLoading(true);
+    resentOTP();
+  };
+
   return (
     <>
       <div className={styles.stwo}>
@@ -80,6 +113,14 @@ export default function LoginPopupForm() {
           <input id="phone_no" type="tel" onChange={storeValues} placeholder="Enter Mobile Number" />
         </div>
         {isError ? <p>{error}</p> : ""}
+        {showOtpText ? (
+          <h5>
+            OTP verification not completed on Register!{" "}
+            {resentLoading ? <PulseLoader size={7} color="#4c0ad6" /> : <span onClick={registerClick}>Resent OTP</span>}
+          </h5>
+        ) : (
+          ""
+        )}
         {loading ? (
           <div className={styles.submit}>
             <PulseLoader color="#ffffff" />

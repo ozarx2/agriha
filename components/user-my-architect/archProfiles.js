@@ -14,15 +14,14 @@ const FnArchProfiles = () => {
   const [Store] = useContext(StoreContext);
   const [loadingAjax, setLoadingAjax] = useState(false);
 
-  const searchQueryArchitect = Store.searchQueryArchitect;
   const setAllArchitects = Store.setAllArchitects;
   const allArchitects = Store.allArchitects;
   const arcPaginatioCount = Store.arcPaginatioCount;
   const setArcPaginationCount = Store.setArcPaginationCount;
 
   const router = useRouter();
+  const { location } = router.query;
 
-  const [page, setPage] = useState(1);
   const [scrolling, setScrolling] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
 
@@ -32,21 +31,41 @@ const FnArchProfiles = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
+    console.log(location);
+    if (!location) {
+      window.addEventListener("scroll", onScroll);
+    }
   }, []);
 
   useEffect(() => {
     if (scrolling === true) {
       if (loadingAjax === false) {
         if (scrollTop + window.innerHeight >= document.body.offsetHeight + 36) {
+          console.log("count incremental scrolling");
           setArcPaginationCount(arcPaginatioCount + 1);
         }
       }
     }
   }, [scrollTop]);
 
+  useEffect(() => {
+    if (location) {
+      setArcPaginationCount(1);
+      getSearchArchitects(location);
+    } else if (location === undefined) {
+      getallArchitects();
+    }
+  }, [location]);
+
+  useEffect(() => {
+    if (!location) {
+      getallArchitects();
+    }
+  }, [arcPaginatioCount]);
+
   /* GET PROJECT TYPES */
   async function getallArchitects() {
+    console.log(arcPaginatioCount);
     if (window.innerWidth >= 1100 && arcPaginatioCount * 5 != allArchitects.length) {
       setLoadingAjax(true);
       const token = localStorage.getItem("userToken");
@@ -67,10 +86,6 @@ const FnArchProfiles = () => {
       }
     }
   }
-  // console.log(allArchitects);
-  useEffect(() => {
-    getallArchitects();
-  }, [arcPaginatioCount]);
 
   async function getSearchArchitects(query) {
     const res = await fetch(`${api_url}/search/key?l=${query}`, {
@@ -84,17 +99,6 @@ const FnArchProfiles = () => {
     const data = await res.json();
     setAllArchitects(data.data);
   }
-
-  useEffect(() => {
-    if (searchQueryArchitect !== "") {
-      getSearchArchitects(searchQueryArchitect);
-      console.log(searchQueryArchitect);
-    } else {
-      // if (allArchitects.length === 0) {
-      //   // getallArchitects();
-      // }
-    }
-  }, [searchQueryArchitect]);
 
   return (
     <>

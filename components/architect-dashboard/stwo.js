@@ -119,7 +119,7 @@ export default function FnSTwo() {
               </div>
               <h3>Look like there is no projects is here</h3>
               <h5>Now field is blank, so please create your project is here</h5>
-              <button onClick={() => setAddProject(true)}>Carete now</button>
+              <button onClick={() => setAddProject(true)}>Create now</button>
             </div>
           )}
         </div>

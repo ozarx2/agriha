@@ -681,6 +681,17 @@
   margin: 18px 0 4.5vh;
   padding: 7px 23px;
 }
+.loading {
+  min-height: calc(100vh - 450px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.loading img {
+  width: 40px;
+}
+
 @media only screen and (max-width: 1200px) {
   .main_outer {
     margin-top: 70px;

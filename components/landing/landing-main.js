@@ -141,7 +141,7 @@ export default function AgrihaLandingMain() {
           {/* Desktop Only Search and filter */}
           {windowRes.innerWidth >= 1100 ? (
             <div className={styles.desktop_section_outer}>
-              <div className={styles.sone_outer}>
+              {/* <div className={styles.sone_outer}>
                 <div className={`container ${styles.container} ${styles.sone}`}>
                   <div className={styles.sone_inner}>
                     <div className={styles.search}>
@@ -151,8 +151,9 @@ export default function AgrihaLandingMain() {
                         onChange={(e) => allSearch(e.target.value)}
                         placeholder="Search Favorite Design or Architect"
                       />
-                    </div>
-                    {/* <div className={styles.filters}>
+                    </div> */}
+
+              {/* <div className={styles.filters}>
                       <img src="/img/landing/filter.svg" alt="filter" />
                       <span>All filters</span>
                     </div>
@@ -160,9 +161,20 @@ export default function AgrihaLandingMain() {
                       <img src="/img/landing/sort.svg" alt="sort" />
                       <span>Sort list</span>
                     </div> */}
+              {/* </div>
+                  <div className={styles.search_result}>
+                    {Array.apply(null, { length: 5 }).map((e, i) => (
+                      <div className={styles.result_s}>
+                        <div>
+                          <img src="/img/landing/banner-left.png" alt="left banner" />
+                          <div>Name</div>
+                        </div>
+                        <div>view</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className={styles.stwo_outer}>
                 <div className={`container ${styles.container} ${styles.stwo}`}>

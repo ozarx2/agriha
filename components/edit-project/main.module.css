@@ -42,7 +42,7 @@
 
 .thumbnail_editProjectMain {
   width: 250px;
-  height: 160px;
+  /* height: 160px; */
 }
 
 .thumbnail_editProjectMain > p {
@@ -85,7 +85,7 @@
 }
 
 .inputContainer_editProjectMain {
-  margin-top: 80px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
@@ -122,7 +122,6 @@
   outline: none;
   cursor: text;
 }
-
 .inputBox_editProjectMain > input:hover {
   color: #019071;
   border: 1px solid #019071;
@@ -133,6 +132,51 @@
   -o-transition: all 0.7s ease-out;
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
+}
+.inputBox_editProjectMain > textarea {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  width: 100%;
+  color: #393939;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  padding: 10px 20px;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+  outline: none;
+  cursor: text;
+  resize: vertical;
+}
+.inputBox_editProjectMain > textarea:hover {
+  color: #019071;
+  border: 1px solid #019071;
+  outline: none;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.thumbnail_editProjectMains {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 25px;
+  gap: 25px;
+}
+.thumbnail_editProjectMains {
+}
+.inputContainer_editProjectTwoMain {
+  padding-top: 20px;
 }
 
 .imageConatiner_editProjectMain {

@@ -4,6 +4,8 @@
   margin-top: 85px;
   background-color: #fff;
 }
+.sone_outer {
+}
 .sone_inner {
   display: flex;
   align-items: flex-start;
@@ -92,6 +94,8 @@
   border: 1px solid #e4e4e4;
   border-radius: 5px;
   padding: 9px 21px;
+}
+.sone_one_inner {
 }
 
 .stwo_inner {

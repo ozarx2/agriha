@@ -67,7 +67,7 @@ export default function FnSOne() {
                     <span className={styles.location}>
                       <Image src="/img/architect-dashboard/location.svg" alt="location" width={12.23} height={11.11} />
                     </span>
-                    {architectData?.zone}
+                    {architectData?.zone ? architectData?.zone : architectData?.location}
                   </h6>
                 </div>
                 {architectData.verified ? (

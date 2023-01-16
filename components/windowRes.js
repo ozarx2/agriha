@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function windowSize() {
   const [windowRes, setWindowRes] = useState([]);
+
   if (typeof window !== "undefined") {
     const [windowSize, setWindowSize] = useState(getWindowSize());
     function getWindowSize() {

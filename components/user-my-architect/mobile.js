@@ -74,9 +74,7 @@ const FnUserMyArchitectMobile = () => {
 
   return (
     <>
-      <div className={`container ${styles.container} ${styles.archHead_spl}`}>
-        <ArchHead location={location} />
-      </div>
+      <ArchHead s={location} />
       <div className={styles.agrihaUserProDeskMain}>
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>

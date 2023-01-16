@@ -13,6 +13,7 @@ import stylesp from "./pagination.module.css";
 
 const FnUserMyArchitectMobile = () => {
   const router = useRouter();
+  const { location } = router.query;
   const [loadingAjax, setLoadingAjax] = useState(false);
 
   const [Store] = useContext(StoreContext);
@@ -73,7 +74,7 @@ const FnUserMyArchitectMobile = () => {
 
   return (
     <>
-      <ArchHead />
+      <ArchHead location={location} />
       <div className={styles.agrihaUserProDeskMain}>
         <div className={styles.sone_outer}>
           <div className={`container ${styles.container} ${styles.sone}`}>

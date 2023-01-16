@@ -1,15 +1,30 @@
 import Image from "next/image";
-import { useContext } from "react";
+import { useRouter } from "next/router";
+import { useContext, useEffect } from "react";
 import { StoreContext } from "../StoreContext";
 import styles from "./archHead.module.css";
 
-const ArchHead = () => {
+const ArchHead = (props) => {
   const [Store] = useContext(StoreContext);
-
+  const router = useRouter();
   const setSearchQueryArchitect = Store.setSearchQueryArchitect;
+  const searchQueryArchitect = Store.searchQueryArchitect;
+  const setAllArchitects = Store.setAllArchitects;
+
+  // store location
+  useEffect(() => {
+    setSearchQueryArchitect(props.location);
+  }, [props]);
 
   const searchInputChange = (query) => {
-    setSearchQueryArchitect(query);
+    if (query) {
+      router.push(`/user-my-architect?location=${query}`, undefined, { shallow: true });
+      setSearchQueryArchitect(query);
+    } else {
+      setSearchQueryArchitect();
+      setAllArchitects([]);
+      router.push(`/user-my-architect`);
+    }
   };
 
   return (
@@ -31,8 +46,10 @@ const ArchHead = () => {
               </span>
               <input
                 type="text"
+                defaultValue={searchQueryArchitect}
                 onChange={(e) => searchInputChange(e.target.value)}
                 placeholder="Enter location or architect name"
+                id="architectSearchInput"
               />
             </span>
           </div>

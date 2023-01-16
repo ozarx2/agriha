@@ -49,7 +49,6 @@ const ArchHead = (props) => {
                 type="text"
                 defaultValue={searchQueryArchitect}
                 onChange={(e) => searchInputChange(e.target.value)}
-                onKeyDown={handleKeyDown}
                 placeholder="Enter location or architect name"
                 id="architectSearchInput"
               />

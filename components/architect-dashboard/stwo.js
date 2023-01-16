@@ -102,7 +102,7 @@ export default function FnSTwo() {
                             <div className={styles.slide_title}>
                               <h3>{item?.projectname}</h3>
                               <p>
-                                {item?.location} | {item?.projectarea}
+                                <span>{item?.location}</span> | <span>{item?.projectarea}</span>
                               </p>
                             </div>
                           </div>

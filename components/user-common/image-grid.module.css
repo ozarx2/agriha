@@ -29,6 +29,8 @@
   font-size: 10.5207px;
   line-height: 13px;
   color: #313131;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .grid_outer .project_title div:last-child {
   font-family: "Inter";
@@ -37,6 +39,8 @@
   font-size: 10.5207px;
   line-height: 159.52%;
   color: #818181;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .grid_outer > div {

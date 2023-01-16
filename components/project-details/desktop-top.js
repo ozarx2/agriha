@@ -115,7 +115,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
               <div className={styles.right}>
                 <div className={styles.title}>{projectDetails?.projectname}</div>
                 <div className={styles.content}>
-                  {`${projectDetails?.location} | ${projectDetails?.projectarea}q.ft`}
+                  <span>{projectDetails?.location}</span> | <span>{projectDetails?.projectarea} sq.ft</span>
                 </div>
                 <div
                   onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}

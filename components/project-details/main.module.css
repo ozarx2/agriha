@@ -38,6 +38,8 @@
     display: inline-block;
     padding-top: 10px;
     width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .stwo_inner .content {
     font-family: "Inter";
@@ -49,6 +51,23 @@
     display: inline-block;
     padding-top: 10px;
     width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+  .stwo_inner .content span {
+    display: inline-block;
+    max-width: 46%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .stwo_inner .content span:first-child {
+    padding-right: 15px;
+  }
+  .stwo_inner .content span:last-child {
+    padding-left: 15px;
   }
   .stwo_inner .profile {
     display: flex;
@@ -246,6 +265,8 @@
     line-height: 32px;
     color: #393939;
     max-width: 403px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .stwo_inner .right .content {
     font-family: "Inter";
@@ -256,6 +277,23 @@
     color: #5b5b5b;
     padding-top: 2px;
     max-width: 549px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+  .stwo_inner .right .content span {
+    display: inline-block;
+    max-width: 46%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .stwo_inner .right .content span:first-child {
+    padding-right: 15px;
+  }
+  .stwo_inner .right .content span:last-child {
+    padding-left: 15px;
   }
   .stwo_inner .right .archcontent {
     font-family: "Inter";

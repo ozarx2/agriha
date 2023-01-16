@@ -45,7 +45,6 @@ const FnArchProfiles = () => {
   }, [scrollTop]);
 
   useEffect(() => {
-    console.log(location);
     if (location && location != undefined) {
       setArcPaginationCount(1);
       getSearchArchitects(location);

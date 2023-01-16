@@ -28,10 +28,6 @@ const ArchHead = (props) => {
     }
   };
 
-  const handleKeyDown = (e) => {
-    console.log(e.keyCode);
-  };
-
   return (
     <>
       <div className={styles.container_inner}>

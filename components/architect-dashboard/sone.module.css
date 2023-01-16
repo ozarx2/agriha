@@ -207,6 +207,17 @@
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
 }
+.loading {
+  min-height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.loading img {
+  width: 40px;
+}
 @media only screen and (max-width: 1100px) {
   .sone_inner {
     display: inherit;

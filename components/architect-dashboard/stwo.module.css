@@ -8,6 +8,13 @@
   padding: 31px 30px;
 }
 .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 3vh;
+  width: 100%;
+}
+.title > div:first-child {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -16,7 +23,14 @@
   color: #000000;
   display: flex;
   align-items: center;
-  padding-bottom: 3vh;
+}
+.title > div:last-child {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+  color: #484848;
 }
 .title .dot {
   margin-left: 11px;

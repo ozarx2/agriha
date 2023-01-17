@@ -30,7 +30,7 @@ export default function SingleProjectsMain() {
         // console.log(item);
       });
     }
-  }, [projectDetails.Image]);
+  }, [projectDetails?.Image]);
 
   // console.log(imagesNew);
 
@@ -121,26 +121,11 @@ export default function SingleProjectsMain() {
               onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
               alt="alt"
             />
-            <table className={styles.table_out}>
-              <tbody>
-                <tr>
-                  <td>year</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>tag</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+            <div className={styles.contantContainer}>
+              <p>{projectDetails?.description}</p>
+              <h5>{projectDetails?.createdAt}</h5>
+              <p>{projectDetails?.hashtag}</p>
+            </div>
           </div>
         </div>
         <div className={styles.stwo_outer}>

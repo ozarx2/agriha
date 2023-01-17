@@ -31,7 +31,8 @@
   color: #a3a3a3;
 }
 .paymentBtn {
-  /* margin: 0 20px; */
+  margin-left: 20px;
+  min-width: 115px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;

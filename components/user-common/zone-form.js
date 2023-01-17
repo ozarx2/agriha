@@ -12,6 +12,7 @@ export default function ZonePopupForm() {
   const [Store] = useContext(StoreContext);
 
   const setZonePopUp = Store.setZonePopUp;
+  const userRole = Store.userRole;
 
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -55,10 +56,41 @@ export default function ZonePopupForm() {
     }
   }
 
+  async function handleSubmitUser() {
+    console.log(zone);
+    if (zone !== "") {
+      const token = localStorage.getItem("userToken");
+
+      const res = await fetch(`${endpoint}/user/update`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + `${token}`,
+        },
+        body: JSON.stringify({
+          zone: zone,
+          panchayath: Panchayath,
+          district: district,
+        }),
+      });
+
+      const data = await res.json();
+      setLoading(false);
+      if (data.status === 200) {
+        setZonePopUp(false);
+        window.location.href = "/requirement/basic-details";
+      }
+    }
+  }
+
   function confirmClick() {
     if (district !== "" && Panchayath !== "" && zone !== "") {
       setLoading(true);
-      handleSubmit();
+      if (userRole === "user") {
+        handleSubmitUser();
+      } else {
+        handleSubmit();
+      }
     } else {
       setIsError(true);
     }
@@ -82,7 +114,7 @@ export default function ZonePopupForm() {
 
   useEffect(() => {
     getPanchayaths(district);
-    setZone([]);
+    setZone("");
   }, [district]);
 
   const getZone = (val) => {

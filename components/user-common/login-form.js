@@ -46,20 +46,21 @@ export default function LoginPopupForm() {
       }),
     });
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
     setLoading(false);
-    if (data.status === 200) {
+    if (data.statusCode === 404) {
+      setIsError(true);
+      setError("Mobile number not registered");
+    } else if (data.status === 200) {
       setFromLoginOrRegister("login");
       setOtpPopup(true);
       setLoginPopup(false);
       localStorage.setItem("token", data.token);
+    } else if (data.message === "Registeration process is not correct.Please register correctly") {
+      setShowOtpText(true);
+      setError(false);
     } else {
-      if (data.message === "Registeration process is not correct.Please register correctly") {
-        setShowOtpText(true);
-        setError(false);
-      } else {
-        setIsError(true);
-      }
+      setError(true);
     }
   }
 

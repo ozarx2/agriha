@@ -33,8 +33,6 @@ export default function FnSOne() {
     router.push("/ongoing-project");
   };
 
-  console.log(architectData);
-
   return (
     <>
       {architectData?.length !== 0 ? (

@@ -2,9 +2,9 @@
   padding: 20px;
   padding-right: 60px;
   margin-top: 85px;
+  min-height: calc(100vh - 90px);
 }
-.sone_outer {
-}
+
 .sone_inner {
   border-bottom: 1px solid #d9d9d9;
   margin-bottom: 20px;

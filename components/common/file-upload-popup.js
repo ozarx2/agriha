@@ -17,38 +17,6 @@ export default function FileUploadPopup() {
   const [filenameUpload, setFilenameUpload] = useState("");
   const [uploadedDocuments, setUploadedDocuments] = useState([]);
 
-  /* STORE TITLE */
-  const titleChange = (e) => {
-    setTitleFileUpload(e.target.value);
-  };
-
-  /* STORE FILENAME */
-  const fileNameChange = (e) => {
-    setFilenameUpload(e.target.value);
-  };
-
-  /* UPLOAD FILES API*/
-  async function uploadFiles() {
-    if (titleFileUpload !== "" && uploadedDocuments !== [] && fileUploadId !== "") {
-      const res = await fetch(`${endpoint}/fileupload`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: titleFileUpload,
-          files: uploadedDocuments,
-          project_id: fileUploadId,
-        }),
-      });
-      const data = await res.json();
-      // console.log(data);
-      if (data.status === 200) {
-        setFileUploadPopup(false);
-      }
-    }
-  }
-
   /* STORE MULTIPLE FILES */
   const [files, setFiles] = useState([]);
 
@@ -64,7 +32,6 @@ export default function FileUploadPopup() {
 
   function handleUpload(pdf) {
     setFileBeforeUpload(pdf);
-    console.log("document uploading");
     if (!pdf) {
       alert("Please choose a file first!");
     }
@@ -84,7 +51,6 @@ export default function FileUploadPopup() {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log("url", url);
           addFiles(url, filenameUpload);
           setUrl(url);
         });
@@ -92,18 +58,38 @@ export default function FileUploadPopup() {
     );
   }
 
+  // onchange input
   const handleChange = (event) => {
-    console.log("onchange");
     if (!event.target.files[0]) {
       alert("Please choose a file first!");
     } else {
-      console.log(event.target.files[0]);
       handleUpload(event.target.files[0]);
     }
   };
 
-  console.log(files);
-  console.log(fileBeforeUpload);
+  /* UPLOAD FILES API*/
+  async function uploadFiles() {
+    console.log(titleFileUpload);
+    console.log(uploadedDocuments);
+    console.log(fileUploadId);
+    if (titleFileUpload !== "" && uploadedDocuments !== [] && fileUploadId !== "") {
+      const res = await fetch(`${endpoint}/fileupload`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: titleFileUpload,
+          files: uploadedDocuments,
+          project_id: fileUploadId,
+        }),
+      });
+      const data = await res.json();
+      if (data.status === 200) {
+        setFileUploadPopup(false);
+      }
+    }
+  }
 
   return (
     <>
@@ -116,12 +102,12 @@ export default function FileUploadPopup() {
           <div className={styles.content}>
             <div className={styles.create_folder}>
               <div className={styles.one}>
-                <input type="type" placeholder="Enter the title" onChange={titleChange} />
+                <input type="text" placeholder="Enter title" onChange={(e) => setTitleFileUpload(e.target.value)} />
               </div>
               <div className={styles.one}>
-                <input type="type" placeholder="Enter the filename" onChange={fileNameChange} />
+                <input type="text" placeholder="Enter filename" onChange={(e) => setFilenameUpload(e.target.value)} />
               </div>
-              {files.length == 0 ? (
+              {files.length === 0 ? (
                 <div className={styles.two}>
                   <input type="file" accept="application/pdf" onChange={handleChange} />
                   <div className={styles.s_add_feild}>

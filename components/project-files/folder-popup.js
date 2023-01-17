@@ -15,6 +15,22 @@ import styles from "./folder-popup.module.css";
 import styless from "./main.module.css";
 
 export default function FolderPopup() {
+  const [paramId, setParamId] = useState("");
+
+  /* GET Project ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setParamId(pair[0]);
+    }
+  }
+
+  useEffect(() => {
+    getParameters();
+  }, []);
+
   const [lock, setLock] = useState(false);
   const [addFolder, setAddFolder] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -26,17 +42,18 @@ export default function FolderPopup() {
   const [documents, setDocuments] = useState([]);
   const [folderId, setFolderId] = useState("");
 
-  async function getUploadedFiles() {
-    const response = await fetch(`${endpoint}/fileupload/uploaded_file/${projectId._id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    setDocuments(data.data);
-  }
-  async function getUploadedFilesReload(id) {
+  // async function getUploadedFiles() {
+  //   const response = await fetch(`${endpoint}/fileupload/uploaded_file/${projectId._id}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   setDocuments(data.data);
+  // }
+
+  async function getUploadedFiles(id) {
     const response = await fetch(`${endpoint}/fileupload/uploaded_file/${id}`, {
       method: "GET",
       headers: {
@@ -44,34 +61,16 @@ export default function FolderPopup() {
       },
     });
     const data = await response.json();
+    console.log(data);
     setDocuments(data.data);
-    console.log(data.data);
   }
 
   useEffect(() => {
-    if (projectId.length !== 0) {
-      getUploadedFiles();
-    } else {
-      getUploadedFilesReload(folderId);
+    console.log(paramId);
+    if (paramId !== "") {
+      getUploadedFiles(paramId);
     }
-  }, [projectId, folderId]);
-
-  const router = useRouter();
-  const { id } = router.query;
-
-  /* GET ARCHITECT ID */
-  function getParameters() {
-    let urlString = window.location.href;
-    let paramString = urlString.split("/")[4];
-    let queryString = new URLSearchParams(paramString);
-    for (let pair of queryString.entries()) {
-      setFolderId(pair[0]);
-    }
-  }
-
-  useEffect(() => {
-    getParameters();
-  }, [id]);
+  }, [paramId]);
 
   const [titleFileUpload, setTitleFileUpload] = useState("");
   const [filenameUpload, setFilenameUpload] = useState("");
@@ -192,189 +191,176 @@ export default function FolderPopup() {
 
   return (
     <>
-      {/* <div className={styles.FolderPopupOuter}> */}
-
-      {documents?.length !== 0 ? (
-        <>
-          <div className={styless.sone_outer}>
-            <div className={styless.sone_inner}>
-              <div className={styless.left}>Folders</div>
-              {/* <div className={styles.right}>
+      <div className={styless.sone_outer}>
+        <div className={styless.sone_inner}>
+          <div className={styless.left}>Folders</div>
+          {/* <div className={styles.right}>
               <img src="/img/architect-dashboard/sort.svg" alt="sort" />
               <span>Sort list</span>
             </div> */}
-            </div>
-          </div>
-          <div className={styless.stwo_outer}>
-            <div className={styless.stwo_inner}>
-              <div className={styless.folder_max_outer}>
-                <div className={styles.FolderPopupInner}>
-                  <div className={styles.heading}>
-                    <div className={styles.left}>
-                      <div className={styles.main}>{projectId.project_name}</div>
-                      <div className={styles.sub}>{documents?.length} Document folders</div>
-                    </div>
-                    <div className={styles.right}>
-                      <div onClick={() => setAddFolder(true)} className={styles.add_folder}>
-                        <img src="/img/architect-dashboard/plus-yellow.svg" alt="sort" />
-                        <span>Add Folder</span>
-                      </div>
-                      {/* <div onClick={() => setFolderPopup(false)} className={styles.back}> */}
-                      {/* <div className={styles.back}>Back</div> */}
-                    </div>
+        </div>
+      </div>
+      <div className={styless.stwo_outer}>
+        <div className={styless.stwo_inner}>
+          <div className={styless.folder_max_outer}>
+            <div className={styles.FolderPopupInner}>
+              <div className={styles.heading}>
+                <div className={styles.left}>
+                  <div className={styles.main}>{projectId.project_name}</div>
+                  <div className={styles.sub}>{documents?.length} Document folders</div>
+                </div>
+                <div className={styles.right}>
+                  <div onClick={() => setAddFolder(true)} className={styles.add_folder}>
+                    <img src="/img/architect-dashboard/plus-yellow.svg" alt="sort" />
+                    <span>Add Folder</span>
                   </div>
-                  <div className={styles.content}>
-                    {addFolder ? (
-                      <>
-                        <div className={styles.create_folder}>
-                          <div className={styles.one}>
-                            <input type="type" placeholder="Enter the title" onChange={titleChange} />
-                          </div>
-                          <div className={styles.one}>
-                            <input type="type" placeholder="Enter the filename" onChange={fileNameChange} />
-                          </div>
-                          <div className={styles.two}>
-                            <input type="file" accept="application/pdf" onChange={handleChange} />
-                          </div>
-                          {uploading ? (
-                            <div className={styles.imageAddingLoading} id="loadingImageUpload">
-                              uploading
-                              <PulseLoader color="#000000" size={4} />
-                            </div>
-                          ) : (
-                            ""
-                          )}
-                          <div className={styles.three}>
-                            <div onClick={() => setAddFolder(false)} className={styles.clear}>
-                              Clear
-                            </div>
-                            <div onClick={uploadFiles} className={styles.upload}>
-                              Upload
-                            </div>
-                          </div>
+                  {/* <div onClick={() => setFolderPopup(false)} className={styles.back}> */}
+                  {/* <div className={styles.back}>Back</div> */}
+                </div>
+              </div>
+              <div className={styles.content}>
+                {addFolder ? (
+                  <>
+                    <div className={styles.create_folder}>
+                      <div className={styles.one}>
+                        <input type="type" placeholder="Enter the title" onChange={titleChange} />
+                      </div>
+                      <div className={styles.one}>
+                        <input type="type" placeholder="Enter the filename" onChange={fileNameChange} />
+                      </div>
+                      <div className={styles.two}>
+                        <input type="file" accept="application/pdf" onChange={handleChange} />
+                      </div>
+                      {uploading ? (
+                        <div className={styles.imageAddingLoading} id="loadingImageUpload">
+                          uploading
+                          <PulseLoader color="#000000" size={4} />
                         </div>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                    {documents
-                      ?.slice(0)
-                      .reverse()
-                      .map((item, index) => {
-                        var lockcl = item?.payment_status;
-                        var lockc = !lockcl;
-                        return (
-                          <Accordion
-                            folder_name={item?.title}
-                            paymentStatus={item?.payment_status}
-                            date={moment(item?.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
-                            folderId={item?._id}
-                            key={index}
-                          >
-                            <div className={styles.Pfile_outer}>
-                              {item?.files?.map((file, i) => {
-                                return (
-                                  <React.Fragment key={i}>
-                                    {file.isDelete ? (
-                                      <div className={`${styles.Pfile} ${styles.deleted}`} key={i}>
-                                        <div className={styles.left}>
-                                          <div className={styles.img}>
-                                            <img src="/img/architect-dashboard/file-d.svg" alt="alt" />
-                                          </div>
-                                          <div className={styles.name}>
-                                            <div className={styles.first}>
-                                              <div>{file.filename}</div>
-                                              <div>
-                                                {lockc ? (
-                                                  <img src="/img/architect-dashboard/slock-d.svg" alt="alt" />
-                                                ) : (
-                                                  <img src="/img/architect-dashboard/sunlock-d.svg" alt="alt" />
-                                                )}
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div className={styles.right}>
-                                          <div className={styles.delete}>
-                                            <img src="/img/architect-dashboard/delete-d.svg" alt="alt" />
-                                          </div>
-                                          <div className={styles.download}>
-                                            <img src="/img/architect-dashboard/download-d.svg" alt="alt" />
-                                          </div>
-                                        </div>
+                      ) : (
+                        ""
+                      )}
+                      <div className={styles.three}>
+                        <div onClick={() => setAddFolder(false)} className={styles.clear}>
+                          Clear
+                        </div>
+                        <div onClick={uploadFiles} className={styles.upload}>
+                          Upload
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )}
+                {documents
+                  ?.slice(0)
+                  .reverse()
+                  .map((item, index) => {
+                    var lockcl = item?.payment_status;
+                    var lockc = !lockcl;
+                    return (
+                      <Accordion
+                        folder_name={item?.title}
+                        paymentStatus={item?.payment_status}
+                        date={moment(item?.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
+                        folderId={item?._id}
+                        key={index}
+                      >
+                        <div className={styles.Pfile_outer}>
+                          {item?.files?.map((file, i) => {
+                            return (
+                              <React.Fragment key={i}>
+                                {file.isDelete ? (
+                                  <div className={`${styles.Pfile} ${styles.deleted}`} key={i}>
+                                    <div className={styles.left}>
+                                      <div className={styles.img}>
+                                        <img src="/img/architect-dashboard/file-d.svg" alt="alt" />
                                       </div>
-                                    ) : (
-                                      <div className={styles.Pfile}>
-                                        <div className={styles.left}>
-                                          <div className={styles.img}>
-                                            <img src="/img/architect-dashboard/file.svg" alt="alt" />
-                                          </div>
-                                          <div className={styles.name}>
-                                            <div className={styles.first}>
-                                              <div>{file.filename}</div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div className={styles.right}>
-                                          <div className={styles.delete}>
+                                      <div className={styles.name}>
+                                        <div className={styles.first}>
+                                          <div>{file.filename}</div>
+                                          <div>
                                             {lockc ? (
-                                              <>
-                                                <img
-                                                  onClick={() => deleteFile(file.id, item._id)}
-                                                  className={styles.delete_h}
-                                                  src="/img/architect-dashboard/fdelete-h.svg"
-                                                  alt="alt"
-                                                />
-                                                <img
-                                                  className={styles.delete_nh}
-                                                  src="/img/architect-dashboard/fdelete-nh.svg"
-                                                  alt="alt"
-                                                />
-                                              </>
+                                              <img src="/img/architect-dashboard/slock-d.svg" alt="alt" />
                                             ) : (
-                                              ""
+                                              <img src="/img/architect-dashboard/sunlock-d.svg" alt="alt" />
                                             )}
                                           </div>
-                                          <div className={styles.download}>
-                                            <Link href={file.url} passHref>
-                                              <a download target="_blank">
-                                                <img
-                                                  className={styles.download_h}
-                                                  src="/img/architect-dashboard/fdown-h.svg"
-                                                  alt="alt"
-                                                />
-                                              </a>
-                                            </Link>
-                                            <img
-                                              className={styles.download_nh}
-                                              src="/img/architect-dashboard/fdown-nh.svg"
-                                              alt="alt"
-                                            />
-                                          </div>
                                         </div>
                                       </div>
-                                    )}
-                                  </React.Fragment>
-                                );
-                              })}
-                            </div>
-                          </Accordion>
-                        );
-                      })}
-                  </div>
-                </div>
+                                    </div>
+                                    <div className={styles.right}>
+                                      <div className={styles.delete}>
+                                        <img src="/img/architect-dashboard/delete-d.svg" alt="alt" />
+                                      </div>
+                                      <div className={styles.download}>
+                                        <img src="/img/architect-dashboard/download-d.svg" alt="alt" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <div className={styles.Pfile}>
+                                    <div className={styles.left}>
+                                      <div className={styles.img}>
+                                        <img src="/img/architect-dashboard/file.svg" alt="alt" />
+                                      </div>
+                                      <div className={styles.name}>
+                                        <div className={styles.first}>
+                                          <div>{file.filename}</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className={styles.right}>
+                                      <div className={styles.delete}>
+                                        {lockc ? (
+                                          <>
+                                            <img
+                                              onClick={() => deleteFile(file.id, item._id)}
+                                              className={styles.delete_h}
+                                              src="/img/architect-dashboard/fdelete-h.svg"
+                                              alt="alt"
+                                            />
+                                            <img
+                                              className={styles.delete_nh}
+                                              src="/img/architect-dashboard/fdelete-nh.svg"
+                                              alt="alt"
+                                            />
+                                          </>
+                                        ) : (
+                                          ""
+                                        )}
+                                      </div>
+                                      <div className={styles.download}>
+                                        <Link href={file.url} passHref>
+                                          <a download target="_blank">
+                                            <img
+                                              className={styles.download_h}
+                                              src="/img/architect-dashboard/fdown-h.svg"
+                                              alt="alt"
+                                            />
+                                          </a>
+                                        </Link>
+                                        <img
+                                          className={styles.download_nh}
+                                          src="/img/architect-dashboard/fdown-nh.svg"
+                                          alt="alt"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                              </React.Fragment>
+                            );
+                          })}
+                        </div>
+                      </Accordion>
+                    );
+                  })}
               </div>
             </div>
           </div>
-        </>
-      ) : (
-        <div className={styless.main_inner}>
-          <div className={styless.loading}>
-            <img src="/img/landing/loading.svg" alt="Loading..." />
-          </div>
         </div>
-      )}
-      {/* </div> */}
+      </div>
     </>
   );
 }

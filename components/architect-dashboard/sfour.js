@@ -5,14 +5,17 @@ import Link from "next/link";
 
 import { StoreContext } from "../../components/StoreContext";
 import styles from "./sfour.module.css";
+import { useRouter } from "next/router";
 
 export default function FnSFour() {
+  const router = useRouter();
   const [Store] = useContext(StoreContext);
 
   const userProjects = Store.userProjects;
   const setAddProject = Store.setAddProject;
   const setFileUploadPopup = Store.setFileUploadPopup;
   const setFileUploadId = Store.setFileUploadId;
+  const setProjectId = Store.setProjectId;
   /* const setOngoingPopup = Store.setOngoingPopup; */
 
   const [ongoingProject, setOngoingProject] = useState(true);
@@ -29,8 +32,13 @@ export default function FnSFour() {
   }, [userProjects]);
 
   const uploadClick = (id) => {
-    setFileUploadPopup(true);
     setFileUploadId(id);
+    setFileUploadPopup(true);
+  };
+
+  const filePopup = (id) => {
+    setProjectId(id);
+    router.push(`/project-files/${id._id}`);
   };
 
   return (
@@ -100,12 +108,11 @@ export default function FnSFour() {
                           />
                           <div>Send product</div>
                         </div> */}
-                          <Link href={`/project-files/${item._id}`} passHref>
-                            <div>
-                              <img src="/img/ongoing-project/file-m.svg" alt="alt" />
-                              <div>Files</div>
-                            </div>
-                          </Link>
+
+                          <div onClick={() => filePopup(item)}>
+                            <img src="/img/ongoing-project/file-m.svg" alt="alt" />
+                            <div>Files</div>
+                          </div>
                         </div>
                       </div>
                     </div>

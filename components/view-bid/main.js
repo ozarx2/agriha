@@ -102,10 +102,9 @@ export default function ViewBidMain() {
             </div>
           </div>
         ) : (
-          <div className={styles.main_inner}>
-            <div className={styles.loading}>
-              <img src="/img/landing/loading.svg" alt="Loading..." />
-            </div>
+          <div className={styles.no_files}>
+            <h3>“No files”</h3>
+            <h5>Sorry, you have no files from home seeker</h5>
           </div>
         )}
       </div>

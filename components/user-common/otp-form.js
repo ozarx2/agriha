@@ -103,7 +103,6 @@ export default function OtpPopupForm() {
       }),
     });
     const data = await res.json();
-
     setLoading(false);
     if (data.status === 200) {
       setUserId(data.id);

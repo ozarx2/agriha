@@ -9,11 +9,12 @@ export default function NotificationPopup() {
 
   const setNotificationPopup = Store.setNotificationPopup;
   const dataActivity = Store.activityLog;
-  // console.log(dataActivity);
+  console.log(dataActivity);
   const temp = dataActivity.slice(0).reverse();
-  // console.log(temp);
-  const activityLog = temp.slice(0, 10);
-  // console.log(activityLog);
+
+  const result = temp.filter((item) => item?.user?.name !== null);
+
+  const activityLog = result.slice(0, 10);
 
   return (
     <>

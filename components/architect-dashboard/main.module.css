@@ -2,6 +2,7 @@
   padding: 20px;
   padding-right: 60px;
   margin-top: 85px;
+  min-height: calc(100vh - 90px);
 }
 @media only screen and (max-width: 1200px) {
   .main_outer {

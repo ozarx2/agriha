@@ -89,6 +89,7 @@ const AddProject = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log(url);
           addImages(url);
         });
       }

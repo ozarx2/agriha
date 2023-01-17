@@ -141,7 +141,7 @@
   transition: all 0.7s ease-out 0s;
 }
 .dropdown {
-  margin-top: 20px;
+  margin-top: 5px;
   margin-left: 15px;
 }
 .modeInputActive {

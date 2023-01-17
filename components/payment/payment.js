@@ -26,16 +26,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
           <div className={styles.paymentsectionMain}>Mode of Payment</div>
-          {/* <div className={styles.paymentMode}>
-            <div className={styles.modeInput}>
-              <input onClick={() => setOnlineOrAccount("online")} type="radio" id="" name="payment" value="online" />
-              online
-            </div>
-            <div className={styles.modeInput}>
-              <input onClick={() => setOnlineOrAccount("account")} type="radio" id="" name="payment" value="account" />
-              account transfer
-            </div>
-          </div> */}
+
           <div className={styles.paymentMode}>
             <div className={styles.mode}>
               <div
@@ -55,14 +46,12 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
             </div>
           </div>
 
-          {/* <div className={styles.transactionTypeTitle}>Type of transactions :</div> */}
           {onlineOrAccount === "online" ? (
             <div className={styles.typesOfTransactionUpi}>
               <table className={styles.table_out}>
                 <tbody>
                   <tr>
                     <td>
-                      {/* <img src="/img/gpay.png" alt="google-pay.svg" className={styles.gpayIcon} /> */}
                       <Dropdown
                         className={styles.dropdown}
                         options={options}
@@ -76,41 +65,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                     </td>
                   </tr>
                   <tr>
-                    {/* <img src="/img/upi.svg" alt="upi.svg" className={styles.upiIcon} /> */}
-                    <td>
-                      UPI id/number
-                      {/* <td>
-                      <Dropdown
-                        className={styles.dropdown}
-                        options={options}
-                        // onChange={this._onSelect}
-                        value={defaultOption}
-                        placeholder="Select an option"
-                      />
-                    </td> */}
-                    </td>
-
-                    {/* <td>
-                    :
-                    <Dropdown
-                      className={styles.dropdown}
-                      options={options}
-                      // onChange={this._onSelect}
-                      value={defaultOption}
-                      placeholder="Select an option"
-                    />
-                  </td> */}
-
-                    {/* <select>
-                      <option value="fruit">
-                        <img src="/img/gpay.png" alt="google-pay.svg" className={styles.gpayIcon} />
-                        Fruit
-                      </option>
-
-                      <option value="vegetable">Vegetable</option>
-
-                      <option value="meat">Meat</option>
-                    </select> */}
+                    <td>UPI id/number</td>
 
                     <td>
                       : <input type="tel" />
@@ -161,19 +116,6 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
             <div className={styles.addBtn}>Add account</div>
           </div>
         </div>
-
-        {/* {projectDetails?.length !== 0 ? (
-          <div className={styles.main_inner}>
-           
-            
-          </div>
-        ) : (
-          <div className={styles.main_inner}>
-            <div className={styles.loading}>
-              <img src="/img/landing/loading.svg" alt="Loading..." />
-            </div>
-          </div>
-        )} */}
       </div>
     </>
   );

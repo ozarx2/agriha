@@ -103,7 +103,7 @@ export default function OtpPopupForm() {
       }),
     });
     const data = await res.json();
-    // console.log(data);
+
     setLoading(false);
     if (data.status === 200) {
       setUserId(data.id);
@@ -114,15 +114,11 @@ export default function OtpPopupForm() {
         localStorage.setItem("userId", data.id);
         localStorage.setItem("userToken", data.token);
         setBid(true);
-        window.location.href = "/requirement/basic-details";
+        setZonePopUp(true);
       } else if (data.role === "architect") {
         localStorage.setItem("architectId", data.id);
         localStorage.setItem("architectToken", data.token);
-
-        // Zone pop-up open
         setZonePopUp(true);
-
-        // window.location.href = `/architect-dashboard/${data.id}`;
       }
       setLoginPopup(false);
       setRegisterPopup(false);
@@ -143,9 +139,7 @@ export default function OtpPopupForm() {
   const verifyClickLogin = () => {
     if (a.value !== "") {
       setLoading(true);
-      handleSubmitLogin(
-        a.value + b.value + c.value + d.value + e.value + f.value
-      );
+      handleSubmitLogin(a.value + b.value + c.value + d.value + e.value + f.value);
     }
   };
 
@@ -159,42 +153,12 @@ export default function OtpPopupForm() {
     <>
       <div className={styles.stwo}>
         <div className={styles.sixOtp}>
-          <input
-            id="a"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(a, a, b)}
-          />
-          <input
-            id="b"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(a, b, c)}
-          />
-          <input
-            id="c"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(b, c, d)}
-          />
-          <input
-            id="d"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(c, d, e)}
-          />
-          <input
-            id="e"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(d, e, f)}
-          />
-          <input
-            id="f"
-            type="tel"
-            maxLength="1"
-            onChange={() => OtpNextActive(e, f, f)}
-          />
+          <input id="a" type="tel" maxLength="1" onChange={() => OtpNextActive(a, a, b)} />
+          <input id="b" type="tel" maxLength="1" onChange={() => OtpNextActive(a, b, c)} />
+          <input id="c" type="tel" maxLength="1" onChange={() => OtpNextActive(b, c, d)} />
+          <input id="d" type="tel" maxLength="1" onChange={() => OtpNextActive(c, d, e)} />
+          <input id="e" type="tel" maxLength="1" onChange={() => OtpNextActive(d, e, f)} />
+          <input id="f" type="tel" maxLength="1" onChange={() => OtpNextActive(e, f, f)} />
         </div>
         {isError ? <p>{error}</p> : ""}
         <div className={styles.additional}>

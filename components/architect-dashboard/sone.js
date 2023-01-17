@@ -61,12 +61,22 @@ export default function FnSOne() {
                       : architectData?.firstname + " " + architectData?.lastname}
                   </h3>
                   <h4>Architect</h4>
-                  <h6>
-                    <span className={styles.location}>
-                      <Image src="/img/architect-dashboard/location.svg" alt="location" width={12.23} height={11.11} />
-                    </span>
-                    {architectData?.zone ? architectData?.zone : architectData?.location}
-                  </h6>
+
+                  {architectData?.zone || architectData?.location ? (
+                    <h6>
+                      <span className={styles.location}>
+                        <Image
+                          src="/img/architect-dashboard/location.svg"
+                          alt="location"
+                          width={12.23}
+                          height={11.11}
+                        />
+                      </span>
+                      {architectData?.zone ? architectData?.zone : architectData?.location}
+                    </h6>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 {architectData.verified ? (
                   <div className={styles.verifiedImage}>

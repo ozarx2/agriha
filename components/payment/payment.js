@@ -113,7 +113,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                     </select> */}
 
                     <td>
-                      : <input type="text" />
+                      : <input type="tel" />
                     </td>
                   </tr>
                   <tr>

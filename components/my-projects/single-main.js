@@ -121,14 +121,14 @@ export default function SingleProjectsMain() {
               onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
               alt="alt"
             />
-            <table>
+            <table className={styles.table_out}>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>year</td>
                   <td></td>
                 </tr>
                 <tr>
-                  <td></td>
+                  <td>tag</td>
                   <td></td>
                 </tr>
                 <tr>

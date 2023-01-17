@@ -101,7 +101,9 @@ export default function ProfilePopup() {
                       <div className={styles.profileDeskTabs}>Project history</div>
                       <div className={styles.profileDeskTabs}>Products</div>
                       <div className={styles.profileDeskTabs}>Cart</div> */}
-                      <div className={styles.profileDeskTabs}>Privacy & policy</div>
+                      <Link href="/privacypolicy" passHref>
+                        <div className={styles.profileDeskTabs}>Privacy & policy</div>
+                      </Link>
                     </div>
                   </div>
                   <div onClick={() => logoutFunction()} className={styles.desktopProfileLogoutSection}>
@@ -164,14 +166,17 @@ export default function ProfilePopup() {
                         <span>{homeSeekerDetails?.registered_id?.phone}</span>
                       </div>
                       <div className={styles.buttons}>
-                        <div className={styles.edit}>Edit profile</div>
+                        {/* <div className={styles.edit}>Edit profile</div> */}
                         <div onClick={() => logoutFunction()} className={styles.logout}>
                           Log out
                         </div>
                       </div>
                     </div>
                     <div className={styles.second}>
-                      <div>Ongoing project</div>
+                      <div onClick={() => (router.push("/user-my-project"), setProfilePopup(false))}>
+                        Ongoing project
+                      </div>
+
                       {/* <div>Saved item</div>
                       <div>Shared project</div>
                       <div>Project history</div>
@@ -179,7 +184,9 @@ export default function ProfilePopup() {
                       <div>Cart</div> */}
                     </div>
                     <div className={styles.third}>
-                      <div>Privacy & policy</div>
+                      <Link href="/privacypolicy" passHref>
+                        <div>Privacy & policy</div>
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -101,6 +101,7 @@
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-height: 17px;
 }
 .stwo_grid_title p {
   font-family: "Inter";
@@ -120,6 +121,7 @@
   max-width: 46%;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-height: 17px;
 }
 .no_project {
   text-align: center;

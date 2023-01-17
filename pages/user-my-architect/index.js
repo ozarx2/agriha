@@ -22,7 +22,6 @@ const UserMyProjectMain = () => {
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
   const searchQueryArchitect = Store.searchQueryArchitect;
-  console.log(searchQueryArchitect);
 
   return (
     <>

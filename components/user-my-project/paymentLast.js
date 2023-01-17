@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "./paymentLast.module.css";
 
 const FnPaymentLast = () => {
+  const router = useRouter();
+  const { id } = router.query;
   return (
     <>
       <div className={styles.paymentDetailes}>
@@ -22,7 +26,9 @@ const FnPaymentLast = () => {
               <span>Paid</span>
             </div>
             <div className={styles.paymentDetailesBtnSection}>
-              <div className={styles.paymentDetailesBtnOne}>View Bill</div>
+              <Link href={`/user-payment/${[id]}`} passHref>
+                <div className={styles.paymentDetailesBtnOne}>View Bill</div>
+              </Link>
               <div className={styles.paymentDetailesBtnTwo}>
                 <span>
                   <img src="/img/my-project-user/download.svg" alt="download.svg" className={styles.download} />

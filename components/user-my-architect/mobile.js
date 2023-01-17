@@ -75,6 +75,29 @@ const FnUserMyArchitectMobile = () => {
     getallArchitects();
   }, [arcPaginatioCount]);
 
+  console.log(allArchitects);
+
+  async function getSearchArchitects(query) {
+    const res = await fetch(`${api_url}/search/key?l=${query}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${dummy_token}`,
+      },
+    });
+
+    const data = await res.json();
+    setAllArchitects(data.data);
+  }
+
+  useEffect(() => {
+    if (location && location != undefined) {
+      getSearchArchitects(location);
+    } else {
+      getallArchitects();
+    }
+  }, [location]);
+
   return (
     <>
       <div className={`container ${styles.container} ${styles.archHead_spl}`}>

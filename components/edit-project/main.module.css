@@ -173,7 +173,17 @@
   grid-gap: 25px;
   gap: 25px;
 }
-.thumbnail_editProjectMains {
+.thumbnail_editProjectMains img {
+  height: 200px;
+  width: auto;
+  object-fit: cover;
+}
+.inputBox_editProjectMain textarea {
+  height: 200px;
+  width: 100%;
+}
+.thumbnail_editProjectMains .inputBox_editProjectMain {
+  text-align: center;
 }
 .inputContainer_editProjectTwoMain {
   padding-top: 20px;

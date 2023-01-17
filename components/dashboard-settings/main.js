@@ -13,6 +13,8 @@ import Link from "next/link";
 
 export default function DashboardSettingsMain() {
   const router = useRouter();
+  const { id } = router.query;
+
   const [Store] = useContext(StoreContext);
 
   const architectId = Store.architectId;
@@ -192,15 +194,17 @@ export default function DashboardSettingsMain() {
         <div className={styles.sone_outer}>
           <div className={styles.sone_inner}>
             <div className={styles.title}>
-              <div>
+              <div className={styles.field}>
                 <div className={styles.main}>Profile information</div>
                 <div className={styles.sub}>
                   Some information from this will be dispalyed to users, so be careful what you share
                 </div>
               </div>
-              <Link href={`/payment${data?._id}`}>
-                <div className={styles.paymentBtn}>Add payment</div>
-              </Link>
+              <div className={styles.field}>
+                <Link Link href={`/payment/${[id]}`} passHref>
+                  <div className={styles.paymentBtn}>Add payment</div>
+                </Link>
+              </div>
             </div>
             <div className={styles.form_1}>
               <div className={styles.field_row}>

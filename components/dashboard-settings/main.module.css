@@ -8,7 +8,7 @@
 .sone_inner {
 }
 .sone_inner .title {
-  margin: 10px 1px;
+  margin: 10px -20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -324,6 +324,12 @@
   }
 }
 @media only screen and (max-width: 1100px) {
+  .sone_inner .title {
+    margin: 10px -1px;
+    display: grid;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+  }
   .main_outer {
     margin-top: 67px;
     padding-right: 20px;

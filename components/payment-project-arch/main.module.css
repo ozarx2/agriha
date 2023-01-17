@@ -10,7 +10,7 @@
   color: #000000;
   padding-top: 100px;
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 .paymentColoumns {
   display: flex;
@@ -25,6 +25,7 @@
 }
 .table_out td:first-child {
   min-width: 130px;
+  padding-top: 15px;
 }
 .table_out {
 }
@@ -44,12 +45,14 @@
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
 }
+.dropdownCol {
+}
 .dropdown {
-  margin-left: 10px;
-  margin-right: 15px;
+  margin-left: 20px;
+  margin-right: 14px;
 }
 .addAcc {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   background-color: #019071;
   border-radius: 5px;
   border: 0;

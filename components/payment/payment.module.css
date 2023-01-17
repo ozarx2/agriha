@@ -22,17 +22,18 @@
   padding-top: 10px;
   padding-bottom: 20px;
 }
-.modeInput {
+.mode {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  padding-right: 20px;
-  padding-left: 20px;
+  /* padding-right: 20px; */
+  /* padding-left: 20px; */
 }
-.modeInput > input {
+.mode > input {
   margin-right: 5px;
 }
+
 .transactionTypeTitle {
   text-align: center;
   margin-bottom: 20px;
@@ -141,7 +142,36 @@
   margin-top: 20px;
   margin-left: 15px;
 }
-.modeInput {
+.modeInputActive {
+  background-color: #019071;
+  border-radius: 5px;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 33px;
+  padding: 15px;
+  color: #fff;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+  /* margin-right: 10px; */
+}
+.mode {
+  margin-left: 10px;
+  background-color: #a59191;
+  border-radius: 5px;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 33px;
+  /* padding: 1px; */
+  /* padding: 15px; */
+  color: #fff;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+.addBtn {
   background-color: #019071;
   border-radius: 5px;
   border: 0;
@@ -155,21 +185,6 @@
   transition: all 0.7s ease-out 0s;
   margin-right: 10px;
 }
-.modeAccount {
-  margin-left: 10px;
-  background-color: #a59191;
-  border-radius: 5px;
-  border: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 33px;
-  padding: 15px;
-  color: #fff;
-  transition: all 0.7s ease-out;
-  transition: all 0.7s ease-out 0s;
-}
-
 /* .addBtn {
   text-align: center;
   background-color: #019071;

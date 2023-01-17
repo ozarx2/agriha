@@ -8,13 +8,14 @@ import "react-dropdown/style.css";
 import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
+import Link from "next/link";
 
 export default function SinglePaymentProjectMain({ isQuoted, setIsQuoted }) {
   const [Store] = useContext(StoreContext);
   const setBidDataPopup = Store.setBidDataPopup;
   const router = useRouter();
   const { id } = router.query;
-  const projectId = id;
+  // const projectId = id;
   const options = ["Gpay", "Paytm", "Phonepay"];
   const defaultOption = options[0];
 
@@ -28,8 +29,7 @@ export default function SinglePaymentProjectMain({ isQuoted, setIsQuoted }) {
               <tbody>
                 <tr>
                   <td>Payment details </td>
-                  <td>
-                    :
+                  <td className={styles.dropdownCol}>
                     <Dropdown
                       className={styles.dropdown}
                       options={options}
@@ -39,7 +39,9 @@ export default function SinglePaymentProjectMain({ isQuoted, setIsQuoted }) {
                     />
                   </td>
                   <td>
-                    <button className={styles.addAcc}>Add account</button>
+                    <Link Link href={`/payment/${[id]}`} passHref>
+                      <button className={styles.addAcc}>Add account</button>
+                    </Link>
                   </td>
                 </tr>
                 <tr>
@@ -49,7 +51,7 @@ export default function SinglePaymentProjectMain({ isQuoted, setIsQuoted }) {
                   </td>
                 </tr>
                 <tr>
-                  <td> Stage og payment </td>
+                  <td> Stage of payment </td>
                   <td>
                     : <input type="text" />
                   </td>

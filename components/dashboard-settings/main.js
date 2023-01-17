@@ -13,6 +13,8 @@ import Link from "next/link";
 
 export default function DashboardSettingsMain() {
   const router = useRouter();
+  const { id } = router.query;
+
   const [Store] = useContext(StoreContext);
 
   const architectId = Store.architectId;
@@ -199,7 +201,7 @@ export default function DashboardSettingsMain() {
                 </div>
               </div>
               <div className={styles.field}>
-                <Link href={`/payment${data?._id}`}>
+                <Link Link href={`/payment/${[id]}`} passHref>
                   <div className={styles.paymentBtn}>Add payment</div>
                 </Link>
               </div>

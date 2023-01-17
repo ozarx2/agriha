@@ -37,16 +37,21 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
             </div>
           </div> */}
           <div className={styles.paymentMode}>
-            <div className={styles.modeInput}>
-              <div onClick={() => setOnlineOrAccount("online")}>online</div>
-              {/* <input onClick={() => setOnlineOrAccount("online")} type="radio" id="" name="payment" value="online" />
-              online */}
+            <div className={styles.mode}>
+              <div
+                onClick={() => setOnlineOrAccount("online")}
+                className={onlineOrAccount === "online" ? styles.modeInputActive : ""}
+              >
+                Online transfer
+              </div>
             </div>
-            <div className={styles.modeAccount}>
-              <div onClick={() => setOnlineOrAccount("account")}>account transfer</div>
-
-              {/* <input onClick={() => setOnlineOrAccount("account")} type="radio" id="" name="payment" value="account" />
-              account transfer */}
+            <div className={styles.mode}>
+              <div
+                onClick={() => setOnlineOrAccount("account")}
+                className={onlineOrAccount === "account" ? styles.modeInputActive : ""}
+              >
+                Account transfer
+              </div>
             </div>
           </div>
 
@@ -153,7 +158,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
             </div>
           )}
           <div className={styles.paymentMode}>
-            <div className={styles.modeInput}>Add</div>
+            <div className={styles.addBtn}>Add account</div>
           </div>
         </div>
 

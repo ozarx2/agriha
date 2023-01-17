@@ -604,6 +604,8 @@
   font-size: 13px;
   font-weight: 400;
   color: #adadad;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .uploadButton,
@@ -872,10 +874,16 @@
     opacity: 0;
     width: 80px;
   }
+
   .left_inputRow_fileUpload > p {
     font-size: 10px;
     font-weight: 400;
+    max-width: 110px;
+    max-height: 12px;
+
     color: #adadad;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .uploadButton,
   .uploadButtonActive {

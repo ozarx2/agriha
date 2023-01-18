@@ -159,7 +159,7 @@ export default function RegisterPopup() {
                 <div className={styles.content_inner}>
                   <div className={styles.sone}>
                     <div onClick={() => setRegisterPopup(false)} className={styles.back}>
-                      <img src="/img/project-details/back.svg" alt="back" />
+                      <img src="/img/project-details/back.svg" alt="back" /> <span>Back</span>
                     </div>
                     <div className={styles.text}>
                       <div className={styles.textone}>

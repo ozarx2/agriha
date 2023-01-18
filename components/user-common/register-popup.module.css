@@ -67,6 +67,19 @@
   }
   .content_inner .sone .back {
     margin-right: 17px;
+    display: flex;
+    align-items: center;
+  }
+  .content_inner .sone .back img {
+    margin-right: 8px;
+  }
+  .content_inner .sone .back span {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #a4a4a4;
   }
   .content_inner .sone .text {
   }

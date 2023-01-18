@@ -16,7 +16,8 @@ export default function ViewBidMain() {
     window.location.href = `/view-bid/${id}`;
   };
 
-  const temp = allBidArchitect.filter((val) => val.bid === true);
+  const tempone = allBidArchitect.filter((val) => val.bid === true);
+  const temp = tempone.filter((val) => val.status === "started");
   const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
   const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
 
@@ -103,8 +104,8 @@ export default function ViewBidMain() {
           </div>
         ) : (
           <div className={styles.no_files}>
-            <h3>“No files”</h3>
-            <h5>Sorry, you have no files from home seeker</h5>
+            <h3>“No Bids”</h3>
+            <h5>Sorry, no bids listed by home seeker</h5>
           </div>
         )}
       </div>

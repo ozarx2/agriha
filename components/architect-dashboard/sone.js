@@ -19,7 +19,8 @@ export default function FnSOne() {
   const setArcDashQueue = Store.setArcDashQueue;
   const allBidArchitect = Store.allBidArchitect;
 
-  const temp = allBidArchitect.filter((val) => val.bid === true);
+  const tempone = allBidArchitect.filter((val) => val.bid === true);
+  const temp = tempone.filter((val) => val.status === "started");
   const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
   const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
 

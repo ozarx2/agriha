@@ -25,28 +25,29 @@ const UserArchitectAboutMain = (props) => {
   const profilePopup = Store.profilePopup;
   const architectProfileSelectPopup = Store.architectProfileSelectPopup;
   const sharePopup = Store.sharePopup;
+  console.log(props);
 
   return (
     <>
       <Head>
         <title>
-          {props.data?.registered_id?.name
-            ? props.data?.registered_id?.name
-            : props.data?.firstname + " " + props.data?.lastname}{" "}
+          {props?.data?.registered_id?.name
+            ? props?.data?.registered_id?.name
+            : props?.data?.firstname + " " + props?.data?.lastname}{" "}
           | Agriha
         </title>
-        <meta name="description" content={`Architect at ${props.data.companyname}  | Agriha`} />
+        <meta name="description" content={`Architect at ${props?.data?.companyname}  | Agriha`} />
         <link rel="icon" href="/favicon.ico" />
         <meta
           property="og:title"
           content={`${
-            props.data?.registered_id?.name
-              ? props.data?.registered_id?.name
-              : props.data?.firstname + " " + props.data?.lastname
+            props?.data?.registered_id?.name
+              ? props?.data?.registered_id?.name
+              : props?.data?.firstname + " " + props?.data?.lastname
           } | Agriha`}
         />
-        <meta property="og:description" content={`Architect at ${props.data.companyname}  | Agriha`} />
-        <meta property="og:image" content={props.data.profilepic} />
+        <meta property="og:description" content={`Architect at ${props?.data?.companyname}  | Agriha`} />
+        <meta property="og:image" content={props?.data?.profilepic} />
       </Head>
       <div>
         <div className={styles.container_outer}>

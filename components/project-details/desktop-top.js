@@ -56,7 +56,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
     // console.log(data[0]);
     setProjectDetails(data[0]);
   }
-
+  // console.log(projectDetails);
   useEffect(() => {
     if (projectId !== "") {
       getProjects();
@@ -103,6 +103,17 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper2"
                 >
+                  {projectDetails.thumbnail ? (
+                    <SwiperSlide>
+                      <img
+                        src={projectDetails.thumbnail}
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                        alt=""
+                      />
+                    </SwiperSlide>
+                  ) : (
+                    ""
+                  )}
                   {projectDetails?.Image?.map((item, index) => {
                     return (
                       <SwiperSlide key={index}>
@@ -176,6 +187,17 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper"
                 >
+                  {projectDetails.thumbnail ? (
+                    <SwiperSlide>
+                      <img
+                        src={projectDetails.thumbnail}
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                        alt=""
+                      />
+                    </SwiperSlide>
+                  ) : (
+                    ""
+                  )}
                   {projectDetails?.Image?.map((item, index) => {
                     return (
                       <SwiperSlide key={index}>

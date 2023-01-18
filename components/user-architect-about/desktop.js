@@ -123,7 +123,7 @@ const UserArchitectAboutDesktop = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setAllArchitects(data);
   }
 
@@ -187,7 +187,7 @@ const UserArchitectAboutDesktop = () => {
                   ""
                 )}
                 <div className={styles.archProfileSectionMainRight}>
-                  {userId !== "" ? (
+                  {/* {userId !== "" ? (
                     <div
                       className={styles.archOptionsIcons}
                       onClick={() => router.push(`tel:${singleArchitect?.phone}`)}
@@ -200,7 +200,7 @@ const UserArchitectAboutDesktop = () => {
                       <img src="/img/architect-about/contact.svg" alt="contact.svg" className={styles.contactIcon} />
                       Contact
                     </div>
-                  )}
+                  )} */}
                   <div className={styles.archOptionsIcons} onClick={() => setSharePopup(true)}>
                     <img src="/img/architect-about/share.svg" alt="share.svg" className={styles.shareIcon} />
                     <span>Share</span>

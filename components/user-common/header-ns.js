@@ -186,7 +186,7 @@ export default function AgrihaLandingHeaderNoSearch() {
                             onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
                             className={styles.logins}
                           >
-                            Architect Login
+                            Architect Dashboard
                           </div>
                         ) : (
                           <div
@@ -237,7 +237,7 @@ export default function AgrihaLandingHeaderNoSearch() {
                             onClick={() => router.push(`/architect-dashboard/${archIdHeader}`)}
                             className={styles.logins}
                           >
-                            Architect Login
+                            Architect Dashboard
                           </div>
                         ) : (
                           <div

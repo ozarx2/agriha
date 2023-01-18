@@ -26,17 +26,28 @@
   font-size: 14px;
   line-height: 21.79px;
 }
-
 .title > span {
   color: #c31616;
+}
+.subtitle {
+  color: #383838;
+  font-weight: 300;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 21.79px;
+  margin-top: 10px;
+}
+.subtitle > span {
+  color: #c31616;
+  font-size: 20px;
 }
 
 .inputContainer {
   margin-top: 11px;
 }
 
-.inputContainer > input {
-  width: 100%;
+.inputContainer input {
+  width: calc(100% - 60px);
   height: 44px;
   border-radius: 3.15px;
   border: 0.5px solid #b8e7dd;
@@ -47,6 +58,12 @@
   font-size: 12px;
   font-weight: 400;
   color: #019071;
+}
+.inputContainer span:last-child {
+  font-size: 12px;
+  font-weight: 400;
+  color: #019071;
+  margin-left: 10px;
 }
 
 .inputContainer > p {

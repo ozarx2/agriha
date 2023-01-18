@@ -201,7 +201,7 @@ export default function DashboardSettingsMain() {
                 </div>
               </div>
               <div className={styles.field}>
-                <Link Link href={`/payment/${[id]}`} passHref>
+                <Link href={`/payment/${architectId}`} passHref>
                   <div className={styles.paymentBtn}>Add payment</div>
                 </Link>
               </div>

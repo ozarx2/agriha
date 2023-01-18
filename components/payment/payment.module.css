@@ -140,9 +140,11 @@
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
 }
-.dropdown {
-  margin-top: 5px;
-  margin-left: 15px;
+.table_out td select {
+  width: 70px;
+  height: 25px;
+  margin-left: 5px;
+  border-radius: 5px;
 }
 .modeInputActive {
   background-color: #019071;

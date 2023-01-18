@@ -45,12 +45,14 @@
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
 }
-.dropdownCol {
+.table_out td select {
+  width: 150px;
+  height: 25px;
+  margin-left: 6px;
+  border-radius: 4px;
+  margin-top: 10px;
 }
-.dropdown {
-  margin-left: 20px;
-  margin-right: 14px;
-}
+
 .addAcc {
   /* margin-top: 20px; */
   background-color: #019071;
@@ -59,7 +61,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 33px;
+  height: 29px;
   padding: 15px;
   color: #fff;
   transition: all 0.7s ease-out;

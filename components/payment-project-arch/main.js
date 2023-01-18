@@ -1,23 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
-
-import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
-import Link from "next/link";
 
-export default function SinglePaymentProjectMain({ isQuoted, setIsQuoted }) {
+export default function SinglePaymentProjectMain() {
   const [Store] = useContext(StoreContext);
-  const setBidDataPopup = Store.setBidDataPopup;
   const router = useRouter();
   const { id } = router.query;
-  // const projectId = id;
-  const options = ["Gpay", "Paytm", "Phonepay"];
-  const defaultOption = options[0];
+  const projectId = id;
 
   return (
     <>
@@ -30,18 +21,17 @@ export default function SinglePaymentProjectMain({ isQuoted, setIsQuoted }) {
                 <tr>
                   <td>Payment details </td>
                   <td className={styles.dropdownCol}>
-                    <Dropdown
-                      className={styles.dropdown}
-                      options={options}
-                      // onChange={this._onSelect}
-                      value={defaultOption}
-                      placeholder="Select an option"
-                    />
+                    <div className={styles.dropDown}>
+                      :
+                      <select name="cars" id="cars">
+                        <option value="gpay">Gpay</option>
+                        <option value="phonepay">Phonepay</option>
+                        <option value="paytm">Paytm</option>
+                      </select>
+                    </div>
                   </td>
                   <td>
-                    <Link Link href={`/payment/${[id]}`} passHref>
-                      <button className={styles.addAcc}>Add account</button>
-                    </Link>
+                    <button className={styles.addAcc}>Add account</button>
                   </td>
                 </tr>
                 <tr>

@@ -162,7 +162,7 @@ const UserArchitectAboutMobile = () => {
                 )}
               </div>
               <div className={styles.callShareSaveSecMainMob}>
-                {userId !== "" ? (
+                {/* {userId !== "" ? (
                   <div
                     className={styles.callShareSaveSecMob}
                     onClick={() => router.push(`tel:${singleArchitect?.phone}`)}
@@ -175,7 +175,7 @@ const UserArchitectAboutMobile = () => {
                     <img src="/img/architect-about/mobile/contactMob.svg" alt="contactMob.svg" />
                     <div>Contact</div>
                   </div>
-                )}
+                )} */}
 
                 {userId !== "" ? (
                   <div className={styles.callShareSaveSecMobS} onClick={() => setArchitectProfileSelectPopup(true)}>

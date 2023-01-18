@@ -51,7 +51,11 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                         alt="profile"
                       />
                       <div className={styles.right}>
-                        <div>{item[0]?.architect_id?.firstname + " " + item[0]?.architect_id?.lastname}</div>
+                        <div>
+                          {item[0]?.architect_id?.firstname !== undefined
+                            ? item[0]?.architect_id?.firstname + " " + item[0]?.architect_id?.lastname
+                            : item[0]?.architect_id?.registered_id?.name}
+                        </div>
                         <div>{item[0]?.projectname}</div>
                       </div>
                     </div>
@@ -92,7 +96,11 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                         alt="profile"
                       />
                       <div className={styles.right}>
-                        <div>{item[1]?.architect_id?.firstname + " " + item[1]?.architect_id?.lastname}</div>
+                        <div>
+                          {item[1]?.architect_id?.firstname !== undefined
+                            ? item[1]?.architect_id?.firstname + " " + item[1]?.architect_id?.lastname
+                            : item[1]?.architect_id?.registered_id?.name}
+                        </div>
                         <div>{item[1]?.projectname}</div>
                       </div>
                     </div>
@@ -133,7 +141,11 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                         alt="profile"
                       />
                       <div className={styles.right}>
-                        <div>{item[2]?.architect_id?.firstname + " " + item[2]?.architect_id?.lastname}</div>
+                        <div>
+                          {item[2]?.architect_id?.firstname !== undefined
+                            ? item[2]?.architect_id?.firstname + " " + item[2]?.architect_id?.lastname
+                            : item[2]?.architect_id?.registered_id?.name}
+                        </div>
                         <div>{item[2].projectname}</div>
                       </div>
                     </div>
@@ -174,7 +186,11 @@ export default function AgrihaImageGrid({ allProjectSliced }) {
                         alt="profile"
                       />
                       <div className={styles.right}>
-                        <div>{item[3]?.architect_id?.firstname + " " + item[3]?.architect_id?.lastname}</div>
+                        <div>
+                          {item[3]?.architect_id?.firstname !== undefined
+                            ? item[3]?.architect_id?.firstname + " " + item[3]?.architect_id?.lastname
+                            : item[3]?.architect_id?.registered_id?.name}
+                        </div>
                         <div>{item[3].projectname}</div>
                       </div>
                     </div>

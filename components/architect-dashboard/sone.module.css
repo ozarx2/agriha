@@ -124,6 +124,24 @@
   line-height: 19px;
   color: #000000;
 }
+.blink {
+  animation: blink 0.5s linear infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 0.4;
+    scale: 0.9;
+  }
+  50% {
+    opacity: 1;
+    color: #00ecb9;
+    scale: 1.1;
+  }
+  100% {
+    opacity: 0.4;
+    scale: 0.9;
+  }
+}
 .pone {
   margin-left: 0;
 }
@@ -255,7 +273,7 @@
     padding-bottom: 0px;
   }
   .project .count {
-    font-size: 10px;
+    font-size: 13px;
   }
   .project {
     padding: 12px 11px;

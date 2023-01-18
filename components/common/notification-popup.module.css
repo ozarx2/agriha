@@ -71,6 +71,7 @@
   font-size: 14px;
   line-height: 17px;
   color: #121212;
+  margin-right: 10px;
 }
 .notificationPopupInner .heading .right {
   font-family: "Inter";

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
 import api_url from "../../src/utils/url";
@@ -113,16 +113,40 @@ export default function DataPopup({ setIsQuoted }) {
     }
   }
 
+  const changeAmountValue = (e) => {
+    setQuote(e.target.value);
+  };
+
+  useEffect(() => {
+    if (document.getElementById("amount")) {
+      document.getElementById("amount").focus();
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.FolderPopupOuter}>
         <div className={styles.FolderPopupInner}>
           <div className={styles.title}>
-            add quote <span>*</span>
+            Add quote <span>*</span>
           </div>
           <div className={styles.inputContainer}>
-            <input type="tel" onChange={(e) => setQuote(e.target.value)} placeholder="Enter your amount per sqft" />
+            <div>
+              <input
+                title="5% of the total amount will be shared with Arclif."
+                type="tel"
+                id="amount"
+                onChange={(e) => changeAmountValue(e)}
+                placeholder="Enter your amount per sqft"
+                value={quote}
+              />
+              <span>per sqft</span>
+            </div>
             {emptyQuote ? <p>Please enter amount</p> : ""}
+          </div>
+
+          <div className={styles.subtitle}>
+            <span>*</span> 5% of the total amount will be shared with Arclif.
           </div>
           <div className={styles.agreeContainer}>
             <p>

@@ -80,6 +80,17 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper2"
               >
+                {projectDetails.thumbnail ? (
+                  <SwiperSlide>
+                    <img
+                      src={projectDetails.thumbnail}
+                      onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                      alt=""
+                    />
+                  </SwiperSlide>
+                ) : (
+                  ""
+                )}
                 {projectDetails?.Image?.map((item, index) => {
                   return (
                     <SwiperSlide key={index}>
@@ -97,6 +108,17 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper"
               >
+                {projectDetails.thumbnail ? (
+                  <SwiperSlide>
+                    <img
+                      src={projectDetails.thumbnail}
+                      onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                      alt=""
+                    />
+                  </SwiperSlide>
+                ) : (
+                  ""
+                )}
                 {projectDetails?.Image?.map((item, index) => {
                   return (
                     <SwiperSlide key={index}>

@@ -102,7 +102,7 @@ export default function FnSOne() {
                       </div>
                       <div className={styles.right}>
                         <div className={styles.title}>Bid</div>
-                        <div className={styles.count}>{bid?.length}</div>
+                        <div className={`${styles.blink} ${styles.count}`}>{bid?.length}</div>
                       </div>
                     </div>
                   </Link>
@@ -150,7 +150,7 @@ export default function FnSOne() {
                   </div>
                   <div className={styles.right}>
                     <div className={styles.title}>Bid</div>
-                    <div className={styles.count}>{bid?.length}</div>
+                    <div className={`${styles.blink} ${styles.count}`}>{bid?.length}</div>
                   </div>
                 </div>
               </Link>

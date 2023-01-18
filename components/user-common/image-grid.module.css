@@ -41,7 +41,7 @@
   color: #818181;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 26px;
+  max-height: 29px;
 }
 
 .grid_outer > div {

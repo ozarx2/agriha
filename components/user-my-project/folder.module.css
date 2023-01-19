@@ -96,12 +96,32 @@
   padding-left: 10px;
 }
 .fileUploadDiv {
-  padding: 25px 25px;
+  padding: 10px 20px;
+  min-height: 140px;
+  min-width: 120px;
   background: #f7f7f7;
   border-radius: 6.44965px;
   text-align: center;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+.fileUploadDiv_dataLock {
+  margin-bottom: 10px;
+}
+
+.fileUploadDiv_dataLock > .lock {
+  height: 12px;
+  object-fit: contain;
+  margin-right: 5px;
+}
+
+.fileUploadDiv_dataLock > span {
+  font-size: 12px;
+}
+
 .fileFolderTitle {
   font-family: "Inter";
   font-style: normal;
@@ -127,4 +147,17 @@
 }
 .fileUploadsSection {
   padding-right: 30px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.backButton > img {
+  height: 12px;
+  margin-right: 8px;
 }

@@ -20,6 +20,8 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
   const [viewAll, setViewAll] = useState(false);
   const [suggestion, setSuggestion] = useState([]);
 
+  console.log(id);
+
   const toggleBtn = (id) => {
     setShowMore((prevState) => !prevState);
     setSelectprojectId(id);
@@ -87,6 +89,10 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
   let results = uploadedFiles.filter((res) => res.project_id === id);
 
   console.log(documents.length);
+
+  // added by yaseen
+
+  console.log(architectId);
 
   return (
     <div className={styles.mainSection}>

@@ -319,7 +319,11 @@ export default function AgrihaLandingMain() {
               <div className={styles.sthree_inner}>
                 {projectResponse?.length !== 0 ? (
                   <>
-                    <AgrihaImageGrid allProjectSliced={allProjectSliced} />
+                    <AgrihaImageGrid
+                      allProjectSliced={allProjectSliced}
+                      projectLength={projectResponse?.length}
+                      loadingAjax={loadingAjax}
+                    />
                     {loadingAjax ? (
                       <div className={styles.loading_ajax}>
                         <img src="/img/landing/loading.svg" alt="Loading..." />

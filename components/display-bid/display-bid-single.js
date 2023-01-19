@@ -14,56 +14,9 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
   const setDisplayBidArchitet = Store.setDisplayBidArchitet;
   const setBidArchitectSelectPopup = Store.setBidArchitectSelectPopup;
 
-  const rating = AgrihaArchitectRating(items.architect_id);
-
-  /* GET Single Architect details */
-  const [singleArchitect, setSingleArchitect] = useState([]);
-
-  async function getSingleArchitect() {
-    const token = localStorage.getItem("userToken");
-    const res = await fetch(`${api_url}/architects/${items.architect_id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        // Authorization: `Bearer ${dummy_token}`,
-      },
-    });
-    const data = await res.json();
-    setSingleArchitect(data);
-  }
-
-  // console.log(items);
-
-  useEffect(() => {
-    getSingleArchitect();
-  }, []);
-
+  const rating = AgrihaArchitectRating(items?.architect_id?._id);
   const router = useRouter();
-
-  /* ACCEPT REQUEST */
-  // async function acceptRequest(id, archid) {
-  //   var token = localStorage.getItem("userToken");
-
-  //   const res = await fetch(`${api_url}/projects/accept/${id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //     body: JSON.stringify({
-  //       architect_id: archid,
-  //       status: "ongoing",
-  //     }),
-  //   });
-
-  //   const data = await res.json();
-  //   console.log(data);
-  //   if (data.projectdata.status === "ongoing") {
-  //     setBidArchitectSelectPopup(false);
-  //     router.push("/my-bid");
-  //   }
-  // }
+  // console.log(items);
 
   // SELECT ARCHITECT BID
   async function selectArchitcect(id, archid, projectId) {
@@ -86,18 +39,18 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
 
   return (
     <div className={styles.bid_outer} key={i}>
-      <Link href={`/user-architect-about/${items.architect_id}`} passHref>
+      <Link href={`/user-architect-about/${items?.architect_id?._id}`} passHref>
         <div className={styles.mright}>
           <img
-            src={singleArchitect?.profilepic ? singleArchitect?.profilepic : "/img/landing/profile_img.svg"}
+            src={items?.architect_id?.profilepic ? items?.architect_id?.profilepic : "/img/landing/profile_img.svg"}
             onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
             alt="architect photo"
           />
           <div className={styles.profile}>
             <div className={styles.name}>
-              {singleArchitect?.registered_id?.name
-                ? singleArchitect?.registered_id?.name
-                : singleArchitect?.firstname + " " + singleArchitect?.lastname}
+              {items?.architect_id?.registered_id?.name
+                ? items?.architect_id?.registered_id?.name
+                : items?.architect_id?.firstname + " " + items?.architect_id?.lastname}
             </div>
             <div className={styles.rating}>
               <div className={styles.num}>{rating.rate}</div>
@@ -122,12 +75,12 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
         <div
           className={styles.select}
           onClick={() => (
-            setDisplayBidArchitet(singleArchitect),
+            setDisplayBidArchitet(items?.architect_id),
             setDisplayBidItems(items),
             setBidArchitectSelectPopup(true),
-            selectArchitcect(items._id, items.architect_id, items.project_id)
+            selectArchitcect(items._id, items?.architect_id?._id, items.project_id)
           )}
-          // onClick={() => selectArchitcect(items._id, items.architect_id, items.project_id)}
+          // onClick={() => selectArchitcect(items._id, items?.architect_id?._id, items.project_id)}
         >
           Select
         </div>

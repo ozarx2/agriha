@@ -2,10 +2,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import { StoreContext } from "../../components/StoreContext";
-import styles from "./sfour.module.css";
 import { useRouter } from "next/router";
+
+import styles from "./sfour.module.css";
 
 export default function FnSFour() {
   const router = useRouter();

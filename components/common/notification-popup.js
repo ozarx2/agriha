@@ -9,10 +9,10 @@ export default function NotificationPopup() {
 
   const setNotificationPopup = Store.setNotificationPopup;
   const dataActivity = Store.activityLog;
-  console.log(dataActivity);
+  // console.log(dataActivity);
   const temp = dataActivity.slice(0).reverse();
 
-  const result = temp.filter((item) => item?.user?.name !== null);
+  const result = temp.filter((item) => item?.user?.name !== null || item?.user?.registered_id?.name !== null);
 
   const activityLog = result.slice(0, 10);
 
@@ -47,15 +47,19 @@ export default function NotificationPopup() {
                           alt="alt"
                         />
                         <div className={styles.title}>
-                          <div className={styles.main}>{item?.user?.name}</div>
+                          <div className={styles.main}>
+                            {item?.user?.name ? item?.user?.name : item?.user?.registered_id?.name}
+                          </div>
                           <div className={styles.sub}>
-                            {/* {item?.user?.name} */}
-                            {/* {item?.user?.name} {item?.activity} */}
                             {item?.activity === "project added for you"
-                              ? `${item?.user?.name} added a project for you`
+                              ? `${
+                                  item?.user?.name ? item?.user?.name : item?.user?.registered_id?.name
+                                } added a project for you`
                               : ""}
                             {item?.activity === "quotation received from architects"
-                              ? `${item?.user?.name} received a quotation from architects`
+                              ? `${
+                                  item?.user?.name ? item?.user?.name : item?.user?.registered_id?.name
+                                } received a quotation from architects`
                               : ""}
                             {item?.activity === "Quotation Accepted" ? "Quotation Accepted" : ""}
                           </div>

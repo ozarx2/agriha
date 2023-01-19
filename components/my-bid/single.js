@@ -80,7 +80,11 @@ export default function AgrihaMyBidSingleMain() {
                       </tr>
                     )}
                     <tr>
-                      <td>Number of floors</td>
+                      <td>Budget</td>
+                      <td>: {projectTypeDetails?.budget}</td>
+                    </tr>
+                    <tr>
+                      <td>Suggessions</td>
                       <td>: {projectTypeDetails?.suggessions}</td>
                     </tr>
                     <tr>

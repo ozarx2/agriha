@@ -107,7 +107,7 @@ const ArchitectSelectPopupContent = () => {
         <div className={styles.line}></div>
         <div className={styles.buttons}>
           <div className={styles.back} onClick={() => setArchitectProfileSelectPopup(false)}>
-            Go to back
+            Go back
           </div>
           <div className={styles.continue} onClick={() => sentRequirement(archId)}>
             Continue

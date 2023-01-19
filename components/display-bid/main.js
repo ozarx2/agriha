@@ -17,6 +17,25 @@ export default function AgrihaDisplayBidMain() {
   const { id } = router.query;
   const bidId = id;
 
+  // const [bidId, setBidId] = useState([]);
+
+  /* GET ID */
+  // function getParameters() {
+  //   let urlString = window.location.href;
+  //   let paramString = urlString.split("/")[4];
+  //   let queryString = new URLSearchParams(paramString);
+  //   for (let pair of queryString.entries()) {
+  //     setBidId(pair[0]);
+  //   }
+  // }
+  // useEffect(() => {
+  //   if (id !== null) {
+  //     setBidId(id);
+  //   } else {
+  //     getParameters();
+  //   }
+  // }, []);
+
   const [Store] = useContext(StoreContext);
 
   const [bid, setBid] = useState(false);
@@ -33,7 +52,7 @@ export default function AgrihaDisplayBidMain() {
     const data = await response.json();
     if (data) {
       const temp = data.data;
-      console.log(temp);
+      // console.log(temp);
       setGetAllBidResult(temp);
       if (temp?.length > 0) {
         setBid(true);

@@ -271,33 +271,66 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
             {/* <div>Transaction mode details</div> */}
             {accountData?.map((datas, index) => {
               return (
-                <div className={styles.paymentDetailesMain}>
-                  <table className={styles.table_outer}>
-                    <tbody>
-                      <tr>
-                        <td>Mode of payment</td>
-                        <td className={styles.tableDataResult}>: {datas?.mode_of_payment}</td>
-                      </tr>
-                      <tr>
-                        <td>Type of transaction</td>
-                        <td className={styles.tableDataResult}>: {datas?.type_of_transaction}</td>
-                      </tr>
-                      <tr>
-                        <td>UPI number</td>
-                        <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_number}</td>
-                      </tr>
-                      <tr>
-                        <td>UPI id</td>
-                        <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_id}</td>
-                      </tr>
-                      {/* <tr>
+                <div key={index} className={styles.paymentDetailesMain}>
+                  {datas?.mode_of_payment === "online" ? (
+                    <table className={styles.table_outer}>
+                      <tbody>
+                        <tr>
+                          <td>Mode of payment</td>
+                          <td className={styles.tableDataResult}>: {datas?.mode_of_payment}</td>
+                        </tr>
+                        <tr>
+                          <td>Type of transaction</td>
+                          <td className={styles.tableDataResult}>: {datas?.type_of_transaction}</td>
+                        </tr>
+                        <tr>
+                          <td>UPI number</td>
+                          <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_number}</td>
+                        </tr>
+                        <tr>
+                          <td>UPI id</td>
+                          <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_id}</td>
+                        </tr>
+                        {/* <tr>
                         <td>QR code</td>
                         <td className={styles.tableDataResult}>
                           : <img className={styles.qrimages} src={datas?.details[0]?.qr_code} alt="qr.jpg" />
                         </td>
                       </tr> */}
-                    </tbody>
-                  </table>
+                      </tbody>
+                    </table>
+                  ) : (
+                    <table className={styles.table_outer}>
+                      <tbody>
+                        <tr>
+                          <td>Mode of payment</td>
+                          <td className={styles.tableDataResult}>: {datas?.mode_of_payment}</td>
+                        </tr>
+                        <tr>
+                          <td>Account number</td>
+                          <td className={styles.tableDataResult}>: {datas?.details[0]?.account_number}</td>
+                        </tr>
+                        <tr>
+                          <td>Account holder name</td>
+                          <td className={styles.tableDataResult}>: {datas?.details[0]?.holder_name}</td>
+                        </tr>
+                        <tr>
+                          <td>IFSC code</td>
+                          <td className={styles.tableDataResult}>: {datas?.details[0]?.ifsc_code}</td>
+                        </tr>
+                        <tr>
+                          <td>Branch name</td>
+                          <td className={styles.tableDataResult}>: {datas?.details[0]?.branch_name}</td>
+                        </tr>
+                        {/* <tr>
+                        <td>QR code</td>
+                        <td className={styles.tableDataResult}>
+                          : <img className={styles.qrimages} src={datas?.details[0]?.qr_code} alt="qr.jpg" />
+                        </td>
+                      </tr> */}
+                      </tbody>
+                    </table>
+                  )}
                 </div>
               );
             })}

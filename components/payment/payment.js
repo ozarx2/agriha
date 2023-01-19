@@ -7,8 +7,8 @@ import styles from "./payment.module.css";
 
 export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
   let architectId;
-  architectId = window.localStorage.getItem("architectId");
   useEffect(() => {
+    architectId = window.localStorage.getItem("architectId");
     console.log(architectId);
   }, []);
   console.log(architectId);

@@ -56,7 +56,21 @@ export default function SingleOngoingProjectsMain() {
         {projectDetails?.length !== 0 ? (
           <div className={styles.main_inner}>
             <div className={styles.title}>{projectDetails?.project_name}</div>
-            <div>{projectType}</div>
+            <div className={styles.h_type}>{projectType}</div>
+            <div className={styles.n_thumbnail}>
+              <a href={projectDetails?.thumbnail} target="_blank">
+                <img
+                  src={projectDetails?.thumbnail ? projectDetails?.thumbnail : "/img/common/ni.jpg"}
+                  onError={(e) => (e.target.src = "/img/common/ina.png")}
+                  alt="thumbnail"
+                />
+              </a>
+              <div className={styles.n_right}>
+                <div>{projectTypeDetails?.location}</div>
+                <div>{projectTypeDetails?.area} SQFT</div>
+                <div></div>
+              </div>
+            </div>
 
             <div className={styles.buttons__container}>
               <Link href={`/project-files/${projectDetails._id}`} passHref>
@@ -91,7 +105,11 @@ export default function SingleOngoingProjectsMain() {
                     </tr>
                   )}
                   <tr>
-                    <td>Number of floors</td>
+                    <td>Budget</td>
+                    <td>: {projectTypeDetails?.budget}</td>
+                  </tr>
+                  <tr>
+                    <td>Suggessions</td>
                     <td>: {projectTypeDetails?.suggessions}</td>
                   </tr>
                   <tr>

@@ -75,7 +75,7 @@ export default function ProfilePopup() {
                           alt="profile"
                           className={styles.profileDpDesktop}
                         />
-                        <img src="/img/profile/edit.svg" alt="profile" className={styles.edit} />
+                        {/* <img src="/img/profile/edit.svg" alt="profile" className={styles.edit} /> */}
                       </div>
                       <div className={styles.userProfileNameDeskSection}>
                         <div className={styles.profileName}>{homeSeekerDetails?.registered_id?.name}</div>

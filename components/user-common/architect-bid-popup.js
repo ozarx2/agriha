@@ -58,10 +58,10 @@ const ArchitectSelectPopupContent = () => {
             alt="profile"
           /> */}
           <div className={styles.content}>
-            <div className={styles.name}>invite for quote</div>
+            <div className={styles.name}>Invite for quote</div>
             <br />
             <div className={styles.msg}>
-              share your requirements to all architects and get quotes for your project.
+              Share your requirements to all architects and get quotes for your project.
               <br />
               {/* <br /> Do you want to continue ? */}
             </div>
@@ -70,7 +70,7 @@ const ArchitectSelectPopupContent = () => {
         <div className={styles.line}></div>
         <div className={styles.buttons}>
           <div className={styles.back} onClick={() => setArchitectBidtPopup(false)}>
-            Go to back
+            Go back
           </div>
           <div className={styles.continue} onClick={sentRequirementBid}>
             Continue

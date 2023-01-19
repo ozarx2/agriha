@@ -66,26 +66,26 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
     const data = await res.json();
     console.log(data);
   };
-  const [accountData, setAccountData] = useState([]);
+  // const [accountData, setAccountData] = useState([]);
 
-  async function getPayment() {
-    const token = localStorage.getItem("architectId");
-    const response = await fetch(`${api_url}/arc-payment/arcpaymentdetails/${architectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-    setAccountData(data.accountData);
-    console.log(data);
-  }
-  console.log(architectId);
+  // async function getPayment() {
+  //   const token = localStorage.getItem("architectId");
+  //   const response = await fetch(`${api_url}/arc-payment/arcpaymentdetails/${architectId}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   setAccountData(data.accountData);
+  //   console.log(data);
+  // }
+  // console.log(architectId);
 
-  useEffect(() => {
-    getPayment();
-  }, []);
+  // useEffect(() => {
+  //   getPayment();
+  // }, []);
   return (
     <>
       <div className={styles.main_outer}>
@@ -188,106 +188,6 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
             </div>
           </div>
           {/* <=====================output====================> */}
-
-          {onlineOrAccount === "online" ? (
-            <div className={styles.typesOfTransactionUpi}>
-              <table className={styles.table_out}>
-                <tbody>
-                  <tr>
-                    <td>
-                      <select
-                        className={styles.dropDown}
-
-                        // name="typeTransaction"
-                        // onChange={(e) => setTransaction(e.target.value)}
-                      >
-                        <option>1</option>
-                        {/* <option value="phonepay">Phonepay</option>
-                        <option value="paytm">Paytm</option> */}
-                      </select>
-                    </td>
-                    <td>
-                      :{" "}
-                      <input
-                        type="text"
-                        // onChange={handleInput}
-                        // name="upi_number"
-                        // defaultValue={onlineDetails.upi_number}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>UPI id</td>
-                    <td>
-                      :{" "}
-                      <input
-                        type="text"
-                        // onChange={handleInput}
-                        // name="upi_id"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td> QR Code </td>
-                    <td>
-                      {/* : <input type="file"
-                       onChange={handleInput} name="qr_code"
-                        /> */}
-                      <img src="" alt="" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <div className={styles.typesOfTransactionAcc}>
-              <table className={styles.table_out}>
-                <tbody>
-                  <tr>
-                    <td>account number </td>
-                    <td>
-                      :{" "}
-                      <input
-                        type="text"
-
-                        // name="account_number" onChange={handleInput}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>account holder name </td>
-                    <td>
-                      :{" "}
-                      <input
-                        type="text"
-                        //  name="holder_name" onChange={handleInput}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td> IFSC code </td>
-                    <td>
-                      :{" "}
-                      <input
-                        type="text"
-                        // name="ifsc_code" onChange={handleInput}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td> branch name </td>
-                    <td>
-                      :{" "}
-                      <input
-                        type="text"
-                        // name="branch_name" onChange={handleInput}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          )}
         </div>
       </div>
     </>

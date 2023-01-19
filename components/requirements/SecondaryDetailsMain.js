@@ -79,7 +79,7 @@ const SecondaryDetailsMain = () => {
   };
 
   const goToChoosePlan = () => {
-    if (pincode !== "" && district !== "" && state !== "" && country !== "") {
+    if (pincode !== "" && district !== "" && state !== "") {
       handleSubmit();
     } else {
       setIsError(true);
@@ -130,7 +130,7 @@ const SecondaryDetailsMain = () => {
                 </div>
                 <div className={styles.pincodeNdistrict_input_conatiner}>
                   <input type="text" id="state" placeholder="State*" onChange={storeDetails} />
-                  <input type="text" id="country" placeholder="Country*" onChange={storeDetails} />
+                  <input type="text" id="country" placeholder="Country" onChange={storeDetails} />
                 </div>
               </div>
               <div className={styles.inputRow}>

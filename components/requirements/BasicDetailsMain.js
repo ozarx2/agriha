@@ -641,7 +641,7 @@ const BasicDetailsMain = () => {
                 </div>
                 <div className={styles.areaNbudget_input_conatiner}>
                   <input onChange={storeCommonDetails} id="area" type="tel" placeholder="Total area in sqft*" />
-                  <input onChange={storeCommonDetails} id="budget" type="tel" placeholder="Budget*" />
+                  <input onChange={storeCommonDetails} id="budget" type="tel" placeholder="Project Budget*" />
                 </div>
               </div>
               <div className={styles.inputRow}>

@@ -5,6 +5,7 @@ import Head from "next/head";
 import FileUploadMain from "../../../components/requirements/FileUploadMain";
 import AgrihaLandingHeaderNoSearch from "../../../components/user-common/header-ns";
 import ProfilePopup from "../../../components/user-common/profile-popup";
+import SentRequirementPopup from "../../../components/requirements/sent-requirement-popup";
 
 import styles from "./index.module.css";
 
@@ -12,6 +13,7 @@ const FileUpload = () => {
   const [Store] = useContext(StoreContext);
 
   const profilePopup = Store.profilePopup;
+  const requirementPopup = Store.requirementPopup;
 
   const router = useRouter();
   useEffect(() => {
@@ -41,6 +43,7 @@ const FileUpload = () => {
           </div>
         </div>
       </div>
+      {requirementPopup ? <SentRequirementPopup /> : ""}
       {profilePopup ? <ProfilePopup /> : ""}
     </>
   );

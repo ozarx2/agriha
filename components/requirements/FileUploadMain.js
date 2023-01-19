@@ -1,15 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import axios from "axios";
 import api_url from "../../src/utils/url";
 import { PulseLoader } from "react-spinners";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import styles from "./RequirementsMain.module.css";
+import { StoreContext } from "../StoreContext";
 
 const FileUploadMain = () => {
+  const router = useRouter();
+
   const [sitePlanDetails, setSitePlanDetails] = useState([]);
   const [referanceImageDetails, setReferanceImageDetails] = useState([]);
   const [thumbnailDetails, setThumbnailDetails] = useState([]);
@@ -20,16 +24,23 @@ const FileUploadMain = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [Store] = useContext(StoreContext);
+
+  const setRequirementPopup = Store.setRequirementPopup;
+
   const getSitePlan = (e) => {
     setSitePlanDetails(e.target.files[0]);
+    handleUploadSitePLan(e.target.files[0]);
   };
 
   const getReferanceImages = (e) => {
     setReferanceImageDetails(e.target.files);
+    uploadReferanceImages(e.target.files);
   };
 
   const getThumbnail = (e) => {
     setThumbnailDetails(e.target.files[0]);
+    handleUploadThumb(e.target.files[0]);
   };
 
   /* SITEPLAN UPLOADING */
@@ -236,8 +247,11 @@ const FileUploadMain = () => {
   }
 
   const goToUserDash = () => {
-    setIsLoading(true);
-    window.location.href = "/";
+    setRequirementPopup(true);
+  };
+
+  const viewSitePlan = () => {
+    router.push(sitePlan);
   };
 
   return (
@@ -281,32 +295,20 @@ const FileUploadMain = () => {
                   <div className={styles.left_inputRow_fileUpload}>
                     <input type="file" onChange={getSitePlan} accept="application/pdf" id="siteplan" />
                     <div className={styles.inputRef}>Choose file</div>
-                    <p>{sitePlanDetails.length === 0 ? "Upload Site Plan" : sitePlanDetails.name}</p>
+                    {sitePlanLoading ? <PulseLoader color="#642dda" size={10} /> : <p>Upload Site Plan</p>}
                   </div>
-                  {sitePlanDetails.length !== 0 ? (
-                    <div className={styles.uploadButtonActive} onClick={() => handleUploadSitePLan(sitePlanDetails)}>
-                      {sitePlanLoading ? (
-                        <PulseLoader color="#ffffff" />
-                      ) : (
-                        <>
-                          {sitePlan === "" ? (
-                            <>
-                              Upload <img src="/img/requirement/upload.svg" alt="" />
-                            </>
-                          ) : (
-                            "Uploaded"
-                          )}
-                        </>
-                      )}
-                    </div>
-                  ) : (
-                    <div className={styles.uploadButton}>
-                      Upload
-                      <img src="/img/requirement/upload.svg" alt="" />
-                    </div>
-                  )}
                 </div>
-
+                {sitePlan !== "" ? (
+                  <div className={styles.uploded_pdf}>
+                    <img src="/img/architect-dashboard/pdf.svg" alt="uploaded pdf" onClick={viewSitePlan} />
+                    <div>
+                      <div>{sitePlanDetails?.name ? `Selected Filename : ${sitePlanDetails?.name}` : ""}</div>
+                      <div>Size : {(sitePlanDetails?.size / 1024).toFixed(2)} KB</div>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div className={styles.inputRow_fileUpload}>
                   <div className={styles.left_inputRow_fileUpload}>
                     <input
@@ -317,39 +319,27 @@ const FileUploadMain = () => {
                       onChange={getReferanceImages}
                     />
                     <div className={styles.inputRef}>Choose files</div>
-                    <p>
-                      {referanceImageDetails.length === 0
-                        ? "Upload referance images(3)"
-                        : referanceImageDetails.length + " " + "Images"}
-                    </p>
+                    {referaceLoading ? <PulseLoader color="#642dda" size={10} /> : <p>Upload referance images(3)</p>}
                   </div>
-                  {referanceImageDetails.length !== 0 ? (
-                    <div
-                      className={styles.uploadButtonActive}
-                      onClick={() => uploadReferanceImages(referanceImageDetails)}
-                    >
-                      {referaceLoading ? (
-                        <PulseLoader color="#ffffff" />
-                      ) : (
-                        <>
-                          {projectImages.length === 0 ? (
-                            <>
-                              Upload <img src="/img/requirement/upload.svg" alt="" />
-                            </>
-                          ) : (
-                            "Uploaded"
-                          )}
-                        </>
-                      )}
-                    </div>
-                  ) : (
-                    <div className={styles.uploadButton}>
-                      Upload
-                      <img src="/img/requirement/upload.svg" alt="" />
-                    </div>
-                  )}
                 </div>
-
+                {projectImages !== [] ? (
+                  <div className={styles.uploded_refer_img}>
+                    {projectImages.map((item, index) => {
+                      return (
+                        <img
+                          key={index}
+                          src={item}
+                          alt="refrerance image"
+                          onClick={() => {
+                            router.push(item);
+                          }}
+                        />
+                      );
+                    })}
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div className={styles.inputRow_fileUpload}>
                   <div className={styles.left_inputRow_fileUpload}>
                     <input
@@ -359,31 +349,22 @@ const FileUploadMain = () => {
                       onChange={getThumbnail}
                     />
                     <div className={styles.inputRef}>Choose file</div>
-                    <p>{thumbnailDetails.length === 0 ? "Upload Thumbnail Image" : thumbnailDetails.name}</p>
+                    {thumbnailLoading ? <PulseLoader color="#642dda" size={10} /> : <p>Upload Thumbnail Image</p>}
                   </div>
-                  {thumbnailDetails.length !== 0 ? (
-                    <div className={styles.uploadButtonActive} onClick={() => handleUploadThumb(thumbnailDetails)}>
-                      {thumbnailLoading ? (
-                        <PulseLoader color="#ffffff" />
-                      ) : (
-                        <>
-                          {thumbnail === "" ? (
-                            <>
-                              Upload <img src="/img/requirement/upload.svg" alt="" />
-                            </>
-                          ) : (
-                            "Uploaded"
-                          )}
-                        </>
-                      )}
-                    </div>
-                  ) : (
-                    <div className={styles.uploadButton}>
-                      Upload
-                      <img src="/img/requirement/upload.svg" alt="" />
-                    </div>
-                  )}
                 </div>
+                {thumbnail !== "" ? (
+                  <div className={styles.uploded_refer_img}>
+                    <img
+                      src={thumbnail}
+                      alt="thumbanail image"
+                      onClick={() => {
+                        router.push(thumbnail);
+                      }}
+                    />
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

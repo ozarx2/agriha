@@ -5,8 +5,10 @@ import api_url from "../../src/utils/url";
 import Link from "next/link";
 
 import styles from "./RequirementsMain.module.css";
+import { useRouter } from "next/router";
 
 const ChoosePlanMain = () => {
+  const router = useRouter();
   const [planDetials, setPlanDetials] = useState([]);
   const [selectPlan, setSelectPlan] = useState(true);
   const [selected, setSelected] = useState("");
@@ -128,7 +130,7 @@ const ChoosePlanMain = () => {
           )
           .then((response) => {
             if (response.data) {
-              window.location.href = "/requirement/file-upload";
+              router.push("/requirement/file-upload");
             }
           })
           .catch((error) => {

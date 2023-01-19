@@ -27,6 +27,9 @@ const FileUploadMain = () => {
   const [Store] = useContext(StoreContext);
 
   const setRequirementPopup = Store.setRequirementPopup;
+  const setBid = Store.setBid;
+  const bidArchitectId = Store.bidArchitectId;
+  const bid = Store.bid;
 
   const getSitePlan = (e) => {
     setSitePlanDetails(e.target.files[0]);
@@ -247,12 +250,18 @@ const FileUploadMain = () => {
   }
 
   const goToUserDash = () => {
+    if (bidArchitectId !== null) {
+      setBid(false);
+    }
     setRequirementPopup(true);
   };
 
   const viewSitePlan = () => {
     router.push(sitePlan);
   };
+
+  console.log(bidArchitectId);
+  console.log(bid);
 
   return (
     <>

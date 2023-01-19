@@ -1,12 +1,16 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useRouter } from "next/router";
+import { StoreContext } from "../StoreContext";
 import { PulseLoader } from "react-spinners";
 import api_url from "../../src/utils/url";
 import Link from "next/link";
+import axios from "axios";
 
 import styles from "./RequirementsMain.module.css";
 
 const SecondaryDetailsMain = () => {
+  const router = useRouter();
+
   const [pincode, setPincode] = useState("");
   const [district, setDistrict] = useState("");
   const [state, setState] = useState("");
@@ -17,6 +21,14 @@ const SecondaryDetailsMain = () => {
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [Store] = useContext(StoreContext);
+
+  const bid = Store.bid;
+  const bidArchitectId = Store.bidArchitectId;
+
+  console.log(bidArchitectId);
+  console.log(bid);
 
   const storeDetails = () => {
     setPincode(document.getElementById("pincode").value);
@@ -57,7 +69,7 @@ const SecondaryDetailsMain = () => {
       .then((response) => {
         console.log(response.data);
         if (response.status === 200) {
-          window.location.href = "/requirement/choose-plan";
+          router.push("/requirement/choose-plan");
         }
       })
       .catch((error) => {
@@ -67,7 +79,7 @@ const SecondaryDetailsMain = () => {
   };
 
   const goToChoosePlan = () => {
-    if (pincode !== "" && district !== "" && state !== "" && country !== "") {
+    if (pincode !== "" && district !== "" && state !== "") {
       handleSubmit();
     } else {
       setIsError(true);
@@ -118,7 +130,7 @@ const SecondaryDetailsMain = () => {
                 </div>
                 <div className={styles.pincodeNdistrict_input_conatiner}>
                   <input type="text" id="state" placeholder="State*" onChange={storeDetails} />
-                  <input type="text" id="country" placeholder="Country*" onChange={storeDetails} />
+                  <input type="text" id="country" placeholder="Country" onChange={storeDetails} />
                 </div>
               </div>
               <div className={styles.inputRow}>

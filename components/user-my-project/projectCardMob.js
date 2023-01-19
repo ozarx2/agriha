@@ -214,11 +214,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
                 {architectId ? (
                   <Link href={`/user-architect-about/${architectId?._id}`} passHref>
                     <img
-                      src={
-                        architectId?.profilepic
-                          ? architectId?.profilepic
-                          : "/img/my-project-user/mobile/projprofile.svg"
-                      }
+                      src={architectId?.profilepic ? architectId?.profilepic : "/img/landing/profile_img.svg"}
                       onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                       alt="propic.jpg"
                       className={styles.propicDp}
@@ -246,7 +242,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
           ""
         ) : (
           <div className={styles.productsMobSecMain}>
-            <div className={styles.productsMobSec}>
+            {/* <div className={styles.productsMobSec}>
               <div className={styles.productsMobSecHead}>Products</div>
               <div>
                 <img src="/img/my-project-user/mobile/prodmob.svg" alt="prodmob.svg" className={styles.prodmob} />
@@ -254,7 +250,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
                 <img src="/img/my-project-user/mobile/prodmob3.svg" alt="prodmob.svg" className={styles.prodmob} />
                 <img src="/img/my-project-user/mobile/prodmob4.svg" alt="prodmob.svg" className={styles.prodmob} />
               </div>
-            </div>
+            </div> */}
           </div>
         )}
       </div>

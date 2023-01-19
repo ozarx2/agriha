@@ -1,5 +1,5 @@
 {
-    "list" : [
+    "list": [
         {
             "id": 1,
             "district": "Kozhikode",
@@ -847,7 +847,1087 @@
                 "Chalissery",
                 "Nagalassery","Thirumittacode"
             ]
-        }
+        },
+        {
+            "id": 64,
+            "district": "Kottayam",
+            "zone": "Kottayam",
+            "panchayth": [
+                "Kottayam",
+                "Vijayapuram",
+                "Kumaranallur",
+                "Nattakom",
+                "Panachikkad"
+            ]
+        },
+        {
+            "id": 65,
+            "district": "Kottayam",
+            "zone": "Puthupally",
+            "panchayth": [
+                "Puthupally",
+                "Vakathanam",
+                "Pampady",
+                "Meenadom",
+                "Manarkad",
+                "Ayarkunnam",
+                "Akalakunnam",
+                "Kooropppada"
+            ]
+        },
+        {
+            "id": 66,
+            "district": "Kottayam",
+            "zone": "Pala",
+            "panchayth": [
+                "Pala",
+                "Mutholy",
+                "Kozhuvana",
+                "Meenachil",
+                "Elikkulam",
+                "Karoor",
+                "Ramapuram"
+            ]
+        },
+        {
+            "id": 67,
+            "district": "Kottayam",
+            "zone": "Melukav",
+            "panchayth": [
+                "Melukav",
+                "Kadanad",
+                "Bharananganam",
+                "Thalappalam",
+                "Moonnilavu",
+                "Thanalad"
+            ]
+        },
+        {
+            "id": 68,
+            "district": "Kottayam",
+            "zone": "Ettumanoor",
+            "panchayth": [
+                "Ettumanoor",
+                "Nendoor",
+                "Athirampuzha",
+                "Aymanam",
+                "Arpookara",
+                "Kumarakom",
+                "Thiruvarpu"
+            ]
+        },
+        {
+            "id": 69,
+            "district": "Kottayam",
+            "zone": "Vaikom",
+            "panchayth": [
+                "Vaikom",
+                "Vechoor",
+                "TV Puram",
+                "Thalayolaparambu",
+                "Udavanapuram",
+                "Thalayazham",
+                "Kallara"
+            ]
+        },
+        {
+            "id": 70,
+            "district": "Kottayam",
+            "zone": "Ambaloor",
+            "panchayth": [
+                "Ambaloor",
+                "Chembu",
+                "velloor",
+                "Maravanthuruthu",
+                "Chottanikkara",
+                "Mulanthuruthy",
+                "Thiruvankulam"
+            ]
+        },
+        {
+            "id": 71,
+            "district": "Kottayam",
+            "zone": "Piravom",
+            "panchayth": [
+                "Piravom",
+                "Edakkathuvayal",
+                "Maneed",
+                "Ramamangalam",
+                "Pampakuda",
+                "Thirumarady",
+                "Kothattukulam"
+            ]
+        },
+        {
+            "id": 72,
+            "district": "Kottayam",
+            "zone": "Veliyannoor",
+            "panchayth": [
+                "Veliyannoor",
+                "Elanji",
+                "Uzhavoor",
+                "Marangattupilly",
+                "Kadaplamattom"
+            ]
+        },
+        {
+            "id": 73,
+            "district": "Kottayam",
+            "zone": "Kadathuruthy",
+            "panchayth": [
+                "Kadathuruthy",
+                "Mulakulam",
+                "Neezhoor",
+                "Manjoor",
+                "Kuravilangad",
+                "Kanakkari",
+                "Kidangoor"
+            ]
+        },
+        {
+            "id": 74,
+            "district": "Thiruvanathapuram",
+            "zone": "Tvm corp",
+            "panchayth": [
+                "TVM Corp"
+            ]
+        },
+        {
+            "id": 75,
+            "district": "Thiruvanathapuram",
+            "zone": "Azhoor",
+            "panchayth": [
+                "Azhoor",
+                "Andoor konam",
+                "Chiriyankeezhu",
+                "Kudinamkulam",
+                "Kizhuvilam",
+                "Mangalapuram",
+                "Pothencode"
+            ]
+        },
+        {
+            "id": 76,
+            "district": "Thiruvanathapuram",
+            "zone": "Vakkom",
+            "panchayth": [
+                "Vakkom",
+                "Kadakavoor",
+                "Cherunniyoor",
+                "Manamboor",
+                "Ottoor",
+                "Vettoor",
+                "Anchuthengu"
+            ]
+        },
+        {
+            "id": 77,
+            "district": "Thiruvanathapuram",
+            "zone": "Varkala mc",
+            "panchayth": [
+                "Varkala mc",
+                "Chemmaruthy",
+                "Edava",
+                "Elakumon",
+                "Madavoor",
+                "Navayikulam",
+                "Pallikkal"
+            ]
+        },
+        {
+            "id": 78,
+            "district": "Thiruvanathapuram",
+            "zone": "Attingal mc",
+            "panchayth": [
+                "Attingal mc",
+                "Karavaram",
+                "Kilimanoor",
+                "Mudakkal",
+                "Nagaroor",
+                "Puzhayakunnumel",
+                "Pulimath"
+            ]
+        },
+        {
+            "id": 79,
+            "district": "Thiruvanathapuram",
+            "zone": "Vamanapuram",
+            "panchayth": [
+                "Vamanapuram",
+                "Kallara",
+                "Manickal",
+                "Nellanad",
+                "Pangode",
+                "Pullampara",
+                "Vembayam"
+            ]
+        },
+        {
+            "id": 80,
+            "district": "Thiruvanathapuram",
+            "zone": "Panavoor",
+            "panchayth": [
+                "Aryanadu",
+                "Nanniyode",
+                "Panavoor",
+                "Peringamala",
+                "Tholicode",
+                "Vithura",
+                "Kuttichal"
+            ]
+        },
+        {
+            "id": 81,
+            "district": "Thiruvanathapuram",
+            "zone": "Aruvikkara",
+            "panchayth": [
+                "Anad",
+                "Aruvikkara",
+                "Karakkulam",
+                "Kudappanakkunnu KB",
+                "Nedumangad MC",
+                "Uzhamalakkad",
+                "Vellanad"
+            ]
+        },
+        {
+            "id": 82,
+            "district": "Thiruvanathapuram",
+            "zone": "Neyyattinkara MC",
+            "panchayth": [
+                "Kattakada",
+                "Malayinkeezhu",
+                "Maranalloor",
+                "Neyyattinkara MC",
+                "Poovachal",
+                "Vilappil",
+                "Vilavoorkal"
+            ]
+        },
+        {
+            "id": 83,
+            "district": "Thiruvanathapuram",
+            "zone": "Balaramapuram",
+            "panchayth": [
+                "Balaramapuram",
+                "Kalliyoor",
+                "Kanjiramkulam",
+                "Karumkulam",
+                "Kottukal",
+                "Pallichal",
+                "Venganoor"
+            ]
+        },
+        {
+            "id": 84,
+            "district": "Thiruvanathapuram",
+            "zone": "Kunnathukal",
+            "panchayth": [
+                "Amboor",
+                "Aryankade",
+                "Kallikadu",
+                "Kollayil",
+                "Kunnathukal",
+                "Ottasheyaramangalam",
+                "Perumkadavila",
+                "Vellarada"
+            ]
+        },
+        {
+            "id": 85,
+            "district": "Thiruvanathapuram",
+            "zone": "Parassala",
+            "panchayth": [
+                "Athiyanoor",
+                "Chenkal",
+                "Karode",
+                "Kulathur",
+                "Poovara",
+                "Thirupuram",
+                "Parassala"
+            ]
+        },
+        {
+            "id": 86,
+            "district": "Alappuzha",
+            "zone": "Alappuzha MC",
+            "panchayth": [
+                "Alappuzha MC",
+                "Aryadu",
+                "Mannanchery"
+            ]
+        },
+        {
+            "id": 87,
+            "district": "Alappuzha",
+            "zone": "Cherthala MC",
+            "panchayth": [
+                "Cherthala MC",
+                "Cherthala south",
+                "Kanjikuzhy",
+                "Mararikulam South",
+                "Mararikulam North",
+                "Muhamma",
+                "Thanneermukkam"
+            ]
+        },
+        {
+            "id": 88,
+            "district": "Alappuzha",
+            "zone": "Vayalar",
+            "panchayth": [
+                "Chennam pallipuram",
+                "Kadakkarapally",
+                "Pattanakkadu",
+                "Kuthiyathodu",
+                "Thuravoor",
+                "Vayalar",
+                "Thykkatussery"
+            ]
+        },
+        {
+            "id": 89,
+            "district": "Alappuzha",
+            "zone": "Aroor",
+            "panchayth": [
+                "Arukutty",
+                "Aroor",
+                "Ezhupunna",
+                "Kadamthuruthu",
+                "Panavally",
+                "Perumbalam"
+            ]
+        },
+        {
+            "id": 90,
+            "district": "Alappuzha",
+            "zone": "Kainakary",
+            "panchayth": [
+                "Kavalam",
+                "Kainakary",
+                "Neelamperoor",
+                "Pulinkunnu",
+                "Punnapra North",
+                "Punnapra South",
+                "Veliyanadu"
+            ]
+        },
+        {
+            "id": 91,
+            "district": "Alappuzha",
+            "zone": "Nedumudi",
+            "panchayth": [
+                "Ambalapuzha North",
+                "Ambalapuzha South",
+                "Champakulam",
+                "Muttar",
+                "Nedumudi",
+                "Ramankary "
+            ]
+        },
+        {
+            "id": 92,
+            "district": "Alappuzha",
+            "zone": "Thakazhi",
+            "panchayth": [
+                "Cheruthana",
+                "Edathwa",
+                "Karuvatta",
+                "Purakkadu",
+                "Thakazhi",
+                "Thalavady",
+                "Thikkunnapuzha",
+                "Veeyapuram"
+            ]
+        },
+        {
+            "id": 93,
+            "district": "Alappuzha",
+            "zone": "Mavelikkara MC",
+            "panchayth": [
+                "Budhapoor",
+                "Chennithala Thripperunthura",
+                "Cheppadu",
+                "Harippad",
+                "Mannar",
+                "Mavelikkara MC",
+                "Pallippadu"
+            ]
+        },
+        {
+            "id": 94,
+            "district": "Alappuzha",
+            "zone": "Chenganoor MC",
+            "panchayth": [
+                "Ala",
+                "Chenganoor MC",
+                "Cheriyanadu",
+                "Mulakuzha",
+                "Pandanadu",
+                "Puliyoor",
+                "Thiruvanvandoor"
+            ]
+        },
+        {
+            "id": 95,
+            "district": "Alappuzha",
+            "zone": "Mavelikkara-Thamarakkulam",
+            "panchayth": [
+                "Chunakkara",
+                "Mavelikkara-Thamarakkulam",
+                "Nooranadu",
+                "Palamel",
+                "Thazhakkara",
+                "Venmory "
+            ]
+        },
+        {
+            "id": 96,
+            "district": "Alappuzha",
+            "zone": "Kayamkulam MC",
+            "panchayth": [
+                "Bharanikkavu",
+                "Chettikulangara",
+                "Kayamklulam MC",
+                "Krishnapuram",
+                "Mavelikara-Thekkekara",
+                "Pathiyoor",
+                "Vallikunnu"
+            ]
+        },
+        {
+            "id": 97,
+            "district": "Alappuzha",
+            "zone": "Arattupuzha",
+            "panchayth": [
+                "Arattupuzha",
+                "Kandalloor",
+                "Devikulangara",
+                "Muthukulam",
+                "Karthikapilly",
+                "Kumarapuram ",
+                "Chingoly"
+            ]
+        },
+        {
+            "id": 98,
+            "district": "Pathanamthitta",
+            "zone": "Adoor MC",
+            "panchayth": [
+                "Adoor",
+                "Panikkal",
+                "Earathu",
+                "Kadambanad",
+                "Ezhamkulam",
+                "Enadimangalam "
+            ]
+        },
+        {
+            "id": 99,
+            "district": "Pathanamthitta",
+            "zone": "Pandalam",
+            "panchayth": [
+                "Pandalam",
+                "Pandalam thekkekara",
+                "Vallikode",
+                "Chenenrkara",
+                "Mezhuvely",
+                "Kulanada"
+            ]
+        },
+        {
+            "id": 100,
+            "district": "Pathanamthitta",
+            "zone": "Aranmula",
+            "panchayth": [
+                "Aranmula",
+                "Mallapuzhasseri",
+                "Elanthoor",
+                "Kozhanchery",
+                "Koipram",
+                "Thottupuzhasseri ",
+                "Puramattom"
+            ]
+        },
+        {
+            "id": 101,
+            "district": "Pathanamthitta",
+            "zone": "Thiruvalla MC",
+            "panchayth": [
+                "Thiruvalla MC",
+                "Niranam",
+                "Kadappra",
+                "Nedumpuram",
+                "Kuttoor",
+                "Peringara "
+            ]
+        },
+        {
+            "id": 102,
+            "district": "Pathanamthitta",
+            "zone": "Ezhumattor",
+            "panchayth": [
+                "Ezhumattor",
+                "Kaviyoot",
+                "Kallooppara",
+                "Mallappally",
+                "Kottangal",
+                "Annikkad "
+            ]
+        },
+        {
+            "id": 103,
+            "district": "Pathanamthitta",
+            "zone": "Ranni angadi",
+            "panchayth": [
+                "Ranni Angadi",
+                "Atroor",
+                "Kottanad",
+                "Ranni Pazhavangadi",
+                "Naranammoozhy",
+                "Verchoochira "
+            ]
+        },
+        {
+            "id": 104,
+            "district": "Pathanamthitta",
+            "zone": "Vadasserikkara",
+            "panchayth": [
+                "Vadasserikkara",
+                "Konni",
+                "Kalanjoor",
+                "Vadasserikkara",
+                "Aruvappulam",
+                "Seethathodu",
+                "Chittar"
+            ]
+        },
+        {
+            "id": 105,
+            "district": "Ernakulam",
+            "zone": "Kochi",
+            "panchayth": [
+                "Kochi corp",
+                "Kumbalangi",
+                "Chellanam"
+            ]
+        },
+        {
+            "id": 106,
+            "district": "Ernakulam",
+            "zone": "Thripunnithura",
+            "panchayth": [
+                "Kumbalam",
+                "Udayamperoor",
+                "Maradu",
+                "Thripunithura"
+            ]
+        },
+        {
+            "id": 107,
+            "district": "Ernakulam",
+            "zone": "Vypeen",
+            "panchayth": [
+                "Kuzhuppilly",
+                "Pallipuram",
+                "Edavakkad",
+                "Nayarambalam",
+                "Njarakkal",
+                "Elamkannapuzha",
+                "Mulavakad",
+                "Vypeen"
+            ]
+        },
+        {
+            "id": 108,
+            "district": "Ernakulam",
+            "zone": "Paravur",
+            "panchayth": [
+                "Puthenvelikkara",
+                "Vadakkekara",
+                "Chittattakara",
+                "Chendamangalam",
+                "Paravur",
+                "Kottuvally",
+                "Ezhikkara",
+                "Varappuzha"
+            ]
+        },
+        {
+            "id": 109,
+            "district": "Ernakulam",
+            "zone": "Kalamassery",
+            "panchayth": [
+                "Kunnukara",
+                "Karumalloor",
+                "Alangad",
+                "Kodungalloor",
+                "Eloor",
+                "Kalamassery"
+            ]
+        },
+        {
+            "id": 110,
+            "district": "Ernakulam",
+            "zone": "Ernakulam",
+            "panchayth": [
+                "Kadamakudy",
+                "Cheranalloor"
+            ]
+        },
+        {
+            "id": 111,
+            "district": "Ernakulam",
+            "zone": "Thrikkakara",
+            "panchayth": [
+                "Thrikkakara"
+            ]
+        },
+        {
+            "id": 112,
+            "district": "Idukki",
+            "zone": "Munnar",
+            "panchayth": [
+                "Vattavada",
+                "Munnar",
+                "Mankulam",
+                "Pallivasal",
+                "Kanthalloor",
+                "Marayoor",
+                "Chinnakanal"
+            ]
+        },
+        {
+            "id": 113,
+            "district": "Idukki",
+            "zone": "Baison valley",
+            "panchayth": [
+                "Baison valley",
+                "Konnathady",
+                "Rajakkad",
+                "Rajakumari",
+                "Santhanpara",
+                "Senapathi",
+                "Vellathooval"
+            ]
+        },
+        {
+            "id": 114,
+            "district": "Idukki",
+            "zone": "Kattappana",
+            "panchayth": [
+                "Erattayar",
+                "Kamakshy",
+                "Karunapuram",
+                "Kattapana",
+                "Nedumkandam",
+                "Pampadumpara",
+                "Udumpanchola"
+            ]
+        },
+        {
+            "id": 115,
+            "district": "Idukki",
+            "zone": "Adimaly",
+            "panchayth": [
+                "Adimaly",
+                "Idukki kanjikuzhi",
+                "Karimannur",
+                "Kadakkulam",
+                "Udumbannur",
+                "Vannapuram"
+            ]
+        },
+        {
+            "id": 116,
+            "district": "Idukki",
+            "zone": "Thodupuzha MC",
+            "panchayth": [
+                "Edavatty",
+                "Kannkunnam",
+                "Kumaramangalam",
+                "Manakkad",
+                "Muttam",
+                "Purapuzha",
+                "Thodupuzha MC"
+            ]
+        },
+        {
+            "id": 117,
+            "district": "Idukki",
+            "zone": "Kudayathur",
+            "panchayth": [
+                "Alakode",
+                "Arakulam",
+                "Kudayathur",
+                "Vazhathope",
+                "Velliyamattam",
+                "Mariyapuram",
+                "Vathikudy"
+            ]
+        },
+        {
+            "id": 118,
+            "district": "Idukki",
+            "zone": "Peerumedu",
+            "panchayth": [
+                "Elappara",
+                "Ayyappancoil",
+                "Kanchiyur",
+                "Kokakyar",
+                "Upputhara",
+                "Peerumedu",
+                "Peruvanthanam"
+            ]
+        },
+        {
+            "id": 119,
+            "district": "Idukki",
+            "zone": "Vandanmedu",
+            "panchayth": [
+                "Chakkupallam",
+                "Vandanmedu",
+                "Vandiperiyar",
+                "Kumili"
+            ]
+        },
+        {
+            "id": 120,
+            "district": "Kollam",
+            "zone": "Karunagapally",
+            "panchayth": [
+                "Karunagapally",
+                "Alappad",
+                "Clappana",
+                "Ochira",
+                "Kulaseskarapuram",
+                "Thazhava",
+                "Thodiyoor",
+                "Karunagapally MC"
 
+            ]
+        },
+        {
+            "id": 121,
+            "district": "Kollam",
+            "zone": "Chavara",
+            "panchayth": [
+                "Panmana",
+                "Chavara",
+                "Neendakara",
+                "Thevalakkara",
+                "Sooranadu  South",
+                "Thekkumbhagam",
+                "Mynagapally"
+            ]
+        },
+        {
+            "id": 122,
+            "district": "Kollam",
+            "zone": "Kollam",
+            "panchayth": [
+                "Kollam corp"
+
+            ]
+        },
+        {
+            "id": 123,
+            "district": "Kollam",
+            "zone": "Thrikkadavoor",
+            "panchayth": [
+                "Thrikkdavoor",
+                "Thrikaruva",
+                "Panayam",
+                "Perinadu",
+                "Perayam",
+                "Mundrothuruthu",
+                "East Kallada"
+            ]
+        },
+        {
+            "id": 124,
+            "district": "Kollam",
+            "zone": "Kallada",
+            "panchayth": [
+                "Poruvazhi",
+                "Sasthamkotta",
+                "West kallada",
+                "Pavithreswaram",
+                "Kunnathoor",
+                "Kulakkada",
+                "Sooranadu North"
+            ]
+        },
+        {
+            "id": 125,
+            "district": "Kollam",
+            "zone": "Kundra",
+            "panchayth": [
+                "Kottarakkara",
+                "Thrikovilvattom",
+                "Nedampana",
+                "Elampalloor",
+                "Kundra",
+                "Kareepra",
+                "Ezhukone"
+            ]
+        },
+        {
+            "id": 126,
+            "district": "Kollam",
+            "zone": "Paravoor MC",
+            "panchayth": [
+                "Mayyanadu",
+                "Adichanalloor",
+                "Paravoor MC",
+                "Chathannoor",
+                "Chirakkara",
+                "Kallavathukkal",
+                "Poothakulam"
+            ]
+        },
+        {
+            "id": 127,
+            "district": "Kollam",
+            "zone": "Kottarakkara",
+            "panchayth": [
+                "Pooyappally",
+                "Veliyanalloor",
+                "Veliyam",
+                "Elamadu",
+                "Ummannoor",
+                "Vettikkavala",
+                "Edamulackal"
+            ]
+        },
+        {
+            "id": 128,
+            "district": "Kollam",
+            "zone": "Kulathoopuzha",
+            "panchayth": [
+                "Chadayamangalam",
+                "Nilamel",
+                "Ittiva",
+                "Kadakkal",
+                "Kummil",
+                "Chithara",
+                "Alayamon",
+                "Kulathoopuzha"
+
+            ]
+        },
+        {
+            "id": 129,
+            "district": "Kollam",
+            "zone": "Punalur",
+            "panchayth": [
+                "Pathanapuram",
+                "Piravanthoor",
+                "Punalur MC",
+                "Karavaloor",
+                "Anchal",
+                "Yeroor",
+                "Vilakkudy",
+                "Thenmala",
+                "Aryankavu"
+            ]
+        },
+        {
+            "id": 130,
+            "district": "Thrissur",
+            "zone": "Kodungallur",
+            "panchayth": [
+                "Mathilakom",
+                "Sreenarayanapuram",
+                "Edavilangu",
+                "Eriyad",
+                "Kodungallur MC",
+                "Methala",
+                "Puthenchira"
+            ]
+        },
+        {
+            "id": 131,
+            "district": "Thrissur",
+            "zone": "Koratty",
+            "panchayth": [
+                "Poyya",
+                "Kuzhur",
+                "Mala",
+                "Kadakutty",
+                "Annamnada",
+                "Koratty",
+                "Periyaram"
+            ]
+        },
+        {
+            "id": 132,
+            "district": "Thrissur",
+            "zone": "Nadathara",
+            "panchayth": [
+                "Thiruvilumala",
+                "Kondazhy",
+                "Chelakkara",
+                "Pazhayannur",
+                "Panancherry",
+                "Nadathara",
+                "Puthur"
+            ]
+        },
+        {
+            "id": 133,
+            "district": "Thrissur",
+            "zone": "Nettika",
+            "panchayth": [
+                "Paralam",
+                "Chezhur",
+                "Anthikkad",
+                "Thalikkulam",
+                "Nattika",
+                "Thenniyum"
+            ]
+        },
+        {
+            "id": 134,
+            "district": "Thrissur",
+            "zone": "Kaippamangalam",
+            "panchayth": [
+                "Valappad",
+                "Edathuruthy",
+                "Karalam",
+                "Kattoor",
+                "Kaippamangalam",
+                "Padiyoor",
+                "Perinjanam"
+            ]
+        },
+        {
+            "id": 135,
+            "district": "Thrissur",
+            "zone": "Pudukkad",
+            "panchayth": [
+                "Cherpu",
+                "Avinisseri",
+                "Nenmanikkara",
+                "Vallachira",
+                "Parappukara",
+                "Porathissery",
+                "Muriyad",
+                "Pudukkad"
+            ]
+        }
+        ,
+        {
+            "id": 136,
+            "district": "Thrissur",
+            "zone": "Athirapilly",
+            "panchayth": [
+                "Thrikkur",
+                "Alagappanagar",
+                "Varantharapally",
+                "Mattathur",
+                "Kodassery",
+                "Athirapilly"
+            ]
+        },
+        {
+            "id": 137,
+            "district": "Thrissur",
+            "zone": "Irinjalakkuda",
+            "panchayth": [
+                "Irinjalakkuda MC",
+                "Poomangalam",
+                "Veloorkara",
+                "Aloor",
+                "Kodakara",
+                "Chalakkudi MC",
+                "Vellangallur"
+            ]
+        },
+        {
+            "id": 138,
+            "district": "Thrissur",
+            "zone": "Kunnamkulam",
+            "panchayth": [
+                "Punnayoor kulam",
+                "Punnayoor",
+                "Vadakkekad",
+                "Pookode",
+                "Kunnamkulam MC",
+                "Katta kambai",
+                "Porkulam"
+            ]
+        },
+        {
+            "id": 139,
+            "district": "Thrissur",
+            "zone": "Kadavathoor",
+            "panchayth": [
+                "Kadavathoor",
+                "Alakappa Nagar",
+                "Kadangode",
+                "Chovannur",
+                "Velur",
+                "Choondal",
+                "Kandanasseri"
+            ]
+        },
+        {
+            "id": 140,
+            "district": "Thrissur",
+            "zone": "Vadakkancheri",
+            "panchayth": [
+                "Varavoor",
+                "Deshamangalam",
+                "Vellathol nagar",
+                "Eruampetti",
+                "Panjal",
+                "Mulloorkara",
+                "Vadakkanchery"
+            ]
+        },
+        {
+            "id": 141,
+            "district": "Thrissur",
+            "zone": "Aawanoor",
+            "panchayth": [
+                "Thekkumkara",
+                "Mulamkunnath kavu",
+                "Mundathikode",
+                "Aavanoor",
+                "Kolayi",
+                "Madakka thara",
+                "Adat"
+            ]
+        },
+        {
+            "id": 142,
+            "district": "Thrissur",
+            "zone": "Guruvayoor",
+            "panchayth": [
+                "Chavakkad",
+                "Guruvayoor",
+                "Thaikkad",
+                "Elavally",
+                "Pavaratty",
+                "Kadappuram",
+                "Orumanayoor"
+            ]
+        },
+        {
+            "id": 143,
+            "district": "Thrissur",
+            "zone": "Kaipparambu",
+            "panchayth": [
+                "Engadiyur",
+                "Venkitangu",
+                "Mullassery",
+                "Tholur",
+                "Kaipparambu",
+                "Vadanapally",
+                "Manalur",
+                "Arimpur"
+            ]
+        }
     ]
 }

@@ -7,9 +7,11 @@ import styles from "./payment.module.css";
 
 export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
   let architectId;
+  architectId = window.localStorage.getItem("architectId");
   useEffect(() => {
-    architectId = window.localStorage.getItem("architectId");
+    console.log(architectId);
   }, []);
+  console.log(architectId);
 
   const [Store] = useContext(StoreContext);
   const router = useRouter();
@@ -27,7 +29,6 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
     branch_name: "",
   };
 
-  const [accountData, setAccountData] = useState([]);
   const [accountDetails, setAccountDetails] = useState(initialStateAccount);
   const [onlineOrAccount, setOnlineOrAccount] = useState("online");
   const [onlineDetails, setOnlineDetails] = useState(initialStateDetails);
@@ -48,8 +49,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
     } else {
       details = accountDetails;
     }
-    const token = localStorage.getItem("userToken");
-
+    const token = localStorage.getItem("architectId");
     const res = await fetch(`${api_url}/arc-payment`, {
       method: "POST",
       headers: {
@@ -66,13 +66,31 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
     const data = await res.json();
     console.log(data);
   };
+  const [accountData, setAccountData] = useState([]);
 
+  async function getPayment() {
+    const token = localStorage.getItem("architectId");
+    const response = await fetch(`${api_url}/arc-payment/arcpaymentdetails/${architectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    setAccountData(data.accountData);
+    console.log(data);
+  }
+  console.log(architectId);
+
+  useEffect(() => {
+    getPayment();
+  }, []);
   return (
     <>
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
           <div className={styles.paymentsectionMain}>Mode of Payment</div>
-
           <div className={styles.paymentMode}>
             <div className={styles.mode}>
               <div
@@ -91,7 +109,6 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
               </div>
             </div>
           </div>
-
           {onlineOrAccount === "online" ? (
             <div className={styles.typesOfTransactionUpi}>
               <table className={styles.table_out}>
@@ -170,6 +187,8 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
               Add account
             </div>
           </div>
+          {/* <=====================output====================> */}
+
           {onlineOrAccount === "online" ? (
             <div className={styles.typesOfTransactionUpi}>
               <table className={styles.table_out}>
@@ -178,34 +197,42 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                     <td>
                       <select
                         className={styles.dropDown}
-                        name="typeTransaction"
-                        onChange={(e) => setTransaction(e.target.value)}
+                        // name="typeTransaction"
+                        // onChange={(e) => setTransaction(e.target.value)}
                       >
-                        <option value="gpay">Gpay</option>
-                        <option value="phonepay">Phonepay</option>
-                        <option value="paytm">Paytm</option>
+                        <option>1</option>
+                        {/* <option value="phonepay">Phonepay</option>
+                        <option value="paytm">Paytm</option> */}
                       </select>
                     </td>
                     <td>
                       :{" "}
                       <input
                         type="text"
-                        onChange={handleInput}
-                        name="upi_number"
-                        defaultValue={onlineDetails.upi_number}
+                        // onChange={handleInput}
+                        // name="upi_number"
+                        // defaultValue={onlineDetails.upi_number}
                       />
                     </td>
                   </tr>
                   <tr>
                     <td>UPI id</td>
                     <td>
-                      : <input type="text" onChange={handleInput} name="upi_id" />
+                      :{" "}
+                      <input
+                        type="text"
+                        // onChange={handleInput}
+                        // name="upi_id"
+                      />
                     </td>
                   </tr>
                   <tr>
                     <td> QR Code </td>
                     <td>
-                      : <input type="file" onChange={handleInput} name="qr_code" />
+                      {/* : <input type="file"
+                       onChange={handleInput} name="qr_code"
+                        /> */}
+                      <img src="" alt="" />
                     </td>
                   </tr>
                 </tbody>
@@ -218,25 +245,42 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                   <tr>
                     <td>account number </td>
                     <td>
-                      : <input type="text" name="account_number" onChange={handleInput} />
+                      :{" "}
+                      <input
+                        type="text"
+
+                        // name="account_number" onChange={handleInput}
+                      />
                     </td>
                   </tr>
                   <tr>
                     <td>account holder name </td>
                     <td>
-                      : <input type="text" name="holder_name" onChange={handleInput} />
+                      :{" "}
+                      <input
+                        type="text"
+                        //  name="holder_name" onChange={handleInput}
+                      />
                     </td>
                   </tr>
                   <tr>
                     <td> IFSC code </td>
                     <td>
-                      : <input type="text" name="ifsc_code" onChange={handleInput} />
+                      :{" "}
+                      <input
+                        type="text"
+                        // name="ifsc_code" onChange={handleInput}
+                      />
                     </td>
                   </tr>
                   <tr>
                     <td> branch name </td>
                     <td>
-                      : <input type="text" name="branch_name" onChange={handleInput} />
+                      :{" "}
+                      <input
+                        type="text"
+                        // name="branch_name" onChange={handleInput}
+                      />
                     </td>
                   </tr>
                 </tbody>

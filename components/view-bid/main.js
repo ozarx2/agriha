@@ -4,6 +4,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
 import Image from "next/image";
+import moment from "moment";
 import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
@@ -73,6 +74,7 @@ export default function ViewBidMain() {
                     ?.slice(0)
                     .reverse()
                     .map((item, index) => {
+                      console.log(item);
                       return (
                         <div key={index} className={styles.bid__projectCard}>
                           <img
@@ -95,9 +97,10 @@ export default function ViewBidMain() {
                                   <td>Location</td>
                                   <td>: {item?.project_requirements[0]?.location}</td>
                                 </tr>
+
                                 <tr>
                                   <td>Starting Date</td>
-                                  <td>: {item?.starting_date}</td>
+                                  <td>: {moment(item?.createdAt).format("lll")}</td>
                                 </tr>
                                 <tr>
                                   <td>Budget</td>

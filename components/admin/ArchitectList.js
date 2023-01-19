@@ -17,7 +17,7 @@ const ArchitectList = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setUserList(data.data);
   }
 

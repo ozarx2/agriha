@@ -6,17 +6,11 @@ import api_url from "../../src/utils/url";
 import styles from "./payment.module.css";
 
 export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
-  let architectId;
-  useEffect(() => {
-    architectId = window.localStorage.getItem("architectId");
-    console.log(architectId);
-  }, []);
-  console.log(architectId);
-
   const [Store] = useContext(StoreContext);
   const router = useRouter();
   const { id } = router.query;
   const projectId = id;
+
   const initialStateDetails = {
     upi_id: "",
     upi_number: "",
@@ -36,6 +30,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
   const handleInput = (e) => {
     if (onlineOrAccount === "online") {
       setOnlineDetails({ ...onlineDetails, [e.target.name]: e.target.value });
+      setOnlineDetails;
     } else {
       setAccountDetails({ ...accountDetails, [e.target.name]: e.target.value });
     }
@@ -50,6 +45,9 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
       details = accountDetails;
     }
     const token = localStorage.getItem("architectId");
+    let architectId = localStorage.getItem("architectId");
+    console.log(architectId);
+
     const res = await fetch(`${api_url}/arc-payment`, {
       method: "POST",
       headers: {
@@ -66,26 +64,29 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
     const data = await res.json();
     console.log(data);
   };
-  // const [accountData, setAccountData] = useState([]);
 
-  // async function getPayment() {
-  //   const token = localStorage.getItem("architectId");
-  //   const response = await fetch(`${api_url}/arc-payment/arcpaymentdetails/${architectId}`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   });
-  //   const data = await response.json();
-  //   setAccountData(data.accountData);
-  //   console.log(data);
-  // }
-  // console.log(architectId);
+  const [accountData, setAccountData] = useState([]);
 
-  // useEffect(() => {
-  //   getPayment();
-  // }, []);
+  async function getPayment() {
+    const token = localStorage.getItem("architectId");
+    let architectId = localStorage.getItem("architectId");
+    console.log(architectId);
+    const response = await fetch(`${api_url}/arc-payment/arcpaymentdetails/${architectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    setAccountData(data.data);
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getPayment();
+  }, []);
+
   return (
     <>
       <div className={styles.main_outer}>
@@ -141,12 +142,12 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                       : <input type="text" onChange={handleInput} name="upi_id" />
                     </td>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     <td> QR Code </td>
                     <td>
                       : <input type="file" onChange={handleInput} name="qr_code" />
                     </td>
-                  </tr>
+                  </tr> */}
                 </tbody>
               </table>
             </div>
@@ -188,6 +189,119 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
             </div>
           </div>
           {/* <=====================output====================> */}
+          <>
+            {/* <div className={styles.paymentsectionMain}>Mode of Payment</div>
+            <div className={styles.paymentMode}>
+              <div className={styles.mode}>
+                <div
+                  onClick={() => setOnlineOrAccount("online")}
+                  className={onlineOrAccount === "online" ? styles.modeInputActive : ""}
+                >
+                  Online transfer
+                </div>
+              </div>
+              <div className={styles.mode}>
+                <div
+                  onClick={() => setOnlineOrAccount("account")}
+                  className={onlineOrAccount === "account" ? styles.modeInputActive : ""}
+                >
+                  Account transfer
+                </div>
+              </div>
+            </div>
+            {onlineOrAccount === "online" ? (
+              <div className={styles.typesOfTransactionUpi}>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>gpay</td>
+                      <td>
+                        : <input type="text" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>UPI id</td>
+                      <td>
+                        : <input type="text" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td> QR Code </td>
+                      <td>
+                        : <img className={styles.qrimages} src="/img/qrcode.jpg" alt="qr.jpg" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className={styles.typesOfTransactionAcc}>
+                <table className={styles.table_out}>
+                  <tbody>
+                    <tr>
+                      <td>account number </td>
+                      <td>
+                        : <input type="text" name="account_number" onChange={handleInput} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>account holder name </td>
+                      <td>
+                        : <input type="text" name="holder_name" onChange={handleInput} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td> IFSC code </td>
+                      <td>
+                        : <input type="text" name="ifsc_code" onChange={handleInput} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td> branch name </td>
+                      <td>
+                        : <input type="text" name="branch_name" onChange={handleInput} />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )} */}
+          </>
+          <div className={styles.paymentDetailesMainSec}>
+            {/* <div>Transaction mode details</div> */}
+            {accountData?.map((datas, index) => {
+              return (
+                <div className={styles.paymentDetailesMain}>
+                  <table className={styles.table_outer}>
+                    <tbody>
+                      <tr>
+                        <td>Mode of payment</td>
+                        <td className={styles.tableDataResult}>: {datas?.mode_of_payment}</td>
+                      </tr>
+                      <tr>
+                        <td>Type of transaction</td>
+                        <td className={styles.tableDataResult}>: {datas?.type_of_transaction}</td>
+                      </tr>
+                      <tr>
+                        <td>UPI number</td>
+                        <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_number}</td>
+                      </tr>
+                      <tr>
+                        <td>UPI id</td>
+                        <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_id}</td>
+                      </tr>
+                      {/* <tr>
+                        <td>QR code</td>
+                        <td className={styles.tableDataResult}>
+                          : <img className={styles.qrimages} src={datas?.details[0]?.qr_code} alt="qr.jpg" />
+                        </td>
+                      </tr> */}
+                    </tbody>
+                  </table>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

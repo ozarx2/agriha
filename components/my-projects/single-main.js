@@ -86,6 +86,29 @@ export default function SingleProjectsMain() {
     router.push(`/edit-project/${id}`);
   };
 
+  async function deleteProject(id) {
+    var token = localStorage.getItem("architectToken");
+    const res = await fetch(`${api_url}/projects/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data) {
+      router.back();
+    }
+  }
+
+  const deleteArchProject = (id) => {
+    var result = confirm("Are you sure, want to delete?");
+    if (result) {
+      deleteProject(id);
+    }
+  };
+
   return (
     <>
       <div className={styles.main_outer}>
@@ -102,6 +125,10 @@ export default function SingleProjectsMain() {
               </div>
             </div>
             <div className={styles.right}>
+              <div className={styles.edit} onClick={() => deleteArchProject(projectId)}>
+                <img src="/img/architect-dashboard/deleteIcon.svg" alt="alt" />
+                <span>Delete</span>
+              </div>
               <div className={styles.edit} onClick={() => editProject(projectId)}>
                 <img src="/img/architect-dashboard/edit-project.svg" alt="alt" />
                 <span>Edit</span>

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import axios from "axios";
@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import styles from "./RequirementsMain.module.css";
+import { StoreContext } from "../StoreContext";
 
 const FileUploadMain = () => {
   const router = useRouter();
@@ -22,6 +23,10 @@ const FileUploadMain = () => {
   const [thumbnailLoading, setThumbnailLoading] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const [Store] = useContext(StoreContext);
+
+  const setRequirementPopup = Store.setRequirementPopup;
 
   const getSitePlan = (e) => {
     setSitePlanDetails(e.target.files[0]);
@@ -242,8 +247,7 @@ const FileUploadMain = () => {
   }
 
   const goToUserDash = () => {
-    setIsLoading(true);
-    window.location.href = "/";
+    setRequirementPopup(true);
   };
 
   const viewSitePlan = () => {

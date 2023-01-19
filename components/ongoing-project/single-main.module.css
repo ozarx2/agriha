@@ -25,6 +25,29 @@
   padding-bottom: 10px;
   color: #000000;
 }
+.n_thumbnail {
+  display: flex;
+  align-items: center;
+}
+.n_thumbnail a {
+  display: inline-block;
+  float: left;
+}
+.n_thumbnail img {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+}
+.n_right {
+  display: inline-block;
+  margin-left: 15px;
+}
+.table_out.spl td {
+  padding: 10px 0;
+}
+
+.n_one .btns > div {
+}
 
 .resultSectionDetails {
   display: flex;

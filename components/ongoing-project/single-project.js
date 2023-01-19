@@ -66,20 +66,41 @@ export default function SingleOngoingProjectsMain() {
                 />
               </a>
               <div className={styles.n_right}>
-                <div>{projectTypeDetails?.location}</div>
-                <div>{projectTypeDetails?.area} SQFT</div>
-                <div></div>
+                <table className={`${styles.table_out} ${styles.spl}`}>
+                  <tbody>
+                    <tr>
+                      <td>Budget</td>
+                      <td>: {projectTypeDetails?.budget}</td>
+                    </tr>
+                    <tr>
+                      <td>Location</td>
+                      <td>: {projectTypeDetails?.location}</td>
+                    </tr>
+                    <tr>
+                      <td>Expected area of project</td>
+                      <td>: {projectTypeDetails?.area} SQFT</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
+            {/* <div className={styles.n_one}>
+              <div className={styles.btns}>
+                <div>Files</div>
+                <div>Payments</div>
+                <div>Products</div>
+                <div>Reference</div>
+              </div>
+            </div> */}
 
-            <div className={styles.buttons__container}>
+            {/* <div className={styles.buttons__container}>
               <Link href={`/project-files/${projectDetails._id}`} passHref>
                 <div className={styles.decline_button}>Files</div>
               </Link>
               <div className={styles.accept_button}>Add Payment</div>
               <div className={styles.accept_button}>Add Products</div>
-            </div>
-            <div className={styles.title}>{projectDetails?.project_name}</div>
+            </div> */}
+            {/* <div className={styles.title}>{projectDetails?.project_name}</div> */}
             <div className={styles.titleHead}>Basic details</div>
             <div className={styles.results__container}>
               <table className={styles.table_out}>

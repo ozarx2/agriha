@@ -5,9 +5,9 @@ const FnFileFromArchMob = ({ sliced, projectId }) => {
   return (
     <>
       <div className={styles.archFilesMainSec}>
-        <div className={styles.viewAll} onClick={() => viewAllClick()}>
+        {/* <div className={styles.viewAll} onClick={() => viewAllClick()}>
           View all
-        </div>
+        </div> */}
         {sliced?.length !== 0 ? (
           sliced?.map((items, index) => {
             return (
@@ -17,7 +17,7 @@ const FnFileFromArchMob = ({ sliced, projectId }) => {
                   {items?.payment_status ? (
                     <div className={styles.dataUnLock}>
                       <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" className={styles.unlock} />
-                      <a href={`${items.url}`}>
+                      <a>
                         <span>Unlocked</span>
                       </a>
                     </div>

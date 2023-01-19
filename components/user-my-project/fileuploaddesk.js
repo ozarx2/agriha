@@ -155,10 +155,10 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
         <>
           <div>
             <div className={stylesf.fileOuter}>
+              <div className={stylesf.uploadedFiles}>Uploaded file:</div>
               {allUploadedFiles?.map((items, key) => {
                 return (
                   <div key={key}>
-                    <div className={stylesf.uploadedFiles}>Uploaded file:</div>
                     <div className={stylesf.file}>
                       <div>
                         <img src="/img/my-project-user/data.svg" />

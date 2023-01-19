@@ -133,7 +133,7 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
         <div className={styles.uploadFileDescMob} onClick={() => uploadProject()}>
           {isLoading ? (
             <div>
-              <PulseLoader color="#642dda" size={10} />
+              <PulseLoader color="#ffffff" size={10} />
             </div>
           ) : (
             <>
@@ -146,10 +146,10 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
       {/* ) : ( */}
       <>
         <div className={stylefl.fileOuter}>
+          <div className={stylefl.uploadedFiles}>Uploaded file:</div>
           {result?.map((items, key) => {
             return (
               <div key={key}>
-                <div className={stylefl.uploadedFiles}>Uploaded file:</div>
                 <div className={stylefl.file}>
                   <div>
                     <img src="/img/my-project-user/data.svg" />

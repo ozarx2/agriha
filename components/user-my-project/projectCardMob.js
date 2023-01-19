@@ -143,7 +143,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
     const data = await response.json();
     var documentsForProject = data.data?.filter((res) => res.project_id === id);
     setDocuments(documentsForProject);
-    setSliced(documentsForProject?.slice(0, 3));
+    setSliced(documentsForProject);
   }
 
   // useEffect(() => {
@@ -160,7 +160,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
     const data = await response.json();
     var documentsForProject = data.data?.filter((res) => res.project_id === id);
     setDocuments(documentsForProject);
-    setSliced(documentsForProject?.slice(0, 3));
+    setSliced(documentsForProject);
   }
   useEffect(() => {
     getUploadFile();
@@ -179,7 +179,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
     if (viewAll) {
       setSliced(documents);
     } else {
-      setSliced(documents?.slice(0, 3));
+      setSliced(documents);
     }
   }, [viewAll]);
 
@@ -214,11 +214,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
                 {architectId ? (
                   <Link href={`/user-architect-about/${architectId?._id}`} passHref>
                     <img
-                      src={
-                        architectId?.profilepic
-                          ? architectId?.profilepic
-                          : "/img/my-project-user/mobile/projprofile.svg"
-                      }
+                      src={architectId?.profilepic ? architectId?.profilepic : "/img/landing/profile_img.svg"}
                       onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                       alt="propic.jpg"
                       className={styles.propicDp}
@@ -246,7 +242,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
           ""
         ) : (
           <div className={styles.productsMobSecMain}>
-            <div className={styles.productsMobSec}>
+            {/* <div className={styles.productsMobSec}>
               <div className={styles.productsMobSecHead}>Products</div>
               <div>
                 <img src="/img/my-project-user/mobile/prodmob.svg" alt="prodmob.svg" className={styles.prodmob} />
@@ -254,7 +250,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
                 <img src="/img/my-project-user/mobile/prodmob3.svg" alt="prodmob.svg" className={styles.prodmob} />
                 <img src="/img/my-project-user/mobile/prodmob4.svg" alt="prodmob.svg" className={styles.prodmob} />
               </div>
-            </div>
+            </div> */}
           </div>
         )}
       </div>
@@ -294,7 +290,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
 
       {viewMore && mainViewMore === id ? (
         <>
-          <div className={styles.suggestedProductsMainSecMob}>
+          {/* <div className={styles.suggestedProductsMainSecMob}>
             <div className={styles.suggestedProductsMainMob}>
               <div className={styles.suggestedProductHead}>Suggested Products</div>
               <div className={styles.suggProdListMob}>3 Products list</div>
@@ -344,14 +340,14 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
                 <img src="/img/my-project-user/mobile/downmob.svg" alt="downmob.svg" />
               </div>
             </div>
-          </div>
-          <div className={styles.fileUploadSecMainMob}>
+          </div> */}
+          {/* <div className={styles.fileUploadSecMainMob}>
             <FnFolderMob documents={documents} projectId={id} />
-          </div>
+          </div> */}
           <div className={styles.sentFileMainSecMob}>
             <div className={styles.sentFileMainMob}>
               <div className={styles.sentFileHead} onClick={() => toggleSentFileMob(id)}>
-                Send file to architect
+                Store your Files
               </div>
               <div className={styles.sentFileListMob} onClick={() => toggleSentFileMob(id)}>
                 {sentFile && fileToArchitect === id ? (

@@ -141,10 +141,7 @@ export default function FolderPopup() {
 
   /* UPLOAD FILES*/
   async function uploadFiles() {
-    // console.log(titleFileUpload);
-    // console.log(uploadedDocuments);
-    // console.log(projectId);
-    if (titleFileUpload !== "" && uploadedDocuments !== [] && projectId !== "") {
+    if (titleFileUpload !== "" && uploadedDocuments !== [] && paramId !== "") {
       const res = await fetch(`${endpoint}/fileupload`, {
         method: "POST",
         headers: {
@@ -153,7 +150,7 @@ export default function FolderPopup() {
         body: JSON.stringify({
           title: titleFileUpload,
           files: uploadedDocuments,
-          project_id: projectId._id,
+          project_id: paramId,
         }),
       });
       const data = await res.json();

@@ -20,6 +20,8 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
   const [viewAll, setViewAll] = useState(false);
   const [suggestion, setSuggestion] = useState([]);
 
+  console.log(id);
+
   const toggleBtn = (id) => {
     setShowMore((prevState) => !prevState);
     setSelectprojectId(id);
@@ -88,6 +90,10 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
 
   console.log(documents.length);
 
+  // added by yaseen
+
+  console.log(architectId);
+
   return (
     <div className={styles.mainSection}>
       <div>
@@ -116,11 +122,12 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
                 <Link href={`/user-architect-about/${architectId?._id}`} passHref>
                   <div className={styles.profileNameSec}>
                     <img
-                      src={architectId?.profilepic ? architectId?.profilepic : "/img/my-project-user/profile.svg"}
+                      src={architectId?.profilepic ? architectId?.profilepic : "/img/landing/profile_img.svg"}
+                      onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                       alt="profile.svg"
                       className={styles.profileNameSecImg}
                     />
-                    <div>{architectId?.firstname}</div>
+                    <div>{architectId?.registered_id?.name}</div>
                   </div>
                 </Link>
               </div>

@@ -18,7 +18,11 @@ const FnFileFolder = ({ documents }) => {
     window.location.href = url;
   };
 
-  // console.log(documents);
+  const backToFolder = () => {
+    setIsFolderOpen(false);
+    setFilesSingle([]);
+  };
+
   return (
     <>
       {!isFolederOpen ? (
@@ -30,15 +34,15 @@ const FnFileFolder = ({ documents }) => {
                   <div className={styles.folderSectionHead}>
                     File Folders. <span>{documents?.length}</span>
                   </div>
-                  <div className={styles.viewAll}>
+                  {/* <div className={styles.viewAll}>
                     <div>
                       <div>View all</div>
                       <img src="/img/my-project-user/viewalldown.svg" alt="viewalldown.svg" />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
-              <div className={styles.sortSection}>
+              {/* <div className={styles.sortSection}>
                 <div className={styles.createFolder}>
                   <img
                     src="/img/my-project-user/foldertrans.svg"
@@ -47,45 +51,30 @@ const FnFileFolder = ({ documents }) => {
                   />
                   <div>Create folder</div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className={styles.fileUploadsSectionMain}>
               {documents?.map((files, index) => {
-                return (
+                return files.payment_status ? (
                   <div key={index} className={styles.fileUploadsSection} onClick={() => folderClick(files.files)}>
-                    <FnFolderCard title={files.title} date={files.date} fileLists={files.files} />
+                    <FnFolderCard
+                      title={files.title}
+                      date={files.date}
+                      fileLists={files.files}
+                      locked={files?.payment_status}
+                    />
+                  </div>
+                ) : (
+                  <div className={styles.fileUploadsSection}>
+                    <FnFolderCard
+                      title={files.title}
+                      date={files.date}
+                      fileLists={files.files}
+                      locked={files?.payment_status}
+                    />
                   </div>
                 );
               })}
-
-              {/* ================================================ */}
-
-              {/* <div className={styles.fileUploadsSection}>
-              <div className={styles.fileUploadDiv}>
-                <div className={styles.fileUpload}>
-                  <img src="/img/my-project-user/pdf.svg" alt="pdf.svg" />
-                  <div className={styles.fileFolderTitle}>test.pdf</div>
-                  <div className={styles.fileFolderdate}>21/12/2022</div>
-                </div>
-                <div>
-                  <img src="/img/my-project-user/more.svg" alt="more.svg" className={styles.more} />
-                </div>
-              </div>
-            </div>
-            <div className={styles.fileUploadsSection}>
-              <div className={styles.fileUploadDiv}>
-                <div className={styles.fileUpload}>
-                  <img src="/img/my-project-user/jpg.svg" alt="jpg.svg" />
-                  <div className={styles.fileFolderTitle}>design.jpeg</div>
-                  <div className={styles.fileFolderdate}>21/12/2022</div>
-                </div>
-                <div>
-                  <img src="/img/my-project-user/more.svg" alt="more.svg" className={styles.more} />
-                </div>
-              </div>
-            </div> */}
-
-              {/* ================================================ */}
             </div>
           </div>
         </div>
@@ -95,18 +84,22 @@ const FnFileFolder = ({ documents }) => {
             <div className={styles.filefolderHead}>
               <div className={styles.filefolderTitle}>
                 <div>
+                  <div className={styles.backButton} onClick={backToFolder}>
+                    <img src="/img/project-details/back.svg" alt=".svg" />
+                    <div>Back to folder</div>
+                  </div>
                   <div className={styles.folderSectionHead}>
                     Files. <span>{filesSingle.length}</span>
                   </div>
-                  <div className={styles.viewAll}>
+                  {/* <div className={styles.viewAll}>
                     <div>
                       <div>View all</div>
                       <img src="/img/my-project-user/viewalldown.svg" alt="viewalldown.svg" />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
-              <div className={styles.sortSection}>
+              {/* <div className={styles.sortSection}>
                 <div className={styles.createFolder}>
                   <img
                     src="/img/my-project-user/foldertrans.svg"
@@ -115,7 +108,7 @@ const FnFileFolder = ({ documents }) => {
                   />
                   <div>Create folder</div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className={styles.fileUploadsSectionMain}>
               {filesSingle?.map((files, index) => {
@@ -134,20 +127,7 @@ const FnFileFolder = ({ documents }) => {
                 );
               })}
 
-              {/* <div className={styles.fileUploadsSection}>
-              <div className={styles.fileUploadDiv}>
-                <div className={styles.fileUpload}>
-                  <img src="/img/my-project-user/Folder.svg" alt="folder.svg" />
-                  <div className={styles.fileFolderTitle}>Interior</div>
-                  <div className={styles.fileFolderdate}>21/12/2022</div>
-                </div>
-                <div>
-                  <img src="/img/my-project-user/more.svg" alt="more.svg" className={styles.more} />
-                </div>
-              </div>
-            </div> */}
-
-              {/* ================================================ */}
+              {/* ====================IMAGE================== */}
 
               {/* <div className={styles.fileUploadsSection}>
                 <div className={styles.fileUploadDiv}>

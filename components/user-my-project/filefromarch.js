@@ -19,7 +19,7 @@ const FnFileFromArchDesk = ({ sliced }) => {
                   {items?.payment_status ? (
                     <div className={styles.dataUnLock}>
                       <img src="/img/my-project-user/unlock.svg" alt="unlock.svg" className={styles.unlock} />
-                      <a href={`${items.url}`}>
+                      <a>
                         <span>Unlocked</span>
                       </a>
                     </div>

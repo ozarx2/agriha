@@ -197,6 +197,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                     <td>
                       <select
                         className={styles.dropDown}
+
                         // name="typeTransaction"
                         // onChange={(e) => setTransaction(e.target.value)}
                       >

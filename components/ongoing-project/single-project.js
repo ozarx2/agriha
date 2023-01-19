@@ -48,11 +48,16 @@ export default function SingleOngoingProjectsMain() {
     }
   }, [projectId]);
 
+  console.log(projectDetails);
+
   return (
     <>
       <div className={styles.main_outer}>
         {projectDetails?.length !== 0 ? (
           <div className={styles.main_inner}>
+            <div className={styles.title}>{projectDetails?.project_name}</div>
+            <div>{projectType}</div>
+
             <div className={styles.buttons__container}>
               <Link href={`/project-files/${projectDetails._id}`} passHref>
                 <div className={styles.decline_button}>Files</div>

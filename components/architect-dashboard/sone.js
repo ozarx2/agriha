@@ -57,7 +57,7 @@ export default function FnSOne() {
                 </div>
                 <div className={styles.content}>
                   <h3>
-                    {architectData?.registered_id
+                    {architectData?.registered_id?.name
                       ? architectData?.registered_id?.name
                       : architectData?.firstname + " " + architectData?.lastname}
                   </h3>

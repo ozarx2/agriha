@@ -57,6 +57,17 @@
     align-items: center;
     justify-content: left;
   }
+  .stwo_inner .contentsub {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 19px;
+    color: #5b5b5b;
+    display: inline-block;
+    padding-bottom: 10px;
+    width: 100%;
+  }
   .stwo_inner .content span {
     display: inline-block;
     max-width: 46%;
@@ -282,6 +293,16 @@
     display: flex;
     align-items: center;
     justify-content: left;
+  }
+  .stwo_inner .right .contentsub {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #5b5b5b;
+    padding-top: 2px;
+    max-width: 549px;
   }
   .stwo_inner .right .content span {
     display: inline-block;

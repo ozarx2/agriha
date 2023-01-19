@@ -56,7 +56,7 @@ export default function AgrihaProjectDetailsMainMobileTop() {
     // console.log(data[0]);
     setProjectDetails(data[0]);
   }
-
+  // console.log(projectDetails);
   useEffect(() => {
     if (projectId !== "") {
       getProjects();
@@ -138,20 +138,27 @@ export default function AgrihaProjectDetailsMainMobileTop() {
                 <div className={styles.stwo_max}>
                   <div className={styles.heading}>{projectDetails?.projectname}</div>
                   <div className={styles.content}>
-                    <span>{`${projectDetails?.location}`}</span> | <span>{`${projectDetails?.projectarea}q.ft`}</span>
+                    <span>{`${projectDetails?.location}`}</span> | <span>{`${projectDetails?.projectarea}sq.ft`}</span>
                   </div>
+                  <div className={styles.contentsub}>{projectDetails?.description}</div>
                   <div className={styles.profile}>
                     <div
                       className={styles.left}
                       onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}
                     >
                       <img
-                        src={projectDetails?.architect_id?.profilepic}
+                        src={
+                          projectDetails?.architect_id?.profilepic
+                            ? projectDetails?.architect_id?.profilepic
+                            : "/img/landing/profile_img.svg"
+                        }
                         onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                         alt="profile"
                       />
                       <span>
-                        {projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}
+                        {projectDetails?.architect_id?.firstname !== undefined
+                          ? projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname
+                          : projectDetails?.architect_id?.registered_id?.name}
                       </span>
                     </div>
                     {loginActive ? (

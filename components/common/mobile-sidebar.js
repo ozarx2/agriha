@@ -43,7 +43,7 @@ export default function MobileSidebar() {
                     className={styles.companyLogo}
                   />
                   <h4 className={styles.companyName}>
-                    {architectData?.registered_id
+                    {architectData?.registered_id?.name
                       ? architectData?.registered_id?.name
                       : architectData?.firstname + " " + architectData?.lastname}
                   </h4>

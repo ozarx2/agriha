@@ -66,7 +66,7 @@ const ArchitectSelectPopupContent = () => {
       },
     });
     const data = await res.json();
-    console.log(data[0]);
+    // console.log(data[0]);
     setProjectDetails(data[0]);
   }
 
@@ -98,7 +98,9 @@ const ArchitectSelectPopupContent = () => {
           />
           <div className={styles.content}>
             <div className={styles.name}>
-              {projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}
+              {projectDetails?.architect_id?.firstname !== undefined
+                ? projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname
+                : projectDetails?.architect_id?.registered_id?.name}
             </div>
             <div className={styles.msg}>You have now selected this architect and you want to continue</div>
           </div>

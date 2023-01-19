@@ -50,7 +50,7 @@ const ArchitectSelectPopupContent = () => {
           />
           <div className={styles.content}>
             <div className={styles.name}>
-              {displayBidArchitet?.firstname && displayBidArchitet?.lastname
+              {displayBidArchitet?.firstname !== undefined
                 ? displayBidArchitet?.firstname + " " + displayBidArchitet?.lastname
                 : displayBidArchitet?.registered_id?.name}
             </div>

@@ -96,7 +96,11 @@ const ArchitectSelectPopupContent = () => {
             alt="profile"
           />
           <div className={styles.content}>
-            <div className={styles.name}>{singleArchitect?.firstname + " " + singleArchitect?.lastname}</div>
+            <div className={styles.name}>
+              {singleArchitect?.firstname !== undefined
+                ? singleArchitect?.firstname + " " + singleArchitect?.lastname
+                : singleArchitect?.registered_id?.name}
+            </div>
             <div className={styles.msg}>You have now selected this architect and you want to continue</div>
           </div>
         </div>

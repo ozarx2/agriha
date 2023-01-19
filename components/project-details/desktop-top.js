@@ -128,6 +128,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                 <div className={styles.content}>
                   <span>{projectDetails?.location}</span> | <span>{projectDetails?.projectarea} sq.ft</span>
                 </div>
+                <div className={styles.contentsub}>{projectDetails?.description}</div>
                 <div
                   onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}
                   className={styles.profile}
@@ -141,7 +142,11 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
                     onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
                     alt="profile"
                   />
-                  <span>{projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname}</span>
+                  <span>
+                    {projectDetails?.architect_id?.firstname !== undefined
+                      ? projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname
+                      : projectDetails?.architect_id?.registered_id?.name}
+                  </span>
                 </div>
                 <div
                   onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}

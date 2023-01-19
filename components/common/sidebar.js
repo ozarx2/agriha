@@ -16,6 +16,8 @@ export default function Sidebar() {
   const architectData = Store.architectData;
   const architectId = Store.architectId;
 
+  // console.log(architectData);
+
   return (
     <>
       <div className={styles.sidebar_outer}>
@@ -123,9 +125,13 @@ export default function Sidebar() {
                   className={styles.companyLogo}
                 />
                 <h4 className={styles.companyName}>
-                  {architectData?.registered_id
+                  {architectData?.registered_id?.name
                     ? architectData?.registered_id?.name
                     : architectData?.firstname + " " + architectData?.lastname}
+
+                  {/* {architectData?.firstname !== undefined
+                    ? architectData?.firstname + " " + architectData?.lastname
+                    : architectData?.registered_id?.name} */}
                 </h4>
               </div>
             </Link>

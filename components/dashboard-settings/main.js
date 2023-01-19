@@ -37,11 +37,11 @@ export default function DashboardSettingsMain() {
   const [country, setCountry] = useState("");
 
   useEffect(() => {
-    setFname(data.registered_id?.name ? data.registered_id?.name : data.firstname + " " + data.lastname);
-    setPhone(data.registered_id?.phone ? data.registered_id?.phone : data?.phone);
+    setFname(data?.registered_id?.name ? data?.registered_id?.name : data.firstname + " " + data.lastname);
+    setPhone(data?.registered_id?.phone ? data?.registered_id?.phone : data?.phone);
     setBio(data.bio);
     setCompany(data.companyName);
-    setEmail(data.registered_id?.email ? data.registered_id?.email : data?.email);
+    setEmail(data?.registered_id?.email ? data?.registered_id?.email : data?.email);
     setLocation(data.location);
     setWebsite(data.website);
     setProfileImg(data?.profilepic ? data?.profilepic : "");

@@ -88,7 +88,7 @@ export async function getServerSideProps(context) {
   });
   const data = await res.json();
 
-  return { props: { data } }; // Pass data to the page via props
+  return { props: { data } };
 }
 
 export default UserArchitectAboutMain;

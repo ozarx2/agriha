@@ -94,7 +94,7 @@ const ArchitectSelectPopupContent = (architect) => {
               </div>
             ) : (
               <div className={styles.msg}>
-                Shared your requirements to architect
+                Shared your requirements to <span style={{ color: "#642dda" }}>{architect?.registered_id?.name}</span>
                 <br />
               </div>
             )}
@@ -102,9 +102,9 @@ const ArchitectSelectPopupContent = (architect) => {
         </div>
         <div className={styles.line}></div>
         <div className={styles.buttons}>
-          <div className={styles.back} onClick={() => setRequirementPopup(false)}>
+          {/* <div className={styles.back} onClick={() => setRequirementPopup(false)}>
             Go to back
-          </div>
+          </div> */}
           <div className={styles.continue} onClick={sentRequirement}>
             Continue
           </div>

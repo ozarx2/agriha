@@ -6,10 +6,12 @@ import { StoreContext } from "../StoreContext";
 import { PulseLoader } from "react-spinners";
 import api_url from "../../src/utils/url";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import styles from "./RequirementsMain.module.css";
 
 const BasicDetailsMain = () => {
+  const router = useRouter();
   const [Store] = useContext(StoreContext);
 
   const bid = Store.bid;
@@ -427,7 +429,7 @@ const BasicDetailsMain = () => {
       .then((response) => {
         if (response.data.status == 200) {
           localStorage.setItem("projectId", response.data.data._id);
-          window.location.href = "/requirement/secondary-details";
+          router.push("/requirement/secondary-details");
         }
       })
       .catch((error) => {

@@ -20,8 +20,6 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
   const [viewAll, setViewAll] = useState(false);
   const [suggestion, setSuggestion] = useState([]);
 
-  console.log(id);
-
   const toggleBtn = (id) => {
     setShowMore((prevState) => !prevState);
     setSelectprojectId(id);
@@ -73,7 +71,6 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
       const response = await fetch("https://ecommnerc-test.onrender.com/product");
       const data = await response.json();
       setSuggestion(data);
-      console.log(data);
     }
     suggestedData();
   }, []);
@@ -87,12 +84,6 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
   };
 
   let results = uploadedFiles.filter((res) => res.project_id === id);
-
-  console.log(documents.length);
-
-  // added by yaseen
-
-  console.log(architectId);
 
   return (
     <div className={styles.mainSection}>
@@ -149,10 +140,14 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
                   <td>Started on</td>
                   <td className={styles.tableDataResult}>: {startDate}</td>
                 </tr>
-                <tr>
-                  <td>Place</td>
-                  <td className={styles.tableDataResult}>: {place}</td>
-                </tr>
+                {architectId?.zone ? (
+                  <tr>
+                    <td>Place</td>
+                    <td className={styles.tableDataResult}>: {architectId?.zone}</td>
+                  </tr>
+                ) : (
+                  ""
+                )}
                 <tr>
                   <td>Budget</td>
                   <td className={styles.tableDataResult}>: {budget}</td>

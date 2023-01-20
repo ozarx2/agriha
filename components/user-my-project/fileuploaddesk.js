@@ -71,29 +71,25 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
     );
   }
 
-  /* Multiple Image Uploading */
-  var fileObj = [];
-  var fileArray = [];
+  const [file, setFile] = useState();
 
-  const uploadMultipleFiles = (e) => {
-    if (e.target.files.length <= 1) {
-      fileObj.push(e.target.files);
-      for (let i = 0; i < fileObj[0].length; i++) {
-        fileArray.push(URL.createObjectURL(fileObj[0][i]));
-        setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
-      }
+  const handleFileChange = (event) => {
+    if (!event.target.files[0]) {
+      alert("Please choose a file first!");
     } else {
-      alert("Cannot add more than 1 pictures");
+      setFile(event.target.files[0]);
     }
   };
 
   const uploadProject = () => {
-    let temp = [...files];
-    let length = files.length;
-    for (let i = 0; i < length; i++) {
-      handleUploadProject(temp[i].file);
+    if (file !== undefined) {
+      handleUploadProject(file);
+    } else {
+      console.log(error);
     }
   };
+
+  console.log(file);
 
   /* <=========== FIREBASE UPLOAD END ===========> */
 
@@ -102,7 +98,7 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
       <div className={styles.secTwoMain}>
         <>
           <div className={styles.fileUploadSectionArch}>
-            <div>File upload to Architect</div>
+            <div>Store files</div>
           </div>
           <div className={styles.uploadDescSec}>
             <input
@@ -116,22 +112,22 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
             <input
               className={styles.custom_file_input}
               type="file"
-              onChange={uploadMultipleFiles}
+              onChange={handleFileChange}
               placeholder="No file selected"
               accept="application/pdf"
             />
             <div className={styles.dragDrop}>Drag & drop your file</div>
             <div className={styles.fileOuter}>
-              {files.map((file, key) => {
-                return (
-                  <div key={key} className={styles.file}>
-                    <div>
-                      <img src="/img/my-project-user/data.svg" />
-                      <span>{file.file.name}</span>
-                    </div>
+              {file ? (
+                <div className={styles.file}>
+                  <div>
+                    <img src="/img/my-project-user/data.svg" />
+                    <span>{file.name}</span>
                   </div>
-                );
-              })}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className={styles.fileButtonsSec}>
@@ -146,7 +142,7 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
               ) : (
                 <>
                   <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
-                  <span>Upload</span>
+                  <span>Submit</span>
                 </>
               )}
             </div>

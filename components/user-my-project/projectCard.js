@@ -142,7 +142,7 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
                 </tr>
                 {architectId?.zone ? (
                   <tr>
-                    <td>Place</td>
+                    <td>Zone</td>
                     <td className={styles.tableDataResult}>: {architectId?.zone}</td>
                   </tr>
                 ) : (

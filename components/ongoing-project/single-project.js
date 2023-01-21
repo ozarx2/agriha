@@ -84,14 +84,14 @@ export default function SingleOngoingProjectsMain() {
                 </table>
               </div>
             </div>
-            {/* <div className={styles.n_one}>
+            <div className={styles.n_one}>
               <div className={styles.btns}>
+                <div>Reference</div>
                 <div>Files</div>
                 <div>Payments</div>
                 <div>Products</div>
-                <div>Reference</div>
               </div>
-            </div> */}
+            </div>
 
             {/* <div className={styles.buttons__container}>
               <Link href={`/project-files/${projectDetails._id}`} passHref>

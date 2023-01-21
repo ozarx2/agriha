@@ -6,9 +6,9 @@ import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import api_url from "../../src/utils/url";
 import windowSize from "../windowRes";
-import moment from "moment";
 
 import styles from "./main.module.css";
+import moment from "moment/moment";
 
 export default function AgrihaMyPublicBidMainSingle() {
   const windowRes = windowSize();
@@ -17,7 +17,11 @@ export default function AgrihaMyPublicBidMainSingle() {
 
   const [Store] = useContext(StoreContext);
 
+  const setLoginPopup = Store.setLoginPopup;
+  const setUserRole = Store.setUserRole;
+
   const [bidId, setBidId] = useState("");
+  const [archToken, setArchToken] = useState("");
 
   /* GET ARCHITECT ID */
   function getParameters() {
@@ -41,11 +45,17 @@ export default function AgrihaMyPublicBidMainSingle() {
     }
   }, []);
 
-  // console.log(bidId);
+  useEffect(() => {
+    let token = localStorage.getItem("architectToken");
+    setArchToken(token);
+  }, []);
 
-  const [getBidData, setGetBidData] = useState([]);
+  const [bidData, setBidData] = useState([]);
+  const [projectType, setProjectType] = useState("");
+  const [projectRequirements, setProjectRequirements] = useState();
 
   async function getAllProjects() {
+    console.log(bidId);
     const response = await fetch(`${api_url}/projects/unauth_bids/${bidId}`, {
       method: "GET",
       headers: {
@@ -54,48 +64,107 @@ export default function AgrihaMyPublicBidMainSingle() {
     });
     const data = await response.json();
     console.log(data);
-    if (data) {
-      setGetBidData(data);
+    if (data.status === 200) {
+      setBidData(data.data);
+      setProjectType(data.data.project_type);
+      setProjectRequirements(data.data.project_requirements);
     }
   }
   useEffect(() => {
-    if (bidId !== undefined) {
+    if (bidId) {
       getAllProjects();
     }
   }, [bidId]);
+
+  console.log(archToken);
+
+  const viewMoreClick = () => {
+    if (archToken !== null) {
+      router.push(`/view-bid/${bidId}`);
+    } else {
+      setUserRole("architect");
+      setLoginPopup(true);
+    }
+  };
 
   return (
     <>
       <div className={styles.main_outer}>
         <div className={`container ${styles.container} ${styles.bidAll}`}>
-          <div className={`${styles.main_inner} ${windowRes.innerWidth >= 1100 ? styles.desktop : styles.mobile}`}>
-            <div className={styles.bid_max_outer}>
-              {/* {getBidData?.map((item, i) => {
-                return (
-                  <div onClick={() => router.push(`/bid/${item?._id}`)} key={i} className={styles.bid_outer}>
-                    <div className={styles.bid_title}>{item?.project_type}</div>
-                    <div className={styles.bid_sub_title}>
-                      <div className={styles.type}> {item?.project_name}</div>
-                      <div className={styles.date}>{moment(item?.createdAt).format("lll")}</div>
-                    </div>
-                    <div className={styles.details}>
-                      <div className={styles.details_in}>
-                        <div className={styles.location}>
-                          <span>📍</span>
-                          {item?.project_requirements[0].location}
-                        </div>
-                        <div className={styles.budget}>
-                          <span>₹</span>
-                          {item?.project_requirements[0].budget}
-                        </div>
-                      </div>
-                      <div className={styles.more_btn}> View More</div>
+          {bidData.length !== 0 ? (
+            <div className={styles.main_inner}>
+              <div className={styles.bid_single_container}>
+                <div
+                  className={styles.backButton}
+                  onClick={() => router.back()}
+                >
+                  <img src="/img/architect-dashboard/back.svg" alt="back.jpg" />
+                  back
+                </div>
+                <div className={styles.bid_single_top}>
+                  <div className={styles.bid_single_top__left}>
+                    <h4>
+                      Project Type : <span>{bidData?.project_type}</span>
+                    </h4>
+                    <h4>
+                      Project Code : <span>{bidData?.project_name}</span>
+                    </h4>
+                    <h4>
+                      Created Date :{" "}
+                      <span>{moment(bidData?.createdAt).format("L")}</span>
+                    </h4>
+                  </div>
+                  <div className={styles.bid_single_top_right}>
+                    <div
+                      className={styles.bid_single_ViewMoreButton}
+                      onClick={viewMoreClick}
+                    >
+                      View More
                     </div>
                   </div>
-                );
-              })} */}
+                </div>
+                <div className={styles.bid_single_bottom}>
+                  {bidData?.thumbnail ? (
+                    <img
+                      onClick={() => router.push(bidData?.thumbnail)}
+                      src={bidData?.thumbnail}
+                      alt="bid image"
+                    />
+                  ) : (
+                    ""
+                  )}
+                  {projectRequirements ? (
+                    <div className={styles.bid_single_bottom_right}>
+                      <p>
+                        Project Area:{" "}
+                        <span>
+                          {bidData?.project_requirements[0].area} sq.ft
+                        </span>
+                      </p>
+                      <p>
+                        Project Budget:{" "}
+                        <span>
+                          {bidData?.project_requirements[0]?.budget}/-
+                        </span>
+                      </p>
+                      <p>
+                        Project Location:{" "}
+                        <span>{bidData?.project_requirements[0].location}</span>
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className={styles.main_inner}>
+              <div className={styles.loading}>
+                <img src="/img/landing/loading.svg" alt="Loading..." />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>

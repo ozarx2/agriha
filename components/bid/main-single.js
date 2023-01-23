@@ -93,61 +93,50 @@ export default function AgrihaMyPublicBidMainSingle() {
           {bidData.length !== 0 ? (
             <div className={styles.main_inner}>
               <div className={styles.bid_single_container}>
-                <div className={styles.backButton} onClick={() => router.back()}>
-                  <img src="/img/architect-dashboard/back.svg" alt="back.jpg" />
-                  back
-                </div>
-                <div className={styles.bid_single_top}>
-                  <div className={styles.bid_single_top__left}>
-                    <h3>
-                      <span>{bidData?.project_type}</span>
-                    </h3>
-                    <h4>
-                      <span>{bidData?.project_name}</span>
-                      <span className={styles.space}> | </span>
-                      <span>{moment(bidData?.createdAt).format("lll")}</span>
-                    </h4>
+                <div className={styles.sOneOuter}>
+                  <div className={styles.sOneleft}>
+                    <img src="/img/bid/gem.gif" alt="bid" />
+                    <span>Bid share from arclif</span>
+                    <button>Contact us</button>
                   </div>
-                  {/* <div className={styles.bid_single_top_right}>
-                    <div className={styles.bid_single_ViewMoreButton} onClick={viewMoreClick}>
-                      View More
+                  <div className={styles.sOneRight}>
+                    <div className={styles.sOneRightDate}>Date :{moment(Date()).format("lll")}</div>
+                    <div className={styles.sOneRightBg}>
+                      <div className={styles.sOneRightBid}>
+                        Now Active bid : <span>90</span>
+                      </div>
+                      <button>View all</button>
                     </div>
-                  </div> */}
+                  </div>
                 </div>
-                <div className={styles.bid_single_bottom}>
-                  {bidData?.thumbnail ? (
-                    <a href={bidData?.thumbnail} target="_blank">
-                      <img
-                        src={bidData?.thumbnail}
-                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                        alt="bid image"
-                      />
-                    </a>
-                  ) : (
-                    ""
-                  )}
-                  {projectRequirements ? (
-                    <div className={styles.bid_single_bottom_right}>
-                      <p>
-                        Project Area: <span>{bidData?.project_requirements[0].area} sq.ft</span>
-                      </p>
-                      <p>
-                        Project Budget: <span>{bidData?.project_requirements[0]?.budget}/-</span>
-                      </p>
-                      <p>
-                        Project Location: <span>{bidData?.project_requirements[0].location}</span>
-                      </p>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <div className={styles.full_details}>
-                  <img
-                    src="/img/bid/blur.png"
-                    onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                    alt="bid image"
-                  />
+                <div className={styles.sTwoOuter}>
+                  <div className={styles.sTwoBid}>latest bid details</div>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Project type</td>
+                        <td>{bidData?.project_type}</td>
+                      </tr>
+                      <tr>
+                        <td>Location</td>
+                        <td>{bidData?.project_requirements[0].location}</td>
+                      </tr>
+                      <tr>
+                        <td>Budget</td>
+                        <td>₹ {bidData?.project_requirements[0]?.budget}</td>
+                      </tr>
+                      <tr>
+                        <td>Area</td>
+                        <td>{bidData?.project_requirements[0].area} sq.ft</td>
+                      </tr>
+                      <tr>
+                        <td>Starting date</td>
+                        <td>{moment(bidData?.createdAt).format("lll")}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className={styles.accept}>Accept now</div>
+                  <div className={styles.about}>About more arclif</div>
                 </div>
               </div>
             </div>

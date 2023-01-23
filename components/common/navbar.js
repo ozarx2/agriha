@@ -71,6 +71,17 @@ export default function Navbar() {
     }
   }, []);
 
+  useEffect(() => {
+    var token = localStorage.getItem("architectToken");
+    if (token !== null) {
+      console.log("success");
+    } else {
+      console.log("errors");
+      localStorage.removeItem("architectId");
+      router.push("/");
+    }
+  });
+
   /* GET ARCHITECT DATA */
   async function getArchitect() {
     var token = localStorage.getItem("architectToken");
@@ -84,6 +95,7 @@ export default function Navbar() {
     });
 
     const data = await res.json();
+    console.log(data);
     setArchitect(data);
   }
 

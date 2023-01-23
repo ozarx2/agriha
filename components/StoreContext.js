@@ -37,7 +37,7 @@ export const StoreContextProvider = (props) => {
   const [allArchitects, setAllArchitects] = useState([]);
   const [projectResponse, setProjectResponse] = useState([]);
   const [arcDashQueue, setArcDashQueue] = useState(false);
-  const [zonePopup, setZonePopUp] = useState(true);
+  const [zonePopup, setZonePopUp] = useState(false);
   const [requirementPopup, setRequirementPopup] = useState(false);
   // Store Yaseen end
 

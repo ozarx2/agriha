@@ -409,7 +409,7 @@
 
 .backButton {
   height: 15px;
-  margin: 30px 0;
+  margin: 30px 0 15px;
   display: flex;
   align-items: center;
   color: #575757;
@@ -430,16 +430,19 @@
 }
 
 .bid_single_top__left > h4 {
-  font-size: 18px;
-  margin-bottom: 20px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: 8px;
+  margin-bottom: 0px;
   color: #575757;
 }
+.bid_single_top__left > h4 .space {
+  padding: 0 15px;
+  display: inline-block;
+}
 
-.bid_single_top__left > h4 > span {
+.bid_single_top__left > h3 {
   color: #303030;
-  margin-left: 10px;
-  font-size: 20px;
 }
 
 .bid_single_ViewMoreButton {
@@ -455,20 +458,21 @@
 }
 
 .bid_single_bottom {
-  margin-top: 50px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
 }
 
-.bid_single_bottom > img {
+.bid_single_bottom img {
   height: 160px;
   width: 250px;
   object-fit: cover;
   border-radius: 10px;
+  margin-right: 50px;
 }
 
 .bid_single_bottom_right {
-  margin-left: 50px;
+  /* margin-left: 50px; */
 }
 
 .bid_single_bottom_right > p {
@@ -480,6 +484,16 @@
 .bid_single_bottom_right > p > span {
   color: #303030;
   font-size: 16px;
+}
+.full_details {
+  margin-top: 15px;
+  width: 100%;
+}
+.full_details img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 @media only screen and (max-width: 500px) {

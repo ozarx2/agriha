@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React, { useState, useContext } from "react";
 import { StoreContext } from "../../components/StoreContext";
+import api_url from "../../src/utils/url";
 import AgrihaLandingHeaderNoSearch from "../../components/user-common/header-ns";
 import AgrihaProjectDetailsMain from "../../components/project-details/main";
 import LandingFooter from "../../components/user-common/footer";
@@ -13,7 +14,8 @@ import ProfilePopup from "../../components/user-common/profile-popup";
 
 import styles from "./index.module.css";
 
-export default function AgrihaProjectDetails() {
+const AgrihaProjectDetails = (props) => {
+  // export default function AgrihaProjectDetails() {
   const [Store] = useContext(StoreContext);
 
   const loginPopup = Store.loginPopup;
@@ -23,12 +25,23 @@ export default function AgrihaProjectDetails() {
   const architectBidPopup = Store.architectBidPopup;
   const profilePopup = Store.profilePopup;
 
+  const data = props.data[0];
+
   return (
     <>
       <Head>
-        <title>Agriha Landing page</title>
-        <meta name="description" content="Agriha Landing page" />
+        <title>{data?.projectname} | Agriha</title>
+        <meta
+          name="description"
+          content={`Agriha ${data?.project_type} project at ${data?.location} with ${data?.projectarea}sq.ft | Agriha`}
+        />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={`${data?.projectname} | Agriha`} />
+        <meta
+          property="og:description"
+          content={`Agriha ${data?.project_type} project at ${data?.location} with ${data?.projectarea}sq.ft | Agriha`}
+        />
+        <meta property="og:image" content={data?.thumbnail} />
       </Head>
       <div>
         <div className={styles.container_outer}>
@@ -53,4 +66,23 @@ export default function AgrihaProjectDetails() {
       </div>
     </>
   );
+};
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const id = params.id;
+
+  // Fetch data from external API
+  const res = await fetch(`${api_url}/projects/arcprojectsingle/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+
+  return { props: { data } };
 }
+
+export default AgrihaProjectDetails;

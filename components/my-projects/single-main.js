@@ -1,16 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
+import { StoreContext } from "../../components/StoreContext";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import api_url from "../../src/utils/url";
-import { useRouter } from "next/router";
+import moment from "moment/moment";
 
 import styles from "./single-main.module.css";
 
 export default function SingleProjectsMain() {
   const router = useRouter();
+  const [Store] = useContext(StoreContext);
+  const setSharePopup = Store.setSharePopup;
 
   const [projectPopupOpen, setProjectPopupOpen] = useState(false);
 
@@ -72,7 +75,7 @@ export default function SingleProjectsMain() {
       },
     });
     const data = await res.json();
-    console.log(data[0]);
+    // console.log(data[0]);
     setProjectDetails(data[0]);
   }
 
@@ -133,7 +136,7 @@ export default function SingleProjectsMain() {
                 <img src="/img/architect-dashboard/edit-project.svg" alt="alt" />
                 <span>Edit</span>
               </div>
-              <div className={styles.share}>
+              <div className={styles.share} onClick={() => setSharePopup(true)}>
                 <img src="/img/architect-dashboard/share.svg" alt="alt" />
                 <span>Share</span>
               </div>
@@ -150,7 +153,8 @@ export default function SingleProjectsMain() {
             />
             <div className={styles.contantContainer}>
               <p>{projectDetails?.description}</p>
-              <h5>{projectDetails?.createdAt}</h5>
+
+              <h5>{moment(projectDetails?.createdAt).format("lll")}</h5>
               <p>{projectDetails?.hashtag}</p>
             </div>
           </div>

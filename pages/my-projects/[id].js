@@ -1,7 +1,9 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
+
 import React, { useRef, useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
+import api_url from "../../src/utils/url";
 import Navbar from "../../components/common/navbar";
 import Sidebar from "../../components/common/sidebar";
 import MobileSidebar from "../../components/common/mobile-sidebar";
@@ -11,11 +13,15 @@ import LogoutPopup from "../../components/common/logout-popup";
 import NotificationPopup from "../../components/common/notification-popup";
 import SingleProjectPopup from "../../components/my-projects/single-project";
 import AddProjectImage from "../../components/common/add-project-image";
+import ShareProjectPopup from "../../components/user-common/share-project-popup";
 
 import styles from "./index-single.module.css";
 
-export default function ArchitectDashboard() {
+const ArchitectDashboardMyProject = (props) => {
+  // export default function ArchitectDashboard() {
   const [Store] = useContext(StoreContext);
+
+  const sharePopup = Store.sharePopup;
 
   const router = useRouter();
   useEffect(() => {
@@ -35,12 +41,23 @@ export default function ArchitectDashboard() {
   const [single, setSingle] = useState(false);
   const [page, setPage] = useState("recent");
 
+  const data = props.data[0];
+
   return (
     <>
       <Head>
-        <title>Architect Dashboard</title>
-        <meta name="description" content="Architect Dashboard" />
+        <title>{data?.projectname} | Agriha</title>
+        <meta
+          name="description"
+          content={`Agriha ${data?.project_type} project at ${data?.location} with ${data?.projectarea}sq.ft | Agriha`}
+        />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={`${data?.projectname} | Agriha`} />
+        <meta
+          property="og:description"
+          content={`Agriha ${data?.project_type} project at ${data?.location} with ${data?.projectarea}sq.ft | Agriha`}
+        />
+        <meta property="og:image" content={data?.thumbnail} />
       </Head>
       <div>
         <div className={styles.container_outer}>
@@ -67,8 +84,28 @@ export default function ArchitectDashboard() {
           {logout ? <LogoutPopup /> : ""}
           {notificationPopup ? <NotificationPopup /> : ""}
           {addProjectImagePopup ? <AddProjectImage /> : ""}
+          {sharePopup ? <ShareProjectPopup id={data?._id} /> : ""}
         </div>
       </div>
     </>
   );
+};
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const id = params.id;
+
+  // Fetch data from external API
+  const res = await fetch(`${api_url}/projects/arcprojectsingle/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+
+  return { props: { data } };
 }
+
+export default ArchitectDashboardMyProject;

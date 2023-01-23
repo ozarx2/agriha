@@ -6,10 +6,9 @@ import { useRouter } from "next/router";
 import { StoreContext } from "../../components/StoreContext";
 import api_url from "../../src/utils/url";
 import windowSize from "../windowRes";
-
-import styles from "./main.module.css";
 import moment from "moment/moment";
 
+import styles from "./main.module.css";
 export default function AgrihaMyPublicBidMainSingle() {
   const windowRes = windowSize();
   const router = useRouter();
@@ -55,7 +54,7 @@ export default function AgrihaMyPublicBidMainSingle() {
   const [projectRequirements, setProjectRequirements] = useState();
 
   async function getAllProjects() {
-    console.log(bidId);
+    // console.log(bidId);
     const response = await fetch(`${api_url}/projects/unauth_bids/${bidId}`, {
       method: "GET",
       headers: {
@@ -63,7 +62,7 @@ export default function AgrihaMyPublicBidMainSingle() {
       },
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
       setBidData(data.data);
       setProjectType(data.data.project_type);
@@ -76,7 +75,7 @@ export default function AgrihaMyPublicBidMainSingle() {
     }
   }, [bidId]);
 
-  console.log(archToken);
+  // console.log(archToken);
 
   const viewMoreClick = () => {
     if (archToken !== null) {
@@ -94,67 +93,61 @@ export default function AgrihaMyPublicBidMainSingle() {
           {bidData.length !== 0 ? (
             <div className={styles.main_inner}>
               <div className={styles.bid_single_container}>
-                <div
-                  className={styles.backButton}
-                  onClick={() => router.back()}
-                >
+                <div className={styles.backButton} onClick={() => router.back()}>
                   <img src="/img/architect-dashboard/back.svg" alt="back.jpg" />
                   back
                 </div>
                 <div className={styles.bid_single_top}>
                   <div className={styles.bid_single_top__left}>
+                    <h3>
+                      <span>{bidData?.project_type}</span>
+                    </h3>
                     <h4>
-                      Project Type : <span>{bidData?.project_type}</span>
-                    </h4>
-                    <h4>
-                      Project Code : <span>{bidData?.project_name}</span>
-                    </h4>
-                    <h4>
-                      Created Date :{" "}
-                      <span>{moment(bidData?.createdAt).format("L")}</span>
+                      <span>{bidData?.project_name}</span>
+                      <span className={styles.space}> | </span>
+                      <span>{moment(bidData?.createdAt).format("lll")}</span>
                     </h4>
                   </div>
-                  <div className={styles.bid_single_top_right}>
-                    <div
-                      className={styles.bid_single_ViewMoreButton}
-                      onClick={viewMoreClick}
-                    >
+                  {/* <div className={styles.bid_single_top_right}>
+                    <div className={styles.bid_single_ViewMoreButton} onClick={viewMoreClick}>
                       View More
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className={styles.bid_single_bottom}>
                   {bidData?.thumbnail ? (
-                    <img
-                      onClick={() => router.push(bidData?.thumbnail)}
-                      src={bidData?.thumbnail}
-                      alt="bid image"
-                    />
+                    <a href={bidData?.thumbnail} target="_blank">
+                      <img
+                        src={bidData?.thumbnail}
+                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                        alt="bid image"
+                      />
+                    </a>
                   ) : (
                     ""
                   )}
                   {projectRequirements ? (
                     <div className={styles.bid_single_bottom_right}>
                       <p>
-                        Project Area:{" "}
-                        <span>
-                          {bidData?.project_requirements[0].area} sq.ft
-                        </span>
+                        Project Area: <span>{bidData?.project_requirements[0].area} sq.ft</span>
                       </p>
                       <p>
-                        Project Budget:{" "}
-                        <span>
-                          {bidData?.project_requirements[0]?.budget}/-
-                        </span>
+                        Project Budget: <span>{bidData?.project_requirements[0]?.budget}/-</span>
                       </p>
                       <p>
-                        Project Location:{" "}
-                        <span>{bidData?.project_requirements[0].location}</span>
+                        Project Location: <span>{bidData?.project_requirements[0].location}</span>
                       </p>
                     </div>
                   ) : (
                     ""
                   )}
+                </div>
+                <div className={styles.full_details}>
+                  <img
+                    src="/img/bid/blur.png"
+                    onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                    alt="bid image"
+                  />
                 </div>
               </div>
             </div>

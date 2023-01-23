@@ -37,8 +37,13 @@ const FileUploadMain = () => {
   };
 
   const getReferanceImages = (e) => {
-    setReferanceImageDetails(e.target.files);
-    uploadReferanceImages(e.target.files);
+    if (e.target.files.length <= 3) {
+      console.log("set");
+      setReferanceImageDetails(e.target.files);
+      uploadReferanceImages(e.target.files);
+    } else {
+      alert("cant upload more than 3 pictures");
+    }
   };
 
   const getThumbnail = (e) => {
@@ -320,13 +325,18 @@ const FileUploadMain = () => {
                 )}
                 <div className={styles.inputRow_fileUpload}>
                   <div className={styles.left_inputRow_fileUpload}>
-                    <input
-                      id="referanceImg"
-                      type="file"
-                      multiple
-                      accept="image/png, image/jpg, image/jpeg"
-                      onChange={getReferanceImages}
-                    />
+                    {referanceImageDetails.length === 0 ? (
+                      <input
+                        id="referanceImg"
+                        type="file"
+                        multiple
+                        accept="image/png, image/jpg, image/jpeg"
+                        onChange={getReferanceImages}
+                      />
+                    ) : (
+                      <input type="file" disabled />
+                    )}
+
                     <div className={styles.inputRef}>Choose files</div>
                     {referaceLoading ? <PulseLoader color="#642dda" size={10} /> : <p>Upload referance images(3)</p>}
                   </div>

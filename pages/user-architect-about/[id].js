@@ -25,7 +25,7 @@ const UserArchitectAboutMain = (props) => {
   const profilePopup = Store.profilePopup;
   const architectProfileSelectPopup = Store.architectProfileSelectPopup;
   const sharePopup = Store.sharePopup;
-  console.log(props);
+  // console.log(props);
 
   return (
     <>

@@ -48,7 +48,7 @@ export default function LoginPopupForm() {
     const data = await res.json();
     console.log(data);
     setLoading(false);
-    if (data.statusCode === 404) {
+    if (data.status === 404) {
       setIsError(true);
       setError("Mobile number not registered");
     } else if (data.status === 200) {

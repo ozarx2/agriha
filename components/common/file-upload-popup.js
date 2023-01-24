@@ -6,6 +6,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 
 import styles from "./file-upload-popup.module.css";
+import { PulseLoader } from "react-spinners";
 
 export default function FileUploadPopup() {
   const [Store] = useContext(StoreContext);
@@ -16,6 +17,8 @@ export default function FileUploadPopup() {
   const [titleFileUpload, setTitleFileUpload] = useState("");
   const [filenameUpload, setFilenameUpload] = useState("");
   const [uploadedDocuments, setUploadedDocuments] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   /* STORE MULTIPLE FILES */
   const [files, setFiles] = useState([]);
@@ -69,9 +72,7 @@ export default function FileUploadPopup() {
 
   /* UPLOAD FILES API*/
   async function uploadFiles() {
-    console.log(titleFileUpload);
-    console.log(uploadedDocuments);
-    console.log(fileUploadId);
+    setIsLoading(true);
     if (titleFileUpload !== "" && uploadedDocuments !== [] && fileUploadId !== "") {
       const res = await fetch(`${endpoint}/fileupload`, {
         method: "POST",
@@ -86,6 +87,7 @@ export default function FileUploadPopup() {
       });
       const data = await res.json();
       if (data.status === 200) {
+        setIsLoading(false);
         setFileUploadPopup(false);
       }
     }
@@ -132,8 +134,14 @@ export default function FileUploadPopup() {
                   Cancel
                 </div>
                 <div className={styles.upload} onClick={uploadFiles}>
-                  <img src="/img/architect-dashboard/ofu.svg" alt="file-upload" />
-                  <span>Upload</span>
+                  {isLoading ? (
+                    <PulseLoader size={10} color="#ffffff" />
+                  ) : (
+                    <>
+                      <img src="/img/architect-dashboard/ofu.svg" alt="file-upload" />
+                      <span>Upload</span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

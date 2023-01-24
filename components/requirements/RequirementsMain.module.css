@@ -476,9 +476,9 @@
 
 .plan_card_container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  height: 470px;
+  height: 100%;
   margin-top: 50px;
 }
 
@@ -516,6 +516,8 @@
 .lists_plan_card {
   margin: 10px 0px;
   display: flex;
+  height: 45vh;
+  overflow-x: hidden;
 }
 
 .lists_plan_card > ul > li {

@@ -17,6 +17,7 @@ export default function AgrihaMyPublicBidMainSingle() {
   const [Store] = useContext(StoreContext);
 
   const setLoginPopup = Store.setLoginPopup;
+  const setRegisterPopup = Store.setRegisterPopup;
   const setUserRole = Store.setUserRole;
 
   const [bidId, setBidId] = useState("");
@@ -137,7 +138,7 @@ export default function AgrihaMyPublicBidMainSingle() {
                   </div>
                 </div>
                 <div className={styles.sTwoOuter}>
-                  <div className={styles.sTwoBid}>latest bid details</div>
+                  <div className={styles.sTwoBid}>Latest bid details</div>
                   <table>
                     <tbody>
                       <tr>
@@ -164,6 +165,13 @@ export default function AgrihaMyPublicBidMainSingle() {
                   </table>
                   <div onClick={() => viewMoreClick()} className={styles.accept}>
                     Accept now
+                  </div>
+                  <div className={styles.message}>
+                    Grow your business as an architect using Arclif Bid . Send your quote for the work mentioned above
+                    by clicking the <span onClick={() => viewMoreClick()}>accept now button</span>.{" "}
+                    <span onClick={() => setRegisterPopup(true)}>
+                      Signup now to get Daily updates on new project leads posted by genuine customers.
+                    </span>
                   </div>
                   <div onClick={() => router.push(`/`)} className={styles.about}>
                     Home

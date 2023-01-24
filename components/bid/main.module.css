@@ -94,6 +94,7 @@
   font-size: 20px;
   font-weight: bold;
 }
+
 @media only screen and (max-width: 600px) {
   .bid_outer {
     display: inline-block;
@@ -423,7 +424,7 @@
   margin-right: 10px;
 }
 .sOneleft span {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -431,7 +432,7 @@
   color: #030768;
 }
 .sOneleft button {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 13.75px;
@@ -451,7 +452,7 @@
   padding-left: 10px;
 }
 .sOneRightDate {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -462,7 +463,7 @@
   margin-right: 25px;
 }
 .sOneRightBid {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -473,7 +474,7 @@
   color: #b81331;
 }
 .sOneRight button {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 13.75px;
@@ -490,7 +491,7 @@
   text-align: center;
 }
 .sTwoBid {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
@@ -514,7 +515,7 @@
   border: 1px solid #e8e8e8;
 }
 .sTwoOuter td {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -522,7 +523,7 @@
   color: #878787;
 }
 .sTwoOuter .accept {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -535,7 +536,7 @@
   margin-top: 30px;
 }
 .sTwoOuter .about {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -543,6 +544,22 @@
   text-decoration-line: underline;
   color: #6f6f6f;
   margin-top: 15px;
+}
+.message {
+  font-family: "Inter";
+  font-style: normal;
+  font-size: 14px;
+  line-height: 24px;
+  max-width: 475px;
+  margin: 0 auto;
+  font-weight: 600;
+  background-color: #462b99ab;
+  padding: 30px;
+  margin-top: 25px;
+  border-radius: 20px;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .sOneRightBg {
@@ -593,7 +610,7 @@
     margin-left: 45px;
     background: transparent;
     padding-left: 38px;
-    font-family: "Roboto";
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 13.75px;

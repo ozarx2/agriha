@@ -204,6 +204,35 @@
   cursor: pointer;
 }
 
+.n_one .btns div {
+  height: 40px;
+  width: 124px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background-color: #f8f8f8;
+  color: #019071;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.n_one .btns div:not(:last-child) {
+  margin-right: 15px;
+}
+
+.n_one .btns {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+.n_one .btns div.active {
+  background-color: #019071;
+  color: #ffffff;
+  font-weight: 500;
+}
 @media only screen and (max-width: 1820px) {
   .results__container {
     grid-template-columns: repeat(3, 1fr);

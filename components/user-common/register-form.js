@@ -57,7 +57,13 @@ export default function RegisterPopupForm() {
       setPhone(phone);
     }
     if (event.target.name === "email") {
-      setEmail(event.target.value);
+      var email = event.target.value;
+      var validMail = email
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+      setEmail(validMail);
     }
   };
 
@@ -107,7 +113,7 @@ export default function RegisterPopupForm() {
   return (
     <>
       <div className={styles.stwo}>
-        <input type="text" onChange={storeValues} id="name" name="name" maxLength={24} placeholder="Enter Full name" />
+        <input type="text" onChange={storeValues} id="name" name="name" maxLength={40} placeholder="Enter Full name" />
         <div className={styles.phone_feild}>
           <PhoneInput country={"in"} value={code} onChange={(phone) => setCode(phone)} />
           <input

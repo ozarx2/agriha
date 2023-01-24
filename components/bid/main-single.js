@@ -17,6 +17,7 @@ export default function AgrihaMyPublicBidMainSingle() {
   const [Store] = useContext(StoreContext);
 
   const setLoginPopup = Store.setLoginPopup;
+  const setRegisterPopup = Store.setRegisterPopup;
   const setUserRole = Store.setUserRole;
 
   const [bidId, setBidId] = useState("");
@@ -42,9 +43,6 @@ export default function AgrihaMyPublicBidMainSingle() {
     } else {
       getParameters();
     }
-  }, []);
-
-  useEffect(() => {
     let token = localStorage.getItem("architectToken");
     setArchToken(token);
   }, []);
@@ -75,6 +73,27 @@ export default function AgrihaMyPublicBidMainSingle() {
     }
   }, [bidId]);
 
+  const [getAllBid, setGetAllBid] = useState([]);
+  async function getAllBidProjects() {
+    const response = await fetch(`${api_url}/projects/unauth_bids`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    // console.log(data);
+    if (data) {
+      const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
+      const bidData = data.data.filter((res) => new Date(res.createdAt) >= oldDate);
+      setGetAllBid(bidData);
+    }
+  }
+  useEffect(() => {
+    getAllBidProjects();
+  }, []);
+
+  // console.log(getAllBid);
   // console.log(archToken);
 
   const viewMoreClick = () => {
@@ -97,20 +116,29 @@ export default function AgrihaMyPublicBidMainSingle() {
                   <div className={styles.sOneleft}>
                     <img src="/img/bid/gem.gif" alt="bid" />
                     <span>Bid share from arclif</span>
-                    <button>Contact us</button>
+                    <a
+                      href={
+                        windowRes.innerWidth >= 1100
+                          ? "https://web.whatsapp.com/send?phone=918921244492&submit=Continue"
+                          : "https://api.whatsapp.com/send?phone=918921244492&submit=Continue"
+                      }
+                      target="_blank"
+                    >
+                      <button>Contact us</button>
+                    </a>
                   </div>
                   <div className={styles.sOneRight}>
                     <div className={styles.sOneRightDate}>Date :{moment(Date()).format("lll")}</div>
                     <div className={styles.sOneRightBg}>
                       <div className={styles.sOneRightBid}>
-                        Now Active bid : <span>90</span>
+                        Now Active bid : <span>{getAllBid.length}</span>
                       </div>
-                      <button>View all</button>
+                      <button onClick={() => router.push(`/bid`)}>View all</button>
                     </div>
                   </div>
                 </div>
                 <div className={styles.sTwoOuter}>
-                  <div className={styles.sTwoBid}>latest bid details</div>
+                  <div className={styles.sTwoBid}>Latest bid details</div>
                   <table>
                     <tbody>
                       <tr>
@@ -135,8 +163,19 @@ export default function AgrihaMyPublicBidMainSingle() {
                       </tr>
                     </tbody>
                   </table>
-                  <div className={styles.accept}>Accept now</div>
-                  <div className={styles.about}>About more arclif</div>
+                  <div onClick={() => viewMoreClick()} className={styles.accept}>
+                    Accept now
+                  </div>
+                  <div className={styles.message}>
+                    Grow your business as an architect using Arclif Bid . Send your quote for the work mentioned above
+                    by clicking the <span onClick={() => viewMoreClick()}>accept now button</span>.{" "}
+                    <span onClick={() => setRegisterPopup(true)}>
+                      Signup now to get Daily updates on new project leads posted by genuine customers.
+                    </span>
+                  </div>
+                  <div onClick={() => router.push(`/`)} className={styles.about}>
+                    Home
+                  </div>
                 </div>
               </div>
             </div>

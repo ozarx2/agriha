@@ -16,7 +16,6 @@ export default function AgrihaMyPublicBidMain() {
   const [Store] = useContext(StoreContext);
 
   const [getAllBid, setGetAllBid] = useState([]);
-
   async function getAllProjects() {
     const response = await fetch(`${api_url}/projects/unauth_bids`, {
       method: "GET",
@@ -25,14 +24,10 @@ export default function AgrihaMyPublicBidMain() {
       },
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (data) {
-      const oldDate = new Date(
-        (Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000
-      );
-      const bidData = data.data.filter(
-        (res) => new Date(res.createdAt) >= oldDate
-      );
+      const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
+      const bidData = data.data.filter((res) => new Date(res.createdAt) >= oldDate);
       setGetAllBid(bidData);
     }
   }
@@ -44,25 +39,15 @@ export default function AgrihaMyPublicBidMain() {
     <>
       <div className={styles.main_outer}>
         <div className={`container ${styles.container} ${styles.bidAll}`}>
-          <div
-            className={`${styles.main_inner} ${
-              windowRes.innerWidth >= 1100 ? styles.desktop : styles.mobile
-            }`}
-          >
+          <div className={`${styles.main_inner} ${windowRes.innerWidth >= 1100 ? styles.desktop : styles.mobile}`}>
             <div className={styles.bid_max_outer}>
               {getAllBid?.map((item, i) => {
                 return (
-                  <div
-                    onClick={() => router.push(`/bid/${item?._id}`)}
-                    key={i}
-                    className={styles.bid_outer}
-                  >
+                  <div onClick={() => router.push(`/bid/${item?._id}`)} key={i} className={styles.bid_outer}>
                     <div className={styles.bid_title}>{item?.project_type}</div>
                     <div className={styles.bid_sub_title}>
                       <div className={styles.type}> {item?.project_name}</div>
-                      <div className={styles.date}>
-                        {moment(item?.createdAt).format("lll")}
-                      </div>
+                      <div className={styles.date}>{moment(item?.createdAt).format("lll")}</div>
                     </div>
                     <div className={styles.details}>
                       <div className={styles.details_in}>

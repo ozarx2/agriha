@@ -257,7 +257,7 @@
     border: 1px solid #dedede;
     border-radius: 4px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 20px 25px;
+    padding: 20px 20px;
   }
 
   .bid_title {
@@ -287,6 +287,14 @@
   }
   .details > div > div:first-child {
     margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 13px;
+  }
+  .details > div > div:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 13px;
   }
   .details > div span {
     display: inline-block;
@@ -590,10 +598,7 @@
     font-weight: 400;
     font-size: 13.75px;
     line-height: 22px;
-    /* identical to box height, or 160% */
-
     text-decoration-line: underline;
-
     color: #333333;
   }
   .sTwoOuter table {

@@ -32,25 +32,25 @@
 }
 
 .bid__projectCard {
-  /* min-width: 263px; */
-  /* width: 100%; */
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+  width: 100%;
   padding: 20px 40px;
-  width: fit-content;
-
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  border: 2px solid #f2f2f2;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .bid__projectCard.viewed {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  background-color: #f2f2f2;
+  box-shadow: none;
 }
 
 .bid__projectCard > img {
   height: 183px;
   width: 250px;
   object-fit: cover;
+  margin-right: 20px;
 }
 
 .bid__projectCard > div {

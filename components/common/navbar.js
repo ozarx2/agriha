@@ -26,6 +26,8 @@ export default function Navbar() {
   const setArchitect = Store.setArchitectData;
   const setAllBidArchitect = Store.setAllBidArchitect;
 
+  const setUpdateZonePopUp = Store.setUpdateZonePopUp;
+
   const [notification, setNotification] = useState(false);
   const [path, setPath] = useState("Overview");
 
@@ -95,8 +97,11 @@ export default function Navbar() {
     });
 
     const data = await res.json();
-    // console.log(data);
+    console.log(data.zone);
     setArchitect(data);
+    if (data.zone === null) {
+      setUpdateZonePopUp(true);
+    }
   }
 
   /* GET ARCHITECT PROJECTS */

@@ -74,9 +74,16 @@ export default function ViewBidMain() {
                     ?.slice(0)
                     .reverse()
                     .map((item, index) => {
-                      console.log(item);
+                      var arc_id = localStorage.getItem("architectId");
+                      var arc_view = item.view_status.filter((items) => items === arc_id);
                       return (
-                        <div key={index} className={styles.bid__projectCard}>
+                        <div
+                          key={index}
+                          onClick={() => viewDetailsClick(item?._id)}
+                          className={`${styles.bid__projectCard} ${
+                            arc_view.length !== 0 ? styles.viewed : styles.not_viewed
+                          }`}
+                        >
                           <img
                             src={item?.thumbnail ? item?.thumbnail : "/img/common/ni.jpg"}
                             onError={(e) => (e.target.src = "/img/common/ina.png")}
@@ -121,12 +128,7 @@ export default function ViewBidMain() {
                           {item?.project_requirements[0]?.budget ? `₹ ${item?.project_requirements[0]?.budget}` : ""}
                         </p>
                       </div> */}
-                            <div
-                              className={styles.bid__projectCard__button}
-                              onClick={() => viewDetailsClick(item?._id)}
-                            >
-                              View details
-                            </div>
+                            <div className={styles.bid__projectCard__button}>View details</div>
                           </div>
                         </div>
                       );

@@ -28,7 +28,8 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
   /* GET PROJECT DETAILS */
   async function getProjects() {
     var token = localStorage.getItem("architectToken");
-    const res = await fetch(`${api_url}/projects/single/${projectId}`, {
+    var arc_id = localStorage.getItem("architectId");
+    const res = await fetch(`${api_url}/projects/single/${projectId}?arc_id=${arc_id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +38,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
     });
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
       setProjectDetilas(data?.data[0]);
       setProjectType(data?.data[0]?.project_type);
@@ -524,7 +525,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
             <div className={styles.resultSectionDetails}>
               <table className={styles.table_out}>
                 <tbody>
-                  {projectDetails.site_plan ? (
+                  {projectDetails?.site_plan ? (
                     <tr>
                       <td>Uploaded site plan </td>
                       <td>

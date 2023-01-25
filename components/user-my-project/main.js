@@ -9,6 +9,7 @@ import FnUserMyProjectMobile from "./mobile";
 
 import styles from "./main.module.css";
 import api_url from "../../src/utils/url";
+import ProjectContainer from "./ProjectContainer";
 
 const UserMyProjects = () => {
   const [allProjects, setAllProjects] = useState([]);
@@ -36,11 +37,12 @@ const UserMyProjects = () => {
     <>
       <div className={styles.main_outer}>
         <div className={styles.main_inner}>
-          {windowRes.innerWidth >= 1100 ? (
+          {/* {windowRes.innerWidth >= 1100 ? (
             <FnUserMyProjectDesktop projects={allProjects} />
           ) : (
             <FnUserMyProjectMobile projects={allProjects} />
-          )}
+          )} */}
+          <ProjectContainer />
         </div>
       </div>
     </>

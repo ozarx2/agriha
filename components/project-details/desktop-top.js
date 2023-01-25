@@ -46,6 +46,7 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
   /* GET PROJECT DETAILS */
   const [projectDetails, setProjectDetails] = useState([]);
   async function getProjects() {
+    // setProjectDetails([]);
     const res = await fetch(`${api_url}/projects/arcprojectsingle/${projectId}`, {
       method: "GET",
       headers: {
@@ -53,8 +54,10 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
       },
     });
     const data = await res.json();
+    if (data.length > 0) {
+      setProjectDetails(data[0]);
+    }
     // console.log(data[0]);
-    setProjectDetails(data[0]);
   }
   // console.log(projectDetails);
   useEffect(() => {
@@ -84,138 +87,144 @@ export default function AgrihaProjectDetailsMainDesktopTop() {
             </div>
           </div>
         </div> */}
-
-        <div className={styles.stwo_outer}>
-          <div className={`container ${styles.container} ${styles.stwo}`}>
-            <div className={styles.stwo_inner}>
-              <div className={styles.left}>
-                <div onClick={() => router.back()} className={styles.back}>
-                  <img src="/img/project-details/back.svg" alt="back" />
-                </div>
-                <Swiper
-                  style={{
-                    "--swiper-navigation-color": "#fff",
-                    "--swiper-pagination-color": "#fff",
-                  }}
-                  spaceBetween={10}
-                  // navigation={true}
-                  thumbs={{ swiper: thumbsSwiper }}
-                  modules={[FreeMode, Navigation, Thumbs]}
-                  className="mySwiper2"
-                >
-                  {projectDetails.thumbnail ? (
-                    <SwiperSlide>
+        {projectDetails.length !== 0 ? (
+          <>
+            <div className={styles.stwo_outer}>
+              <div className={`container ${styles.container} ${styles.stwo}`}>
+                <div className={styles.stwo_inner}>
+                  <div className={styles.left}>
+                    <div onClick={() => router.back()} className={styles.back}>
+                      <img src="/img/project-details/back.svg" alt="back" />
+                    </div>
+                    <Swiper
+                      style={{
+                        "--swiper-navigation-color": "#fff",
+                        "--swiper-pagination-color": "#fff",
+                      }}
+                      spaceBetween={10}
+                      // navigation={true}
+                      thumbs={{ swiper: thumbsSwiper }}
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      className="mySwiper2"
+                    >
+                      {projectDetails.thumbnail ? (
+                        <SwiperSlide>
+                          <img
+                            src={projectDetails.thumbnail}
+                            onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                            alt=""
+                          />
+                        </SwiperSlide>
+                      ) : (
+                        ""
+                      )}
+                      {projectDetails?.Image?.map((item, index) => {
+                        return (
+                          <SwiperSlide key={index}>
+                            <img src={item} onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")} alt="" />
+                          </SwiperSlide>
+                        );
+                      })}
+                    </Swiper>
+                  </div>
+                  <div className={styles.right}>
+                    <div className={styles.title}>{projectDetails?.projectname}</div>
+                    <div className={styles.content}>
+                      <span>{projectDetails?.location}</span> | <span>{projectDetails?.projectarea} sq.ft</span>
+                    </div>
+                    <div className={styles.contentsub}>{projectDetails?.description}</div>
+                    <div
+                      onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}
+                      className={styles.profile}
+                    >
                       <img
-                        src={projectDetails.thumbnail}
-                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                        alt=""
+                        src={
+                          projectDetails?.architect_id?.profilepic
+                            ? projectDetails?.architect_id?.profilepic
+                            : "/img/landing/profile_img.svg"
+                        }
+                        onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
+                        alt="profile"
                       />
-                    </SwiperSlide>
-                  ) : (
-                    ""
-                  )}
-                  {projectDetails?.Image?.map((item, index) => {
-                    return (
-                      <SwiperSlide key={index}>
-                        <img src={item} onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")} alt="" />
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
-              </div>
-              <div className={styles.right}>
-                <div className={styles.title}>{projectDetails?.projectname}</div>
-                <div className={styles.content}>
-                  <span>{projectDetails?.location}</span> | <span>{projectDetails?.projectarea} sq.ft</span>
-                </div>
-                <div className={styles.contentsub}>{projectDetails?.description}</div>
-                <div
-                  onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}
-                  className={styles.profile}
-                >
-                  <img
-                    src={
-                      projectDetails?.architect_id?.profilepic
-                        ? projectDetails?.architect_id?.profilepic
-                        : "/img/landing/profile_img.svg"
-                    }
-                    onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
-                    alt="profile"
-                  />
-                  <span>
-                    {projectDetails?.architect_id?.firstname !== undefined
-                      ? projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname
-                      : projectDetails?.architect_id?.registered_id?.name}
-                  </span>
-                </div>
-                <div
-                  onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}
-                  className={styles.archcontent}
-                >
-                  {projectDetails?.architect_id?.bio}
-                </div>
-                {loginActive ? (
-                  <div className={styles.buttons}>
-                    <div className={styles.send} onClick={() => setArchitectSelectPopup(true)}>
-                      Send requirment
+                      <span>
+                        {projectDetails?.architect_id?.firstname !== undefined
+                          ? projectDetails?.architect_id?.firstname + " " + projectDetails?.architect_id?.lastname
+                          : projectDetails?.architect_id?.registered_id?.name}
+                      </span>
                     </div>
-                    <div className={styles.bid} onClick={() => setArchitectBidtPopup(true)}>
-                      Invite Quote
+                    <div
+                      onClick={() => router.push(`/user-architect-about/${projectDetails?.architect_id?._id}`)}
+                      className={styles.archcontent}
+                    >
+                      {projectDetails?.architect_id?.bio}
                     </div>
+                    {loginActive ? (
+                      <div className={styles.buttons}>
+                        <div className={styles.send} onClick={() => setArchitectSelectPopup(true)}>
+                          Send requirment
+                        </div>
+                        <div className={styles.bid} onClick={() => setArchitectBidtPopup(true)}>
+                          Invite Quote
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={styles.buttons}>
+                        <div className={styles.send} onClick={() => setLoginPopup(true)}>
+                          Send requirment
+                        </div>
+                        <div className={styles.bid} onClick={() => setLoginPopup(true)}>
+                          Invite Quote
+                        </div>
+                      </div>
+                    )}
                   </div>
-                ) : (
-                  <div className={styles.buttons}>
-                    <div className={styles.send} onClick={() => setLoginPopup(true)}>
-                      Send requirment
-                    </div>
-                    <div className={styles.bid} onClick={() => setLoginPopup(true)}>
-                      Invite Quote
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className={styles.sthree_outer}>
-          <div className={`container ${styles.container} ${styles.sthree}`}>
-            <div className={styles.sthree_inner}>
-              <div className={styles.slider_outer}>
-                <Swiper
-                  onSwiper={setThumbsSwiper}
-                  spaceBetween={38.74}
-                  slidesPerView={4.2}
-                  freeMode={true}
-                  // navigation={true}
-                  watchSlidesProgress={true}
-                  modules={[FreeMode, Navigation, Thumbs]}
-                  className="mySwiper"
-                >
-                  {projectDetails.thumbnail ? (
-                    <SwiperSlide>
-                      <img
-                        src={projectDetails.thumbnail}
-                        onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
-                        alt=""
-                      />
-                    </SwiperSlide>
-                  ) : (
-                    ""
-                  )}
-                  {projectDetails?.Image?.map((item, index) => {
-                    return (
-                      <SwiperSlide key={index}>
-                        <img src={item} onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")} alt="" />
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
+            <div className={styles.sthree_outer}>
+              <div className={`container ${styles.container} ${styles.sthree}`}>
+                <div className={styles.sthree_inner}>
+                  <div className={styles.slider_outer}>
+                    <Swiper
+                      onSwiper={setThumbsSwiper}
+                      spaceBetween={38.74}
+                      slidesPerView={4.2}
+                      freeMode={true}
+                      // navigation={true}
+                      watchSlidesProgress={true}
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      className="mySwiper"
+                    >
+                      {projectDetails.thumbnail ? (
+                        <SwiperSlide>
+                          <img
+                            src={projectDetails.thumbnail}
+                            onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                            alt=""
+                          />
+                        </SwiperSlide>
+                      ) : (
+                        ""
+                      )}
+                      {projectDetails?.Image?.map((item, index) => {
+                        return (
+                          <SwiperSlide key={index}>
+                            <img src={item} onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")} alt="" />
+                          </SwiperSlide>
+                        );
+                      })}
+                    </Swiper>
+                  </div>
+                </div>
               </div>
             </div>
+          </>
+        ) : (
+          <div className={styles.loading}>
+            <img src="/img/landing/loading.svg" alt="Loading..." />
           </div>
-        </div>
-
+        )}
         <div className={styles.border_dsthree_dsfour}></div>
         <div className={styles.dsfour_outer}>
           <div className={`container ${styles.container} ${styles.dsfour}`}>

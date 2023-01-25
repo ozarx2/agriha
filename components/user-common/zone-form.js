@@ -7,19 +7,24 @@ import zoneData from "../../src/utils/zone.json";
 import { districts } from "../../src/utils/data";
 
 import styles from "./zone-popup.module.css";
+import { useRouter } from "next/router";
 
 export default function ZonePopupForm() {
+  const router = useRouter();
+
   const [Store] = useContext(StoreContext);
 
   const setZonePopUp = Store.setZonePopUp;
   const userRole = Store.userRole;
+  const updateZonePopUp = Store.updateZonePopUp;
+  const setUpdateZonePopUp = Store.setUpdateZonePopUp;
 
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("Must fill all data");
 
   // Yaseen Start
-  const [district, setDistrict] = useState("Kasargode");
+  const [district, setDistrict] = useState("");
   const [Panchayath, setPanchayath] = useState("");
   const [zone, setZone] = useState("");
 
@@ -77,14 +82,20 @@ export default function ZonePopupForm() {
       const data = await res.json();
       setLoading(false);
       if (data.status === 200) {
-        setZonePopUp(false);
-        window.location.href = "/requirement/basic-details";
+        if (updateZonePopUp) {
+          setZonePopUp(false);
+          setUpdateZonePopUp(false);
+          router.reload();
+        } else {
+          setZonePopUp(false);
+          window.location.href = "/requirement/basic-details";
+        }
       }
     }
   }
 
   function confirmClick() {
-    if (district !== "" && Panchayath !== "" && zone !== "") {
+    if (district !== "" && Panchayath !== "" && zone !== "" && zone !== undefined) {
       setLoading(true);
       if (userRole === "user") {
         handleSubmitUser();
@@ -131,6 +142,7 @@ export default function ZonePopupForm() {
       <div className={styles.stwo}>
         <label for="district">Select your District</label>
         <select name="districts" id="districts" onChange={(e) => setDistrict(e.target.value)}>
+          <option value="">Select District</option>
           {districts.map((item, index) => {
             return (
               <option key={index} value={item}>
@@ -142,6 +154,7 @@ export default function ZonePopupForm() {
 
         <label for="panchayaths">Select your Panchayath</label>
         <select name="panchayaths" id="panchayaths" onChange={(e) => setPanchayath(e.target.value)}>
+          <option value="">Select Panchayath</option>
           {panchayathList[0]?.panchayth?.map((item, index) => {
             return (
               <option key={index} value={item}>

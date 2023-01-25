@@ -39,6 +39,7 @@ export const StoreContextProvider = (props) => {
   const [arcDashQueue, setArcDashQueue] = useState(false);
   const [zonePopup, setZonePopUp] = useState(false);
   const [requirementPopup, setRequirementPopup] = useState(false);
+  const [updateZonePopUp, setUpdateZonePopUp] = useState(true);
   // Store Yaseen end
 
   // Store 61-5a start
@@ -137,6 +138,9 @@ export const StoreContextProvider = (props) => {
     setZonePopUp,
     requirementPopup,
     setRequirementPopup,
+    updateZonePopUp,
+    setUpdateZonePopUp,
+
     // Store Yaseen end
 
     // Store 61-5a start

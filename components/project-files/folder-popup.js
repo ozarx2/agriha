@@ -156,7 +156,8 @@ export default function FolderPopup() {
       const data = await res.json();
       console.log(data);
       if (data.status === 200) {
-        getUploadedFiles();
+        // getUploadedFiles();
+        window.location.reload();
       }
     } else {
       alert("Please enter all details");

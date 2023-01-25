@@ -170,7 +170,7 @@ export default function Navbar() {
     });
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setActivityLog(data?.activitylog);
     if (data?.activitylog?.length > 0) {
       setNotification(true);

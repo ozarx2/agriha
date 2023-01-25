@@ -25,9 +25,12 @@ export default function AgrihaLandingHeaderNoSearch() {
   const setUserId = Store.setUserId;
   const userRole = Store.userRole;
   const setUserRole = Store.setUserRole;
+  const setZonePopUp = Store.setZonePopUp;
+  const setUpdateZonePopUp = Store.setUpdateZonePopUp;
 
   const [archIdHeader, setArchIdHeader] = useState("");
   const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
+
   async function getHomeSeekerDetails() {
     const token = localStorage.getItem("userToken");
     const res = await fetch(`${api_url}/user/profile`, {
@@ -39,6 +42,10 @@ export default function AgrihaLandingHeaderNoSearch() {
     });
     const data = await res.json();
     setHomeSeekerDetails(data.userData);
+    if (data.userData.zone === null) {
+      setZonePopUp(true);
+      setUpdateZonePopUp(true);
+    }
   }
 
   if (typeof window !== "undefined") {

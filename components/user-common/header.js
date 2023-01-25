@@ -79,9 +79,12 @@ export default function AgrihaLandingHeader() {
   const setUserRole = Store.setUserRole;
   const setProjectResponse = Store.setProjectResponse;
   const setAllArchitects = Store.setAllArchitects;
+  const setZonePopUp = Store.setZonePopUp;
+  const setUpdateZonePopUp = Store.setUpdateZonePopUp;
 
   const [archIdHeader, setArchIdHeader] = useState("");
   const [homeSeekerDetails, setHomeSeekerDetails] = useState([]);
+
   async function getHomeSeekerDetails() {
     const token = localStorage.getItem("userToken");
     // console.log(token);
@@ -93,8 +96,11 @@ export default function AgrihaLandingHeader() {
       },
     });
     const data = await res.json();
-    // console.log(data);
     setHomeSeekerDetails(data.userData);
+    if (data.userData.zone === null) {
+      setZonePopUp(true);
+      setUpdateZonePopUp(true);
+    }
   }
 
   if (typeof window !== "undefined") {

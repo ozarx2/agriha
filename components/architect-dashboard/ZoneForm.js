@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
-import { StoreContext } from "../../components/StoreContext";
+import { StoreContext } from "../StoreContext";
 import { PulseLoader } from "react-spinners";
-import axios from "axios";
 import endpoint from "../../src/utils/endpoint";
 import zoneData from "../../src/utils/zone.json";
 import { districts } from "../../src/utils/data";
 
-import styles from "./zone-popup.module.css";
+import styles from "./UpdateZonePopUp.module.css";
 import { useRouter } from "next/router";
 
 export default function ZonePopupForm() {
@@ -14,10 +13,8 @@ export default function ZonePopupForm() {
 
   const [Store] = useContext(StoreContext);
 
-  const setZonePopUp = Store.setZonePopUp;
-  const userRole = Store.userRole;
-  const updateZonePopUp = Store.updateZonePopUp;
   const setUpdateZonePopUp = Store.setUpdateZonePopUp;
+  const userRole = Store.userRole;
 
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -54,56 +51,10 @@ export default function ZonePopupForm() {
     console.log(data);
     setLoading(false);
     if (data.zone === zone) {
-      setZonePopUp(false);
-      window.location.href = `/architect-dashboard/${data._id}`;
+      setUpdateZonePopUp(false);
+      router.reload();
     } else {
       handleSubmit(zone);
-    }
-  }
-
-  async function handleSubmitUser() {
-    console.log(zone);
-    if (zone !== "") {
-      const token = localStorage.getItem("userToken");
-
-      const res = await fetch(`${endpoint}/user/update`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + `${token}`,
-        },
-        body: JSON.stringify({
-          zone: zone,
-          panchayath: Panchayath,
-          district: district,
-        }),
-      });
-
-      const data = await res.json();
-      setLoading(false);
-      if (data.status === 200) {
-        if (updateZonePopUp) {
-          setZonePopUp(false);
-          setUpdateZonePopUp(false);
-          router.reload();
-        } else {
-          setZonePopUp(false);
-          window.location.href = "/requirement/basic-details";
-        }
-      }
-    }
-  }
-
-  function confirmClick() {
-    if (district !== "" && Panchayath !== "" && zone !== "" && zone !== undefined) {
-      setLoading(true);
-      if (userRole === "user") {
-        handleSubmitUser();
-      } else {
-        handleSubmit();
-      }
-    } else {
-      setIsError(true);
     }
   }
 
@@ -136,6 +87,18 @@ export default function ZonePopupForm() {
   useEffect(() => {
     getZone(Panchayath);
   }, [Panchayath]);
+
+  function confirmClick() {
+    console.log(district);
+    console.log(Panchayath);
+    console.log(zone);
+    if (district !== "" && Panchayath !== "" && zone !== undefined && zone !== "") {
+      setLoading(true);
+      handleSubmit();
+    } else {
+      setIsError(true);
+    }
+  }
 
   return (
     <>

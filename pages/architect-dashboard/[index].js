@@ -16,6 +16,7 @@ import OngoingPopup from "../../components/common/ongoing-popup";
 import SearchPopUp from "../../components/common/search-popup";
 
 import styles from "./index.module.css";
+import UpdateZonePopUp from "../../components/architect-dashboard/UpdateZonePopUp";
 
 export default function ArchitectDashboard() {
   const [Store] = useContext(StoreContext);
@@ -28,6 +29,7 @@ export default function ArchitectDashboard() {
   const fileUploadPopup = Store.fileUploadPopup;
   const ongoingPopup = Store.ongoingPopup;
   const searchpopup = Store.searchpopup;
+  const updateZonePopUp = Store.updateZonePopUp;
 
   const router = useRouter();
   useEffect(() => {
@@ -70,6 +72,7 @@ export default function ArchitectDashboard() {
           {fileUploadPopup ? <FileUploadPopup /> : ""}
           {ongoingPopup ? <OngoingPopup /> : ""}
           {searchpopup ? <SearchPopUp /> : ""}
+          {updateZonePopUp ? <UpdateZonePopUp /> : ""}
         </div>
       </div>
     </>

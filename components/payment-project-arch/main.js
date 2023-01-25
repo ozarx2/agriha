@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
+import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
 
@@ -9,6 +10,38 @@ export default function SinglePaymentProjectMain() {
   const router = useRouter();
   const { id } = router.query;
   const projectId = id;
+  const initialState = {
+    amount: null,
+    stage: "",
+    status: "",
+  };
+
+  const [paymentDetails, setPaymentDetails] = useState(initialState);
+  const handleInputs = (event) => {
+    if (event.target.name === "amount") {
+      setPaymentDetails({ ...paymentDetails, [event.target.name]: parseInt(event.target.value) });
+    } else {
+      setPaymentDetails({ ...paymentDetails, [event.target.name]: event.target.value });
+    }
+  };
+
+  async function SubmitPaymentDetails() {
+    const response = await fetch(`${api_url}/user-payment`, {
+      method: "POST",
+      body: JSON.stringify(paymentDetails),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  }
+
+  const handleSubmit = () => {
+    if (paymentDetails.amount != null && paymentDetails.stage != "" && paymentDetails.status != "") {
+      SubmitPaymentDetails();
+    }
+  };
 
   return (
     <>
@@ -18,7 +51,7 @@ export default function SinglePaymentProjectMain() {
           <div className={styles.paymentColoumns}>
             <table className={styles.table_out}>
               <tbody>
-                <tr>
+                {/* <tr>
                   <td>Payment details </td>
                   <td className={styles.dropdownCol}>
                     <div className={styles.dropDown}>
@@ -33,30 +66,32 @@ export default function SinglePaymentProjectMain() {
                   <td>
                     <button className={styles.addAcc}>Add account</button>
                   </td>
-                </tr>
+                </tr> */}
                 <tr>
                   <td>Payable amount </td>
                   <td>
-                    : <input type="text" />
+                    : <input type="number" name="amount" defaultValue={paymentDetails.amount} onChange={handleInputs} />
                   </td>
                 </tr>
                 <tr>
                   <td> Stage of payment </td>
                   <td>
-                    : <input type="text" />
+                    : <input type="text" name="stage" defaultValue={paymentDetails.stage} onChange={handleInputs} />
                   </td>
                 </tr>
                 <tr>
                   <td> Status of payment </td>
                   <td>
-                    : <input type="text" />
+                    : <input type="text" name="status" defaultValue={paymentDetails.status} onChange={handleInputs} />
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div className={styles.paymentMode}>
-            <div className={styles.modeInput}>Add payment</div>
+            <div className={styles.modeInput} onClick={handleSubmit}>
+              Add payment
+            </div>
           </div>
         </div>
 

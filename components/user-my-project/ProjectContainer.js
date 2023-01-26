@@ -44,11 +44,17 @@ const ProjectContainer = () => {
           .map((item, index) => {
             return item.architect_id?.firstname ? (
               <div className={styles.projectCard}>
-                <img
-                  onError={(e) => (e.target.src = "/img/user-my-project/no-image.png")}
-                  src={item.thumbnail ? item.thumbnail : "/img/user-my-project/no-image.png"}
-                  alt=""
-                />
+                <div className={styles.left_projectCard}>
+                  <img
+                    onError={(e) => (e.target.src = "/img/user-my-project/no-image.png")}
+                    src={item.thumbnail ? item.thumbnail : "/img/user-my-project/no-image.png"}
+                    alt=""
+                  />
+                  <div className={styles.showMore_button_white} onClick={() => gotoProjectDetails(item._id)}>
+                    Show more
+                    <img src="/img/user-my-project/arrow1.svg" alt="" />
+                  </div>
+                </div>
                 <div className={styles.right_projectCard}>
                   <p>
                     Project no {index + 1} {item.bid ? <span>With bid</span> : ""}

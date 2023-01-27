@@ -72,6 +72,7 @@ const ProjectContainer = () => {
                   <div className={styles.architect_projectCard}>
                     <div className={styles.architect_projectCard_left}>
                       <img
+                        onClick={() => goToArchProfile(item.architect_id._id)}
                         onError={(e) => (e.target.src = "/img/user-my-project/no-image.png")}
                         src={
                           item.architect_id?.profilepic
@@ -80,7 +81,7 @@ const ProjectContainer = () => {
                         }
                         alt=""
                       />
-                      <p>{item.architect_id?.firstname}</p>
+                      <p onClick={() => goToArchProfile(item.architect_id._id)}>{item.architect_id?.firstname}</p>
                       <a onClick={() => goToArchProfile(item.architect_id._id)}>Show architect</a>
                     </div>
                     <div className={styles.showMore_button} onClick={() => gotoProjectDetails(item._id)}>

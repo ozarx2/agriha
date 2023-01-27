@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Request from "./request";
 import RequestMobile from "./request-mobile";
+import api_url from "../../src/utils/url";
 
 import styles from "./main.module.css";
 

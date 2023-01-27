@@ -15,6 +15,7 @@ import AddProjectImage from "../../components/common/add-project-image";
 import FileUploadPopup from "../../components/common/file-upload-popup";
 
 import styles from "./index.module.css";
+import PaymentPopup from "../../components/ongoing-project/paymentPopup";
 
 export default function ArchitectDashboard() {
   const [Store] = useContext(StoreContext);
@@ -27,6 +28,8 @@ export default function ArchitectDashboard() {
   const fileUploadPopup = Store.fileUploadPopup;
   const ongoingPopup = Store.ongoingPopup;
   const arcDashQueue = Store.arcDashQueue;
+
+  const paymentPopup = Store.paymentPopup;
 
   const [projectRequestPopup, setProjectRequestPopup] = useState(false);
   const [page, setPage] = useState("ongoing");
@@ -76,6 +79,7 @@ export default function ArchitectDashboard() {
           {notificationPopup ? <NotificationPopup /> : ""}
           {fileUploadPopup ? <FileUploadPopup /> : ""}
           {addProjectImagePopup ? <AddProjectImage /> : ""}
+          {paymentPopup ? <PaymentPopup /> : ""}
         </div>
       </div>
     </>

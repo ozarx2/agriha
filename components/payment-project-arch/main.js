@@ -10,10 +10,10 @@ export default function SinglePaymentProjectMain() {
   const router = useRouter();
   const { id } = router.query;
   const projectId = id;
+
   const initialState = {
     amount: null,
     stage: "",
-    status: "",
   };
 
   const [paymentDetails, setPaymentDetails] = useState(initialState);
@@ -26,19 +26,22 @@ export default function SinglePaymentProjectMain() {
   };
 
   async function SubmitPaymentDetails() {
-    const response = await fetch(`${api_url}/user-payment`, {
-      method: "POST",
-      body: JSON.stringify(paymentDetails),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    console.log(data);
+    if (projectId) {
+      paymentDetails.project_id = projectId;
+      const response = await fetch(`${api_url}/user-payment`, {
+        method: "POST",
+        body: JSON.stringify(paymentDetails),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+    }
   }
 
   const handleSubmit = () => {
-    if (paymentDetails.amount != null && paymentDetails.stage != "" && paymentDetails.status != "") {
+    if (paymentDetails.amount != null && paymentDetails.stage != "") {
       SubmitPaymentDetails();
     }
   };
@@ -76,15 +79,22 @@ export default function SinglePaymentProjectMain() {
                 <tr>
                   <td> Stage of payment </td>
                   <td>
-                    : <input type="text" name="stage" defaultValue={paymentDetails.stage} onChange={handleInputs} />
+                    :{" "}
+                    <input
+                      type="text"
+                      name="stage"
+                      defaultValue={paymentDetails.stage}
+                      onChange={handleInputs}
+                      placeholder="eg: Advance"
+                    />
                   </td>
                 </tr>
-                <tr>
+                {/* <tr>
                   <td> Status of payment </td>
                   <td>
                     : <input type="text" name="status" defaultValue={paymentDetails.status} onChange={handleInputs} />
                   </td>
-                </tr>
+                </tr> */}
               </tbody>
             </table>
           </div>

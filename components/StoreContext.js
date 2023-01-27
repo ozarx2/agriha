@@ -40,6 +40,7 @@ export const StoreContextProvider = (props) => {
   const [zonePopup, setZonePopUp] = useState(false);
   const [requirementPopup, setRequirementPopup] = useState(false);
   const [updateZonePopUp, setUpdateZonePopUp] = useState(false);
+  const [userProjectViewNav, setUserProjectViewNav] = useState("home");
   // Store Yaseen end
 
   // Store 61-5a start
@@ -141,6 +142,8 @@ export const StoreContextProvider = (props) => {
     setRequirementPopup,
     updateZonePopUp,
     setUpdateZonePopUp,
+    userProjectViewNav,
+    setUserProjectViewNav,
 
     // Store Yaseen end
 

@@ -57,7 +57,7 @@ const ProjectContainer = () => {
                 </div>
                 <div className={styles.right_projectCard}>
                   <p>
-                    Project no {index + 1} {item.bid ? <span>With bid</span> : ""}
+                    {item.project_name} {item.bid ? <span>With bid</span> : ""}
                   </p>
                   <div className={styles.title_projectCard}>
                     {item.project_type}

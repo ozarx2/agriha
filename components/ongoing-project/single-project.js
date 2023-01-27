@@ -12,6 +12,10 @@ export default function SingleOngoingProjectsMain() {
 
   const setBidUserId = Store.setBidUserId;
 
+  // shijin
+  const setPaymentPopup = Store.setPaymentPopup;
+  // End  shijin
+
   const router = useRouter();
   const { id } = router.query;
   const projectId = id;
@@ -50,6 +54,31 @@ export default function SingleOngoingProjectsMain() {
   }, [projectId]);
 
   console.log(projectDetails);
+
+  // Shijin  Payment integration  //
+
+  const [bankAccounts, setBankAccounts] = useState([]);
+
+  useEffect(() => {
+    IsBankAccountCreated();
+  }, []);
+
+  async function IsBankAccountCreated() {
+    const architectid = await localStorage.getItem("architectId");
+    const res = await fetch(`${api_url}/arc-payment/arcpaymentdetails/63cfb46e4e4aa08393a23368`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.status === 200) {
+      console.log(data);
+      setBankAccounts(data.data);
+    }
+  }
+
+  // Payment integration End  //
 
   return (
     <>
@@ -582,7 +611,48 @@ export default function SingleOngoingProjectsMain() {
             )}
 
             {section === "Files" ? <>Files</> : ""}
-            {section === "Payments" ? <>Payments</> : ""}
+            {section === "Payments" ? (
+              <>
+                <div className={styles.payment_section}>
+                  {bankAccounts.length > 0 ? (
+                    <button className={styles.btn} onClick={() => setPaymentPopup(true)}>
+                      <img src="/img/architect-dashboard/add.svg" alt="" />
+                      Add payment
+                    </button>
+                  ) : (
+                    <>
+                      <button className={styles.btn} id={styles.disableBtn}>
+                        <img src="/img/architect-dashboard/add.svg" alt="" />
+                        Add payment
+                      </button>
+                    </>
+                  )}
+
+                  <div className={styles.paymentDetails}>
+                    <div className={styles.payments}>
+                      <table className={styles.table_payment}>
+                        <tbody>
+                          <tr>
+                            <td>Amount</td>
+                            <td>: 11</td>
+                          </tr>
+                          <tr>
+                            <td>Stage</td>
+                            <td>: Advance</td>
+                          </tr>
+                          <tr>
+                            <td>Status</td>
+                            <td>: Pending</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
             {section === "Products" ? <>Products</> : ""}
           </div>
         ) : (

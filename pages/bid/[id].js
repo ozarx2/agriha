@@ -23,8 +23,8 @@ export default function AgrihaProjectDetails() {
   return (
     <>
       <Head>
-        <title>Agriha Landing page</title>
-        <meta name="description" content="Agriha Landing page" />
+        <title>Agriha Bid Share</title>
+        <meta name="description" content="Agriha Bid Share" />
         <meta property="og:image" content="/agrihaFavIcon.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

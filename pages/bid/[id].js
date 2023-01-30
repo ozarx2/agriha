@@ -25,7 +25,7 @@ export default function AgrihaProjectDetails() {
       <Head>
         <title>Agriha Landing page</title>
         <meta name="description" content="Agriha Landing page" />
-        <meta property="og:image" content="/favicon.ico" />
+        <meta property="og:image" content="/agrihaFavIcon.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>

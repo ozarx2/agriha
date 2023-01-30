@@ -2,11 +2,15 @@
   height: 100%;
   width: 100%;
   padding: 45px 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .projectContainer_inner {
   height: 100%;
   width: 100%;
+  max-width: 1030px;
 }
 
 .projectCard {
@@ -17,7 +21,14 @@
   margin-bottom: 10px;
 }
 
-.projectCard > img {
+.left_projectCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.left_projectCard > img {
   height: 100%;
   min-width: 276px;
   max-width: 276px;
@@ -113,10 +124,34 @@
   cursor: pointer;
 }
 
+.showMore_button_white {
+  position: absolute;
+  margin-top: 0px;
+  background-color: #ffffff;
+  color: #0e2f82;
+  padding: 5px 13px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 4px;
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+
 .showMore_button > img {
   height: 10px;
   object-fit: contain;
   margin-left: 6px;
+}
+
+.showMore_button_white > img {
+  height: 10px;
+  object-fit: contain;
+  margin-left: 6px;
+  margin-top: 3px;
 }
 
 .architect_projectCard_left {
@@ -130,6 +165,7 @@
   width: 25px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .architect_projectCard_left > p {
@@ -138,6 +174,7 @@
   font-weight: 400px;
   margin-left: 20px;
   margin-right: 32px;
+  cursor: pointer;
 }
 
 .architect_projectCard_left > a {
@@ -146,4 +183,71 @@
   font-size: 14px;
   cursor: pointer;
   text-decoration-line: underline;
+}
+
+.showMore_button_white {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .left_projectCard > img {
+    width: 131px;
+    min-width: 131px;
+    max-width: 131px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .showMore_button_white {
+    display: flex;
+  }
+  .showMore_button {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .architect_projectCard_left > a {
+    display: none;
+  }
+  .title_projectCard > p {
+    max-height: 20px;
+    overflow: hidden;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .right_projectCard {
+    padding: 18px;
+  }
+  .right_projectCard > p {
+    font-size: 13px;
+  }
+  .right_projectCard > p > span {
+    padding-left: 8px;
+    margin-left: 8px;
+  }
+  .left_projectCard > img {
+    width: 121px;
+    min-width: 121px;
+    max-width: 121px;
+  }
+  .title_projectCard {
+    font-size: 15px;
+  }
+  .title_projectCard > p {
+    padding-left: 8px;
+    margin-left: 8px;
+    font-size: 15px;
+  }
+  .title_projectCard > p span {
+    font-size: 13px;
+  }
+  .projectCard {
+    width: 100%;
+    height: 179px;
+  }
+  .showMore_button_white {
+    padding: 5px 8px;
+  }
 }

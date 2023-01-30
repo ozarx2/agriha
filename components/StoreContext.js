@@ -40,6 +40,7 @@ export const StoreContextProvider = (props) => {
   const [zonePopup, setZonePopUp] = useState(false);
   const [requirementPopup, setRequirementPopup] = useState(false);
   const [updateZonePopUp, setUpdateZonePopUp] = useState(false);
+  const [userProjectViewNav, setUserProjectViewNav] = useState("home");
   // Store Yaseen end
 
   // Store 61-5a start
@@ -63,6 +64,7 @@ export const StoreContextProvider = (props) => {
   // Store SHIJIN start
   const [landingPage, setLandingPage] = useState(1);
   const [arcPaginatioCount, setArcPaginationCount] = useState(1);
+  const [paymentPopup, setPaymentPopup] = useState(false);
   // Store SHIJIN end
 
   const Store = {
@@ -140,6 +142,8 @@ export const StoreContextProvider = (props) => {
     setRequirementPopup,
     updateZonePopUp,
     setUpdateZonePopUp,
+    userProjectViewNav,
+    setUserProjectViewNav,
 
     // Store Yaseen end
 
@@ -179,6 +183,8 @@ export const StoreContextProvider = (props) => {
     setLandingPage,
     arcPaginatioCount,
     setArcPaginationCount,
+    paymentPopup,
+    setPaymentPopup,
 
     // Store SHIJIN end
   };

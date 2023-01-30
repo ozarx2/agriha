@@ -44,14 +44,20 @@ const ProjectContainer = () => {
           .map((item, index) => {
             return item.architect_id?.firstname ? (
               <div className={styles.projectCard}>
-                <img
-                  onError={(e) => (e.target.src = "/img/user-my-project/no-image.png")}
-                  src={item.thumbnail ? item.thumbnail : "/img/user-my-project/no-image.png"}
-                  alt=""
-                />
+                <div className={styles.left_projectCard}>
+                  <img
+                    onError={(e) => (e.target.src = "/img/user-my-project/no-image.png")}
+                    src={item.thumbnail ? item.thumbnail : "/img/user-my-project/no-image.png"}
+                    alt=""
+                  />
+                  <div className={styles.showMore_button_white} onClick={() => gotoProjectDetails(item._id)}>
+                    Show more
+                    <img src="/img/user-my-project/arrow1.svg" alt="" />
+                  </div>
+                </div>
                 <div className={styles.right_projectCard}>
                   <p>
-                    Project no {index + 1} {item.bid ? <span>With bid</span> : ""}
+                    {item.project_name} {item.bid ? <span>With bid</span> : ""}
                   </p>
                   <div className={styles.title_projectCard}>
                     {item.project_type}
@@ -66,6 +72,7 @@ const ProjectContainer = () => {
                   <div className={styles.architect_projectCard}>
                     <div className={styles.architect_projectCard_left}>
                       <img
+                        onClick={() => goToArchProfile(item.architect_id._id)}
                         onError={(e) => (e.target.src = "/img/user-my-project/no-image.png")}
                         src={
                           item.architect_id?.profilepic
@@ -74,7 +81,7 @@ const ProjectContainer = () => {
                         }
                         alt=""
                       />
-                      <p>{item.architect_id?.firstname}</p>
+                      <p onClick={() => goToArchProfile(item.architect_id._id)}>{item.architect_id?.firstname}</p>
                       <a onClick={() => goToArchProfile(item.architect_id._id)}>Show architect</a>
                     </div>
                     <div className={styles.showMore_button} onClick={() => gotoProjectDetails(item._id)}>

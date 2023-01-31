@@ -42,7 +42,7 @@
 
 .container_body {
   width: 100%;
-  height: 566px;
+  min-height: 100%;
   background-color: #ffffff;
   padding: 70px 140px;
   max-width: 1030px;
@@ -194,7 +194,7 @@
 
 .filesContainer_body {
   width: 100%;
-  height: 566px;
+  height: 100%;
   background-color: #ffffff;
   max-width: 1030px;
 }
@@ -243,6 +243,9 @@
 
 .folderConatiner_files {
   padding: 41px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 25px;
 }
 
 .folderCard {
@@ -263,16 +266,38 @@
   margin-bottom: 16px;
 }
 
-.folderCard > p {
+.folderCard > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.folderCard > div > p {
   color: #7b7b7b;
   font-size: 12px;
   font-weight: 400;
 }
 
-.folderCard > h5 {
+.folderCard > div > h5 {
   color: #232323;
   font-size: 13px;
   font-weight: 500;
+}
+
+.filesContainer_body_bottom > h3 {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: normal;
+  margin-left: 44px;
+  padding-bottom: 5px;
+  width: fit-content;
+  border-bottom: 1px solid #c2c2c2;
+}
+
+@media only screen and (max-width: 1150px) {
+  .folderConatiner_files {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 @media only screen and (max-width: 1060px) {
@@ -281,27 +306,12 @@
   }
 }
 
-@media only screen and (max-width: 945px) {
+@media only screen and (max-width: 960px) {
   .container_body {
     padding: 50px;
   }
-}
-
-@media only screen and (max-width: 620px) {
-  .container_header_nav > ul > li {
-    margin: 0 20px;
-  }
-
-  .container_header_nav {
-    overflow-x: scroll;
-  }
-
-  .container_header_nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .container_header_nav > ul {
-    min-width: 440px;
+  .folderConatiner_files {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -329,7 +339,32 @@
   }
 }
 
-@media only screen and (max-width: 465px) {
+@media only screen and (max-width: 780px) {
+  .folderConatiner_files {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .container_header_nav > ul > li {
+    margin: 0 20px;
+  }
+  .container_header_nav {
+    overflow-x: scroll;
+  }
+  .container_header_nav::-webkit-scrollbar {
+    display: none;
+  }
+  .container_header_nav > ul {
+    min-width: 440px;
+  }
+  .folderConatiner_files {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
   .container_body {
     padding: 20px;
   }
@@ -341,5 +376,62 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  .folderConatiner_files {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    padding: 10px 30px;
+  }
+  .folderCard {
+    height: 100px;
+    width: 100%;
+    background: transparent;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    padding: 0;
+    border-bottom: 1px solid #efefef;
+  }
+
+  .folderCard > img {
+    width: 64px;
+    object-fit: contain;
+    margin-bottom: 0px;
+    margin-right: 25px;
+  }
+
+  .folderCard > div > p {
+    color: #7b7b7b;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .folderCard > div > h5 {
+    color: #232323;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .filesContainer_body_top {
+    height: 100%;
+    padding: 20px;
+  }
+  .filesContainer_body_bottom > h3 {
+    margin-left: 30px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .filesContainer_body_top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .uploadButton_files {
+    margin-top: 10px;
   }
 }

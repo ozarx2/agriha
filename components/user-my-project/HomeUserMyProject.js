@@ -26,10 +26,6 @@ const HomeUserMyProject = ({ projectDetails }) => {
               {projectDetails?.project_requirements[0]?.area} <span>sqft</span>
             </p>
           </div>
-          <div className={styles.location_projectCard}>
-            <img src="/img/user-my-project/locationIcon.svg" alt="" />
-            {projectDetails?.project_requirements[0]?.location}
-          </div>
         </div>
         <div className={styles.container_body_top_right}>
           <div className={styles.architect_projectCard_left}>
@@ -154,16 +150,15 @@ const HomeUserMyProject = ({ projectDetails }) => {
           </div>
         </div>
       </div>
-      {/* {refImageShow ? (
+      {refImageShow ? (
         <div className={styles.referanceImagesContainer}>
-          <img src="https://images.all-free-download.com/images/graphiclarge/iphone_6_sample_photo_566464.jpg" />
-          <img src="https://images.all-free-download.com/images/graphiclarge/iphone_6_sample_photo_566464.jpg" />
-          <img src="https://images.all-free-download.com/images/graphiclarge/iphone_6_sample_photo_566464.jpg" />
-          <img src="https://images.all-free-download.com/images/graphiclarge/iphone_6_sample_photo_566464.jpg" />
+          {projectDetails?.reference_images.map((item, index) => {
+            return <img key={index} src={item} />;
+          })}
         </div>
       ) : (
         ""
-      )} */}
+      )}
     </>
   );
 };

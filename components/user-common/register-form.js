@@ -24,6 +24,8 @@ export default function RegisterPopupForm() {
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("Must fill all data");
+  const [showOtpText, setShowOtpText] = useState(false);
+  const [resentLoading, setResentLoading] = useState(false);
 
   const termsClick = () => {
     window.location.href = "/terms";
@@ -69,6 +71,35 @@ export default function RegisterPopupForm() {
     }
   };
 
+  /* REGISTER API */
+  async function handleSubmit() {
+    axios
+      .post(`${endpoint}/auth/register`, {
+        name: name,
+        phone: `+${code}${phone}`,
+        email: email,
+        role: userRole,
+      })
+      .then((response) => {
+        console.log(response.data);
+        setLoading(false);
+        if (response.data.status === 200) {
+          setFromLoginOrRegister("register");
+          setOtpPopup(true);
+          setRegisterPopup(false);
+          localStorage.setItem("token", response.data.otpToken);
+        } else if (response.data.message === "Please try resent otp option") {
+          setShowOtpText(true);
+          setError(false);
+        } else {
+          setIsError(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   const sendOTPClick = () => {
     if (!name == "" && !email == "" && phone.length == 10) {
       handleSubmit();
@@ -77,40 +108,38 @@ export default function RegisterPopupForm() {
     }
   };
 
-  /* REGISTER API */
-  async function handleSubmit() {
-    // console.log(phone);
-    axios
-      .post(`${endpoint}/auth/register`, {
-        // .post(`${endpoint}/auth/test/register`, {
-        name: name,
-        phone: `+${code}${phone}`,
-        email: email,
-        role: userRole,
-      })
-      .then((response) => {
-        // console.log(response.data);
-        setLoading(false);
-        if (response.data.status === 200) {
-          setFromLoginOrRegister("register");
-          setOtpPopup(true);
-          setRegisterPopup(false);
-          localStorage.setItem("token", response.data.otpToken);
-        } else {
-          setIsError(true);
-          setError(response.data.message);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   useEffect(() => {
     if (document.getElementById("name")) {
       document.getElementById("name").focus();
     }
   }, []);
+
+  async function resentOTP() {
+    const res = await fetch(`${endpoint}/auth/resent_otp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        phone: `+${code}${phone}`,
+        role: userRole,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 200) {
+      setFromLoginOrRegister("register");
+      setOtpPopup(true);
+      setRegisterPopup(false);
+      localStorage.setItem("token", response.data.otpToken);
+    }
+  }
+
+  const registerClick = () => {
+    setResentLoading(true);
+    resentOTP();
+  };
 
   return (
     <>
@@ -129,6 +158,14 @@ export default function RegisterPopupForm() {
         </div>
         <input type="email" onChange={storeValues} id="email" name="email" maxLength={40} placeholder="Email address" />
         {isError ? <p>{error}</p> : ""}
+        {showOtpText ? (
+          <h5>
+            OTP verification not completed on Register!{" "}
+            {resentLoading ? <PulseLoader size={7} color="#4c0ad6" /> : <span onClick={registerClick}>Resent OTP</span>}
+          </h5>
+        ) : (
+          ""
+        )}
         <div className={styles.privacy}>
           By continuing you agree to Arclif&apos;s <span onClick={termsClick}>Terms of Service</span> and{" "}
           <span onClick={policyClick}>Privacy policy</span>.

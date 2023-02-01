@@ -1,0 +1,91 @@
+.products_container_top {
+  height: 52px;
+  width: 100%;
+  padding: 0 94px;
+  border-bottom: 1px solid #f3f3f3;
+  display: flex;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.products_container_top > p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #161616;
+}
+
+.project_cards_container {
+  padding: 0 94px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.products_card {
+  width: 271px;
+}
+
+.products_card > img {
+  width: 100%;
+  height: 197px;
+  margin-bottom: 19px;
+}
+
+.products_card > h4 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23.2px;
+  color: #373737;
+}
+
+.products_card > p {
+  color: #979797;
+  margin-top: 7px;
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 7px;
+  line-height: 19.88px;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+}
+
+.offerPrice {
+  color: #000000;
+  font-weight: 500;
+  line-height: 29.82px;
+  font-size: 18px;
+}
+
+.originalPrice {
+  color: #bdbdbd;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: line-through;
+  padding: 0 10px;
+  line-height: 26.51px;
+}
+
+.offerPercentage {
+  color: #21af40;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23.2px;
+}
+
+.selectButton {
+  height: 42px;
+  width: 100%;
+  border-radius: 1px;
+  border: 1px solid #c9c9c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: #898989;
+  line-height: 23.2px;
+  margin-top: 23px;
+}

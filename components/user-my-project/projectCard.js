@@ -173,7 +173,7 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
         <div className={styles.projDetails} id="projDetails">
           {showMore && selectprojectId === id ? (
             <>
-              {/* <FnSuggested suggestion={suggestion} /> */}
+              <FnSuggested suggestion={suggestion} />
               <FnFileUploadDesk projectId={id} allUploadedFiles={results} />
               <FnPayment />
               {documents.length !== 0 ? <FnFileFolder documents={documents} /> : ""}

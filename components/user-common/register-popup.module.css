@@ -449,3 +449,16 @@
     margin-top: 20px;
   }
 }
+
+.stwo > h5 {
+  margin-top: 20px;
+  font-size: 12px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.stwo > h5 > span {
+  color: #4c0ad6;
+  margin-left: 5px;
+  cursor: pointer;
+}

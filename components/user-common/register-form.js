@@ -73,6 +73,9 @@ export default function RegisterPopupForm() {
 
   /* REGISTER API */
   async function handleSubmit() {
+    // console.log(phone);
+    const rc = localStorage.getItem("rc");
+    const ru = localStorage.getItem("ru");
     axios
       .post(`${endpoint}/auth/register`, {
         name: name,

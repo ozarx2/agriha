@@ -181,11 +181,22 @@
     width: 180px;
   }
 }
-@media only screen and (max-width: 465px) {
-  .bid__projectCard > img {
-    height: 100px;
-    width: 130px;
+@media only screen and (max-width: 520px) {
+  .bid__projectCard {
+    flex-direction: column;
+    padding: 20px 20px;
   }
+  .bid__projectCard > img {
+    width: 100%;
+    margin-right: 0px;
+  }
+  .bid__projectCard > div {
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 15px;
+  }
+}
+@media only screen and (max-width: 465px) {
   .table_out,
   .table_out th,
   .table_out td {

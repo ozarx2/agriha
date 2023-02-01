@@ -80,6 +80,8 @@ export default function RegisterPopupForm() {
   /* REGISTER API */
   async function handleSubmit() {
     // console.log(phone);
+    const rc = localStorage.getItem("rc");
+    const ru = localStorage.getItem("ru");
     axios
       .post(`${endpoint}/auth/register`, {
         // .post(`${endpoint}/auth/test/register`, {
@@ -87,6 +89,8 @@ export default function RegisterPopupForm() {
         phone: `+${code}${phone}`,
         email: email,
         role: userRole,
+        referral_code: rc,
+        referral_user: ru,
       })
       .then((response) => {
         // console.log(response.data);

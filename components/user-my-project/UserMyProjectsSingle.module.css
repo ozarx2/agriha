@@ -294,6 +294,67 @@
   border-bottom: 1px solid #c2c2c2;
 }
 
+.referencImage_button_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 39px;
+}
+
+.contact_button_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 39px;
+}
+
+.referencImage_button {
+  background-color: #2f54b2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 34px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.referencImage_button:hover {
+  background-color: #517ef0;
+}
+
+.contact_button {
+  background-color: #f5f8ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 54px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #0834a3;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.referanceImagesContainer {
+  width: 100%;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.referanceImagesContainer > img {
+  height: 195px;
+  width: 195px;
+  object-fit: cover;
+}
+
 @media only screen and (max-width: 1150px) {
   .folderConatiner_files {
     grid-template-columns: repeat(5, 1fr);

@@ -49,9 +49,9 @@ const UserSingleProject = () => {
             <div className={styles.main}>
               <UserMyProjectsSingle />
             </div>
-            <div className={styles.footer}>
+            {/* <div className={styles.footer}>
               <LandingFooter />
-            </div>
+            </div> */}
           </div>
         </div>
         {loginPopup ? <LoginPopup /> : ""}

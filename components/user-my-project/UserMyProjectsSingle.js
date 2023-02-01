@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import api_url from "../../src/utils/url";
 import { StoreContext } from "../StoreContext";
+import FilesUserMyProject from "./FilesUserMyProject";
 import HomeUserMyProject from "./HomeUserMyProject";
 
 import styles from "./UserMyProjectsSingle.module.css";
@@ -12,8 +13,6 @@ const UserMyProjectsSingle = () => {
   const [projectDetails, setProjectDetails] = useState([]);
 
   const [documents, setDocuments] = useState([]);
-
-  const [filesNav, setFilesNav] = useState("folders");
 
   const [Store] = useContext(StoreContext);
 
@@ -51,15 +50,20 @@ const UserMyProjectsSingle = () => {
   }
 
   async function getUploadedFiles() {
-    const response = await fetch(`${api_url}/fileupload/uploaded_file/${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${api_url}/fileupload/uploaded_file/${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     console.log(data);
-    var documentsForProject = data.data?.filter((res) => res.project_id === id);
+    var documentsForProject = data.data?.filter(
+      (res) => res.project_id === projectId
+    );
     setDocuments(documentsForProject);
   }
 
@@ -81,7 +85,7 @@ const UserMyProjectsSingle = () => {
               ) : (
                 <li onClick={() => setUserProjectViewNav("home")}>Home</li>
               )}
-              {/* {userProjectViewNav === "files" ? (
+              {userProjectViewNav === "files" ? (
                 <li className={styles.activeNav}>My files</li>
               ) : (
                 <li onClick={() => setUserProjectViewNav("files")}>My files</li>
@@ -89,13 +93,17 @@ const UserMyProjectsSingle = () => {
               {userProjectViewNav === "product" ? (
                 <li className={styles.activeNav}>Sugg. Product</li>
               ) : (
-                <li onClick={() => setUserProjectViewNav("product")}>Sugg. Product</li>
+                <li onClick={() => setUserProjectViewNav("product")}>
+                  Sugg. Product
+                </li>
               )}
-              {userProjectViewNav === "image" ? (
-                <li className={styles.activeNav}>Reference image</li>
+              {userProjectViewNav === "payment" ? (
+                <li className={styles.activeNav}>Payment details</li>
               ) : (
-                <li onClick={() => setUserProjectViewNav("image")}>Reference image</li>
-              )} */}
+                <li onClick={() => setUserProjectViewNav("payment")}>
+                  Payment details
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -110,34 +118,10 @@ const UserMyProjectsSingle = () => {
         ) : (
           "loading..."
         )}
-
         {projectDetails.length !== 0 ? (
           userProjectViewNav === "files" ? (
             <div className={styles.filesContainer_body}>
-              <div className={styles.filesContainer_body_top}>
-                <div className={styles.filesContainer_body_top_left}>
-                  {filesNav === "folders" ? (
-                    <p className={styles.activeFilesNav}>Files from Architect</p>
-                  ) : (
-                    <p onClick={() => setFilesNav("folders")}>Files from Architect</p>
-                  )}
-                  {filesNav === "saved" ? (
-                    <p className={styles.activeFilesNav}>Saved Files</p>
-                  ) : (
-                    <p onClick={() => setFilesNav("saved")}>Saved Files</p>
-                  )}
-                </div>
-                <div className={styles.uploadButton_files}>+ Upload files</div>
-              </div>
-              <div className={styles.filesContainer_body_bottom}>
-                <div className={styles.folderConatiner_files}>
-                  <div className={styles.folderCard}>
-                    <img src="/img/user-my-project/folderIcon.svg" />
-                    <p>Folder</p>
-                    <h5>Floor Plan</h5>
-                  </div>
-                </div>
-              </div>
+              <FilesUserMyProject files={documents} />
             </div>
           ) : (
             ""

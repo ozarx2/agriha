@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./UserMyProjectsSingle.module.css";
 
 const HomeUserMyProject = ({ projectDetails }) => {
@@ -7,6 +7,12 @@ const HomeUserMyProject = ({ projectDetails }) => {
 
   const goToArchProfile = (id) => {
     router.push(`/user-architect-about/${id}`);
+  };
+
+  const [refImageShow, setRefImageShow] = useState(false);
+
+  const fnRefImageShow = () => {
+    setRefImageShow(true);
   };
 
   return (
@@ -90,6 +96,11 @@ const HomeUserMyProject = ({ projectDetails }) => {
               <p>{projectDetails?.status}</p>
             </div>
           </div>
+          <div className={styles.referencImage_button_container}>
+            <div className={styles.referencImage_button} onClick={fnRefImageShow}>
+              Reference image
+            </div>
+          </div>
         </div>
         <div className={styles.container_body_bottom_section}>
           <div className={styles.container_body_bottom_table}>
@@ -136,8 +147,23 @@ const HomeUserMyProject = ({ projectDetails }) => {
               <p>{projectDetails?.files ? projectDetails?.files.length : 0}</p>
             </div>
           </div>
+          <div className={styles.contact_button_container}>
+            <div className={styles.contact_button} onClick={fnRefImageShow}>
+              Contact us
+            </div>
+          </div>
         </div>
       </div>
+      {/* {refImageShow ? (
+        <div className={styles.referanceImagesContainer}>
+          <img src="https://images.all-free-download.com/images/graphiclarge/iphone_6_sample_photo_566464.jpg" />
+          <img src="https://images.all-free-download.com/images/graphiclarge/iphone_6_sample_photo_566464.jpg" />
+          <img src="https://images.all-free-download.com/images/graphiclarge/iphone_6_sample_photo_566464.jpg" />
+          <img src="https://images.all-free-download.com/images/graphiclarge/iphone_6_sample_photo_566464.jpg" />
+        </div>
+      ) : (
+        ""
+      )} */}
     </>
   );
 };

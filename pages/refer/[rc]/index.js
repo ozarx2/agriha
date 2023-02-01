@@ -3,8 +3,12 @@ import { useRouter } from "next/router";
 
 export default function AgrihaRefer() {
   const router = useRouter();
+  const rc_id = router.query.rc;
   useEffect(() => {
-    router.push(`/`);
-  }, []);
+    if (rc_id) {
+      localStorage.setItem("rc", rc_id);
+      router.push(`/`);
+    }
+  }, [router.query.rc]);
   return <></>;
 }

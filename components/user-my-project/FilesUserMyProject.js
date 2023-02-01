@@ -42,11 +42,7 @@ const FilesUserMyProject = ({ files }) => {
             return (
               <>
                 {item.payment_status ? (
-                  <div
-                    className={styles.folderCard}
-                    key={index}
-                    onClick={() => filesOpen(item.files)}
-                  >
+                  <div className={styles.folderCard} key={index} onClick={() => filesOpen(item.files)}>
                     <img src="/img/user-my-project/folderIcon.svg" />
                     <div>
                       <p>Folder</p>
@@ -82,11 +78,7 @@ const FilesUserMyProject = ({ files }) => {
                         </div>
                       </div>
                     ) : (
-                      <div
-                        className={styles.folderCard}
-                        key={index}
-                        onClick={() => fileView(item.url)}
-                      >
+                      <div className={styles.folderCard} key={index} onClick={() => fileView(item.url)}>
                         <img src="/img/user-my-project/pdf.svg" />
                         <div>
                           <p>File</p>

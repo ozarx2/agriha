@@ -5,6 +5,8 @@ import api_url from "../../src/utils/url";
 import { StoreContext } from "../StoreContext";
 import FilesUserMyProject from "./FilesUserMyProject";
 import HomeUserMyProject from "./HomeUserMyProject";
+import PaymentUserMyproject from "./PaymentUserMyproject";
+import ProductsUserMyProject from "./ProductsUserMyProject";
 
 import styles from "./UserMyProjectsSingle.module.css";
 
@@ -50,20 +52,15 @@ const UserMyProjectsSingle = () => {
   }
 
   async function getUploadedFiles() {
-    const response = await fetch(
-      `${api_url}/fileupload/uploaded_file/${projectId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${api_url}/fileupload/uploaded_file/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
     console.log(data);
-    var documentsForProject = data.data?.filter(
-      (res) => res.project_id === projectId
-    );
+    var documentsForProject = data.data?.filter((res) => res.project_id === projectId);
     setDocuments(documentsForProject);
   }
 
@@ -76,60 +73,61 @@ const UserMyProjectsSingle = () => {
 
   return (
     <div className={styles.projectContainer_outer}>
-      <div className={styles.projectContainer_inner}>
-        <div className={styles.container_header}>
-          <div className={styles.container_header_nav}>
-            <ul>
-              {userProjectViewNav === "home" ? (
-                <li className={styles.activeNav}>Home</li>
-              ) : (
-                <li onClick={() => setUserProjectViewNav("home")}>Home</li>
-              )}
-              {userProjectViewNav === "files" ? (
-                <li className={styles.activeNav}>My files</li>
-              ) : (
-                <li onClick={() => setUserProjectViewNav("files")}>My files</li>
-              )}
-              {userProjectViewNav === "product" ? (
-                <li className={styles.activeNav}>Sugg. Product</li>
-              ) : (
-                <li onClick={() => setUserProjectViewNav("product")}>
-                  Sugg. Product
-                </li>
-              )}
-              {userProjectViewNav === "payment" ? (
-                <li className={styles.activeNav}>Payment details</li>
-              ) : (
-                <li onClick={() => setUserProjectViewNav("payment")}>
-                  Payment details
-                </li>
-              )}
-            </ul>
+      {projectDetails.length !== 0 ? (
+        <div className={styles.projectContainer_inner}>
+          <div className={styles.container_header}>
+            <div className={styles.container_header_nav}>
+              <ul>
+                {userProjectViewNav === "home" ? (
+                  <li className={styles.activeNav}>Home</li>
+                ) : (
+                  <li onClick={() => setUserProjectViewNav("home")}>Home</li>
+                )}
+                {userProjectViewNav === "files" ? (
+                  <li className={styles.activeNav}>My files</li>
+                ) : (
+                  <li onClick={() => setUserProjectViewNav("files")}>My files</li>
+                )}
+                {/* {userProjectViewNav === "product" ? (
+                  <li className={styles.activeNav}>Sugg. Product</li>
+                ) : (
+                  <li onClick={() => setUserProjectViewNav("product")}>Sugg. Product</li>
+                )}
+                {userProjectViewNav === "payment" ? (
+                  <li className={styles.activeNav}>Payment details</li>
+                ) : (
+                  <li onClick={() => setUserProjectViewNav("payment")}>Payment details</li>
+                )} */}
+              </ul>
+            </div>
           </div>
-        </div>
-        {projectDetails.length !== 0 ? (
-          userProjectViewNav === "home" ? (
+          {userProjectViewNav === "home" ? (
             <div className={styles.container_body}>
               <HomeUserMyProject projectDetails={projectDetails} />
             </div>
-          ) : (
-            ""
-          )
-        ) : (
-          "loading..."
-        )}
-        {projectDetails.length !== 0 ? (
-          userProjectViewNav === "files" ? (
+          ) : userProjectViewNav === "files" ? (
             <div className={styles.filesContainer_body}>
               <FilesUserMyProject files={documents} />
             </div>
+          ) : userProjectViewNav === "product" ? (
+            <div className={styles.filesContainer_body}>
+              <ProductsUserMyProject />
+            </div>
+          ) : userProjectViewNav === "payment" ? (
+            <div className={styles.filesContainer_body}>
+              <PaymentUserMyproject />
+            </div>
           ) : (
             ""
-          )
-        ) : (
-          "loading..."
-        )}
-      </div>
+          )}
+        </div>
+      ) : (
+        <div className={styles.projectContainer_inner}>
+          <div className={styles.loadingContainer}>
+            <img src="/img/landing/loading.svg" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

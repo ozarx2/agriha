@@ -29,6 +29,8 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
   async function getProjects() {
     var token = localStorage.getItem("architectToken");
     var arc_id = localStorage.getItem("architectId");
+    console.log(token);
+    console.log(arc_id);
     const res = await fetch(`${api_url}/projects/single/${projectId}?arc_id=${arc_id}`, {
       method: "GET",
       headers: {

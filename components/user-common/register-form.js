@@ -82,6 +82,8 @@ export default function RegisterPopupForm() {
         phone: `+${code}${phone}`,
         email: email,
         role: userRole,
+        referral_code: rc,
+        referral_user: ru,
       })
       .then((response) => {
         console.log(response.data);

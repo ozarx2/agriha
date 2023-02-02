@@ -35,10 +35,10 @@ export default function AgrihaMyBidSingleMain() {
     const data = await res.json();
     // console.log(data);
     if (data.status === 200) {
-      setProjectDetilas(data?.data[0]);
-      setProjectType(data?.data[0]?.project_type);
-      setBidUserId(data?.data[0]?.creator?._id);
-      setProjectTypeDetails(data?.data[0]?.project_requirements[0]);
+      setProjectDetilas(data?.data);
+      setProjectType(data?.data?.project_type);
+      setBidUserId(data?.data?.creator?._id);
+      setProjectTypeDetails(data?.data?.project_requirements[0]);
     }
   }
 

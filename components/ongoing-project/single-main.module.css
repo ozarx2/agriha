@@ -46,6 +46,23 @@
   padding: 10px 0;
 }
 
+.left_symbel {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.left_symbel::before {
+  content: ": ";
+  margin-left: -20px;
+  position: absolute;
+}
+.left_symbel span {
+  display: inline-block;
+  width: 100%;
+}
+
 .n_one .btns > div {
 }
 
@@ -303,11 +320,11 @@
 .paymentDetails {
   margin-top: 10px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
 .payments {
-  height: 300px;
+  /* height: 300px; */
   padding: 20px;
   border: 1px solid #000000;
 }

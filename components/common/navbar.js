@@ -97,7 +97,7 @@ export default function Navbar() {
     });
 
     const data = await res.json();
-    console.log(data.zone);
+    // console.log(data.zone);
     setArchitect(data);
     if (data.zone === null) {
       setUpdateZonePopUp(true);

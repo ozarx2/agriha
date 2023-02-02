@@ -29,8 +29,8 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
   async function getProjects() {
     var token = localStorage.getItem("architectToken");
     var arc_id = localStorage.getItem("architectId");
-    console.log(token);
-    console.log(arc_id);
+    // console.log(token);
+    // console.log(arc_id);
     const res = await fetch(`${api_url}/projects/single/${projectId}?arc_id=${arc_id}`, {
       method: "GET",
       headers: {
@@ -41,13 +41,15 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
 
     const data = await res.json();
     // console.log(data);
+    var result = [];
     if (data.status === 200) {
-      setProjectDetilas(data?.data[0]);
-      setProjectType(data?.data[0]?.project_type);
-      setBidUserId(data?.data[0]?.creator?._id);
-      setProjectTypeDetails(data?.data[0]?.project_requirements[0]);
-      var result = data?.data[0]?.acceptQuotes.filter((res) => res === architectId);
-      if (result.length !== 0) {
+      setProjectDetilas(data?.data);
+      setProjectType(data?.data?.project_type);
+      setBidUserId(data?.data?.creator?._id);
+      setProjectTypeDetails(data?.data?.project_requirements[0]);
+      result = data?.data?.acceptQuotes.filter((res) => res === architectId);
+      // console.log(result);
+      if (result?.length !== 0) {
         setIsQuoted(true);
       } else {
         setIsQuoted(false);
@@ -183,11 +185,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Renovation" ? (
+            ) : projectType === "Renovation" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -198,11 +196,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Apartment" ? (
+            ) : projectType === "Apartment" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -217,11 +211,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Hotels/restaurants" ? (
+            ) : projectType === "Hotels/restaurants" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -244,11 +234,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Hospitals/medical lab" ? (
+            ) : projectType === "Hospitals/medical lab" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -263,11 +249,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Auditorium" ? (
+            ) : projectType === "Auditorium" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -282,11 +264,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Industrial/warehouse" ? (
+            ) : projectType === "Industrial/warehouse" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -297,11 +275,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Mall" ? (
+            ) : projectType === "Mall" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -316,11 +290,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Multiplex" ? (
+            ) : projectType === "Multiplex" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -335,11 +305,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Religious building" ? (
+            ) : projectType === "Religious building" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -354,11 +320,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "School/College building" ? (
+            ) : projectType === "School/College building" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -391,11 +353,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Sports building" ? (
+            ) : projectType === "Sports building" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -414,11 +372,7 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              ""
-            )}
-
-            {projectType === "Hostel" ? (
+            ) : projectType === "Hostel" ? (
               <div className={styles.results__container}>
                 <table className={styles.table_out}>
                   <tbody>
@@ -489,7 +443,17 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                         </tr>
                         <tr>
                           <td>Plan services</td>
-                          <td>: {projectDetails?.plan_id?.plan_services}</td>
+                          <td>
+                            <div className={styles.left_symbel}>
+                              {projectDetails?.plan_id?.plan_services?.map((item, index) => {
+                                return (
+                                  <React.Fragment key={index}>
+                                    <span>{item},</span>
+                                  </React.Fragment>
+                                );
+                              })}
+                            </div>
+                          </td>
                         </tr>
                       </>
                     ) : (
@@ -504,10 +468,15 @@ export default function SingleProjectsMain({ isQuoted, setIsQuoted }) {
                         <tr>
                           <td>Plan services</td>
                           <td>
-                            :{" "}
-                            {projectDetails?.plan_services?.map((item, index) => {
-                              return <React.Fragment key={index}>{item}, </React.Fragment>;
-                            })}
+                            <div className={styles.left_symbel}>
+                              {projectDetails?.plan_services?.map((item, index) => {
+                                return (
+                                  <React.Fragment key={index}>
+                                    <span>{item},</span>
+                                  </React.Fragment>
+                                );
+                              })}
+                            </div>
                           </td>
                         </tr>
                       </>

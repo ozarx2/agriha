@@ -40,10 +40,10 @@ export default function SingleOngoingProjectsMain() {
     const data = await res.json();
     // console.log(data);
     if (data.status === 200) {
-      setProjectDetilas(data?.data[0]);
-      setProjectType(data?.data[0]?.project_type);
-      setBidUserId(data?.data[0]?.creator?._id);
-      setProjectTypeDetails(data?.data[0]?.project_requirements[0]);
+      setProjectDetilas(data?.data);
+      setProjectType(data?.data?.project_type);
+      setBidUserId(data?.data?.creator?._id);
+      setProjectTypeDetails(data?.data?.project_requirements[0]);
     }
   }
 
@@ -53,7 +53,7 @@ export default function SingleOngoingProjectsMain() {
     }
   }, [projectId]);
 
-  console.log(projectDetails);
+  // console.log(projectDetails);
 
   // Shijin  Payment integration  //
 
@@ -73,7 +73,7 @@ export default function SingleOngoingProjectsMain() {
     });
     const data = await res.json();
     if (data.status === 200) {
-      console.log(data);
+      // console.log(data);
       setBankAccounts(data.data);
     }
   }
@@ -209,11 +209,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Renovation" ? (
+                ) : projectType === "Renovation" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -224,11 +220,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Apartment" ? (
+                ) : projectType === "Apartment" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -243,11 +235,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Hotels/restaurants" ? (
+                ) : projectType === "Hotels/restaurants" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -270,11 +258,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Hospitals/medical lab" ? (
+                ) : projectType === "Hospitals/medical lab" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -289,11 +273,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Auditorium" ? (
+                ) : projectType === "Auditorium" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -308,11 +288,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Industrial/warehouse" ? (
+                ) : projectType === "Industrial/warehouse" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -323,11 +299,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Mall" ? (
+                ) : projectType === "Mall" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -342,11 +314,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Multiplex" ? (
+                ) : projectType === "Multiplex" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -361,11 +329,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Religious building" ? (
+                ) : projectType === "Religious building" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -380,11 +344,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "School/College building" ? (
+                ) : projectType === "School/College building" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -417,11 +377,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Sports building" ? (
+                ) : projectType === "Sports building" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -440,11 +396,7 @@ export default function SingleOngoingProjectsMain() {
                       </tbody>
                     </table>
                   </div>
-                ) : (
-                  ""
-                )}
-
-                {projectType === "Hostel" ? (
+                ) : projectType === "Hostel" ? (
                   <div className={styles.results__container}>
                     <table className={styles.table_out}>
                       <tbody>
@@ -515,7 +467,17 @@ export default function SingleOngoingProjectsMain() {
                             </tr>
                             <tr>
                               <td>Plan services</td>
-                              <td>: {projectDetails?.plan_id?.plan_services}</td>
+                              <td>
+                                <div className={styles.left_symbel}>
+                                  {projectDetails?.plan_id?.plan_services?.map((item, index) => {
+                                    return (
+                                      <React.Fragment key={index}>
+                                        <span>{item},</span>
+                                      </React.Fragment>
+                                    );
+                                  })}
+                                </div>
+                              </td>
                             </tr>
                           </>
                         ) : (
@@ -530,10 +492,15 @@ export default function SingleOngoingProjectsMain() {
                             <tr>
                               <td>Plan services</td>
                               <td>
-                                :{" "}
-                                {projectDetails?.plan_services?.map((item, index) => {
-                                  return <React.Fragment key={index}>{item}, </React.Fragment>;
-                                })}
+                                <div className={styles.left_symbel}>
+                                  {projectDetails?.plan_services?.map((item, index) => {
+                                    return (
+                                      <React.Fragment key={index}>
+                                        <span>{item},</span>
+                                      </React.Fragment>
+                                    );
+                                  })}
+                                </div>
                               </td>
                             </tr>
                           </>
@@ -553,7 +520,7 @@ export default function SingleOngoingProjectsMain() {
                 <div className={styles.resultSectionDetails}>
                   <table className={styles.table_out}>
                     <tbody>
-                      {projectDetails.site_plan ? (
+                      {projectDetails?.site_plan ? (
                         <tr>
                           <td>Uploaded site plan </td>
                           <td>
@@ -606,12 +573,9 @@ export default function SingleOngoingProjectsMain() {
                   </table>
                 </div>
               </>
-            ) : (
-              ""
-            )}
-
-            {section === "Files" ? <>Files</> : ""}
-            {section === "Payments" ? (
+            ) : section === "Files" ? (
+              <>Filesss</>
+            ) : section === "Payments" ? (
               <>
                 <div className={styles.payment_section}>
                   {bankAccounts.length > 0 ? (
@@ -650,10 +614,11 @@ export default function SingleOngoingProjectsMain() {
                   </div>
                 </div>
               </>
+            ) : section === "Products" ? (
+              <>Products</>
             ) : (
               ""
             )}
-            {section === "Products" ? <>Products</> : ""}
           </div>
         ) : (
           <div className={styles.main_inner}>

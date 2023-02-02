@@ -17,15 +17,6 @@ export default function ViewBidMain() {
 
   const [Store] = useContext(StoreContext);
 
-  // const allBidArchitect = Store.allBidArchitect;
-
-  // const tempone = allBidArchitect.filter((val) => val.bid === true);
-  // const temp = tempone.filter((val) => val.status === "started");
-  // const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
-  // const bid = temp.filter((res) => new Date(res.createdAt) >= oldDate);
-
-  // console.log(bid);
-
   const viewDetailsClick = (id) => {
     router.push(`/view-bid/${id}`);
   };
@@ -43,9 +34,10 @@ export default function ViewBidMain() {
     const data = await res.json();
     // console.log(data);
     if (data.status === 200) {
-      const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
-      const bidData = data.data.filter((res) => new Date(res.createdAt) >= oldDate);
+      // const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
+      // const bidData = data.data.filter((res) => new Date(res.createdAt) >= oldDate);
       // console.log(bidData);
+      const bidData = data.data;
       setBid(bidData);
       setLoading(true);
     }

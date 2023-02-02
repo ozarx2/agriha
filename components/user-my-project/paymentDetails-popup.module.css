@@ -238,3 +238,99 @@
   border-radius: 4px;
   margin-bottom: 13px;
 }
+
+.content_top {
+  margin-top: 19px;
+  border: 1px solid #d4e0ff;
+  margin-bottom: 17px;
+}
+
+.content_top_row,
+.content_top_rowB {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 27px;
+}
+
+.content_top_rowB {
+  background-color: #fafbff;
+}
+
+.content_top_row > p,
+.content_top_rowB > p {
+  color: #292929;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.41px;
+}
+
+.content_bottom_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding: 0 14px;
+}
+
+.content_bottom {
+  border: 1px solid #d4e0ff;
+  padding: 12px;
+  padding-bottom: 20px;
+}
+
+.content_bottom_header {
+  border-bottom: 1px solid #c0d2ff;
+  padding: 0 14px;
+  padding-bottom: 12px;
+}
+
+.content_bottom_header > p {
+  color: #0834a3;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 29.15px;
+}
+
+.content_bottom_row > p {
+  color: #292929;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.41px;
+}
+
+.button_container {
+  margin-top: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactUs_button {
+  background-color: #eef2ff;
+  height: 38px;
+  width: 137px;
+  color: #1945b5;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  margin-right: 17px;
+  cursor: pointer;
+}
+
+.doneButton {
+  background-color: #0834a3;
+  height: 38px;
+  width: 137px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+}

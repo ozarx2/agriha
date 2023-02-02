@@ -88,7 +88,7 @@ const UserMyProjectsSingle = () => {
                 ) : (
                   <li onClick={() => setUserProjectViewNav("files")}>My files</li>
                 )}
-                {/* {userProjectViewNav === "product" ? (
+                {userProjectViewNav === "product" ? (
                   <li className={styles.activeNav}>Sugg. Product</li>
                 ) : (
                   <li onClick={() => setUserProjectViewNav("product")}>Sugg. Product</li>
@@ -97,7 +97,7 @@ const UserMyProjectsSingle = () => {
                   <li className={styles.activeNav}>Payment details</li>
                 ) : (
                   <li onClick={() => setUserProjectViewNav("payment")}>Payment details</li>
-                )} */}
+                )}
               </ul>
             </div>
           </div>

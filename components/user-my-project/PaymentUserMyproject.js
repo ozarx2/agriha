@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { StoreContext } from "../StoreContext";
 import styles from "./PaymentUserMyproject.module.css";
 
 const PaymentUserMyproject = () => {
+  const [Store] = useContext(StoreContext);
+
+  const setPaymentDetailsPopUp = Store.setPaymentDetailsPopUp;
+  const setUserPaymentPopup = Store.setUserPaymentPopup;
+
   const [navActive, setNavActive] = useState("currentPayment");
 
   const historyClick = () => {
@@ -10,6 +16,16 @@ const PaymentUserMyproject = () => {
 
   const paymentClick = () => {
     setNavActive("currentPayment");
+  };
+
+  const paymentDetailsClick = () => {
+    setPaymentDetailsPopUp(true);
+    setUserPaymentPopup("paymentDetails");
+  };
+
+  const paymentConfirmClick = () => {
+    setPaymentDetailsPopUp(true);
+    setUserPaymentPopup("paymentConfirm");
   };
 
   return (
@@ -83,8 +99,12 @@ const PaymentUserMyproject = () => {
                 </div>
               </div>
               <div className={styles.main_payment_card_buttons}>
-                <div className={styles.paymentButton}>Payment details</div>
-                <div className={styles.confirmButton}>Paid confirmation </div>
+                <div className={styles.paymentButton} onClick={paymentDetailsClick}>
+                  Payment details
+                </div>
+                <div className={styles.confirmButton} onClick={paymentConfirmClick}>
+                  Paid confirmation
+                </div>
               </div>
             </div>
           </div>

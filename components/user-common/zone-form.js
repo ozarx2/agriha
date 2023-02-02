@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import { PulseLoader } from "react-spinners";
-import axios from "axios";
 import endpoint from "../../src/utils/endpoint";
 import zoneData from "../../src/utils/zone.json";
 import { districts } from "../../src/utils/data";
@@ -118,7 +117,11 @@ export default function ZonePopupForm() {
       }, [])
     ).map((m) => ({ district: m[0], panchayth: [...new Set(m[1])] }));
 
-    setPanchayathLists(result);
+    var value = result[0]?.panchayth;
+
+    var sortedArray = value.sort(sortedArray);
+
+    setPanchayathLists(value);
   };
 
   console.log(panchayathList);
@@ -143,19 +146,22 @@ export default function ZonePopupForm() {
         <label for="district">Select your District</label>
         <select name="districts" id="districts" onChange={(e) => setDistrict(e.target.value)}>
           <option value="">Select District</option>
-          {districts.map((item, index) => {
-            return (
-              <option key={index} value={item}>
-                {item}
-              </option>
-            );
-          })}
+          {districts
+            .slice(0)
+            .reverse()
+            .map((item, index) => {
+              return (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              );
+            })}
         </select>
 
         <label for="panchayaths">Select your Panchayath</label>
         <select name="panchayaths" id="panchayaths" onChange={(e) => setPanchayath(e.target.value)}>
           <option value="">Select Panchayath</option>
-          {panchayathList[0]?.panchayth?.map((item, index) => {
+          {panchayathList?.map((item, index) => {
             return (
               <option key={index} value={item}>
                 {item}

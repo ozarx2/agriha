@@ -1,0 +1,240 @@
+.paymentPopupOuter {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: inherit;
+}
+.paymentPopupClose {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+}
+.paymentPopupInner {
+  width: 565px;
+  background-color: #ffffff;
+  z-index: 4;
+  padding: 17px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ededed;
+  color: #292929;
+  font-size: 16px;
+  font-weight: 400;
+}
+.header > img {
+  height: 10px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.content {
+  padding: 0 20px;
+}
+
+.content > p {
+  padding: 23px 0;
+  color: #525252;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.content > input {
+  background-color: #f8f8f8;
+  height: 37px;
+  width: 100%;
+  border-radius: 4px;
+  border: none;
+  font-family: inherit;
+  padding: 11px 12px;
+}
+
+.paymentDate_input {
+  display: flex;
+  height: 37px;
+  align-items: center;
+  padding: 11px 12px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.paymentInfo {
+  margin-top: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.paymentDate {
+  width: 40%;
+}
+
+.paymentDate > p {
+  color: #525252;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 21px;
+}
+
+.paymentDate_input > img {
+  height: 18px;
+  object-fit: contain;
+  margin-right: 25px;
+}
+
+.paymentDate_input > input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  color: #898989;
+}
+
+/* Hide Calendar Icon In Chrome */
+.paymentDate_input > input[type="date"]::-webkit-inner-spin-button,
+.paymentDate_input > input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.paymentPlatform {
+  width: 60%;
+  margin-left: 14px;
+}
+
+.paymentPlatform > p {
+  color: #525252;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 21px;
+}
+
+.paymentPlatform > select {
+  width: 100%;
+  height: 37px;
+  background-color: #f8f8f8;
+  padding: 0 14px;
+  font-family: inherit;
+  color: #898989;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+.or_container {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 34px;
+}
+
+.or_container > p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #525252;
+  line-height: 16.41px;
+  padding: 0 30px;
+  background-color: #fff;
+  z-index: 2;
+  margin-bottom: -7px;
+}
+
+.or_container > span {
+  background-color: #ededed;
+  width: 100%;
+  height: 1px;
+}
+
+.content > select {
+  height: 37px;
+  width: 100%;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  color: #898989;
+  font-family: inherit;
+  padding: 0 12px;
+  border: none;
+  outline: none;
+}
+
+.fileUploadContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  height: 37px;
+  padding: 0 12px;
+}
+
+.fileUploadContainer > p {
+  color: #898989;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15.23px;
+}
+
+.inputFile {
+  position: relative;
+  border-left: 1px solid #d9d9d9;
+  color: #0834a3;
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 11px;
+  line-height: 16.41px;
+  cursor: pointer;
+  cursor: pointer;
+}
+
+.file_upload {
+  opacity: 0;
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  /* IE 5-7 */
+  filter: alpha(opacity=0);
+  /* Netscape or and older firefox browsers */
+  -moz-opacity: 0;
+  /* older Safari browsers */
+  -khtml-opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.submitButton {
+  background-color: #244db6;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17.58px;
+  height: 42px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 28px;
+  border-radius: 4px;
+  margin-bottom: 13px;
+}

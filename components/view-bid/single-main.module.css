@@ -56,6 +56,24 @@
 .loading img {
   width: 40px;
 }
+
+.left_symbel {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.left_symbel::before {
+  content: ": ";
+  margin-left: -20px;
+  position: absolute;
+}
+.left_symbel span {
+  display: inline-block;
+  width: 100%;
+}
+
 /* .resultSectionDetails > div {
   flex: 1 1;
 }

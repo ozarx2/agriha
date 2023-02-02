@@ -26,8 +26,9 @@ export default function AgrihaMyPublicBidMain() {
     const data = await response.json();
     // console.log(data);
     if (data) {
-      const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
-      const bidData = data.data.filter((res) => new Date(res.createdAt) >= oldDate);
+      // const oldDate = new Date((Math.floor(+new Date() / 1000) - 7 * 24 * 60 * 60) * 1000);
+      // const bidData = data.data.filter((res) => new Date(res.createdAt) >= oldDate);
+      const bidData = data.data;
       setGetAllBid(bidData);
     }
   }

@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../../components/StoreContext";
 import { PulseLoader } from "react-spinners";
-import axios from "axios";
 import endpoint from "../../src/utils/endpoint";
 import zoneData from "../../src/utils/zone.json";
 import { districts } from "../../src/utils/data";

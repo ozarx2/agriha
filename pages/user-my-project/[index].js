@@ -15,6 +15,7 @@ import LoginPopup from "../../components/user-common/login-popup";
 import styles from "./index.module.css";
 import { useEffect } from "react";
 import UserMyProjectsSingle from "../../components/user-my-project/UserMyProjectsSingle";
+import PaymentDetailsPopup from "../../components/user-my-project/paymentDetails-popup";
 
 const UserSingleProject = () => {
   const [Store] = useContext(StoreContext);
@@ -23,6 +24,7 @@ const UserSingleProject = () => {
   const registerPopup = Store.registerPopup;
   const otpPopup = Store.otpPopup;
   const profilePopup = Store.profilePopup;
+  const paymentDetailsPopUp = Store.paymentDetailsPopUp;
 
   const router = useRouter();
   useEffect(() => {
@@ -58,6 +60,7 @@ const UserSingleProject = () => {
         {registerPopup ? <RegisterPopup /> : ""}
         {otpPopup ? <OtpPopup /> : ""}
         {profilePopup ? <ProfilePopup /> : ""}
+        {paymentDetailsPopUp ? <PaymentDetailsPopup /> : ""}
       </div>
     </>
   );

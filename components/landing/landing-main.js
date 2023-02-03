@@ -49,6 +49,7 @@ export default function AgrihaLandingMain() {
       },
     });
     const data = await res.json();
+    console.log(data);
     setProjectTypes(data);
   }
 
@@ -95,16 +96,17 @@ export default function AgrihaLandingMain() {
       if (data.data.length > 0) {
         setLoadingAjax(false);
         const withArchitect = data.data?.filter((res) => res?.architect_id);
-
-        if (filter === "All") {
-          setProjectResponse([...projectResponse, ...withArchitect]);
-        } else {
-          let filtered = withArchitect.filter((res) => res?.architect_id?.companyname === filter);
-          setProjectResponse(filtered);
-        }
+        setProjectResponse([...projectResponse, ...withArchitect]);
       } else {
         setScrolling(false);
       }
+    }
+    if (filter === "All") {
+    } else {
+      console.log("working");
+      let filtered = projectResponse.filter((res) => res?.architect_id?.companyname === filter);
+      setProjectResponse(filtered);
+      console.log(filtered);
     }
   }
 
@@ -211,7 +213,37 @@ export default function AgrihaLandingMain() {
 
               <div className={styles.sthree_outer}>
                 <div className={`container ${styles.container} ${styles.sthree}`}>
-                  <div className={styles.sthree_inner}>
+                  <div className={`home_filter ${styles.sthree_inner}`}>
+                    {/* <Swiper
+                      // watchSlidesProgress={true}
+                      slidesPerView={"auto"}
+                      centeredSlides={true}
+                      spaceBetween={30}
+                      pagination={{
+                        clickable: true,
+                      }}
+                      modules={[Pagination]}
+                      className="mySwiperFilter"
+                    >
+                      <SwiperSlide>
+                        <span onClick={() => setFilter("All")}>All</span>
+                      </SwiperSlide>
+                      {projectTypes?.map((item, i) => {
+                        return (
+                          <React.Fragment key={i}>
+                            {item?.companyname ? (
+                              <SwiperSlide>
+                                <span onClick={() => setFilter(item?.companyname)} key={i}>
+                                  {item?.companyname}
+                                </span>
+                              </SwiperSlide>
+                            ) : (
+                              ""
+                            )}
+                          </React.Fragment>
+                        );
+                      })}
+                    </Swiper> */}
                     <div className={styles.active} onClick={() => setFilter("All")}>
                       All
                     </div>

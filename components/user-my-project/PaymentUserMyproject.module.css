@@ -233,3 +233,44 @@
   border: 1px solid #e7e7e7;
   margin-bottom: 7px;
 }
+
+@media only screen and (max-width: 830px) {
+  .paymentContainer_main {
+    flex-direction: column;
+  }
+  .options_sidebar_payment {
+    width: 100%;
+    border-right: none;
+    display: flex;
+    padding: 12px 11px;
+    height: 51px;
+    border-bottom: 1px solid #f3f3f3;
+  }
+  .title_option {
+    width: 50%;
+    height: 100%;
+    padding: 0;
+    justify-content: center;
+    border-bottom: none;
+  }
+  .title_option > img {
+    display: none;
+  }
+  .content_option {
+    width: 50%;
+    height: 100%;
+    padding: 0;
+    justify-content: center;
+    border-left: 1px solid #d9d9d9;
+  }
+  .content_option > img {
+    display: none;
+  }
+  .main_container_payment {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+}

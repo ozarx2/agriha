@@ -51,15 +51,29 @@ export default function SingleOngoingProjectsMain() {
   useEffect(() => {
     if (projectId !== undefined) {
       getProjects();
+      getUserAllPayment();
     }
   }, [projectId]);
 
   // console.log(projectDetails);
+  const [userPayments, setuserPayments] = useState([]);
+  async function getUserAllPayment() {
+    const res = await fetch(`${api_url}/user-payment/getbyproject/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 200) {
+      console.log(data);
+      // setuserPayments(data.data);
+    }
+  }
 
   // Shijin  Payment integration  //
-
   const [bankAccounts, setBankAccounts] = useState([]);
-
   useEffect(() => {
     IsBankAccountCreated();
   }, []);
@@ -78,7 +92,6 @@ export default function SingleOngoingProjectsMain() {
       setBankAccounts(data.data);
     }
   }
-
   // Payment integration End  //
 
   return (
@@ -596,24 +609,26 @@ export default function SingleOngoingProjectsMain() {
                   )}
 
                   <div className={styles.paymentDetails}>
-                    <div className={styles.payments}>
-                      <table className={styles.table_payment}>
-                        <tbody>
-                          <tr>
-                            <td>Amount</td>
-                            <td>: 11</td>
-                          </tr>
-                          <tr>
-                            <td>Stage</td>
-                            <td>: Advance</td>
-                          </tr>
-                          <tr>
-                            <td>Status</td>
-                            <td>: Pending</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                    {Array.apply(null, { length: 5 }).map((e, i) => (
+                      <div className={styles.payments}>
+                        <table className={styles.table_payment}>
+                          <tbody>
+                            <tr>
+                              <td>Amount</td>
+                              <td>: 11</td>
+                            </tr>
+                            <tr>
+                              <td>Stage</td>
+                              <td>: Advance</td>
+                            </tr>
+                            <tr>
+                              <td>Status</td>
+                              <td>: Pending</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </>

@@ -326,7 +326,9 @@
 .payments {
   /* height: 300px; */
   padding: 20px;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
+  border-radius: 15px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
 }
 
 /* END shijing */

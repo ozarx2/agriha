@@ -451,6 +451,17 @@ img[data-testid="grid-gallery-item_thumbnail"] {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAYAAABRVo5BAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADOSURBVHgBtdU7DoMwDADQfMTQjbEjp2Aut2ErR0m33IY1Gz0CR8geRaldlSqqgDiWainCQnrGAicIATFNU4tLVIRCEGNccI3j2JFhlndN08xUrIwxXms9QL7WYLkl0HIH7c6IsUgIYbDWrkVYi+XvDSqWe9UoeBdS8CEs4VN4hovwCJNghhdI25TSQ1Ohc873fX+RUt5gXZWoCHiSxytAT4bYqlLq/inw/N/LYX0O1gCwRo415KxtxdrIrKOjFr3hdq7WIIx85MjoG5xfwAtsXQltt7bPmwAAAABJRU5ErkJggg==") !important;
 }
 
+.home_filter .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .react-tel-input input.form-control {
   margin-left: 35px;
   width: 70px !important;

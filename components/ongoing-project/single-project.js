@@ -6,6 +6,7 @@ import Link from "next/link";
 import api_url from "../../src/utils/url";
 
 import styles from "./single-main.module.css";
+import FolderPopup from "../project-files/folder-popup";
 
 export default function SingleOngoingProjectsMain() {
   const [Store] = useContext(StoreContext);
@@ -574,7 +575,9 @@ export default function SingleOngoingProjectsMain() {
                 </div>
               </>
             ) : section === "Files" ? (
-              <>Filesss</>
+              <>
+                <FolderPopup />
+              </>
             ) : section === "Payments" ? (
               <>
                 <div className={styles.payment_section}>

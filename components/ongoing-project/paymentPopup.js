@@ -67,6 +67,9 @@ function PaymentPopup() {
               <div className={styles.one}>
                 <input type="text" name="stage" placeholder="Enter stage of payment." onChange={handleInputs} />
               </div>
+              <div className={styles.one}>
+                <input type="text" name="stage" placeholder="Status" onChange={handleInputs} />
+              </div>
               {/* {files.length === 0 ? (
                 <div className={styles.two}>
                   <input type="file" accept="application/pdf" onChange={handleChange} />

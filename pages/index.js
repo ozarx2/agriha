@@ -24,6 +24,8 @@ export default function AgrihaLanding() {
   const architectBidPopup = Store.architectBidPopup;
   const profilePopup = Store.profilePopup;
 
+  // console.log(registerPopup);
+
   return (
     <>
       <Head>

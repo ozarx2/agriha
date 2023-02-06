@@ -119,7 +119,7 @@ export default function ZonePopupForm() {
 
     var value = result[0]?.panchayth;
 
-    var sortedArray = value.sort(sortedArray);
+    var sortedArray = value?.sort(sortedArray);
 
     setPanchayathLists(value);
   };

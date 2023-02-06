@@ -91,17 +91,6 @@
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
 }
-
-.profile_upload,
-.cover_upload {
-  opacity: 0;
-  height: 50px;
-}
-
-.upload_outer {
-  margin-top: -50px;
-}
-
 .field input:hover,
 .field input:focus,
 .field input:active {
@@ -114,6 +103,15 @@
   -o-transition: all 0.7s ease-out;
   transition: all 0.7s ease-out;
   transition: all 0.7s ease-out 0s;
+}
+.profile_upload,
+.cover_upload {
+  opacity: 0;
+  height: 50px;
+}
+
+.upload_outer {
+  margin-top: -50px;
 }
 .fullfield {
   width: 100%;

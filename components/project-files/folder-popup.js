@@ -61,12 +61,12 @@ export default function FolderPopup() {
       },
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     setDocuments(data.data);
   }
 
   useEffect(() => {
-    console.log(paramId);
+    // console.log(paramId);
     if (paramId !== "") {
       getUploadedFiles(paramId);
     }
@@ -99,7 +99,7 @@ export default function FolderPopup() {
   const [url, setUrl] = useState("");
 
   function handleUpload(pdf) {
-    console.log("document uploading");
+    // console.log("document uploading");
     setUploading(true);
     if (!pdf) {
       alert("Please choose a file first!");
@@ -120,7 +120,7 @@ export default function FolderPopup() {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log("url", url);
+          // console.log("url", url);
           addFiles(url, filenameUpload);
           setUrl(url);
           setUploading(false);
@@ -130,11 +130,11 @@ export default function FolderPopup() {
   }
 
   const handleChange = (event) => {
-    console.log("onchange");
+    // console.log("onchange");
     if (!event.target.files[0]) {
       alert("Please choose a file first!");
     } else {
-      console.log(event.target.files[0]);
+      // console.log(event.target.files[0]);
       handleUpload(event.target.files[0]);
     }
   };
@@ -154,7 +154,7 @@ export default function FolderPopup() {
         }),
       });
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       if (data.status === 200) {
         // getUploadedFiles();
         window.location.reload();
@@ -180,7 +180,7 @@ export default function FolderPopup() {
       });
 
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       if (data.status === 200) {
         getUploadedFiles();
       }

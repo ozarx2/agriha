@@ -65,10 +65,23 @@ export default function SingleOngoingProjectsMain() {
       },
     });
     const data = await res.json();
-    console.log(data);
     if (data.status === 200) {
-      console.log(data);
-      // setuserPayments(data.data);
+      setuserPayments(data.data);
+    }
+  }
+
+  const [searchFeild, setSearchFeild] = useState("");
+  const [suggestProductList, setSuggestProductList] = useState([]);
+  async function getUserAllProductForSuggest() {
+    const res = await fetch(`${api_url}/product/search/${searchFeild.search[0]}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.status === 200) {
+      setSuggestProductList(data.products);
     }
   }
 
@@ -609,31 +622,111 @@ export default function SingleOngoingProjectsMain() {
                   )}
 
                   <div className={styles.paymentDetails}>
-                    {Array.apply(null, { length: 5 }).map((e, i) => (
-                      <div className={styles.payments}>
-                        <table className={styles.table_payment}>
-                          <tbody>
-                            <tr>
-                              <td>Amount</td>
-                              <td>: 11</td>
-                            </tr>
-                            <tr>
-                              <td>Stage</td>
-                              <td>: Advance</td>
-                            </tr>
-                            <tr>
-                              <td>Status</td>
-                              <td>: Pending</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    ))}
+                    {userPayments.length !== 0 ? (
+                      <>
+                        {userPayments
+                          ?.slice(0)
+                          .reverse()
+                          .map((project) => {
+                            return (
+                              <div className={styles.payments}>
+                                <table className={styles.table_payment}>
+                                  <tbody>
+                                    <tr>
+                                      <td>Amount</td>
+                                      <td>: {project.amount}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Stage</td>
+                                      <td>: {project.stage}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Status</td>
+                                      <td>: {project.status}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            );
+                          })}
+                      </>
+                    ) : (
+                      <p>No payment here</p>
+                    )}
                   </div>
                 </div>
               </>
             ) : section === "Products" ? (
-              <>Products</>
+              <div className={styles.products_all_outer}>
+                <div className={styles.search_outer}>
+                  <div className={styles.search_c}>
+                    <input
+                      type="text"
+                      name="search"
+                      onChange={() => setSearchFeild({ ...searchFeild, [event.target.name]: [event.target.value] })}
+                    />
+                    <button onClick={() => getUserAllProductForSuggest()} className={styles.search_btn}>
+                      Search
+                    </button>
+                  </div>
+                  <button className={styles.suggest_btn}>Suggest product</button>
+                </div>
+                <div className={styles.products_max_outer}>
+                  {suggestProductList.length !== 0 ? (
+                    <>
+                      {suggestProductList?.map((product) => {
+                        console.log(product);
+                        return (
+                          <div className={styles.products_outer}>
+                            <div className={styles.top}>
+                              <div className={styles.left}>
+                                <div className={styles.product_name}>{product.name}</div>
+                                <div className={styles.product_category}>
+                                  <span className={styles.product_categoryMain}>Category</span> <span>-</span>
+                                  <span className={styles.product_subcategory}>Subcategory</span>
+                                </div>
+                              </div>
+                              <div className={styles.right}>
+                                <div>Select</div>
+                              </div>
+                            </div>
+                            <img className={styles.image} src="/img/common/ni.jpg" alt="product" />
+                            <div className={styles.price}>
+                              <span className={styles.product_mrp}>MRP : ₹{product.mrp}/-</span>
+                              <span className={styles.product_discount}>Discount : {product.discount_rate}%</span>
+                            </div>
+                            <div className={styles.product_desc}>{product.description}</div>
+                            <div className={styles.product_adnl_details}>
+                              <span className={styles.product_sku}>
+                                <span className={styles.dim}>SKU :</span> {product.sku}
+                              </span>
+                              <span className={styles.product_code}>
+                                <span className={styles.dim}>Product Code :</span> {product.productCode}
+                              </span>
+                              <span className={styles.product_tag}>
+                                <span className={styles.dim}>Tag :</span> {product.tag}
+                              </span>
+                            </div>
+                            <div className={styles.product_adnl_stock_details}>
+                              <span className={styles.product_stock}>
+                                <span className={styles.dim}>Stock :</span> {product.stock_qty}
+                              </span>
+                              <span className={styles.product_weight}>
+                                <span className={styles.dim}>Weight :</span> {product.weight}Kg
+                              </span>
+                              <span className={styles.product_volume}>
+                                <span className={styles.dim}>Volume :</span> {product.volume}L
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </>
+                  ) : (
+                    <p>Search to view product here </p>
+                  )}
+                </div>
+              </div>
             ) : (
               ""
             )}

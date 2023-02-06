@@ -66,6 +66,54 @@ export default function PaymentDetailsPopup() {
                 <div className={styles.submitButton}>Submit details</div>
               </div>
             </>
+          ) : userPaymentPopup === "paymentDetails" ? (
+            <>
+              <div className={styles.header}>
+                Account details
+                <img onClick={() => setPaymentDetailsPopUp(false)} src="/img/user-my-project/close.svg" />
+              </div>
+              <div className={styles.content}>
+                <div className={styles.content_top}>
+                  <div className={styles.content_top_row}>
+                    <p>Account number:</p>
+                    <p>99902459876112</p>
+                  </div>
+                  <div className={styles.content_top_rowB}>
+                    <p>Account holder:</p>
+                    <p>ALTHAF RAHMAN</p>
+                  </div>
+                  <div className={styles.content_top_row}>
+                    <p>Branch name: </p>
+                    <p>SBI bank kozhikode</p>
+                  </div>
+                  <div className={styles.content_top_rowB}>
+                    <p>Branch IFSC:</p>
+                    <p>SBI256987001</p>
+                  </div>
+                </div>
+                <div className={styles.content_bottom}>
+                  <div className={styles.content_bottom_header}>
+                    <p>UPI payment details</p>
+                  </div>
+                  <div className={styles.content_bottom_row}>
+                    <p>Mobile number:</p>
+                    <p> +91 8456 121 212</p>
+                  </div>
+                  <div className={styles.content_bottom_row}>
+                    <p>Holder name:</p>
+                    <p>ALTHAF RAHMAN</p>
+                  </div>
+                  <div className={styles.content_bottom_row}>
+                    <p>UPI IDs:</p>
+                    <p>althafar212@oksbi</p>
+                  </div>
+                </div>
+                <div className={styles.button_container}>
+                  <div className={styles.contactUs_button}>Contact us</div>
+                  <div className={styles.doneButton}>Done</div>
+                </div>
+              </div>
+            </>
           ) : (
             ""
           )}

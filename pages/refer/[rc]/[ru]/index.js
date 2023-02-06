@@ -9,6 +9,7 @@ export default function AgrihaRefer() {
 
   const [Store] = useContext(StoreContext);
   const setRegisterPopup = Store.setRegisterPopup;
+  const setUserRole = Store.setUserRole;
   useEffect(() => {
     if (rc_id && ru_id) {
       if (rc_id) {
@@ -17,6 +18,7 @@ export default function AgrihaRefer() {
       if (ru_id) {
         localStorage.setItem("ru", ru_id);
       }
+      setUserRole("architect");
       setRegisterPopup(true);
       router.push(`/`);
     }

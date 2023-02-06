@@ -13,6 +13,7 @@ function PaymentPopup() {
   const [Store] = useContext(StoreContext);
   const setPaymentPopup = Store.setPaymentPopup;
   const [isLoading, setIsLoading] = useState(false);
+  const [paymentRequestAdded, setPaymentRequestAdded] = useState(false);
   const initialState = {
     amount: null,
     stage: "",
@@ -32,14 +33,24 @@ function PaymentPopup() {
       payableData.project_id = projectId;
       const response = await fetch(`${api_url}/user-payment`, {
         method: "POST",
-        body: JSON.stringify(payableData),
         headers: {
           "Content-Type": "application/json",
+          // Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({
+          project_id: payableData.project_id,
+          amount: payableData.amount,
+          stage: payableData.stage,
+          status: payableData.status,
+        }),
       });
       const data = await response.json();
       if (data.status === 200) {
-        setPaymentPopup(false);
+        setPaymentRequestAdded(true);
+        setTimeout(function () {
+          console.log("Good Night!");
+          setPaymentPopup(false);
+        }, 1000);
       }
     }
   }
@@ -61,15 +72,23 @@ function PaymentPopup() {
           </div>
           <div className={styles.content}>
             <div className={styles.create_folder}>
-              <div className={styles.one}>
-                <input type="number" name="amount" placeholder="Enter payable amount." onChange={handleInputs} />
-              </div>
-              <div className={styles.one}>
-                <input type="text" name="stage" placeholder="Enter stage of payment." onChange={handleInputs} />
-              </div>
-              <div className={styles.one}>
+              {paymentRequestAdded ? (
+                <div className={styles.added}>
+                  <p>Payment request added</p>
+                </div>
+              ) : (
+                <>
+                  <div className={styles.one}>
+                    <input type="number" name="amount" placeholder="Enter payable amount." onChange={handleInputs} />
+                  </div>
+                  <div className={styles.one}>
+                    <input type="text" name="stage" placeholder="Enter stage of payment." onChange={handleInputs} />
+                  </div>
+                </>
+              )}
+              {/* <div className={styles.one}>
                 <input type="text" name="stage" placeholder="Status" onChange={handleInputs} />
-              </div>
+              </div> */}
               {/* {files.length === 0 ? (
                 <div className={styles.two}>
                   <input type="file" accept="application/pdf" onChange={handleChange} />

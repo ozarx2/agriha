@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
 import Link from "next/link";
 import api_url from "../../src/utils/url";
+import FolderPopup from "../project-files/folder-popup";
 
 import styles from "./single-main.module.css";
-import FolderPopup from "../project-files/folder-popup";
+import SuggestProductSearch from "./suggestProductSearch";
 
 export default function SingleOngoingProjectsMain() {
   const [Store] = useContext(StoreContext);
@@ -26,6 +27,7 @@ export default function SingleOngoingProjectsMain() {
   const [projectTypeDetails, setProjectTypeDetails] = useState([]);
   const [reqList, setReqList] = useState("");
   const [section, setSection] = useState("Reference");
+  const [productSelect, setProductSelect] = useState("select");
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
@@ -82,6 +84,40 @@ export default function SingleOngoingProjectsMain() {
     const data = await res.json();
     if (data.status === 200) {
       setSuggestProductList(data.products);
+    }
+  }
+
+  const [suggestData, setSuggestData] = useState({});
+  const [selectProduct, setSelectProduct] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState([]);
+  // console.log(suggestData);
+  console.log(selectProduct);
+
+  async function fnSelectProduct() {
+    let array = [];
+    selectProduct.map((item) => {
+      const data = {
+        productId: item._id,
+      };
+      array.push(data);
+    });
+    const res = await fetch(`${api_url}/projects/add_product`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        project_id: projectId,
+        phase: suggestData.phase,
+        facility_name: suggestData.facility,
+        products: array,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 200) {
+      console.log(data);
+      setBankAccounts(data.data);
     }
   }
 
@@ -627,9 +663,9 @@ export default function SingleOngoingProjectsMain() {
                         {userPayments
                           ?.slice(0)
                           .reverse()
-                          .map((project) => {
+                          .map((project, index) => {
                             return (
-                              <div className={styles.payments}>
+                              <div className={styles.payments} key={index}>
                                 <table className={styles.table_payment}>
                                   <tbody>
                                     <tr>
@@ -658,74 +694,156 @@ export default function SingleOngoingProjectsMain() {
               </>
             ) : section === "Products" ? (
               <div className={styles.products_all_outer}>
-                <div className={styles.search_outer}>
-                  <div className={styles.search_c}>
-                    <input
-                      type="text"
-                      name="search"
-                      onChange={() => setSearchFeild({ ...searchFeild, [event.target.name]: [event.target.value] })}
-                    />
-                    <button onClick={() => getUserAllProductForSuggest()} className={styles.search_btn}>
-                      Search
-                    </button>
+                <div className={styles.n_one}>
+                  <div className={styles.btns}>
+                    <div
+                      onClick={() => setProductSelect("select")}
+                      className={productSelect === "select" ? styles.active : ""}
+                    >
+                      Select Products
+                    </div>
+                    <div
+                      onClick={() => setProductSelect("selected")}
+                      className={productSelect === "selected" ? styles.active : ""}
+                    >
+                      Selected Products
+                    </div>
                   </div>
-                  <button className={styles.suggest_btn}>Suggest product</button>
                 </div>
-                <div className={styles.products_max_outer}>
-                  {suggestProductList.length !== 0 ? (
-                    <>
-                      {suggestProductList?.map((product) => {
-                        console.log(product);
-                        return (
-                          <div className={styles.products_outer}>
-                            <div className={styles.top}>
-                              <div className={styles.left}>
-                                <div className={styles.product_name}>{product.name}</div>
-                                <div className={styles.product_category}>
-                                  <span className={styles.product_categoryMain}>Category</span> <span>-</span>
-                                  <span className={styles.product_subcategory}>Subcategory</span>
-                                </div>
-                              </div>
-                              <div className={styles.right}>
-                                <div>Select</div>
-                              </div>
-                            </div>
-                            <img className={styles.image} src="/img/common/ni.jpg" alt="product" />
-                            <div className={styles.price}>
-                              <span className={styles.product_mrp}>MRP : ₹{product.mrp}/-</span>
-                              <span className={styles.product_discount}>Discount : {product.discount_rate}%</span>
-                            </div>
-                            <div className={styles.product_desc}>{product.description}</div>
-                            <div className={styles.product_adnl_details}>
-                              <span className={styles.product_sku}>
-                                <span className={styles.dim}>SKU :</span> {product.sku}
-                              </span>
-                              <span className={styles.product_code}>
-                                <span className={styles.dim}>Product Code :</span> {product.productCode}
-                              </span>
-                              <span className={styles.product_tag}>
-                                <span className={styles.dim}>Tag :</span> {product.tag}
-                              </span>
-                            </div>
-                            <div className={styles.product_adnl_stock_details}>
-                              <span className={styles.product_stock}>
-                                <span className={styles.dim}>Stock :</span> {product.stock_qty}
-                              </span>
-                              <span className={styles.product_weight}>
-                                <span className={styles.dim}>Weight :</span> {product.weight}Kg
-                              </span>
-                              <span className={styles.product_volume}>
-                                <span className={styles.dim}>Volume :</span> {product.volume}L
-                              </span>
-                            </div>
+
+                {productSelect === "select" ? (
+                  <>
+                    <div className={styles.suggest_all_outer}>
+                      <div className={styles.suggest_outer}>
+                        <div>
+                          <h4>Phase</h4>
+                          <select
+                            name="phase"
+                            onChange={(e) => setSuggestData({ ...suggestData, phase: e.target.value })}
+                          >
+                            <option disabled selected value>
+                              {" "}
+                              -- select an option --{" "}
+                            </option>
+                            <option value="Structural works">Structural works</option>
+                            <option value="Interior decorating">Interior decorating</option>
+                            <option value="Exterior decorating">Exterior decorating</option>
+                            <option value="Landscaping & Hardscaping">Landscaping & Hardscaping</option>
+                            <option value="Security & Automation">Security & Automation</option>
+                          </select>
+                        </div>
+                        {suggestData.phase === "Structural works" ? (
+                          <div>
+                            <h4>Facility</h4>
+                            <select
+                              name="structural_works"
+                              onChange={(e) => setSuggestData({ ...suggestData, facility: e.target.value })}
+                            >
+                              <option disabled selected value>
+                                {" "}
+                                -- select an option --{" "}
+                              </option>
+                              <option value="Substructural works">Substructural works</option>
+                              <option value="Electrical works">Electrical works</option>
+                              <option value="Plumbing works">Plumbing works</option>
+                              <option value="Plastering works">Plastering works</option>
+                              <option value="Flooring works">Flooring works</option>
+                            </select>
                           </div>
-                        );
-                      })}
-                    </>
-                  ) : (
-                    <p>Search to view product here </p>
-                  )}
-                </div>
+                        ) : suggestData.phase === "Interior decorating" ? (
+                          <div>
+                            <h4>Facility</h4>
+                            <input
+                              type="text"
+                              name="facility"
+                              onChange={(e) => setSuggestData({ ...suggestData, facility: e.target.value })}
+                            />
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        <button className={styles.suggest_btn} onClick={() => fnSelectProduct()}>
+                          Select product
+                        </button>
+                      </div>
+                    </div>
+                    <div className={styles.search_all_outer}>
+                      <div className={styles.search_c}>
+                        <input
+                          type="text"
+                          name="search"
+                          onChange={() => setSearchFeild({ ...searchFeild, [event.target.name]: [event.target.value] })}
+                        />
+                        <button onClick={() => getUserAllProductForSuggest()} className={styles.search_btn}>
+                          Search
+                        </button>
+                      </div>
+                      <div className={styles.products_max_outer}>
+                        {suggestProductList.length !== 0 ? (
+                          <>
+                            {suggestProductList?.map((product, index) => {
+                              return (
+                                <SuggestProductSearch
+                                  key={index}
+                                  index={index}
+                                  product={product}
+                                  selectProduct={selectProduct}
+                                  setSelectProduct={setSelectProduct}
+                                />
+                              );
+                            })}
+                          </>
+                        ) : (
+                          <p>Search to view product here </p>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                ) : productSelect === "selected" ? (
+                  <>
+                    <div className={styles.selected_outer}>
+                      <h4>Selected Products</h4>
+                      <div className={styles.selected_products_max_outer}>
+                        {suggestProductList.length !== 0 ? (
+                          <>
+                            {suggestProductList?.map((product, index) => {
+                              return (
+                                <div className={styles.products_outer} key={index}>
+                                  <div className={styles.top}>
+                                    <div className={styles.left}>
+                                      <div className={styles.product_name}>{product.name}</div>
+                                      <div className={styles.product_category}>
+                                        <span className={styles.product_categoryMain}>Category</span> <span>-</span>
+                                        <span className={styles.product_subcategory}>Subcategory</span>
+                                      </div>
+                                    </div>
+                                    <div className={styles.right}>
+                                      <div>Remove</div>
+                                    </div>
+                                  </div>
+                                  <img className={styles.image} src="/img/common/ni.jpg" alt="product" />
+                                  <div className={styles.price}>
+                                    <span className={styles.product_mrp}>MRP : ₹{product.mrp}/-</span>
+                                    <span className={styles.product_discount}>Discount : {product.discount_rate}%</span>
+                                  </div>
+                                  <div className={styles.product_adnl_details}>
+                                    <span className={styles.product_sku}>
+                                      <span className={styles.dim}>SKU :</span> {product.sku}
+                                    </span>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </>
+                        ) : (
+                          <p>Please select any product </p>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )}
               </div>
             ) : (
               ""

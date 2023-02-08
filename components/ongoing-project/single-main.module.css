@@ -557,6 +557,12 @@
   grid-gap: 10px;
   gap: 10px;
 }
+.suggest_all_outer {
+}
+.error {
+  padding-top: 10px;
+  color: #ff2d2d !important;
+}
 .suggest_outer {
   display: flex;
   align-items: center;

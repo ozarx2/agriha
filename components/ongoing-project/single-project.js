@@ -54,6 +54,7 @@ export default function SingleOngoingProjectsMain() {
     if (projectId !== undefined) {
       getProjects();
       getUserAllPayment();
+      getProductSelected();
     }
   }, [projectId]);
 
@@ -87,11 +88,13 @@ export default function SingleOngoingProjectsMain() {
     }
   }
 
-  const [suggestData, setSuggestData] = useState({});
+  const [suggestData, setSuggestData] = useState({ phase: "", facility: "", products: "" });
   const [selectProduct, setSelectProduct] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([]);
-  // console.log(suggestData);
-  console.log(selectProduct);
+
+  const [errorProduct, setErrorProduct] = useState(false);
+  const [errorPhase, setErrorPhase] = useState(false);
+  const [errorFacility, setErrorFacility] = useState(false);
 
   async function fnSelectProduct() {
     let array = [];
@@ -101,7 +104,50 @@ export default function SingleOngoingProjectsMain() {
       };
       array.push(data);
     });
-    const res = await fetch(`${api_url}/projects/add_product`, {
+
+    if (array.length !== 0) {
+      setErrorProduct(false);
+    } else {
+      setErrorProduct(true);
+    }
+    if (suggestData.phase !== "") {
+      setErrorPhase(false);
+      if (suggestData.phase === "Structural works" || suggestData.phase === "Interior decorating") {
+        if (suggestData.facility !== "") {
+          setErrorFacility(false);
+        } else {
+          setErrorFacility(true);
+        }
+      } else {
+        setErrorFacility(false);
+      }
+    } else {
+      setErrorPhase(true);
+    }
+
+    if (array.length !== 0 && suggestData.phase !== "") {
+      if (suggestData.phase === "Structural works" || suggestData.phase === "Interior decorating") {
+        if (suggestData.facility !== "") {
+          fnSelectProductApiOne();
+        }
+      } else {
+        fnSelectProductApiTwo();
+      }
+    }
+  }
+
+  async function fnSelectProductApiOne() {
+    setErrorProduct(false);
+    setErrorPhase(false);
+    setErrorFacility(false);
+    let array = [];
+    selectProduct.map((item) => {
+      const data = {
+        productId: item._id,
+      };
+      array.push(data);
+    });
+    const res = await fetch(`${api_url}/projects/add_products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -109,17 +155,58 @@ export default function SingleOngoingProjectsMain() {
       body: JSON.stringify({
         project_id: projectId,
         phase: suggestData.phase,
-        facility_name: suggestData.facility,
+        facility_name: suggestData?.facility,
         products: array,
       }),
     });
     const data = await res.json();
-    console.log(data);
     if (data.status === 200) {
       console.log(data);
-      setBankAccounts(data.data);
     }
   }
+
+  async function fnSelectProductApiTwo() {
+    setErrorProduct(false);
+    setErrorPhase(false);
+    setErrorFacility(false);
+    let array = [];
+    selectProduct.map((item) => {
+      const data = {
+        productId: item._id,
+      };
+      array.push(data);
+    });
+    const res = await fetch(`${api_url}/projects/add_products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        project_id: projectId,
+        phase: suggestData.phase,
+        products: array,
+      }),
+    });
+    const data = await res.json();
+    if (data.status === 200) {
+      console.log(data);
+    }
+  }
+
+  async function getProductSelected() {
+    const res = await fetch(`${api_url}/projects/suggestedProducts/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.status === 200) {
+      setSelectedProduct(data.data);
+    }
+  }
+
+  console.log(selectedProduct);
 
   // Shijin  Payment integration  //
   const [bankAccounts, setBankAccounts] = useState([]);
@@ -731,6 +818,7 @@ export default function SingleOngoingProjectsMain() {
                             <option value="Landscaping & Hardscaping">Landscaping & Hardscaping</option>
                             <option value="Security & Automation">Security & Automation</option>
                           </select>
+                          {errorPhase ? <p className={styles.error}>Select phase</p> : ""}
                         </div>
                         {suggestData.phase === "Structural works" ? (
                           <div>
@@ -749,6 +837,7 @@ export default function SingleOngoingProjectsMain() {
                               <option value="Plastering works">Plastering works</option>
                               <option value="Flooring works">Flooring works</option>
                             </select>
+                            {errorFacility ? <p className={styles.error}>Select facility</p> : ""}
                           </div>
                         ) : suggestData.phase === "Interior decorating" ? (
                           <div>
@@ -758,13 +847,17 @@ export default function SingleOngoingProjectsMain() {
                               name="facility"
                               onChange={(e) => setSuggestData({ ...suggestData, facility: e.target.value })}
                             />
+                            {errorFacility ? <p className={styles.error}>Type facility</p> : ""}
                           </div>
                         ) : (
                           ""
                         )}
-                        <button className={styles.suggest_btn} onClick={() => fnSelectProduct()}>
-                          Select product
-                        </button>
+                        <div>
+                          <button className={styles.suggest_btn} onClick={() => fnSelectProduct()}>
+                            Select product
+                          </button>
+                          {errorProduct ? <p className={styles.error}>Select products</p> : ""}
+                        </div>
                       </div>
                     </div>
                     <div className={styles.search_all_outer}>
@@ -803,40 +896,59 @@ export default function SingleOngoingProjectsMain() {
                   <>
                     <div className={styles.selected_outer}>
                       <h4>Selected Products</h4>
-                      <div className={styles.selected_products_max_outer}>
-                        {suggestProductList.length !== 0 ? (
+                      <div className={styles.cat_max_outer}>
+                        {selectedProduct.length !== 0 ? (
                           <>
-                            {suggestProductList?.map((product, index) => {
+                            {selectedProduct?.map((all_phase, index) => {
+                              console.log(all_phase);
                               return (
-                                <div className={styles.products_outer} key={index}>
-                                  <div className={styles.top}>
+                                <div className={styles.cat_outer} key={index}>
+                                  <div className={styles.cat_all}>
                                     <div className={styles.left}>
-                                      <div className={styles.product_name}>{product.name}</div>
-                                      <div className={styles.product_category}>
-                                        <span className={styles.product_categoryMain}>Category</span> <span>-</span>
-                                        <span className={styles.product_subcategory}>Subcategory</span>
-                                      </div>
+                                      <span>Phase : {all_phase.phase}</span>
+                                      {all_phase.facility_name ? <span>Facility : {all_phase.facility_name}</span> : ""}
                                     </div>
-                                    <div className={styles.right}>
-                                      <div>Remove</div>
-                                    </div>
+                                    <div className={styles.right}>Suggest</div>
                                   </div>
-                                  <img className={styles.image} src="/img/common/ni.jpg" alt="product" />
-                                  <div className={styles.price}>
-                                    <span className={styles.product_mrp}>MRP : ₹{product.mrp}/-</span>
-                                    <span className={styles.product_discount}>Discount : {product.discount_rate}%</span>
-                                  </div>
-                                  <div className={styles.product_adnl_details}>
-                                    <span className={styles.product_sku}>
-                                      <span className={styles.dim}>SKU :</span> {product.sku}
-                                    </span>
+                                  <div className={styles.selected_products_max_outer}>
+                                    {all_phase.products?.map((product, index) => {
+                                      return (
+                                        <div className={styles.products_outer} key={index}>
+                                          <div className={styles.top}>
+                                            <div className={styles.left}>
+                                              <div className={styles.product_name}>{product.name}</div>
+                                              <div className={styles.product_category}>
+                                                <span className={styles.product_categoryMain}>Category</span>{" "}
+                                                <span>-</span>
+                                                <span className={styles.product_subcategory}>Subcategory</span>
+                                              </div>
+                                            </div>
+                                            <div className={styles.right}>
+                                              <div>Remove</div>
+                                            </div>
+                                          </div>
+                                          <img className={styles.image} src="/img/common/ni.jpg" alt="product" />
+                                          <div className={styles.price}>
+                                            <span className={styles.product_mrp}>MRP : ₹{product.mrp}/-</span>
+                                            <span className={styles.product_discount}>
+                                              Discount : {product.discount_rate}%
+                                            </span>
+                                          </div>
+                                          <div className={styles.product_adnl_details}>
+                                            <span className={styles.product_sku}>
+                                              <span className={styles.dim}>SKU :</span> {product.sku}
+                                            </span>
+                                          </div>
+                                        </div>
+                                      );
+                                    })}
                                   </div>
                                 </div>
                               );
                             })}
                           </>
                         ) : (
-                          <p>Please select any product </p>
+                          <p>Please go to "select products" and select any product under any phase </p>
                         )}
                       </div>
                     </div>

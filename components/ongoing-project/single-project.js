@@ -730,6 +730,12 @@ export default function SingleOngoingProjectsMain() {
             ) : section === "Payments" ? (
               <>
                 <div className={styles.payment_section}>
+                  <div>
+                    <div>Total amount : </div>
+                    <div>Received amount : </div>
+                    <div>Processing amount : </div>
+                  </div>
+
                   {bankAccounts.length > 0 ? (
                     <button className={styles.btn} onClick={() => setPaymentPopup(true)}>
                       <img src="/img/architect-dashboard/add.svg" alt="" />
@@ -751,6 +757,7 @@ export default function SingleOngoingProjectsMain() {
                           ?.slice(0)
                           .reverse()
                           .map((project, index) => {
+                            console.log(userPayments);
                             return (
                               <div className={styles.payments} key={index}>
                                 <table className={styles.table_payment}>
@@ -900,18 +907,19 @@ export default function SingleOngoingProjectsMain() {
                         {selectedProduct.length !== 0 ? (
                           <>
                             {selectedProduct?.map((all_phase, index) => {
-                              console.log(all_phase);
+                              // console.log(all_phase);
                               return (
                                 <div className={styles.cat_outer} key={index}>
                                   <div className={styles.cat_all}>
                                     <div className={styles.left}>
-                                      <span>Phase : {all_phase.phase}</span>
-                                      {all_phase.facility_name ? <span>Facility : {all_phase.facility_name}</span> : ""}
+                                      <div>Phase : {all_phase.phase}</div>
+                                      {all_phase.facility_name ? <div>Facility : {all_phase.facility_name}</div> : ""}
                                     </div>
                                     <div className={styles.right}>Suggest</div>
                                   </div>
                                   <div className={styles.selected_products_max_outer}>
-                                    {all_phase.products?.map((product, index) => {
+                                    {all_phase.products?.map((productSelected, index) => {
+                                      const product = productSelected.productId;
                                       return (
                                         <div className={styles.products_outer} key={index}>
                                           <div className={styles.top}>

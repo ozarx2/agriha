@@ -257,6 +257,57 @@
   border-bottom: 2px solid #000000;
 }
 
+.selected_outer {
+}
+.selected_outer h4 {
+  font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.cat_outer {
+  margin-bottom: 50px;
+}
+
+.cat_all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+  margin-bottom: 20px;
+}
+.cat_all .right {
+  background-color: #019071;
+  border-radius: 5px;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 33px;
+  padding: 25px;
+  font-size: 20px;
+  color: #fff;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+
+.cat_all .right:hover {
+  background-color: #1e1e1e;
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -ms-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
+
 .table_out td input {
   font-family: "Inter";
   font-style: normal;

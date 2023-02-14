@@ -48,7 +48,7 @@ function PaymentPopup() {
       if (data.status === 200) {
         setPaymentRequestAdded(true);
         setTimeout(function () {
-          console.log("Good Night!");
+          router.reload();
           setPaymentPopup(false);
         }, 1000);
       }

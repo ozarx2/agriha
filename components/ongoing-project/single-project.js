@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
 import Link from "next/link";
 import api_url from "../../src/utils/url";
+import FolderPopup from "../project-files/folder-popup";
 
 import styles from "./single-main.module.css";
-import FolderPopup from "../project-files/folder-popup";
+import SuggestProductSearch from "./suggestProductSearch";
 
 export default function SingleOngoingProjectsMain() {
   const [Store] = useContext(StoreContext);
@@ -26,6 +27,7 @@ export default function SingleOngoingProjectsMain() {
   const [projectTypeDetails, setProjectTypeDetails] = useState([]);
   const [reqList, setReqList] = useState("");
   const [section, setSection] = useState("Reference");
+  const [productSelect, setProductSelect] = useState("select");
 
   /* GET PROJECT DETAILS */
   async function getProjects() {
@@ -52,6 +54,7 @@ export default function SingleOngoingProjectsMain() {
     if (projectId !== undefined) {
       getProjects();
       getUserAllPayment();
+      getProductSelected();
     }
   }, [projectId]);
 
@@ -65,12 +68,145 @@ export default function SingleOngoingProjectsMain() {
       },
     });
     const data = await res.json();
-    console.log(data);
     if (data.status === 200) {
-      console.log(data);
-      // setuserPayments(data.data);
+      setuserPayments(data.data);
     }
   }
+
+  const [searchFeild, setSearchFeild] = useState("");
+  const [suggestProductList, setSuggestProductList] = useState([]);
+  async function getUserAllProductForSuggest() {
+    const res = await fetch(`${api_url}/product/search/${searchFeild.search[0]}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.status === 200) {
+      setSuggestProductList(data.products);
+    }
+  }
+
+  const [suggestData, setSuggestData] = useState({ phase: "", facility: "", products: "" });
+  const [selectProduct, setSelectProduct] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState([]);
+
+  const [errorProduct, setErrorProduct] = useState(false);
+  const [errorPhase, setErrorPhase] = useState(false);
+  const [errorFacility, setErrorFacility] = useState(false);
+
+  async function fnSelectProduct() {
+    let array = [];
+    selectProduct.map((item) => {
+      const data = {
+        productId: item._id,
+      };
+      array.push(data);
+    });
+
+    if (array.length !== 0) {
+      setErrorProduct(false);
+    } else {
+      setErrorProduct(true);
+    }
+    if (suggestData.phase !== "") {
+      setErrorPhase(false);
+      if (suggestData.phase === "Structural works" || suggestData.phase === "Interior decorating") {
+        if (suggestData.facility !== "") {
+          setErrorFacility(false);
+        } else {
+          setErrorFacility(true);
+        }
+      } else {
+        setErrorFacility(false);
+      }
+    } else {
+      setErrorPhase(true);
+    }
+
+    if (array.length !== 0 && suggestData.phase !== "") {
+      if (suggestData.phase === "Structural works" || suggestData.phase === "Interior decorating") {
+        if (suggestData.facility !== "") {
+          fnSelectProductApiOne();
+        }
+      } else {
+        fnSelectProductApiTwo();
+      }
+    }
+  }
+
+  async function fnSelectProductApiOne() {
+    setErrorProduct(false);
+    setErrorPhase(false);
+    setErrorFacility(false);
+    let array = [];
+    selectProduct.map((item) => {
+      const data = {
+        productId: item._id,
+      };
+      array.push(data);
+    });
+    const res = await fetch(`${api_url}/projects/add_products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        project_id: projectId,
+        phase: suggestData.phase,
+        facility_name: suggestData?.facility,
+        products: array,
+      }),
+    });
+    const data = await res.json();
+    if (data.status === 200) {
+      console.log(data);
+    }
+  }
+
+  async function fnSelectProductApiTwo() {
+    setErrorProduct(false);
+    setErrorPhase(false);
+    setErrorFacility(false);
+    let array = [];
+    selectProduct.map((item) => {
+      const data = {
+        productId: item._id,
+      };
+      array.push(data);
+    });
+    const res = await fetch(`${api_url}/projects/add_products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        project_id: projectId,
+        phase: suggestData.phase,
+        products: array,
+      }),
+    });
+    const data = await res.json();
+    if (data.status === 200) {
+      console.log(data);
+    }
+  }
+
+  async function getProductSelected() {
+    const res = await fetch(`${api_url}/projects/suggestedProducts/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.status === 200) {
+      setSelectedProduct(data.data);
+    }
+  }
+
+  console.log(selectedProduct);
 
   // Shijin  Payment integration  //
   const [bankAccounts, setBankAccounts] = useState([]);
@@ -594,6 +730,12 @@ export default function SingleOngoingProjectsMain() {
             ) : section === "Payments" ? (
               <>
                 <div className={styles.payment_section}>
+                  <div>
+                    <div>Total amount : </div>
+                    <div>Received amount : </div>
+                    <div>Processing amount : </div>
+                  </div>
+
                   {bankAccounts.length > 0 ? (
                     <button className={styles.btn} onClick={() => setPaymentPopup(true)}>
                       <img src="/img/architect-dashboard/add.svg" alt="" />
@@ -609,31 +751,218 @@ export default function SingleOngoingProjectsMain() {
                   )}
 
                   <div className={styles.paymentDetails}>
-                    {Array.apply(null, { length: 5 }).map((e, i) => (
-                      <div className={styles.payments}>
-                        <table className={styles.table_payment}>
-                          <tbody>
-                            <tr>
-                              <td>Amount</td>
-                              <td>: 11</td>
-                            </tr>
-                            <tr>
-                              <td>Stage</td>
-                              <td>: Advance</td>
-                            </tr>
-                            <tr>
-                              <td>Status</td>
-                              <td>: Pending</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    ))}
+                    {userPayments.length !== 0 ? (
+                      <>
+                        {userPayments
+                          ?.slice(0)
+                          .reverse()
+                          .map((project, index) => {
+                            console.log(userPayments);
+                            return (
+                              <div className={styles.payments} key={index}>
+                                <table className={styles.table_payment}>
+                                  <tbody>
+                                    <tr>
+                                      <td>Amount</td>
+                                      <td>: {project.amount}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Stage</td>
+                                      <td>: {project.stage}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Status</td>
+                                      <td>: {project.status}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            );
+                          })}
+                      </>
+                    ) : (
+                      <p>No payment here</p>
+                    )}
                   </div>
                 </div>
               </>
             ) : section === "Products" ? (
-              <>Products</>
+              <div className={styles.products_all_outer}>
+                <div className={styles.n_one}>
+                  <div className={styles.btns}>
+                    <div
+                      onClick={() => setProductSelect("select")}
+                      className={productSelect === "select" ? styles.active : ""}
+                    >
+                      Select Products
+                    </div>
+                    <div
+                      onClick={() => setProductSelect("selected")}
+                      className={productSelect === "selected" ? styles.active : ""}
+                    >
+                      Selected Products
+                    </div>
+                  </div>
+                </div>
+
+                {productSelect === "select" ? (
+                  <>
+                    <div className={styles.suggest_all_outer}>
+                      <div className={styles.suggest_outer}>
+                        <div>
+                          <h4>Phase</h4>
+                          <select
+                            name="phase"
+                            onChange={(e) => setSuggestData({ ...suggestData, phase: e.target.value })}
+                          >
+                            <option disabled selected value>
+                              {" "}
+                              -- select an option --{" "}
+                            </option>
+                            <option value="Structural works">Structural works</option>
+                            <option value="Interior decorating">Interior decorating</option>
+                            <option value="Exterior decorating">Exterior decorating</option>
+                            <option value="Landscaping & Hardscaping">Landscaping & Hardscaping</option>
+                            <option value="Security & Automation">Security & Automation</option>
+                          </select>
+                          {errorPhase ? <p className={styles.error}>Select phase</p> : ""}
+                        </div>
+                        {suggestData.phase === "Structural works" ? (
+                          <div>
+                            <h4>Facility</h4>
+                            <select
+                              name="structural_works"
+                              onChange={(e) => setSuggestData({ ...suggestData, facility: e.target.value })}
+                            >
+                              <option disabled selected value>
+                                {" "}
+                                -- select an option --{" "}
+                              </option>
+                              <option value="Substructural works">Substructural works</option>
+                              <option value="Electrical works">Electrical works</option>
+                              <option value="Plumbing works">Plumbing works</option>
+                              <option value="Plastering works">Plastering works</option>
+                              <option value="Flooring works">Flooring works</option>
+                            </select>
+                            {errorFacility ? <p className={styles.error}>Select facility</p> : ""}
+                          </div>
+                        ) : suggestData.phase === "Interior decorating" ? (
+                          <div>
+                            <h4>Facility</h4>
+                            <input
+                              type="text"
+                              name="facility"
+                              onChange={(e) => setSuggestData({ ...suggestData, facility: e.target.value })}
+                            />
+                            {errorFacility ? <p className={styles.error}>Type facility</p> : ""}
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        <div>
+                          <button className={styles.suggest_btn} onClick={() => fnSelectProduct()}>
+                            Select product
+                          </button>
+                          {errorProduct ? <p className={styles.error}>Select products</p> : ""}
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles.search_all_outer}>
+                      <div className={styles.search_c}>
+                        <input
+                          type="text"
+                          name="search"
+                          onChange={() => setSearchFeild({ ...searchFeild, [event.target.name]: [event.target.value] })}
+                        />
+                        <button onClick={() => getUserAllProductForSuggest()} className={styles.search_btn}>
+                          Search
+                        </button>
+                      </div>
+                      <div className={styles.products_max_outer}>
+                        {suggestProductList.length !== 0 ? (
+                          <>
+                            {suggestProductList?.map((product, index) => {
+                              return (
+                                <SuggestProductSearch
+                                  key={index}
+                                  index={index}
+                                  product={product}
+                                  selectProduct={selectProduct}
+                                  setSelectProduct={setSelectProduct}
+                                />
+                              );
+                            })}
+                          </>
+                        ) : (
+                          <p>Search to view product here </p>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                ) : productSelect === "selected" ? (
+                  <>
+                    <div className={styles.selected_outer}>
+                      <h4>Selected Products</h4>
+                      <div className={styles.cat_max_outer}>
+                        {selectedProduct.length !== 0 ? (
+                          <>
+                            {selectedProduct?.map((all_phase, index) => {
+                              // console.log(all_phase);
+                              return (
+                                <div className={styles.cat_outer} key={index}>
+                                  <div className={styles.cat_all}>
+                                    <div className={styles.left}>
+                                      <div>Phase : {all_phase.phase}</div>
+                                      {all_phase.facility_name ? <div>Facility : {all_phase.facility_name}</div> : ""}
+                                    </div>
+                                    {/* <div className={styles.right}>Suggest</div> */}
+                                  </div>
+                                  <div className={styles.selected_products_max_outer}>
+                                    {all_phase.products?.map((productSelected, index) => {
+                                      const product = productSelected.productId;
+                                      return (
+                                        <div className={styles.products_outer} key={index}>
+                                          <div className={styles.top}>
+                                            <div className={styles.left}>
+                                              <div className={styles.product_name}>{product.name}</div>
+                                              <div className={styles.product_category}>
+                                                <span className={styles.product_categoryMain}>Category</span>{" "}
+                                                <span>-</span>
+                                                <span className={styles.product_subcategory}>Subcategory</span>
+                                              </div>
+                                            </div>
+                                            <div className={styles.right}>{/* <div>Remove</div> */}</div>
+                                          </div>
+                                          <img className={styles.image} src="/img/common/ni.jpg" alt="product" />
+                                          <div className={styles.price}>
+                                            <span className={styles.product_mrp}>MRP : ₹{product.mrp}/-</span>
+                                            <span className={styles.product_discount}>
+                                              Discount : {product.discount_rate}%
+                                            </span>
+                                          </div>
+                                          <div className={styles.product_adnl_details}>
+                                            <span className={styles.product_sku}>
+                                              <span className={styles.dim}>SKU :</span> {product.sku}
+                                            </span>
+                                          </div>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </>
+                        ) : (
+                          <p>Please go to "select products" and select any product under any phase </p>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
             ) : (
               ""
             )}

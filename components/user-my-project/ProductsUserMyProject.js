@@ -7,7 +7,7 @@ const ProductsUserMyProject = () => {
 
   async function getProducts() {
     const response = await fetch(
-      `https://ecommnerc-test.onrender.com/product`,
+      `${api_url}/projects/suggestedProducts/${projectId}`,
       {
         method: "GET",
         headers: {

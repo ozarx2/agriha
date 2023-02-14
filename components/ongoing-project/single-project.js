@@ -915,7 +915,7 @@ export default function SingleOngoingProjectsMain() {
                                       <div>Phase : {all_phase.phase}</div>
                                       {all_phase.facility_name ? <div>Facility : {all_phase.facility_name}</div> : ""}
                                     </div>
-                                    <div className={styles.right}>Suggest</div>
+                                    {/* <div className={styles.right}>Suggest</div> */}
                                   </div>
                                   <div className={styles.selected_products_max_outer}>
                                     {all_phase.products?.map((productSelected, index) => {
@@ -931,9 +931,7 @@ export default function SingleOngoingProjectsMain() {
                                                 <span className={styles.product_subcategory}>Subcategory</span>
                                               </div>
                                             </div>
-                                            <div className={styles.right}>
-                                              <div>Remove</div>
-                                            </div>
+                                            <div className={styles.right}>{/* <div>Remove</div> */}</div>
                                           </div>
                                           <img className={styles.image} src="/img/common/ni.jpg" alt="product" />
                                           <div className={styles.price}>

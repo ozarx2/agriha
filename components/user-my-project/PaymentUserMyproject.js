@@ -62,8 +62,10 @@ const PaymentUserMyproject = () => {
             <div className={styles.title_payment_card}>
               <div className={styles.title_payment_card_left}>
                 <p>Billing date - 28 Mar 2022</p>
-                <img src="/img/user-my-project/user.svg" />
-                <h5>Muhammed Hasir</h5>
+                <div className={styles.title_payment_card_left_avatar}>
+                  <img src="/img/user-my-project/user.svg" />
+                  <h5>Muhammed Faisal</h5>
+                </div>
               </div>
               <p>Billing number: #23564879</p>
             </div>
@@ -82,6 +84,10 @@ const PaymentUserMyproject = () => {
                     <p>Payment stage:</p>
                     <p>Stage 01</p>
                   </div>
+                  <div className={styles.main_payment_card_left_row_billingNumber}>
+                    <p>Billing Number:</p>
+                    <p>#23564879</p>
+                  </div>
                 </div>
                 <div className={styles.main_payment_card_right}>
                   <div className={styles.main_payment_card_left_row}>
@@ -92,7 +98,7 @@ const PaymentUserMyproject = () => {
                     <p>Balance:</p>
                     <p>₹19,000,00.00</p>
                   </div>
-                  <div className={styles.main_payment_card_left_row_end}>
+                  <div className={styles.main_payment_card_left_row_end_mobile}>
                     <p>Due date:</p>
                     <p>30 Mar 2021</p>
                   </div>
@@ -114,8 +120,10 @@ const PaymentUserMyproject = () => {
               <div className={styles.title_payment_card}>
                 <div className={styles.title_payment_card_left}>
                   <p>Billing date - 28 Mar 2022</p>
-                  <img src="/img/user-my-project/user.svg" />
-                  <h5>Muhammed Hasir</h5>
+                  <div className={styles.title_payment_card_left_avatar}>
+                    <img src="/img/user-my-project/user.svg" />
+                    <h5>Muhammed Faisal</h5>
+                  </div>
                 </div>
                 <p>Billing number: #23564879</p>
               </div>
@@ -141,58 +149,9 @@ const PaymentUserMyproject = () => {
                         Payment status
                       </p>
                     </div>
-                  </div>
-                  <div className={styles.main_payment_card_right}>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Pay amount:</p>
-                      <h4>₹10,000,00.00</h4>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Balance:</p>
-                      <p>₹19,000,00.00</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Payment platform:</p>
-                      <p>Google pay</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row_end}>
-                      <p>Paid date</p>
-                      <p>30 Mar 2021</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.history_card}>
-              <div className={styles.title_payment_card}>
-                <div className={styles.title_payment_card_left}>
-                  <p>Billing date - 28 Mar 2022</p>
-                  <img src="/img/user-my-project/user.svg" />
-                  <h5>Muhammed Hasir</h5>
-                </div>
-                <p>Billing number: #23564879</p>
-              </div>
-              <div className={styles.main_payment_card}>
-                <div className={styles.main_payment_card_table}>
-                  <div className={styles.main_payment_card_left}>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Total amount:</p>
-                      <p>₹20,000,00.00</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Discount:</p>
-                      <p>0.0</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Payment stage:</p>
-                      <p>Stage 01</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row_end}>
-                      <p>Payment status</p>
-                      <p>
-                        <img src="/img/user-my-project/completed.svg " />
-                        Payment status
-                      </p>
+                    <div className={styles.main_payment_card_left_row_billingNumber}>
+                      <p>Billing Number:</p>
+                      <p>#23564879</p>
                     </div>
                   </div>
                   <div className={styles.main_payment_card_right}>
@@ -208,60 +167,7 @@ const PaymentUserMyproject = () => {
                       <p>Payment platform:</p>
                       <p>Google pay</p>
                     </div>
-                    <div className={styles.main_payment_card_left_row_end}>
-                      <p>Paid date</p>
-                      <p>30 Mar 2021</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.history_card}>
-              <div className={styles.title_payment_card}>
-                <div className={styles.title_payment_card_left}>
-                  <p>Billing date - 28 Mar 2022</p>
-                  <img src="/img/user-my-project/user.svg" />
-                  <h5>Muhammed Hasir</h5>
-                </div>
-                <p>Billing number: #23564879</p>
-              </div>
-              <div className={styles.main_payment_card}>
-                <div className={styles.main_payment_card_table}>
-                  <div className={styles.main_payment_card_left}>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Total amount:</p>
-                      <p>₹20,000,00.00</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Discount:</p>
-                      <p>0.0</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Payment stage:</p>
-                      <p>Stage 01</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row_end}>
-                      <p>Payment status</p>
-                      <p>
-                        <img src="/img/user-my-project/completed.svg " />
-                        Payment status
-                      </p>
-                    </div>
-                  </div>
-                  <div className={styles.main_payment_card_right}>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Pay amount:</p>
-                      <h4>₹10,000,00.00</h4>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Balance:</p>
-                      <p>₹19,000,00.00</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Payment platform:</p>
-                      <p>Google pay</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row_end}>
+                    <div className={styles.main_payment_card_left_row_end_mobile}>
                       <p>Paid date</p>
                       <p>30 Mar 2021</p>
                     </div>

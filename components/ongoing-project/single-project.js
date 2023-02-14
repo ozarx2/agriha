@@ -26,7 +26,7 @@ export default function SingleOngoingProjectsMain() {
   const [projectType, setProjectType] = useState("");
   const [projectTypeDetails, setProjectTypeDetails] = useState([]);
   const [reqList, setReqList] = useState("");
-  const [section, setSection] = useState("Reference");
+  const [section, setSection] = useState("Files");
   const [productSelect, setProductSelect] = useState("select");
 
   /* GET PROJECT DETAILS */
@@ -229,7 +229,7 @@ export default function SingleOngoingProjectsMain() {
     }
   }
   // Payment integration End  //
-
+  console.log(projectDetails);
   return (
     <>
       <div className={styles.main_outer}>
@@ -734,6 +734,7 @@ export default function SingleOngoingProjectsMain() {
                     <div>Total amount : </div>
                     <div>Received amount : </div>
                     <div>Processing amount : </div>
+                    <div>Remaining amount : </div>
                   </div>
 
                   {bankAccounts.length > 0 ? (

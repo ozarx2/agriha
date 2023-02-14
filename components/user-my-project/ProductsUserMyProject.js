@@ -24,12 +24,15 @@ const ProductsUserMyProject = () => {
   }, []);
 
   async function getProducts() {
-    const response = await fetch(`${api_url}/projects/suggestedProducts/${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${api_url}/projects/suggestedProducts/${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     console.log(data);
     setProducts(data.data);
@@ -52,7 +55,10 @@ const ProductsUserMyProject = () => {
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("one")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("one")}
+          >
             <div>Stage 1</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -66,7 +72,10 @@ const ProductsUserMyProject = () => {
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("two")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("two")}
+          >
             <div>Stage 2</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -80,7 +89,10 @@ const ProductsUserMyProject = () => {
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("three")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("three")}
+          >
             <div>Stage 3</div>
           </div>
         )}

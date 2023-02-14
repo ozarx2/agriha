@@ -1,0 +1,359 @@
+.cartPopup_outer {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: #00000080;
+}
+
+.cartPopup_close {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+}
+
+.cartPopup_inner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartPopup_container {
+  width: 100%;
+  max-width: 1370px;
+  height: 671px;
+  background-color: #f4faff;
+  display: flex;
+}
+
+.left_cart {
+  padding-right: 32px;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  border-right: 3px solid #e9e9e9;
+}
+
+.cart_header_left {
+  height: 63px;
+  width: 100%;
+  padding: 17px 23px;
+  display: flex;
+  align-items: center;
+}
+
+.cart_header_left > h5 {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 33.14px;
+  margin-right: 21px;
+}
+
+.cart_header_left > span {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 21.54px;
+  color: #6f6f6f;
+}
+
+.right_cart {
+  width: 25%;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart_header_right {
+  width: 100%;
+  height: 63px;
+  border-bottom: 1px solid #e9e9e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart_header_right > h5 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 29.15px;
+  color: #292929;
+}
+
+.cart_header_right > span {
+  height: 11px;
+  width: 11px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #ffffff;
+  background-color: #cecece;
+  margin-left: 8px;
+}
+
+.cart_card {
+  padding: 18px;
+  display: flex;
+  border-top: 1px solid #e9e9e9;
+}
+
+.cart_card > img {
+  height: 154px;
+  min-width: 187px;
+  object-fit: cover;
+  margin-right: 42px;
+}
+
+.product_details_card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.product_details_card > p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: left;
+  color: #292929;
+}
+
+.product_details_card > span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23px;
+  text-align: left;
+  color: #979797;
+  margin-top: 10px;
+  margin-bottom: 7px;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+}
+
+.offerPrice {
+  color: #000000;
+  font-weight: 500;
+  line-height: 33.5px;
+  font-size: 20.22px;
+}
+
+.originalPrice {
+  color: #bdbdbd;
+  font-size: 17.97px;
+  font-weight: 400;
+  text-decoration: line-through;
+  padding: 0 10px;
+  line-height: 29.78px;
+}
+
+.offerPercentage {
+  color: #21af40;
+  font-size: 15.73px;
+  font-weight: 400;
+  line-height: 26.06px;
+}
+
+.stock_status {
+  color: #438783;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 23px;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.priceContainer_right {
+  display: flex;
+  flex-direction: column;
+  padding: 21px 0;
+  gap: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.row_priceContainer_right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.row_priceContainer_right > p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.row_priceContainer_right > h5 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.greenText {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #21af40;
+}
+
+.subtotal_container {
+  width: 100%;
+  height: 33px;
+  border-radius: 3px;
+  border: 1px solid #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  margin-top: 12px;
+  margin-bottom: 9px;
+}
+
+.subtotal_container > p {
+  color: #ababab;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.subtotal_container > span {
+  color: #21af40;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.confirm_button {
+  height: 43px;
+  width: 100%;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 25px;
+  background-color: #f34c4c;
+  color: #ffffff;
+  margin-bottom: 17px;
+}
+
+.location_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
+  border-bottom: 1px solid#E9E9E9;
+}
+
+.location_top_left {
+  display: flex;
+  align-items: center;
+}
+
+.location_top_left > img {
+  height: 15px;
+  object-fit: contain;
+}
+
+.location_top_left > h5 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 29px;
+  color: #292929;
+  margin-left: 11px;
+}
+
+.editButton {
+  background-color: #e2e2e2;
+  height: 21px;
+  width: 49px;
+  border-radius: 35px;
+  color: #929292;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.location_bottom {
+  display: flex;
+  align-items: flex-start;
+  padding: 17px 0;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.location_bottom > input {
+  margin-top: 03px;
+}
+
+.location_bottom > input[type="checkbox"] {
+  accent-color: #eeeeee;
+}
+
+.location_bottom > p {
+  font-size: 13px;
+  font-weight: 400;
+  color: #939393;
+  margin-left: 10px;
+}
+
+.delivery_address_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6d80b1;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23px;
+  border: 1px solid #e8e8e8;
+  height: 33px;
+  width: 310px;
+  border-radius: 3px;
+  margin-top: 82px;
+  margin-bottom: 13px;
+}
+
+.terms {
+  width: 100%;
+  border-top: 1px solid #eeeeee;
+  padding-top: 19px;
+  display: flex;
+  align-items: center;
+}
+
+.terms > img {
+  height: 20px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+.terms > p {
+  color: #8a8a8a;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+}

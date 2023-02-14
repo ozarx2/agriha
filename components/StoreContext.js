@@ -43,6 +43,7 @@ export const StoreContextProvider = (props) => {
   const [userProjectViewNav, setUserProjectViewNav] = useState("home");
   const [paymentDetailsPopUp, setPaymentDetailsPopUp] = useState(false);
   const [userPaymentPopup, setUserPaymentPopup] = useState("");
+  const [cartOpen, setCartOpen] = useState(false);
   // Store Yaseen end
 
   // Store 61-5a start
@@ -53,7 +54,8 @@ export const StoreContextProvider = (props) => {
   const [bidArchitectSelectPopup, setBidArchitectSelectPopup] = useState("");
   const [displayBidItems, setDisplayBidItems] = useState([]);
   const [displayBidArchitet, setDisplayBidArchitet] = useState([]);
-  const [architectProfileSelectPopup, setArchitectProfileSelectPopup] = useState(false);
+  const [architectProfileSelectPopup, setArchitectProfileSelectPopup] =
+    useState(false);
   const [sharePopup, setSharePopup] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
   const [requestOrBid, setRequestOrBid] = useState("");
@@ -150,6 +152,8 @@ export const StoreContextProvider = (props) => {
     setPaymentDetailsPopUp,
     userPaymentPopup,
     setUserPaymentPopup,
+    cartOpen,
+    setCartOpen,
     // Store Yaseen end
 
     // Store 61-5a start
@@ -194,5 +198,9 @@ export const StoreContextProvider = (props) => {
     // Store SHIJIN end
   };
 
-  return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;
+  return (
+    <StoreContext.Provider value={[Store]}>
+      {props.children}
+    </StoreContext.Provider>
+  );
 };

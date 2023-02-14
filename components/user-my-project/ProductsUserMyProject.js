@@ -6,12 +6,15 @@ const ProductsUserMyProject = () => {
   const [stage, setStage] = useState("two");
 
   async function getProducts() {
-    const response = await fetch(`https://ecommnerc-test.onrender.com/product`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `https://ecommnerc-test.onrender.com/product`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     console.log(data);
     setProducts(data);
@@ -26,14 +29,16 @@ const ProductsUserMyProject = () => {
       <div className={styles.products_container_stage}>
         {stage === "one" ? (
           <div className={styles.stageContainerActive}>
-            {/* <img src="/img/user-my-project/leftBorder.png" alt="" /> */}
             <div>
               Stage 1 <img src="/img/user-my-project/arrowDown.svg" alt="" />
             </div>
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("one")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("one")}
+          >
             <div>Stage 1</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -47,7 +52,10 @@ const ProductsUserMyProject = () => {
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("two")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("two")}
+          >
             <div>Stage 2</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -61,7 +69,10 @@ const ProductsUserMyProject = () => {
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("three")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("three")}
+          >
             <div>Stage 3</div>
           </div>
         )}

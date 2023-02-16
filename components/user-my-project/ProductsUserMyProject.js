@@ -6,33 +6,29 @@ const ProductsUserMyProject = () => {
   const [products, setProducts] = useState([]);
   const [stage, setStage] = useState("two");
 
-  const [projectId, setProjectId] = useState("");
+  const [projectId, setProjectId] = useState("63e0c4f75d7ebfc833af3f4d");
 
-  /* GET Project ID */
-  function getParameters() {
-    let urlString = window.location.href;
-    let paramString = urlString.split("/")[4];
-    let queryString = new URLSearchParams(paramString);
-    for (let pair of queryString.entries()) {
-      setProjectId(pair[0]);
-      console.log(pair[0]);
-    }
-  }
+  // /* GET Project ID */
+  // function getParameters() {
+  //   let urlString = window.location.href;
+  //   let paramString = urlString.split("/")[4];
+  //   let queryString = new URLSearchParams(paramString);
+  //   for (let pair of queryString.entries()) {
+  //     setProjectId(pair[0]);
+  //   }
+  // }
 
-  useEffect(() => {
-    getParameters();
-  }, []);
+  // useEffect(() => {
+  //   getParameters();
+  // }, []);
 
   async function getProducts() {
-    const response = await fetch(
-      `${api_url}/projects/suggestedProducts/${projectId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${api_url}/projects/suggestedProducts/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
     console.log(data);
     setProducts(data.data);
@@ -55,10 +51,7 @@ const ProductsUserMyProject = () => {
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div
-            className={styles.stageContainer}
-            onClick={() => setStage("one")}
-          >
+          <div className={styles.stageContainer} onClick={() => setStage("one")}>
             <div>Stage 1</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -72,10 +65,7 @@ const ProductsUserMyProject = () => {
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div
-            className={styles.stageContainer}
-            onClick={() => setStage("two")}
-          >
+          <div className={styles.stageContainer} onClick={() => setStage("two")}>
             <div>Stage 2</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -89,10 +79,7 @@ const ProductsUserMyProject = () => {
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div
-            className={styles.stageContainer}
-            onClick={() => setStage("three")}
-          >
+          <div className={styles.stageContainer} onClick={() => setStage("three")}>
             <div>Stage 3</div>
           </div>
         )}

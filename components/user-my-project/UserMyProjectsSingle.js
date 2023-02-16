@@ -45,7 +45,7 @@ const UserMyProjectsSingle = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
       setProjectDetails(data?.data);
     }
@@ -59,7 +59,7 @@ const UserMyProjectsSingle = () => {
       },
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     var documentsForProject = data.data?.filter((res) => res.project_id === projectId);
     setDocuments(documentsForProject);
   }

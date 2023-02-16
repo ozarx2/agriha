@@ -202,7 +202,7 @@
 
   .bid_title {
     padding-bottom: 8px;
-    font-size: 14px;
+    font-size: 16px;
   }
   .bid_sub_title {
     display: flex;
@@ -210,10 +210,10 @@
     justify-content: space-between;
   }
   .type {
-    font-size: 10px;
+    font-size: 12px;
   }
   .date {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .details {
@@ -223,7 +223,7 @@
     justify-content: space-between;
   }
   .details > div {
-    font-size: 10px;
+    font-size: 12px;
   }
   .details > div > div:first-child {
     margin-bottom: 5px;
@@ -263,7 +263,7 @@
 
   .bid_title {
     padding-bottom: 8px;
-    font-size: 14px;
+    font-size: 16px;
   }
   .bid_sub_title {
     display: flex;
@@ -271,10 +271,10 @@
     justify-content: space-between;
   }
   .type {
-    font-size: 10px;
+    font-size: 12px;
   }
   .date {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .details {
@@ -284,13 +284,13 @@
     justify-content: space-between;
   }
   .details > div {
-    font-size: 10px;
+    font-size: 12px;
   }
   .details > div > div:first-child {
     margin-bottom: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 13px;
+    max-height: 12px;
   }
   .details > div > div:last-child {
     overflow: hidden;
@@ -308,7 +308,7 @@
     padding: 9px 22px;
     width: auto;
     color: #fff;
-    font-size: 10px;
+    font-size: 12px;
     min-width: 95px;
   }
 
@@ -385,14 +385,14 @@
 
 @media only screen and (min-width: 1100px) {
   .bid_outer {
-    width: calc(25% - 37px);
+    width: calc(33.33% - 37px);
   }
   .desktop {
   }
 }
 @media only screen and (min-width: 1500px) {
   .bid_outer {
-    width: calc(20% - 37px);
+    width: calc(25% - 37px);
   }
 }
 @media only screen and (max-width: 1100px) {

@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import api_url from "../../src/utils/url";
 import { StoreContext } from "../StoreContext";
 import styles from "./PaymentUserMyproject.module.css";
 
@@ -9,6 +10,24 @@ const PaymentUserMyproject = () => {
   const setUserPaymentPopup = Store.setUserPaymentPopup;
 
   const [navActive, setNavActive] = useState("currentPayment");
+
+  const [productId, setProductId] = useState("");
+
+  const [allHistory, setAllHistory] = useState([]);
+
+  /* GET PROJECT ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setProductId(pair[0]);
+    }
+  }
+
+  useEffect(() => {
+    getParameters();
+  }, []);
 
   const historyClick = () => {
     setNavActive("history");
@@ -27,6 +46,24 @@ const PaymentUserMyproject = () => {
     setPaymentDetailsPopUp(true);
     setUserPaymentPopup("paymentConfirm");
   };
+
+  async function getPaymentHistory() {
+    const response = await fetch(`${api_url}/user-payment/getbyproject/${productId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+    setAllHistory(data.data);
+  }
+
+  useEffect(() => {
+    if (productId !== "") {
+      getPaymentHistory();
+    }
+  }, [productId]);
 
   return (
     <div className={styles.paymentContainer_main}>
@@ -116,65 +153,69 @@ const PaymentUserMyproject = () => {
           </div>
         ) : navActive === "history" ? (
           <>
-            <div className={styles.history_card}>
-              <div className={styles.title_payment_card}>
-                <div className={styles.title_payment_card_left}>
-                  <p>Billing date - 28 Mar 2022</p>
-                  <div className={styles.title_payment_card_left_avatar}>
-                    <img src="/img/user-my-project/user.svg" />
-                    <h5>Muhammed Faisal</h5>
+            {allHistory.map((item, index) => {
+              return (
+                <div className={styles.history_card}>
+                  <div className={styles.title_payment_card}>
+                    <div className={styles.title_payment_card_left}>
+                      <p>Billing date - 28 Mar 2022</p>
+                      <div className={styles.title_payment_card_left_avatar}>
+                        <img src="/img/user-my-project/user.svg" />
+                        <h5>Muhammed Faisal</h5>
+                      </div>
+                    </div>
+                    <p>Billing number: #23564879</p>
+                  </div>
+                  <div className={styles.main_payment_card}>
+                    <div className={styles.main_payment_card_table}>
+                      <div className={styles.main_payment_card_left}>
+                        <div className={styles.main_payment_card_left_row}>
+                          <p>Total amount:</p>
+                          <p>₹20,000,00.00</p>
+                        </div>
+                        <div className={styles.main_payment_card_left_row}>
+                          <p>Discount:</p>
+                          <p>0.0</p>
+                        </div>
+                        <div className={styles.main_payment_card_left_row}>
+                          <p>Payment stage:</p>
+                          <p>Stage 01</p>
+                        </div>
+                        <div className={styles.main_payment_card_left_row_end}>
+                          <p>Payment status</p>
+                          <p>
+                            <img src="/img/user-my-project/completed.svg " />
+                            Payment status
+                          </p>
+                        </div>
+                        <div className={styles.main_payment_card_left_row_billingNumber}>
+                          <p>Billing Number:</p>
+                          <p>#23564879</p>
+                        </div>
+                      </div>
+                      <div className={styles.main_payment_card_right}>
+                        <div className={styles.main_payment_card_left_row}>
+                          <p>Pay amount:</p>
+                          <h4>₹10,000,00.00</h4>
+                        </div>
+                        <div className={styles.main_payment_card_left_row}>
+                          <p>Balance:</p>
+                          <p>₹19,000,00.00</p>
+                        </div>
+                        <div className={styles.main_payment_card_left_row}>
+                          <p>Payment platform:</p>
+                          <p>Google pay</p>
+                        </div>
+                        <div className={styles.main_payment_card_left_row_end_mobile}>
+                          <p>Paid date</p>
+                          <p>30 Mar 2021</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <p>Billing number: #23564879</p>
-              </div>
-              <div className={styles.main_payment_card}>
-                <div className={styles.main_payment_card_table}>
-                  <div className={styles.main_payment_card_left}>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Total amount:</p>
-                      <p>₹20,000,00.00</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Discount:</p>
-                      <p>0.0</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Payment stage:</p>
-                      <p>Stage 01</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row_end}>
-                      <p>Payment status</p>
-                      <p>
-                        <img src="/img/user-my-project/completed.svg " />
-                        Payment status
-                      </p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row_billingNumber}>
-                      <p>Billing Number:</p>
-                      <p>#23564879</p>
-                    </div>
-                  </div>
-                  <div className={styles.main_payment_card_right}>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Pay amount:</p>
-                      <h4>₹10,000,00.00</h4>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Balance:</p>
-                      <p>₹19,000,00.00</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row}>
-                      <p>Payment platform:</p>
-                      <p>Google pay</p>
-                    </div>
-                    <div className={styles.main_payment_card_left_row_end_mobile}>
-                      <p>Paid date</p>
-                      <p>30 Mar 2021</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </>
         ) : (
           ""

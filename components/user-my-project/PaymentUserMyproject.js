@@ -1,3 +1,4 @@
+import moment from "moment/moment";
 import { useContext, useEffect, useState } from "react";
 import api_url from "../../src/utils/url";
 import { StoreContext } from "../StoreContext";
@@ -158,13 +159,19 @@ const PaymentUserMyproject = () => {
                 <div className={styles.history_card}>
                   <div className={styles.title_payment_card}>
                     <div className={styles.title_payment_card_left}>
-                      <p>Billing date - 28 Mar 2022</p>
+                      <p>Billing date - {moment(item.createdAt).format("ll")}</p>
                       <div className={styles.title_payment_card_left_avatar}>
-                        <img src="/img/user-my-project/user.svg" />
-                        <h5>Muhammed Faisal</h5>
+                        <img
+                          src={
+                            item.project_id.architect_id.profilepic
+                              ? item.project_id.architect_id.profilepic
+                              : "/img/user-my-project/user.svg"
+                          }
+                        />
+                        <h5>{item.project_id.architect_id.firstname}</h5>
                       </div>
                     </div>
-                    <p>Billing number: #23564879</p>
+                    <p>Billing number: #{item.project_id.project_name}</p>
                   </div>
                   <div className={styles.main_payment_card}>
                     <div className={styles.main_payment_card_table}>
@@ -179,13 +186,13 @@ const PaymentUserMyproject = () => {
                         </div>
                         <div className={styles.main_payment_card_left_row}>
                           <p>Payment stage:</p>
-                          <p>Stage 01</p>
+                          <p>{item.stage}</p>
                         </div>
                         <div className={styles.main_payment_card_left_row_end}>
                           <p>Payment status</p>
                           <p>
-                            <img src="/img/user-my-project/completed.svg " />
-                            Payment status
+                            {/* <img src="/img/user-my-project/completed.svg " /> */}
+                            {item.status}
                           </p>
                         </div>
                         <div className={styles.main_payment_card_left_row_billingNumber}>
@@ -196,7 +203,7 @@ const PaymentUserMyproject = () => {
                       <div className={styles.main_payment_card_right}>
                         <div className={styles.main_payment_card_left_row}>
                           <p>Pay amount:</p>
-                          <h4>₹10,000,00.00</h4>
+                          <h4>₹{item?.amount}</h4>
                         </div>
                         <div className={styles.main_payment_card_left_row}>
                           <p>Balance:</p>
@@ -208,7 +215,7 @@ const PaymentUserMyproject = () => {
                         </div>
                         <div className={styles.main_payment_card_left_row_end_mobile}>
                           <p>Paid date</p>
-                          <p>30 Mar 2021</p>
+                          <p>{moment(item.updatedAt).format("ll")}</p>
                         </div>
                       </div>
                     </div>

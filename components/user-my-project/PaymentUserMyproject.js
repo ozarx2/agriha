@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import api_url from "../../src/utils/url";
 import { StoreContext } from "../StoreContext";
 import styles from "./PaymentUserMyproject.module.css";
 
@@ -27,6 +28,22 @@ const PaymentUserMyproject = () => {
     setPaymentDetailsPopUp(true);
     setUserPaymentPopup("paymentConfirm");
   };
+
+  async function getPaymentHistory() {
+    let userId = localStorage.getItem("userId");
+    const response = await fetch(`${api_url}/product/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getPaymentHistory();
+  }, []);
 
   return (
     <div className={styles.paymentContainer_main}>

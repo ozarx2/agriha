@@ -19,13 +19,14 @@
 .stageContainerActiveTow > div {
   height: 100%;
   background-color: #e0e8ff;
-  width: 150px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
   font-weight: 400;
   color: #0834a3;
+  padding: 0 20px;
 }
 
 .stageContainerActive > img,
@@ -52,13 +53,14 @@
 .stageContainer > div {
   height: 100%;
   background: transparent;
-  width: 170px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
   font-weight: 400;
   color: #0834a3;
+  padding: 0 20px;
 }
 
 .products_container_top {
@@ -101,6 +103,10 @@
   font-weight: 400;
   line-height: 23.2px;
   color: #373737;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .products_card_content > p {
@@ -110,6 +116,10 @@
   font-weight: 400;
   margin-bottom: 7px;
   line-height: 19.88px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .priceContainer {
@@ -140,7 +150,8 @@
   line-height: 23.2px;
 }
 
-.selectButton {
+.selectButton,
+.selectedButton {
   height: 42px;
   width: 100%;
   border-radius: 1px;
@@ -153,12 +164,59 @@
   color: #898989;
   line-height: 23.2px;
   margin-top: 23px;
+  cursor: pointer;
 }
 
 .selectButton:hover {
   background-color: #ffdede;
   color: #f34c4c;
   border: none;
+}
+
+.selectedButton {
+  background-color: #f34c4c;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23.2px;
+}
+
+@media only screen and (max-width: 960px) {
+  .products_container_stage {
+    height: 53px;
+    justify-content: space-between;
+    border-bottom: 1px solid #f3f3f3;
+    overflow-x: scroll;
+  }
+  .products_container_stage::-webkit-scrollbar {
+    display: none;
+  }
+  .stageContainerActive,
+  .stageContainerActiveTow {
+    height: 65%;
+  }
+
+  .stageContainerActive > img,
+  .stageContainerActiveTow > img {
+    display: none;
+  }
+  .stageContainer > img {
+    display: none;
+  }
+  .stageContainerActive > div,
+  .stageContainerActiveTow > div {
+    background-color: transparent;
+    min-width: 225px;
+  }
+  .stageContainerActive > div > img,
+  .stageContainerActiveTow > div > img {
+    display: none;
+  }
+  .stageContainer > div {
+    background: transparent;
+    min-width: 225px;
+    color: #929292;
+  }
 }
 
 @media only screen and (max-width: 860px) {
@@ -184,40 +242,6 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .products_container_stage {
-    height: 53px;
-    justify-content: space-between;
-    border-bottom: 1px solid #f3f3f3;
-  }
-  .stageContainerActive,
-  .stageContainerActiveTow {
-    height: 65%;
-    width: 34%;
-  }
-  .stageContainer {
-    width: 33%;
-  }
-  .stageContainerActive > img,
-  .stageContainerActiveTow > img {
-    display: none;
-  }
-  .stageContainer > img {
-    display: none;
-  }
-  .stageContainerActive > div,
-  .stageContainerActiveTow > div {
-    background-color: transparent;
-    width: 100%;
-  }
-  .stageContainerActive > div > img,
-  .stageContainerActiveTow > div > img {
-    display: none;
-  }
-  .stageContainer > div {
-    background: transparent;
-    width: 100%;
-    color: #929292;
-  }
   .products_container_top {
     padding: 0 20px;
   }
@@ -247,13 +271,14 @@
     margin-bottom: 9px;
   }
   .offerPrice {
-    font-size: 16px;
+    font-size: 15px;
   }
   .originalPrice {
-    font-size: 14px;
+    font-size: 12px;
+    padding: 0 5px;
   }
   .offerPercentage {
-    font-size: 12px;
+    font-size: 9px;
   }
   .selectButton {
     margin-top: 31px;

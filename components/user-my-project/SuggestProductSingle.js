@@ -16,7 +16,7 @@ const SuggestProductSingle = () => {
   const [productId, setProductId] = useState("");
   const [productDetails, setProductDetails] = useState([]);
 
-  /* GET ARCHITECT ID */
+  /* GET PROJECT ID */
   function getParameters() {
     let urlString = window.location.href;
     let paramString = urlString.split("/")[4];

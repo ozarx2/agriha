@@ -8,6 +8,7 @@ import storage from "../../firebase";
 import { useEffect } from "react";
 import { PulseLoader } from "react-spinners";
 import api_url from "../../src/utils/url";
+var randomstring = require("randomstring");
 
 import styles from "./addproject.module.css";
 
@@ -32,7 +33,12 @@ const AddProject = () => {
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/thumb/${img.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(storage, `/files/thumb/${randomString}${img.name}`);
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
@@ -47,7 +53,12 @@ const AddProject = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          setThumb(url);
+          console.log("oldurl", url);
+          const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
+          const substr = us.substring(us.lastIndexOf("."));
+          const replaceurl = url.replace(substr, "_400x400.webp");
+          console.log("newurl", replaceurl);
+          setThumb(replaceurl);
         });
       }
     );
@@ -74,7 +85,12 @@ const AddProject = () => {
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/projects/${img.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(storage, `/files/projects/${randomString}${img.name}`);
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
@@ -89,8 +105,12 @@ const AddProject = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
-          addImages(url);
+          console.log("oldurl", url);
+          const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
+          const substr = us.substring(us.lastIndexOf("."));
+          const replaceurl = url.replace(substr, "_400x400.webp");
+          console.log("newurl", replaceurl);
+          addImages(replaceurl);
         });
       }
     );

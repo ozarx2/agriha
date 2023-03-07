@@ -111,7 +111,11 @@ export default function EditProjectMain() {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          setThumbnail(url);
+          const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
+          const substr = us.substring(us.lastIndexOf("."));
+          const replaceurl = url.replace(substr, "_400x400.webp");
+          console.log("url", replaceurl);
+          setThumbnail(replaceurl);
           setThumbLoading(false);
         });
       }
@@ -154,8 +158,11 @@ export default function EditProjectMain() {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
-          addImages(url);
+          const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
+          const substr = us.substring(us.lastIndexOf("."));
+          const replaceurl = url.replace(substr, "_400x400.webp");
+          console.log("url", replaceurl);
+          addImages(replaceurl);
           setFiles([]);
         });
       }

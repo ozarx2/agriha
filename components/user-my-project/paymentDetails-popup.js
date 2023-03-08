@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import { StoreContext } from "../StoreContext";
+import api_url from "../../src/utils/url";
 
 import styles from "./paymentDetails-popup.module.css";
 
@@ -11,6 +13,28 @@ export default function PaymentDetailsPopup() {
 
   const setPaymentDetailsPopUp = Store.setPaymentDetailsPopUp;
   const userPaymentPopup = Store.userPaymentPopup;
+
+  // const [accountData, setAccountData] = useState([]);
+  // async function getPayment() {
+  //   const token = localStorage.getItem("userToken");
+  //   let userId = localStorage.getItem("userId");
+  //   console.log(userId);
+  //   const response = await fetch(`${api_url}/arc-payment/${userId}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Access-Control-Allow-Origin": "*",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   setAccountData(data.data);
+  //   console.log(data);
+  // }
+  // console.log(accountData);
+  // useEffect(() => {
+  //   getPayment();
+  // }, []);
 
   return (
     <>

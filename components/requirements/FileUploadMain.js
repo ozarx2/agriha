@@ -1,15 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { StoreContext } from "../StoreContext";
+import { PulseLoader } from "react-spinners";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import axios from "axios";
 import api_url from "../../src/utils/url";
-import { PulseLoader } from "react-spinners";
-import Link from "next/link";
-import { useRouter } from "next/router";
+var randomstring = require("randomstring");
 
 import styles from "./RequirementsMain.module.css";
-import { StoreContext } from "../StoreContext";
 
 const FileUploadMain = () => {
   const router = useRouter();
@@ -154,7 +155,12 @@ const FileUploadMain = () => {
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/referanceImages/${img.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(storage, `/files/referanceImages/${randomString}${img.name}`);
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
@@ -169,10 +175,11 @@ const FileUploadMain = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log("oldurl", url);
           const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
           const substr = us.substring(us.lastIndexOf("."));
           const replaceurl = url.replace(substr, "_400x400.webp");
-          console.log("url", replaceurl);
+          console.log("newurl", replaceurl);
           addImages(replaceurl);
         });
       }
@@ -237,7 +244,12 @@ const FileUploadMain = () => {
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/project/thumb/${img.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+    // const storageRef = ref(storage, `/files/project/thumb/${randomString}${img.name}`);
+    const storageRef = ref(storage, `/files/project/${randomString}${img.name}`);
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
@@ -252,10 +264,11 @@ const FileUploadMain = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log("oldurl", url);
           const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
           const substr = us.substring(us.lastIndexOf("."));
           const replaceurl = url.replace(substr, "_400x400.webp");
-          console.log("url", replaceurl);
+          console.log("newurl", replaceurl);
           setThumbnail(replaceurl);
           handleSubmitThumbnail(replaceurl);
         });
@@ -274,8 +287,8 @@ const FileUploadMain = () => {
     router.push(sitePlan);
   };
 
-  console.log(bidArchitectId);
-  console.log(bid);
+  // console.log(bidArchitectId);
+  // console.log(bid);
 
   return (
     <>
@@ -358,6 +371,7 @@ const FileUploadMain = () => {
                           key={index}
                           src={item}
                           alt="refrerance image"
+                          onError={(e) => (e.target.src = item)}
                           onClick={() => {
                             router.push(item);
                           }}
@@ -385,6 +399,8 @@ const FileUploadMain = () => {
                     <img
                       src={thumbnail}
                       alt="thumbanail image"
+                      // onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                      onError={(e) => (e.target.src = thumbnail)}
                       onClick={() => {
                         router.push(thumbnail);
                       }}

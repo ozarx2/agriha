@@ -16,6 +16,7 @@ const SuggestProjectCard = ({ product }) => {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();

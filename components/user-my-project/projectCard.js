@@ -31,6 +31,7 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -45,6 +46,7 @@ const FnProjectCard = ({ index, name, place, budget, area, bid, id, architectId,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();

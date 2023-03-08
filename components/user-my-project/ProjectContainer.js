@@ -13,6 +13,7 @@ const ProjectContainer = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -42,8 +43,8 @@ const ProjectContainer = () => {
           ?.slice(0)
           .reverse()
           .map((item, index) => {
-            return item.architect_id?.firstname ? (
-              <div className={styles.projectCard}>
+            return item.architect_id ? (
+              <div className={styles.projectCard} key={index}>
                 <div className={styles.left_projectCard}>
                   <img
                     onError={(e) => (e.target.src = "/img/user-my-project/no-image.png")}
@@ -81,7 +82,9 @@ const ProjectContainer = () => {
                         }
                         alt=""
                       />
-                      <p onClick={() => goToArchProfile(item.architect_id._id)}>{item.architect_id?.firstname}</p>
+                      <p onClick={() => goToArchProfile(item.architect_id._id)}>
+                        {item.architect_id?.registered_id?.name}
+                      </p>
                       <a onClick={() => goToArchProfile(item.architect_id._id)}>Show architect</a>
                     </div>
                     <div className={styles.showMore_button} onClick={() => gotoProjectDetails(item._id)}>

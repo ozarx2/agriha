@@ -3,12 +3,12 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import api_url from "../../src/utils/url";
-
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
+import { PulseLoader } from "react-spinners";
+var randomstring = require("randomstring");
 
 import styles from "./main.module.css";
-import { PulseLoader } from "react-spinners";
 
 export default function EditProjectMain() {
   const router = useRouter();
@@ -38,6 +38,7 @@ export default function EditProjectMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -67,6 +68,7 @@ export default function EditProjectMain() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
@@ -96,7 +98,12 @@ export default function EditProjectMain() {
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/thumb/${img.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(storage, `/files/thumb/${randomString}${img.name}`);
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
@@ -111,10 +118,11 @@ export default function EditProjectMain() {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log("oldurl", url);
           const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
           const substr = us.substring(us.lastIndexOf("."));
           const replaceurl = url.replace(substr, "_400x400.webp");
-          console.log("url", replaceurl);
+          console.log("newurl", replaceurl);
           setThumbnail(replaceurl);
           setThumbLoading(false);
         });
@@ -143,7 +151,12 @@ export default function EditProjectMain() {
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/projects/${img.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(storage, `/files/projects/${randomString}${img.name}`);
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
@@ -158,10 +171,11 @@ export default function EditProjectMain() {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log("oldurl", url);
           const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
           const substr = us.substring(us.lastIndexOf("."));
           const replaceurl = url.replace(substr, "_400x400.webp");
-          console.log("url", replaceurl);
+          console.log("newurl", replaceurl);
           addImages(replaceurl);
           setFiles([]);
         });
@@ -221,6 +235,7 @@ export default function EditProjectMain() {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
@@ -287,7 +302,7 @@ export default function EditProjectMain() {
                   )}
                   <img
                     src={thumbnail ? thumbnail : "/img/architect-dashboard/noImg.jpeg"}
-                    onError={(e) => (e.target.src = "/img/landing/nophoto.jpg")}
+                    onError={(e) => (e.target.src = thumbnail)}
                     alt="thumbnail"
                   />
                   <input

@@ -10,7 +10,8 @@
 } */
 
 .main_inner {
-  padding-bottom: 100%;
+  /* padding-bottom: 100%; */
+  min-height: 100%;
 }
 .paymentsectionMain {
   font-family: "Inter";
@@ -167,6 +168,19 @@
   transition: all 0.7s ease-out 0s;
   /* margin-right: 10px; */
 }
+.modeInputNotActive {
+  /* background-color: #019071; */
+  border-radius: 5px;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 33px;
+  padding: 15px;
+  color: #fff;
+  transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out 0s;
+}
 .mode {
   margin-left: 10px;
   background-color: #a59191;
@@ -199,7 +213,11 @@
 
 .paymentDetailesMainSec {
   margin: 10px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
 }
 .paymentDetailesMain {
   border: 1px solid #019071;
@@ -227,6 +245,19 @@
 }
 .table_outer .tableDataResult {
   color: #0e0d0d;
+}
+.table_outer button {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #019071;
+  border: 1px solid #019071;
+  border-radius: 4px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
 }
 /* .addBtn {
   text-align: center;

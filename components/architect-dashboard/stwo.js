@@ -23,10 +23,16 @@ export default function FnSTwo() {
           <div className={styles.title}>
             <div>
               Own Projects
-              <span className={styles.dot}>
-                <Image src="/img/architect-dashboard/dot.svg" alt="dot" width={3} height={3} />
-              </span>
-              <span className={styles.number}>{projects?.length}</span>
+              {projects?.length === 0 ? (
+                ""
+              ) : (
+                <>
+                  <span className={styles.dot}>
+                    <Image src="/img/architect-dashboard/dot.svg" alt="dot" width={3} height={3} />
+                  </span>
+                  <span className={styles.number}>{projects?.length}</span>
+                </>
+              )}
             </div>
             <Link href="/my-projects" passHref>
               <div>View all</div>

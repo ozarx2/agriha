@@ -66,6 +66,7 @@ const FnArchProfiles = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
           // Authorization: `Bearer ${token}`,
           Authorization: `Bearer ${dummy_token}`,
         },
@@ -85,6 +86,7 @@ const FnArchProfiles = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${dummy_token}`,
       },
     });

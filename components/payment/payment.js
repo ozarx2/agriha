@@ -49,6 +49,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
@@ -59,6 +60,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
           }),
         });
         const data = await res.json();
+        router.reload();
         console.log(data);
       }
       setOnlineDetails({
@@ -78,6 +80,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
@@ -88,6 +91,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
           }),
         });
         const data = await res.json();
+        router.reload();
         console.log(data);
       }
       setAccountDetails({
@@ -109,6 +113,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });

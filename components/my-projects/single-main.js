@@ -71,6 +71,7 @@ export default function SingleProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -95,6 +96,7 @@ export default function SingleProjectsMain() {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });

@@ -57,6 +57,7 @@ export default function AgrihaMyPublicBidMainSingle() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();
@@ -79,6 +80,7 @@ export default function AgrihaMyPublicBidMainSingle() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();

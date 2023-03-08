@@ -37,6 +37,7 @@ export default function SingleOngoingProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -66,6 +67,7 @@ export default function SingleOngoingProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await res.json();
@@ -81,6 +83,7 @@ export default function SingleOngoingProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await res.json();
@@ -152,6 +155,7 @@ export default function SingleOngoingProjectsMain() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         project_id: projectId,
@@ -181,6 +185,7 @@ export default function SingleOngoingProjectsMain() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         project_id: projectId,
@@ -199,6 +204,7 @@ export default function SingleOngoingProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await res.json();
@@ -220,6 +226,7 @@ export default function SingleOngoingProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -245,6 +252,7 @@ export default function SingleOngoingProjectsMain() {
   //     method: "GET",
   //     headers: {
   //       "Content-Type": "application/json",
+  //   "Access-Control-Allow-Origin": "*",
   //     },
   //   });
   //   const data = await res.json();

@@ -32,6 +32,7 @@ const Request = ({ name, avatar, type, id, setPage, item }) => {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({

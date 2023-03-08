@@ -44,6 +44,7 @@ export default function DataPopup({ setIsQuoted }) {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
@@ -72,6 +73,7 @@ export default function DataPopup({ setIsQuoted }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
           project_id: projectId,
@@ -101,6 +103,7 @@ export default function DataPopup({ setIsQuoted }) {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({

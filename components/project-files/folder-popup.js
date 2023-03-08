@@ -47,6 +47,7 @@ export default function FolderPopup() {
   //     method: "GET",
   //     headers: {
   //       "Content-Type": "application/json",
+  //   "Access-Control-Allow-Origin": "*",
   //     },
   //   });
   //   const data = await response.json();
@@ -58,6 +59,7 @@ export default function FolderPopup() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();
@@ -146,6 +148,7 @@ export default function FolderPopup() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
           title: titleFileUpload,
@@ -173,6 +176,7 @@ export default function FolderPopup() {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
           filesId: id,

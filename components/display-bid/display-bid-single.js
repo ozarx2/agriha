@@ -24,6 +24,7 @@ export default function AgrihaDisplayBidSingle({ i, items }) {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         architect_id: archid,

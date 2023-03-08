@@ -33,6 +33,7 @@ export default function SinglePaymentProjectMain() {
         body: JSON.stringify(paymentDetails),
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       });
       const data = await response.json();

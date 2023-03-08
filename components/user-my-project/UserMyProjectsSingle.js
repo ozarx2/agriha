@@ -41,6 +41,7 @@ const UserMyProjectsSingle = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -56,6 +57,7 @@ const UserMyProjectsSingle = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();

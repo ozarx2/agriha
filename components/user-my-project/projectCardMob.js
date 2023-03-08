@@ -123,6 +123,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -138,6 +139,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();
@@ -155,6 +157,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();

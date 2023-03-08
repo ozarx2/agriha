@@ -29,6 +29,7 @@ const RequestMobile = ({ name, avatar, type, id, item, setPage }) => {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({

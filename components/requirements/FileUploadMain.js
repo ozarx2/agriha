@@ -104,9 +104,12 @@ const FileUploadMain = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
-          setSitePlan(url);
-          handleSubmitSiteplan(url);
+          const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
+          const substr = us.substring(us.lastIndexOf("."));
+          const replaceurl = url.replace(substr, "_400x400.webp");
+          console.log("url", replaceurl);
+          setSitePlan(replaceurl);
+          handleSubmitSiteplan(replaceurl);
         });
       }
     );

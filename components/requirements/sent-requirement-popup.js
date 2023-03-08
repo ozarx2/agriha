@@ -73,7 +73,7 @@ const ArchitectSelectPopupContent = (architect) => {
 
   const sentRequirement = () => {
     if (bid) {
-      router.push("/my-bid");
+      router.push("/user-my-project");
     } else {
       router.push("/user-my-project");
     }
@@ -88,17 +88,12 @@ const ArchitectSelectPopupContent = (architect) => {
           <div className={styles.content}>
             <div className={styles.name}>Successfully created your Project</div>
             <br />
-            {bid ? (
-              <div className={styles.msg}>
-                Shared your requirements to all architects.
-                <br />
-              </div>
-            ) : (
-              <div className={styles.msg}>
-                Shared your requirements to <span style={{ color: "#642dda" }}>{architect?.registered_id?.name}</span>
-                <br />
-              </div>
-            )}
+            <div className={styles.msg}>
+              Your requirements are successfully shared. Please find futher details in 'Myprojects' tab. The architect
+              may reply with quotes, you can accept the suitable quote then the project files, payment details etc will
+              be shared with in 'Myprojects' tab itself
+              <br />
+            </div>
           </div>
         </div>
         <div className={styles.line}></div>

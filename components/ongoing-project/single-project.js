@@ -215,14 +215,12 @@ export default function SingleOngoingProjectsMain() {
 
   console.log(selectedProduct);
 
-  // Shijin  Payment integration  //
   const [accountData, setAccountData] = useState([]);
-
   async function getPayment() {
     const token = localStorage.getItem("architectId");
     let architectId = localStorage.getItem("architectId");
     console.log(architectId);
-    const response = await fetch(`${api_url}/arc-payment/${architectId}`, {
+    const response = await fetch(`${api_url}/arc-payment/arcpaymentdetails/${architectId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -234,34 +232,11 @@ export default function SingleOngoingProjectsMain() {
     setAccountData(data.data);
     console.log(data);
   }
-
   console.log(accountData);
-
   useEffect(() => {
     getPayment();
   }, []);
 
-  // const [bankAccounts, setBankAccounts] = useState([]);
-  // useEffect(() => {
-  //   IsBankAccountCreated();
-  // }, []);
-
-  // async function IsBankAccountCreated() {
-  //   const architectid = await localStorage.getItem("architectId");
-  //   const res = await fetch(`${api_url}/arc-payment/arcpaymentdetails/63cfb46e4e4aa08393a23368`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //   "Access-Control-Allow-Origin": "*",
-  //     },
-  //   });
-  //   const data = await res.json();
-  //   if (data.status === 200) {
-  //     // console.log(data);
-  //     setBankAccounts(data.data);
-  //   }
-  // }
-  // Payment integration End  //
   console.log(projectDetails);
   return (
     <>
@@ -777,10 +752,6 @@ export default function SingleOngoingProjectsMain() {
                     </button>
                   ) : (
                     <>
-                      {/* <button className={styles.btn} id={styles.disableBtn}>
-                        <img src="/img/architect-dashboard/add.svg" alt="" />
-                        Add payment
-                      </button> */}
                       <button className={styles.btn} onClick={() => router.push(`/payment/${architectId}`)}>
                         <img src="/img/architect-dashboard/add.svg" alt="" />
                         Add Bank Account

@@ -246,6 +246,19 @@
 .table_outer .tableDataResult {
   color: #0e0d0d;
 }
+.table_outer button {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 148.19%;
+  color: #019071;
+  border: 1px solid #019071;
+  border-radius: 4px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
 /* .addBtn {
   text-align: center;
   background-color: #019071;

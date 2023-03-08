@@ -158,6 +158,7 @@ export default function Navbar() {
   }
 
   useEffect(() => {
+    console.log(architectId);
     if (architectId !== "") {
       getArchitect();
       getProjects();

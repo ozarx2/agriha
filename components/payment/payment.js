@@ -103,6 +103,22 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
     }
   };
 
+  async function deletePaymentDetails(id) {
+    console.log(id);
+    const token = localStorage.getItem("architectId");
+    const response = await fetch(`${api_url}/arc-payment/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+    router.reload();
+  }
+
   const [accountData, setAccountData] = useState([]);
 
   async function getPayment() {
@@ -309,6 +325,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
           <div className={styles.paymentDetailesMainSec}>
             {/* <div>Transaction mode details</div> */}
             {accountData?.map((datas, index) => {
+              console.log(datas);
               return (
                 <div key={index} className={styles.paymentDetailesMain}>
                   {datas?.mode_of_payment === "online" ? (
@@ -344,6 +361,11 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                           : <img className={styles.qrimages} src={datas?.details[0]?.qr_code} alt="qr.jpg" />
                         </td>
                       </tr> */}
+                        <tr>
+                          <td colspan="2">
+                            <button onClick={() => deletePaymentDetails(datas?._id)}>Delete</button>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   ) : (
@@ -375,6 +397,11 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                           : <img className={styles.qrimages} src={datas?.details[0]?.qr_code} alt="qr.jpg" />
                         </td>
                       </tr> */}
+                        <tr>
+                          <td colspan="2">
+                            <button onClick={() => deletePaymentDetails(datas?._id)}>Delete</button>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   )}

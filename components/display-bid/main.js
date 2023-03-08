@@ -47,6 +47,7 @@ export default function AgrihaDisplayBidMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();

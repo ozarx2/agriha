@@ -77,6 +77,7 @@ export async function getServerSideProps(context) {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
     },
   });
 

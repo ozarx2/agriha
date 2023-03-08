@@ -25,6 +25,7 @@ export default function Accordion({ folder_name, children, paymentStatus, date, 
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       });
       const data = await res.json();
@@ -91,6 +92,7 @@ export default function Accordion({ folder_name, children, paymentStatus, date, 
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
           filename: filenameUpload,

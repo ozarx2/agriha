@@ -23,6 +23,7 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
@@ -62,7 +63,11 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          projectImages.push(url);
+          const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
+          const substr = us.substring(us.lastIndexOf("."));
+          const replaceurl = url.replace(substr, "_400x400.webp");
+          console.log("url", replaceurl);
+          projectImages.push(replaceurl);
           setTimeout(() => {
             handleSubmit();
           }, 1000);

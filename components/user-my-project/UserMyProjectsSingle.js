@@ -41,6 +41,7 @@ const UserMyProjectsSingle = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -56,6 +57,7 @@ const UserMyProjectsSingle = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();
@@ -93,11 +95,11 @@ const UserMyProjectsSingle = () => {
                 ) : (
                   <li onClick={() => setUserProjectViewNav("product")}>Sugg. Product</li>
                 )}
-                {/* {userProjectViewNav === "payment" ? (
+                {userProjectViewNav === "payment" ? (
                   <li className={styles.activeNav}>Payment details</li>
                 ) : (
                   <li onClick={() => setUserProjectViewNav("payment")}>Payment details</li>
-                )} */}
+                )}
               </ul>
             </div>
           </div>

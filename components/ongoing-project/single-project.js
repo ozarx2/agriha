@@ -13,6 +13,7 @@ export default function SingleOngoingProjectsMain() {
   const [Store] = useContext(StoreContext);
 
   const setBidUserId = Store.setBidUserId;
+  const architectId = Store.architectId;
 
   // shijin
   const setPaymentPopup = Store.setPaymentPopup;
@@ -36,6 +37,7 @@ export default function SingleOngoingProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -65,6 +67,7 @@ export default function SingleOngoingProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await res.json();
@@ -80,6 +83,7 @@ export default function SingleOngoingProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await res.json();
@@ -151,6 +155,7 @@ export default function SingleOngoingProjectsMain() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         project_id: projectId,
@@ -180,6 +185,7 @@ export default function SingleOngoingProjectsMain() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         project_id: projectId,
@@ -198,6 +204,7 @@ export default function SingleOngoingProjectsMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await res.json();
@@ -208,27 +215,28 @@ export default function SingleOngoingProjectsMain() {
 
   console.log(selectedProduct);
 
-  // Shijin  Payment integration  //
-  const [bankAccounts, setBankAccounts] = useState([]);
-  useEffect(() => {
-    IsBankAccountCreated();
-  }, []);
-
-  async function IsBankAccountCreated() {
-    const architectid = await localStorage.getItem("architectId");
-    const res = await fetch(`${api_url}/arc-payment/arcpaymentdetails/63cfb46e4e4aa08393a23368`, {
+  const [accountData, setAccountData] = useState([]);
+  async function getPayment() {
+    const token = localStorage.getItem("architectId");
+    let architectId = localStorage.getItem("architectId");
+    console.log(architectId);
+    const response = await fetch(`${api_url}/arc-payment/arcpaymentdetails/${architectId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${token}`,
       },
     });
-    const data = await res.json();
-    if (data.status === 200) {
-      // console.log(data);
-      setBankAccounts(data.data);
-    }
+    const data = await response.json();
+    setAccountData(data.data);
+    console.log(data);
   }
-  // Payment integration End  //
+  console.log(accountData);
+  useEffect(() => {
+    getPayment();
+  }, []);
+
   console.log(projectDetails);
   return (
     <>
@@ -737,16 +745,16 @@ export default function SingleOngoingProjectsMain() {
                     <div>Remaining amount : </div>
                   </div>
 
-                  {bankAccounts.length > 0 ? (
+                  {accountData.length > 0 ? (
                     <button className={styles.btn} onClick={() => setPaymentPopup(true)}>
                       <img src="/img/architect-dashboard/add.svg" alt="" />
                       Add payment
                     </button>
                   ) : (
                     <>
-                      <button className={styles.btn} id={styles.disableBtn}>
+                      <button className={styles.btn} onClick={() => router.push(`/payment/${architectId}`)}>
                         <img src="/img/architect-dashboard/add.svg" alt="" />
-                        Add payment
+                        Add Bank Account
                       </button>
                     </>
                   )}

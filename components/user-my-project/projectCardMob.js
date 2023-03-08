@@ -79,7 +79,11 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          addImages(url);
+          const us = url.split("/files")[1].split("?")[0].split("%2F")[2];
+          const substr = us.substring(us.lastIndexOf("."));
+          const replaceurl = url.replace(substr, "_400x400.webp");
+          console.log("url", replaceurl);
+          addImages(replaceurl);
         });
       }
     );
@@ -123,6 +127,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -138,6 +143,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();
@@ -155,6 +161,7 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const data = await response.json();

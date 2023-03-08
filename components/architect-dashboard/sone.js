@@ -115,7 +115,7 @@ export default function FnSOne() {
                       </div>
                       <div className={styles.right}>
                         <div className={styles.title}>Ongoing</div>
-                        <div className={styles.count}>{ongoing?.length}</div>
+                        <div className={styles.count}>{ongoing?.length === 0 ? "" : ongoing?.length}</div>
                       </div>
                     </div>
                   </Link>
@@ -125,7 +125,7 @@ export default function FnSOne() {
                     </div>
                     <div className={styles.right}>
                       <div className={styles.title}>Request</div>
-                      <div className={styles.count}>{queue?.length}</div>
+                      <div className={styles.count}>{queue?.length === 0 ? "" : queue?.length}</div>
                     </div>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export default function FnSOne() {
                   </div>
                   <div className={styles.right}>
                     <div className={styles.title}>Ongoing</div>
-                    <div className={styles.count}>{ongoing?.length}</div>
+                    <div className={styles.count}>{ongoing?.length === 0 ? "" : ongoing?.length}</div>
                   </div>
                 </div>
               </Link>
@@ -173,7 +173,7 @@ export default function FnSOne() {
                 </div>
                 <div className={styles.right}>
                   <div className={styles.title}>Request</div>
-                  <div className={styles.count}>{queue?.length}</div>
+                  <div className={styles.count}>{queue?.length === 0 ? "" : queue?.length}</div>
                 </div>
               </div>
             </div>

@@ -30,7 +30,6 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
   const handleInput = (e) => {
     if (onlineOrAccount === "online") {
       setOnlineDetails({ ...onlineDetails, [e.target.name]: e.target.value });
-      setOnlineDetails;
     } else {
       setAccountDetails({ ...accountDetails, [e.target.name]: e.target.value });
     }
@@ -38,31 +37,66 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
 
   const payment = async () => {
     console.log("payment");
-    let details;
-    if (onlineOrAccount === "online") {
-      details = onlineDetails;
-    } else {
-      details = accountDetails;
-    }
+
     const token = localStorage.getItem("architectId");
     let architectId = localStorage.getItem("architectId");
     console.log(architectId);
-
-    const res = await fetch(`${api_url}/arc-payment`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        architect_id: architectId,
-        mode_of_payment: onlineOrAccount,
-        type_of_transaction: transaction,
-        details: [details],
-      }),
-    });
-    const data = await res.json();
-    console.log(data);
+    let details;
+    if (onlineOrAccount === "online") {
+      details = onlineDetails;
+      if (onlineDetails.upi_id !== "" && onlineDetails.upi_number !== "") {
+        const res = await fetch(`${api_url}/arc-payment`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            architect_id: architectId,
+            mode_of_payment: onlineOrAccount,
+            type_of_transaction: transaction,
+            details: [details],
+          }),
+        });
+        const data = await res.json();
+        console.log(data);
+      }
+      setOnlineDetails({
+        upi_id: "",
+        upi_number: "",
+        qr_code: "",
+      });
+    } else {
+      details = accountDetails;
+      if (
+        accountDetails.account_number !== "" &&
+        accountDetails.holder_name !== "" &&
+        accountDetails.ifsc_code !== "" &&
+        accountDetails.branch_name !== ""
+      ) {
+        const res = await fetch(`${api_url}/arc-payment`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            architect_id: architectId,
+            mode_of_payment: onlineOrAccount,
+            type_of_transaction: transaction,
+            details: [details],
+          }),
+        });
+        const data = await res.json();
+        console.log(data);
+      }
+      setAccountDetails({
+        account_number: "",
+        holder_name: "",
+        ifsc_code: "",
+        branch_name: "",
+      });
+    }
   };
 
   const [accountData, setAccountData] = useState([]);
@@ -96,7 +130,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
             <div className={styles.mode}>
               <div
                 onClick={() => setOnlineOrAccount("online")}
-                className={onlineOrAccount === "online" ? styles.modeInputActive : ""}
+                className={onlineOrAccount === "online" ? styles.modeInputActive : styles.modeInputNotActive}
               >
                 Online transfer
               </div>
@@ -104,7 +138,7 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
             <div className={styles.mode}>
               <div
                 onClick={() => setOnlineOrAccount("account")}
-                className={onlineOrAccount === "account" ? styles.modeInputActive : ""}
+                className={onlineOrAccount === "account" ? styles.modeInputActive : styles.modeInputNotActive}
               >
                 Account transfer
               </div>
@@ -283,14 +317,22 @@ export default function SinglePaymentMain({ isQuoted, setIsQuoted }) {
                           <td>Type of transaction</td>
                           <td className={styles.tableDataResult}>: {datas?.type_of_transaction}</td>
                         </tr>
-                        <tr>
-                          <td>UPI number</td>
-                          <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_number}</td>
-                        </tr>
-                        <tr>
-                          <td>UPI id</td>
-                          <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_id}</td>
-                        </tr>
+                        {datas?.details[0]?.upi_number ? (
+                          <tr>
+                            <td>UPI number</td>
+                            <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_number}</td>
+                          </tr>
+                        ) : (
+                          ""
+                        )}
+                        {datas?.details[0]?.upi_id ? (
+                          <tr>
+                            <td>UPI id</td>
+                            <td className={styles.tableDataResult}>: {datas?.details[0]?.upi_id}</td>
+                          </tr>
+                        ) : (
+                          ""
+                        )}
                         {/* <tr>
                         <td>QR code</td>
                         <td className={styles.tableDataResult}>

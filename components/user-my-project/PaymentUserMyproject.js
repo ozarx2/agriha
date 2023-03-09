@@ -112,10 +112,16 @@ const PaymentUserMyproject = () => {
                 <div className={styles.payment_card} key={index}>
                   <div className={styles.title_payment_card}>
                     <div className={styles.title_payment_card_left}>
-                      <p>Billing date - 28 Mar 2022</p>
+                      <p>Billing date - {moment(item.createdAt).format("ll")}</p>
                       <div className={styles.title_payment_card_left_avatar}>
-                        <img src="/img/user-my-project/user.svg" />
-                        <h5>Muhammed Faisal</h5>
+                        <img
+                          src={
+                            item.project_id.architect_id.profilepic
+                              ? item.project_id.architect_id.profilepic
+                              : "/img/user-my-project/user.svg"
+                          }
+                        />
+                        <h5>{item.project_id.architect_id.firstname}</h5>
                       </div>
                     </div>
                     <p>Billing number: #23564879</p>

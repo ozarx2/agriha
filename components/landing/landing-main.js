@@ -95,7 +95,7 @@ export default function AgrihaLandingMain() {
         },
       });
       const data = await response.json();
-      if (data.data.length > 0) {
+      if (data.data?.length > 0) {
         setLoadingAjax(false);
         const withArchitect = data.data?.filter((res) => res?.architect_id);
         setProjectResponse([...projectResponse, ...withArchitect]);

@@ -80,21 +80,22 @@ const UserMyProjectsSingle = () => {
           <div className={styles.container_header}>
             <div className={styles.container_header_nav}>
               <ul>
-                {userProjectViewNav === "home" ? (
-                  <li className={styles.activeNav}>Home</li>
+                {userProjectViewNav === "product" ? (
+                  <li className={styles.activeNav}>Sugg. Product</li>
                 ) : (
-                  <li onClick={() => setUserProjectViewNav("home")}>Home</li>
+                  <li onClick={() => setUserProjectViewNav("product")}>Sugg. Product</li>
+                )}
+                {userProjectViewNav === "home" ? (
+                  <li className={styles.activeNav}>Details</li>
+                ) : (
+                  <li onClick={() => setUserProjectViewNav("home")}>Details</li>
                 )}
                 {userProjectViewNav === "files" ? (
                   <li className={styles.activeNav}>My files</li>
                 ) : (
                   <li onClick={() => setUserProjectViewNav("files")}>My files</li>
                 )}
-                {userProjectViewNav === "product" ? (
-                  <li className={styles.activeNav}>Sugg. Product</li>
-                ) : (
-                  <li onClick={() => setUserProjectViewNav("product")}>Sugg. Product</li>
-                )}
+
                 {userProjectViewNav === "payment" ? (
                   <li className={styles.activeNav}>Payment details</li>
                 ) : (

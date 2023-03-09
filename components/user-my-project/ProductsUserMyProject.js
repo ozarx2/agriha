@@ -11,23 +11,23 @@ const ProductsUserMyProject = () => {
   const [products, setProducts] = useState([]);
   const [stage, setStage] = useState("one");
 
-  const [projectId, setProjectId] = useState("63e0c4f75d7ebfc833af3f4d");
+  const [projectId, setProjectId] = useState("");
 
   const [filteredItem, setFilteredItem] = useState([]);
 
-  // /* GET Project ID */
-  // function getParameters() {
-  //   let urlString = window.location.href;
-  //   let paramString = urlString.split("/")[4];
-  //   let queryString = new URLSearchParams(paramString);
-  //   for (let pair of queryString.entries()) {
-  //     setProjectId(pair[0]);
-  //   }
-  // }
+  /* GET Project ID */
+  function getParameters() {
+    let urlString = window.location.href;
+    let paramString = urlString.split("/")[4];
+    let queryString = new URLSearchParams(paramString);
+    for (let pair of queryString.entries()) {
+      setProjectId(pair[0]);
+    }
+  }
 
-  // useEffect(() => {
-  //   getParameters();
-  // }, []);
+  useEffect(() => {
+    getParameters();
+  }, []);
 
   useEffect(() => {
     if (products.length !== 0) {
@@ -71,6 +71,7 @@ const ProductsUserMyProject = () => {
 
   useEffect(() => {
     console.log("changed");
+    console.log(projectId);
     if (projectId !== "") {
       getProducts();
     }

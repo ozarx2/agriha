@@ -39,19 +39,19 @@ const ProductsUserMyProject = () => {
 
       if (stage === "one") {
         setFilteredItem(structural);
-        console.log(structural);
+        // console.log(structural);
       } else if (stage === "two") {
         setFilteredItem(interior);
-        console.log(interior);
+        // console.log(interior);
       } else if (stage === "three") {
         setFilteredItem(exterior);
-        console.log(exterior);
+        // console.log(exterior);
       } else if (stage === "four") {
         setFilteredItem(landscaping);
-        console.log(landscaping);
+        // console.log(landscaping);
       } else if (stage === "five") {
         setFilteredItem(security);
-        console.log(security);
+        // console.log(security);
       }
     }
   }, [products, stage]);

@@ -121,10 +121,10 @@ const PaymentUserMyproject = () => {
                               : "/img/user-my-project/user.svg"
                           }
                         />
-                        <h5>{item.project_id.architect_id.firstname}</h5>
+                        <h5>{item.project_id.architect_id.registered_id.name}</h5>
                       </div>
                     </div>
-                    <p>Billing number: #23564879</p>
+                    <p>Billing number: #{item.project_id.project_name}</p>
                   </div>
                   <div className={styles.main_payment_card}>
                     <div className={styles.main_payment_card_table}>
@@ -139,11 +139,7 @@ const PaymentUserMyproject = () => {
                         </div>
                         <div className={styles.main_payment_card_left_row_end}>
                           <p>Payment stage:</p>
-                          <p>Stage 01</p>
-                        </div>
-                        <div className={styles.main_payment_card_left_row_billingNumber}>
-                          <p>Billing Number:</p>
-                          <p>#23564879</p>
+                          <p>{item.stage}</p>
                         </div>
                       </div>
                       <div className={styles.main_payment_card_right}>
@@ -190,7 +186,7 @@ const PaymentUserMyproject = () => {
                               : "/img/user-my-project/user.svg"
                           }
                         />
-                        <h5>{item.project_id.architect_id.firstname}</h5>
+                        <h5>{item.project_id.architect_id.registered_id.name}</h5>
                       </div>
                     </div>
                     <p>Billing number: #{item.project_id.project_name}</p>

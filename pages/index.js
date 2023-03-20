@@ -31,6 +31,7 @@ export default function AgrihaLanding() {
       <Head>
         <title>Arclif - Agriha Services</title>
         <meta name="description" content="Arclif - Agriha Services" />
+        <meta name="google-site-verification" content="k6V7Y2_tjT8-diSdh9sfyxGjxqF9V8WWLjQULB909p0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>

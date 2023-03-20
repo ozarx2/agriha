@@ -231,7 +231,7 @@
   cursor: pointer;
 }
 
-.n_one .btns div {
+.n_one .btns span {
   padding: 5px 15px;
   color: #019071;
   font-size: 16px;
@@ -242,7 +242,7 @@
   justify-content: center;
   cursor: pointer;
 }
-.n_one .btns div:not(:last-child) {
+.n_one .btns span:not(:last-child) {
   margin-right: 15px;
 }
 
@@ -251,7 +251,7 @@
   align-items: center;
   margin: 15px 0;
 }
-.n_one .btns div.active {
+.n_one .btns span.active {
   font-weight: 600;
   color: #000000;
   border-bottom: 2px solid #000000;
@@ -730,6 +730,21 @@
   }
   .resultTextContainerList {
     width: 42vw;
+  }
+  .n_thumbnail {
+    flex-direction: column;
+  }
+  .n_one .btns {
+    overflow-x: scroll;
+  }
+  .n_one .btns::-webkit-scrollbar {
+    display: none;
+  }
+  .n_one .btns span {
+    padding: 5px 7px;
+  }
+  .n_one .btns span:not(:last-child) {
+    margin-right: 7px;
   }
 }
 

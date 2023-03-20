@@ -5,19 +5,15 @@ import { StoreContext } from "../StoreContext";
 import Link from "next/link";
 import api_url from "../../src/utils/url";
 import FolderPopup from "../project-files/folder-popup";
+import SuggestProductSearch from "./suggestProductSearch";
 
 import styles from "./single-main.module.css";
-import SuggestProductSearch from "./suggestProductSearch";
 
 export default function SingleOngoingProjectsMain() {
   const [Store] = useContext(StoreContext);
-
   const setBidUserId = Store.setBidUserId;
   const architectId = Store.architectId;
-
-  // shijin
   const setPaymentPopup = Store.setPaymentPopup;
-  // End  shijin
 
   const router = useRouter();
   const { id } = router.query;
@@ -274,18 +270,18 @@ export default function SingleOngoingProjectsMain() {
             </div>
             <div className={styles.n_one}>
               <div className={styles.btns}>
-                <div onClick={() => setSection("Reference")} className={section === "Reference" ? styles.active : ""}>
+                <span onClick={() => setSection("Reference")} className={section === "Reference" ? styles.active : ""}>
                   Reference
-                </div>
-                <div onClick={() => setSection("Files")} className={section === "Files" ? styles.active : ""}>
+                </span>
+                <span onClick={() => setSection("Files")} className={section === "Files" ? styles.active : ""}>
                   Files
-                </div>
-                <div onClick={() => setSection("Payments")} className={section === "Payments" ? styles.active : ""}>
+                </span>
+                <span onClick={() => setSection("Payments")} className={section === "Payments" ? styles.active : ""}>
                   Payments
-                </div>
-                <div onClick={() => setSection("Products")} className={section === "Products" ? styles.active : ""}>
+                </span>
+                <span onClick={() => setSection("Products")} className={section === "Products" ? styles.active : ""}>
                   Products
-                </div>
+                </span>
               </div>
             </div>
 
@@ -799,18 +795,18 @@ export default function SingleOngoingProjectsMain() {
               <div className={styles.products_all_outer}>
                 <div className={styles.n_one}>
                   <div className={styles.btns}>
-                    <div
+                    <span
                       onClick={() => setProductSelect("select")}
                       className={productSelect === "select" ? styles.active : ""}
                     >
                       Select Products
-                    </div>
-                    <div
+                    </span>
+                    <span
                       onClick={() => setProductSelect("selected")}
                       className={productSelect === "selected" ? styles.active : ""}
                     >
                       Selected Products
-                    </div>
+                    </span>
                   </div>
                 </div>
 

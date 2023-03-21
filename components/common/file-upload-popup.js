@@ -4,9 +4,10 @@ import { StoreContext } from "../../components/StoreContext";
 import endpoint from "../../src/utils/endpoint";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
+import { PulseLoader } from "react-spinners";
+var randomstring = require("randomstring");
 
 import styles from "./file-upload-popup.module.css";
-import { PulseLoader } from "react-spinners";
 
 export default function FileUploadPopup() {
   const [Store] = useContext(StoreContext);
@@ -25,7 +26,10 @@ export default function FileUploadPopup() {
 
   const addFiles = (file, filename) => {
     setFiles((files) => [...files, file]);
-    setUploadedDocuments((uploadedDocuments) => [...uploadedDocuments, { filename: filename, url: file }]);
+    setUploadedDocuments((uploadedDocuments) => [
+      ...uploadedDocuments,
+      { filename: filename, url: file },
+    ]);
   };
 
   /* UPLOAD DOCUMENTS */
@@ -39,13 +43,23 @@ export default function FileUploadPopup() {
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/projectfiles/${pdf.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(
+      storage,
+      `/files/projectfiles/${randomString}${pdf.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, pdf);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercent(percent);
@@ -73,7 +87,11 @@ export default function FileUploadPopup() {
   /* UPLOAD FILES API*/
   async function uploadFiles() {
     setIsLoading(true);
-    if (titleFileUpload !== "" && uploadedDocuments !== [] && fileUploadId !== "") {
+    if (
+      titleFileUpload !== "" &&
+      uploadedDocuments !== [] &&
+      fileUploadId !== ""
+    ) {
       const res = await fetch(`${endpoint}/fileupload`, {
         method: "POST",
         headers: {
@@ -99,39 +117,70 @@ export default function FileUploadPopup() {
       <div className={styles.FileUploadPopupOuter}>
         <div className={styles.FileUploadPopupInner}>
           <div className={styles.heading}>
-            <img src="/img/architect-dashboard/file-upload.svg" alt="file-upload" />
+            <img
+              src="/img/architect-dashboard/file-upload.svg"
+              alt="file-upload"
+            />
             <span>File upload</span>
           </div>
           <div className={styles.content}>
             <div className={styles.create_folder}>
               <div className={styles.one}>
-                <input type="text" placeholder="Enter title" onChange={(e) => setTitleFileUpload(e.target.value)} />
+                <input
+                  type="text"
+                  placeholder="Enter title"
+                  onChange={(e) => setTitleFileUpload(e.target.value)}
+                />
               </div>
               <div className={styles.one}>
-                <input type="text" placeholder="Enter filename" onChange={(e) => setFilenameUpload(e.target.value)} />
+                <input
+                  type="text"
+                  placeholder="Enter filename"
+                  onChange={(e) => setFilenameUpload(e.target.value)}
+                />
               </div>
               {files.length === 0 ? (
                 <div className={styles.two}>
-                  <input type="file" accept="application/pdf" onChange={handleChange} />
+                  <input
+                    type="file"
+                    accept="application/pdf"
+                    onChange={handleChange}
+                  />
                   <div className={styles.s_add_feild}>
-                    <img src="/img/architect-dashboard/plus.svg" alt="file-upload" />
+                    <img
+                      src="/img/architect-dashboard/plus.svg"
+                      alt="file-upload"
+                    />
                     <span>Add file</span>
                   </div>
                 </div>
               ) : (
                 <div className={styles.three}>
                   <div className={styles.s_uploded_pdf}>
-                    <img src="/img/architect-dashboard/pdf.svg" alt="uploaded pdf" />
+                    <img
+                      src="/img/architect-dashboard/pdf.svg"
+                      alt="uploaded pdf"
+                    />
                     <div>
-                      <div>Selected Filename :{filenameUpload ? filenameUpload : " Please type filename above"}</div>
+                      <div>
+                        Selected Filename :
+                        {filenameUpload
+                          ? filenameUpload
+                          : " Please type filename above"}
+                      </div>
 
-                      <div>Size : {(fileBeforeUpload.size / 1024).toFixed(2)} KB</div>
+                      <div>
+                        Size : {(fileBeforeUpload.size / 1024).toFixed(2)} KB
+                      </div>
                     </div>
                   </div>
                 </div>
               )}
               <div className={styles.three}>
-                <div onClick={() => setFileUploadPopup(false)} className={styles.clear}>
+                <div
+                  onClick={() => setFileUploadPopup(false)}
+                  className={styles.clear}
+                >
                   Cancel
                 </div>
                 <div className={styles.upload} onClick={uploadFiles}>
@@ -139,7 +188,10 @@ export default function FileUploadPopup() {
                     <PulseLoader size={10} color="#ffffff" />
                   ) : (
                     <>
-                      <img src="/img/architect-dashboard/ofu.svg" alt="file-upload" />
+                      <img
+                        src="/img/architect-dashboard/ofu.svg"
+                        alt="file-upload"
+                      />
                       <span>Upload</span>
                     </>
                   )}
@@ -148,7 +200,10 @@ export default function FileUploadPopup() {
             </div>
           </div>
         </div>
-        <div onClick={() => setFileUploadPopup(false)} className={styles.FileUploadPopupClose}></div>
+        <div
+          onClick={() => setFileUploadPopup(false)}
+          className={styles.FileUploadPopupClose}
+        ></div>
       </div>
     </>
   );

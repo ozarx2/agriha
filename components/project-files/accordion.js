@@ -4,10 +4,17 @@ import endpoint from "../../src/utils/endpoint";
 import { PulseLoader } from "react-spinners";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
+var randomstring = require("randomstring");
 
 import styles from "./folder-popup.module.css";
 
-export default function Accordion({ folder_name, children, paymentStatus, date, folderId }) {
+export default function Accordion({
+  folder_name,
+  children,
+  paymentStatus,
+  date,
+  folderId,
+}) {
   const [isShowing, setIsShowing] = useState(false);
   const [addFile, setAddFile] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -54,13 +61,23 @@ export default function Accordion({ folder_name, children, paymentStatus, date, 
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/projectfiles/${pdf.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(
+      storage,
+      `/files/projectfiles/${randomString}${pdf.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, pdf);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercent(percent);
@@ -115,7 +132,10 @@ export default function Accordion({ folder_name, children, paymentStatus, date, 
         <div onClick={toggle} className={styles.Pfolder}>
           <div className={styles.left}>
             <div className={styles.folderimg}>
-              <img src="/img/architect-dashboard/folder-files.svg" alt="folder" />
+              <img
+                src="/img/architect-dashboard/folder-files.svg"
+                alt="folder"
+              />
             </div>
             <div className={styles.folderDetailsConatiner}>
               <div className={styles.title__folderDetailsConatiner}>
@@ -152,12 +172,24 @@ export default function Accordion({ folder_name, children, paymentStatus, date, 
                 alt="alt"
                 onClick={() => handleUnlock(folderId)}
               />
-              <img className={styles.lock_nh} src="/img/architect-dashboard/lock-nh.svg" alt="alt" />
+              <img
+                className={styles.lock_nh}
+                src="/img/architect-dashboard/lock-nh.svg"
+                alt="alt"
+              />
             </>
           ) : (
             <>
-              <img className={styles.lock_h} src="/img/architect-dashboard/olock-nh.svg" alt="alt" />
-              <img className={styles.lock_nh} src="/img/architect-dashboard/olock-nh.svg" alt="alt" />
+              <img
+                className={styles.lock_h}
+                src="/img/architect-dashboard/olock-nh.svg"
+                alt="alt"
+              />
+              <img
+                className={styles.lock_nh}
+                src="/img/architect-dashboard/olock-nh.svg"
+                alt="alt"
+              />
             </>
           )}
         </div>
@@ -166,13 +198,24 @@ export default function Accordion({ folder_name, children, paymentStatus, date, 
         <div className={styles.add_new_file}>
           <div className={styles.create_folder}>
             <div className={styles.one}>
-              <input type="type" placeholder="Enter the filename" onChange={fileNameChange} />
+              <input
+                type="type"
+                placeholder="Enter the filename"
+                onChange={fileNameChange}
+              />
             </div>
             <div className={styles.two}>
-              <input type="file" accept="application/pdf" onChange={handleChange} />
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={handleChange}
+              />
             </div>
             {uploading ? (
-              <div className={styles.imageAddingLoading} id="loadingImageUpload">
+              <div
+                className={styles.imageAddingLoading}
+                id="loadingImageUpload"
+              >
                 uploading
                 <PulseLoader color="#000000" size={4} />
               </div>

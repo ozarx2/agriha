@@ -1,30 +1,8 @@
 import moment from "moment/moment";
-import { useContext, useEffect, useState } from "react";
-import api_url from "../../src/utils/url";
-import { StoreContext } from "../StoreContext";
-import PaymentUserMyprojectCurrent from "./PaymentUserInProjectCurrent";
 
 import styles from "./PaymentUserMyproject.module.css";
 
-const PaymentUserMyprojectHistory = ({ item, key }) => {
-  const [Store] = useContext(StoreContext);
-
-  const [getAllBidResult, setGetAllBidResult] = useState([]);
-  async function getAllBidResults(id) {
-    const response = await fetch(`${api_url}/quotation/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
-    const data = await response.json();
-    if (data) {
-      const temp = data.data;
-      setGetAllBidResult(temp);
-    }
-  }
-
+const PaymentUserMyprojectHistory = ({ item }) => {
   return (
     <div className={styles.history_card}>
       <div className={styles.title_payment_card}>

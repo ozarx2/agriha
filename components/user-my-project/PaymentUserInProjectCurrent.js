@@ -4,14 +4,20 @@ import api_url from "../../src/utils/url";
 import { StoreContext } from "../StoreContext";
 import styles from "./PaymentUserMyproject.module.css";
 
-const PaymentUserMyprojectCurrent = ({ item, key }) => {
+const PaymentUserMyprojectCurrent = ({ item }) => {
   const [Store] = useContext(StoreContext);
 
   const setPaymentDetailsPopUp = Store.setPaymentDetailsPopUp;
   const setUserPaymentPopup = Store.setUserPaymentPopup;
+  const setArchIdAccountDetail = Store.setArchIdAccountDetail;
+
+  const [architectId, setArchitectId] = useState("");
+  const [accountData, setAccountData] = useState([]);
 
   const paymentDetailsClick = () => {
     setPaymentDetailsPopUp(true);
+    // STORE ARCHITECT ID FOR GETTING ACCOUNT DETAILS
+    setArchIdAccountDetail(architectId);
     setUserPaymentPopup("paymentDetails");
   };
 
@@ -20,21 +26,34 @@ const PaymentUserMyprojectCurrent = ({ item, key }) => {
     setUserPaymentPopup("paymentConfirm");
   };
 
-  const [getAllBidResult, setGetAllBidResult] = useState([]);
-  async function getAllBidResults(id) {
-    const response = await fetch(`${api_url}/quotation/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+  console.log(item);
+
+  useEffect(() => {
+    setArchitectId(item?.project_id?.architect_id?._id);
+  });
+
+  // GET PAYMENT ACCOUNT DETAILS ARCHITECT
+  async function getPayment() {
+    const response = await fetch(
+      `${api_url}/arc-payment/arcpaymentdetails/${architectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
     const data = await response.json();
-    if (data) {
-      const temp = data.data;
-      setGetAllBidResult(temp);
-    }
+    setAccountData(data.data);
   }
+
+  useEffect(() => {
+    console.log(architectId);
+    if (architectId !== "") {
+      getPayment();
+    }
+  }, [architectId]);
 
   return (
     <div className={styles.payment_card}>
@@ -59,7 +78,7 @@ const PaymentUserMyprojectCurrent = ({ item, key }) => {
           <div className={styles.main_payment_card_left}>
             <div className={styles.main_payment_card_left_row}>
               <p>Total amount:</p>
-              <p>₹20,000,00.00</p>
+              <p>₹{item.amount}</p>
             </div>
             <div className={styles.main_payment_card_left_row}>
               <p>Discount:</p>
@@ -73,7 +92,7 @@ const PaymentUserMyprojectCurrent = ({ item, key }) => {
           <div className={styles.main_payment_card_right}>
             <div className={styles.main_payment_card_left_row}>
               <p>Pay amount:</p>
-              <h4>₹10,000,00.00</h4>
+              <h4>₹{item.amount}</h4>
             </div>
             <div className={styles.main_payment_card_left_row}>
               <p>Balance:</p>
@@ -86,9 +105,13 @@ const PaymentUserMyprojectCurrent = ({ item, key }) => {
           </div>
         </div>
         <div className={styles.main_payment_card_buttons}>
-          <div className={styles.paymentButton} onClick={paymentDetailsClick}>
-            Payment details
-          </div>
+          {accountData.length !== 0 ? (
+            <div className={styles.paymentButton} onClick={paymentDetailsClick}>
+              Payment details
+            </div>
+          ) : (
+            ""
+          )}
           <div className={styles.confirmButton} onClick={paymentConfirmClick}>
             Paid confirmation
           </div>

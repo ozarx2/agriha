@@ -3,6 +3,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import api_url from "../../src/utils/url";
 import { PulseLoader } from "react-spinners";
+var randomstring = require("randomstring");
 
 import styles from "./fileuploaddesk.module.css";
 import stylesf from "./uploadedfiles.module.css";
@@ -48,13 +49,24 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
     if (!img) {
       alert("Please choose a file first!");
     }
-    const storageRef = ref(storage, `/files/projects/${img.name}`);
+
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(
+      storage,
+      `/files/projects/${randomString}${img.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercentProject(percent);
@@ -146,7 +158,11 @@ const FnFileUploadDesk = ({ projectId, allUploadedFiles }) => {
                 </div>
               ) : (
                 <>
-                  <img src="/img/my-project-user/upload.svg" alt="upload.svg" className={styles.upload} />
+                  <img
+                    src="/img/my-project-user/upload.svg"
+                    alt="upload.svg"
+                    className={styles.upload}
+                  />
                   <span>Submit</span>
                 </>
               )}

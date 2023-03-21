@@ -181,6 +181,15 @@
   line-height: 23.2px;
 }
 
+.noProducts {
+  height: calc(100vh - 400px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #373737;
+  font-size: 15px;
+}
+
 @media only screen and (max-width: 960px) {
   .products_container_stage {
     height: 53px;

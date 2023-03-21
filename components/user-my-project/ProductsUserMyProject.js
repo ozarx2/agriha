@@ -10,10 +10,9 @@ const ProductsUserMyProject = () => {
 
   const [products, setProducts] = useState([]);
   const [stage, setStage] = useState("one");
-
   const [projectId, setProjectId] = useState("");
-
   const [filteredItem, setFilteredItem] = useState([]);
+  const [isData, setIsData] = useState();
 
   /* GET Project ID */
   function getParameters() {
@@ -30,12 +29,22 @@ const ProductsUserMyProject = () => {
   }, []);
 
   useEffect(() => {
-    if (products.length !== 0) {
-      let structural = products.filter((item) => item.phase === "Structural works");
-      let interior = products.filter((item) => item.phase === "Interior decorating");
-      let exterior = products.filter((item) => item.phase === "Exterior decorating");
-      let landscaping = products.filter((item) => item.phase === "Landscaping & Hardscaping");
-      let security = products.filter((item) => item.phase === "Security & Automation");
+    if (products?.length !== 0) {
+      let structural = products?.filter(
+        (item) => item.phase === "Structural works"
+      );
+      let interior = products?.filter(
+        (item) => item.phase === "Interior decorating"
+      );
+      let exterior = products?.filter(
+        (item) => item.phase === "Exterior decorating"
+      );
+      let landscaping = products?.filter(
+        (item) => item.phase === "Landscaping & Hardscaping"
+      );
+      let security = products?.filter(
+        (item) => item.phase === "Security & Automation"
+      );
 
       if (stage === "one") {
         setFilteredItem(structural);
@@ -57,16 +66,24 @@ const ProductsUserMyProject = () => {
   }, [products, stage]);
 
   async function getProducts() {
-    const response = await fetch(`${api_url}/projects/suggestedProducts/${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+    const response = await fetch(
+      `${api_url}/projects/suggestedProducts/${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
     const data = await response.json();
     console.log(data);
-    setProducts(data.data);
+    if (data.data !== null) {
+      setProducts(data.data);
+      setIsData(true);
+    } else {
+      setIsData(false);
+    }
   }
 
   useEffect(() => {
@@ -83,12 +100,16 @@ const ProductsUserMyProject = () => {
         {stage === "one" ? (
           <div className={styles.stageContainerActive}>
             <div>
-              Structural works <img src="/img/user-my-project/arrowDown.svg" alt="" />
+              Structural works{" "}
+              <img src="/img/user-my-project/arrowDown.svg" alt="" />
             </div>
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("one")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("one")}
+          >
             <div>Structural works</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -97,12 +118,16 @@ const ProductsUserMyProject = () => {
           <div className={styles.stageContainerActiveTow}>
             <img src="/img/user-my-project/leftBorder.png" alt="" />
             <div>
-              Interior decorating <img src="/img/user-my-project/arrowDown.svg" alt="" />
+              Interior decorating{" "}
+              <img src="/img/user-my-project/arrowDown.svg" alt="" />
             </div>
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("two")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("two")}
+          >
             <div>Interior decorating</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -111,12 +136,16 @@ const ProductsUserMyProject = () => {
           <div className={styles.stageContainerActiveTow}>
             <img src="/img/user-my-project/leftBorder.png" alt="" />
             <div>
-              Exterior decorating <img src="/img/user-my-project/arrowDown.svg" alt="" />
+              Exterior decorating{" "}
+              <img src="/img/user-my-project/arrowDown.svg" alt="" />
             </div>
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("three")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("three")}
+          >
             <div>Exterior decorating</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -125,12 +154,16 @@ const ProductsUserMyProject = () => {
           <div className={styles.stageContainerActiveTow}>
             <img src="/img/user-my-project/leftBorder.png" alt="" />
             <div>
-              Landscaping & Hardscaping <img src="/img/user-my-project/arrowDown.svg" alt="" />
+              Landscaping & Hardscaping{" "}
+              <img src="/img/user-my-project/arrowDown.svg" alt="" />
             </div>
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("four")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("four")}
+          >
             <div>Landscaping & Hardscaping</div>
             <img src="/img/user-my-project/arrowborder.svg" alt="" />
           </div>
@@ -139,35 +172,47 @@ const ProductsUserMyProject = () => {
           <div className={styles.stageContainerActiveTow}>
             <img src="/img/user-my-project/leftBorder.png" alt="" />
             <div>
-              Security & Automation <img src="/img/user-my-project/arrowDown.svg" alt="" />
+              Security & Automation{" "}
+              <img src="/img/user-my-project/arrowDown.svg" alt="" />
             </div>
             <img src="/img/user-my-project/rightBorder.png" alt="" />
           </div>
         ) : (
-          <div className={styles.stageContainer} onClick={() => setStage("five")}>
+          <div
+            className={styles.stageContainer}
+            onClick={() => setStage("five")}
+          >
             <div>Security & Automation</div>
           </div>
         )}
       </div>
 
-      {filteredItem.map((item) => {
-        return (
-          <>
-            {stage === "one" || stage === "two" ? (
-              <div className={styles.products_container_top}>
-                <p>{item.facility_name}</p>
-              </div>
-            ) : (
-              ""
-            )}
-            <div className={styles.project_cards_container}>
-              {item?.products.map((product, index) => {
-                return <SuggestProjectCard product={product} />;
-              })}
-            </div>
-          </>
-        );
-      })}
+      {isData ? (
+        <>
+          {filteredItem?.map((item) => {
+            return (
+              <>
+                {stage === "one" || stage === "two" ? (
+                  <div className={styles.products_container_top}>
+                    <p>{item.facility_name}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
+                <div className={styles.project_cards_container}>
+                  {item?.products.map((product, index) => {
+                    return <SuggestProjectCard product={product} />;
+                  })}
+                </div>
+              </>
+            );
+          })}
+        </>
+      ) : (
+        <div className={styles.noProducts}>
+          <p>No suggested products...</p>
+        </div>
+      )}
     </>
   );
 };

@@ -17,7 +17,7 @@ const PaymentUserMyproject = () => {
   const [productId, setProductId] = useState("");
   const [allHistory, setAllHistory] = useState([]);
   const [currentPayment, setCurrentPayment] = useState([]);
-  const [historyPayment, setHisttoryPayment] = useState([]);
+  const [historyPayment, setHistoryPayment] = useState([]);
 
   /* GET PROJECT ID */
   function getParameters() {
@@ -42,27 +42,27 @@ const PaymentUserMyproject = () => {
   };
 
   async function getPaymentHistory() {
-    const response = await fetch(`${api_url}/user-payment/getbyproject/${productId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+    const response = await fetch(
+      `${api_url}/user-payment/getbyproject/${productId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
     const data = await response.json();
     console.log(data);
     setAllHistory(data.data);
     var nothistory = data.data.filter((res) => res.status === "pending");
     setCurrentPayment(nothistory);
     var hisory = data.data.filter((res) => res.status !== "pending");
-    setHisttoryPayment(hisory);
+    setHistoryPayment(hisory);
   }
 
-  // console.log(allHistory);
-  // console.log(currentPayment);
-  // console.log(historyPayment);
-
   const [getAllBidResult, setGetAllBidResult] = useState([]);
+
   async function getAllBidResults(id) {
     const response = await fetch(`${api_url}/quotation/${id}`, {
       method: "GET",
@@ -121,9 +121,17 @@ const PaymentUserMyproject = () => {
           </>
         ) : navActive === "history" ? (
           <>
-            {historyPayment.map((item, index) => {
-              return <PaymentUserMyprojectHistory item={item} key={index} />;
-            })}
+            {historyPayment.length !== 0 ? (
+              <>
+                {historyPayment.map((item, index) => {
+                  return (
+                    <PaymentUserMyprojectHistory item={item} key={index} />
+                  );
+                })}
+              </>
+            ) : (
+              <div className={styles.noHistory}>No payment history</div>
+            )}
           </>
         ) : (
           ""

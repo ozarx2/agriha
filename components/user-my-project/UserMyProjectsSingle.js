@@ -53,16 +53,21 @@ const UserMyProjectsSingle = () => {
   }
 
   async function getUploadedFiles() {
-    const response = await fetch(`${api_url}/fileupload/uploaded_file/${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+    const response = await fetch(
+      `${api_url}/fileupload/uploaded_file/${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
     const data = await response.json();
     // console.log(data);
-    var documentsForProject = data.data?.filter((res) => res.project_id === projectId);
+    var documentsForProject = data.data?.filter(
+      (res) => res.project_id === projectId
+    );
     setDocuments(documentsForProject);
   }
 
@@ -83,7 +88,9 @@ const UserMyProjectsSingle = () => {
                 {userProjectViewNav === "product" ? (
                   <li className={styles.activeNav}>Sugg. Product</li>
                 ) : (
-                  <li onClick={() => setUserProjectViewNav("product")}>Sugg. Product</li>
+                  <li onClick={() => setUserProjectViewNav("product")}>
+                    Sugg. Product
+                  </li>
                 )}
                 {userProjectViewNav === "home" ? (
                   <li className={styles.activeNav}>Details</li>
@@ -93,13 +100,17 @@ const UserMyProjectsSingle = () => {
                 {userProjectViewNav === "files" ? (
                   <li className={styles.activeNav}>My files</li>
                 ) : (
-                  <li onClick={() => setUserProjectViewNav("files")}>My files</li>
+                  <li onClick={() => setUserProjectViewNav("files")}>
+                    My files
+                  </li>
                 )}
 
                 {userProjectViewNav === "payment" ? (
                   <li className={styles.activeNav}>Payment details</li>
                 ) : (
-                  <li onClick={() => setUserProjectViewNav("payment")}>Payment details</li>
+                  <li onClick={() => setUserProjectViewNav("payment")}>
+                    Payment details
+                  </li>
                 )}
               </ul>
             </div>

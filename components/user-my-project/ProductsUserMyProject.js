@@ -200,7 +200,7 @@ const ProductsUserMyProject = () => {
                   ""
                 )}
                 <div className={styles.project_cards_container}>
-                  {item?.products.map((product, index) => {
+                  {item?.products.map((product) => {
                     return <SuggestProjectCard product={product} />;
                   })}
                 </div>

@@ -89,13 +89,23 @@ const FileUploadMain = () => {
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/siteplan/${img.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(
+      storage,
+      `/files/siteplan/${randomString}${img.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercent(percent);
@@ -160,13 +170,18 @@ const FileUploadMain = () => {
       charset: "alphabetic",
     });
 
-    const storageRef = ref(storage, `/files/referanceImages/${randomString}${img.name}`);
+    const storageRef = ref(
+      storage,
+      `/files/referanceImages/${randomString}${img.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercentProject(percent);
@@ -248,14 +263,19 @@ const FileUploadMain = () => {
       length: 12,
       charset: "alphabetic",
     });
-    // const storageRef = ref(storage, `/files/project/thumb/${randomString}${img.name}`);
-    const storageRef = ref(storage, `/files/project/${randomString}${img.name}`);
+
+    const storageRef = ref(
+      storage,
+      `/files/project/${randomString}${img.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercentThumb(percent);
@@ -329,17 +349,36 @@ const FileUploadMain = () => {
               <div className={styles.inputRow_container_fileUpload}>
                 <div className={styles.inputRow_fileUpload}>
                   <div className={styles.left_inputRow_fileUpload}>
-                    <input type="file" onChange={getSitePlan} accept="application/pdf" id="siteplan" />
+                    <input
+                      type="file"
+                      onChange={getSitePlan}
+                      accept="application/pdf"
+                      id="siteplan"
+                    />
                     <div className={styles.inputRef}>Choose file</div>
-                    {sitePlanLoading ? <PulseLoader color="#642dda" size={10} /> : <p>Upload Site Plan</p>}
+                    {sitePlanLoading ? (
+                      <PulseLoader color="#642dda" size={10} />
+                    ) : (
+                      <p>Upload Site Plan</p>
+                    )}
                   </div>
                 </div>
                 {sitePlan !== "" ? (
                   <div className={styles.uploded_pdf}>
-                    <img src="/img/architect-dashboard/pdf.svg" alt="uploaded pdf" onClick={viewSitePlan} />
+                    <img
+                      src="/img/architect-dashboard/pdf.svg"
+                      alt="uploaded pdf"
+                      onClick={viewSitePlan}
+                    />
                     <div>
-                      <div>{sitePlanDetails?.name ? `Selected Filename : ${sitePlanDetails?.name}` : ""}</div>
-                      <div>Size : {(sitePlanDetails?.size / 1024).toFixed(2)} KB</div>
+                      <div>
+                        {sitePlanDetails?.name
+                          ? `Selected Filename : ${sitePlanDetails?.name}`
+                          : ""}
+                      </div>
+                      <div>
+                        Size : {(sitePlanDetails?.size / 1024).toFixed(2)} KB
+                      </div>
                     </div>
                   </div>
                 ) : (
@@ -360,7 +399,11 @@ const FileUploadMain = () => {
                     )}
 
                     <div className={styles.inputRef}>Choose files</div>
-                    {referaceLoading ? <PulseLoader color="#642dda" size={10} /> : <p>Upload referance images(3)</p>}
+                    {referaceLoading ? (
+                      <PulseLoader color="#642dda" size={10} />
+                    ) : (
+                      <p>Upload referance images(3)</p>
+                    )}
                   </div>
                 </div>
                 {projectImages !== [] ? (
@@ -391,7 +434,11 @@ const FileUploadMain = () => {
                       onChange={getThumbnail}
                     />
                     <div className={styles.inputRef}>Choose file</div>
-                    {thumbnailLoading ? <PulseLoader color="#642dda" size={10} /> : <p>Upload Thumbnail Image</p>}
+                    {thumbnailLoading ? (
+                      <PulseLoader color="#642dda" size={10} />
+                    ) : (
+                      <p>Upload Thumbnail Image</p>
+                    )}
                   </div>
                 </div>
                 {thumbnail !== "" ? (

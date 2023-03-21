@@ -10,6 +10,7 @@ import moment from "moment/moment";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import Link from "next/link";
+var randomstring = require("randomstring");
 
 import styles from "./folder-popup.module.css";
 import styless from "./main.module.css";
@@ -93,7 +94,10 @@ export default function FolderPopup() {
 
   const addFiles = (file, filename) => {
     setFiles((files) => [...files, file]);
-    setUploadedDocuments((uploadedDocuments) => [...uploadedDocuments, { filename: filename, url: file }]);
+    setUploadedDocuments((uploadedDocuments) => [
+      ...uploadedDocuments,
+      { filename: filename, url: file },
+    ]);
   };
 
   /* UPLOAD DOCUMENTS */
@@ -107,13 +111,23 @@ export default function FolderPopup() {
       alert("Please choose a file first!");
     }
 
-    const storageRef = ref(storage, `/files/projectfiles/${pdf.name}`);
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(
+      storage,
+      `/files/projectfiles/${randomString}${pdf.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, pdf);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercent(percent);
@@ -209,11 +223,19 @@ export default function FolderPopup() {
               <div className={styles.heading}>
                 <div className={styles.left}>
                   <div className={styles.main}>{projectId.project_name}</div>
-                  <div className={styles.sub}>{documents?.length} Document folders</div>
+                  <div className={styles.sub}>
+                    {documents?.length} Document folders
+                  </div>
                 </div>
                 <div className={styles.right}>
-                  <div onClick={() => setAddFolder(true)} className={styles.add_folder}>
-                    <img src="/img/architect-dashboard/plus-yellow.svg" alt="sort" />
+                  <div
+                    onClick={() => setAddFolder(true)}
+                    className={styles.add_folder}
+                  >
+                    <img
+                      src="/img/architect-dashboard/plus-yellow.svg"
+                      alt="sort"
+                    />
                     <span>Add Folder</span>
                   </div>
                   {/* <div onClick={() => setFolderPopup(false)} className={styles.back}> */}
@@ -225,16 +247,31 @@ export default function FolderPopup() {
                   <>
                     <div className={styles.create_folder}>
                       <div className={styles.one}>
-                        <input type="type" placeholder="Enter the title" onChange={titleChange} />
+                        <input
+                          type="type"
+                          placeholder="Enter the title"
+                          onChange={titleChange}
+                        />
                       </div>
                       <div className={styles.one}>
-                        <input type="type" placeholder="Enter the filename" onChange={fileNameChange} />
+                        <input
+                          type="type"
+                          placeholder="Enter the filename"
+                          onChange={fileNameChange}
+                        />
                       </div>
                       <div className={styles.two}>
-                        <input type="file" accept="application/pdf" onChange={handleChange} />
+                        <input
+                          type="file"
+                          accept="application/pdf"
+                          onChange={handleChange}
+                        />
                       </div>
                       {uploading ? (
-                        <div className={styles.imageAddingLoading} id="loadingImageUpload">
+                        <div
+                          className={styles.imageAddingLoading}
+                          id="loadingImageUpload"
+                        >
                           uploading
                           <PulseLoader color="#000000" size={4} />
                         </div>
@@ -242,7 +279,10 @@ export default function FolderPopup() {
                         ""
                       )}
                       <div className={styles.three}>
-                        <div onClick={() => setAddFolder(false)} className={styles.clear}>
+                        <div
+                          onClick={() => setAddFolder(false)}
+                          className={styles.clear}
+                        >
                           Clear
                         </div>
                         <div onClick={uploadFiles} className={styles.upload}>
@@ -264,7 +304,9 @@ export default function FolderPopup() {
                       <Accordion
                         folder_name={item?.title}
                         paymentStatus={item?.payment_status}
-                        date={moment(item?.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
+                        date={moment(item?.updatedAt).format(
+                          "MMMM Do YYYY, h:mm:ss a"
+                        )}
                         folderId={item?._id}
                         key={index}
                       >
@@ -273,19 +315,31 @@ export default function FolderPopup() {
                             return (
                               <React.Fragment key={i}>
                                 {file.isDelete ? (
-                                  <div className={`${styles.Pfile} ${styles.deleted}`} key={i}>
+                                  <div
+                                    className={`${styles.Pfile} ${styles.deleted}`}
+                                    key={i}
+                                  >
                                     <div className={styles.left}>
                                       <div className={styles.img}>
-                                        <img src="/img/architect-dashboard/file-d.svg" alt="alt" />
+                                        <img
+                                          src="/img/architect-dashboard/file-d.svg"
+                                          alt="alt"
+                                        />
                                       </div>
                                       <div className={styles.name}>
                                         <div className={styles.first}>
                                           <div>{file.filename}</div>
                                           <div>
                                             {lockc ? (
-                                              <img src="/img/architect-dashboard/slock-d.svg" alt="alt" />
+                                              <img
+                                                src="/img/architect-dashboard/slock-d.svg"
+                                                alt="alt"
+                                              />
                                             ) : (
-                                              <img src="/img/architect-dashboard/sunlock-d.svg" alt="alt" />
+                                              <img
+                                                src="/img/architect-dashboard/sunlock-d.svg"
+                                                alt="alt"
+                                              />
                                             )}
                                           </div>
                                         </div>
@@ -293,10 +347,16 @@ export default function FolderPopup() {
                                     </div>
                                     <div className={styles.right}>
                                       <div className={styles.delete}>
-                                        <img src="/img/architect-dashboard/delete-d.svg" alt="alt" />
+                                        <img
+                                          src="/img/architect-dashboard/delete-d.svg"
+                                          alt="alt"
+                                        />
                                       </div>
                                       <div className={styles.download}>
-                                        <img src="/img/architect-dashboard/download-d.svg" alt="alt" />
+                                        <img
+                                          src="/img/architect-dashboard/download-d.svg"
+                                          alt="alt"
+                                        />
                                       </div>
                                     </div>
                                   </div>
@@ -304,7 +364,10 @@ export default function FolderPopup() {
                                   <div className={styles.Pfile}>
                                     <div className={styles.left}>
                                       <div className={styles.img}>
-                                        <img src="/img/architect-dashboard/file.svg" alt="alt" />
+                                        <img
+                                          src="/img/architect-dashboard/file.svg"
+                                          alt="alt"
+                                        />
                                       </div>
                                       <div className={styles.name}>
                                         <div className={styles.first}>
@@ -317,7 +380,9 @@ export default function FolderPopup() {
                                         {lockc ? (
                                           <>
                                             <img
-                                              onClick={() => deleteFile(file.id, item._id)}
+                                              onClick={() =>
+                                                deleteFile(file.id, item._id)
+                                              }
                                               className={styles.delete_h}
                                               src="/img/architect-dashboard/fdelete-h.svg"
                                               alt="alt"

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
-import styles from "./main.module.css";
 import FnFileUploadMob from "./fileuploadmob";
 import FnFileFromArchMob from "./filefromarchmob";
 import { useEffect } from "react";
@@ -11,8 +10,23 @@ import api_url from "../../src/utils/url";
 import endpoint from "../../src/utils/endpoint";
 import FnfolderMob from "./folderMob";
 import FnFolderMob from "./folderMob";
+var randomstring = require("randomstring");
 
-const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architectId, status, startDate, thumbnail }) => {
+import styles from "./main.module.css";
+
+const FnprojectCardMob = ({
+  index,
+  name,
+  place,
+  budget,
+  area,
+  bid,
+  id,
+  architectId,
+  status,
+  startDate,
+  thumbnail,
+}) => {
   const [files, setFiles] = useState([]);
   const [viewMore, setViewMore] = useState(false);
   const [sentFile, setSentFile] = useState(false);
@@ -64,13 +78,24 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
     if (!img) {
       alert("Please choose a file first!");
     }
-    const storageRef = ref(storage, `/files/projects/${img.name}`);
+
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(
+      storage,
+      `/files/projects/${randomString}${img.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercentProject(percent);
@@ -98,7 +123,10 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
-        setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
+        setFiles((files) => [
+          ...files,
+          { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] },
+        ]);
       }
     } else {
       alert("Cannot add more than 30 pictures");
@@ -192,7 +220,9 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
 
   useEffect(() => {
     async function suggestedData() {
-      const response = await fetch("https://ecommnerc-test.onrender.com/product");
+      const response = await fetch(
+        "https://ecommnerc-test.onrender.com/product"
+      );
       const data = await response.json();
       setSuggestion(data);
       console.log(data);
@@ -219,10 +249,19 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
               </div>
               <div className={styles.projProPicBtnsMob}>
                 {architectId ? (
-                  <Link href={`/user-architect-about/${architectId?._id}`} passHref>
+                  <Link
+                    href={`/user-architect-about/${architectId?._id}`}
+                    passHref
+                  >
                     <img
-                      src={architectId?.profilepic ? architectId?.profilepic : "/img/landing/profile_img.svg"}
-                      onError={(e) => (e.target.src = "/img/landing/profile_img.svg")}
+                      src={
+                        architectId?.profilepic
+                          ? architectId?.profilepic
+                          : "/img/landing/profile_img.svg"
+                      }
+                      onError={(e) =>
+                        (e.target.src = "/img/landing/profile_img.svg")
+                      }
                       alt="propic.jpg"
                       className={styles.propicDp}
                     />
@@ -231,13 +270,22 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
                   ""
                 )}
 
-                <div className={styles.viewMoreMob} onClick={() => toggleBtnMob(id)}>
+                <div
+                  className={styles.viewMoreMob}
+                  onClick={() => toggleBtnMob(id)}
+                >
                   {viewMore && mainViewMore === id ? "View Less" : "View More"}
                   <span>
                     {viewMore && mainViewMore === id ? (
-                      <img src="/img/my-project-user/mobile/showlessmob.svg" alt="down.svg" />
+                      <img
+                        src="/img/my-project-user/mobile/showlessmob.svg"
+                        alt="down.svg"
+                      />
                     ) : (
-                      <img src="/img/my-project-user/mobile/showmoremob.svg" alt="up.svg" />
+                      <img
+                        src="/img/my-project-user/mobile/showmoremob.svg"
+                        alt="up.svg"
+                      />
                     )}
                   </span>
                 </div>
@@ -353,20 +401,35 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
           </div> */}
           <div className={styles.sentFileMainSecMob}>
             <div className={styles.sentFileMainMob}>
-              <div className={styles.sentFileHead} onClick={() => toggleSentFileMob(id)}>
+              <div
+                className={styles.sentFileHead}
+                onClick={() => toggleSentFileMob(id)}
+              >
                 Store your Files
               </div>
-              <div className={styles.sentFileListMob} onClick={() => toggleSentFileMob(id)}>
+              <div
+                className={styles.sentFileListMob}
+                onClick={() => toggleSentFileMob(id)}
+              >
                 {sentFile && fileToArchitect === id ? (
-                  <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" />
+                  <img
+                    src="/img/my-project-user/mobile/upmob.svg"
+                    alt="upmob.svg"
+                  />
                 ) : (
-                  <img src="/img/my-project-user/mobile/downmob.svg" alt="downmob.svg" />
+                  <img
+                    src="/img/my-project-user/mobile/downmob.svg"
+                    alt="downmob.svg"
+                  />
                 )}
               </div>
             </div>
             {sentFile ? (
               <div className={styles.sentFileUploadMainSecMob}>
-                <FnFileUploadMob projectId={id} allUploadedFiles={uploadedFiles} />
+                <FnFileUploadMob
+                  projectId={id}
+                  allUploadedFiles={uploadedFiles}
+                />
               </div>
             ) : (
               ""
@@ -374,14 +437,26 @@ const FnprojectCardMob = ({ index, name, place, budget, area, bid, id, architect
           </div>
 
           <div className={styles.fileFromMainMob}>
-            <div className={styles.fileFromHead} onClick={() => toggleFileDataMob(id)}>
+            <div
+              className={styles.fileFromHead}
+              onClick={() => toggleFileDataMob(id)}
+            >
               File from architect
             </div>
-            <div className={styles.fileFromListMob} onClick={() => toggleFileDataMob(id)}>
+            <div
+              className={styles.fileFromListMob}
+              onClick={() => toggleFileDataMob(id)}
+            >
               {fileData && fileFromArch === id ? (
-                <img src="/img/my-project-user/mobile/upmob.svg" alt="upmob.svg" />
+                <img
+                  src="/img/my-project-user/mobile/upmob.svg"
+                  alt="upmob.svg"
+                />
               ) : (
-                <img src="/img/my-project-user/mobile/downmob.svg" alt="downmob.svg" />
+                <img
+                  src="/img/my-project-user/mobile/downmob.svg"
+                  alt="downmob.svg"
+                />
               )}
             </div>
           </div>

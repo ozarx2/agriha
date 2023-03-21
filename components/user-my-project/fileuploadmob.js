@@ -3,6 +3,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../../firebase";
 import api_url from "../../src/utils/url";
 import { PulseLoader } from "react-spinners";
+var randomstring = require("randomstring");
 
 import styles from "./fileuploadmob.module.css";
 import stylefl from "./uploadedfiles.module.css";
@@ -44,13 +45,24 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
     if (!img) {
       alert("Please choose a file first!");
     }
-    const storageRef = ref(storage, `/files/projects/${img.name}`);
+
+    const randomString = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    });
+
+    const storageRef = ref(
+      storage,
+      `/files/projects/${randomString}${img.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, img);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
         // update progress
         setPercentProject(percent);
@@ -81,7 +93,10 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
       fileObj.push(e.target.files);
       for (let i = 0; i < fileObj[0].length; i++) {
         fileArray.push(URL.createObjectURL(fileObj[0][i]));
-        setFiles((files) => [...files, { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] }]);
+        setFiles((files) => [
+          ...files,
+          { url: URL.createObjectURL(fileObj[0][i]), file: fileObj[0][i] },
+        ]);
       }
     } else {
       alert("Cannot add more than 10 pictures");
@@ -135,14 +150,21 @@ const FnFileUploadMob = ({ projectId, allUploadedFiles }) => {
             })}
           </div>
         </div>
-        <div className={styles.uploadFileDescMob} onClick={() => uploadProject()}>
+        <div
+          className={styles.uploadFileDescMob}
+          onClick={() => uploadProject()}
+        >
           {isLoading ? (
             <div>
               <PulseLoader color="#ffffff" size={10} />
             </div>
           ) : (
             <>
-              <img src="/img/my-project-user/mobile/uploadmob.svg" alt="uploadmob.svg" className={styles.upload} />
+              <img
+                src="/img/my-project-user/mobile/uploadmob.svg"
+                alt="uploadmob.svg"
+                className={styles.upload}
+              />
               <span>UploadFile</span>
             </>
           )}

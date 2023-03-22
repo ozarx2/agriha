@@ -46,6 +46,7 @@ export const StoreContextProvider = (props) => {
   const [cartOpen, setCartOpen] = useState(false);
   const [refreshUser, setRefreshUser] = useState(false);
   const [archIdAccountDetail, setArchIdAccountDetail] = useState("");
+  const [paidConfirmData, setPaidConfirmData] = useState([]);
   // Store Yaseen end
 
   // Store 61-5a start
@@ -160,6 +161,8 @@ export const StoreContextProvider = (props) => {
     setRefreshUser,
     archIdAccountDetail,
     setArchIdAccountDetail,
+    paidConfirmData,
+    setPaidConfirmData,
     // Store Yaseen end
 
     // Store 61-5a start

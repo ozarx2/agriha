@@ -128,7 +128,7 @@ const PaymentUserMyprojectCurrent = ({ item }) => {
       ) : (
         <div className={styles.payment_card}>
           <div className={styles.payment_card_noData}>
-            Payment data not avalilable
+            Payment details not avalilable
           </div>
         </div>
       )}

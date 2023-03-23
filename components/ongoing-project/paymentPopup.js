@@ -50,8 +50,8 @@ function PaymentPopup() {
           balance: "1111",
           amount_tobe_paid: "1111",
           transaction_image: "",
-          due_date: "yyyy-MM-dd",
-          bill_date: "yyyy-MM-dd",
+          due_date: payableData.due_date,
+          bill_date: payableData.bill_date,
           mode_of_payment: "",
           amount: payableData.amount,
           transaction_id: "",
@@ -93,12 +93,15 @@ function PaymentPopup() {
               ) : (
                 <>
                   <div className={styles.one}>
+                    <p>Enter payable amount</p>
                     <input type="number" name="amount" placeholder="Enter payable amount." onChange={handleInputs} />
                   </div>
                   <div className={styles.one}>
+                    <p>Enter stage of payment</p>
                     <input type="text" name="stage" placeholder="Enter stage of payment." onChange={handleInputs} />
                   </div>
                   <div className={styles.one}>
+                    <p>Enter bill date of payment</p>
                     <input
                       type="date"
                       name="bill_date"
@@ -107,6 +110,7 @@ function PaymentPopup() {
                     />
                   </div>
                   <div className={styles.one}>
+                    <p>Enter due date of payment</p>
                     <input
                       type="date"
                       name="due_date"

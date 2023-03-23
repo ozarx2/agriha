@@ -736,9 +736,8 @@ export default function SingleOngoingProjectsMain() {
                 <div className={styles.payment_section}>
                   <div>
                     <div>Total amount : </div>
-                    <div>Received amount : </div>
-                    <div>Processing amount : </div>
-                    <div>Remaining amount : </div>
+                    <div>Amount to be paid : </div>
+                    <div>Balance amount : </div>
                   </div>
 
                   {accountData.length > 0 ? (

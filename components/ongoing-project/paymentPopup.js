@@ -18,6 +18,8 @@ function PaymentPopup() {
     amount: null,
     stage: "",
     status: "pending",
+    due_date: "",
+    bill_date: "",
   };
   const [payableData, setPayableData] = useState(initialState);
   const handleInputs = (event) => {
@@ -31,6 +33,7 @@ function PaymentPopup() {
   async function SubmitPaymentDetails() {
     if (projectId) {
       payableData.project_id = projectId;
+      var architectId = localStorage.getItem("architectId");
       const response = await fetch(`${api_url}/user-payment`, {
         method: "POST",
         headers: {
@@ -40,9 +43,19 @@ function PaymentPopup() {
         },
         body: JSON.stringify({
           project_id: payableData.project_id,
-          amount: payableData.amount,
-          stage: payableData.stage,
+          payment_id: "",
+          creator: architectId,
           status: payableData.status,
+          total_amount: "1111",
+          balance: "1111",
+          amount_tobe_paid: "1111",
+          transaction_image: "",
+          due_date: "yyyy-MM-dd",
+          bill_date: "yyyy-MM-dd",
+          mode_of_payment: "",
+          amount: payableData.amount,
+          transaction_id: "",
+          stage: payableData.stage,
         }),
       });
       const data = await response.json();
@@ -84,6 +97,22 @@ function PaymentPopup() {
                   </div>
                   <div className={styles.one}>
                     <input type="text" name="stage" placeholder="Enter stage of payment." onChange={handleInputs} />
+                  </div>
+                  <div className={styles.one}>
+                    <input
+                      type="date"
+                      name="bill_date"
+                      placeholder="Enter bill date of payment."
+                      onChange={handleInputs}
+                    />
+                  </div>
+                  <div className={styles.one}>
+                    <input
+                      type="date"
+                      name="due_date"
+                      placeholder="Enter due date of payment."
+                      onChange={handleInputs}
+                    />
                   </div>
                 </>
               )}

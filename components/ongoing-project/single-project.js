@@ -53,8 +53,23 @@ export default function SingleOngoingProjectsMain() {
       getProjects();
       getUserAllPayment();
       getProductSelected();
+      getArchitcectQuote();
     }
   }, [projectId]);
+
+  async function getArchitcectQuote() {
+    const response = await fetch(`${api_url}/quotation/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+    if (response.status === 200) {
+    }
+  }
 
   // console.log(projectDetails);
   const [userPayments, setuserPayments] = useState([]);
@@ -209,7 +224,7 @@ export default function SingleOngoingProjectsMain() {
     }
   }
 
-  console.log(selectedProduct);
+  // console.log(selectedProduct);
 
   const [accountData, setAccountData] = useState([]);
   async function getPayment() {
@@ -233,7 +248,8 @@ export default function SingleOngoingProjectsMain() {
     getPayment();
   }, []);
 
-  console.log(projectDetails);
+  // console.log(projectDetails);
+
   return (
     <>
       <div className={styles.main_outer}>
@@ -736,9 +752,8 @@ export default function SingleOngoingProjectsMain() {
                 <div className={styles.payment_section}>
                   <div>
                     <div>Total amount : </div>
-                    <div>Received amount : </div>
-                    <div>Processing amount : </div>
-                    <div>Remaining amount : </div>
+                    <div>Amount to be paid : </div>
+                    <div>Balance amount : </div>
                   </div>
 
                   {accountData.length > 0 ? (

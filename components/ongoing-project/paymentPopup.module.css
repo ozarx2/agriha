@@ -64,6 +64,14 @@
   align-items: center;
   justify-content: center;
 }
+.create_folder .one > p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  padding: 10px 0;
+}
 .create_folder .one > input {
   font-family: "Inter";
   font-style: normal;

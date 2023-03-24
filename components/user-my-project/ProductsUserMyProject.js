@@ -78,9 +78,14 @@ const ProductsUserMyProject = () => {
     );
     const data = await response.json();
     console.log(data);
-    if (data.data !== null) {
-      setProducts(data.data);
-      setIsData(true);
+    if (data.status === 200) {
+      var result = Array.isArray(data.data);
+      if (!result) {
+        setIsData(false);
+      } else {
+        setProducts(data.data);
+        setIsData(true);
+      }
     } else {
       setIsData(false);
     }

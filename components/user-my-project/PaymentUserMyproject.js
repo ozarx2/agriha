@@ -115,9 +115,17 @@ const PaymentUserMyproject = () => {
       <div className={styles.main_container_payment}>
         {navActive === "currentPayment" ? (
           <>
-            {currentPayment.map((item, index) => {
-              return <PaymentUserMyprojectCurrent item={item} key={index} />;
-            })}
+            {currentPayment.length !== 0 ? (
+              <>
+                {currentPayment.map((item, index) => {
+                  return (
+                    <PaymentUserMyprojectCurrent item={item} key={index} />
+                  );
+                })}
+              </>
+            ) : (
+              <div className={styles.noCurrentPayment}>No Current Payment</div>
+            )}
           </>
         ) : navActive === "history" ? (
           <>
